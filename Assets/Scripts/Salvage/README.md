@@ -14,7 +14,7 @@
 
 ## 在 Unity 中使用
 
-1. 通过 `Create > Salvage > Definition` 创建配置资产，填写目标 ID、奖励 ID、数量范围和操作参数。默认 `scrap` 是待接库存系统的占位 ID。
+1. 通过 `Create > Salvage > Definition` 创建配置资产，填写目标 ID、奖励 ID、数量范围和操作参数。默认 `scrap` 可直接作为库存物品 ID。
 2. 在之后负责终端交互的 GameObject 上添加 `SalvageController`，设置 `Default Definition`。组件不会自动开始打捞。
 3. 交互系统调用 `TryStartSalvage()`，或 `TryStartSalvage(definition, randomSeed)`，开始指定目标。
 4. 输入系统/未来 UI 在按下时调用 `PressControl()`，松开时调用 `ReleaseControl()`；也可统一调用 `SetControlHeld(bool)`。
@@ -34,8 +34,8 @@ controller.SnapshotChanged += snapshot =>
 controller.Completed += result =>
 {
     if (!result.IsSuccess) return;
-    // 库存系统在这里接收 result.RewardId 和 result.RewardQuantity。
-    // 使用 result.AttemptId 对自己的库存事务去重。
+    // 自定义接入可在这里使用库存的 TryAddOnce(result.AttemptId, result.RewardId, result.RewardQuantity)。
+    // 使用现成的 SalvageInventoryBridge 时，无需再注册此发奖回调。
 };
 controller.TryStartSalvage();
 ```
@@ -82,4 +82,4 @@ session.TryStart(settings, target, randomSeed: 12345);
 
 `SalvageEndReason` 区分 `Recovered`、`SignalMissed`、`TargetLost`、`TimedOut`、`Cancelled`。只有 `IsSuccess` 时奖励数量大于 0，数量范围含上下限；失败/取消数量为 0。
 
-模块不消耗电力、扣除工具、移除世界目标或直接写入库存。后续世界/库存系统应在自己的事务中检查可打捞条件、处理资源消耗与奖励，并以 `AttemptId` 去重。本次没有添加这些尚不存在的系统。
+模块不消耗电力、扣除工具、移除世界目标或直接写入库存。库存接入使用 `../Storage` 中的 `InventoryController` 与 `SalvageInventoryBridge`，详见 [库存系统说明](../Storage/README.md)。世界系统仍应自行检查可打捞条件并处理资源消耗。
