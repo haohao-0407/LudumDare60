@@ -49,6 +49,7 @@
 ExportedObj/
 .consulo/
 *.csproj
+!/Tests/TerminalDialogue/TerminalDialogue.Tests.csproj
 *.unityproj
 *.sln
 *.suo

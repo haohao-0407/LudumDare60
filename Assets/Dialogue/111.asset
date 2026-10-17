@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3839dfbbd097940ad0919d7d9887a0, type: 3}
+  m_Name: 111
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
+  graph:
+    AIName: SHIP AI
+    EntryNodeId: 1111
+    InitialFlags: []
+    Nodes:
+    - Id: 1111
+      Title: sayhello
+      Lines:
+      - Speaker: 0
+        Text: hello
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: choice_398cec8b
+        Label: hello
+        PlayerText: Player response.
+        NextNodeId: node_2618fcdf
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: choice_52b77e6f
+        Label: New response
+        PlayerText: Player response.
+        NextNodeId: 1111
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: choice_fac4c5df
+        Label: hi
+        PlayerText: Player response.
+        NextNodeId: 
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: node_2618fcdf
+      Title: "\u5F00\u59CB\u4EFB\u52A1"
+      Lines:
+      - Speaker: 0
+        Text: LetsBegin
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: choice_f412d616
+        Label: Hello
+        PlayerText: caonima
+        NextNodeId: 
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: choice_3f7e772e
+        Label: Thats OK
+        PlayerText: oh
+        NextNodeId: 1111
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 

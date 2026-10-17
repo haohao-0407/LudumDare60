@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3839dfbbd097940ad0919d7d9887a0, type: 3}
+  m_Name: TerminalDialogueExample 3
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
+  graph:
+    AIName: NAV AI
+    EntryNodeId: signal
+    InitialFlags: []
+    Nodes:
+    - Id: signal
+      Title: "\u53D1\u73B0\u4FE1\u53F7"
+      Lines:
+      - Speaker: 0
+        Text: Captain, an unusual signal has been detected ahead.
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        Text: Its source is approximately three kilometers away.
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: analyze
+        Label: ANALYZE SIGNAL
+        PlayerText: Analyze the signal for me.
+        NextNodeId: analysis
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: risk
+        Label: ASSESS RISK
+        PlayerText: What are the risks of approaching it?
+        NextNodeId: risk
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: coordinates
+        Label: SHOW COORDINATES
+        PlayerText: Display the target coordinates.
+        NextNodeId: coordinates
+        Conditions:
+        - Key: has_coordinates
+          Value: 1
+        SetFlags: []
+        Events: []
+      - Id: leave
+        Label: END TRANSMISSION
+        PlayerText: Keep monitoring. End transmission.
+        NextNodeId: end
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: analysis
+      Title: "\u4FE1\u53F7\u5206\u6790"
+      Lines:
+      - Speaker: 2
+        Text: 'scan nearby
+
+          Scan complete: derelict transport identified.'
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        Text: I have marked its position.
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices:
+      - Id: mark
+        Label: SAVE COORDINATES
+        PlayerText: Save the coordinates and return to the comms menu.
+        NextNodeId: signal
+        Conditions: []
+        SetFlags:
+        - Key: has_coordinates
+          Value: 1
+        Events: []
+      NextNodeId: signal
+    - Id: risk
+      Title: "\u98CE\u9669\u8BF4\u660E"
+      Lines:
+      - Speaker: 0
+        Text: There is heavy metal debris nearby. I recommend reducing speed.
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: signal
+    - Id: coordinates
+      Title: "\u5750\u6807\u8BB0\u5F55"
+      Lines:
+      - Speaker: 2
+        Text: 'Target coordinates: X 128 / Y -36 / Z 420.'
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: signal
+    - Id: end
+      Title: "\u7ED3\u675F"
+      Lines:
+      - Speaker: 0
+        Text: Acknowledged. I will continue monitoring nearby signals.
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: 

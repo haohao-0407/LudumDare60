@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <BaseIntermediateOutputPath>$(MSBuildThisFileDirectory)../../.utmp/TerminalDialogueTests/obj/</BaseIntermediateOutputPath>
+    <OutputPath>$(MSBuildThisFileDirectory)../../.utmp/TerminalDialogueTests/bin/</OutputPath>
+  </PropertyGroup>
+</Project>
