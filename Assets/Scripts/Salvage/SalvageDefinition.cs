@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace LudumDare60.Salvage
 {
-    /// <summary>Create one asset per salvage target/difficulty. IDs belong to the future world/inventory system.</summary>
+    /// <summary>Create one asset per salvage target/difficulty. Reward IDs match inventory item IDs.</summary>
     [CreateAssetMenu(fileName = "SalvageDefinition", menuName = "Salvage/Definition")]
     public sealed class SalvageDefinition : ScriptableObject
     {
