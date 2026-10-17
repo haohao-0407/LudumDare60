@@ -1,0 +1,35 @@
+{
+    "status": "verified_static",
+    "scene": "Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity",
+    "model": "Assets/MarsBase/Models/MarsBase_Architecture.fbx",
+    "prefab": "Assets/MarsBase/Prefabs/MarsBase_Architecture.prefab",
+    "renderers": 137,
+    "meshFilters": 137,
+    "uniqueMeshes": 136,
+    "triangles": 343673,
+    "materials": 14,
+    "colliders": 29,
+    "missingScripts": 0,
+    "missingMeshes": 0,
+    "missingMaterials": 0,
+    "invalidBounds": 0,
+    "architectureCenter": {
+        "x": -0.75,
+        "y": 12.624629020690918,
+        "z": -2.1062870025634766
+    },
+    "architectureSize": {
+        "x": 62.790000915527344,
+        "y": 25.35073471069336,
+        "z": 46.78712463378906
+    },
+    "importedRootScale": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 1.0
+    },
+    "errors": [],
+    "warnings": [
+        "Static editor validation only; Play Mode and player builds were not run."
+    ]
+}

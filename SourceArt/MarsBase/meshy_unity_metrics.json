@@ -1,0 +1,113 @@
+{
+    "status": "placed_static_props",
+    "props": [
+        {
+            "name": "Rover_T25",
+            "source": "Assets/MarsBase/Models/Meshy/Rover_T25.glb",
+            "prefab": "Assets/MarsBase/Prefabs/Rover_T25.prefab",
+            "position": {
+                "x": 18.0,
+                "y": 0.0,
+                "z": 24.0
+            },
+            "boundsCenter": {
+                "x": 18.0,
+                "y": 1.8108645677566528,
+                "z": 24.0
+            },
+            "boundsSize": {
+                "x": 6.800000190734863,
+                "y": 3.7017290592193604,
+                "z": 5.071371078491211
+            },
+            "modelScale": {
+                "x": 6.37606954574585,
+                "y": 6.37606954574585,
+                "z": 6.37606954574585
+            },
+            "renderers": 1,
+            "triangles": 29903,
+            "colliders": 1,
+            "materials": [
+                " [Shader Graphs/glTF-pbrMetallicRoughness]"
+            ],
+            "textures": [
+                "image_0",
+                "image_1",
+                "image_2"
+            ]
+        },
+        {
+            "name": "LifeSupport_T25_01",
+            "source": "Assets/MarsBase/Models/Meshy/LifeSupport_T25.glb",
+            "prefab": "Assets/MarsBase/Prefabs/LifeSupport_T25.prefab",
+            "position": {
+                "x": -10.0,
+                "y": 0.0,
+                "z": 21.0
+            },
+            "boundsCenter": {
+                "x": -10.0,
+                "y": 1.8128764629364014,
+                "z": 21.0
+            },
+            "boundsSize": {
+                "x": 4.199999809265137,
+                "y": 3.7057528495788574,
+                "z": 2.6352522373199463
+            },
+            "modelScale": {
+                "x": 4.420140266418457,
+                "y": 4.420140266418457,
+                "z": 4.420140266418457
+            },
+            "renderers": 1,
+            "triangles": 29595,
+            "colliders": 1,
+            "materials": [
+                " [Shader Graphs/glTF-pbrMetallicRoughness]"
+            ],
+            "textures": [
+                "image_0",
+                "image_1",
+                "image_2"
+            ]
+        },
+        {
+            "name": "LifeSupport_T25_02",
+            "source": "Assets/MarsBase/Models/Meshy/LifeSupport_T25.glb",
+            "prefab": "Assets/MarsBase/Prefabs/LifeSupport_T25.prefab",
+            "position": {
+                "x": -14.0,
+                "y": 0.0,
+                "z": 20.0
+            },
+            "boundsCenter": {
+                "x": -14.0,
+                "y": 1.8128764629364014,
+                "z": 20.0
+            },
+            "boundsSize": {
+                "x": 4.199999809265137,
+                "y": 3.7057528495788574,
+                "z": 2.6352522373199463
+            },
+            "modelScale": {
+                "x": 4.420140266418457,
+                "y": 4.420140266418457,
+                "z": 4.420140266418457
+            },
+            "renderers": 1,
+            "triangles": 29595,
+            "colliders": 1,
+            "materials": [
+                " [Shader Graphs/glTF-pbrMetallicRoughness]"
+            ],
+            "textures": [
+                "image_0",
+                "image_1",
+                "image_2"
+            ]
+        }
+    ]
+}

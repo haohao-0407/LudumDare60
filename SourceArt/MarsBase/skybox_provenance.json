@@ -1,0 +1,48 @@
+{
+  "created": "2026-10-17",
+  "purpose": "360-degree skybox for the retrofuturist Mars base in Unity",
+  "source": "OpenAI image generation",
+  "verification": {
+    "scene_saved": true,
+    "shader_supported": true,
+    "shader_messages": [],
+    "console_errors_and_warnings": 0,
+    "play_mode_run": false,
+    "visual_checks": ["scene framing", "longitude seam after explicit gradient correction", "zenith polar cap"],
+    "scene_preview": "SourceArt/MarsBase/MarsBase_Skybox_Final.png",
+    "sky_preview": "SourceArt/MarsBase/Mars_Skybox_Clouds_1.png"
+  },
+  "source_image": "C:/Users/shenc/.codex/generated_images/01a149c3-f29c-77c3-ba32-624c17c2c4a5/exec-c414272e-67a0-4fd4-b1cb-e4cacdd1354f.png",
+  "texture": "Assets/MarsBase/Textures/Skybox/Mars_Dusk_360.png",
+  "actual_resolution": [
+    1774,
+    887
+  ],
+  "dynamic_range": "LDR",
+  "projection": "equirectangular 360 x 180 degrees",
+  "material": "Assets/MarsBase/Materials/MB_MarsDuskPanoramic.mat",
+  "shader": "Assets/MarsBase/Shaders/MarsPanoramicHaze.shader",
+  "scene": "Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity",
+  "settings": {
+    "rotation_degrees": 117,
+    "exposure": 0.9,
+    "fog_color_srgb": [
+      0.72,
+      0.43,
+      0.29
+    ],
+    "horizon_blend_height": 0.055,
+    "seam_feather_uv": 0.012,
+    "import_srgb": true,
+    "wrap_u": "Repeat",
+    "wrap_v": "Clamp",
+    "compression": "Uncompressed",
+    "mipmaps": true
+  },
+  "notes": [
+    "The image tool returned 1774 x 887 pixels despite the requested 4K size. This is an LDR PNG, not an HDRI.",
+    "The source bitmap is unmodified. The Unity shader blends the longitudinal seam, smooths polar caps and blends the lower horizon into the scene fog.",
+    "The presentation camera was lowered from (-50,28,80) to (-50,18,80), still looking toward (0,7,-1), to reveal more sky."
+  ],
+  "prompt": "Create a production-ready 360 degree equirectangular environment panorama texture for a retrofuturist Mars colony game. EXACT 2:1 width to height aspect ratio, 3840 x 1920 pixels if possible. Full longitude 360 degrees and full latitude 180 degrees, horizon exactly at vertical center (y=50%), continuous seamless left/right edges, mathematically plausible equirectangular pole stretching. This is an environment texture, not a perspective landscape image. Photorealistic high quality atmospheric sky, cinematic soft late afternoon on an imagined Mars. Upper hemisphere: luminous pale peach and dusty apricot along horizon gradually blending into desaturated warm terracotta and subtle mauve toward zenith; graceful wispy high clouds, stretched delicate cloud veils and a few soft lit streaks, spacious calm sky. Warm glowing haze in one broad region around 70% horizontal longitude, but NO visible sun disc anywhere, no moons, no stars. A believable faint desaturated blue-gray scattering tint mixed into distant haze to balance orange. At the horizon only: very distant eroded Martian mesas and ridges, low broken silhouette no taller than 4 degrees above horizon, softened strongly by red atmospheric dust, continuous around full panorama, no close cliffs. Lower hemisphere: featureless softly shaded rust and dusty ochre regolith, increasingly smooth toward nadir, no large rocks, no focal subjects; meant to be covered by actual game ground. Overall palette must complement warm ivory and orange 1970s industrial space habitats. Even photographic detail across the full panorama, natural fine cloud texture, no hard horizon line, no dark band, no vignette, no fisheye circle. No buildings, bases, vehicles, people, vegetation, infrastructure, text, watermark, border or collage. Export a single flat equirectangular 2:1 image; do not render a sphere or show a preview scene."
+}
