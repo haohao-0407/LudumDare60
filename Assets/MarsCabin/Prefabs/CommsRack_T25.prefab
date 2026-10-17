@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5605224923522065943}
   - component: {fileID: 736071316644660773}
-  - component: {fileID: 7975139331318522731}
   m_Layer: 0
   m_Name: CommsRack_T25
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
+  m_LocalScale: {x: 1.0000019, y: 1, z: 1.0000019}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8758906660436728362}
@@ -55,42 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.83656824, y: 1.6, z: 0.6607083}
   m_Center: {x: 0, y: 0.805, z: 0}
---- !u!114 &7975139331318522731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6919158292884289211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bda7ed1e1f747ff458145131d1c02857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.MarsCabin.CabinInteractable
-  stableId: cabin.meshy.commsrack_t25
-  kind: 0
-  interactionRange: 1.8
-  motionPivot: {fileID: 0}
-  localAxis: {x: 0, y: 1, z: 0}
-  secondaryLocalAxis: {x: 1, y: 0, z: 0}
-  minimumAngle: -45
-  maximumAngle: 45
-  buttonTravel: 0.012
-  buttonUsesRotation: 0
-  normalizedValue: 0
-  joystickValue: {x: 0, y: 0}
-  restLocalPosition: {x: 0, y: 0, z: 0}
-  restLocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  restPoseCaptured: 0
-  onActivated:
-    m_PersistentCalls:
-      m_Calls: []
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  onJoystickChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &6220935724382212152
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ namespace LudumDare60.MarsCabin
         public void SetTexture(Texture texture) { displayTexture = texture; Apply(); }
         public void SetPowered(bool value) { powered = value; Apply(); }
         public void SetBrightness(float value) { brightness = Mathf.Max(0, value); Apply(); }
+        public void SetEmissionTint(Color value) { emissionTint = value; Apply(); }
         void OnEnable() { Apply(); }
         void OnValidate() { brightness = Mathf.Max(0, brightness); Apply(); }
 

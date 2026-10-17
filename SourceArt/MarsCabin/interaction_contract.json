@@ -1,0 +1,54 @@
+{
+  "scene": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
+  "authored_model": "Assets/MarsCabin/Models/Cabin_HeroConsole.fbx",
+  "source_blend": "SourceArt/MarsCabin/MarsCabin_Interior.blend",
+  "accepted_revision": "关键操作台、显示屏和操纵底座由 Blender 精细建模；Meshy 只作舱内装饰。",
+  "authored_parts": [
+    "Three curved CRT glass surfaces with separate bezels and gaskets",
+    "Navigation keypad and function keys with individual moving keycaps",
+    "Knurled rotary knobs with angle ranges",
+    "Guarded switches",
+    "Three independent throttle levers and authored slotted base",
+    "Joystick grip, separate trigger and top button, authored gaiter/base"
+  ],
+  "meshy_decorations": [
+    "PilotSeat_T25",
+    "CommsRack_T25",
+    "ReelRecorder_T25"
+  ],
+  "retired_from_scene": [
+    "NavConsole_T25",
+    "ThrottlePod_T25",
+    "JoystickPod_T25"
+  ],
+  "interaction_api": {
+    "component": "LudumDare60.MarsCabin.CabinInteractable",
+    "stable_id": "StableId is unique per interactive element.",
+    "select": "Raycast with QueryTriggerInteraction.Collide; use the component on the hit collider.",
+    "press": "TryActivate(worldOrigin); call Release() when releasing a button.",
+    "dial_and_lever": "TrySetNormalizedValue(valueFromZeroToOne, worldOrigin).",
+    "joystick": "TrySetJoystick(Vector2 input, worldOrigin).",
+    "events": [
+      "OnActivated",
+      "OnValueChanged",
+      "OnJoystickChanged"
+    ],
+    "movement": "Each articulated part retains an independent pivot and its captured neutral pose.",
+    "input": "No player/controller or input binding is imposed. Connect these APIs to the project's own interaction/input system."
+  },
+  "screen_api": {
+    "component": "LudumDare60.MarsCabin.CabinScreenPanel",
+    "editable_texture": "SetTexture accepts a Texture or RenderTexture.",
+    "methods": [
+      "SetPowered(bool)",
+      "SetBrightness(float)"
+    ],
+    "graphics_source": "SourceArt/MarsCabin/build_crt_graphics.py",
+    "textures": [
+      "Assets/MarsCabin/Textures/HeroCRT_Navigation.png",
+      "Assets/MarsCabin/Textures/HeroCRT_Comms.png",
+      "Assets/MarsCabin/Textures/HeroCRT_Systems.png"
+    ]
+  },
+  "verification_boundary": "Editor import, saved scene/prefab inspection, visual rendering and direct articulation checks. No Play Mode or player build acceptance."
+}

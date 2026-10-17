@@ -477,7 +477,7 @@ def build_equipment():
         for xx in [-.22,.22]:
             cylinder('Service','MC_Metal',(x+xx,y-.22,.06),(x+xx,y-.22,.79),.035,10)
             cylinder('Service','MC_Metal',(x+xx,y-.22,.79),(x+xx,y+.22,.79),.035,10)
-        label('Service','SYSTEM A' if side<0 else 'SYSTEM B',(x,y+.31,1.084),.055)
+        label('Service','SYSTEM A' if side<0 else 'SYSTEM B',(x,y+.31,1.084),.055,Matrix.Rotation(math.pi,3,'Z'))
         for row in range(3):
             for col in range(3):
                 p=Vector((x+(col-1)*.135,y-.12+row*.115,1.09))
@@ -486,7 +486,8 @@ def build_equipment():
                 begin(name,'Controls',p)
                 rounded('Controls','MC_WarmGlow' if row==0 else 'MC_Ivory',p+Vector((0,0,.021)),(.080,.064,.032),.012)
                 end();controls.append({'name':name,'kind':'Button','pivot':list(p),'worldAxis':[0,0,-1],'travel':.012})
-                label('Controls',str(row*3+col+1),p+Vector((0,0,.039)),.030)
+                label('Controls',str(row*3+col+1),p+Vector((0,0,.039)),.030,Matrix.Rotation(math.pi,3,'Z'))
+                text_objects[-1]['moving_control_parent']=name
         for col in range(3):
             p=Vector((x+(col-1)*.16,y-.30,1.09));torus('Controls','MC_Ivory',p,.052,.008,n=24,sides=6)
             name='INT_KNOB_%s_%02d'%('L' if side<0 else 'R',col)
@@ -545,7 +546,10 @@ def flush():
     for obj in list(text_objects):
         data=bpy.data.meshes.new_from_object(obj.evaluated_get(depsgraph),depsgraph=depsgraph)
         new=bpy.data.objects.new(obj.name,data);scene.collection.objects.link(new)
-        new.matrix_world=obj.matrix_world.copy();new.parent=obj.parent
+        world=obj.matrix_world.copy()
+        control_parent=obj.get('moving_control_parent')
+        new.parent=next(o for o in objects if o.name==control_parent) if control_parent else obj.parent
+        new.matrix_world=world
         objects.append(new);bpy.data.objects.remove(obj,do_unlink=True)
     text_objects.clear()
 

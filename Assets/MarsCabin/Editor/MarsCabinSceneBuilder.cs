@@ -20,16 +20,19 @@ namespace LudumDare60.MarsCabin.Editor
         public const string ScenePath = Root + "/Scenes/MarsCabin_Interior.unity";
         public const string ModelPath = Root + "/Models/Cabin_Architecture.fbx";
         public const string PrefabPath = Root + "/Prefabs/Cabin_Architecture.prefab";
+        public const string HeroModelPath = Root + "/Models/Cabin_HeroConsole.fbx";
+        public const string HeroPrefabPath = Root + "/Prefabs/Cabin_HeroConsole.prefab";
         const string SourceRoot = "SourceArt/MarsCabin";
 
-        [Serializable] public class ControlEntry { public string name, kind; public float[] pivot, worldAxis; public float travel, rangeDegrees; }
+        [Serializable] public class ControlEntry { public string name, kind; public float[] pivot, worldAxis, secondaryWorldAxis; public float travel, rangeDegrees, minimumAngle, maximumAngle; public bool buttonUsesRotation; }
         [Serializable] public class InteractionManifest { public ControlEntry[] controls; }
         [Serializable] public class ValidationReport
         {
             public string status, scene = ScenePath;
             public int renderers, meshFilters, triangles, colliders, controls, screens, missingScripts;
             public Vector3 size, basisX, basisY, basisZ;
-            public bool ceilingVisible;
+            public bool ceilingVisible, heroAuthored;
+            public int decorativeMeshyProps, heroControls;
             public List<string> errors = new List<string>();
             public List<string> warnings = new List<string>();
         }
@@ -52,12 +55,19 @@ namespace LudumDare60.MarsCabin.Editor
         [MenuItem("Tools/Mars Cabin/Build Interior Scene")]
         static void BuildMenu() { Debug.Log(Build()); }
 
+        [MenuItem("Tools/Mars Cabin/Refresh Blender Hero Console")]
+        static void HeroMenu() { Debug.Log(PlaceHeroConsole()); }
+
+        [MenuItem("Tools/Mars Cabin/Place Decorative Meshy Props")]
+        static void DecorationMenu() { Debug.Log(PlaceMeshyProps()); }
+
         public static string Build()
         {
             RequireEditMode();
             if (File.Exists(ScenePath)) return "{\"status\":\"existing_scene_preserved\"}";
             var source = AssetDatabase.LoadAssetAtPath<GameObject>(ModelPath);
             if (source == null) throw new FileNotFoundException("Import the Blender cabin architecture first.", ModelPath);
+            if (AssetDatabase.LoadAssetAtPath<GameObject>(HeroModelPath) == null) throw new FileNotFoundException("Import the Blender-authored hero console first.", HeroModelPath);
             EnsureFolders();
             var materials = CreateMaterials();
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Additive);
@@ -75,10 +85,13 @@ namespace LudumDare60.MarsCabin.Editor
             CreateLighting(basis);
             CreateCameras(basis);
             CreateVolume();
+            UpdatePresentation(basis, scene);
             SaveScene(scene);
             foreach (var material in materials.Values) AssetDatabase.SaveAssetIfDirty(material);
             Selection.activeGameObject = architecture;
             if (SceneView.lastActiveSceneView != null) SceneView.lastActiveSceneView.Frame(WorldBounds(architecture), false);
+            PlaceHeroConsole();
+            PlaceMeshyProps();
             return Validate();
         }
 
@@ -98,33 +111,76 @@ namespace LudumDare60.MarsCabin.Editor
             return Validate();
         }
 
+        /// <summary>Imports only decorative generated assets. All primary controls are authored in Blender.</summary>
         public static string PlaceMeshyProps()
         {
             RequireEditMode();
             var scene = RequiredScene();
             var basis = ReadBasis(SceneRoot(scene, "Cabin_Architecture"));
             var parent = SceneRoot(scene, "Meshy_Cabin_Props").transform;
-            var names = new[] { "NavConsole_T25", "CommsRack_T25", "ReelRecorder_T25", "PilotSeat_T25", "ThrottlePod_T25", "JoystickPod_T25" };
-            if (AssetDatabase.LoadAssetAtPath<GameObject>(Root + "/Models/Cabin_ControlKit.fbx") == null)
-                throw new FileNotFoundException("Import the authored Cabin_ControlKit.fbx before placing the pods.");
+            var names = new[] { "CommsRack_T25", "ReelRecorder_T25", "PilotSeat_T25" };
             foreach (var name in names)
                 if (AssetDatabase.LoadAssetAtPath<GameObject>(Root + "/Models/Meshy/" + name + ".glb") == null)
-                    throw new FileNotFoundException("Import all six Meshy cabin props before placement: " + name);
-            var report = new PropReport();
-            report.props.Add(PlaceProp(names[0], new Vector3(0, -2.1f, 0), 1.55f, 0, 180, basis, parent, scene));
-            report.props.Add(PlaceProp(names[1], new Vector3(-2.8f, 0, 0), 1.60f, 1, -90, basis, parent, scene));
-            report.props.Add(PlaceProp(names[2], new Vector3(2.8f, 0, .3f), 1.20f, 1, 90, basis, parent, scene));
-            report.props.Add(PlaceProp(names[3], new Vector3(0, -.2f, 0), 1.62f, 1, 0, basis, parent, scene));
-            report.props.Add(PlaceProp(names[4], new Vector3(-1.05f, -1.45f, 1.02f), .42f, 0, 0, basis, parent, scene));
-            report.props.Add(PlaceProp(names[5], new Vector3(1.05f, -1.45f, 1.02f), .34f, 0, 0, basis, parent, scene));
+                    throw new FileNotFoundException("Import the decorative Meshy prop: " + name);
+            PlaceProp(names[0], new Vector3(-2.8f, 0, 0), 1.60f, 1, -90, basis, parent, scene);
+            PlaceProp(names[1], new Vector3(2.8f, 0, 0), 1.20f, 1, 90, basis, parent, scene);
+            PlaceProp(names[2], new Vector3(0, -.2f, 0), 1.62f, 1, 0, basis, parent, scene);
+            foreach (var name in names) RemoveGeneratedInteractions(parent.Find(name).gameObject);
             FitPresentation();
-            report.props = names.Select(name => PlaceProp(name, Vector3.zero, 1, 0, 0, basis, parent, scene)).ToList();
-            SaveScene(scene);
+            var report = new PropReport { props = names.Select(name => PlaceProp(name, Vector3.zero, 1, 0, 0, basis, parent, scene)).ToList() };
             var json = JsonUtility.ToJson(report, true);
-            Directory.CreateDirectory(SourceRoot);
-            File.WriteAllText(SourceRoot + "/meshy_unity_metrics.json", json);
-            Validate();
+            Directory.CreateDirectory(SourceRoot); File.WriteAllText(SourceRoot + "/meshy_unity_metrics.json", json);
             return json;
+        }
+
+        public static string PlaceHeroConsole()
+        {
+            RequireEditMode();
+            var scene = RequiredScene();
+            var source = AssetDatabase.LoadAssetAtPath<GameObject>(HeroModelPath);
+            if (source == null) throw new FileNotFoundException("The primary console must be authored in Blender before replacing the old generated props.", HeroModelPath);
+            var materials = CreateMaterials();
+            var hero = scene.GetRootGameObjects().FirstOrDefault(r => r.name == "Cabin_HeroConsole");
+            if (hero == null) { hero = (GameObject)PrefabUtility.InstantiatePrefab(source, scene); hero.name = "Cabin_HeroConsole"; }
+            // Unity's FBX root carries the centimetre and axis conversion even though the Blender authoring root is identity.
+            hero.transform.SetPositionAndRotation(source.transform.position, source.transform.rotation);
+            hero.transform.localScale = source.transform.localScale;
+            PrefabUtility.RecordPrefabInstancePropertyModifications(hero.transform);
+            var basis = ReadBasis(hero, "ORIENTATION_HERO_");
+            if (Mathf.Abs(basis.x.magnitude - 1) > .01f || Mathf.Abs(basis.y.magnitude - 1) > .01f || Mathf.Abs(basis.z.magnitude - 1) > .01f)
+                throw new InvalidOperationException("Hero console must retain metric scale independently from the 0.8 cabin architecture.");
+            RemapArchitecture(hero, materials);
+            AnnotateControls(hero, basis, SourceRoot + "/hero_interaction_manifest.json", "cabin.hero.");
+            BindScreens(hero, materials["MC_Screen"]);
+            hero.transform.SetPositionAndRotation(source.transform.position, source.transform.rotation);
+            hero.transform.localScale = source.transform.localScale;
+            PrefabUtility.RecordPrefabInstancePropertyModifications(hero.transform);
+            foreach (var filter in hero.GetComponentsInChildren<MeshFilter>(true))
+            {
+                if (filter.sharedMesh == null || filter.GetComponent<Collider>() != null || filter.GetComponentInParent<CabinInteractable>() != null || filter.name.StartsWith("SCREEN_", StringComparison.Ordinal)) continue;
+                var renderer = filter.GetComponent<Renderer>();
+                if (renderer == null || Mathf.Max(renderer.bounds.size.x, renderer.bounds.size.y, renderer.bounds.size.z) < .2f) continue;
+                var collider = filter.gameObject.AddComponent<MeshCollider>(); collider.sharedMesh = filter.sharedMesh; collider.convex = false;
+            }
+            foreach (var control in hero.GetComponentsInChildren<CabinInteractable>(true))
+                if (control.Kind == CabinControlKind.Joystick) TrimJoystickHitbox(control.transform);
+            if (PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(hero) == HeroPrefabPath) PrefabUtility.ApplyPrefabInstance(hero, InteractionMode.AutomatedAction);
+            else PrefabUtility.SaveAsPrefabAssetAndConnect(hero, HeroPrefabPath, InteractionMode.AutomatedAction);
+            // Remove only the superseded generated foreground assets. Their source GLBs and old prefabs remain available.
+            var props = SceneRoot(scene, "Meshy_Cabin_Props").transform;
+            foreach (var name in new[] { "NavConsole_T25", "ThrottlePod_T25", "JoystickPod_T25" })
+            { var old = props.Find(name); if (old != null) Object.DestroyImmediate(old.gameObject); }
+            var oldMounts = scene.GetRootGameObjects().FirstOrDefault(r => r.name == "Cabin_Equipment_Mounts");
+            if (oldMounts != null) Object.DestroyImmediate(oldMounts);
+            foreach (Transform prop in props) { RemoveGeneratedInteractions(prop.gameObject); SaveWrapperPrefab(prop.gameObject); }
+            foreach (var material in materials.Values) AssetDatabase.SaveAssetIfDirty(material);
+            SaveScene(scene);
+            return Validate();
+        }
+
+        static void RemoveGeneratedInteractions(GameObject decorativeProp)
+        {
+            foreach (var component in decorativeProp.GetComponentsInChildren<CabinInteractable>(true)) Object.DestroyImmediate(component);
         }
 
         public static string FitPresentation()
@@ -133,29 +189,10 @@ namespace LudumDare60.MarsCabin.Editor
             var scene = RequiredScene();
             var basis = ReadBasis(SceneRoot(scene, "Cabin_Architecture"));
             var props = SceneRoot(scene, "Meshy_Cabin_Props").transform;
-            var navCenter = basis.Point(new Vector3(0, -2.35f, 0));
-            props.Find("NavConsole_T25").position = navCenter + Vector3.up * .245f;
-            props.Find("CommsRack_T25").position = basis.Point(new Vector3(-2.8f, 0, 0)) + Vector3.up * .025f;
-            props.Find("ReelRecorder_T25").position = basis.Point(new Vector3(2.8f, 0, 0)) + Vector3.up * .025f;
-            props.Find("PilotSeat_T25").position = basis.Point(new Vector3(0, -.2f, 0));
-            props.Find("ThrottlePod_T25").position = basis.MetricPoint(new Vector3(-.80f, -.45f, .935f));
-            props.Find("JoystickPod_T25").position = basis.MetricPoint(new Vector3(.80f, -.45f, .935f));
-            FitNavControls(props.Find("NavConsole_T25").gameObject);
-            var mountRoot = scene.GetRootGameObjects().FirstOrDefault(r => r.name == "Cabin_Equipment_Mounts");
-            if (mountRoot != null) Object.DestroyImmediate(mountRoot);
-            {
-                mountRoot = new GameObject("Cabin_Equipment_Mounts"); SceneManager.MoveGameObjectToScene(mountRoot, scene);
-                AddMountBox("Nav_Plinth", mountRoot.transform, navCenter + Vector3.up * .125f, new Vector3(1.3f, .24f, .48f), "MC_Dark");
-                AddMountBox("Nav_Plinth_Trim", mountRoot.transform, navCenter + Vector3.up * .23f, new Vector3(1.34f, .03f, .50f), "MC_Orange");
-                foreach (var side in new[] { -1f, 1f })
-                {
-                    var center = basis.MetricPoint(new Vector3(side * .80f, -.45f, 0));
-                    AddMountBox("Pod_Foot_" + side, mountRoot.transform, center + Vector3.up * .05f, new Vector3(.34f, .07f, .40f), "MC_Dark");
-                    AddMountBox("Pod_Column_" + side, mountRoot.transform, center + Vector3.up * .48f, new Vector3(.12f, .83f, .14f), "MC_Metal");
-                    AddMountBox("Pod_Mount_" + side, mountRoot.transform, center + Vector3.up * .91f, new Vector3(.44f, .05f, .50f), "MC_Ivory");
-                    AddMountBox("Pod_Mount_Trim_" + side, mountRoot.transform, center + Vector3.up * .88f, new Vector3(.45f, .025f, .51f), "MC_Orange");
-                }
-            }
+            var comms = props.Find("CommsRack_T25"); var reel = props.Find("ReelRecorder_T25"); var seat = props.Find("PilotSeat_T25");
+            if (comms != null) comms.position = basis.Point(new Vector3(-2.8f, 0, 0)) + Vector3.up * .025f;
+            if (reel != null) reel.position = basis.Point(new Vector3(2.8f, 0, 0)) + Vector3.up * .025f;
+            if (seat != null) seat.position = basis.Point(new Vector3(0, -.2f, 0));
             var bounce = scene.GetRootGameObjects().FirstOrDefault(r => r.name == "Cabin_Global_Bounce");
             if (bounce == null) { bounce = new GameObject("Cabin_Global_Bounce"); SceneManager.MoveGameObjectToScene(bounce, scene); bounce.AddComponent<Light>(); }
             var light = bounce.GetComponent<Light>(); light.type = LightType.Directional; light.intensity = .65f;
@@ -166,11 +203,16 @@ namespace LudumDare60.MarsCabin.Editor
             return Validate();
         }
 
-        static void AddMountBox(string name, Transform parent, Vector3 position, Vector3 size, string material)
+        static void TrimJoystickHitbox(Transform grip)
         {
-            var box = GameObject.CreatePrimitive(PrimitiveType.Cube); box.name = name;
-            box.transform.SetParent(parent, true); box.transform.position = position; box.transform.localScale = size;
-            box.GetComponent<Renderer>().sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/" + material + ".mat");
+            // The lower grip remains selectable while the trigger and top button have unobstructed hitboxes.
+            var box = grip.GetComponent<BoxCollider>();
+            var worldCenter = grip.position + Vector3.up * .105f;
+            var bounds = new Bounds(grip.InverseTransformPoint(worldCenter), Vector3.zero);
+            for (var i = 0; i < 8; i++)
+                bounds.Encapsulate(grip.InverseTransformPoint(worldCenter + new Vector3((i & 1) == 0 ? -.042f : .042f,
+                    (i & 2) == 0 ? -.055f : .055f, (i & 4) == 0 ? -.04f : .04f)));
+            box.center = bounds.center; box.size = bounds.size; box.isTrigger = true;
         }
 
         static void UpdatePresentation(Basis basis, Scene scene)
@@ -197,10 +239,11 @@ namespace LudumDare60.MarsCabin.Editor
                 Vector3 position, target; float fov;
                 switch (camera.name)
                 {
-                    case "Cabin Presentation Camera": position = basis.Point(new Vector3(0, -3.25f, 2.85f)); target = basis.Point(new Vector3(0, .65f, 1.35f)); fov = 80; break;
+                    case "Cabin Presentation Camera": position = basis.MetricPoint(new Vector3(.45f, -3.03f, 2.5f)); target = basis.MetricPoint(new Vector3(0, .35f, .98f)); fov = 82; break;
                     case "Pilot Eye Camera": position = basis.MetricPoint(new Vector3(0, -.2f, 1.5f)); target = basis.MetricPoint(new Vector3(0, -2.1f, 1.05f)); fov = 76; break;
                     case "Rear View Camera": position = basis.Point(new Vector3(0, 3.25f, 2.9f)); target = basis.Point(new Vector3(0, -.7f, 1.3f)); fov = 84; break;
                     case "Ceiling Detail Camera": position = basis.MetricPoint(new Vector3(.3f, -.4f, 1.3f)); target = basis.Point(new Vector3(0, 0, 3.6f)); fov = 95; break;
+                    case "Model Inspection Camera": position = basis.MetricPoint(new Vector3(1.4f, -1.35f, 1.7f)); target = basis.MetricPoint(new Vector3(.8f, -.45f, 1.13f)); fov = 36; break;
                     default: continue;
                 }
                 camera.transform.SetPositionAndRotation(position, Quaternion.LookRotation(target - position)); camera.fieldOfView = fov;
@@ -217,66 +260,6 @@ namespace LudumDare60.MarsCabin.Editor
             PrefabUtility.ApplyPrefabInstance(prop, InteractionMode.AutomatedAction);
             prop.transform.SetParent(parent, true); prop.transform.SetPositionAndRotation(position, rotation);
             PrefabUtility.RecordPrefabInstancePropertyModifications(prop.transform);
-        }
-
-        static void FitNavControls(GameObject nav)
-        {
-            var model = nav.transform.Find("Meshy_T25_OriginalPBR");
-            var filter = model.GetComponentInChildren<MeshFilter>();
-            var surface = filter.GetComponent<MeshCollider>();
-            if (surface == null) { surface = filter.gameObject.AddComponent<MeshCollider>(); surface.sharedMesh = filter.sharedMesh; }
-            var screen = nav.transform.Find("SCREEN_NAV_Main_Editable");
-            FitNavScreen(nav.transform, surface, screen);
-            Vector3 point, normal;
-            var bank = nav.transform.Find("Nav_Independent_CommandBank"); bank.localPosition = Vector3.zero; bank.localRotation = Quaternion.identity;
-            foreach (Transform control in bank)
-            {
-                var knob = control.name.StartsWith("INT_KNOB", StringComparison.Ordinal);
-                var index = int.Parse(control.name.Substring(control.name.Length - 2));
-                var x = knob ? (index == 0 ? -.66f : .66f) : (index < 5 ? -.54f : .54f);
-                var z = knob ? .18f : -.07f + (index % 5) * .038f;
-                if (!SurfacePoint(nav.transform, surface, x, z, out point, out normal)) continue;
-                control.localPosition = point + normal * (knob ? .003f : .012f);
-                control.localRotation = Quaternion.LookRotation(normal, Vector3.back);
-                if (!knob) { control.GetChild(0).localScale = new Vector3(.055f, .031f, .017f); control.GetComponent<BoxCollider>().size = new Vector3(.06f, .035f, .025f); }
-                control.GetComponent<CabinInteractable>().CaptureRestPose();
-            }
-        }
-
-        static void FitNavScreen(Transform nav, MeshCollider surface, Transform screen)
-        {
-            // Conform the editable CRT surface to the generated curved glass instead of floating a flat quad.
-            const int columns = 12, rows = 6;
-            var vertices = new Vector3[(columns + 1) * (rows + 1)];
-            var normals = new Vector3[vertices.Length]; var uv = new Vector2[vertices.Length];
-            var triangles = new List<int>();
-            for (var row = 0; row <= rows; row++) for (var col = 0; col <= columns; col++)
-            {
-                var index = row * (columns + 1) + col;
-                var u = col / (float)columns; var v = row / (float)rows;
-                if (!SurfacePoint(nav, surface, Mathf.Lerp(-.37f, .37f, u), Mathf.Lerp(-.105f, .105f, v), out var point, out var normal))
-                    throw new InvalidOperationException("The nav display surface no longer matches its measured glass footprint.");
-                vertices[index] = point + normal * .003f; normals[index] = normal; uv[index] = new Vector2(1 - u, 1 - v);
-                if (row == rows || col == columns) continue;
-                var next = index + columns + 1;
-                triangles.AddRange(new[] { index, next, index + 1, index + 1, next, next + 1 });
-            }
-            Directory.CreateDirectory(Root + "/Meshes");
-            var path = Root + "/Meshes/Nav_Editable_Display.asset";
-            var mesh = AssetDatabase.LoadAssetAtPath<Mesh>(path);
-            if (mesh == null) { mesh = new Mesh { name = "Nav_Editable_Display" }; AssetDatabase.CreateAsset(mesh, path); }
-            mesh.Clear(); mesh.vertices = vertices; mesh.normals = normals; mesh.uv = uv; mesh.triangles = triangles.ToArray(); mesh.RecalculateBounds();
-            EditorUtility.SetDirty(mesh); AssetDatabase.SaveAssetIfDirty(mesh);
-            screen.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity); screen.localScale = Vector3.one;
-            screen.GetComponent<MeshFilter>().sharedMesh = mesh;
-            screen.GetComponent<CabinScreenPanel>().Apply();
-        }
-
-        static bool SurfacePoint(Transform nav, MeshCollider surface, float x, float z, out Vector3 point, out Vector3 normal)
-        {
-            var ray = new Ray(nav.TransformPoint(new Vector3(x, 2, z)), Vector3.down);
-            if (surface.Raycast(ray, out var hit, 4)) { point = nav.InverseTransformPoint(hit.point); normal = nav.InverseTransformDirection(hit.normal).normalized; return true; }
-            point = Vector3.zero; normal = Vector3.up; return false;
         }
 
         // axis 0 normalizes unrotated width; axis 1 normalizes height. Source yaw is exposed on the prefab instance for later art adjustment.
@@ -305,17 +288,6 @@ namespace LudumDare60.MarsCabin.Editor
                 var colliderBounds = WorldBounds(wrapper);
                 box.center = colliderBounds.center;
                 box.size = colliderBounds.size;
-                if (name == "NavConsole_T25")
-                {
-                    // Keep the solid proxy below the sloped control deck, so fine control hitboxes stay accessible.
-                    box.size = new Vector3(colliderBounds.size.x * .94f, colliderBounds.size.y * .58f, colliderBounds.size.z * .9f);
-                    box.center = new Vector3(colliderBounds.center.x, colliderBounds.min.y + box.size.y * .5f, colliderBounds.center.z);
-                }
-                var device = wrapper.AddComponent<CabinInteractable>();
-                device.Configure("cabin.meshy." + name.ToLowerInvariant(), CabinControlKind.Device, null, Vector3.up, Vector3.right);
-                if (name == "ThrottlePod_T25") AddPodHandle(wrapper, CabinControlKind.Lever, colliderBounds);
-                if (name == "JoystickPod_T25") AddPodHandle(wrapper, CabinControlKind.Joystick, colliderBounds);
-                if (name == "NavConsole_T25") AddNavControls(wrapper, colliderBounds);
                 PrefabUtility.SaveAsPrefabAssetAndConnect(wrapper, Root + "/Prefabs/" + name + ".prefab", InteractionMode.AutomatedAction);
                 wrapper.transform.SetParent(parent, true);
                 wrapper.transform.position = basis.Point(blenderPosition);
@@ -331,103 +303,6 @@ namespace LudumDare60.MarsCabin.Editor
             return metric;
         }
 
-        static void AddPodHandle(GameObject wrapper, CabinControlKind kind, Bounds bounds)
-        {
-            var source = AssetDatabase.LoadAssetAtPath<GameObject>(Root + "/Models/Cabin_ControlKit.fbx");
-            var temporaryKit = (GameObject)PrefabUtility.InstantiatePrefab(source, wrapper.scene);
-            try
-            {
-                var names = kind == CabinControlKind.Joystick ? new[] { "JoystickGrip" } : new[] { "ThrottleLever_A", "ThrottleLever_B", "ThrottleLever_C" };
-                for (var i = 0; i < names.Length; i++)
-                {
-                    var master = temporaryKit.GetComponentsInChildren<Transform>(true).First(t => t.name == names[i]);
-                    var part = Object.Instantiate(master.gameObject);
-                    part.name = names[i];
-                    part.transform.SetParent(wrapper.transform, false);
-                    part.transform.localRotation = master.rotation;
-                    part.transform.localScale = master.lossyScale;
-                    part.transform.localPosition = new Vector3(kind == CabinControlKind.Lever ? (i - 1) * .13f : 0, bounds.max.y - .018f, 0);
-                    RemapArchitecture(part, CreateMaterials());
-                    var hitbox = part.AddComponent<BoxCollider>();
-                    var local = LocalBounds(part); hitbox.center = local.center; hitbox.size = local.size; hitbox.isTrigger = true;
-                    var axisX = part.transform.InverseTransformDirection(Vector3.left);
-                    var axisY = part.transform.InverseTransformDirection(Vector3.back);
-                    part.AddComponent<CabinInteractable>().Configure("cabin.meshy." + wrapper.name.ToLowerInvariant() + "." + names[i].ToLowerInvariant(), kind,
-                        part.transform, axisX, axisY, -35, 35);
-                    if (kind != CabinControlKind.Joystick) continue;
-                    foreach (var child in part.GetComponentsInChildren<Transform>(true))
-                    {
-                        if (!child.name.StartsWith("INT_Joystick_", StringComparison.Ordinal)) continue;
-                        var childBox = child.gameObject.AddComponent<BoxCollider>();
-                        var childBounds = LocalBounds(child.gameObject); childBox.center = childBounds.center; childBox.size = childBounds.size; childBox.isTrigger = true;
-                        var trigger = child.name.Contains("Trigger");
-                        var buttonAxis = child.InverseTransformDirection(trigger ? Vector3.left : Vector3.down);
-                        child.gameObject.AddComponent<CabinInteractable>().Configure("cabin.meshy.joystick." + child.name.ToLowerInvariant(), CabinControlKind.Button,
-                            child, buttonAxis, Vector3.right, 0, -16, .004f, 1.8f, trigger);
-                    }
-                }
-            }
-            finally { Object.DestroyImmediate(temporaryKit); }
-        }
-
-        static void AddNavControls(GameObject wrapper, Bounds bounds)
-        {
-            var panel = GameObject.CreatePrimitive(PrimitiveType.Quad);
-            panel.name = "SCREEN_NAV_Main_Editable";
-            panel.transform.SetParent(wrapper.transform, false);
-            panel.transform.localPosition = new Vector3(0, bounds.min.y + bounds.size.y * .84f, bounds.center.z + bounds.size.z * .15f);
-            panel.transform.localRotation = Quaternion.Euler(-58, 0, 0);
-            panel.transform.localScale = new Vector3(bounds.size.x * .56f, .27f, 1);
-            Object.DestroyImmediate(panel.GetComponent<Collider>());
-            var texture = CreateScreenTexture(2);
-            var path = Root + "/Materials/SCREEN_NAV_Main_Editable.mat";
-            var material = AssetDatabase.LoadAssetAtPath<Material>(path);
-            if (material == null)
-            {
-                material = new Material(AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/MC_Screen.mat")) { name = "SCREEN_NAV_Main_Editable" };
-                AssetDatabase.CreateAsset(material, path);
-            }
-            material.SetTexture("_BaseMap", texture); material.SetTexture("_EmissionMap", texture);
-            material.SetColor("_BaseColor", Color.white); material.SetColor("_EmissionColor", new Color(.18f, 1.1f, .35f));
-            material.EnableKeyword("_EMISSION"); EditorUtility.SetDirty(material); AssetDatabase.SaveAssetIfDirty(material);
-            panel.GetComponent<Renderer>().sharedMaterial = material;
-            panel.AddComponent<CabinScreenPanel>().Configure("cabin.screen.nav_main", panel.GetComponent<Renderer>(), texture, 1.5f);
-
-            var bank = new GameObject("Nav_Independent_CommandBank").transform;
-            bank.SetParent(wrapper.transform, false);
-            bank.localPosition = new Vector3(0, bounds.min.y + bounds.size.y * .73f, bounds.center.z + bounds.size.z * .37f);
-            bank.localRotation = Quaternion.Euler(-58, 0, 0);
-            for (var row = 0; row < 2; row++) for (var col = 0; col < 5; col++)
-            {
-                var index = row * 5 + col;
-                var pivot = new GameObject("INT_BUTTON_Nav_" + index.ToString("00"));
-                pivot.transform.SetParent(bank, false); pivot.transform.localPosition = new Vector3((col - 2) * .095f, (row - .5f) * .068f, .012f);
-                var key = GameObject.CreatePrimitive(PrimitiveType.Cube); key.name = "Editable_Keycap";
-                key.transform.SetParent(pivot.transform, false); key.transform.localScale = new Vector3(.072f, .048f, .021f);
-                Object.DestroyImmediate(key.GetComponent<Collider>());
-                key.GetComponent<Renderer>().sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/" + (row == 1 ? "MC_WarmGlow" : "MC_Ivory") + ".mat");
-                var hitbox = pivot.AddComponent<BoxCollider>(); hitbox.size = new Vector3(.078f, .055f, .035f); hitbox.isTrigger = true;
-                pivot.AddComponent<CabinInteractable>().Configure("cabin.meshy.nav.button." + index.ToString("00"), CabinControlKind.Button,
-                    pivot.transform, Vector3.back, Vector3.right, 0, 0, .007f);
-            }
-            for (var i = 0; i < 2; i++)
-            {
-                var pivot = new GameObject("INT_KNOB_Nav_" + i.ToString("00"));
-                pivot.transform.SetParent(bank, false); pivot.transform.localPosition = new Vector3((i == 0 ? -1 : 1) * bounds.size.x * .36f, 0, .035f);
-                var knob = GameObject.CreatePrimitive(PrimitiveType.Cylinder); knob.name = "Editable_Rotary_Knob";
-                knob.transform.SetParent(pivot.transform, false); knob.transform.localRotation = Quaternion.Euler(90, 0, 0);
-                knob.transform.localScale = new Vector3(.075f, .024f, .075f); Object.DestroyImmediate(knob.GetComponent<Collider>());
-                knob.GetComponent<Renderer>().sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/MC_Rubber.mat");
-                var marker = GameObject.CreatePrimitive(PrimitiveType.Cube); marker.name = "Knob_Position_Marker";
-                marker.transform.SetParent(pivot.transform, false); marker.transform.localPosition = new Vector3(0, .017f, .027f);
-                marker.transform.localScale = new Vector3(.009f, .022f, .003f); Object.DestroyImmediate(marker.GetComponent<Collider>());
-                marker.GetComponent<Renderer>().sharedMaterial = AssetDatabase.LoadAssetAtPath<Material>(Root + "/Materials/MC_White.mat");
-                var hitbox = pivot.AddComponent<BoxCollider>(); hitbox.size = new Vector3(.085f, .085f, .065f); hitbox.isTrigger = true;
-                pivot.AddComponent<CabinInteractable>().Configure("cabin.meshy.nav.knob." + i.ToString("00"), CabinControlKind.Knob,
-                    pivot.transform, Vector3.forward, Vector3.right, -135, 135);
-            }
-        }
-
         static void RemapArchitecture(GameObject architecture, Dictionary<string, Material> materials)
         {
             foreach (var renderer in architecture.GetComponentsInChildren<Renderer>(true))
@@ -441,10 +316,10 @@ namespace LudumDare60.MarsCabin.Editor
             }
         }
 
-        static void AnnotateControls(GameObject architecture, Basis basis)
+        static void AnnotateControls(GameObject architecture, Basis basis, string manifestPath = null, string idPrefix = "cabin.arch.")
         {
             var entries = new Dictionary<string, ControlEntry>(StringComparer.Ordinal);
-            var path = SourceRoot + "/interaction_manifest.json";
+            var path = manifestPath ?? SourceRoot + "/interaction_manifest.json";
             if (File.Exists(path))
             {
                 var manifest = JsonUtility.FromJson<InteractionManifest>(File.ReadAllText(path));
@@ -454,15 +329,22 @@ namespace LudumDare60.MarsCabin.Editor
             {
                 if (!pivot.name.StartsWith("INT_", StringComparison.Ordinal)) continue;
                 var kind = InferKind(pivot.name);
+                entries.TryGetValue(pivot.name, out var entry);
+                if (entry != null && Enum.TryParse<CabinControlKind>(entry.kind, true, out var declaredKind)) kind = declaredKind;
                 var axis = kind == CabinControlKind.Toggle ? Vector3.right : Vector3.forward;
                 var angleRange = kind == CabinControlKind.Knob ? 270f : 50f;
                 var travel = .008f;
-                if (entries.TryGetValue(pivot.name, out var entry) && entry.worldAxis != null && entry.worldAxis.Length == 3)
+                if (entry != null && entry.worldAxis != null && entry.worldAxis.Length == 3)
                 {
-                    axis = pivot.InverseTransformDirection(basis.Direction(new Vector3(entry.worldAxis[0], entry.worldAxis[1], entry.worldAxis[2]))).normalized;
+                    axis = (Quaternion.Inverse(NeutralWorldRotation(pivot)) * basis.Direction(new Vector3(entry.worldAxis[0], entry.worldAxis[1], entry.worldAxis[2]))).normalized;
                     if (entry.rangeDegrees > 0) angleRange = entry.rangeDegrees;
                     if (entry.travel > 0) travel = entry.travel;
                 }
+                var secondaryAxis = Vector3.right;
+                if (entry?.secondaryWorldAxis != null && entry.secondaryWorldAxis.Length == 3)
+                    secondaryAxis = (Quaternion.Inverse(NeutralWorldRotation(pivot)) * basis.Direction(new Vector3(entry.secondaryWorldAxis[0], entry.secondaryWorldAxis[1], entry.secondaryWorldAxis[2]))).normalized;
+                var minAngle = entry != null && entry.minimumAngle != entry.maximumAngle ? entry.minimumAngle : -angleRange * .5f;
+                var maxAngle = entry != null && entry.minimumAngle != entry.maximumAngle ? entry.maximumAngle : angleRange * .5f;
                 var box = pivot.GetComponent<BoxCollider>();
                 if (box == null) box = pivot.gameObject.AddComponent<BoxCollider>();
                 var bounds = LocalBounds(pivot.gameObject);
@@ -476,8 +358,31 @@ namespace LudumDare60.MarsCabin.Editor
                 if (control == null)
                 {
                     control = pivot.gameObject.AddComponent<CabinInteractable>();
-                    control.Configure("cabin.arch." + pivot.name.ToLowerInvariant(), kind, pivot, axis, Vector3.right,
-                        -angleRange * .5f, angleRange * .5f, travel);
+                    control.Configure(idPrefix + pivot.name.ToLowerInvariant(), kind, pivot, axis, secondaryAxis,
+                        minAngle, maxAngle, travel, 1.8f, entry != null && entry.buttonUsesRotation);
+                }
+                else
+                {
+                    // Sync revised authoring dimensions without capturing an already rotated toggle as its rest pose.
+                    var serialized = new SerializedObject(control);
+                    serialized.FindProperty("localAxis").vector3Value = axis;
+                    serialized.FindProperty("secondaryLocalAxis").vector3Value = secondaryAxis;
+                    serialized.FindProperty("minimumAngle").floatValue = minAngle;
+                    serialized.FindProperty("maximumAngle").floatValue = maxAngle;
+                    serialized.FindProperty("buttonUsesRotation").boolValue = entry != null && entry.buttonUsesRotation;
+                    serialized.FindProperty("buttonTravel").floatValue = travel;
+                    serialized.ApplyModifiedPropertiesWithoutUndo();
+                }
+                // Reimport can reset the FBX transform while leaving the serialized control value intact.
+                // Reapply that value and persist the pose so edit-mode reload matches runtime Awake.
+                control.SetNormalizedValue(control.NormalizedValue);
+                control.SetJoystick(control.JoystickValue);
+                EditorUtility.SetDirty(control);
+                PrefabUtility.RecordPrefabInstancePropertyModifications(control);
+                if (control.MotionPivot != null)
+                {
+                    EditorUtility.SetDirty(control.MotionPivot);
+                    PrefabUtility.RecordPrefabInstancePropertyModifications(control.MotionPivot);
                 }
             }
         }
@@ -491,6 +396,18 @@ namespace LudumDare60.MarsCabin.Editor
             return CabinControlKind.Button;
         }
 
+        static Quaternion NeutralWorldRotation(Transform transform)
+        {
+            var local = transform.localRotation;
+            var control = transform.GetComponent<CabinInteractable>();
+            if (control != null)
+            {
+                var serialized = new SerializedObject(control);
+                if (serialized.FindProperty("restPoseCaptured").boolValue) local = serialized.FindProperty("restLocalRotation").quaternionValue;
+            }
+            return transform.parent != null ? NeutralWorldRotation(transform.parent) * local : local;
+        }
+
         static void BindScreens(GameObject architecture, Material screenMaterial)
         {
             var index = 0;
@@ -498,21 +415,44 @@ namespace LudumDare60.MarsCabin.Editor
             {
                 if (renderer.name.StartsWith("SCREEN_GRAPHICS_", StringComparison.Ordinal)) { renderer.gameObject.SetActive(false); continue; }
                 if (!renderer.name.StartsWith("SCREEN_", StringComparison.Ordinal) || renderer.name.StartsWith("SCREEN_GRAPHICS_", StringComparison.Ordinal)) continue;
-                var texture = CreateScreenTexture(index++ % 3);
+                var hero = renderer.name.StartsWith("SCREEN_HERO_", StringComparison.Ordinal);
+                var texturePath = hero ? Root + "/Textures/HeroCRT_" + renderer.name.Substring("SCREEN_HERO_".Length) + ".png" : null;
+                Texture2D texture;
+                if (hero)
+                {
+                    if (!File.Exists(texturePath)) throw new FileNotFoundException("Import the authored hero CRT readout.", texturePath);
+                    if (AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath) == null) AssetDatabase.ImportAsset(texturePath, ImportAssetOptions.ForceSynchronousImport);
+                    var importer = (TextureImporter)AssetImporter.GetAtPath(texturePath);
+                    if (importer.wrapMode != TextureWrapMode.Clamp || !importer.sRGBTexture || !importer.mipmapEnabled)
+                    { importer.wrapMode = TextureWrapMode.Clamp; importer.sRGBTexture = true; importer.mipmapEnabled = true; importer.SaveAndReimport(); }
+                    texture = AssetDatabase.LoadAssetAtPath<Texture2D>(texturePath);
+                }
+                else texture = CreateScreenTexture(index++ % 3);
                 // Individual assets preserve screen textures in edit mode and exported prefab inspection.
                 var matPath = Root + "/Materials/" + renderer.name + ".mat";
                 var mat = AssetDatabase.LoadAssetAtPath<Material>(matPath);
-                if (mat == null) { mat = new Material(screenMaterial) { name = renderer.name }; AssetDatabase.CreateAsset(mat, matPath); }
-                mat.SetTexture("_BaseMap", texture);
-                mat.SetTexture("_EmissionMap", texture);
-                mat.SetColor("_BaseColor", Color.white);
-                mat.SetColor("_EmissionColor", new Color(.18f, 1.1f, .35f));
-                mat.EnableKeyword("_EMISSION");
-                mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.BakedEmissive;
+                if (mat == null)
+                {
+                    mat = new Material(screenMaterial) { name = renderer.name }; AssetDatabase.CreateAsset(mat, matPath);
+                    mat.SetTexture("_BaseMap", texture); mat.SetTexture("_EmissionMap", texture);
+                    mat.SetColor("_BaseColor", Color.white); mat.SetColor("_EmissionColor", hero ? Color.white : new Color(.18f, 1.1f, .35f));
+                    mat.EnableKeyword("_EMISSION"); mat.globalIlluminationFlags = MaterialGlobalIlluminationFlags.BakedEmissive;
+                    if (hero)
+                    {
+                        mat.SetFloat("_Metallic", 0); mat.SetFloat("_Smoothness", .35f);
+                        mat.SetFloat("_SpecularHighlights", 0); mat.EnableKeyword("_SPECULARHIGHLIGHTS_OFF");
+                        mat.SetFloat("_EnvironmentReflections", 0); mat.EnableKeyword("_ENVIRONMENTREFLECTIONS_OFF");
+                    }
+                }
                 renderer.sharedMaterial = mat;
                 var panel = renderer.GetComponent<CabinScreenPanel>();
-                if (panel == null) panel = renderer.gameObject.AddComponent<CabinScreenPanel>();
-                panel.Configure("cabin.screen." + renderer.name.ToLowerInvariant(), renderer, texture, 1.5f);
+                if (panel == null)
+                {
+                    panel = renderer.gameObject.AddComponent<CabinScreenPanel>();
+                    panel.Configure("cabin.screen." + renderer.name.ToLowerInvariant(), renderer, texture, hero ? 1f : 1.5f);
+                    if (hero) panel.SetEmissionTint(Color.white);
+                }
+                else panel.Apply();
                 EditorUtility.SetDirty(mat);
                 AssetDatabase.SaveAssetIfDirty(mat);
             }
@@ -557,7 +497,8 @@ namespace LudumDare60.MarsCabin.Editor
         {
             var path = Root + "/Materials/" + name + ".mat";
             var mat = AssetDatabase.LoadAssetAtPath<Material>(path);
-            if (mat == null) { mat = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = name }; AssetDatabase.CreateAsset(mat, path); }
+            if (mat != null) return mat; // Keep later artist texture, shader and surface polish across rebuilds.
+            mat = new Material(Shader.Find("Universal Render Pipeline/Lit")) { name = name }; AssetDatabase.CreateAsset(mat, path);
             mat.SetColor("_BaseColor", color);
             mat.SetTexture("_BaseMap", Texture2D.whiteTexture);
             mat.SetTexture("_EmissionMap", Texture2D.whiteTexture);
@@ -647,6 +588,9 @@ namespace LudumDare60.MarsCabin.Editor
             var fill = new GameObject("Cabin_Central_Bounce").AddComponent<Light>();
             fill.transform.SetParent(holder.transform, false); fill.transform.position = basis.Point(new Vector3(0, 0, 2.5f));
             fill.type = LightType.Point; fill.range = 12; fill.intensity = 8; fill.color = new Color(1, .89f, .73f); fill.shadows = LightShadows.None;
+            var main = new GameObject("Cabin_Global_Bounce").AddComponent<Light>();
+            main.type = LightType.Directional; main.intensity = .65f; main.color = new Color(1, .85f, .68f);
+            main.shadows = LightShadows.None; main.transform.rotation = Quaternion.Euler(45, 150, 0);
             var probe = new GameObject("Cabin_Reflection_Probe").AddComponent<ReflectionProbe>();
             probe.transform.SetParent(holder.transform, false); probe.transform.position = basis.Point(new Vector3(0, 0, 1.5f));
             probe.mode = ReflectionProbeMode.Realtime; probe.refreshMode = ReflectionProbeRefreshMode.OnAwake;
@@ -700,6 +644,25 @@ namespace LudumDare60.MarsCabin.Editor
             var basis = ReadBasis(architecture);
             report.size = WorldBounds(architecture).size; report.basisX = basis.x; report.basisY = basis.y; report.basisZ = basis.z;
             var ids = new HashSet<string>(StringComparer.Ordinal);
+            var hero = scene.GetRootGameObjects().FirstOrDefault(r => r.name == "Cabin_HeroConsole");
+            report.heroAuthored = hero != null && AssetDatabase.LoadAssetAtPath<GameObject>(HeroModelPath) != null;
+            report.heroControls = hero != null ? hero.GetComponentsInChildren<CabinInteractable>(true).Length : 0;
+            if (!report.heroAuthored || report.heroControls == 0) report.errors.Add("Missing Blender-authored primary console and its individual controls.");
+            if (hero != null)
+            {
+                var heroBasis = ReadBasis(hero, "ORIENTATION_HERO_");
+                if (Mathf.Abs(heroBasis.x.magnitude - 1) > .01f || Mathf.Abs(heroBasis.y.magnitude - 1) > .01f || Mathf.Abs(heroBasis.z.magnitude - 1) > .01f)
+                    report.errors.Add("Hero FBX unit conversion was lost; verify its imported root transform.");
+                if (WorldBounds(hero).size.magnitude < 2) report.errors.Add("Hero bounds are smaller than the authored metre-scale console assembly.");
+            }
+            var decorations = scene.GetRootGameObjects().FirstOrDefault(r => r.name == "Meshy_Cabin_Props");
+            if (decorations != null)
+            {
+                report.decorativeMeshyProps = decorations.transform.childCount;
+                if (decorations.GetComponentsInChildren<CabinInteractable>(true).Length > 0) report.errors.Add("Generated Meshy assets must be decorative only.");
+                foreach (var retired in new[] { "NavConsole_T25", "ThrottlePod_T25", "JoystickPod_T25" })
+                    if (decorations.transform.Find(retired) != null) report.errors.Add("Superseded generated foreground asset remains in scene: " + retired);
+            }
             foreach (var root in scene.GetRootGameObjects())
             {
                 foreach (var transform in root.GetComponentsInChildren<Transform>(true)) report.missingScripts += GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(transform.gameObject);
@@ -734,12 +697,12 @@ namespace LudumDare60.MarsCabin.Editor
             var json = JsonUtility.ToJson(report, true); File.WriteAllText(SourceRoot + "/unity_validation.json", json); return json;
         }
 
-        static Basis ReadBasis(GameObject architecture)
+        static Basis ReadBasis(GameObject architecture, string prefix = "ORIENTATION_")
         {
             var transforms = architecture.GetComponentsInChildren<Transform>(true);
-            var x = transforms.FirstOrDefault(t => t.name == "ORIENTATION_X_POS");
-            var y = transforms.FirstOrDefault(t => t.name == "ORIENTATION_Y_POS");
-            var z = transforms.FirstOrDefault(t => t.name == "ORIENTATION_Z_POS");
+            var x = transforms.FirstOrDefault(t => t.name == prefix + "X_POS");
+            var y = transforms.FirstOrDefault(t => t.name == prefix + "Y_POS");
+            var z = transforms.FirstOrDefault(t => t.name == prefix + "Z_POS");
             if (x == null || y == null || z == null) throw new InvalidOperationException("Architecture needs all three ORIENTATION_* sentinels for verified coordinate conversion.");
             var origin = architecture.transform.position;
             return new Basis { origin = origin, x = x.position - origin, y = y.position - origin, z = z.position - origin };

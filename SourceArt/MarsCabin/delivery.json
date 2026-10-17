@@ -1,0 +1,86 @@
+{
+  "status": "complete",
+  "acceptedRevision": "关键操作台、显示屏、油门和摇杆底座改为 Blender 精细建模，Meshy 仅作装饰。",
+  "source": "SourceArt/MarsCabin/MarsCabin_Interior.blend",
+  "unityScene": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
+  "primaryPrefab": "Assets/MarsCabin/Prefabs/Cabin_HeroConsole.prefab",
+  "scope": {
+    "interior": true,
+    "completeCeiling": true,
+    "exteriorHull": false,
+    "terrain": false
+  },
+  "authoredHero": {
+    "meshes": 130,
+    "triangles": 116888,
+    "independentControls": 48,
+    "screens": 3,
+    "features": [
+      "独立曲面 CRT 玻璃、边框与密封圈",
+      "独立键帽、滚花旋钮、带护罩拨杆",
+      "三根独立油门与带槽底座",
+      "双轴摇杆、独立扳机与顶端按键",
+      "铭牌、刻度、螺钉、散热孔、扶手与线缆"
+    ]
+  },
+  "sceneTotals": {
+    "controls": 76,
+    "screens": 9,
+    "renderers": 269,
+    "triangles": 478094,
+    "colliders": 143
+  },
+  "decorativeMeshyOnly": [
+    "PilotSeat_T25",
+    "CommsRack_T25",
+    "ReelRecorder_T25"
+  ],
+  "retiredFromSceneSourceRetained": [
+    "NavConsole_T25",
+    "ThrottlePod_T25",
+    "JoystickPod_T25"
+  ],
+  "sourceImages": {
+    "packed": 12,
+    "missing": 0
+  },
+  "verification": {
+    "savedSceneReloaded": true,
+    "articulatedAndRestored": 76,
+    "boundNumericLabels": 18,
+    "ceilingRayHits": 9,
+    "independentJoystickButtons": [
+      {
+        "id": "cabin.hero.int_button_hero_top",
+        "found": true,
+        "firstHit": "INT_BUTTON_Hero_Top",
+        "independentlySelectable": true
+      },
+      {
+        "id": "cabin.hero.int_button_hero_trigger",
+        "found": true,
+        "firstHit": "INT_BUTTON_Hero_Trigger",
+        "independentlySelectable": true
+      }
+    ],
+    "consoleErrors": 0,
+    "missingScripts": 0,
+    "unsupportedMaterials": 0,
+    "playModeRun": false,
+    "playerBuildRun": false
+  },
+  "integrationContract": "SourceArt/MarsCabin/interaction_contract.json",
+  "validationReport": "SourceArt/MarsCabin/editor_articulation_audit.json",
+  "previews": {
+    "blenderControls": "SourceArt/MarsCabin/Cabin_Final_Hero_Controls.png",
+    "blenderRoom": "SourceArt/MarsCabin/Cabin_Final_Closed_Interior.png",
+    "unityControls": "SourceArt/MarsCabin/Previews/unity_delivered_controls.png",
+    "unityPilot": "SourceArt/MarsCabin/Previews/unity_delivered_pilot.png",
+    "unityRoom": "SourceArt/MarsCabin/Previews/unity_delivered_room.png"
+  },
+  "limitations": [
+    "已提供控件事件、独立运动轴心与碰撞体；未安装玩家控制器或接入玩法输入。",
+    "Unity 场景和 Blender 光照预览分别保留。"
+  ],
+  "recordedAtUtc": "2026-10-17T18:07:01.153Z"
+}

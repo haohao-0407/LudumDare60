@@ -1,0 +1,190 @@
+{
+  "scene": "MarsCabin_Interior",
+  "ceilingVisible": true,
+  "heroObjectCountIncludingRoot": 138,
+  "heroMeshObjects": 130,
+  "heroControls": 48,
+  "heroScreens": 3,
+  "decorativeAssets": [
+    "Decor_PilotSeat_T25",
+    "Decor_CommsRack_T25",
+    "Decor_ReelRecorder_T25"
+  ],
+  "packedImages": [
+    {
+      "name": "HeroCRT_Comms.png",
+      "width": 1024,
+      "height": 1024,
+      "packed": true
+    },
+    {
+      "name": "HeroCRT_Navigation.png",
+      "width": 2048,
+      "height": 1024,
+      "packed": true
+    },
+    {
+      "name": "HeroCRT_Systems.png",
+      "width": 1024,
+      "height": 1024,
+      "packed": true
+    },
+    {
+      "name": "Image_0",
+      "width": 4096,
+      "height": 4096,
+      "packed": true
+    },
+    {
+      "name": "Image_0.001",
+      "width": 4096,
+      "height": 4096,
+      "packed": true
+    },
+    {
+      "name": "Image_0.002",
+      "width": 4096,
+      "height": 4096,
+      "packed": true
+    },
+    {
+      "name": "Image_1",
+      "width": 2048,
+      "height": 2048,
+      "packed": true
+    },
+    {
+      "name": "Image_1.001",
+      "width": 2048,
+      "height": 2048,
+      "packed": true
+    },
+    {
+      "name": "Image_1.002",
+      "width": 2048,
+      "height": 2048,
+      "packed": true
+    },
+    {
+      "name": "Image_2",
+      "width": 4096,
+      "height": 4096,
+      "packed": true
+    },
+    {
+      "name": "Image_2.001",
+      "width": 4096,
+      "height": 4096,
+      "packed": true
+    },
+    {
+      "name": "Image_2.002",
+      "width": 4096,
+      "height": 4096,
+      "packed": true
+    }
+  ],
+  "missingExternalImages": 0,
+  "missingImageNames": [],
+  "oldGeneratedForegroundObjects": [],
+  "sourcePath": "D:\\unity-projects\\LudumDare60\\SourceArt\\MarsCabin\\MarsCabin_Interior.blend",
+  "sourceFileBytes": 75624890,
+  "renderPaths": [
+    "D:\\unity-projects\\LudumDare60\\SourceArt\\MarsCabin\\Cabin_Final_Closed_Interior.png",
+    "D:\\unity-projects\\LudumDare60\\SourceArt\\MarsCabin\\HeroConsole_Final_Closeup.png",
+    "D:\\unity-projects\\LudumDare60\\SourceArt\\MarsCabin\\Cabin_Final_Hero_Controls.png"
+  ],
+  "sourceSaved": true,
+  "finalSavedAt": "2026-10-18T01:59:35",
+  "wingLegendCorrection": {
+    "labelCount": 20,
+    "rotationDegreesWorldZ": 180,
+    "sourceScriptUpdated": true,
+    "architectureReexported": true,
+    "controlsUnchanged": 28,
+    "parentsPreserved": true,
+    "heroAndDecorativeAssetsUnchanged": true
+  },
+  "wingNumericLabelParenting": {
+    "labels": 18,
+    "uniqueButtonParents": 18,
+    "followTranslationChecksPassed": 18,
+    "restPoseMaxMatrixError": 1.1920928955078125e-07,
+    "bindings": [
+      {
+        "label": "Label_1.002",
+        "button": "INT_BUTTON_L_00"
+      },
+      {
+        "label": "Label_1.003",
+        "button": "INT_BUTTON_R_00"
+      },
+      {
+        "label": "Label_2.002",
+        "button": "INT_BUTTON_L_01"
+      },
+      {
+        "label": "Label_2.003",
+        "button": "INT_BUTTON_R_01"
+      },
+      {
+        "label": "Label_3.002",
+        "button": "INT_BUTTON_L_02"
+      },
+      {
+        "label": "Label_3.003",
+        "button": "INT_BUTTON_R_02"
+      },
+      {
+        "label": "Label_4.002",
+        "button": "INT_BUTTON_L_03"
+      },
+      {
+        "label": "Label_4.003",
+        "button": "INT_BUTTON_R_03"
+      },
+      {
+        "label": "Label_5.002",
+        "button": "INT_BUTTON_L_04"
+      },
+      {
+        "label": "Label_5.003",
+        "button": "INT_BUTTON_R_04"
+      },
+      {
+        "label": "Label_6.002",
+        "button": "INT_BUTTON_L_05"
+      },
+      {
+        "label": "Label_6.003",
+        "button": "INT_BUTTON_R_05"
+      },
+      {
+        "label": "Label_7.002",
+        "button": "INT_BUTTON_L_06"
+      },
+      {
+        "label": "Label_7.003",
+        "button": "INT_BUTTON_R_06"
+      },
+      {
+        "label": "Label_8.002",
+        "button": "INT_BUTTON_L_07"
+      },
+      {
+        "label": "Label_8.003",
+        "button": "INT_BUTTON_R_07"
+      },
+      {
+        "label": "Label_9.002",
+        "button": "INT_BUTTON_L_08"
+      },
+      {
+        "label": "Label_9.003",
+        "button": "INT_BUTTON_R_08"
+      }
+    ],
+    "rebuildableSourceUpdated": true,
+    "architectureReexported": true
+  }
+}

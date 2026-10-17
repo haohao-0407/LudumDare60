@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2407248311316627908}
   - component: {fileID: 979347651727542006}
-  - component: {fileID: 9206160362420770255}
   m_Layer: 0
   m_Name: ReelRecorder_T25
   m_TagString: Untagged
@@ -28,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_LocalScale: {x: 1.0000017, y: 1, z: 1.0000017}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3890070235214593432}
@@ -55,42 +54,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.87255853, y: 1.2, z: 0.7689617}
   m_Center: {x: 0, y: 0.605, z: 0}
---- !u!114 &9206160362420770255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3043511376640961303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bda7ed1e1f747ff458145131d1c02857, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.MarsCabin.CabinInteractable
-  stableId: cabin.meshy.reelrecorder_t25
-  kind: 0
-  interactionRange: 1.8
-  motionPivot: {fileID: 0}
-  localAxis: {x: 0, y: 1, z: 0}
-  secondaryLocalAxis: {x: 1, y: 0, z: 0}
-  minimumAngle: -45
-  maximumAngle: 45
-  buttonTravel: 0.012
-  buttonUsesRotation: 0
-  normalizedValue: 0
-  joystickValue: {x: 0, y: 0}
-  restLocalPosition: {x: 0, y: 0, z: 0}
-  restLocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  restPoseCaptured: 0
-  onActivated:
-    m_PersistentCalls:
-      m_Calls: []
-  onValueChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  onJoystickChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1001 &1883799195085551498
 PrefabInstance:
   m_ObjectHideFlags: 0
