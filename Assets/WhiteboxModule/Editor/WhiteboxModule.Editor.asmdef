@@ -1,0 +1,5 @@
+{
+  "name": "WhiteboxModule.Editor",
+  "references": ["WhiteboxModule.Runtime"],
+  "includePlatforms": ["Editor"]
+}
