@@ -1,0 +1,34 @@
+{
+  "name": "ReelRecorder_T25",
+  "provider": "meshy",
+  "mode": "image",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/ReelRecorder_T25.png",
+  "reference_sha256": "fdb52714fde5f6e3cbe1f8888e332e8f91bc6c8c357e5aa86d20c088145a191b",
+  "reference_inspected": true,
+  "requested_target_polycount": 100000,
+  "provider_limit_note": "Meshy T2.5 supports 100 to 30000 faces; explicit maximum used.",
+  "requested_size": 1.15,
+  "submitted_utc": "2026-10-17T17:00:09.171069Z",
+  "state": "done",
+  "request": {
+    "ai_model": "meshy-t2.5",
+    "model_type": "smart-topology",
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "4k",
+    "texture_prompt": "Faithfully preserve the isolated reference retrofuturist reel-to-reel recorder unit. Detailed metal tape reels with visible spokes and winding tape, ivory enamel cabinet, charcoal instrument face, analog meter windows, tactile push buttons and rotary controls, brushed aluminum trim, crisp screws, tiny labels, restrained dust and rubbed edges. High detail PBR, clear mechanical detail, preserve the complete unit silhouette and reference colors.",
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "output_folder": "Assets/MarsCabin/Models/Meshy",
+  "http_status": 202,
+  "provider_task_id": "01a14acd-c46c-70b8-aec2-caa44c0acd7f",
+  "job_id": "ff6d4a8591364b06810dc67722709e4b",
+  "progress": 1.0,
+  "asset_path": "Assets/MarsCabin/Models/Meshy/ReelRecorder_T25.glb",
+  "error": null,
+  "last_checked_utc": "2026-10-17T17:05:18.7523564Z"
+}

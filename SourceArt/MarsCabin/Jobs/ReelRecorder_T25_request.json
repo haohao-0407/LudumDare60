@@ -1,0 +1,10 @@
+{
+  "name": "ReelRecorder_T25",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/ReelRecorder_T25.png",
+  "reference_inspected": true,
+  "reference_inspected_by": "root agent, complete isolated unit confirmed before submission",
+  "requested_target_polycount": 100000,
+  "requested_size": 1.15,
+  "intended_dimensions_m": [0.85, 0.65, 1.15],
+  "texture_prompt": "Faithfully preserve the isolated reference retrofuturist reel-to-reel recorder unit. Detailed metal tape reels with visible spokes and winding tape, ivory enamel cabinet, charcoal instrument face, analog meter windows, tactile push buttons and rotary controls, brushed aluminum trim, crisp screws, tiny labels, restrained dust and rubbed edges. High detail PBR, clear mechanical detail, preserve the complete unit silhouette and reference colors."
+}

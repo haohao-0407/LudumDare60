@@ -1,0 +1,92 @@
+{
+  "scene": "MarsCabin_Interior",
+  "units": "metres",
+  "roomRadius": 3.36,
+  "ceilingVisible": true,
+  "ceilingRange": [
+    2.752,
+    3.28
+  ],
+  "exteriorHull": false,
+  "meshObjects": 136,
+  "triangles": 279572,
+  "boundsMin": [
+    -3.3652000427246094,
+    -3.3652000427246094,
+    -0.12800000607967377
+  ],
+  "boundsMax": [
+    3.3652000427246094,
+    3.3652000427246094,
+    3.2799999713897705
+  ],
+  "materials": [
+    "MC_Ivory",
+    "MC_Orange",
+    "MC_Metal",
+    "MC_Dark",
+    "MC_Rubber",
+    "MC_Screen",
+    "MC_GreenGlow",
+    "MC_WarmGlow",
+    "MC_RedGlow",
+    "MC_White",
+    "MC_Brass"
+  ],
+  "groups": [
+    "Floor",
+    "Walls",
+    "Door",
+    "Ceiling",
+    "Pipes",
+    "Lighting",
+    "Service",
+    "Controls",
+    "Screens",
+    "Metadata",
+    "PerimeterBanks"
+  ],
+  "fbxAxes": {
+    "forward": "-Z",
+    "up": "Y"
+  },
+  "expectedUnityMapping": "(-BlenderX, BlenderZ, -BlenderY); verify ORIENTATION_* marker transforms in imported prefab",
+  "controlCount": 28,
+  "screenCount": 6,
+  "architectureScale": 0.8,
+  "perimeterBanks": {
+    "innerRadius": 2.624,
+    "outerRadius": 3.192,
+    "deckHeight": [
+      0.92,
+      1.232
+    ],
+    "rearGapDegrees": [
+      68,
+      112
+    ]
+  },
+  "orientationSentinelScale": 0.8,
+  "reservedPropsAuthoredCoordinates": {
+    "PilotSeat": [
+      0,
+      -0.2,
+      0
+    ],
+    "MainNavConsole": [
+      0,
+      -2.1,
+      0
+    ],
+    "LeftConsole": [
+      -2.8,
+      0,
+      0
+    ],
+    "RightConsole": [
+      2.8,
+      0,
+      0
+    ]
+  }
+}

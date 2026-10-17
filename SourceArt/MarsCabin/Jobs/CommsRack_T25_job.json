@@ -1,0 +1,34 @@
+{
+  "name": "CommsRack_T25",
+  "provider": "meshy",
+  "mode": "image",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/CommsRack_T25.png",
+  "reference_sha256": "d6847691b036faddb6b4db460ff8bec67e56bd77645c7168835c6d236e555338",
+  "reference_inspected": true,
+  "requested_target_polycount": 100000,
+  "provider_limit_note": "Meshy T2.5 supports 100 to 30000 faces; explicit maximum used.",
+  "requested_size": 1.65,
+  "submitted_utc": "2026-10-17T17:00:08.514421Z",
+  "state": "done",
+  "request": {
+    "ai_model": "meshy-t2.5",
+    "model_type": "smart-topology",
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "4k",
+    "texture_prompt": "Faithfully preserve the isolated reference retrofuturist communications equipment rack. Warm ivory enamel cabinet, dark recessed equipment faces, analog meters, rotary knobs, physical switches, detailed connectors and vent grids, crisp rack screws, small instrument labels, amber and green illuminated indicators, brushed metal trim and subtle rubbed edge wear. Dense precise tactile details with restrained patina and high detail PBR. Preserve the complete single cabinet geometry and reference color palette.",
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "output_folder": "Assets/MarsCabin/Models/Meshy",
+  "http_status": 202,
+  "provider_task_id": "01a14acd-c327-7043-bac4-cca874c021d5",
+  "job_id": "595e1fdd788746c691fce6f45e011d91",
+  "progress": 1.0,
+  "asset_path": "Assets/MarsCabin/Models/Meshy/CommsRack_T25.glb",
+  "error": null,
+  "last_checked_utc": "2026-10-17T17:05:18.7502757Z"
+}

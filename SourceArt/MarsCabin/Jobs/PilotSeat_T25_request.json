@@ -1,0 +1,10 @@
+{
+  "name": "PilotSeat_T25",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/PilotSeat_T25.png",
+  "reference_inspected": true,
+  "reference_inspected_by": "root agent, full isolated object confirmed before submission",
+  "requested_target_polycount": 100000,
+  "requested_size": 1.45,
+  "intended_dimensions_m": [1.1, 0.95, 1.45],
+  "texture_prompt": "Faithfully preserve the isolated reference retrofuturist pilot seat. Warm ivory enamel shell, richly detailed aged orange upholstery with visible stitched seams and padding, brushed metal supports and adjustment mechanisms, dark rubber trim, crisp hardware and joints, restrained rubbed edge wear. High detail tactile PBR materials, subtle patina, preserve the reference color palette and complete seat silhouette."
+}

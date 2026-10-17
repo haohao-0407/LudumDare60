@@ -1,0 +1,34 @@
+{
+  "name": "ThrottlePod_T25",
+  "provider": "meshy",
+  "mode": "image",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/ThrottlePod_T25.png",
+  "reference_sha256": "d105ac995f8121f8bf4668289e5b51b0a923df3336c7348de2e092d22c76131e",
+  "reference_inspected": true,
+  "requested_target_polycount": 50000,
+  "provider_limit_note": "Meshy T2.5 supports 100 to 30000 faces; explicit maximum used.",
+  "requested_size": 0.48,
+  "submitted_utc": "2026-10-17T17:02:44.4846187Z",
+  "state": "done",
+  "request": {
+    "ai_model": "meshy-t2.5",
+    "model_type": "smart-topology",
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "4k",
+    "texture_prompt": "Faithfully preserve the isolated reference retrofuturist throttle control housing with three EMPTY curved lever slots. Do not add levers, handles or unrelated props. Ivory enamel casing, dark recessed slot openings, precise engraved calibration tick marks and instrument labels, brushed metal rim, small screws, physical indicator lamps, fine panel seams, restrained rubbed edge wear and subtle patina. High detail PBR, clean readable mechanical detail and reference colors.",
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "output_folder": "Assets/MarsCabin/Models/Meshy",
+  "http_status": 202,
+  "provider_task_id": "01a14ad0-2161-71a3-8890-4f543c24bcc8",
+  "job_id": "5d49924afcfa4a60a72d476ce3bf160b",
+  "progress": 1.0,
+  "asset_path": "Assets/MarsCabin/Models/Meshy/ThrottlePod_T25.glb",
+  "error": null,
+  "last_checked_utc": "2026-10-17T17:05:18.7528784Z"
+}

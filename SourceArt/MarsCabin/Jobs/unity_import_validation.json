@@ -1,0 +1,20 @@
+{
+  "checked_date": "2026-10-18",
+  "method": "AssetDatabase.LoadAssetAtPath<GameObject>, read-only, no instantiation",
+  "output_folder": "Assets/MarsCabin/Models/Meshy",
+  "all_jobs_done": true,
+  "all_assets_imported": true,
+  "generation_submissions": 6,
+  "duplicate_generation_submissions": 0,
+  "models": [
+    {"name": "NavConsole_T25", "imported": true, "renderers": 1, "triangles": 27456},
+    {"name": "CommsRack_T25", "imported": true, "renderers": 1, "triangles": 26192},
+    {"name": "ReelRecorder_T25", "imported": true, "renderers": 1, "triangles": 26618},
+    {"name": "PilotSeat_T25", "imported": true, "renderers": 1, "triangles": 29072},
+    {"name": "ThrottlePod_T25", "imported": true, "renderers": 1, "triangles": 29763},
+    {"name": "JoystickPod_T25", "imported": true, "renderers": 1, "triangles": 30183}
+  ],
+  "total_triangles": 169284,
+  "all_texture_channels": {"base_color": [4096, 4096], "normal": [4096, 4096], "metallic_roughness": [2048, 2048]},
+  "note": "Provider native 30000 face targets are approximate. All six received embedded PBR textures. Assembly, final scale/orientation, scene visuals and interaction validation belong to the scene-building tasks."
+}

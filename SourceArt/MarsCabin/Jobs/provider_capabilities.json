@@ -1,0 +1,17 @@
+{
+  "verified_date": "2026-10-18",
+  "provider": "meshy",
+  "model": "meshy-t2.5",
+  "endpoint": "https://api.meshy.ai/openapi/v1/image-to-3d",
+  "documentation": "https://docs.meshy.ai/en/api/image-to-3d",
+  "model_type": "smart-topology",
+  "topology": "triangle",
+  "native_target_polycount_range": [100, 30000],
+  "selected_target_polycount": 30000,
+  "texture_resolution": "4k",
+  "enable_pbr": true,
+  "note": "The requested 100000 and 50000 face counts exceed the explicit T2.5 model limit. No model substitution or artificial subdivision is used. Six separately generated components retain detail when assembled.",
+  "existing_cabin_jobs_found": 0,
+  "submit_workflow": "Inspect reference, persist named request, execute submit_job.csx with __JOB_NAME__ replaced. Repeated submissions are refused by a create-new journal. Poll/recover via sync_jobs.csx; it never submits geometry.",
+  "credentials": "Read only inside Unity from SecureKeyStore, used only against api.meshy.ai, never written to manifests or returned by MCP."
+}
