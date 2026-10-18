@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8141c11276bdea4587fc47e40051c4d, type: 3}
+  m_Name: SalvagePool_Main
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Salvage.SalvagePool
+  entries:
+  - definition: {fileID: 11400000, guid: 621a80d8fd107f64785f9190a0b8d6e5, type: 2}
+    weight: 1
+  - definition: {fileID: 11400000, guid: 7c0e9c1bc5b9ba14b99cda9763df0cbf, type: 2}
+    weight: 1
+  - definition: {fileID: 11400000, guid: d972718204e9c314a837884faa864270, type: 2}
+    weight: 1
+  - definition: {fileID: 11400000, guid: 2a7e7049dbe82794d9b672094a3ecb5d, type: 2}
+    weight: 1
+  - definition: {fileID: 11400000, guid: 4b5e0cf8b48a7b64faca83c2baad3f7b, type: 2}
+    weight: 1

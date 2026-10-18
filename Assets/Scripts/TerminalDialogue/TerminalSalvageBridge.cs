@@ -1,4 +1,5 @@
 using LudumDare60.Salvage;
+using LudumDare60.Storage;
 using UnityEngine;
 
 namespace LudumDare60.TerminalDialogue
@@ -8,6 +9,7 @@ namespace LudumDare60.TerminalDialogue
     {
         [SerializeField] private TerminalDialogueController terminal;
         [SerializeField] private SalvageController salvage;
+        [SerializeField] private ItemCatalog itemCatalog;
         [SerializeField] private string startEventId = "start_salvage";
 
         private void OnEnable()
@@ -33,8 +35,10 @@ namespace LudumDare60.TerminalDialogue
             if (terminal == null) return;
             terminal.SetFlag("salvage_started", false);
             terminal.SetFlag("salvage_succeeded", result.IsSuccess);
+            // The catalog supplies the localized display name; without it the raw ID is shown as-is.
+            var label = itemCatalog != null ? itemCatalog.GetDisplayName(result.RewardId) : result.RewardId;
             terminal.PostSystemMessage(result.IsSuccess
-                ? "Salvage complete: " + result.RewardId + " x " + result.RewardQuantity
+                ? "Salvage complete: " + label + " x " + result.RewardQuantity
                 : "Salvage ended: " + result.Reason);
         }
     }
