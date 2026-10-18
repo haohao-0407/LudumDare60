@@ -1,4 +1,5 @@
 using LudumDare60.Salvage;
+using LudumDare60.Storage;
 using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -135,6 +136,13 @@ namespace LudumDare60.Salvage.Editor
             poolSource.FindProperty("pool").objectReferenceValue = pool;
             poolSource.ApplyModifiedPropertiesWithoutUndo();
             var controller = root.GetComponent<SalvageController>();
+
+            // Keep inventory and its completion listener alive for the full salvage screen lifetime.
+            var inventory = root.AddComponent<InventoryController>();
+            var inventoryBridge = new SerializedObject(root.AddComponent<SalvageInventoryBridge>());
+            inventoryBridge.FindProperty("salvageController").objectReferenceValue = controller;
+            inventoryBridge.FindProperty("inventoryController").objectReferenceValue = inventory;
+            inventoryBridge.ApplyModifiedPropertiesWithoutUndo();
 
             var view = root.AddComponent<SalvageScreenView>();
             view.Configure(controller, track, catchZone, fish, progressFill, item, state,

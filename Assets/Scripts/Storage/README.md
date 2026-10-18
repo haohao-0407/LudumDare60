@@ -39,7 +39,9 @@ inventory.Clear();                         // 清空物品，保留奖励去重�
 4. 桥接器订阅 `Completed`，只有成功结果会入库，使用 `AttemptId` 去重。失败和取消不入库。重新启用桥接器会尝试接收源控制器保留的最后一次结果；重复接收安全。桥接器应覆盖整个作业周期，禁用期间多次完成的历史结果不会被源控制器保留。
 5. UI/其他系统通过 `inventoryController.Items` 调用上述接口，通过 `inventoryController.Changed` 刷新显示；在 `OnEnable` 订阅、`OnDisable` 取消订阅，并在打开时读取一次当前库存。
 
-本模块提供数据、保存和接入组件，没有新增场景物体或库存界面；当前场景还没有配置打捞终端，按上述步骤接入实际终端。
+`Assets/Scenes/TerminalDialogueDemo.unity` 已完成场景接入：`Salvage Screen (World Space)` 根物体同时挂载 `SalvageController`、`InventoryController` 和 `SalvageInventoryBridge`，桥接器的两个引用指向同物体上的对应组件。`Load On Awake` 和 `Auto Save` 均开启，成功打捞后自动增加库存并保存，失败/取消不入库；重新进入场景会加载同一份存档。
+
+菜单 `Tools > Salvage > 在当前场景搭建打捞屏` 也会创建并绑定这三个组件。新场景已有共享库存时，将桥接器改为引用该库存，并移除屏幕上的独立库存，确保每个存档文件只有一个控制器。本模块没有新增库存界面。
 
 ## 保存、加载与错误处理
 
