@@ -1,0 +1,14 @@
+{
+  "name": "LudumDare60.AssemblyDemo.Tests",
+  "rootNamespace": "LudumDare60.AssemblyDemo.Tests",
+  "references": [
+    "LudumDare60.AssemblyDemo",
+    "WhiteboxModule.Runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

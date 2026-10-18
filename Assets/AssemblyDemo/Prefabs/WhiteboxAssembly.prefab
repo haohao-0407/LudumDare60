@@ -1,0 +1,211 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4316610018853529293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2906129420776908174}
+  - component: {fileID: 1312406549989054472}
+  m_Layer: 0
+  m_Name: C - RELAY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2906129420776908174
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316610018853529293}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.3, y: -1.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2157481586928487952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312406549989054472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316610018853529293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b39bda522e61dd48b3dbf454695e9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
+  moduleLabel: C / RELAY
+  radius: 0.9
+  portAngles:
+  - 30
+  - 90
+  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
+  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
+  selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
+--- !u!1 &4354322897138512327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2157481586928487952}
+  - component: {fileID: 6854979157028720979}
+  m_Layer: 0
+  m_Name: WhiteboxAssembly
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2157481586928487952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354322897138512327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1456836396743233255}
+  - {fileID: 3595123194788358941}
+  - {fileID: 2906129420776908174}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6854979157028720979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354322897138512327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9870701295efae4aa2defab449897c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: LudumDare60.AssemblyDemo::LudumDare60.AssemblyDemo.AssemblyDemoController
+  Modules:
+  - {fileID: 6399458114818181219}
+  - {fileID: 1846517885803824808}
+  - {fileID: 1312406549989054472}
+  ViewCamera: {fileID: 0}
+  MoveSpeed: 2.4
+  RotationSpeed: 80
+--- !u!1 &5178436533748672370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1456836396743233255}
+  - component: {fileID: 6399458114818181219}
+  m_Layer: 0
+  m_Name: A - COMM
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1456836396743233255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178436533748672370}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0.68835455, w: 0.7253744}
+  m_LocalPosition: {x: -3.6, y: -0.04, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2157481586928487952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6399458114818181219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5178436533748672370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b39bda522e61dd48b3dbf454695e9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
+  moduleLabel: A / COMM
+  radius: 0.9
+  portAngles: []
+  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
+  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
+  selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
+--- !u!1 &5789244749291389645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3595123194788358941}
+  - component: {fileID: 1846517885803824808}
+  m_Layer: 0
+  m_Name: B - CORE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3595123194788358941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789244749291389645}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2157481586928487952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1846517885803824808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789244749291389645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b39bda522e61dd48b3dbf454695e9fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
+  moduleLabel: B / CORE
+  radius: 0.9
+  portAngles:
+  - 270
+  - 0
+  - 90
+  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
+  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
+  selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}

@@ -1,0 +1,6 @@
+{
+  "name": "LudumDare60.AssemblyDemo.Editor",
+  "rootNamespace": "LudumDare60.AssemblyDemo.Editor",
+  "references": ["LudumDare60.AssemblyDemo", "WhiteboxModule.Runtime", "UnityEditor.TestRunner", "Unity.InputSystem"],
+  "includePlatforms": ["Editor"]
+}
