@@ -1,4 +1,6 @@
-param([Parameter(Mandatory = $true)][string]$UnityPath)
+param([Parameter(Mandatory = $true)][string]$UnityPath,
+      [ValidateSet('TerminalPrefabValidation.Run','TerminalScrollStabilityValidation.Run')]
+      [string]$ValidationMethod = 'TerminalPrefabValidation.Run')
 $ErrorActionPreference = 'Stop'
 $repository = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '../..'))
 $validation = Join-Path $repository '.utmp/TerminalPrefabValidation'
@@ -14,12 +16,13 @@ foreach ($relative in @('Assets/Scripts/TerminalDialogue/TerminalSalvageBridge.c
     if (-not $excluded.StartsWith($validation + [IO.Path]::DirectorySeparatorChar,[StringComparison]::OrdinalIgnoreCase)) { throw 'Unexpected validation path' }
     if (Test-Path -LiteralPath $excluded) { Remove-Item -LiteralPath $excluded }
 }
-foreach ($relative in @('Assets/Scenes/TerminalDialogueDemo.unity','Assets/Scenes/TerminalDialogueDemo.unity.meta','Assets/ArtAssets/3DModels/生命装置.glb','Assets/ArtAssets/3DModels/生命装置.glb.meta','Assets/CompactCockpit_WallIntegrated/Models/Screen_NAVIGATION.glb','Assets/CompactCockpit_WallIntegrated/Models/Screen_NAVIGATION.glb.meta','Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_NAVIGATION.prefab','Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_NAVIGATION.prefab.meta')) {
+foreach ($relative in @('Assets/Scenes/TerminalDialogueDemo.unity','Assets/Scenes/TerminalDialogueDemo.unity.meta','Assets/Prefabs/TerminalDialogue/DOS Terminal System.prefab','Assets/Prefabs/TerminalDialogue/DOS Terminal System.prefab.meta','Assets/ArtAssets/3DModels/生命装置.glb','Assets/ArtAssets/3DModels/生命装置.glb.meta','Assets/CompactCockpit_WallIntegrated/Models/Screen_NAVIGATION.glb','Assets/CompactCockpit_WallIntegrated/Models/Screen_NAVIGATION.glb.meta','Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_NAVIGATION.prefab','Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_NAVIGATION.prefab.meta')) {
     $destination = Join-Path $validation $relative
     New-Item -ItemType Directory -Force -Path (Split-Path -Parent $destination) | Out-Null
     Copy-Item -LiteralPath (Join-Path $repository $relative) -Destination $destination -Force
 }
 Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'PrefabValidation.cs') -Destination (Join-Path $validation 'Assets/Editor/PrefabValidation.cs') -Force
+Copy-Item -LiteralPath (Join-Path $PSScriptRoot 'ScrollStabilityValidation.cs') -Destination (Join-Path $validation 'Assets/Editor/ScrollStabilityValidation.cs') -Force
 Copy-Item -LiteralPath (Join-Path $repository 'ProjectSettings/ProjectVersion.txt') -Destination (Join-Path $validation 'ProjectSettings/ProjectVersion.txt') -Force
 $projectDependencies = (Get-Content -LiteralPath (Join-Path $repository 'Packages/manifest.json') -Raw | ConvertFrom-Json).dependencies
 $dependencies = @{}
@@ -27,6 +30,6 @@ foreach ($package in @('com.unity.render-pipelines.universal','com.unity.cloud.g
 foreach ($module in @('physics','imgui','animation','imageconversion','audio')) { $dependencies['com.unity.modules.' + $module] = '1.0.0' }
 @{ dependencies = $dependencies } | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $validation 'Packages/manifest.json') -Encoding utf8
 $validationLog = Join-Path $repository 'Logs/TerminalPrefabValidation.log'
-$arguments = '-batchmode -force-d3d11 -projectPath "{0}" -executeMethod TerminalPrefabValidation.Run -logFile "{1}"' -f $validation,$validationLog
+$arguments = '-batchmode -force-d3d11 -projectPath "{0}" -executeMethod {1} -logFile "{2}"' -f $validation,$ValidationMethod,$validationLog
 $process = Start-Process -FilePath $UnityPath -ArgumentList $arguments -WindowStyle Hidden -PassThru
 Write-Output ('Unity prefab validation process: {0}. Log: {1}' -f $process.Id,$validationLog)

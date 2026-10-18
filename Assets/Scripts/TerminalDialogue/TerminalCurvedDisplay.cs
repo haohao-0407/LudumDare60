@@ -75,6 +75,13 @@ namespace LudumDare60.TerminalDialogue
             captureTexts = copy.GetComponentsInChildren<TMP_Text>(true);
             sourceScroll = source.GetComponentInChildren<UnityEngine.UI.ScrollRect>(true);
             captureScroll = copy.GetComponentInChildren<UnityEngine.UI.ScrollRect>(true);
+            if (captureScroll != null)
+            {
+                // This is a display-only copy. A second ScrollRect otherwise clamps/integrates its
+                // content, then fights the position copied from the interactive source every frame.
+                captureScroll.StopMovement();
+                captureScroll.enabled = false;
+            }
             sourceRenderers = source.GetComponentsInChildren<CanvasRenderer>(true);
             originalAlphas = new float[sourceRenderers.Length];
             for (var i = 0; i < sourceRenderers.Length; i++) originalAlphas[i] = sourceRenderers[i].GetAlpha();
@@ -117,7 +124,10 @@ namespace LudumDare60.TerminalDialogue
                 copy.enabled = original.enabled;
             }
             Canvas.ForceUpdateCanvases();
-            if (sourceScroll != null && captureScroll != null) captureScroll.verticalNormalizedPosition = sourceScroll.verticalNormalizedPosition;
+            if (sourceScroll != null && captureScroll != null && sourceScroll.content != null && captureScroll.content != null)
+                // Identical UI hierarchies share UI coordinates. Avoid normalized-position setters:
+                // those recalculate world-space bounds and amplify rounding in the remote capture rig.
+                captureScroll.content.anchoredPosition = sourceScroll.content.anchoredPosition;
             HideFlatGraphics();
             RenderPipeline.SubmitRenderRequest(camera, new UniversalRenderPipeline.SingleCameraRequest { destination = Texture });
         }
