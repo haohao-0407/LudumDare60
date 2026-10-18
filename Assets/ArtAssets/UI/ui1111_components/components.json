@@ -1,0 +1,200 @@
+[
+  {
+    "file": "00_Background.png",
+    "size": [
+      5237,
+      3406
+    ],
+    "canvasPosition": [
+      1807,
+      861
+    ],
+    "sliceBorder": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "01_HeaderFrame.png",
+    "size": [
+      4895,
+      630
+    ],
+    "canvasPosition": [
+      1982,
+      906
+    ],
+    "sliceBorder": [
+      160,
+      160,
+      160,
+      160
+    ],
+    "source": "original PSD pixel crop",
+    "containsBakedBackground": true
+  },
+  {
+    "file": "02_GlassPanel.png",
+    "size": [
+      2921,
+      1795
+    ],
+    "canvasPosition": [
+      2120,
+      1786
+    ],
+    "sliceBorder": [
+      24,
+      24,
+      24,
+      24
+    ],
+    "source": "earlier reconstructed reference; not pixel-exact original"
+  },
+  {
+    "file": "03_BarLong.png",
+    "size": [
+      2921,
+      346
+    ],
+    "canvasPosition": [
+      2120,
+      1786
+    ],
+    "sliceBorder": [
+      16,
+      8,
+      16,
+      8
+    ]
+  },
+  {
+    "file": "04_BarMedium.png",
+    "size": [
+      1703,
+      329
+    ],
+    "canvasPosition": [
+      2115,
+      2271
+    ],
+    "sliceBorder": [
+      16,
+      8,
+      16,
+      8
+    ]
+  },
+  {
+    "file": "05_BarShort.png",
+    "size": [
+      1557,
+      314
+    ],
+    "canvasPosition": [
+      2115,
+      2744
+    ],
+    "sliceBorder": [
+      16,
+      8,
+      16,
+      8
+    ]
+  },
+  {
+    "file": "06_SliderBackground.png",
+    "size": [
+      2921,
+      321
+    ],
+    "canvasPosition": [
+      2120,
+      3260
+    ],
+    "sliceBorder": [
+      32,
+      24,
+      32,
+      24
+    ],
+    "source": "original PSD pixel crop",
+    "containsBakedBackground": true
+  },
+  {
+    "file": "07_SliderTrack.png",
+    "size": [
+      1756,
+      69
+    ],
+    "canvasPosition": [
+      2955,
+      3377
+    ],
+    "sliceBorder": [
+      35,
+      20,
+      35,
+      20
+    ],
+    "source": "original PSD pixel crop",
+    "containsBakedBackground": true
+  },
+  {
+    "file": "08_SliderHandle.png",
+    "size": [
+      133,
+      133
+    ],
+    "canvasPosition": [
+      3675,
+      3342
+    ],
+    "sliceBorder": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "file": "09_FooterStrip.png",
+    "size": [
+      5025,
+      190
+    ],
+    "canvasPosition": [
+      1902,
+      4071
+    ],
+    "sliceBorder": [
+      48,
+      24,
+      48,
+      24
+    ],
+    "source": "original PSD pixel crop",
+    "containsBakedBackground": true
+  },
+  {
+    "file": "10_SliderOriginal.png",
+    "size": [
+      2921,
+      321
+    ],
+    "canvasPosition": [
+      2120,
+      3260
+    ],
+    "sliceBorder": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "source": "original PSD merged preview pixel crop, including original handle",
+    "containsBakedBackground": true
+  }
+]

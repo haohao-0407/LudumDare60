@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.coplaydev.unity-mcp": "https://github.com/haohao-0407/unity-mcp.git?path=/MCPForUnity#beta",
+    "com.unity.2d.animation": "16.0.1",
+    "com.unity.2d.psdimporter": "15.0.1",
     "com.unity.cinemachine": "6.6.0",
     "com.unity.cloud.gltfast": "6.20.0",
     "com.unity.collab-proxy": "2.13.6",
