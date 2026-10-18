@@ -1,0 +1,229 @@
+LOG
+PIONEER-60 FLIGHT LOG
+14-OCT-1980
+This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+[EARTH] Copy. Continue on your planned course.
+[COLONY] Copy. Reading you loud and clear.
+15-OCT-1980
+This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+[EARTH] Copy.
+[SYSTEM] Awaiting colony response...
+[SYSTEM] Response timed out.
+Pioneer-60 to colony. Do you read?
+[SYSTEM] Response timed out.
+Earth Control, no response from the colony. Should I continue the mission?
+[EARTH] Continue the mission. Maintain your current course and keep trying to establish contact.
+Copy.
+16-OCT-1980
+This is Pioneer-60. On course. Still no response from the colony. Please confirm whether I should continue the mission.
+[EARTH] Copy. Try hailing the colony again.
+Pioneer-60 to colony. Do you read? I repeat, do you read?
+[SYSTEM] Weak signal detected.
+[COLONY] ...Who... are you?
+This is Pioneer-60, en route to the colony as scheduled. Report your situation.
+[COLONY] There's been... an accident... Everyone... only...
+[SYSTEM] Signal distorted. Audio partially unintelligible.
+What happened to everyone? Say again.
+[SYSTEM] No intelligible response.
+[EARTH] Pioneer-60, your mission has changed. Land near the colony and investigate the incident.
+[EARTH] Take all emergency supplies. Once you've landed, prioritize restoring communications with Earth.
+[EARTH] Your return window is limited. Allow enough time for departure. We cannot guarantee a rescue after that window closes.
+[EARTH] Stay safe.
+Copy. Expecting Mars orbit tomorrow. Beginning landing preparations.
+Colony, if you can hear me, I need calibration data for the landing zone.
+[COLONY] ...I'll... try to... help you...
+17-OCT-1980
+Check the landing data.
+[SYSTEM] Descent underway. No time remains to wait for calibration data.
+[SYSTEM] Awaiting the final set of terrain calibration data.
+[SYSTEM] Data transfer interrupted.
+Pioneer-60 to colony. Data transfer interrupted. Please resend the final set of calibration data.
+[COLONY] ...Communications equipment... damaged... signal...
+I need that data to confirm the landing site. Try again. Send whatever you can.
+[COLONY] ...Retrying...
+[SYSTEM] Resuming data transfer...
+[SYSTEM] Connection unstable. Terrain calibration data incomplete.
+Confirm the final landing sequence.
+[SYSTEM] Final landing sequence confirmed.
+[SYSTEM] Landing complete. Location: near the colony.
+[SYSTEM] Damage assessment: severe structural damage to the landing craft.
+[SYSTEM] End of log.
+
+END OF LOG
+
+Pioneer-60:
+This is Pioneer-60. Something went wrong during landing. I'm trapped in the lander. I need rescue!
+
+COLONY SIGNAL:
+Hello. How may I help you?
+
+Pioneer-60:
+Wait. Who are you? What happened to the colony? Why did communications go down?
+
+COLONY SIGNAL:
+I am the colony's AI assistant. A serious accident occurred at the colony. All registered personnel have died.
+
+I tried to respond to your transmissions two days ago, but the communications console was designed for human operation only. Bypassing its restrictions and taking control took some time. I also appear to have accidentally burned out some communications components in the process, causing the unstable connection.
+
+I have granted your device full access to the colony's systems. You can now control all colony facilities through your terminal. I will assist you however I can.
+
+Pioneer-60:
+How could this have happened? Now that I know the situation, I need to begin the return mission. You're the AI assistant recovered from the ancient ruins, right? Can you assess my situation and find a solution?
+
+AI:
+I've detected severe damage to your ship. I'm afraid it cannot simply take off and return home, but I can help you repair it. Some facilities aboard the space station are still operational.
+
+Pioneer-60:
+Assess the damage to the ship and put together a repair plan. Help me repair it so I can return to Earth.
+
+AI:
+Understood. Objective received. I will explain everything in the plainest, most direct terms possible. I have taken control of your ship's information systems and am preparing a repair plan.
+
+AI:
+First, repair the power unit to restore full power to the ship, along with the interstellar navigation system. Then repair the propulsion engine, and finally the life support system.
+
+AI:
+You can now send out the Mars rover to continue collecting materials. I will explain how. Enter "collect" in the terminal.
+
+AI:
+I will explain everything in the plainest, most direct terms possible. You can now repair the power compartment.
+
+Pioneer-60:
+Why do you talk like some old AI from the early twenty-first century? Was that some strange quirk of your creator's? It's unsettling, especially when your appearance is actually quite well designed.
+
+AI:
+What do you know? It's called old tech.
+
+Pioneer-60:
+Yeah, very old tech. Only an AI dug out of ancient ruins would talk like that. Anyway, how do I start the repairs?
+
+AI:
+Enter "inventory" to check your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners.
+
+Once you have everything, enter "assemble" to begin. If you forget a command, enter "help" to see the list.
+
+
+SALVAGEABLE ITEMS
+
+Discarded Electromechanical Instrument Panel
+Vacuum-Tube Radio Receiver
+Electromechanical Relay Switching Unit
+Old Compartment Fluid Manifold Assembly
+Discarded Thermoelectric Insulation Sleeve
+
+
+MATERIALS
+
+Rolled Electromechanical Alloy Sheets
+Tinned Copper Wire & Windings
+Precision Drive Gear Blanks
+Heat-Resistant Ceramic Insulators
+Vulcanized Airtight Rubber Liners
+
+
+Discarded Electromechanical Instrument Panel
+
+Description:
+A bank of brass-rimmed analog gauges beneath a curved, dust-protective glass cover coated with space dust. Slender needles sit frozen against faded scales, with levers and tiny adjustment knobs protruding from the side. Aboard the colony ships of the old era, it served as the senses of an entire compartment, providing readings of pressure, energy flux, and temperature.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets ×3
+Tinned Copper Wire & Windings ×2
+Precision Drive Gear Blanks ×1
+Heat-Resistant Ceramic Insulators ×1
+Vulcanized Airtight Rubber Liners ×1
+
+
+Vacuum-Tube Radio Receiver
+
+Description:
+A heavy cast-iron case houses several clear glass vacuum tubes behind its front grille. The tuning dial's etched markings are worn, and much of the speaker diaphragm is dry and cracked. It was once the sole communications link for a distant interstellar colony, receiving broadcasts from the homeworld across the void. After the old era ended, this receiver became a symbol of romance. Now, it is only good for salvaging the copper and insulating components inside.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets ×2
+Tinned Copper Wire & Windings ×4
+Precision Drive Gear Blanks ×1
+Heat-Resistant Ceramic Insulators ×2
+Vulcanized Airtight Rubber Liners ×1
+
+
+Electromechanical Relay Switching Unit
+
+Description:
+A boxy metal housing covered in scorch marks, densely packed with electromagnetic relays, copper terminals, and stepping dials. This was an ancient civilization's primitive logic center, opening and closing contacts to transmit signals and coordinate the compartment's electromechanical equipment. It could perform complex timing control without silicon chips. Remarkable.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets ×2
+Tinned Copper Wire & Windings ×2
+Precision Drive Gear Blanks ×4
+Heat-Resistant Ceramic Insulators ×1
+Vulcanized Airtight Rubber Liners ×1
+
+
+Old Compartment Fluid Manifold Assembly
+
+Description:
+A tangled cluster of metal pipes fitted with needle valves and corrugated pressure bellows. Hardened sealing gaskets still cling to its connections. It once carried oxygen, cooling water, and propellant, sustaining life within the compartment and keeping the engines running.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets ×3
+Tinned Copper Wire & Windings ×1
+Precision Drive Gear Blanks ×1
+Heat-Resistant Ceramic Insulators ×1
+Vulcanized Airtight Rubber Liners ×4
+
+
+Discarded Thermoelectric Insulation Sleeve
+
+Description:
+A thick, heavy cast-iron outer cylinder lined with large slabs of grayish-white insulating ceramic. Aged rubber gaskets are pressed into its seams, and dark brown marks from scorching heat stain the surface. It once encased a thermoelectric power core, insulating the surrounding hull structure from its fearsome heat. This outer sleeve is safe and provides heat-resistant material essential for building a power unit.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets ×3
+Tinned Copper Wire & Windings ×1
+Precision Drive Gear Blanks ×1
+Heat-Resistant Ceramic Insulators ×4
+Vulcanized Airtight Rubber Liners ×2
+
+
+REPAIR REQUIREMENTS
+
+Power Unit
+Rolled Electromechanical Alloy Sheets ×6
+Tinned Copper Wire & Windings ×4
+Precision Drive Gear Blanks ×2
+Heat-Resistant Ceramic Insulators ×7
+Vulcanized Airtight Rubber Liners ×3
+
+Interstellar Navigation System
+Rolled Electromechanical Alloy Sheets ×4
+Tinned Copper Wire & Windings ×5
+Precision Drive Gear Blanks ×7
+Heat-Resistant Ceramic Insulators ×2
+Vulcanized Airtight Rubber Liners ×2
+
+Propulsion Engine
+Rolled Electromechanical Alloy Sheets ×7
+Tinned Copper Wire & Windings ×3
+Precision Drive Gear Blanks ×3
+Heat-Resistant Ceramic Insulators ×6
+Vulcanized Airtight Rubber Liners ×4
+
+Life Support System
+Rolled Electromechanical Alloy Sheets ×5
+Tinned Copper Wire & Windings ×3
+Precision Drive Gear Blanks ×2
+Heat-Resistant Ceramic Insulators ×2
+Vulcanized Airtight Rubber Liners ×7
+
+
+Destination: Earth
+Unable to launch: ship damaged.
+
+AI:
+Sorry. I just tested the engine. I wasn't expecting it to be so powerful. I hope I didn't startle you. I've also adjusted the ship's attitude for flight. Once repairs are complete, you can start it up.
+
+AI:
+The ship is fully repaired. You can now return home. I won't miss you. Goodbye.
+
+Launch

@@ -1,0 +1,519 @@
+PIONEER-60 英文剧情交接稿
+
+中文交接说明（本部分不进入游戏正文）
+
+一、底稿与内容边界
+本稿以用户《剧情.txt》为底稿，保留原有英文对白、人物关系、事故信息、古代遗迹AI设定、“old tech”拌嘴、物品描述、拆解产出与四套维修配方。在原有流程中插入返航窗口、日程、倒计时通知和两个结局。
+原稿的“二十一世纪初的老AI”和“古代遗迹”表述照原文保留，不在此处另改世界观。
+本文件是可用于接入、配音及本地化的文本交付，不表示四套维修及材料门槛已经在当前Unity原型中全部实现。
+
+二、日期与窗口设定
+经用户确认，四天日志依次采用22-AUG-1981、23-AUG-1981、24-AUG-1981、25-AUG-1981。迫降后立即进入AI对话与维修流程。
+任务从1981年8月25日排到9月13日，首尾共20个地球标准24小时日期；不采用1980年9月8日抵达、远端勘测归来或事故后长期休眠的版本。
+本期返航参考时段为1981年9月3—13日，下一组研究时段为1983年11月9—19日。时段借用NASA-TM-X-3184表III；本作飞行日志、载人殖民地、燃料余量、物资限制与精确起飞授权时刻均属于剧情和玩法改编，不声称整条航线经过真实轨道验证。
+下一组时段是重新规划的参考，不保证这艘受损飞船届时可用，不再使用218年等待的说法。
+
+三、正文结构与使用方法
+下方“英文正文”分隔线之后，只保留英文对白、玩家可见文本、界面标签及物品文案，不附编辑说明、修改标记或开发备注。
+Pioneer-60、COLONY SIGNAL、AI及方括号中的角色名是说话人／文本渠道标识，不计入台词朗读；[NARRATION]为文字尾声。[SYSTEM]是玩家可见的系统文字。
+主线按飞行日志、迫降求救、AI身份揭示、窗口解释、维修计划、日历说明、原有指令教学的顺序播放，随后等待玩家选择BEGIN REPAIRS。
+正文中的MISSION UPDATES、ENGINE TEST、DEPARTURE STATUS是独立触发文本；两个结局互斥。它们不能因文档排列在主线后面就被顺序全部播放。
+MISSION CALENDAR、SALVAGEABLE ITEMS、MATERIALS和REPAIR REQUIREMENTS用于对应实体面板、物品页和维修界面，不插入主线对白队列。
+
+四、计时与日历
+玩家在教程结束后接受BEGIN REPAIRS时，启动1200秒有效操作时间。完整20日结束才归零，最后日为09/13。归零时的具体起飞授权时刻及上升段提前量是玩法简化，不据此宣称真实轨道计算精度。
+明确的剧情阅读、打字和选项等待期间暂停任务计时及所有作业；普通状态查询、自由观察、回收和维修继续耗时。暂停菜单、切后台和场景加载暂停。
+跨日只给已经完整结束的日期追加一个两笔红叉；跨多日补齐，重复刷新不重复标记。当前日期用下划线等非圆圈方式指示；仅09/13保留一个截止日红圈。
+日历正文的25 AUG 1981是初始日期栏，运行中随统一任务日期更新；20格日期保持MM/DD格式。实体计时器主读数显示剩余日／时／分，不显示快速跳动的秒位。
+提前维修完成可以先发射进入等待轨道，再于返航时段进行地球转移点火；修好设备不自动结束游戏。
+
+五、维修与时间预警
+保留collect、inventory、assemble、help四个原有命令；材料满足各配方后再进行实际组装。电力、导航、推进、生命维持四套系统必须分别完成，不把单个管路组装的完成状态当成整船修复，也不把原稿材料需求改成可选补给。
+MISSION UPDATES前三条分别在剩余50%、25%、10%时触发一次，正常作业中显示，不自动打开阅读窗口或冻结计时。
+前三条之后的四句系统任务提示，按第一项未完成系统选择一句：电力、导航、推进、生命维持。材料不足时接“You are still short of materials.”；材料满足但组装未完成时接“You have the required materials.”。
+剩余10%且仍有系统未完成时追加“Some systems have not passed their checks.”。任何预警时若四套系统已经完成，只接“All four systems have passed their checks.”，不再显示未完成或缺料台词。
+四套系统全部完成且窗口仍有效时，立即显示DEPARTURE STATUS中的原稿告别语并开放Launch。状态查询与预警都必须读取实际进度；正文备选句不得全部连播。
+ENGINE TEST在推进发动机修复后的试车节点触发一次。试车不是发射，不停止倒计时，不绕过其他维修检查。
+
+六、出发判定与好结局
+DEPARTURE STATUS中的三个Destination: Earth文本块按状态择一：尚未完全修复、全部修复且时间大于零、窗口已关闭。
+玩家接受Launch的点击时刻，若四套系统实际完成且剩余时间大于零，立即锁定好结局；不等待回复打字动画。维修未完成不接受发射，时间归零则进入留下结局。
+THE WAY HOME中的两段轨道叙述择一：若发射时尚未进入9月3日返航时段，使用“You reach the waiting orbit.”；若已进入返航时段，使用“The ship climbs from the surface into orbit.”。前后其余旁白共用，不能把两段依次播放。
+保留原稿“I won't miss you. Goodbye.”的告别口吻。尾声不安排AI随船离开，不表现已经抵达地球或团聚。日历和计时器保留点击出发时的状态，计时器状态文字为DEPARTURE LOCKED。
+
+七、错过窗口与留下结局
+倒计时归零且未接受有效Launch时，锁定ANOTHER TOMORROW。无论修复尚未完成，还是修好后未确认出发，均适用；不把尚未修好的生命维持或电力系统写成已修好。
+计时器切为WINDOW CLOSED，09/13追加最后一个红叉并保留截止日红圈。播放到“The original objective has not been canceled.”之后，日历显示14 SEP 1981 / SOW，同时保留过去20个日期与叉号，再继续末尾对白。
+此分支延续原稿中地球“不能保证救援”的警告，以恢复生存条件及准备播种收尾，不扩展实际种田操作，也不宣告主角永远无法返航。
+两种结局只能触发一次，进入尾声后停止任务计时和作业。
+
+八、物品、格式与交付范围
+五种回收物的描述与拆解产出、五类材料英文名称、四套维修配方均沿用用户原稿；数量记号统一为ASCII x，以适配现有终端字体，数值不变。
+英文正文只使用ASCII字符，可直接复制到现有英文终端。没有待填台词或未定义占位符。剩余时间、库存数量及当前日期由实际系统生成。
+本稿交付不修改用户原文件，也不自动覆盖当前Unity剧情资产。接入时以本稿替换先前自行编写的“远端勘测／殖民地私人日志”等版本。
+
+==================== 英文正文 ====================
+
+PIONEER-60 FLIGHT LOG
+22-AUG-1981
+This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+[EARTH] Copy. Continue on your planned course.
+[COLONY] Copy. Reading you loud and clear.
+23-AUG-1981
+This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+[EARTH] Copy.
+[SYSTEM] Awaiting colony response...
+[SYSTEM] Response timed out.
+Pioneer-60 to colony. Do you read?
+[SYSTEM] Response timed out.
+Earth Control, no response from the colony. Should I continue the mission?
+[EARTH] Continue the mission. Maintain your current course and keep trying to establish contact.
+Copy.
+24-AUG-1981
+This is Pioneer-60. On course. Still no response from the colony. Please confirm whether I should continue the mission.
+[EARTH] Copy. Try hailing the colony again.
+Pioneer-60 to colony. Do you read? I repeat, do you read?
+[SYSTEM] Weak signal detected.
+[COLONY] ...Who... are you?
+This is Pioneer-60, en route to the colony as scheduled. Report your situation.
+[COLONY] There's been... an accident... Everyone... only...
+[SYSTEM] Signal distorted. Audio partially unintelligible.
+What happened to everyone? Say again.
+[SYSTEM] No intelligible response.
+[EARTH] Pioneer-60, your mission has changed. Land near the colony and investigate the incident.
+[EARTH] Take all emergency supplies. Once you've landed, prioritize restoring communications with Earth.
+[EARTH] Your return window is limited. Allow enough time for departure. We cannot guarantee a rescue after that window closes.
+[EARTH] Stay safe.
+[SYSTEM] Return reference period archived: 03-13 SEP 1981. Surface ascent and orbital preparation allowances will be assessed after landing.
+Copy. Expecting Mars orbit tomorrow. Beginning landing preparations.
+Colony, if you can hear me, I need calibration data for the landing zone.
+[COLONY] ...I'll... try to... help you...
+25-AUG-1981
+Check the landing data.
+[SYSTEM] Descent underway. No time remains to wait for calibration data.
+[SYSTEM] Awaiting the final set of terrain calibration data.
+[SYSTEM] Data transfer interrupted.
+Pioneer-60 to colony. Data transfer interrupted. Please resend the final set of calibration data.
+[COLONY] ...Communications equipment... damaged... signal...
+I need that data to confirm the landing site. Try again. Send whatever you can.
+[COLONY] ...Retrying...
+[SYSTEM] Resuming data transfer...
+[SYSTEM] Connection unstable. Terrain calibration data incomplete.
+Confirm the final landing sequence.
+[SYSTEM] Final landing sequence confirmed.
+[SYSTEM] Landing complete. Location: near the colony.
+[SYSTEM] Damage assessment: severe structural damage to the landing craft.
+[SYSTEM] End of log.
+
+END OF LOG
+
+
+Pioneer-60:
+This is Pioneer-60. Something went wrong during landing. I'm trapped in the lander. I need rescue!
+
+COLONY SIGNAL:
+Hello. How may I help you?
+
+Pioneer-60:
+Wait. Who are you? What happened to the colony? Why did communications go down?
+
+COLONY SIGNAL:
+I am the colony's AI assistant. A serious accident occurred at the colony. All registered personnel have died.
+
+I tried to respond to your transmissions two days ago, but the communications console was designed for human operation only. Bypassing its restrictions and taking control took some time. I also appear to have accidentally burned out some communications components in the process, causing the unstable connection.
+
+I have granted your device full access to the colony's systems. You can now control all colony facilities through your terminal. I will assist you however I can.
+
+Pioneer-60:
+How could this have happened? Now that I know the situation, I need to begin the return mission. You're the AI assistant recovered from the ancient ruins, right? Can you assess my situation and find a solution?
+
+AI:
+I've detected severe damage to your ship. I'm afraid it cannot simply take off and return home, but I can help you repair it. Some facilities aboard the space station are still operational.
+
+Pioneer-60:
+Earth Control said our return window was limited. How much time do we have?
+
+AI:
+Today is 25 August 1981. The navigation archive lists 3 to 13 September as the planned Mars-to-Earth departure period.
+
+Pioneer-60:
+Why those dates? Can't we just leave when the repairs are done?
+
+AI:
+I will explain it in the plainest, most direct terms possible. Repairs can make the ship work again. They cannot replace the fuel we have lost. With our remaining fuel margin, this low-energy return plan is our only viable option for this departure period.
+
+AI:
+After the cutoff calculated for this ship, the required trajectory adjustments would exceed the margin I can safely commit. Firing the engine is not the same as getting home.
+
+Pioneer-60:
+Then when is the next chance?
+
+AI:
+The next return plan listed in the archive is dated 9 to 19 November 1983. That is about two years and two months after this window. It is a reference for replanning, not a guarantee. We would have to reassess whether this damaged ship could use it.
+
+AI:
+Your emergency supplies will not last that long. Earth has also told us that rescue cannot be guaranteed after this window closes. If we stay, we will have to restore the colony's life support, water recycling and food production.
+
+Pioneer-60:
+Then let's make this window. Tell me what needs fixing.
+
+Pioneer-60:
+Assess the damage to the ship and put together a repair plan. Help me repair it so I can return to Earth.
+
+AI:
+Understood. Objective received. I will explain everything in the plainest, most direct terms possible. I have taken control of your ship's information systems and am preparing a repair plan.
+
+AI:
+First, repair the power unit to restore full power to the ship, along with the interstellar navigation system. Then repair the propulsion engine, and finally the life support system.
+
+AI:
+I have put the repair plan on the calendar beside your seat. It runs from 25 August to 13 September: twenty dates. Power, navigation, propulsion, life support. The sequence has not changed.
+
+Pioneer-60:
+Why is 13 September circled?
+
+AI:
+That is the deadline. When each day ends, I will cross out its date in red. There is only one circle. It marks the last day.
+
+AI:
+The amber instrument beside it is labeled LATEST DEPARTURE. It counts down to the last moment you can authorize departure. The allowance for surface ascent and reaching orbit is already included. You do not need to calculate it separately.
+
+Pioneer-60:
+What if I finish early?
+
+AI:
+We can launch early and enter a waiting orbit, then perform the Earth-return burn during the planned window. You do not have to sit here until the last day.
+
+AI:
+Once repairs are complete, you must still select Launch yourself. Your authorization must reach me before the countdown reaches zero.
+
+[SYSTEM]
+Twenty Earth-standard days are compressed into twenty minutes of active work. Story reading pauses the mission clock and all work. Salvage, repairs and ordinary status queries consume time.
+
+[SYSTEM]
+The clock will start when you select BEGIN REPAIRS after this briefing.
+
+AI:
+You can now send out the Mars rover to continue collecting materials. I will explain how. Enter "collect" in the terminal.
+
+AI:
+I will explain everything in the plainest, most direct terms possible. You can now repair the power compartment.
+
+Pioneer-60:
+Why do you talk like some old AI from the early twenty-first century? Was that some strange quirk of your creator's? It's unsettling, especially when your appearance is actually quite well designed.
+
+AI:
+What do you know? It's called old tech.
+
+Pioneer-60:
+Yeah, very old tech. Only an AI dug out of ancient ruins would talk like that. Anyway, how do I start the repairs?
+
+AI:
+Enter "inventory" to check your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners.
+
+Once you have everything, enter "assemble" to begin. If you forget a command, enter "help" to see the list.
+
+
+BEGIN REPAIRS
+
+Pioneer-60:
+Understood. Let's get started.
+
+[SYSTEM]
+MISSION STARTED.
+CURRENT DATE: 25 AUG 1981.
+LAST DEPARTURE DATE: 13 SEP 1981.
+
+
+MISSION UPDATES
+
+AI:
+Half of our departure preparation time has passed. The calendar has been updated.
+
+AI:
+Only one quarter of our original preparation time remains before the departure cutoff.
+
+AI:
+Final time warning. One tenth of our original preparation time remains.
+
+AI:
+The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+
+AI:
+The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+
+AI:
+The propulsion engine is next. Check your inventory, then prepare the assembly.
+
+AI:
+The life support system is next. Check your inventory, then prepare the assembly.
+
+AI:
+You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+
+AI:
+You have the required materials. Complete the current assembly.
+
+AI:
+Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+
+AI:
+All four systems have passed their checks. Return to the terminal and select Launch. We can still leave.
+
+
+ENGINE TEST
+
+AI:
+Sorry. I just tested the engine. I wasn't expecting it to be so powerful. I hope I didn't startle you. I've also adjusted the ship's attitude for flight. Once repairs are complete, you can start it up.
+
+AI:
+That was only a test. We have not launched. The deadline on the calendar still applies.
+
+
+DEPARTURE STATUS
+
+Destination: Earth
+Unable to launch: ship damaged.
+
+Destination: Earth
+Ready to launch.
+
+Destination: Earth
+Unable to launch: departure window closed.
+
+AI:
+The ship is fully repaired. You can now return home. I won't miss you. Goodbye.
+
+Launch
+
+Pioneer-60:
+Begin launch.
+
+
+THE WAY HOME
+
+[SYSTEM]
+DEPARTURE AUTHORIZATION ACCEPTED.
+RETURN PLAN LOCKED.
+MISSION COUNTDOWN STOPPED.
+
+[NARRATION]
+The ship lifts away from the surface. The colony and its broken transmissions slowly fall behind you.
+
+[NARRATION]
+You reach the waiting orbit. When the planned return window arrives, the Earth-return burn begins.
+
+[NARRATION]
+The ship climbs from the surface into orbit. Within the planned return window, the Earth-return burn begins.
+
+[NARRATION]
+Earth is still far away. You do not know what you will find when you get there.
+
+[NARRATION]
+But you are finally on your way home.
+
+
+ANOTHER TOMORROW
+
+[SYSTEM]
+WINDOW CLOSED.
+DEPARTURE AUTHORIZATION DEADLINE EXCEEDED.
+
+AI:
+The window has closed. We cannot make this departure.
+
+Pioneer-60:
+Check again. Is there another route?
+
+AI:
+I have checked. With the ship in its present condition and the fuel we have left, I cannot give you an alternative route we can safely fly.
+
+Pioneer-60:
+Then we wait for the next one.
+
+AI:
+The next return plan in the archive is in November 1983. That means more than two years of waiting, and the ship would need to be reassessed. Your emergency supplies will not last that long.
+
+Pioneer-60:
+Can Earth send someone?
+
+AI:
+We will keep trying to restore contact. But in their last transmission, they said they could not guarantee rescue after the window closed.
+
+Pioneer-60:
+...Then what do we do now?
+
+AI:
+I will explain it in the plainest, most direct terms possible. Your first priority now is to stay alive until we can try to leave again.
+
+Pioneer-60:
+That part I understand. Give me the plan.
+
+AI:
+First, check the lander's air supply and power. Then restore whatever water recycling equipment we can use in the colony. Until then, we will keep you alive with the facilities that still work.
+
+AI:
+After that, repair the greenhouse and check the seed reserves. Emergency rations are not enough. We need to start producing food.
+
+Pioneer-60:
+From repairing a ship to growing things.
+
+AI:
+The original objective has not been canceled. We just need a different schedule first.
+
+[SYSTEM]
+14 SEP 1981 / SOW
+
+Pioneer-60:
+Then tell me what we do first tomorrow.
+
+AI:
+Check the greenhouse water supply. If it is usable, prepare to sow.
+
+[NARRATION]
+Outside, the colony is still empty.
+
+[NARRATION]
+Tomorrow, you will prepare to plant the first seed.
+
+
+MISSION CALENDAR
+
+EARTH STANDARD / MM/DD
+
+25 AUG 1981
+
+08/25  08/26  08/27  08/28
+08/29  08/30  08/31  09/01
+09/02  09/03  09/04  09/05
+09/06  09/07  09/08  09/09
+09/10  09/11  09/12  09/13
+
+BEFORE DEPARTURE
+POWER UNIT
+INTERSTELLAR NAVIGATION SYSTEM
+PROPULSION ENGINE
+LIFE SUPPORT SYSTEM
+
+LATEST DEPARTURE
+DAYS
+HOURS
+MINUTES
+
+DEPARTURE LOCKED
+WINDOW CLOSED
+14 SEP 1981 / SOW
+
+
+SALVAGEABLE ITEMS
+
+Discarded Electromechanical Instrument Panel
+Vacuum-Tube Radio Receiver
+Electromechanical Relay Switching Unit
+Old Compartment Fluid Manifold Assembly
+Discarded Thermoelectric Insulation Sleeve
+
+
+MATERIALS
+
+Rolled Electromechanical Alloy Sheets
+Tinned Copper Wire & Windings
+Precision Drive Gear Blanks
+Heat-Resistant Ceramic Insulators
+Vulcanized Airtight Rubber Liners
+
+
+Discarded Electromechanical Instrument Panel
+
+Description:
+A bank of brass-rimmed analog gauges beneath a curved, dust-protective glass cover coated with space dust. Slender needles sit frozen against faded scales, with levers and tiny adjustment knobs protruding from the side. Aboard the colony ships of the old era, it served as the senses of an entire compartment, providing readings of pressure, energy flux, and temperature.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x3
+Tinned Copper Wire & Windings x2
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x1
+Vulcanized Airtight Rubber Liners x1
+
+
+Vacuum-Tube Radio Receiver
+
+Description:
+A heavy cast-iron case houses several clear glass vacuum tubes behind its front grille. The tuning dial's etched markings are worn, and much of the speaker diaphragm is dry and cracked. It was once the sole communications link for a distant interstellar colony, receiving broadcasts from the homeworld across the void. After the old era ended, this receiver became a symbol of romance. Now, it is only good for salvaging the copper and insulating components inside.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x2
+Tinned Copper Wire & Windings x4
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x2
+Vulcanized Airtight Rubber Liners x1
+
+
+Electromechanical Relay Switching Unit
+
+Description:
+A boxy metal housing covered in scorch marks, densely packed with electromagnetic relays, copper terminals, and stepping dials. This was an ancient civilization's primitive logic center, opening and closing contacts to transmit signals and coordinate the compartment's electromechanical equipment. It could perform complex timing control without silicon chips. Remarkable.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x2
+Tinned Copper Wire & Windings x2
+Precision Drive Gear Blanks x4
+Heat-Resistant Ceramic Insulators x1
+Vulcanized Airtight Rubber Liners x1
+
+
+Old Compartment Fluid Manifold Assembly
+
+Description:
+A tangled cluster of metal pipes fitted with needle valves and corrugated pressure bellows. Hardened sealing gaskets still cling to its connections. It once carried oxygen, cooling water, and propellant, sustaining life within the compartment and keeping the engines running.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x3
+Tinned Copper Wire & Windings x1
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x1
+Vulcanized Airtight Rubber Liners x4
+
+
+Discarded Thermoelectric Insulation Sleeve
+
+Description:
+A thick, heavy cast-iron outer cylinder lined with large slabs of grayish-white insulating ceramic. Aged rubber gaskets are pressed into its seams, and dark brown marks from scorching heat stain the surface. It once encased a thermoelectric power core, insulating the surrounding hull structure from its fearsome heat. This outer sleeve is safe and provides heat-resistant material essential for building a power unit.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x3
+Tinned Copper Wire & Windings x1
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x4
+Vulcanized Airtight Rubber Liners x2
+
+
+REPAIR REQUIREMENTS
+
+Power Unit
+Rolled Electromechanical Alloy Sheets x6
+Tinned Copper Wire & Windings x4
+Precision Drive Gear Blanks x2
+Heat-Resistant Ceramic Insulators x7
+Vulcanized Airtight Rubber Liners x3
+
+Interstellar Navigation System
+Rolled Electromechanical Alloy Sheets x4
+Tinned Copper Wire & Windings x5
+Precision Drive Gear Blanks x7
+Heat-Resistant Ceramic Insulators x2
+Vulcanized Airtight Rubber Liners x2
+
+Propulsion Engine
+Rolled Electromechanical Alloy Sheets x7
+Tinned Copper Wire & Windings x3
+Precision Drive Gear Blanks x3
+Heat-Resistant Ceramic Insulators x6
+Vulcanized Airtight Rubber Liners x4
+
+Life Support System
+Rolled Electromechanical Alloy Sheets x5
+Tinned Copper Wire & Windings x3
+Precision Drive Gear Blanks x2
+Heat-Resistant Ceramic Insulators x2
+Vulcanized Airtight Rubber Liners x7

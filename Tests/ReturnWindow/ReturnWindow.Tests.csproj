@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <RestoreSources></RestoreSources>
+    <RestoreConfigFile>$(MSBuildThisFileDirectory)NuGet.Config</RestoreConfigFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../Assets/ReturnWindow/Runtime/MissionClock.cs" />
+    <Compile Include="../../Assets/ReturnWindow/Runtime/MissionSchedule.cs" />
+    <Compile Include="MissionClockTests.cs" />
+  </ItemGroup>
+</Project>

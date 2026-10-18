@@ -11,6 +11,8 @@ namespace LudumDare60.Salvage
         [SerializeField] private SalvagePool pool;
         [SerializeField] private SalvageDefinition defaultDefinition;
         private SalvageSession session;
+        private bool gameplayBlocked;
+        private bool manuallyPaused;
 
         private SalvageSession Session
         {
@@ -29,6 +31,19 @@ namespace LudumDare60.Salvage
         public bool IsActive => Session.IsActive;
         public SalvagePool Pool => pool;
         public SalvageDefinition DefaultDefinition => defaultDefinition;
+
+        /// <summary>Mission reading/menu/end-state pause, independent of a local salvage pause.</summary>
+        public bool GameplayBlocked
+        {
+            get => gameplayBlocked;
+            set
+            {
+                if (gameplayBlocked == value) return;
+                gameplayBlocked = value;
+                Session.SetPaused(gameplayBlocked || manuallyPaused);
+                if (gameplayBlocked) Session.SetControlHeld(false);
+            }
+        }
         public event Action<SalvageSnapshot> SnapshotChanged;
         public event Action<SalvageResult> Completed;
 
@@ -47,7 +62,7 @@ namespace LudumDare60.Salvage
 
         public bool TryStartSalvage(SalvageDefinition definition, int? randomSeed = null)
         {
-            if (!isActiveAndEnabled || definition == null || Session.IsActive) return false;
+            if (gameplayBlocked || manuallyPaused || !isActiveAndEnabled || definition == null || Session.IsActive) return false;
             return Session.TryStart(definition.CreateSettings(), definition.CreateTarget(), randomSeed);
         }
 
@@ -55,12 +70,12 @@ namespace LudumDare60.Salvage
         public void StartSalvage() => TryStartSalvage();
         public void PressControl() => SetControlHeld(true);
         public void ReleaseControl() => SetControlHeld(false);
-        public void SetControlHeld(bool held) => Session.SetControlHeld(held);
-        public bool TryLockTarget() => Session.TryLockTarget();
-        public void SetPaused(bool paused) => Session.SetPaused(paused);
+        public void SetControlHeld(bool held) { if (!held || !gameplayBlocked) Session.SetControlHeld(held); }
+        public bool TryLockTarget() => !gameplayBlocked && Session.TryLockTarget();
+        public void SetPaused(bool paused) { manuallyPaused = paused; Session.SetPaused(paused || gameplayBlocked); }
         public void CancelSalvage() => Session.Cancel();
 
-        private void Update() => Session.Tick(Time.deltaTime);
+        private void Update() { if (!gameplayBlocked) Session.Tick(Time.deltaTime); }
 
         private void OnDisable()
         {

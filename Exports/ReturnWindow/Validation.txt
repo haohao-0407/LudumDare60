@@ -1,0 +1,29 @@
+RETURN WINDOW - implementation validation
+Validated on 2026-10-18 with Unity 6000.6.5f1.
+Base branch: codex/audio-ready. Feature branch: codex/return-window.
+
+PASS 20/20 pure MissionClock and civil-calendar tests.
+PASS 17/17 terminal session regression tests.
+PASS 6/6 terminal controller and authored story tests.
+PASS 74/74 Unity EditMode assembly tests in the previous feature acceptance;
+assembly implementation is unchanged by this date revision.
+PASS 9/9 real Unity play-mode integration checks (see RuntimeValidation.txt).
+
+Integration checks exercise the actual generated scene, dialogue callbacks,
+real assembly joints, overlapping pauses, asynchronous scene reload, isolated
+inventory, confirmed departure, expiry and clean restart.
+Date revision also checks all twenty MM/DD cells, August/September rollover,
+two-stroke crosses, exactly one deadline ring on 09/13, retained completed
+dates after expiry and the 09/14 sowing entry.
+
+Historical basis: NASA-TM-X-3184, Table III (printed page 16 / PDF page 23).
+Arrival record: 1980-09-08. Playable dates: 1981-08-25 through 1981-09-13.
+Later study period: 1983-11-09 through 1983-11-19, subject to craft reassessment.
+See Assets/ReturnWindow/Story/ArchiveBasis.txt for fictional adaptations.
+
+Verified captures: SourceArt/ReturnWindow/Previews/Unity_Cockpit.png,
+Unity_HomeEnding.png, Unity_StayEnding.png, and Unity_Props_*.png.
+
+Scope: the 20-minute deadline is the first tuning value. Repair uses the
+existing four-part puzzle; this is not yet a 20-minute exploration level.
+No orbital simulation, farming loop or disk-based continuation is included.
