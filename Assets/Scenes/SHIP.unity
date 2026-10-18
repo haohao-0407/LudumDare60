@@ -205,13 +205,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456478083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &456478087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,6 +362,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 489f436e144072e4a913e25d77316c3c, type: 3}
+--- !u!4 &1743695318 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6055335300420162440, guid: 489f436e144072e4a913e25d77316c3c, type: 3}
+  m_PrefabInstance: {fileID: 588173815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1860711259
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -371,20 +376,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 575
+      objectReference: {fileID: 0}
+    - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.00078
+      value: 0.00078400003
       objectReference: {fileID: 0}
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.00078
+      value: 0.00078400003
       objectReference: {fileID: 0}
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.00078
+      value: 0.00078400003
       objectReference: {fileID: 0}
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.578
+      value: -0.57587606
       objectReference: {fileID: 0}
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_LocalRotation.w
@@ -404,7 +413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.093
+      value: 1.1004777
       objectReference: {fileID: 0}
     - target: {fileID: 952526929261088414, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -458,6 +467,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3052383767236058223, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
+      propertyPath: screenTarget
+      value: 
+      objectReference: {fileID: 1743695318}
     - target: {fileID: 3084136369444289358, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_Name
       value: DOS Terminal System
