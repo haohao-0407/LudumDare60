@@ -1,0 +1,136 @@
+{
+  "status": "complete",
+  "windows": [
+    {
+      "side": "Left",
+      "group": "02_LeftWall",
+      "center": [
+        -0.9950000047683716,
+        -0.1599999964237213,
+        1.4299999475479126
+      ],
+      "normal_toward_cabin": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "glass_center": [
+        -1.034000039100647,
+        -0.1599999964237213,
+        1.4299999475479126
+      ],
+      "clear_diameter_metres": 0.46,
+      "cut_diameter_metres": 0.48,
+      "outer_frame_diameter_metres": 0.6,
+      "ray_origin_inside": [
+        -0.8,
+        -0.16,
+        1.43
+      ],
+      "ray_direction_outward": [
+        -1,
+        0,
+        0
+      ],
+      "objects": [
+        "PortWindow_Left_Frame",
+        "PortWindow_Left_OrangeRing",
+        "PortWindow_Left_InnerSeal",
+        "PortWindow_Left_GlassSeal",
+        "PortWindow_Left_Glass",
+        "PortWindow_Left_FastenerWashers",
+        "PortWindow_Left_Fasteners",
+        "PortWindow_Left_FastenerSlots"
+      ],
+      "wall_booleans": [
+        {
+          "object": "PressureShell_07.001",
+          "faces_before": 82,
+          "faces_after": 133
+        },
+        {
+          "object": "CurvedWallPanel_07.001",
+          "faces_before": 82,
+          "faces_after": 131
+        },
+        {
+          "object": "PressureShell_08.001",
+          "faces_before": 82,
+          "faces_after": 236
+        },
+        {
+          "object": "CurvedWallPanel_08.001",
+          "faces_before": 82,
+          "faces_after": 238
+        }
+      ]
+    },
+    {
+      "side": "Right",
+      "group": "03_RightWall",
+      "center": [
+        0.9950000047683716,
+        -0.1599999964237213,
+        1.4299999475479126
+      ],
+      "normal_toward_cabin": [
+        -1.0,
+        0.0,
+        0.0
+      ],
+      "glass_center": [
+        1.034000039100647,
+        -0.1599999964237213,
+        1.4299999475479126
+      ],
+      "clear_diameter_metres": 0.46,
+      "cut_diameter_metres": 0.48,
+      "outer_frame_diameter_metres": 0.6,
+      "ray_origin_inside": [
+        0.8,
+        -0.16,
+        1.43
+      ],
+      "ray_direction_outward": [
+        1,
+        0,
+        0
+      ],
+      "objects": [
+        "PortWindow_Right_Frame",
+        "PortWindow_Right_OrangeRing",
+        "PortWindow_Right_InnerSeal",
+        "PortWindow_Right_GlassSeal",
+        "PortWindow_Right_Glass",
+        "PortWindow_Right_FastenerWashers",
+        "PortWindow_Right_Fasteners",
+        "PortWindow_Right_FastenerSlots"
+      ],
+      "wall_booleans": [
+        {
+          "object": "PressureShell_00.001",
+          "faces_before": 82,
+          "faces_after": 133
+        },
+        {
+          "object": "CurvedWallPanel_00.001",
+          "faces_before": 82,
+          "faces_after": 131
+        },
+        {
+          "object": "PressureShell_15.001",
+          "faces_before": 82,
+          "faces_after": 236
+        },
+        {
+          "object": "CurvedWallPanel_15.001",
+          "faces_before": 82,
+          "faces_after": 238
+        }
+      ]
+    }
+  ],
+  "glass_material": "WindowGlass",
+  "glass_alpha": 0.18,
+  "object_count": 16
+}

@@ -1,18 +1,18 @@
 {
     "valid": true,
-    "generatedUtc": "2026-10-18T08:27:50.9242099Z",
+    "generatedUtc": "2026-10-18T09:07:08.7499451Z",
     "units": "metres",
     "displayForward": "+Z",
     "displayUp": "+Y",
     "blenderToUnity": "(-X, Z, -Y)",
-    "activeSceneBefore": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
-    "activeSceneAfter": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
+    "activeSceneBefore": "Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity",
+    "activeSceneAfter": "Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity",
     "openScenesPreserved": true,
     "openScenesBefore": [
-        "1506:2304|Assets/MarsCabin/Scenes/MarsCabin_Interior.unity|MarsCabin_Interior|dirty=True|roots=26378:256,26398:256,26413:256,26427:256,26437:256,29242:256,29918:256"
+        "30932:5888|Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity|MarsBase_RetroFuture|dirty=True|roots=30960:2816,30983:7424,30987:5376,30994:3840,30996:3840,31000:3328,31003:3328,31010:4352,41516:256,42146:768"
     ],
     "openScenesAfter": [
-        "1506:2304|Assets/MarsCabin/Scenes/MarsCabin_Interior.unity|MarsCabin_Interior|dirty=True|roots=26378:256,26398:256,26413:256,26427:256,26437:256,29242:256,29918:256"
+        "30932:5888|Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity|MarsBase_RetroFuture|dirty=True|roots=30960:2816,30983:7424,30987:5376,30994:3840,30996:3840,31000:3328,31003:3328,31010:4352,41516:256,42146:768"
     ],
     "prefabs": [
         {
@@ -162,8 +162,8 @@
         },
         {
             "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/CompactCockpit_WallIntegrated.prefab",
-            "meshCount": 410,
-            "rendererCount": 410,
+            "meshCount": 426,
+            "rendererCount": 426,
             "screenCount": 5,
             "nestedScreenCount": 5,
             "boundsCenter": [
@@ -172,7 +172,7 @@
                 0.0
             ],
             "boundsSize": [
-                2.3499999046325684,
+                2.4000000953674316,
                 2.25,
                 2.3499999046325684
             ],
@@ -192,7 +192,8 @@
                 "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat",
                 "Assets/CompactCockpit_WallIntegrated/Materials/Wall.mat",
                 "Assets/CompactCockpit_WallIntegrated/Materials/Warm.mat",
-                "Assets/CompactCockpit_WallIntegrated/Materials/White.mat"
+                "Assets/CompactCockpit_WallIntegrated/Materials/White.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/WindowGlass.mat"
             ],
             "screenTextureAssets": [
                 "Assets/CompactCockpit_WallIntegrated/Textures/attitude.png",

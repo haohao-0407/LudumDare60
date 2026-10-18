@@ -169,6 +169,52 @@ namespace LudumDare60.CompactCockpit.Editor
             return JsonUtility.ToJson(report);
         }
 
+        public static string UpdateArchitectureOnly()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode || EditorApplication.isCompiling)
+                throw new InvalidOperationException("Architecture update requires an idle editor outside Play Mode.");
+
+            var before = SceneSnapshot.Capture();
+            if (!File.Exists(CockpitPrefab)) return Build();
+            RequireAsset<GameObject>(CockpitPrefab);
+            var manifest = ReadManifest();
+            EnsureFolder(AssetRoot + "/Materials");
+            var cockpit = PrefabUtility.LoadPrefabContents(CockpitPrefab);
+            try
+            {
+                var architectureChildren = cockpit.transform.Cast<Transform>()
+                    .Where(child => child.name == "Architecture").ToArray();
+                if (architectureChildren.Length != 1)
+                    throw new InvalidDataException("The cockpit prefab must have exactly one direct child named Architecture.");
+
+                var previous = architectureChildren[0];
+                var position = previous.localPosition;
+                var rotation = previous.localRotation;
+                var scale = previous.localScale;
+                var siblingIndex = previous.GetSiblingIndex();
+                var active = previous.gameObject.activeSelf;
+
+                var replacement = InstantiateModel(manifest.architecture, cockpit.scene, cockpit.transform);
+                replacement.name = "Architecture";
+                AssignEditableMaterials(replacement, manifest, new Dictionary<string, Material>(StringComparer.Ordinal));
+                replacement.transform.localPosition = position;
+                replacement.transform.localRotation = rotation;
+                replacement.transform.localScale = scale;
+                replacement.SetActive(active);
+                Object.DestroyImmediate(previous.gameObject);
+                replacement.transform.SetSiblingIndex(siblingIndex);
+
+                // The existing screen instances and their overrides are deliberately left untouched.
+                SavePrefab(cockpit, CockpitPrefab);
+            }
+            finally { PrefabUtility.UnloadPrefabContents(cockpit); }
+
+            var report = ValidateAssets(manifest);
+            FinishReport(report, before);
+            WriteReport(report);
+            return JsonUtility.ToJson(report);
+        }
+
         private static AssemblyManifest ReadManifest()
         {
             var manifest = JsonUtility.FromJson<AssemblyManifest>(File.ReadAllText(AssetRoot + "/Models/display_assembly.json"));

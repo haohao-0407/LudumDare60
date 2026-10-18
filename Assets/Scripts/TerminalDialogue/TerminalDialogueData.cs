@@ -6,6 +6,15 @@ namespace LudumDare60.TerminalDialogue
     public enum TerminalSpeaker { AI, Player, System }
     public enum TerminalPhase { Idle, Typing, Holding, WaitingForContinue, WaitingForChoice, Completed }
 
+    // Kept independent of UnityEngine so authored colors can also be used by the pure session runner.
+    [Serializable]
+    public struct TerminalTextColor
+    {
+        public float R, G, B, A;
+        public TerminalTextColor(float r, float g, float b, float a = 1) { R = r; G = g; B = b; A = a; }
+        public static TerminalTextColor Default => new TerminalTextColor(0.65f, 1, 0.76f);
+    }
+
     [Serializable]
     public sealed class TerminalFlag
     {
@@ -17,7 +26,10 @@ namespace LudumDare60.TerminalDialogue
     public sealed class TerminalLine
     {
         public TerminalSpeaker Speaker = TerminalSpeaker.AI;
+        public string DisplayName = "";
         public string Text = "";
+        public bool UseCustomColor;
+        public TerminalTextColor CustomColor = TerminalTextColor.Default;
         public bool WaitForContinue;
         public float DelayAfter = 0.5f;
     }
@@ -28,6 +40,9 @@ namespace LudumDare60.TerminalDialogue
         public string Id = "";
         public string Label = "";
         public string PlayerText = "";
+        public string DisplayName = "";
+        public bool UseCustomColor;
+        public TerminalTextColor CustomColor = TerminalTextColor.Default;
         public string NextNodeId = "";
         public List<TerminalFlag> Conditions = new List<TerminalFlag>();
         public List<TerminalFlag> SetFlags = new List<TerminalFlag>();
@@ -49,6 +64,7 @@ namespace LudumDare60.TerminalDialogue
     public sealed class TerminalDialogueGraph
     {
         public string AIName = "SHIP AI";
+        public TerminalTextColor DefaultTextColor = TerminalTextColor.Default;
         public string EntryNodeId = "";
         public List<TerminalFlag> InitialFlags = new List<TerminalFlag>();
         public List<TerminalNode> Nodes = new List<TerminalNode>();
@@ -133,6 +149,20 @@ namespace LudumDare60.TerminalDialogue
     {
         public TerminalSpeaker Speaker { get; }
         public string Text { get; }
-        public TerminalMessage(TerminalSpeaker speaker, string text) { Speaker = speaker; Text = text; }
+        public TerminalTextColor TextColor { get; }
+        public string DisplayName { get; }
+        public TerminalMessage(TerminalSpeaker speaker, string text) : this(speaker, text, TerminalTextColor.Default) { }
+        public TerminalMessage(TerminalSpeaker speaker, string text, TerminalTextColor color, string displayName = "")
+        {
+            Speaker = speaker; Text = text; TextColor = color;
+            DisplayName = string.IsNullOrWhiteSpace(displayName) ? "" : displayName.Trim();
+        }
+
+        public string GetPrefix(string aiName)
+        {
+            if (DisplayName.Length > 0) return "[" + DisplayName + "] ";
+            if (Speaker == TerminalSpeaker.Player) return "> ";
+            return "[" + (Speaker == TerminalSpeaker.System ? "SYSTEM" : aiName) + "] ";
+        }
     }
 }

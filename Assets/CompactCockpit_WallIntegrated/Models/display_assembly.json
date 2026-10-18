@@ -119,9 +119,9 @@
   "exports": [
     {
       "file": "CompactCockpit_Architecture.glb",
-      "bytes": 5354332,
+      "bytes": 5801196,
       "scenes": 1,
-      "meshes": 370,
+      "meshes": 386,
       "images": 0,
       "embedded_images": 0
     },
@@ -165,5 +165,10 @@
       "images": 1,
       "embedded_images": 1
     }
-  ]
+  ],
+  "side_windows": {
+    "count": 2,
+    "clear_diameter_metres": 0.46,
+    "transparent_glass": true
+  }
 }

@@ -87,7 +87,8 @@ namespace LudumDare60.TerminalDialogue
             choices.Clear();
             OptionsRevision++;
             tasks.Enqueue(new Task { Kind = TaskKind.Line, Line = new TerminalLine
-                { Speaker = TerminalSpeaker.Player, Text = choice.PlayerText, DelayAfter = 0 } });
+                { Speaker = TerminalSpeaker.Player, Text = choice.PlayerText, DelayAfter = 0,
+                    DisplayName = choice.DisplayName, UseCustomColor = choice.UseCustomColor, CustomColor = choice.CustomColor } });
             tasks.Enqueue(new Task { Kind = TaskKind.CommitChoice, Choice = choice });
             Phase = TerminalPhase.Idle;
             Touch();
@@ -208,7 +209,8 @@ namespace LudumDare60.TerminalDialogue
         private void BeginLine(TerminalLine line)
         {
             activeLine = line;
-            messages.Add(new TerminalMessage(line.Speaker, line.Text));
+            messages.Add(new TerminalMessage(line.Speaker, line.Text,
+                line.UseCustomColor ? line.CustomColor : graph.DefaultTextColor, line.DisplayName));
             if (messages.Count > historyLimit) messages.RemoveAt(0);
             TranscriptRevision++;
             textElements = StringInfo.ParseCombiningCharacters(line.Text);
@@ -263,17 +265,19 @@ namespace LudumDare60.TerminalDialogue
 
         private static TerminalDialogueGraph CopyGraph(TerminalDialogueGraph source)
         {
-            var copy = new TerminalDialogueGraph { AIName = source.AIName, EntryNodeId = source.EntryNodeId,
+            var copy = new TerminalDialogueGraph { AIName = source.AIName, DefaultTextColor = source.DefaultTextColor, EntryNodeId = source.EntryNodeId,
                 InitialFlags = CopyFlags(source.InitialFlags) };
             foreach (var node in source.Nodes)
             {
                 var n = new TerminalNode { Id = node.Id, Title = node.Title, NextNodeId = node.NextNodeId };
                 if (node.Lines != null)
                     foreach (var line in node.Lines) n.Lines.Add(new TerminalLine { Speaker = line.Speaker,
-                        Text = line.Text, WaitForContinue = line.WaitForContinue, DelayAfter = line.DelayAfter });
+                        Text = line.Text, DisplayName = line.DisplayName, WaitForContinue = line.WaitForContinue, DelayAfter = line.DelayAfter,
+                        UseCustomColor = line.UseCustomColor, CustomColor = line.CustomColor });
                 if (node.Choices != null)
                     foreach (var c in node.Choices) n.Choices.Add(new TerminalChoice { Id = c.Id, Label = c.Label,
-                        PlayerText = c.PlayerText, NextNodeId = c.NextNodeId, Conditions = CopyFlags(c.Conditions),
+                        PlayerText = c.PlayerText, DisplayName = c.DisplayName, UseCustomColor = c.UseCustomColor, CustomColor = c.CustomColor,
+                        NextNodeId = c.NextNodeId, Conditions = CopyFlags(c.Conditions),
                         SetFlags = CopyFlags(c.SetFlags), Events = c.Events == null ? new List<string>() : new List<string>(c.Events) });
                 copy.Nodes.Add(n);
             }
