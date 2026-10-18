@@ -14,6 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
   graph:
     AIName: SHIP AI
+    DefaultTextColor:
+      R: 0.65
+      G: 1
+      B: 0.76
+      A: 1
     EntryNodeId: node_e12f74ad
     InitialFlags: []
     Nodes:
@@ -21,13 +26,60 @@ MonoBehaviour:
       Title: start
       Lines:
       - Speaker: 2
-        Text: ccc
+        DisplayName: 
+        Text: ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
         WaitForContinue: 0
         DelayAfter: 0.5
       Choices:
       - Id: choice_e9b3f9bb
         Label: hello1
-        PlayerText: hello
+        PlayerText: ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
         NextNodeId: node_ac8298f9
         Conditions: []
         SetFlags: []
@@ -37,6 +89,13 @@ MonoBehaviour:
         PlayerText: '67
 
 '
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
         NextNodeId: node_e12f74ad
         Conditions: []
         SetFlags: []
@@ -44,6 +103,13 @@ MonoBehaviour:
       - Id: choice_d41d614b
         Label: New response
         PlayerText: Player response.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
         NextNodeId: 
         Conditions: []
         SetFlags: []
@@ -53,13 +119,27 @@ MonoBehaviour:
       Title: 222
       Lines:
       - Speaker: 0
+        DisplayName: 
         Text: 487
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
         WaitForContinue: 0
         DelayAfter: 0.5
       Choices:
       - Id: choice_2b4cf1aa
         Label: New response
         PlayerText: 89789
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
         NextNodeId: 
         Conditions: []
         SetFlags: []
