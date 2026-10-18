@@ -52,6 +52,42 @@ public sealed class Xray : MonoBehaviour
     [Tooltip("仅 Sparse Structure：合并距离小于模型最长边乘此比例、方向近似平行且覆盖重叠的线。越大越简略；0 关闭。")]
     public float lineSpacingFraction = 0.005f;
 
+    [Range(0f, 60f)]
+    [InspectorName("平面合并阈值(度)")]
+    [Tooltip("仅 Structural Edges：相邻三角面夹角小于此值时视为同一平面，合并成一个区域、线被吞掉。越大越干净，典型 10~20。")]
+    public float planarAngle = 12f;
+
+    [Range(0f, 0.1f)]
+    [InspectorName("最短完整线比例")]
+    [Tooltip("仅 Structural Edges：整条结构线的长度短于模型最长边乘此比例时，整条丢弃。按线判定，不会留半截毛刺。0 = 关闭。")]
+    public float minEdgeLengthFraction = 0.015f;
+
+    [Range(0f, 0.3f)]
+    [InspectorName("线间距抑制比例")]
+    [Tooltip("仅 Structural Edges：两条线质心距离小于模型最长边乘此比例、方向近似平行时，只保留更长的那条。用来压掉同心圆弧这类密集平行线。0 = 关闭。")]
+    public float chainSeparationFraction = 0.04f;
+
+    public enum ChainPruneMode
+    {
+        Off = 0,
+        FragmentsOnly = 1,
+        ClosedOrConnected = 2,
+    }
+
+    [InspectorName("悬空线处理")]
+    [Tooltip("Off 不处理。\nFragments Only：只删两端都悬空的孤立碎片，安全。\nClosed Or Connected：反复剪到所有线闭环或首尾相连 —— 很激进，机械模型可能几乎全被剪掉。")]
+    public ChainPruneMode pruneMode = ChainPruneMode.FragmentsOnly;
+
+    [Range(0f, 180f)]
+    [InspectorName("强折角角度(度)")]
+    [Tooltip("仅 Structural Edges：折角达到此角度时线条取满宽度，低于它按比例变细。")]
+    public float strongEdgeAngle = 90f;
+
+    [Range(0.05f, 1f)]
+    [InspectorName("弱线宽度比例")]
+    [Tooltip("仅 Structural Edges：弱结构线的宽度相对强折角线的比例。1 = 所有线等粗。")]
+    public float minorLineScale = 0.45f;
+
     [Tooltip("Disable for classic modeling-editor wireframes where all front and back edges share one style.")]
     public bool useSceneOcclusion = true;
 
@@ -163,11 +199,11 @@ public sealed class Xray : MonoBehaviour
     private readonly struct DisplayMeshKey : System.IEquatable<DisplayMeshKey>
     {
         private readonly Mesh source;
-        private readonly float localModelSize;
-        public DisplayMeshKey(Mesh source, float size) { this.source = source; localModelSize = size; }
-        public bool Equals(DisplayMeshKey other) => source == other.source && localModelSize.Equals(other.localModelSize);
+        private readonly int signature;
+        public DisplayMeshKey(Mesh source, int signature) { this.source = source; this.signature = signature; }
+        public bool Equals(DisplayMeshKey other) => source == other.source && signature == other.signature;
         public override bool Equals(object obj) => obj is DisplayMeshKey other && Equals(other);
-        public override int GetHashCode() => unchecked(source.GetHashCode() * 397 ^ localModelSize.GetHashCode());
+        public override int GetHashCode() => unchecked(source.GetHashCode() * 397 ^ signature);
     }
     private readonly Dictionary<DisplayMeshKey, Mesh> generatedMeshes = new Dictionary<DisplayMeshKey, Mesh>();
     private readonly Dictionary<DisplayMeshKey, RetroWireframeMeshBuilder.Statistics> meshStatistics =
@@ -186,6 +222,11 @@ public sealed class Xray : MonoBehaviour
     private int builtCurveSegments;
     private float builtSmallPartFraction;
     private float builtLineSpacingFraction;
+    private float builtPlanarAngle;
+    private float builtMinEdgeFraction;
+    private float builtStrongEdgeAngle;
+    private float builtChainSeparation;
+    private int builtPruneMode;
 
     private bool needsApply = true;
     private long lastValidationTicks;
@@ -240,7 +281,9 @@ public sealed class Xray : MonoBehaviour
             effectMaterial != builtEffectMaterial ||
             (effectMaterial != null ? effectMaterial.shader : null) != builtMaterialShader ||
             edgeMode != builtEdgeMode || quadMaxAngle != builtQuadAngle || featureAngle != builtFeatureAngle ||
-            curveSegments != builtCurveSegments || smallPartFraction != builtSmallPartFraction || lineSpacingFraction != builtLineSpacingFraction)
+            curveSegments != builtCurveSegments || smallPartFraction != builtSmallPartFraction || lineSpacingFraction != builtLineSpacingFraction ||
+            planarAngle != builtPlanarAngle || minEdgeLengthFraction != builtMinEdgeFraction || strongEdgeAngle != builtStrongEdgeAngle ||
+            chainSeparationFraction != builtChainSeparation || (int)pruneMode != builtPruneMode)
         {
 #if UNITY_EDITOR
             // Wait for an Inspector drag to settle instead of rebuilding a large mesh on every slider step.
@@ -296,6 +339,11 @@ public sealed class Xray : MonoBehaviour
         builtCurveSegments = curveSegments;
         builtSmallPartFraction = smallPartFraction;
         builtLineSpacingFraction = lineSpacingFraction;
+        builtPlanarAngle = planarAngle;
+        builtMinEdgeFraction = minEdgeLengthFraction;
+        builtStrongEdgeAngle = strongEdgeAngle;
+        builtChainSeparation = chainSeparationFraction;
+        builtPruneMode = (int)pruneMode;
         SourceEdgeCount = VisibleEdgeCount = ReconstructedQuadCount = 0;
         RemovedPartCount = 0;
 
@@ -358,7 +406,22 @@ public sealed class Xray : MonoBehaviour
             var scale = source.transform.lossyScale;
             var scaleFactor = Mathf.Max(1e-6f, Mathf.Max(Mathf.Abs(scale.x), Mathf.Max(Mathf.Abs(scale.y), Mathf.Abs(scale.z))));
             var localModelSize = modelSize / scaleFactor;
-            var meshKey = new DisplayMeshKey(sourceMesh, edgeMode == WireframeEdgeMode.SparseStructure ? localModelSize : 0);
+            // 缓存键必须包含所有影响几何生成的参数，否则改参数会命中旧网格
+            var keyHash = 17;
+            keyHash = keyHash * 31 + (int)edgeMode;
+            keyHash = keyHash * 31 + quadMaxAngle.GetHashCode();
+            keyHash = keyHash * 31 + featureAngle.GetHashCode();
+            keyHash = keyHash * 31 + curveSegments;
+            keyHash = keyHash * 31 + smallPartFraction.GetHashCode();
+            keyHash = keyHash * 31 + lineSpacingFraction.GetHashCode();
+            keyHash = keyHash * 31 + planarAngle.GetHashCode();
+            keyHash = keyHash * 31 + minEdgeLengthFraction.GetHashCode();
+            keyHash = keyHash * 31 + strongEdgeAngle.GetHashCode();
+            keyHash = keyHash * 31 + chainSeparationFraction.GetHashCode();
+            keyHash = keyHash * 31 + (int)pruneMode;
+            if (edgeMode == WireframeEdgeMode.SparseStructure) keyHash = keyHash * 31 + localModelSize.GetHashCode();
+
+            var meshKey = new DisplayMeshKey(sourceMesh, keyHash);
             var hasMask = false;
             if (edgeMode != WireframeEdgeMode.AllTriangles)
             {
@@ -369,7 +432,9 @@ public sealed class Xray : MonoBehaviour
                         displayMesh = RetroWireframeMeshBuilder.Build(sourceMesh, edgeMode, quadMaxAngle,
                             featureAngle, out var statistics, curveSegments, localModelSize * smallPartFraction,
                             Mathf.Min(localModelSize * 0.00001f, sourceMesh.bounds.size.magnitude * 0.001f),
-                            localModelSize * lineSpacingFraction);
+                            localModelSize * lineSpacingFraction,
+                            planarAngle, localModelSize * minEdgeLengthFraction, strongEdgeAngle,
+                            localModelSize * chainSeparationFraction, (int)pruneMode);
                         generatedMeshes.Add(meshKey, displayMesh);
                         meshStatistics.Add(meshKey, statistics);
                     }
@@ -658,6 +723,10 @@ public sealed class Xray : MonoBehaviour
         // Line style
         propertyBlock.SetFloat(
             "_Softness", softness
+        );
+
+        propertyBlock.SetFloat(
+            "_MinorLineScale", minorLineScale
         );
 
         propertyBlock.SetFloat(

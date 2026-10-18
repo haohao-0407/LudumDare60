@@ -19,6 +19,7 @@ Shader "X-Ray/Effects/XRay"
 
         [Header(Line_Style)]
         _Softness ("Edge Softness In Pixels", Range(0.05, 3)) = 0.7
+        _MinorLineScale ("Minor Line Width Scale", Range(0.05, 1)) = 0.45
         [Toggle] _Dashes ("Use Dashes", Float) = 0
         _DashCount ("Dashes Per Triangle Edge", Range(1, 40)) = 8
         _DashDuty ("Dash Fill Ratio", Range(0.05, 1)) = 0.58
@@ -74,6 +75,7 @@ Shader "X-Ray/Effects/XRay"
                 float _UseEdgeMask;
 
                 float _Softness;
+                float _MinorLineScale;
                 float _Dashes;
                 float _DashCount;
                 float _DashDuty;
@@ -150,8 +152,12 @@ Shader "X-Ray/Effects/XRay"
                 float3 edgeDistanceInPixels =
                     bary / pixelDerivative;
 
+                // edgeMask 现在是逐边强度：0 = 不画，0~1 = 该边的权重（折角越大越粗）。
+                // 老模式写入 0/1 时行为与原先完全一致。
+                float3 edgeStrength = saturate(input.edgeMask);
+
                 // Invisible triangulation diagonals must not participate in nearest-edge selection.
-                edgeDistanceInPixels = lerp(float3(1e6, 1e6, 1e6), edgeDistanceInPixels, step(0.5, input.edgeMask));
+                edgeDistanceInPixels = lerp(float3(1e6, 1e6, 1e6), edgeDistanceInPixels, step(0.02, edgeStrength));
 
                 float nearestEdge = min(
                     edgeDistanceInPixels.x,
@@ -192,14 +198,18 @@ Shader "X-Ray/Effects/XRay"
                     hidden
                 );
 
-                // 线条宽度和抗锯齿
+                // 线条宽度和抗锯齿：逐边按强度调制，强折角更粗、弱结构更细
                 float edgeAA = max(_Softness, 0.05);
 
-                float edgeCoverage = 1.0 - smoothstep(
-                    max(0.0, width - edgeAA),
-                    width + edgeAA,
-                    nearestEdge
+                float3 perEdgeWidth = width * lerp(_MinorLineScale, 1.0, pow(edgeStrength, 0.7));
+
+                float3 coverage3 = 1.0 - smoothstep(
+                    max(0.0, perEdgeWidth - edgeAA),
+                    perEdgeWidth + edgeAA,
+                    edgeDistanceInPixels
                 );
+
+                float edgeCoverage = max(coverage3.x, max(coverage3.y, coverage3.z));
 
                 // 可选虚线效果
                 float dash = 1.0;
