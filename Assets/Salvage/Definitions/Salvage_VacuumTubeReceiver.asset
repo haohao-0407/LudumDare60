@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51221db1a3298ea4c82be483c99bca56, type: 3}
+  m_Name: Salvage_VacuumTubeReceiver
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Salvage.SalvageDefinition
+  targetId: vacuum_tube_receiver
+  rewardId: vacuum_tube_receiver
+  rewardQuantityMin: 1
+  rewardQuantityMax: 1
+  settings:
+    SearchDurationMin: 2.5
+    SearchDurationMax: 5
+    SignalWindow: 0.8
+    ControlSize: 0.24
+    InitialControlPosition: 0.25
+    LiftAcceleration: 2.8
+    Gravity: 1.8
+    MaxControlSpeed: 1
+    BoundaryBounce: 0.15
+    InitialTargetPosition: 0.3
+    TargetSpeed: 0.55
+    TargetAcceleration: 1.7
+    RetargetIntervalMin: 0.5
+    RetargetIntervalMax: 1.2
+    InitialProgress: 0.3
+    ProgressGainPerSecond: 0.23
+    ProgressLossPerSecond: 0.2
+    MaxSalvageDuration: 45

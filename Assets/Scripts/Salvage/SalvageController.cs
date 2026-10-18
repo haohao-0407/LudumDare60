@@ -8,6 +8,7 @@ namespace LudumDare60.Salvage
     [AddComponentMenu("Salvage/Salvage Controller")]
     public sealed class SalvageController : MonoBehaviour
     {
+        [SerializeField] private SalvagePool pool;
         [SerializeField] private SalvageDefinition defaultDefinition;
         private SalvageSession session;
 
@@ -26,10 +27,23 @@ namespace LudumDare60.Salvage
         public SalvageSnapshot Snapshot => Session.Snapshot;
         public SalvageResult Result => Session.Result;
         public bool IsActive => Session.IsActive;
+        public SalvagePool Pool => pool;
+        public SalvageDefinition DefaultDefinition => defaultDefinition;
         public event Action<SalvageSnapshot> SnapshotChanged;
         public event Action<SalvageResult> Completed;
 
-        public bool TryStartSalvage() => TryStartSalvage(defaultDefinition);
+        /// <summary>Draws one target from the pool, falling back to the default definition when no pool is assigned.</summary>
+        public bool TryStartSalvage() => TryStartRandomSalvage();
+
+        /// <summary>The same seed drives both the pool draw and the simulation, so a seed reproduces the whole attempt.</summary>
+        public bool TryStartRandomSalvage(int? randomSeed = null)
+        {
+            if (!isActiveAndEnabled || Session.IsActive) return false;
+            var seed = randomSeed ?? Guid.NewGuid().GetHashCode();
+            var definition = pool != null ? pool.Pick(seed) : defaultDefinition;
+            if (definition == null) return false;
+            return Session.TryStart(definition.CreateSettings(), definition.CreateTarget(), seed);
+        }
 
         public bool TryStartSalvage(SalvageDefinition definition, int? randomSeed = null)
         {
