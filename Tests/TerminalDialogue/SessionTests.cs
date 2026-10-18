@@ -15,11 +15,13 @@ internal static class SessionTests
         Run("notification after completion returns to completion", NotificationAfterEnd);
         Run("graphemes are not partially revealed", UnicodeTyping);
         Run("asset edits cannot mutate an active session", GraphSnapshot);
+        Run("global and per-line colors survive choices, notifications and snapshots", TextColors);
+        Run("per-line display names preserve defaults, speakers and snapshots", DisplayNames);
         Run("history remains bounded across loops", BoundedHistory);
         Run("invalid targets, duplicate IDs and empty cycles rejected", ValidateBadGraphs);
         Run("invalid timing rejected", InvalidTiming);
         Console.WriteLine("Passed " + passed + " terminal dialogue tests.");
-        return passed == 12 ? 0 : 1;
+        return passed == 14 ? 0 : 1;
     }
 
     private static void Run(string name, Action test)
@@ -116,6 +118,53 @@ internal static class SessionTests
         graph.Nodes[0].Choices[0].PlayerText = "changed"; graph.Nodes[1].Lines[0].Text = "changed";
         session.Choose("scan"); Check(session.Messages[1].Text == "scan nearby", "choice changed");
         session.Advance(); Check(session.Messages[2].Text == "扫描完成。", "line changed");
+    }
+    private static void TextColors()
+    {
+        var graph = Graph();
+        var global = new TerminalTextColor(0.2f, 0.7f, 0.3f);
+        var special = new TerminalTextColor(1, 0.3f, 0.1f, 0.8f);
+        var reply = new TerminalTextColor(0.1f, 0.6f, 1);
+        graph.DefaultTextColor = global;
+        graph.Nodes[0].Lines[0].UseCustomColor = true; graph.Nodes[0].Lines[0].CustomColor = special;
+        graph.Nodes[0].Choices[0].UseCustomColor = true; graph.Nodes[0].Choices[0].CustomColor = reply;
+        graph.Nodes[1].Lines[0].CustomColor = special; // Disabled override must use global.
+        var session = Waiting(graph);
+        graph.DefaultTextColor = new TerminalTextColor();
+        graph.Nodes[0].Lines[0].CustomColor = new TerminalTextColor();
+        graph.Nodes[0].Choices[0].CustomColor = new TerminalTextColor();
+        Check(session.Messages[0].TextColor.Equals(special), "special line lost its snapshotted color");
+        session.Choose("scan"); Check(session.Messages[1].TextColor.Equals(reply), "player reply lost special color");
+        session.Advance(); Check(session.Messages[2].TextColor.Equals(global), "disabled override did not inherit global");
+        session.Advance(); session.PostSystemMessage("Status update.");
+        Check(session.Messages[3].TextColor.Equals(global), "system notification did not inherit global");
+        var plain = Waiting(Graph()); plain.Choose("scan");
+        Check(plain.Messages[0].TextColor.Equals(TerminalTextColor.Default)
+            && plain.Messages[1].TextColor.Equals(TerminalTextColor.Default), "legacy dialogue colors changed");
+    }
+    private static void DisplayNames()
+    {
+        Check(new TerminalMessage(TerminalSpeaker.AI, "Hello.").GetPrefix("SHIP AI") == "[SHIP AI] ", "default AI prefix changed");
+        Check(new TerminalMessage(TerminalSpeaker.System, "Ready.").GetPrefix("SHIP AI") == "[SYSTEM] ", "default system prefix changed");
+        Check(new TerminalMessage(TerminalSpeaker.Player, "Go.").GetPrefix("SHIP AI") == "> ", "default player prefix changed");
+        Check(new TerminalMessage(TerminalSpeaker.System, "Ready.", TerminalTextColor.Default, "  ").GetPrefix("SHIP AI") == "[SYSTEM] ", "whitespace did not use default");
+        var graph = Graph();
+        graph.Nodes[0].Lines[0].Speaker = TerminalSpeaker.System;
+        graph.Nodes[0].Lines[0].DisplayName = " NAVIGATION ";
+        graph.Nodes[0].Choices[0].DisplayName = "CAPTAIN";
+        graph.Nodes[1].Lines[0].DisplayName = "RELAY";
+        var session = Waiting(graph);
+        graph.AIName = "Changed"; graph.Nodes[0].Lines[0].DisplayName = "Changed";
+        graph.Nodes[0].Choices[0].DisplayName = "Changed"; graph.Nodes[1].Lines[0].DisplayName = "Changed";
+        Check(session.Messages[0].GetPrefix(session.AIName) == "[NAVIGATION] " && session.Messages[0].Speaker == TerminalSpeaker.System,
+            "custom system name changed classification or lost its snapshot");
+        session.Choose("scan");
+        Check(session.Messages[1].GetPrefix(session.AIName) == "[CAPTAIN] " && session.Messages[1].Speaker == TerminalSpeaker.Player,
+            "custom reply name changed classification or lost its snapshot");
+        session.Advance();
+        Check(session.Messages[2].GetPrefix(session.AIName) == "[RELAY] ", "future line name was not snapshotted");
+        session.Advance(); session.PostSystemMessage("Status update.");
+        Check(session.Messages[3].GetPrefix(session.AIName) == "[SYSTEM] ", "custom name leaked into system notifications");
     }
     private static void BoundedHistory()
     {

@@ -20,7 +20,7 @@ MonoBehaviour:
     - Id: node_e12f74ad
       Title: start
       Lines:
-      - Speaker: 0
+      - Speaker: 2
         Text: ccc
         WaitForContinue: 0
         DelayAfter: 0.5
@@ -38,6 +38,13 @@ MonoBehaviour:
 
 '
         NextNodeId: node_e12f74ad
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: choice_d41d614b
+        Label: New response
+        PlayerText: Player response.
+        NextNodeId: 
         Conditions: []
         SetFlags: []
         Events: []
