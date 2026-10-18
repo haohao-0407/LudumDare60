@@ -165,11 +165,19 @@ def area(name,loc,target,power,color,size):
 
 def finish():
     materialize()
+    # The portholes cut the fully materialized shell before it is saved/exported.
+    sp=importlib.util.spec_from_file_location('side_windows',str(HERE/'side_windows.py'))
+    windows=importlib.util.module_from_spec(sp);sp.loader.exec_module(windows)
+    import sys
+    windows.apply(sys.modules[__name__])
     camera('WALL_CAM_Pilot',(0,-.98,1.49),(0,.72,1.21),23)
     camera('WALL_CAM_ConsoleDetail',(0,-.63,1.48),(0,.70,1.29),26)
     camera('WALL_CAM_InteriorWide',(-.13,-1.035,1.69),(.04,.64,.99),17)
     camera('WALL_CAM_RearWall',(0,.37,1.53),(0,-1.1,1.02),18)
     camera('WALL_CAM_Cutaway',(3.4,-4.3,3.3),(0,.18,.93),47)
+    camera('WALL_CAM_TwinPorts',(0,-1.03,1.49),(0,.4,1.28),11)
+    camera('WALL_CAM_PortLeft',(-.10,-.74,1.47),(-1.04,-.16,1.43),24)
+    camera('WALL_CAM_PortRight',(.10,-.74,1.47),(1.04,-.16,1.43),24)
     scene.camera=bpy.data.objects['WALL_CAM_Pilot']
     area('Ceiling_Softbox',(0,-.15,2.04),(0,.3,.55),26,(1,.84,.63),1.20)
     area('Front_WarmBounce',(0,.75,1.99),(0,.1,.82),12,(1,.59,.28),.8)

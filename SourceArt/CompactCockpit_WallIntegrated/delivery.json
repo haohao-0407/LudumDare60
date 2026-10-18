@@ -1,11 +1,11 @@
 {
-  "Version": "Wall-integrated cockpit v3",
+  "Version": "Wall-integrated cockpit v4 - twin glazed side windows",
   "BlenderSource": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_WallIntegrated\\CompactCockpit_WallIntegrated.blend",
-  "PreviousVersion": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_Round\\Versions\\CompactCockpit_Round_Desk_v2.blend",
+  "PreviousVersion": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_WallIntegrated\\Versions\\CompactCockpit_WallIntegrated_Closed_v3.blend",
   "GLB": {
     "Path": "D:\\unity-projects\\LudumDare60\\Exports\\CompactCockpit_WallIntegrated\\CompactCockpit_WallIntegrated.glb",
-    "Bytes": 7827944,
-    "Meshes": 402,
+    "Bytes": 8274800,
+    "Meshes": 418,
     "Images": 5,
     "Scenes": 1,
     "EmbeddedImages": 5
@@ -48,9 +48,9 @@
       }
     ],
     "console_mounting": "Integral wall fairings; no tabletop or legs",
-    "objects": 424,
-    "renderable_objects": 402,
-    "evaluated_triangles": 159378,
+    "objects": 443,
+    "renderable_objects": 418,
+    "evaluated_triangles": 182746,
     "screen_count": 5,
     "screen_visibility_from_pilot": {
       "SCREEN_RADAR.002": {
@@ -85,6 +85,32 @@
       "misses": 0,
       "miss_examples": []
     },
+    "side_window_apertures": [
+      {
+        "name": "PortWindow_Left_Glass",
+        "center": [
+          -1.0340001583099365,
+          -0.1599999964237213,
+          1.4299999475479126
+        ],
+        "clear_diameter_metres": 0.46,
+        "sample_rays": 33,
+        "opaque_obstructions": 0,
+        "glass_hits": 33
+      },
+      {
+        "name": "PortWindow_Right_Glass",
+        "center": [
+          1.034000039100647,
+          -0.1599999964237213,
+          1.4299999475479126
+        ],
+        "clear_diameter_metres": 0.46,
+        "sample_rays": 33,
+        "opaque_obstructions": 0,
+        "glass_hits": 33
+      }
+    ],
     "textures_packed": {
       "navigation.png.002": true,
       "attitude.png.002": true,
@@ -96,7 +122,7 @@
     "scope": "Complete walls, ceiling, floor, flush rear hatch and front cockpit console. No chair or auxiliary furnishing.",
     "source": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_WallIntegrated\\CompactCockpit_WallIntegrated.blend"
   },
-  "PreviewNotes": "Cutaway temporarily hides right wall, rear wall and ceiling only for presentation. Source contains the complete enclosure.",
+  "PreviewNotes": "Cockpit_TwinPorts.png and Unity_TwinPorts.png show the two side windows. Window openings pass through both wall layers; glass is transparent. Earlier cutaway/interior previews show v3.",
   "UnityImported": true,
   "UnityPrefab": "Assets/CompactCockpit_WallIntegrated/Prefabs/CompactCockpit_WallIntegrated.prefab",
   "ScreenPrefabs": [
@@ -106,5 +132,16 @@
     "COMMUNICATIONS",
     "SYSTEMS"
   ],
-  "UnityValidation": "SourceArt/CompactCockpit_WallIntegrated/unity_validation.json"
+  "UnityValidation": "SourceArt/CompactCockpit_WallIntegrated/unity_validation.json",
+  "SideWindows": {
+    "Count": 2,
+    "ClearDiameterMetres": 0.46,
+    "OuterFrameDiameterMetres": 0.6,
+    "GlassMaterial": "WindowGlass",
+    "GlassAlpha": 0.18,
+    "GeometryReport": "side_window_geometry.json",
+    "BlenderPreview": "Previews/Cockpit_TwinPorts.png",
+    "UnityPreview": "Previews/Unity_TwinPorts.png",
+    "ScreenPrefabFilesUnchanged": true
+  }
 }

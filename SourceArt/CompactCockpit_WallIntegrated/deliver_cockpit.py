@@ -8,15 +8,31 @@ HERE=Path(__file__).resolve().parent
 
 def validate():
     scene=bpy.data.scenes['CompactCockpit_WallIntegrated'];bpy.context.window.scene=scene
-    dg=bpy.context.evaluated_depsgraph_get();verts=[];faces=[];meshes=[];tris=0
+    dg=bpy.context.evaluated_depsgraph_get();verts=[];faces=[];opaque_faces=[];meshes=[];tris=0
     shell_groups=('01_','02_','03_','04_','05_','06_')
     for o in scene.objects:
         if o.type not in {'MESH','CURVE','FONT'}:continue
         e=o.evaluated_get(dg);me=e.to_mesh();me.calc_loop_triangles();tris+=len(me.loop_triangles);meshes.append(o.name)
         if o.parent and o.parent.name.startswith(shell_groups):
-            base=len(verts);verts.extend([o.matrix_world@v.co for v in me.vertices]);faces.extend([tuple(base+i for i in p.vertices) for p in me.polygons])
+            base=len(verts);verts.extend([o.matrix_world@v.co for v in me.vertices])
+            object_faces=[tuple(base+i for i in p.vertices) for p in me.polygons]
+            faces.extend(object_faces)
+            if not (o.name.startswith('PortWindow_') and o.name.endswith('_Glass')):opaque_faces.extend(object_faces)
         e.to_mesh_clear()
     tree=BVHTree.FromPolygons(verts,faces);miss=[];rays=0
+    opaque_tree=BVHTree.FromPolygons(verts,opaque_faces)
+    windows=[]
+    for glass in scene.objects:
+        if not (glass.name.startswith('PortWindow_') and glass.name.endswith('_Glass')):continue
+        center=sum((glass.matrix_world@Vector(corner) for corner in glass.bound_box),Vector())/8
+        side=1 if center.x>0 else -1;direction=Vector((side,0,0))
+        offsets=[(0,0)]+[(r*math.cos(i*math.tau/16),r*math.sin(i*math.tau/16)) for r in (.10,.205) for i in range(16)]
+        blocked=0;glazed=0
+        for dy,dz in offsets:
+            origin=Vector((side*.8,center.y+dy,center.z+dz))
+            blocked+=opaque_tree.ray_cast(origin,direction,1)[0] is not None
+            glazed+=tree.ray_cast(origin,direction,1)[0] is not None
+        windows.append({'name':glass.name,'center':list(center),'clear_diameter_metres':.46,'sample_rays':len(offsets),'opaque_obstructions':blocked,'glass_hits':glazed})
     for origin in [Vector((0,-.62,1.2)),Vector((-.35,-.58,.55)),Vector((.35,-.48,1.62))]:
         for i in range(1200):
             z=1-2*(i+.5)/1200;a=i*math.pi*(3-math.sqrt(5));q=math.sqrt(1-z*z);d=Vector((q*math.cos(a),q*math.sin(a),z));rays+=1
@@ -53,6 +69,7 @@ def validate():
         'screen_visibility_from_pilot':visibility,
         'desk_geometry_remaining':[o.name for o in scene.objects if any(term in o.name for term in ('FlightDesk','DeskPedestal','Desk_','LowerControlDeck'))],
         'closed_enclosure_ray_check':{'rays':rays,'misses':len(miss),'miss_examples':miss[:8]},
+        'side_window_apertures':windows,
         'textures_packed':{im.name:bool(im.packed_file) for im in imgs},
         'hidden_geometry':[o.name for o in scene.objects if o.type in {'MESH','CURVE','FONT'} and o.hide_render],
         'scope':'Complete walls, ceiling, floor, flush rear hatch and front cockpit console. No chair or auxiliary furnishing.',

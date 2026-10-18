@@ -1,0 +1,42 @@
+[
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_ATTITUDE.prefab",
+    "Hash": "A2D86B9872D3FAD363C4BA1508A2538359818F55A129965998DC4316E5D05DFF"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_ATTITUDE.prefab.meta",
+    "Hash": "DC016C40393C2F332ABDB629E3C0C783D20C5147DB346D8BAD7959F35BC9BE6D"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_COMMUNICATIONS.prefab",
+    "Hash": "83CDC52507D3F78A46D8B42A560974A46C8E0C5ECB12957EBF2A392898C9A239"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_COMMUNICATIONS.prefab.meta",
+    "Hash": "81675999715A75D782AFC223E547DA4466A37CF611C49FDAD4876AE43AE57B4A"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_NAVIGATION.prefab",
+    "Hash": "B9A021722467CBF725B231180B748472DD5111DCDC76DE8C27B124903F112173"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_NAVIGATION.prefab.meta",
+    "Hash": "EE586598FE093618D544EF064E1AF6EB7D05D9F357DF902C22384750DE2AF64D"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_RADAR.prefab",
+    "Hash": "FE272A936BBA2E9874916F00E12690CAD7B66E5B6C10D3989124A63B5651E50A"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_RADAR.prefab.meta",
+    "Hash": "47026D0841EA1644CAF8C4A98867C5BA22DE5E1ABA69CD7563021D939D65786C"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_SYSTEMS.prefab",
+    "Hash": "99D72482FEE0B1BE1FCCFDAC222A0FA72D05676570DC5FA8ABECC06B7F99E768"
+  },
+  {
+    "Path": "D:\\unity-projects\\LudumDare60\\Assets\\CompactCockpit_WallIntegrated\\Prefabs\\Screens\\Screen_SYSTEMS.prefab.meta",
+    "Hash": "078118FE3D2DD6610D71D98ADB7837A30EED7DAED8DA521B20862AEE6A81455C"
+  }
+]
