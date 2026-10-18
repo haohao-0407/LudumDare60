@@ -21,6 +21,45 @@ namespace LudumDare60.AssemblyDemo.Tests
         }
 
         [Test]
+        public void CompleteAssemblyRequiresEveryModuleAndRevokesAfterDetach()
+        {
+            var left = Module("Left", new Vector2(-4f, 0f), 0f, 90f);
+            var middle = Module("Middle", new Vector2(-2f, 0f), 0f, 270f, 90f);
+            var right = Module("Right", Vector2.zero, 0f, 270f);
+            var controller = Controller(left, middle, right);
+            Assert.That(controller.IsAssemblyComplete, Is.False);
+            Assert.That(controller.TrySnapSelected(), Is.True);
+            Assert.That(controller.IsAssemblyComplete, Is.False, "One disconnected required module blocks launch.");
+            Assert.That(controller.TrySnapSelected(), Is.True);
+            Assert.That(controller.IsAssemblyComplete, Is.True);
+            controller.DetachSelected();
+            Assert.That(controller.IsAssemblyComplete, Is.False, "Detaching a repaired module must revoke clearance.");
+        }
+
+        [Test]
+        public void ReadingLockBlocksMotionSnapDetachResetAndSelection()
+        {
+            var moving = Module("Moving", new Vector2(-2f, 0f), 0f, 90f);
+            var target = Module("Target", Vector2.zero, 0f, 270f);
+            var controller = Controller(moving, target);
+            controller.InputBlocked = true;
+            Assert.That(controller.TrySnapSelected(), Is.False);
+            controller.ApplyMotion(Vector2.one, 45);
+            controller.SelectModule(1);
+            AssertVector(new Vector2(-2f, 0f), moving.Position);
+            Assert.That(controller.Selected, Is.SameAs(moving));
+            controller.InputBlocked = false;
+            Assert.That(controller.TrySnapSelected(), Is.True);
+            controller.InputBlocked = true;
+            controller.DetachSelected(); controller.ResetDemo();
+            Assert.That(controller.ConnectionCount, Is.EqualTo(1));
+            Assert.That(controller.IsAssemblyComplete, Is.True);
+            controller.InputBlocked = false;
+            controller.DetachSelected();
+            Assert.That(controller.IsAssemblyComplete, Is.False);
+        }
+
+        [Test]
         public void SnapCorrectsActualModuleTransformsAndKeepsTargetFixed()
         {
             var moving = Module("Moving", new Vector2(-2.08f, 0.03f), 3f, 90f);

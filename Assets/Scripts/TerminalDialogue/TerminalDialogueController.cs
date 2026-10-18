@@ -28,8 +28,12 @@ namespace LudumDare60.TerminalDialogue
         private bool dispatching;
 
         public TerminalDialogueSession Session => session;
+        public TerminalDialogueDefinition Conversation => conversation;
+        public bool IsStoryReading => session != null && session.IsStoryReading;
         public event Action Changed;
         public event Action<string> EventTriggered;
+        /// <summary>Accepted input at click time; normal authored events still wait for player typing.</summary>
+        public event Action<string, string> ChoiceAccepted;
 
         private void Start()
         {
@@ -88,9 +92,17 @@ namespace LudumDare60.TerminalDialogue
         public void Advance() { session?.Advance(); Publish(); }
         public bool Choose(string choiceId)
         {
+            var nodeId = session?.CurrentNodeId;
             var accepted = session != null && session.Choose(choiceId);
+            if (accepted) ChoiceAccepted?.Invoke(nodeId, choiceId);
             Publish();
             return accepted;
+        }
+        public bool GoToNode(string nodeId)
+        {
+            var changed = session != null && session.GoToNode(nodeId);
+            Publish();
+            return changed;
         }
         public bool GetFlag(string key) => session != null && session.GetFlag(key);
         public void SetFlag(string key, bool value) { session?.SetFlag(key, value); Publish(); }

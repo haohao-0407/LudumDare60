@@ -39,6 +39,7 @@ namespace LudumDare60.TerminalDialogue.Editor
                 {
                     EditorGUILayout.PropertyField(node.FindPropertyRelative("Id"), new GUIContent("节点 ID"));
                     EditorGUILayout.PropertyField(node.FindPropertyRelative("Title"), new GUIContent("编辑标题"));
+                    EditorGUILayout.PropertyField(node.FindPropertyRelative("PauseGameplayWhileReading"), new GUIContent("剧情阅读时暂停游戏"));
                     var lines = node.FindPropertyRelative("Lines");
                     EditorGUILayout.LabelField("台词（按顺序播放）", EditorStyles.boldLabel);
                     for (var j = 0; j < lines.arraySize; j++)
@@ -112,6 +113,7 @@ namespace LudumDare60.TerminalDialogue.Editor
                 var node = nodes.GetArrayElementAtIndex(nodes.arraySize - 1);
                 node.FindPropertyRelative("Id").stringValue = "node_" + Guid.NewGuid().ToString("N").Substring(0, 8);
                 node.FindPropertyRelative("Title").stringValue = "新节点";
+                node.FindPropertyRelative("PauseGameplayWhileReading").boolValue = false;
                 node.FindPropertyRelative("Lines").ClearArray();
                 node.FindPropertyRelative("Choices").ClearArray();
                 node.FindPropertyRelative("NextNodeId").stringValue = "";

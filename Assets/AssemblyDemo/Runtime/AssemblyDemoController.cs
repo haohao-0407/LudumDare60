@@ -16,6 +16,21 @@ namespace LudumDare60.AssemblyDemo
         [Min(0)] public float RotationSpeed = 80f;
         public AssemblyModule Selected => Modules != null && Modules.Length > 0 ? Modules[selectedIndex] : null;
         public int ConnectionCount => connections.Count;
+        /// <summary>External reading/menu/end-state lock. Also guards programmatic input.</summary>
+        public bool InputBlocked { get; set; }
+        public int RequiredConnectionCount => Modules == null ? 0 : Mathf.Max(0, Modules.Length - 1);
+        /// <summary>All required modules belong to one real, compatible-port assembly.</summary>
+        public bool IsAssemblyComplete
+        {
+            get
+            {
+                if (Modules == null || Modules.Length < 2 || connections.Count < RequiredConnectionCount) return false;
+                foreach (var module in Modules) if (module == null) return false;
+                CollectGroup(Modules[0]);
+                foreach (var module in Modules) if (!group.Contains(module)) return false;
+                return true;
+            }
+        }
 
         private sealed class Connection
         {
@@ -48,7 +63,7 @@ namespace LudumDare60.AssemblyDemo
 
         private void Update()
         {
-            if (Selected == null || !Application.isFocused) return;
+            if (InputBlocked || Selected == null || !Application.isFocused) return;
             var keys = Keyboard.current;
             if (keys != null)
             {
@@ -85,7 +100,7 @@ namespace LudumDare60.AssemblyDemo
 
         public void SelectModule(int index)
         {
-            if (Modules == null || index < 0 || index >= Modules.Length) return;
+            if (InputBlocked || Modules == null || index < 0 || index >= Modules.Length) return;
             selectedIndex = index;
             UpdateHighlights();
         }
@@ -99,7 +114,7 @@ namespace LudumDare60.AssemblyDemo
 
         public void ResetDemo()
         {
-            if (startPositions == null) return;
+            if (InputBlocked || startPositions == null) return;
             connections.Clear();
             for (int i = 0; i < Modules.Length; i++)
             {
@@ -113,7 +128,7 @@ namespace LudumDare60.AssemblyDemo
 
         public void DetachSelected()
         {
-            if (Selected == null) return;
+            if (InputBlocked || Selected == null) return;
             connections.RemoveAll(c => c.A == Selected || c.B == Selected);
             // Give the player time to move clear before magnetic capture can happen again.
             snapBlockedUntil = Time.unscaledTime + 1.5f;
@@ -139,7 +154,7 @@ namespace LudumDare60.AssemblyDemo
         /// <summary>World-space translation and clockwise rotation around the selected module.</summary>
         public void ApplyMotion(Vector2 translation, float clockwiseDelta)
         {
-            if (Selected == null || (translation.sqrMagnitude == 0 && Mathf.Abs(clockwiseDelta) < 0.00001f)) return;
+            if (InputBlocked || Selected == null || (translation.sqrMagnitude == 0 && Mathf.Abs(clockwiseDelta) < 0.00001f)) return;
             CollectGroup(Selected);
             Vector2 pivot = Selected.Position;
             var rotation = Quaternion.Euler(0, 0, -clockwiseDelta);
@@ -159,7 +174,7 @@ namespace LudumDare60.AssemblyDemo
 
         public bool TrySnapSelected()
         {
-            if (Selected == null) return false;
+            if (InputBlocked || Selected == null) return false;
             CollectGroup(Selected);
             bool found = false;
             SnapSolution best = default;
