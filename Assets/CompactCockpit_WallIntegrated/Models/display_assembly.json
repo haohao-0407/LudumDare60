@@ -1,0 +1,169 @@
+{
+  "scene": "CompactCockpit_WallIntegrated",
+  "units": "metres",
+  "assembly_coordinates": "Blender world coordinates: X right, Y forward, Z up",
+  "screen_local_coordinates": "Blender: normal -Y, up +Z; glTF Y-up: normal +Z, up +Y",
+  "architecture": "CompactCockpit_Architecture.glb",
+  "entries": [
+    {
+      "name": "RADAR",
+      "file": "Screen_RADAR.glb",
+      "position": [
+        -0.40000003576278687,
+        0.7699999809265137,
+        1.625
+      ],
+      "normal": [
+        0.3017922639846802,
+        -0.9431008100509644,
+        -0.13957887887954712
+      ],
+      "up": [
+        0.042540255934000015,
+        -0.13293831050395966,
+        0.990211009979248
+      ],
+      "width": 0.585,
+      "height": 0.465,
+      "texture": "radar.png"
+    },
+    {
+      "name": "ATTITUDE",
+      "file": "Screen_ATTITUDE.glb",
+      "position": [
+        0.40000003576278687,
+        0.7699999809265137,
+        1.625
+      ],
+      "normal": [
+        -0.3017922639846802,
+        -0.9431008100509644,
+        -0.13957887887954712
+      ],
+      "up": [
+        -0.042540255934000015,
+        -0.13293831050395966,
+        0.990211009979248
+      ],
+      "width": 0.585,
+      "height": 0.465,
+      "texture": "attitude.png"
+    },
+    {
+      "name": "NAVIGATION",
+      "file": "Screen_NAVIGATION.glb",
+      "position": [
+        0.0,
+        0.6399999856948853,
+        0.9950000047683716
+      ],
+      "normal": [
+        0.0,
+        -0.9293325543403625,
+        0.3692437708377838
+      ],
+      "up": [
+        0.0,
+        0.3692437708377838,
+        0.9293325543403625
+      ],
+      "width": 0.8,
+      "height": 0.46,
+      "texture": "navigation.png"
+    },
+    {
+      "name": "COMMUNICATIONS",
+      "file": "Screen_COMMUNICATIONS.glb",
+      "position": [
+        -0.6899999976158142,
+        0.5199999809265137,
+        1.090000033378601
+      ],
+      "normal": [
+        0.5457317233085632,
+        -0.7909156084060669,
+        0.27682048082351685
+      ],
+      "up": [
+        -0.15721333026885986,
+        0.2278454303741455,
+        0.9609217047691345
+      ],
+      "width": 0.258,
+      "height": 0.412,
+      "texture": "comms.png"
+    },
+    {
+      "name": "SYSTEMS",
+      "file": "Screen_SYSTEMS.glb",
+      "position": [
+        0.6899999976158142,
+        0.5199999809265137,
+        1.090000033378601
+      ],
+      "normal": [
+        -0.5457317233085632,
+        -0.7909156084060669,
+        0.27682048082351685
+      ],
+      "up": [
+        0.15721333026885986,
+        0.2278454303741455,
+        0.9609217047691345
+      ],
+      "width": 0.258,
+      "height": 0.412,
+      "texture": "systems.png"
+    }
+  ],
+  "exports": [
+    {
+      "file": "CompactCockpit_Architecture.glb",
+      "bytes": 5354332,
+      "scenes": 1,
+      "meshes": 370,
+      "images": 0,
+      "embedded_images": 0
+    },
+    {
+      "file": "Screen_RADAR.glb",
+      "bytes": 492700,
+      "scenes": 1,
+      "meshes": 8,
+      "images": 1,
+      "embedded_images": 1
+    },
+    {
+      "file": "Screen_ATTITUDE.glb",
+      "bytes": 420148,
+      "scenes": 1,
+      "meshes": 8,
+      "images": 1,
+      "embedded_images": 1
+    },
+    {
+      "file": "Screen_NAVIGATION.glb",
+      "bytes": 970552,
+      "scenes": 1,
+      "meshes": 8,
+      "images": 1,
+      "embedded_images": 1
+    },
+    {
+      "file": "Screen_COMMUNICATIONS.glb",
+      "bytes": 341208,
+      "scenes": 1,
+      "meshes": 8,
+      "images": 1,
+      "embedded_images": 1
+    },
+    {
+      "file": "Screen_SYSTEMS.glb",
+      "bytes": 336568,
+      "scenes": 1,
+      "meshes": 8,
+      "images": 1,
+      "embedded_images": 1
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "art": "Original code-authored instrument graphics",
+  "font": "Windows Consolas",
+  "textures": {
+    "radar.png": [
+      1200,
+      1000
+    ],
+    "attitude.png": [
+      1200,
+      1000
+    ],
+    "navigation.png": [
+      1600,
+      1000
+    ],
+    "comms.png": [
+      600,
+      1000
+    ],
+    "systems.png": [
+      600,
+      1000
+    ]
+  }
+}

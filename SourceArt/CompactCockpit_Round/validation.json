@@ -1,0 +1,58 @@
+{
+  "scene": "CompactCockpit_Round",
+  "units": "metres",
+  "interior_nominal": [
+    2.2,
+    2.2,
+    2.1
+  ],
+  "shape": "circular",
+  "interior_diameter_metres": 2.2,
+  "pilot_eye_metres": [
+    0.0,
+    -0.47999998927116394,
+    1.440000057220459
+  ],
+  "display_view_checks": [
+    {
+      "screen": "RADAR",
+      "off_axis_degrees": 0.0034970568555893434
+    },
+    {
+      "screen": "ATTITUDE",
+      "off_axis_degrees": 0.0034970568555893434
+    },
+    {
+      "screen": "NAVIGATION",
+      "off_axis_degrees": 10.346876297172637
+    },
+    {
+      "screen": "COMMUNICATIONS",
+      "off_axis_degrees": 0.0
+    },
+    {
+      "screen": "SYSTEMS",
+      "off_axis_degrees": 0.0
+    }
+  ],
+  "floor_to_console_underside": 0.65,
+  "objects": 361,
+  "renderable_objects": 339,
+  "evaluated_triangles": 138690,
+  "screen_count": 5,
+  "closed_enclosure_ray_check": {
+    "rays": 3600,
+    "misses": 0,
+    "miss_examples": []
+  },
+  "textures_packed": {
+    "radar.png.001": true,
+    "attitude.png.001": true,
+    "systems.png.001": true,
+    "comms.png.001": true,
+    "navigation.png.001": true
+  },
+  "hidden_geometry": [],
+  "scope": "Complete walls, ceiling, floor, flush rear hatch and front cockpit console. No chair or auxiliary furnishing.",
+  "source": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_Round\\CompactCockpit_Round.blend"
+}

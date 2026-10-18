@@ -1,0 +1,207 @@
+{
+    "valid": true,
+    "generatedUtc": "2026-10-18T08:27:50.9242099Z",
+    "units": "metres",
+    "displayForward": "+Z",
+    "displayUp": "+Y",
+    "blenderToUnity": "(-X, Z, -Y)",
+    "activeSceneBefore": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
+    "activeSceneAfter": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
+    "openScenesPreserved": true,
+    "openScenesBefore": [
+        "1506:2304|Assets/MarsCabin/Scenes/MarsCabin_Interior.unity|MarsCabin_Interior|dirty=True|roots=26378:256,26398:256,26413:256,26427:256,26437:256,29242:256,29918:256"
+    ],
+    "openScenesAfter": [
+        "1506:2304|Assets/MarsCabin/Scenes/MarsCabin_Interior.unity|MarsCabin_Interior|dirty=True|roots=26378:256,26398:256,26413:256,26427:256,26437:256,29242:256,29918:256"
+    ],
+    "prefabs": [
+        {
+            "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_RADAR.prefab",
+            "meshCount": 8,
+            "rendererCount": 8,
+            "screenCount": 1,
+            "nestedScreenCount": 0,
+            "boundsCenter": [
+                0.0,
+                0.0,
+                -0.004500009119510651
+            ],
+            "boundsSize": [
+                0.6909999847412109,
+                0.5709999799728394,
+                0.1430000215768814
+            ],
+            "materialAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_RADAR.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Dark.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ink.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ivory.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Metal.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Orange.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat"
+            ],
+            "screenTextureAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Textures/radar.png"
+            ]
+        },
+        {
+            "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_ATTITUDE.prefab",
+            "meshCount": 8,
+            "rendererCount": 8,
+            "screenCount": 1,
+            "nestedScreenCount": 0,
+            "boundsCenter": [
+                0.0,
+                0.0,
+                -0.004500009119510651
+            ],
+            "boundsSize": [
+                0.6909999847412109,
+                0.5709999799728394,
+                0.1430000215768814
+            ],
+            "materialAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_ATTITUDE.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Dark.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ink.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ivory.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Metal.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Orange.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat"
+            ],
+            "screenTextureAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Textures/attitude.png"
+            ]
+        },
+        {
+            "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_NAVIGATION.prefab",
+            "meshCount": 8,
+            "rendererCount": 8,
+            "screenCount": 1,
+            "nestedScreenCount": 0,
+            "boundsCenter": [
+                0.0,
+                0.0,
+                -0.004500009119510651
+            ],
+            "boundsSize": [
+                0.906000018119812,
+                0.5659999847412109,
+                0.1430000215768814
+            ],
+            "materialAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_NAVIGATION.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Dark.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ink.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ivory.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Metal.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Orange.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat"
+            ],
+            "screenTextureAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Textures/navigation.png"
+            ]
+        },
+        {
+            "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_COMMUNICATIONS.prefab",
+            "meshCount": 8,
+            "rendererCount": 8,
+            "screenCount": 1,
+            "nestedScreenCount": 0,
+            "boundsCenter": [
+                0.0,
+                0.0,
+                -0.004500009119510651
+            ],
+            "boundsSize": [
+                0.36399999260902405,
+                0.5180000066757202,
+                0.1430000215768814
+            ],
+            "materialAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_COMMUNICATIONS.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Dark.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ink.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ivory.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Metal.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Orange.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat"
+            ],
+            "screenTextureAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Textures/comms.png"
+            ]
+        },
+        {
+            "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/Screens/Screen_SYSTEMS.prefab",
+            "meshCount": 8,
+            "rendererCount": 8,
+            "screenCount": 1,
+            "nestedScreenCount": 0,
+            "boundsCenter": [
+                0.0,
+                0.0,
+                -0.004500009119510651
+            ],
+            "boundsSize": [
+                0.36399999260902405,
+                0.5180000066757202,
+                0.1430000215768814
+            ],
+            "materialAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_SYSTEMS.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Dark.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ink.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ivory.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Metal.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Orange.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat"
+            ],
+            "screenTextureAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Textures/systems.png"
+            ]
+        },
+        {
+            "path": "Assets/CompactCockpit_WallIntegrated/Prefabs/CompactCockpit_WallIntegrated.prefab",
+            "meshCount": 410,
+            "rendererCount": 410,
+            "screenCount": 5,
+            "nestedScreenCount": 5,
+            "boundsCenter": [
+                0.0,
+                1.0449999570846558,
+                0.0
+            ],
+            "boundsSize": [
+                2.3499999046325684,
+                2.25,
+                2.3499999046325684
+            ],
+            "materialAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Materials/Amber.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_ATTITUDE.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_COMMUNICATIONS.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_NAVIGATION.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_RADAR.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/CRT_SYSTEMS.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Dark.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Floor.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ink.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Ivory.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Metal.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Orange.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Rubber.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Wall.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/Warm.mat",
+                "Assets/CompactCockpit_WallIntegrated/Materials/White.mat"
+            ],
+            "screenTextureAssets": [
+                "Assets/CompactCockpit_WallIntegrated/Textures/attitude.png",
+                "Assets/CompactCockpit_WallIntegrated/Textures/comms.png",
+                "Assets/CompactCockpit_WallIntegrated/Textures/navigation.png",
+                "Assets/CompactCockpit_WallIntegrated/Textures/radar.png",
+                "Assets/CompactCockpit_WallIntegrated/Textures/systems.png"
+            ]
+        }
+    ],
+    "issues": []
+}
