@@ -1,0 +1,851 @@
+{
+  "coordinateSpace": "Blender final world metres, Z up, identity root, no architecture0.8 scale",
+  "authorship": "All key equipment and moving controls are Blender geometry. No Meshy geometry.",
+  "root": "Cabin_HeroConsole",
+  "scale": 1,
+  "meshObjects": 130,
+  "triangles": 116888,
+  "boundsMin": [
+    -1.0720000267028809,
+    -2.306537389755249,
+    0.0
+  ],
+  "boundsMax": [
+    1.00600004196167,
+    -0.2199999839067459,
+    1.315500020980835
+  ],
+  "controls": [
+    {
+      "name": "INT_KNOB_HERO_Navigation_Brightness",
+      "kind": "Knob",
+      "pivot": [
+        -0.40299999713897705,
+        -1.9643999338150024,
+        0.9441999197006226
+      ],
+      "worldAxis": [
+        0.0,
+        0.800000011920929,
+        0.6000000238418579
+      ],
+      "rangeDegrees": 270,
+      "minimumAngle": -135,
+      "maximumAngle": 135
+    },
+    {
+      "name": "INT_KNOB_HERO_Comms_Brightness",
+      "kind": "Knob",
+      "pivot": [
+        -0.7821067571640015,
+        -1.9086884260177612,
+        0.9581999778747559
+      ],
+      "worldAxis": [
+        0.15264728665351868,
+        0.7853017449378967,
+        0.6000000238418579
+      ],
+      "rangeDegrees": 270,
+      "minimumAngle": -135,
+      "maximumAngle": 135
+    },
+    {
+      "name": "INT_KNOB_HERO_Systems_Brightness",
+      "kind": "Knob",
+      "pivot": [
+        0.4130149483680725,
+        -1.9804327487945557,
+        0.9581999778747559
+      ],
+      "worldAxis": [
+        -0.15264728665351868,
+        0.7853017449378967,
+        0.6000000238418579
+      ],
+      "rangeDegrees": 270,
+      "minimumAngle": -135,
+      "maximumAngle": 135
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_00",
+      "kind": "Button",
+      "pivot": [
+        -0.6700000166893005,
+        -1.7989999055862427,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_01",
+      "kind": "Button",
+      "pivot": [
+        -0.5899999737739563,
+        -1.7989999055862427,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_02",
+      "kind": "Button",
+      "pivot": [
+        -0.5099999904632568,
+        -1.7989999055862427,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_03",
+      "kind": "Button",
+      "pivot": [
+        -0.4300000071525574,
+        -1.7989999055862427,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_04",
+      "kind": "Button",
+      "pivot": [
+        -0.6700000166893005,
+        -1.7349998950958252,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_05",
+      "kind": "Button",
+      "pivot": [
+        -0.5899999737739563,
+        -1.7349998950958252,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_06",
+      "kind": "Button",
+      "pivot": [
+        -0.5099999904632568,
+        -1.7349998950958252,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_07",
+      "kind": "Button",
+      "pivot": [
+        -0.4300000071525574,
+        -1.7349998950958252,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_08",
+      "kind": "Button",
+      "pivot": [
+        -0.6700000166893005,
+        -1.6709998846054077,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_09",
+      "kind": "Button",
+      "pivot": [
+        -0.5899999737739563,
+        -1.6709998846054077,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_10",
+      "kind": "Button",
+      "pivot": [
+        -0.5099999904632568,
+        -1.6709998846054077,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Key_11",
+      "kind": "Button",
+      "pivot": [
+        -0.4300000071525574,
+        -1.6709998846054077,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_00",
+      "kind": "Button",
+      "pivot": [
+        0.4300000071525574,
+        -1.7599999904632568,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_01",
+      "kind": "Button",
+      "pivot": [
+        0.5099999904632568,
+        -1.7599999904632568,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_02",
+      "kind": "Button",
+      "pivot": [
+        0.5899999737739563,
+        -1.7599999904632568,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_03",
+      "kind": "Button",
+      "pivot": [
+        0.6700000166893005,
+        -1.7599999904632568,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_04",
+      "kind": "Button",
+      "pivot": [
+        0.4300000071525574,
+        -1.6799999475479126,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_05",
+      "kind": "Button",
+      "pivot": [
+        0.5099999904632568,
+        -1.6799999475479126,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_06",
+      "kind": "Button",
+      "pivot": [
+        0.5899999737739563,
+        -1.6799999475479126,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Mode_07",
+      "kind": "Button",
+      "pivot": [
+        0.6700000166893005,
+        -1.6799999475479126,
+        0.9190000295639038
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Command_00",
+      "kind": "Button",
+      "pivot": [
+        0.20000000298023224,
+        -1.6531519889831543,
+        0.9368560314178467
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Command_01",
+      "kind": "Button",
+      "pivot": [
+        0.11999999731779099,
+        -1.6531519889831543,
+        0.9368560314178467
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Command_02",
+      "kind": "Button",
+      "pivot": [
+        0.03999999910593033,
+        -1.6531519889831543,
+        0.9368560314178467
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Command_03",
+      "kind": "Button",
+      "pivot": [
+        -0.03999999910593033,
+        -1.6531519889831543,
+        0.9368560314178467
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Command_04",
+      "kind": "Button",
+      "pivot": [
+        -0.11999999731779099,
+        -1.6531519889831543,
+        0.9368560314178467
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Main_Command_05",
+      "kind": "Button",
+      "pivot": [
+        -0.20000000298023224,
+        -1.6531519889831543,
+        0.9368560314178467
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.15399999916553497,
+        -0.9879999756813049
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_KNOB_Main_Trim_-1",
+      "kind": "Knob",
+      "pivot": [
+        -0.17000000178813934,
+        -1.8249999284744263,
+        0.9549999833106995
+      ],
+      "worldAxis": [
+        0.0,
+        0.15399999916553497,
+        0.9879999756813049
+      ],
+      "rangeDegrees": 270,
+      "minimumAngle": -135,
+      "maximumAngle": 135
+    },
+    {
+      "name": "INT_KNOB_Main_Trim_1",
+      "kind": "Knob",
+      "pivot": [
+        0.17000000178813934,
+        -1.8249999284744263,
+        0.9549999833106995
+      ],
+      "worldAxis": [
+        0.0,
+        0.15399999916553497,
+        0.9879999756813049
+      ],
+      "rangeDegrees": 270,
+      "minimumAngle": -135,
+      "maximumAngle": 135
+    },
+    {
+      "name": "INT_BUTTON_Throttle_L_0",
+      "kind": "Button",
+      "pivot": [
+        -1.0220000743865967,
+        -0.5600000023841858,
+        1.0119999647140503
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Throttle_L_1",
+      "kind": "Button",
+      "pivot": [
+        -1.0220000743865967,
+        -0.4599999785423279,
+        1.0119999647140503
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Throttle_L_2",
+      "kind": "Button",
+      "pivot": [
+        -1.0220000743865967,
+        -0.35999998450279236,
+        1.0119999647140503
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Throttle_R_0",
+      "kind": "Button",
+      "pivot": [
+        -0.578000009059906,
+        -0.5600000023841858,
+        1.0119999647140503
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Throttle_R_1",
+      "kind": "Button",
+      "pivot": [
+        -0.578000009059906,
+        -0.4599999785423279,
+        1.0119999647140503
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Throttle_R_2",
+      "kind": "Button",
+      "pivot": [
+        -0.578000009059906,
+        -0.35999998450279236,
+        1.0119999647140503
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Joystick_Status_0",
+      "kind": "Button",
+      "pivot": [
+        0.6679999828338623,
+        -0.5550000071525574,
+        1.0010000467300415
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Joystick_Status_1",
+      "kind": "Button",
+      "pivot": [
+        0.6679999828338623,
+        -0.4599999785423279,
+        1.0010000467300415
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_BUTTON_Joystick_Status_2",
+      "kind": "Button",
+      "pivot": [
+        0.6679999828338623,
+        -0.3649999797344208,
+        1.0010000467300415
+      ],
+      "worldAxis": [
+        -0.0,
+        -0.0,
+        -1.0
+      ],
+      "travel": 0.004
+    },
+    {
+      "name": "INT_TOGGLE_Joystick_Safe",
+      "kind": "Toggle",
+      "pivot": [
+        0.9240000247955322,
+        -0.38499999046325684,
+        1.0090000629425049
+      ],
+      "worldAxis": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "rangeDegrees": 42,
+      "minimumAngle": -21,
+      "maximumAngle": 21
+    },
+    {
+      "name": "INT_KNOB_Joystick_Gain",
+      "kind": "Knob",
+      "pivot": [
+        0.9200000166893005,
+        -0.5249999761581421,
+        1.0010000467300415
+      ],
+      "worldAxis": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "rangeDegrees": 270,
+      "minimumAngle": -135,
+      "maximumAngle": 135
+    },
+    {
+      "name": "INT_LEVER_Throttle_A",
+      "kind": "Lever",
+      "pivot": [
+        -0.9340000152587891,
+        -0.44999998807907104,
+        1.0
+      ],
+      "worldAxis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 64,
+      "minimumAngle": -32,
+      "maximumAngle": 32
+    },
+    {
+      "name": "INT_LEVER_Throttle_B",
+      "kind": "Lever",
+      "pivot": [
+        -0.800000011920929,
+        -0.44999998807907104,
+        1.0
+      ],
+      "worldAxis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 64,
+      "minimumAngle": -32,
+      "maximumAngle": 32
+    },
+    {
+      "name": "INT_LEVER_Throttle_C",
+      "kind": "Lever",
+      "pivot": [
+        -0.6660000085830688,
+        -0.44999998807907104,
+        1.0
+      ],
+      "worldAxis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 64,
+      "minimumAngle": -32,
+      "maximumAngle": 32
+    },
+    {
+      "name": "INT_JOYSTICK_Attitude",
+      "kind": "Joystick",
+      "pivot": [
+        0.800000011920929,
+        -0.4749999940395355,
+        1.0520000457763672
+      ],
+      "worldAxis": [
+        1,
+        0,
+        0
+      ],
+      "secondaryWorldAxis": [
+        0,
+        1,
+        0
+      ],
+      "rangeDegrees": 24,
+      "minimumAngle": -12,
+      "maximumAngle": 12
+    },
+    {
+      "name": "INT_BUTTON_Hero_Trigger",
+      "kind": "Button",
+      "pivot": [
+        0.800000011920929,
+        -0.4790000021457672,
+        1.28000009059906
+      ],
+      "worldAxis": [
+        1,
+        0,
+        0
+      ],
+      "minimumAngle": 0,
+      "maximumAngle": -16,
+      "rangeDegrees": 16,
+      "buttonUsesRotation": true
+    },
+    {
+      "name": "INT_BUTTON_Hero_Top",
+      "kind": "Button",
+      "pivot": [
+        0.8149999976158142,
+        -0.43299999833106995,
+        1.3040000200271606
+      ],
+      "worldAxis": [
+        0,
+        0,
+        -1
+      ],
+      "travel": 0.004
+    }
+  ],
+  "screens": [
+    {
+      "name": "SCREEN_HERO_Navigation",
+      "center": [
+        0.0,
+        -2.052000045776367,
+        1.090999960899353
+      ],
+      "worldNormal": [
+        0.0,
+        0.800000011920929,
+        0.6000000238418579
+      ],
+      "size": [
+        0.74,
+        0.37
+      ],
+      "texture": "HeroCRT_Navigation.png",
+      "curvatureMetres": 0.005
+    },
+    {
+      "name": "SCREEN_HERO_Comms",
+      "center": [
+        -0.6108411550521851,
+        -2.0128819942474365,
+        1.0809999704360962
+      ],
+      "worldNormal": [
+        0.15264728665351868,
+        0.7853017449378967,
+        0.6000000238418579
+      ],
+      "size": [
+        0.31,
+        0.31
+      ],
+      "texture": "HeroCRT_Comms.png",
+      "curvatureMetres": 0.005
+    },
+    {
+      "name": "SCREEN_HERO_Systems",
+      "center": [
+        0.6108411550521851,
+        -2.0128819942474365,
+        1.0809999704360962
+      ],
+      "worldNormal": [
+        -0.15264728665351868,
+        0.7853017449378967,
+        0.6000000238418579
+      ],
+      "size": [
+        0.31,
+        0.31
+      ],
+      "texture": "HeroCRT_Systems.png",
+      "curvatureMetres": 0.005
+    }
+  ],
+  "mainConsoleCenter": [
+    0,
+    -1.94,
+    0
+  ],
+  "podCenters": [
+    [
+      -0.8,
+      -0.45,
+      0
+    ],
+    [
+      0.8,
+      -0.45,
+      0
+    ]
+  ],
+  "supports": "Integrated authored feet and columns to floor0; remove old Unity mounts",
+  "fbxAxes": {
+    "forward": "-Z",
+    "up": "Y"
+  }
+}

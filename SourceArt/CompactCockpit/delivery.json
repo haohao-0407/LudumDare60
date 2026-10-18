@@ -1,0 +1,22 @@
+{
+  "blend": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit\\CompactCockpit.blend",
+  "glb": "D:\\unity-projects\\LudumDare60\\Exports\\CompactCockpit\\CompactCockpit.glb",
+  "glbBytes": 6588256,
+  "glbScenes": 1,
+  "glbMeshes": 194,
+  "glbEmbeddedImages": 5,
+  "glbTriangles": 127954,
+  "previewFiles": [
+    "Previews/Cockpit_Interior.png",
+    "Previews/Cockpit_Cutaway.png",
+    "Previews/Cockpit_RearInterior.png"
+  ],
+  "sourceScene": "CompactCockpit",
+  "dimensionsMeters": [
+    1.9,
+    2.2,
+    2.1
+  ],
+  "unityImported": false,
+  "notes": "BLEND keeps procedural enamel texture and render setup. GLB carries meshes, base PBR materials and packed screen emission images; procedural micro-bump and scene lighting are not baked."
+}

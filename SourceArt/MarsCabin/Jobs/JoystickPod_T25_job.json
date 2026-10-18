@@ -1,0 +1,34 @@
+{
+  "name": "JoystickPod_T25",
+  "provider": "meshy",
+  "mode": "image",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/JoystickPod_T25.png",
+  "reference_sha256": "95b4248c071da2d58961fb25a62d0b9e9dde213322855f89d84e83f4fbc623f9",
+  "reference_inspected": true,
+  "requested_target_polycount": 50000,
+  "provider_limit_note": "Meshy T2.5 supports 100 to 30000 faces; explicit maximum used.",
+  "requested_size": 0.42,
+  "submitted_utc": "2026-10-17T17:02:45.2404512Z",
+  "state": "done",
+  "request": {
+    "ai_model": "meshy-t2.5",
+    "model_type": "smart-topology",
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "4k",
+    "texture_prompt": "Faithfully preserve the isolated reference retrofuturist joystick control housing with an EMPTY top gaiter socket. Do not add a joystick stick, handle or unrelated props. Ivory enamel casing, detailed dark rubber gaiter around the empty socket, brushed metal fasteners and trim, crisp calibration markings, small status lamps, physical switches, fine panel seams, restrained rubbed edge wear. High detail PBR, tactile mechanical materials and reference color palette.",
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "output_folder": "Assets/MarsCabin/Models/Meshy",
+  "http_status": 202,
+  "provider_task_id": "01a14ad0-28c5-7786-a2a2-7b5b2cfa00bf",
+  "job_id": "52d703de06e546dba18d1c0761ef1b2d",
+  "progress": 1.0,
+  "asset_path": "Assets/MarsCabin/Models/Meshy/JoystickPod_T25.glb",
+  "error": null,
+  "last_checked_utc": "2026-10-17T17:05:18.7507990Z"
+}

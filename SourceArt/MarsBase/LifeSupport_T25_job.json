@@ -1,0 +1,26 @@
+{
+  "name": "LifeSupport_T25",
+  "provider": "meshy",
+  "mode": "image",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsBase/References/LifeSupport_reference.png",
+  "requested_size": 4.2,
+  "submitted_utc": "2026-10-17T12:17:04.3574322Z",
+  "state": "done",
+  "request": {
+    "ai_model": "meshy-t2.5",
+    "model_type": "smart-topology",
+    "topology": "triangle",
+    "target_polycount": 30000,
+    "should_texture": true,
+    "enable_pbr": true,
+    "texture_resolution": "4k",
+    "texture_prompt": "Weathered ivory painted life support equipment, orange service panels, stainless steel pipework, fine bolted seams, analog gauges, radiator fins, restrained rust and dust. Preserve reference materials. High detail PBR.",
+    "target_formats": [
+      "glb"
+    ]
+  },
+  "http_status": 202,
+  "provider_task_id": "01a149ca-96ad-721a-b755-01cea536f9d8",
+  "job_id": "2fc816868fdf498c8dcc8b813dccf4f9",
+  "asset_path": "Assets/MarsBase/Models/Meshy/LifeSupport_T25.glb"
+}

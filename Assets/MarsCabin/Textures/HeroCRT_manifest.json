@@ -1,0 +1,10 @@
+{
+  "source": "original code-authored vector instrument graphics",
+  "generator": "SourceArt/MarsCabin/build_crt_graphics.py",
+  "files": [
+    "HeroCRT_Navigation.png",
+    "HeroCRT_Comms.png",
+    "HeroCRT_Systems.png"
+  ],
+  "meshy_content": false
+}

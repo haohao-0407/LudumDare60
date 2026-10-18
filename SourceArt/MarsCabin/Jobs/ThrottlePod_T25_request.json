@@ -1,0 +1,10 @@
+{
+  "name": "ThrottlePod_T25",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/ThrottlePod_T25.png",
+  "reference_inspected": true,
+  "reference_inspected_by": "root agent, isolated housing with three empty curved slots confirmed before submission",
+  "requested_target_polycount": 50000,
+  "requested_size": 0.48,
+  "intended_dimensions_note": "Desktop control housing; final scene builder sets scale from measured bounds.",
+  "texture_prompt": "Faithfully preserve the isolated reference retrofuturist throttle control housing with three EMPTY curved lever slots. Do not add levers, handles or unrelated props. Ivory enamel casing, dark recessed slot openings, precise engraved calibration tick marks and instrument labels, brushed metal rim, small screws, physical indicator lamps, fine panel seams, restrained rubbed edge wear and subtle patina. High detail PBR, clean readable mechanical detail and reference colors."
+}

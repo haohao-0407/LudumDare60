@@ -1,0 +1,10 @@
+{
+  "name": "NavConsole_T25",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/NavConsole_T25.png",
+  "reference_inspected": true,
+  "reference_inspected_by": "root agent, full isolated object confirmed before submission",
+  "requested_target_polycount": 100000,
+  "requested_size": 1.5,
+  "intended_dimensions_m": [1.5, 0.75, 1.2],
+  "texture_prompt": "Faithfully preserve the reference retrofuturist navigation console. Warm ivory enamel housing, recessed dark instrument panels, aged brushed metal, crisp panel seams and screws, amber and green CRT display graphics, multicolored physical switches, rotary knobs, fine analog labels and subtle rubbed edge wear. Dense precise surface detail, restrained patina, clean readable controls, high detail PBR materials. Preserve the complete isolated desk geometry and color palette."
+}

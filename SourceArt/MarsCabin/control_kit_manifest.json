@@ -1,0 +1,131 @@
+{
+  "file": "D:\\unity-projects\\LudumDare60\\Assets\\MarsCabin\\Models\\Cabin_ControlKit.fbx",
+  "units": "metres",
+  "coordinateSpace": "Blender local X,Y,Z; pivot at lower hinge/socket",
+  "expectedUnityMapping": "(-x,z,-y), verify prior imported architecture sentinels",
+  "masterCollection": "ControlKit_Masters_Hidden",
+  "geometryTriangles": 27992,
+  "parts": [
+    {
+      "name": "ThrottleLever_A",
+      "kind": "Lever",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 70,
+      "gripCenter": [
+        0,
+        -0.034,
+        0.232
+      ],
+      "height": 0.256,
+      "gripWidth": 0.128
+    },
+    {
+      "name": "ThrottleLever_B",
+      "kind": "Lever",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 70,
+      "gripCenter": [
+        0,
+        -0.034,
+        0.232
+      ],
+      "height": 0.256,
+      "gripWidth": 0.128
+    },
+    {
+      "name": "ThrottleLever_C",
+      "kind": "Lever",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 70,
+      "gripCenter": [
+        0,
+        -0.034,
+        0.232
+      ],
+      "height": 0.256,
+      "gripWidth": 0.128
+    },
+    {
+      "name": "JoystickGrip",
+      "kind": "Joystick",
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axes": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "height": 0.263,
+      "socketRadius": 0.014
+    },
+    {
+      "name": "INT_Joystick_Trigger",
+      "parent": "JoystickGrip",
+      "kind": "Trigger",
+      "pivot": [
+        0.0,
+        -0.004000000189989805,
+        0.2280000001192093
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "rangeDegrees": 16
+    },
+    {
+      "name": "INT_Joystick_TopButton",
+      "parent": "JoystickGrip",
+      "kind": "Button",
+      "pivot": [
+        0.014999999664723873,
+        0.041999999433755875,
+        0.25200000405311584
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "travel": 0.004
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "scene": "CompactCockpit",
+  "units": "metres",
+  "interior_nominal": [
+    1.9,
+    2.2,
+    2.1
+  ],
+  "rear_free_floor_nominal": [
+    1.86,
+    0.86
+  ],
+  "floor_to_console_underside": 0.67,
+  "objects": 216,
+  "renderable_objects": 194,
+  "evaluated_triangles": 127954,
+  "screen_count": 5,
+  "closed_enclosure_ray_check": {
+    "rays": 3600,
+    "misses": 0,
+    "miss_examples": []
+  },
+  "textures_packed": {
+    "attitude.png": true,
+    "comms.png": true,
+    "navigation.png": true,
+    "radar.png": true,
+    "systems.png": true
+  },
+  "hidden_geometry": [],
+  "scope": "Complete walls, ceiling, floor, flush rear hatch and front cockpit console. No chair or auxiliary furnishing.",
+  "source": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit\\CompactCockpit.blend"
+}

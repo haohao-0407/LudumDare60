@@ -1,0 +1,10 @@
+{
+  "name": "CommsRack_T25",
+  "reference_path": "D:/unity-projects/LudumDare60/SourceArt/MarsCabin/References/CommsRack_T25.png",
+  "reference_inspected": true,
+  "reference_inspected_by": "root agent, complete isolated unit confirmed before submission",
+  "requested_target_polycount": 100000,
+  "requested_size": 1.65,
+  "intended_dimensions_m": [0.8, 0.5, 1.65],
+  "texture_prompt": "Faithfully preserve the isolated reference retrofuturist communications equipment rack. Warm ivory enamel cabinet, dark recessed equipment faces, analog meters, rotary knobs, physical switches, detailed connectors and vent grids, crisp rack screws, small instrument labels, amber and green illuminated indicators, brushed metal trim and subtle rubbed edge wear. Dense precise tactile details with restrained patina and high detail PBR. Preserve the complete single cabinet geometry and reference color palette."
+}

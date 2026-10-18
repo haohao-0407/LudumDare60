@@ -1,0 +1,20 @@
+{
+  "blend": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_Round\\CompactCockpit_Round.blend",
+  "glb": "D:\\unity-projects\\LudumDare60\\Exports\\CompactCockpit_Round\\CompactCockpit_Round.glb",
+  "shape": "circular",
+  "interiorDiameterMetres": 2.2,
+  "interiorHeightMetres": 2.1,
+  "glbScenes": 1,
+  "glbMeshes": 339,
+  "glbImages": 5,
+  "imagesEmbedded": true,
+  "triangles": 138690,
+  "rectangularBackupIntact": true,
+  "backupPath": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit\\Versions\\CompactCockpit_Rectangular_v1.blend",
+  "previewFiles": [
+    "Previews/Cockpit_Interior.png",
+    "Previews/Cockpit_Cutaway.png",
+    "Previews/Cockpit_RearInterior.png"
+  ],
+  "unityImported": false
+}

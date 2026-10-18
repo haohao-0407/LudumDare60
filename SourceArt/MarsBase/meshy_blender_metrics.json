@@ -1,0 +1,82 @@
+{
+  "scene": "MarsBase_RetroFuture",
+  "blend_path": "D:\\unity-projects\\LudumDare60\\SourceArt\\MarsBase\\MarsBase_RetroFuture.blend",
+  "coordinate_system": "Blender Z-up, metres",
+  "props": [
+    {
+      "root": "Meshy_LifeSupport_T25_A",
+      "source_glb": "D:\\unity-projects\\LudumDare60\\Assets\\MarsBase\\Models\\Meshy\\LifeSupport_T25.glb",
+      "ai_model": "meshy-t2.5",
+      "shared_duplicate_of": null,
+      "mesh_objects": 1,
+      "triangles": 29595,
+      "bounds_min": [
+        7.899999618530273,
+        -22.317626953125,
+        -0.07500004768371582
+      ],
+      "bounds_max": [
+        12.100000381469727,
+        -19.682373046875,
+        3.6307530403137207
+      ],
+      "dimensions": [
+        4.200000762939453,
+        2.63525390625,
+        3.7057530879974365
+      ],
+      "longest_dimension_m": 4.200000762939453,
+      "yaw_degrees": 0.0
+    },
+    {
+      "root": "Meshy_LifeSupport_T25_B",
+      "source_glb": "D:\\unity-projects\\LudumDare60\\Assets\\MarsBase\\Models\\Meshy\\LifeSupport_T25.glb",
+      "ai_model": "meshy-t2.5",
+      "shared_duplicate_of": "Meshy_LifeSupport_T25_A",
+      "mesh_objects": 1,
+      "triangles": 29595,
+      "bounds_min": [
+        11.899999618530273,
+        -21.317626953125,
+        -0.07500004768371582
+      ],
+      "bounds_max": [
+        16.100000381469727,
+        -18.682373046875,
+        3.6307530403137207
+      ],
+      "dimensions": [
+        4.200000762939453,
+        2.63525390625,
+        3.7057530879974365
+      ],
+      "longest_dimension_m": 4.200000762939453,
+      "yaw_degrees": 0.0
+    },
+    {
+      "root": "Meshy_Rover_T25",
+      "source_glb": "D:\\unity-projects\\LudumDare60\\Assets\\MarsBase\\Models\\Meshy\\Rover_T25.glb",
+      "ai_model": "meshy-t2.5",
+      "shared_duplicate_of": null,
+      "mesh_objects": 1,
+      "triangles": 29903,
+      "bounds_min": [
+        -21.399999618530273,
+        -26.53568458557129,
+        -0.07500004768371582
+      ],
+      "bounds_max": [
+        -14.59999942779541,
+        -21.464313507080078,
+        3.6267294883728027
+      ],
+      "dimensions": [
+        6.800000190734863,
+        5.071371078491211,
+        3.7017295360565186
+      ],
+      "longest_dimension_m": 6.800000190734863,
+      "yaw_degrees": -19.99999941818584
+    }
+  ]
+}

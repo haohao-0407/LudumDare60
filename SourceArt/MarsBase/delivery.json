@@ -1,0 +1,59 @@
+{
+  "status": "complete",
+  "scene": "Assets/MarsBase/Scenes/MarsBase_RetroFuture.unity",
+  "blender": "SourceArt/MarsBase/MarsBase_RetroFuture.blend",
+  "preview": "SourceArt/MarsBase/MarsBase_Unity_Delivery.png",
+  "architecture": {
+    "authoring": "Blender",
+    "dimensions_m": [
+      62.79,
+      25.35,
+      46.79
+    ],
+    "objects": 133,
+    "triangles": 254380
+  },
+  "total_scene": {
+    "renderers": 137,
+    "triangles": 343673,
+    "materials": 14,
+    "colliders": 29
+  },
+  "generated_props": {
+    "model": "meshy-t2.5",
+    "rover_triangles": 29903,
+    "life_support_triangles": 29595,
+    "life_support_instances": 2,
+    "embedded_texture_resolutions": [
+      "4096x4096",
+      "2048x2048",
+      "4096x4096"
+    ]
+  },
+  "project_render_change": {
+    "asset": "Assets/Settings/PC_RPAsset.asset",
+    "shadow_distance_m": {
+      "before": 50,
+      "after": 180
+    },
+    "main_shadow_resolution": {
+      "before": 2048,
+      "after": 4096
+    }
+  },
+  "verification": {
+    "editor_render": true,
+    "dimensions": true,
+    "materials": true,
+    "missing_scripts": 0,
+    "missing_meshes": 0,
+    "missing_materials": 0,
+    "console_errors": 0,
+    "play_mode_run": false,
+    "player_build_run": false
+  },
+  "terrain": "Flat presentation plane only; no terrain",
+  "coordinates": "Blender architecture (x,y,z) imports into Unity as (-x,z,-y).",
+  "source_provenance": "provenance.json",
+  "image_prompts": "image_prompts.json"
+}

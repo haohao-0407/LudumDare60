@@ -1,0 +1,31 @@
+{
+  "project": "ARES / Retrofuturist Mars Base",
+  "date": "2026-10-17",
+  "reference": "User-provided image-1.png",
+  "authoring": {
+    "architecture": "Blender 5.2.2 LTS; authored modular geometry, not whole-scene AI generation",
+    "detail_props": "Meshy explicit meshy-t2.5, image-to-3D, smart-topology, 30000 requested triangles, 4K requested PBR textures",
+    "reference_images": "Built-in image_gen; inspected before Meshy submission",
+    "terrain": "Not included; flat presentation surface only",
+    "unity": "6000.6.5f1 / URP 17.6.0"
+  },
+  "sources": {
+    "meshy_api": "https://docs.meshy.ai/en/api/image-to-3d",
+    "meshy_changelog": "https://docs.meshy.ai/en/api/changelog"
+  },
+  "assets": [
+    {
+      "name": "Rover_T25",
+      "reference": "References/Rover_reference.png",
+      "description": "Single isolated complete six-wheel pressurized Mars expedition rover, retrofuturist 1970s aerospace design, off-white rounded crew cabin, orange stripe, panoramic dark windows, three axles, rugged tires, mechanical suspension, roof rack, worklights and antenna. Neutral studio lighting and pale gray background, full three-quarter view, weathered PBR surfaces, no scene or collage.",
+      "job_manifest": "Rover_T25_job.json"
+    },
+    {
+      "name": "LifeSupport_T25",
+      "reference": "References/LifeSupport_reference.png",
+      "description": "Single isolated industrial life support oxygen generator skid, ivory ceramic painted machine, orange service panels, two integrated pressure tanks, steel pipework and manifolds, radiator fins, analog gauges, amber indicator lamps, bolted hatches, four feet and base frame. Retrofuturist aerospace design, restrained rust and dust, three-quarter full view, neutral studio background, no scene or separate props.",
+      "job_manifest": "LifeSupport_T25_job.json"
+    }
+  ],
+  "verification_boundary": "Editor import, scene rendering, renderer/material/bounds/collider inspection. No Play Mode or gameplay acceptance claimed."
+}

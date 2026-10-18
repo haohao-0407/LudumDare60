@@ -1,0 +1,1021 @@
+{
+  "scene": "Assets/MarsCabin/Scenes/MarsCabin_Interior.unity",
+  "controls": 76,
+  "interactiveChecks": [
+    {
+      "id": "cabin.arch.int_button_l_00",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.05120015
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_01",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.05120015
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_02",
+      "kind": "Button",
+      "colliderSize": [
+        0.06400001,
+        0.0349999666,
+        0.05120015
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_03",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_04",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_05",
+      "kind": "Button",
+      "colliderSize": [
+        0.06400001,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_06",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_07",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_l_08",
+      "kind": "Button",
+      "colliderSize": [
+        0.06400001,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_00",
+      "kind": "Button",
+      "colliderSize": [
+        0.06400001,
+        0.0349999666,
+        0.05120015
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_01",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.05120015
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_02",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.05120015
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_03",
+      "kind": "Button",
+      "colliderSize": [
+        0.06400001,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_04",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_05",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_06",
+      "kind": "Button",
+      "colliderSize": [
+        0.06400001,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_07",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_button_r_08",
+      "kind": "Button",
+      "colliderSize": [
+        0.06399989,
+        0.0349999666,
+        0.051199913
+      ],
+      "motionMetres": 0.009599924,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.arch.int_knob_l_00",
+      "kind": "Knob",
+      "colliderSize": [
+        0.07691246,
+        0.0572000742,
+        0.07724762
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.arch.int_knob_l_01",
+      "kind": "Knob",
+      "colliderSize": [
+        0.07691252,
+        0.0572000742,
+        0.07724762
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.arch.int_knob_l_02",
+      "kind": "Knob",
+      "colliderSize": [
+        0.07691252,
+        0.0572000742,
+        0.07724762
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.arch.int_knob_r_00",
+      "kind": "Knob",
+      "colliderSize": [
+        0.07691252,
+        0.0572000742,
+        0.07724762
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.arch.int_knob_r_01",
+      "kind": "Knob",
+      "colliderSize": [
+        0.07691252,
+        0.0572000742,
+        0.07724762
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.arch.int_knob_r_02",
+      "kind": "Knob",
+      "colliderSize": [
+        0.07691246,
+        0.0572000742,
+        0.07724762
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.arch.int_toggle_l_00",
+      "kind": "Toggle",
+      "colliderSize": [
+        0.03519988,
+        0.178869486,
+        0.168653011
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 44.9999733
+    },
+    {
+      "id": "cabin.arch.int_toggle_l_01",
+      "kind": "Toggle",
+      "colliderSize": [
+        0.03519988,
+        0.1788696,
+        0.168652773
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 44.9999733
+    },
+    {
+      "id": "cabin.arch.int_toggle_r_00",
+      "kind": "Toggle",
+      "colliderSize": [
+        0.03519988,
+        0.178869486,
+        0.168653011
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 44.9999733
+    },
+    {
+      "id": "cabin.arch.int_toggle_r_01",
+      "kind": "Toggle",
+      "colliderSize": [
+        0.03519988,
+        0.1788696,
+        0.168652773
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 44.9999733
+    },
+    {
+      "id": "cabin.hero.int_button_joystick_status_0",
+      "kind": "Button",
+      "colliderSize": [
+        0.0360000134,
+        0.0350000262,
+        0.0479999781
+      ],
+      "motionMetres": 0.003999889,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_joystick_status_1",
+      "kind": "Button",
+      "colliderSize": [
+        0.0360000134,
+        0.0350000262,
+        0.04799992
+      ],
+      "motionMetres": 0.003999889,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_joystick_status_2",
+      "kind": "Button",
+      "colliderSize": [
+        0.0360000134,
+        0.0350000262,
+        0.04799986
+      ],
+      "motionMetres": 0.004000008,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_joystick_attitude",
+      "kind": "Joystick",
+      "colliderSize": [
+        0.08399999,
+        0.109999895,
+        0.07999995
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 9.484455
+    },
+    {
+      "id": "cabin.hero.int_button_hero_top",
+      "kind": "Button",
+      "colliderSize": [
+        0.0349999666,
+        0.0350000858,
+        0.0350000262
+      ],
+      "motionMetres": 0.00400006771,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_hero_trigger",
+      "kind": "Button",
+      "colliderSize": [
+        0.0349999666,
+        0.03999996,
+        0.0349999964
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 16.0000629
+    },
+    {
+      "id": "cabin.hero.int_knob_joystick_gain",
+      "kind": "Knob",
+      "colliderSize": [
+        0.03820002,
+        0.036550045,
+        0.0379052162
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.hero.int_toggle_joystick_safe",
+      "kind": "Toggle",
+      "colliderSize": [
+        0.0349999666,
+        0.07277608,
+        0.06810278
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 42.00003
+    },
+    {
+      "id": "cabin.hero.int_button_main_command_00",
+      "kind": "Button",
+      "colliderSize": [
+        0.0559999943,
+        0.0349999666,
+        0.0524015427
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_command_01",
+      "kind": "Button",
+      "colliderSize": [
+        0.05600001,
+        0.0349999666,
+        0.0524015427
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_command_02",
+      "kind": "Button",
+      "colliderSize": [
+        0.056,
+        0.0349999666,
+        0.0524015427
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_command_03",
+      "kind": "Button",
+      "colliderSize": [
+        0.05600001,
+        0.0349999666,
+        0.0524015427
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_command_04",
+      "kind": "Button",
+      "colliderSize": [
+        0.05600001,
+        0.0349999666,
+        0.0524015427
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_command_05",
+      "kind": "Button",
+      "colliderSize": [
+        0.0559999943,
+        0.0349999666,
+        0.0524015427
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_00",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_01",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_02",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699995,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_03",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699998,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399985677,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_04",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_05",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_06",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699995,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_07",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699998,
+        0.0349999666,
+        0.0466218
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_08",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.04662156
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_09",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.04662156
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_10",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699995,
+        0.0349999666,
+        0.04662156
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_key_11",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699998,
+        0.0349999666,
+        0.04662156
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_00",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699998,
+        0.0349999666,
+        0.0533649921
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_01",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699995,
+        0.0349999666,
+        0.0533649921
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_02",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.0533649921
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_03",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.0533649921
+      ],
+      "motionMetres": 0.00400009239,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_04",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699998,
+        0.0349999666,
+        0.05336523
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_05",
+      "kind": "Button",
+      "colliderSize": [
+        0.05699995,
+        0.0349999666,
+        0.05336523
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_06",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.05336523
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_main_mode_07",
+      "kind": "Button",
+      "colliderSize": [
+        0.05700004,
+        0.0349999666,
+        0.05336523
+      ],
+      "motionMetres": 0.00399999274,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_knob_hero_comms_brightness",
+      "kind": "Knob",
+      "colliderSize": [
+        0.0349999666,
+        0.0349999666,
+        0.0373418331
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.hero.int_knob_hero_navigation_brightness",
+      "kind": "Knob",
+      "colliderSize": [
+        0.0349999666,
+        0.0349999666,
+        0.0375583172
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.hero.int_knob_hero_systems_brightness",
+      "kind": "Knob",
+      "colliderSize": [
+        0.0349999666,
+        0.0349999666,
+        0.0373418331
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.hero.int_knob_main_trim_-1",
+      "kind": "Knob",
+      "colliderSize": [
+        0.0502000153,
+        0.04256344,
+        0.05177045
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.hero.int_knob_main_trim_1",
+      "kind": "Knob",
+      "colliderSize": [
+        0.0502000153,
+        0.04256344,
+        0.05177045
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 135
+    },
+    {
+      "id": "cabin.hero.int_button_throttle_l_0",
+      "kind": "Button",
+      "colliderSize": [
+        0.0350000858,
+        0.0350000858,
+        0.03700006
+      ],
+      "motionMetres": 0.0039999485,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_throttle_l_1",
+      "kind": "Button",
+      "colliderSize": [
+        0.0350000858,
+        0.0350000858,
+        0.03700012
+      ],
+      "motionMetres": 0.0039999485,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_throttle_l_2",
+      "kind": "Button",
+      "colliderSize": [
+        0.0350000858,
+        0.0350000858,
+        0.03699994
+      ],
+      "motionMetres": 0.00400006771,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_throttle_r_0",
+      "kind": "Button",
+      "colliderSize": [
+        0.0349999666,
+        0.0350000858,
+        0.03700006
+      ],
+      "motionMetres": 0.0039999485,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_throttle_r_1",
+      "kind": "Button",
+      "colliderSize": [
+        0.0349999666,
+        0.0350000858,
+        0.03700012
+      ],
+      "motionMetres": 0.0039999485,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_button_throttle_r_2",
+      "kind": "Button",
+      "colliderSize": [
+        0.0349999666,
+        0.0350000858,
+        0.03699994
+      ],
+      "motionMetres": 0.00400006771,
+      "motionDegrees": 0
+    },
+    {
+      "id": "cabin.hero.int_lever_throttle_a",
+      "kind": "Lever",
+      "colliderSize": [
+        0.129500031,
+        0.3440439,
+        0.254938126
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 31.999979
+    },
+    {
+      "id": "cabin.hero.int_lever_throttle_b",
+      "kind": "Lever",
+      "colliderSize": [
+        0.129500031,
+        0.2769997,
+        0.08199999
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 32.0000038
+    },
+    {
+      "id": "cabin.hero.int_lever_throttle_c",
+      "kind": "Lever",
+      "colliderSize": [
+        0.129500031,
+        0.344043732,
+        0.254937917
+      ],
+      "motionMetres": 0,
+      "motionDegrees": 32.0000038
+    }
+  ],
+  "labelChecks": [
+    {
+      "id": "cabin.arch.int_button_l_00",
+      "label": "Label_1.002",
+      "errorMetres": 2.38418579e-7,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_01",
+      "label": "Label_2.002",
+      "errorMetres": 2.38418579e-7,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_02",
+      "label": "Label_3.002",
+      "errorMetres": 2.38418579e-7,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_03",
+      "label": "Label_4.002",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_04",
+      "label": "Label_5.002",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_05",
+      "label": "Label_6.002",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_06",
+      "label": "Label_7.002",
+      "errorMetres": 1.1920929e-7,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_07",
+      "label": "Label_8.002",
+      "errorMetres": 1.1920929e-7,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_l_08",
+      "label": "Label_9.002",
+      "errorMetres": 1.1920929e-7,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_00",
+      "label": "Label_1.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_01",
+      "label": "Label_2.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_02",
+      "label": "Label_3.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_03",
+      "label": "Label_4.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_04",
+      "label": "Label_5.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_05",
+      "label": "Label_6.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_06",
+      "label": "Label_7.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_07",
+      "label": "Label_8.003",
+      "errorMetres": 0,
+      "restored": true
+    },
+    {
+      "id": "cabin.arch.int_button_r_08",
+      "label": "Label_9.003",
+      "errorMetres": 0,
+      "restored": true
+    }
+  ],
+  "ceilingChecks": [
+    {
+      "x": -1.5,
+      "z": -1.5,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.01786351
+    },
+    {
+      "x": -1.5,
+      "z": 0,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.12176251
+    },
+    {
+      "x": -1.5,
+      "z": 1.5,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.017864
+    },
+    {
+      "x": 0,
+      "z": -1.5,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.1217618
+    },
+    {
+      "x": 0,
+      "z": 0,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.137999
+    },
+    {
+      "x": 0,
+      "z": 1.5,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.12176228
+    },
+    {
+      "x": 1.5,
+      "z": -1.5,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.01786351
+    },
+    {
+      "x": 1.5,
+      "z": 0,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.12176251
+    },
+    {
+      "x": 1.5,
+      "z": 1.5,
+      "found": true,
+      "hit": "Ceiling__MC_Metal",
+      "height": 3.017864
+    }
+  ],
+  "failures": [],
+  "playMode": false,
+  "savedSceneReloadedBeforeAudit": true,
+  "recordedAtUtc": "2026-10-17T18:05:17.516Z"
+}

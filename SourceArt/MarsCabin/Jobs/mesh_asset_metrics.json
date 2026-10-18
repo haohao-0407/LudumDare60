@@ -1,0 +1,322 @@
+{
+  "models": [
+    {
+      "asset_path": "Assets/MarsCabin/Models/Meshy/CommsRack_T25.glb",
+      "bytes": 19144260,
+      "sha256": "47f93ac36e9cad793c4d9ff36aa32c409240c50a773004f3fcd380014bfbbe35",
+      "unique_meshes": 1,
+      "unique_mesh_triangles": 26192,
+      "instanced_node_triangles": 26192,
+      "images": [
+        {
+          "index": 0,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 9088946
+        },
+        {
+          "index": 1,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "bytes": 1876432
+        },
+        {
+          "index": 2,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 6900083
+        }
+      ],
+      "materials": [
+        {
+          "name": null,
+          "texture_channels": {
+            "base_color": 0,
+            "metallic_roughness": 1,
+            "normal": 2
+          }
+        }
+      ]
+    },
+    {
+      "asset_path": "Assets/MarsCabin/Models/Meshy/JoystickPod_T25.glb",
+      "bytes": 20768292,
+      "sha256": "0449dc810eef5e520dbfcd9bce162cc8fc095c3b867ce16ba141e012abfcc66b",
+      "unique_meshes": 1,
+      "unique_mesh_triangles": 30183,
+      "instanced_node_triangles": 30183,
+      "images": [
+        {
+          "index": 0,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 9856053
+        },
+        {
+          "index": 1,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "bytes": 2134923
+        },
+        {
+          "index": 2,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 7324384
+        }
+      ],
+      "materials": [
+        {
+          "name": null,
+          "texture_channels": {
+            "base_color": 0,
+            "metallic_roughness": 1,
+            "normal": 2
+          }
+        }
+      ]
+    },
+    {
+      "asset_path": "Assets/MarsCabin/Models/Meshy/NavConsole_T25.glb",
+      "bytes": 21806616,
+      "sha256": "70e658d41c4bb2cff045b4a71d5346dc69865a0d5c9b3bc53b29542a7b3c6466",
+      "unique_meshes": 1,
+      "unique_mesh_triangles": 27456,
+      "instanced_node_triangles": 27456,
+      "images": [
+        {
+          "index": 0,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 10477780
+        },
+        {
+          "index": 1,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "bytes": 2139560
+        },
+        {
+          "index": 2,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 7744780
+        }
+      ],
+      "materials": [
+        {
+          "name": null,
+          "texture_channels": {
+            "base_color": 0,
+            "metallic_roughness": 1,
+            "normal": 2
+          }
+        }
+      ]
+    },
+    {
+      "asset_path": "Assets/MarsCabin/Models/Meshy/PilotSeat_T25.glb",
+      "bytes": 24521276,
+      "sha256": "41707e8a1b00ec991e397d8e7093a0b4b85b492ecb95ffc0d8a8b1c9a80e5b91",
+      "unique_meshes": 1,
+      "unique_mesh_triangles": 29072,
+      "instanced_node_triangles": 29072,
+      "images": [
+        {
+          "index": 0,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 11665969
+        },
+        {
+          "index": 1,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "bytes": 2552093
+        },
+        {
+          "index": 2,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 8880342
+        }
+      ],
+      "materials": [
+        {
+          "name": null,
+          "texture_channels": {
+            "base_color": 0,
+            "metallic_roughness": 1,
+            "normal": 2
+          }
+        }
+      ]
+    },
+    {
+      "asset_path": "Assets/MarsCabin/Models/Meshy/ReelRecorder_T25.glb",
+      "bytes": 21381912,
+      "sha256": "10af13aab083960702ce2d2783fc6afb98c11859da2b5e74a2c4e5121539e1e0",
+      "unique_meshes": 1,
+      "unique_mesh_triangles": 26618,
+      "instanced_node_triangles": 26618,
+      "images": [
+        {
+          "index": 0,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 10238464
+        },
+        {
+          "index": 1,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "bytes": 2177521
+        },
+        {
+          "index": 2,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 7564542
+        }
+      ],
+      "materials": [
+        {
+          "name": null,
+          "texture_channels": {
+            "base_color": 0,
+            "metallic_roughness": 1,
+            "normal": 2
+          }
+        }
+      ]
+    },
+    {
+      "asset_path": "Assets/MarsCabin/Models/Meshy/ThrottlePod_T25.glb",
+      "bytes": 17795404,
+      "sha256": "8fa2ad3348e1154953cb58a72170fb3398d46394b8dd9b6465542761fa103c0f",
+      "unique_meshes": 1,
+      "unique_mesh_triangles": 29763,
+      "instanced_node_triangles": 29763,
+      "images": [
+        {
+          "index": 0,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 8094112
+        },
+        {
+          "index": 1,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            2048,
+            2048
+          ],
+          "bytes": 2012645
+        },
+        {
+          "index": 2,
+          "name": null,
+          "mime_type": "image/jpeg",
+          "embedded": true,
+          "dimensions": [
+            4096,
+            4096
+          ],
+          "bytes": 6221556
+        }
+      ],
+      "materials": [
+        {
+          "name": null,
+          "texture_channels": {
+            "base_color": 0,
+            "metallic_roughness": 1,
+            "normal": 2
+          }
+        }
+      ]
+    }
+  ]
+}

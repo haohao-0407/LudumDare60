@@ -1,0 +1,110 @@
+{
+  "Version": "Wall-integrated cockpit v3",
+  "BlenderSource": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_WallIntegrated\\CompactCockpit_WallIntegrated.blend",
+  "PreviousVersion": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_Round\\Versions\\CompactCockpit_Round_Desk_v2.blend",
+  "GLB": {
+    "Path": "D:\\unity-projects\\LudumDare60\\Exports\\CompactCockpit_WallIntegrated\\CompactCockpit_WallIntegrated.glb",
+    "Bytes": 7827944,
+    "Meshes": 402,
+    "Images": 5,
+    "Scenes": 1,
+    "EmbeddedImages": 5
+  },
+  "Validation": {
+    "scene": "CompactCockpit_WallIntegrated",
+    "units": "metres",
+    "interior_nominal": [
+      2.2,
+      2.2,
+      2.1
+    ],
+    "shape": "circular",
+    "interior_diameter_metres": 2.2,
+    "pilot_eye_metres": [
+      0.0,
+      -0.47999998927116394,
+      1.440000057220459
+    ],
+    "display_view_checks": [
+      {
+        "screen": "RADAR",
+        "off_axis_degrees": 0.0034970568555893434
+      },
+      {
+        "screen": "ATTITUDE",
+        "off_axis_degrees": 0.0034970568555893434
+      },
+      {
+        "screen": "NAVIGATION",
+        "off_axis_degrees": 0.0098911704778757
+      },
+      {
+        "screen": "COMMUNICATIONS",
+        "off_axis_degrees": 0.0
+      },
+      {
+        "screen": "SYSTEMS",
+        "off_axis_degrees": 0.0
+      }
+    ],
+    "console_mounting": "Integral wall fairings; no tabletop or legs",
+    "objects": 424,
+    "renderable_objects": 402,
+    "evaluated_triangles": 159378,
+    "screen_count": 5,
+    "screen_visibility_from_pilot": {
+      "SCREEN_RADAR.002": {
+        "sample_count": 25,
+        "occluded_count": 0,
+        "occluders": []
+      },
+      "SCREEN_ATTITUDE.002": {
+        "sample_count": 25,
+        "occluded_count": 0,
+        "occluders": []
+      },
+      "SCREEN_NAVIGATION.002": {
+        "sample_count": 25,
+        "occluded_count": 0,
+        "occluders": []
+      },
+      "SCREEN_COMMUNICATIONS.002": {
+        "sample_count": 25,
+        "occluded_count": 0,
+        "occluders": []
+      },
+      "SCREEN_SYSTEMS.002": {
+        "sample_count": 25,
+        "occluded_count": 0,
+        "occluders": []
+      }
+    },
+    "desk_geometry_remaining": [],
+    "closed_enclosure_ray_check": {
+      "rays": 3600,
+      "misses": 0,
+      "miss_examples": []
+    },
+    "textures_packed": {
+      "navigation.png.002": true,
+      "attitude.png.002": true,
+      "radar.png.002": true,
+      "comms.png.002": true,
+      "systems.png.002": true
+    },
+    "hidden_geometry": [],
+    "scope": "Complete walls, ceiling, floor, flush rear hatch and front cockpit console. No chair or auxiliary furnishing.",
+    "source": "D:\\unity-projects\\LudumDare60\\SourceArt\\CompactCockpit_WallIntegrated\\CompactCockpit_WallIntegrated.blend"
+  },
+  "PreviewNotes": "Cutaway temporarily hides right wall, rear wall and ceiling only for presentation. Source contains the complete enclosure.",
+  "UnityImported": true,
+  "UnityPrefab": "Assets/CompactCockpit_WallIntegrated/Prefabs/CompactCockpit_WallIntegrated.prefab",
+  "ScreenPrefabs": [
+    "RADAR",
+    "ATTITUDE",
+    "NAVIGATION",
+    "COMMUNICATIONS",
+    "SYSTEMS"
+  ],
+  "UnityValidation": "SourceArt/CompactCockpit_WallIntegrated/unity_validation.json"
+}

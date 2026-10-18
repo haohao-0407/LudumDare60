@@ -1,0 +1,82 @@
+{
+  "scene": "MarsBase_RetroFuture",
+  "blender_version": "5.2.2 LTS",
+  "units": "metres",
+  "coordinates": "Blender Z-up; front -Y; FBX -Z forward +Y up",
+  "architecture_objects": 133,
+  "triangles": 254380,
+  "bounds_min": [
+    -30.645000457763672,
+    -21.287277221679688,
+    -0.05073648691177368
+  ],
+  "bounds_max": [
+    32.14500045776367,
+    25.49985122680664,
+    25.299999237060547
+  ],
+  "dimensions": [
+    62.790000915527344,
+    46.78712844848633,
+    25.35073572397232
+  ],
+  "materials": [
+    "MB_Ceramic",
+    "MB_Orange",
+    "MB_Metal",
+    "MB_Dark",
+    "MB_Glass",
+    "MB_WindowGlow",
+    "MB_Green",
+    "MB_GreenLight",
+    "MB_RedSoil",
+    "MB_Sign",
+    "MB_Blue",
+    "MB_RedLight"
+  ],
+  "modules": [
+    "HAB-02_West",
+    "HAB-03_Foreground",
+    "SCI-04_East",
+    "LAB-05_Rear",
+    "ARES-01_Command",
+    "LINK-01_West_Front",
+    "LINK-02_Front_Command",
+    "LINK-03_Command_East",
+    "LINK-04_West_Rear",
+    "LINK-05_Rear_Command",
+    "BIO-06_Greenhouse",
+    "BIO-07_Greenhouse",
+    "COM-08_West_Mast",
+    "COM-09_Command_Mast",
+    "COM-10_East_Mast",
+    "COM-11_Back_Mast",
+    "SAT-12_Command_Dish",
+    "SAT-13_West_Dish",
+    "SAT-14_East_Dish",
+    "UTIL-15_Power_Water",
+    "SITE-16_Grated_Walkways"
+  ],
+  "rover_staging": {
+    "center": [
+      -18,
+      -20,
+      0
+    ],
+    "clearance_radius": 4.5
+  },
+  "generator_staging": {
+    "center": [
+      10,
+      -21,
+      0
+    ],
+    "clearance_radius": 3.0
+  },
+  "terrain": false,
+  "art_direction": "Cream porcelain capsule pressure habitats, safety-orange bands, warm slit windows, triangulated horticulture domes, analog communications and exposed utility piping",
+  "authored_geometry": "Central command hub, four habitat/lab pods, five ribbed corridors, two glazed greenhouses and crops, four lattice masts, three dishes, solar utility yard, tanks, cabinets, pipes, stairs, walkways",
+  "generated_assets": "Reserved separately for Meshy T2.5 rover and generator only",
+  "export_fbx": "D:\\unity-projects\\LudumDare60\\Assets\\MarsBase\\Models\\MarsBase_Architecture.fbx",
+  "source_blend": "D:\\unity-projects\\LudumDare60\\SourceArt\\MarsBase\\MarsBase_RetroFuture.blend"
+}
