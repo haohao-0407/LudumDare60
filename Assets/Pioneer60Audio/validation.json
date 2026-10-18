@@ -1,0 +1,398 @@
+{
+  "files": 69,
+  "loops": 11,
+  "composites": 12,
+  "sample_rate": 48000,
+  "format": "16-bit PCM WAV stereo",
+  "all_passed": true,
+  "checks": [
+    {
+      "name": "AMB_Engine_Idle_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -22.649,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -37.51,
+      "join_250ms_level_difference_db": 2.63
+    },
+    {
+      "name": "AMB_Ventilation_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -16.913,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -37.59,
+      "join_250ms_level_difference_db": 0.78
+    },
+    {
+      "name": "AMB_Broken_Fan_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -17.828,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -35.97,
+      "join_250ms_level_difference_db": 1.1
+    },
+    {
+      "name": "AMB_Mars_Wind_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -14.677,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -35.32,
+      "join_250ms_level_difference_db": 0.99
+    },
+    {
+      "name": "AMB_Mars_Storm_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -9.096,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -31.95,
+      "join_250ms_level_difference_db": 0.6
+    },
+    {
+      "name": "AMB_Air_Leak_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -22.16,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -43.04,
+      "join_250ms_level_difference_db": 2.01
+    },
+    {
+      "name": "COM_Radio_Static_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -23.052,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -39.4,
+      "join_250ms_level_difference_db": 0.55
+    },
+    {
+      "name": "AMB_Cabin_Healthy_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -16.886,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -34.71,
+      "join_250ms_level_difference_db": 2.25
+    },
+    {
+      "name": "AMB_Cabin_Damaged_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -16.253,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -33.31,
+      "join_250ms_level_difference_db": 1.32
+    },
+    {
+      "name": "SFX_air_leak_01",
+      "decode": "pass",
+      "true_peak_dbtp": -7.546
+    },
+    {
+      "name": "SFX_air_leak_02",
+      "decode": "pass",
+      "true_peak_dbtp": -8.735
+    },
+    {
+      "name": "SFX_electrical_glitch_01",
+      "decode": "pass",
+      "true_peak_dbtp": -10.194
+    },
+    {
+      "name": "SFX_electrical_glitch_02",
+      "decode": "pass",
+      "true_peak_dbtp": -9.561
+    },
+    {
+      "name": "SFX_hatch_jammed",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "SFX_metal_strain",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "UI_key_01",
+      "decode": "pass",
+      "true_peak_dbtp": -10.001
+    },
+    {
+      "name": "UI_key_02",
+      "decode": "pass",
+      "true_peak_dbtp": -14.061
+    },
+    {
+      "name": "UI_key_03",
+      "decode": "pass",
+      "true_peak_dbtp": -13.746
+    },
+    {
+      "name": "UI_confirm",
+      "decode": "pass",
+      "true_peak_dbtp": -13.146
+    },
+    {
+      "name": "UI_error",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "UI_relay_switch",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "UI_terminal_boot",
+      "decode": "pass",
+      "true_peak_dbtp": -21.474
+    },
+    {
+      "name": "UI_terminal_close",
+      "decode": "pass",
+      "true_peak_dbtp": -10.324
+    },
+    {
+      "name": "SFX_part_pickup",
+      "decode": "pass",
+      "true_peak_dbtp": -7.182
+    },
+    {
+      "name": "SFX_part_fit_01",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "SFX_part_fit_02",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "SFX_part_lock",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "UI_assembly_success",
+      "decode": "pass",
+      "true_peak_dbtp": -12.443
+    },
+    {
+      "name": "SFX_dismantle",
+      "decode": "pass",
+      "true_peak_dbtp": -4.026
+    },
+    {
+      "name": "SFX_material_drop",
+      "decode": "pass",
+      "true_peak_dbtp": -11.089
+    },
+    {
+      "name": "UI_salvage_start",
+      "decode": "pass",
+      "true_peak_dbtp": -9.788
+    },
+    {
+      "name": "SFX_winch_01",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "SFX_winch_02",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "SFX_rover_motor",
+      "decode": "pass",
+      "true_peak_dbtp": -8.888
+    },
+    {
+      "name": "SFX_salvage_contact",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "SFX_salvage_recovered",
+      "decode": "pass",
+      "true_peak_dbtp": -7.417
+    },
+    {
+      "name": "UI_salvage_success",
+      "decode": "pass",
+      "true_peak_dbtp": -7.965
+    },
+    {
+      "name": "COM_telegraph_beep",
+      "decode": "pass",
+      "true_peak_dbtp": -20.807
+    },
+    {
+      "name": "COM_radio_static",
+      "decode": "pass",
+      "true_peak_dbtp": -12.274
+    },
+    {
+      "name": "COM_connect",
+      "decode": "pass",
+      "true_peak_dbtp": -10.908
+    },
+    {
+      "name": "COM_timeout",
+      "decode": "pass",
+      "true_peak_dbtp": -9.668
+    },
+    {
+      "name": "COM_data_transfer",
+      "decode": "pass",
+      "true_peak_dbtp": -19.952
+    },
+    {
+      "name": "COM_ai_arrival",
+      "decode": "pass",
+      "true_peak_dbtp": -17.904
+    },
+    {
+      "name": "CRASH_metal_heavy_01",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "CRASH_metal_heavy_02",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "CRASH_metal_plate",
+      "decode": "pass",
+      "true_peak_dbtp": -5.155
+    },
+    {
+      "name": "CRASH_debris",
+      "decode": "pass",
+      "true_peak_dbtp": -7.417
+    },
+    {
+      "name": "CRASH_explosion",
+      "decode": "pass",
+      "true_peak_dbtp": -8.892
+    },
+    {
+      "name": "CRASH_sub_boom",
+      "decode": "pass",
+      "true_peak_dbtp": -6.609
+    },
+    {
+      "name": "STORY_power_restore",
+      "decode": "pass",
+      "true_peak_dbtp": -4.0
+    },
+    {
+      "name": "STORY_navigation_online",
+      "decode": "pass",
+      "true_peak_dbtp": -10.671
+    },
+    {
+      "name": "STORY_engine_test",
+      "decode": "pass",
+      "true_peak_dbtp": -10.667
+    },
+    {
+      "name": "STORY_life_support_valve",
+      "decode": "pass",
+      "true_peak_dbtp": -6.688
+    },
+    {
+      "name": "STORY_ready_departure",
+      "decode": "pass",
+      "true_peak_dbtp": -14.302
+    },
+    {
+      "name": "STORY_takeoff",
+      "decode": "pass",
+      "true_peak_dbtp": -12.888
+    },
+    {
+      "name": "ASSEMBLY_Work_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -6.001,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -37.54,
+      "join_250ms_level_difference_db": 1.95
+    },
+    {
+      "name": "SALVAGE_Work_Loop",
+      "decode": "pass",
+      "true_peak_dbtp": -9.889,
+      "loop_join_sample_delta": 0.0,
+      "quietest_100ms_rms_dbfs": -33.6,
+      "join_250ms_level_difference_db": 1.89
+    },
+    {
+      "name": "ASSEMBLY_Start",
+      "decode": "pass",
+      "true_peak_dbtp": -5.674
+    },
+    {
+      "name": "ASSEMBLY_Complete",
+      "decode": "pass",
+      "true_peak_dbtp": -4.261
+    },
+    {
+      "name": "ASSEMBLY_Full",
+      "decode": "pass",
+      "true_peak_dbtp": -3.0
+    },
+    {
+      "name": "SALVAGE_Start",
+      "decode": "pass",
+      "true_peak_dbtp": -8.203
+    },
+    {
+      "name": "SALVAGE_Complete",
+      "decode": "pass",
+      "true_peak_dbtp": -6.328
+    },
+    {
+      "name": "SALVAGE_Full",
+      "decode": "pass",
+      "true_peak_dbtp": -4.115
+    },
+    {
+      "name": "SALVAGE_Cancel",
+      "decode": "pass",
+      "true_peak_dbtp": -5.361
+    },
+    {
+      "name": "CRASH_Cinematic",
+      "decode": "pass",
+      "true_peak_dbtp": -3.0
+    },
+    {
+      "name": "CRASH_Impact_Short",
+      "decode": "pass",
+      "true_peak_dbtp": -4.132
+    },
+    {
+      "name": "CRASH_Hull_Buckle",
+      "decode": "pass",
+      "true_peak_dbtp": -3.909
+    },
+    {
+      "name": "COM_Telegraph_SOS",
+      "decode": "pass",
+      "true_peak_dbtp": -18.984
+    },
+    {
+      "name": "COM_Telegraph_ACK",
+      "decode": "pass",
+      "true_peak_dbtp": -19.582
+    }
+  ],
+  "limitations": "Unity 6000.6.5f1 import, PCM decode, sample rate, channels and all 11 loop boundaries passed in an isolated project. No human listening review or gameplay-event integration validation.",
+  "importer_compile": "Passed against Unity 6000.6.5f1 assemblies",
+  "unity_import_validation": {
+    "unityVersion": "6000.6.5f1",
+    "audioFiles": 69,
+    "loops": 11,
+    "pcmImport": true,
+    "allPassed": true,
+    "error": ""
+  }
+}

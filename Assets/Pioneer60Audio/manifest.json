@@ -1,0 +1,2505 @@
+[
+  {
+    "name": "AMB_Engine_Idle_Loop",
+    "title": "引擎稳定运转 · 16 秒",
+    "path": "Audio/01_Loops/AMB_Engine_Idle_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -27.999998453508034,
+    "rms_dbfs": -29.74159042437865,
+    "true_peak_dbtp": -22.64872600893668,
+    "target_lufs_or_short_rms": -28,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "922d73b46639ca44c7e1b05295f184ffee6ee6ef1f829577747b3cc8f51ad606",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "AMB_engine_idle",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/spaceEngineLow_000.ogg"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Ventilation_Loop",
+    "title": "通风／生命维持 · 16 秒",
+    "path": "Audio/01_Loops/AMB_Ventilation_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -29.000002610786638,
+    "rms_dbfs": -30.75281719827317,
+    "true_peak_dbtp": -16.91341464207643,
+    "target_lufs_or_short_rms": -29,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "f1406e124808dfa747a8c2440493dcb5531b9ab237712b1e31c294855fd4e01c",
+    "license": "CC-BY-3.0",
+    "sources": [
+      {
+        "cue": "AMB_ventilation",
+        "author": "MidFag",
+        "license": "CC-BY-3.0",
+        "source_page": "https://opengameart.org/content/ventilation-version2",
+        "source_file": "originals/ventilation/tube_0.mp3"
+      }
+    ],
+    "notes": "包含 MidFag 的 CC BY 3.0 素材。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Broken_Fan_Loop",
+    "title": "故障风扇 · 16 秒",
+    "path": "Audio/01_Loops/AMB_Broken_Fan_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -29.999993436652915,
+    "rms_dbfs": -33.107956153391804,
+    "true_peak_dbtp": -17.827914484145857,
+    "target_lufs_or_short_rms": -30,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "a88ac6c34e3edb3fad78ed06da0f67c672666381b15df581dba16ab05aa5627c",
+    "license": "CC-BY-3.0",
+    "sources": [
+      {
+        "cue": "AMB_broken_fan",
+        "author": "dklon",
+        "license": "CC-BY-3.0",
+        "source_page": "https://opengameart.org/content/broken-fan-loop",
+        "source_file": "originals/broken_fan/broken_fan.wav"
+      }
+    ],
+    "notes": "包含 dklon 的 CC BY 3.0 素材。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Mars_Wind_Loop",
+    "title": "火星地表风声 · 32 秒",
+    "path": "Audio/01_Loops/AMB_Mars_Wind_Loop.wav",
+    "duration": 32.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -27.999999133289972,
+    "rms_dbfs": -30.714534179011693,
+    "true_peak_dbtp": -14.676982210823535,
+    "target_lufs_or_short_rms": -28,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "560de9b351accc98347a1fe3a8d9cf6401808a73e3efa9083181853398bf2cc0",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "AMB_mars_wind",
+        "author": "Luke.RUSTLTD",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/wind1",
+        "source_file": "originals/wind/wind1.wav"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Mars_Storm_Loop",
+    "title": "火星阵风／沙尘 · 32 秒",
+    "path": "Audio/01_Loops/AMB_Mars_Storm_Loop.wav",
+    "duration": 32.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.000000797607914,
+    "rms_dbfs": -26.693631069853545,
+    "true_peak_dbtp": -9.096079531602882,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "346f2f1c0e3c0b9aa7686a7ecb97572f2a41f98c975297028e24115d22ca775b",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "AMB_mars_wind_alt",
+        "author": "Luke.RUSTLTD",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/wind1",
+        "source_file": "originals/wind/wind2.wav"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Air_Leak_Loop",
+    "title": "持续漏气 · 16 秒",
+    "path": "Audio/01_Loops/AMB_Air_Leak_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -30.999996692656467,
+    "rms_dbfs": -36.94825568796587,
+    "true_peak_dbtp": -22.159701871799466,
+    "target_lufs_or_short_rms": -31,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "7485fded5a605099bca373e1cfcb7742c31b0352bb698e5cdd411d4d418f3ae4",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_air_leak_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #1.wav"
+      },
+      {
+        "cue": "SFX_air_leak_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #3.wav"
+      },
+      {
+        "cue": "STORY_life_support_valve",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #5.wav"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_Radio_Static_Loop",
+    "title": "无线电窄带静电 · 16 秒",
+    "path": "Audio/01_Loops/COM_Radio_Static_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -32.99999456644535,
+    "rms_dbfs": -36.18857762558787,
+    "true_peak_dbtp": -23.051753968284935,
+    "target_lufs_or_short_rms": -33,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "a8ae2dadfb6c595b985c27916789ec4c6922233dbd6d2782af880f490144368f",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_radio_static",
+        "author": "xhunterko",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/static",
+        "source_file": "originals/radio_static/ScatterNoise1.mp3"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Cabin_Healthy_Loop",
+    "title": "正常舱内综合环境 · 16 秒",
+    "path": "Audio/01_Loops/AMB_Cabin_Healthy_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -26.999996727072674,
+    "rms_dbfs": -28.742962682340945,
+    "true_peak_dbtp": -16.885572253759086,
+    "target_lufs_or_short_rms": -27,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "0729bbcdf83592cc44fba821521e7dd665d050a6bf00c59dd825500d31895ffe",
+    "license": "CC-BY-3.0",
+    "sources": [
+      {
+        "cue": "AMB_engine_idle",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/spaceEngineLow_000.ogg"
+      },
+      {
+        "cue": "AMB_ventilation",
+        "author": "MidFag",
+        "license": "CC-BY-3.0",
+        "source_page": "https://opengameart.org/content/ventilation-version2",
+        "source_file": "originals/ventilation/tube_0.mp3"
+      }
+    ],
+    "notes": "整套舱内环境，可单独使用；不要同时叠加引擎和通风单层。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "AMB_Cabin_Damaged_Loop",
+    "title": "受损舱内综合环境 · 16 秒",
+    "path": "Audio/01_Loops/AMB_Cabin_Damaged_Loop.wav",
+    "duration": 16.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -26.999999099068805,
+    "rms_dbfs": -30.273856580137497,
+    "true_peak_dbtp": -16.25313737540028,
+    "target_lufs_or_short_rms": -27,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "ee7d3aadaf62b21f4eea4ed8e8b77605a0f3bfe8e1fae34f8ef0482548c98857",
+    "license": "CC-BY-3.0",
+    "sources": [
+      {
+        "cue": "AMB_broken_fan",
+        "author": "dklon",
+        "license": "CC-BY-3.0",
+        "source_page": "https://opengameart.org/content/broken-fan-loop",
+        "source_file": "originals/broken_fan/broken_fan.wav"
+      },
+      {
+        "cue": "AMB_engine_idle",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/spaceEngineLow_000.ogg"
+      },
+      {
+        "cue": "SFX_air_leak_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #1.wav"
+      },
+      {
+        "cue": "SFX_air_leak_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #3.wav"
+      },
+      {
+        "cue": "STORY_life_support_valve",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #5.wav"
+      }
+    ],
+    "notes": "受损状态环境；建议与正常舱内环境做 0.8–1.5 秒交叉淡化。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_air_leak_01",
+    "title": "破损管路漏气",
+    "path": "Audio/02_Single_Shots/02_Damage/SFX_air_leak_01.wav",
+    "duration": 0.8991,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.999995044013136,
+    "rms_dbfs": -26.816810803675555,
+    "true_peak_dbtp": -7.546104056668778,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "2bc96372e6981c4c33194ec138b0cda0b75891d318ea2ef8ee7b8bcdf823c2ed",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_air_leak_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #1.wav"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_air_leak_02",
+    "title": "间歇漏气备选",
+    "path": "Audio/02_Single_Shots/02_Damage/SFX_air_leak_02.wav",
+    "duration": 0.8998,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000000136934933,
+    "rms_dbfs": -27.033002837009935,
+    "true_peak_dbtp": -8.73506002588329,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "290eead73c1b72663431669e633e59d062e3fda9245c81b68428ab2058c57b0a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_air_leak_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #3.wav"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_electrical_glitch_01",
+    "title": "漏电／设备故障候选",
+    "path": "Audio/02_Single_Shots/02_Damage/SFX_electrical_glitch_01.wav",
+    "duration": 0.02,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -21.000332391044267,
+    "true_peak_dbtp": -10.194018115062955,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "f9c8ee2bb2080c229ab86f3d5f1c0dafc5f1a8384009b133d87f87bc6005b8f6",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_electrical_glitch_01",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/glitch_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_electrical_glitch_02",
+    "title": "漏电故障变化",
+    "path": "Audio/02_Single_Shots/02_Damage/SFX_electrical_glitch_02.wav",
+    "duration": 0.01,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -21.000320390218366,
+    "true_peak_dbtp": -9.560521251512196,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "0f1f04af36d434a12ac008cc0655af13f8132b7eae52ab2a054f92895b9fdcef",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_electrical_glitch_02",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/glitch_003.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_hatch_jammed",
+    "title": "变形舱门卡死",
+    "path": "Audio/02_Single_Shots/02_Damage/SFX_hatch_jammed.wav",
+    "duration": 0.5515,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.23869739463886,
+    "rms_dbfs": -28.365155895266607,
+    "true_peak_dbtp": -4.0001556194353345,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -3.2387110033727753,
+    "loop_join_delta": null,
+    "sha256": "87b1509f414f00d57ac7f28a3891774363c4e185647a3664be3cca1040bdd87b",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_hatch_jammed",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_open_01.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_metal_strain",
+    "title": "船体挤压／金属形变",
+    "path": "Audio/02_Single_Shots/02_Damage/SFX_metal_strain.wav",
+    "duration": 3.1432,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -23.016714054191628,
+    "rms_dbfs": -29.03018725607803,
+    "true_peak_dbtp": -3.999741878949008,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -2.016716996116939,
+    "loop_join_delta": null,
+    "sha256": "14b2b49978a9bb45c103494e71df89fc64e2a35b7001bafdf6bb75bc7b3c74e7",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_metal_strain",
+        "author": "ingudios",
+        "license": "CC0-1.0",
+        "source_page": "https://freesound.org/people/ingudios/sounds/119468/",
+        "source_file": "originals/metal_creak/metal_creak_4_HQ_preview.mp3"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_key_01",
+    "title": "终端单键打字 A",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_key_01.wav",
+    "duration": 0.1,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -35.28200650884289,
+    "true_peak_dbtp": -10.000522069416025,
+    "target_lufs_or_short_rms": -26,
+    "peak_reduction_db": -9.282405417917087,
+    "loop_join_delta": null,
+    "sha256": "a1d8563df163f9bedcfa36cfef912cc45d6dbbfa8f39d88a0aff7045e8387c44",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_key_01",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/click_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_key_02",
+    "title": "终端单键打字 B",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_key_02.wav",
+    "duration": 0.01,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -25.99997274829406,
+    "true_peak_dbtp": -14.061449914812405,
+    "target_lufs_or_short_rms": -26,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "409020641c526b67846d38f84323412a29fccc3760e1990d2d872d8c5901f3e9",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_key_02",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/click_002.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_key_03",
+    "title": "终端单键打字 C",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_key_03.wav",
+    "duration": 0.01,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -26.000022172242897,
+    "true_peak_dbtp": -13.745845867803904,
+    "target_lufs_or_short_rms": -26,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "068fdb1e0fe30a2bb04f970c556834ff415035c936051a4c18f4d81e34594980",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_key_03",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/click_003.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_confirm",
+    "title": "命令确认",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_confirm.wav",
+    "duration": 0.2899,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -23.999969319515316,
+    "true_peak_dbtp": -13.145970813692038,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "63fd01a41422ce73041cb35b9e08b536adf4cf9fe7ea175019fe87a6fcd2f7f1",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_confirm",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_error",
+    "title": "无效命令／材料不足",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_error.wav",
+    "duration": 0.1646,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -24.250088879565975,
+    "true_peak_dbtp": -4.000024179983549,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": -0.2501433994053439,
+    "loop_join_delta": null,
+    "sha256": "126e7c7c681a72336066b76e4db5e3ce38b83291ed11a89deff4e90707702fc7",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_error",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/error_002.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_relay_switch",
+    "title": "继电器／拨杆",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_relay_switch.wav",
+    "duration": 0.1674,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -25.183141041311067,
+    "true_peak_dbtp": -3.999821918525115,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": -1.1831527769610353,
+    "loop_join_delta": null,
+    "sha256": "2535ddc6c5e063c40984f1d4bc608e4de7daff7516ec5712f27392940fc2c825",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_relay_switch",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/switch_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_terminal_boot",
+    "title": "终端启动／数据显示",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_terminal_boot.wav",
+    "duration": 1.2,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -23.999992424031728,
+    "rms_dbfs": -27.781065874973603,
+    "true_peak_dbtp": -21.473722342132856,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "2ad244a5eda1009c4c616a11a36b195a67462c6c08c6fc9970f1a40ef5abc863",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_terminal_boot",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/computerNoise_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_terminal_close",
+    "title": "终端关闭",
+    "path": "Audio/02_Single_Shots/03_Terminal/UI_terminal_close.wav",
+    "duration": 0.1478,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -23.999995472185056,
+    "true_peak_dbtp": -10.323591774107726,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "167fba38ddca2ba0cb542f72ab714bceed2e39bf9649def93b7ab2cbe6c5313a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_terminal_close",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/close_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_part_pickup",
+    "title": "零件拿取",
+    "path": "Audio/02_Single_Shots/04_Assembly/SFX_part_pickup.wav",
+    "duration": 0.4542,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.999997105508694,
+    "rms_dbfs": -27.6293825746855,
+    "true_peak_dbtp": -7.18219028949852,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "58efc5a3bfd516267cbb511fcc567a6996fcb78ae2615bd5bb31ee4b916c14a6",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_part_pickup",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/tools_01.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_part_fit_01",
+    "title": "零件贴合 A",
+    "path": "Audio/02_Single_Shots/04_Assembly/SFX_part_fit_01.wav",
+    "duration": 0.1918,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -23.3309342385231,
+    "true_peak_dbtp": -3.9997005789953244,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -2.3309481664333673,
+    "loop_join_delta": null,
+    "sha256": "e721b4f75b68c8b4005e542949ec02d764231e3bc888f5fc4a599b94a55a5909",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_part_fit_01",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_01.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_part_fit_02",
+    "title": "零件贴合 B",
+    "path": "Audio/02_Single_Shots/04_Assembly/SFX_part_fit_02.wav",
+    "duration": 0.3234,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -26.87069902038282,
+    "true_peak_dbtp": -4.000024179983549,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -5.870701567159587,
+    "loop_join_delta": null,
+    "sha256": "cd83fcd957c095ed9bac3908d49a283e7b81a1b2c0b2a8926119dfb91f67fc82",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_part_fit_02",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_02.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_part_lock",
+    "title": "零件锁扣",
+    "path": "Audio/02_Single_Shots/04_Assembly/SFX_part_lock.wav",
+    "duration": 0.5168,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.445657383541953,
+    "rms_dbfs": -26.66297638501154,
+    "true_peak_dbtp": -3.999689550563227,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -1.4456494459836047,
+    "loop_join_delta": null,
+    "sha256": "ae1ebc3a7e466b63311d84a6a2538973e064600095b890d07901393cf542c978",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_part_lock",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_close_01.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_assembly_success",
+    "title": "组装成功",
+    "path": "Audio/02_Single_Shots/04_Assembly/UI_assembly_success.wav",
+    "duration": 0.539,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -23.99998737881727,
+    "rms_dbfs": -28.60628913415907,
+    "true_peak_dbtp": -12.442809962787516,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "a7e3ed5a0f51c3a8e3a7a55d1384e0b21478fa30b2c0c7a0a965dd3d1c0f00f0",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_assembly_success",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_002.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_dismantle",
+    "title": "废品拆解",
+    "path": "Audio/02_Single_Shots/04_Assembly/SFX_dismantle.wav",
+    "duration": 0.7359,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.99999608887506,
+    "rms_dbfs": -27.59889796341581,
+    "true_peak_dbtp": -4.025800339272971,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "c35a5dd2a8bf1d800550a83f43295b9a6d02c9761bce5e7f7f1f8f39f6ebc776",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_dismantle",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/tools_04.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_material_drop",
+    "title": "拆解材料入库",
+    "path": "Audio/02_Single_Shots/04_Assembly/SFX_material_drop.wav",
+    "duration": 0.7872,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.0000166394762,
+    "rms_dbfs": -28.135364597229966,
+    "true_peak_dbtp": -11.089300290392156,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "c43b24978331448222424ea598ecd60ca7c079ae96f0583860d4e42b13d6b8bd",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_material_drop",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_02.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_salvage_start",
+    "title": "开始打捞／采集",
+    "path": "Audio/02_Single_Shots/05_Salvage/UI_salvage_start.wav",
+    "duration": 0.1351,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -23.999991545505818,
+    "true_peak_dbtp": -9.787526497957458,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "d3bcb1383e2bef756923eb1a4a7295d7794cddd9c274b5d7705013f738da84ff",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_salvage_start",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/toggle_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_winch_01",
+    "title": "打捞绞盘 A",
+    "path": "Audio/02_Single_Shots/05_Salvage/SFX_winch_01.wav",
+    "duration": 2.5316,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.905245499416193,
+    "rms_dbfs": -28.565848853010113,
+    "true_peak_dbtp": -4.000175094410904,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -1.905246633212462,
+    "loop_join_delta": null,
+    "sha256": "d54ecde9b06f518cbcde4109a88ce3f69af9b722d4d25c0e799263ff2c62615a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_winch_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #8.wav"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_winch_02",
+    "title": "打捞绞盘 B",
+    "path": "Audio/02_Single_Shots/05_Salvage/SFX_winch_02.wav",
+    "duration": 2.5592,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.072981845811963,
+    "rms_dbfs": -25.21441229140253,
+    "true_peak_dbtp": -4.000024179983549,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -0.07298256770629408,
+    "loop_join_delta": null,
+    "sha256": "565eb305819aed8d78581ded6f9f24b46ffe8820a4db9e15c13b6983f168f285",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_winch_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #9.wav"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_rover_motor",
+    "title": "火星车出动马达候选",
+    "path": "Audio/02_Single_Shots/05_Salvage/SFX_rover_motor.wav",
+    "duration": 5.0,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.999997441305748,
+    "rms_dbfs": -23.620293425574875,
+    "true_peak_dbtp": -8.88780328013423,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "9ec8007e315444508a3e426fff1ec9034befe10fce250f27a7b1801b5aec9ae2",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_salvage_contact",
+    "title": "打捞接触／采集撞击",
+    "path": "Audio/02_Single_Shots/05_Salvage/SFX_salvage_contact.wav",
+    "duration": 0.637,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.625517788519446,
+    "rms_dbfs": -21.616977687362187,
+    "true_peak_dbtp": -4.000301452446614,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -0.625514600641202,
+    "loop_join_delta": null,
+    "sha256": "a07ce1ffd71037298d8c4879f1ad29bc54e9e8cd4fb1585e31aca05899369874",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_salvage_contact",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/impact-sounds",
+        "source_file": "extracted/kenney_impact/Audio/impactMining_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SFX_salvage_recovered",
+    "title": "回收物落舱",
+    "path": "Audio/02_Single_Shots/05_Salvage/SFX_salvage_recovered.wav",
+    "duration": 1.4947,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.9999966715711,
+    "rms_dbfs": -28.54971324573553,
+    "true_peak_dbtp": -7.416969756153523,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "8409255f397d58a83cda5f103b6639319c882261e600802d29e4dedd63a6b46d",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_salvage_recovered",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_01.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "UI_salvage_success",
+    "title": "打捞成功提示",
+    "path": "Audio/02_Single_Shots/05_Salvage/UI_salvage_success.wav",
+    "duration": 0.322,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -23.99999462752152,
+    "true_peak_dbtp": -7.965005978661761,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "2e722bfdc4e7f2b4de98e15c0055bfc9d260c9c900cdc84aab143897c8483261",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "UI_salvage_success",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_003.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_telegraph_beep",
+    "title": "电报嘟声基本音",
+    "path": "Audio/02_Single_Shots/06_Communications/COM_telegraph_beep.wav",
+    "duration": 0.5,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -23.99998179703393,
+    "rms_dbfs": -27.099227329061847,
+    "true_peak_dbtp": -20.807494948150666,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "6618bf5f408241dee8ccf5062317ac33bd1811361d1e2a2a071658d0c1c2d479",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_telegraph_beep",
+        "author": "Test User",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/beep-sound",
+        "source_file": "originals/telegraph_beep/beep.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_radio_static",
+    "title": "无线电静电／弱信号",
+    "path": "Audio/02_Single_Shots/06_Communications/COM_radio_static.wav",
+    "duration": 30.0,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -23.999998874857287,
+    "rms_dbfs": -24.975490363674208,
+    "true_peak_dbtp": -12.273899026666129,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "72421990dd2a97bed6f60fd987c4f1faba4958e4b004c3fabed5aa757983008c",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_radio_static",
+        "author": "xhunterko",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/static",
+        "source_file": "originals/radio_static/ScatterNoise1.mp3"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_connect",
+    "title": "通讯接通",
+    "path": "Audio/02_Single_Shots/06_Communications/COM_connect.wav",
+    "duration": 0.3124,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -24.00001488847785,
+    "true_peak_dbtp": -10.908491164829858,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "013712ea2728f04d7b7de53784349dd79382624714426a5ee6e64de49616e5aa",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_connect",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/open_002.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_timeout",
+    "title": "通讯超时／断线",
+    "path": "Audio/02_Single_Shots/06_Communications/COM_timeout.wav",
+    "duration": 0.1027,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -23.999981011707398,
+    "true_peak_dbtp": -9.667737418242133,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "fb416f7e2312504da97ff7f68ae3a6b65779d8d43509896220b2a0641682b370",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_timeout",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/error_004.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_data_transfer",
+    "title": "数据传输候选",
+    "path": "Audio/02_Single_Shots/06_Communications/COM_data_transfer.wav",
+    "duration": 1.6,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.00000462153998,
+    "rms_dbfs": -27.254719550157848,
+    "true_peak_dbtp": -19.951636709925133,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "f81b9ae41eec6f7ff503eca746d6a3780301e8ccb4ccea0fd96d00ade21c51a3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_data_transfer",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/computerNoise_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_ai_arrival",
+    "title": "AI 接入／新消息",
+    "path": "Audio/02_Single_Shots/06_Communications/COM_ai_arrival.wav",
+    "duration": 0.4907,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -23.99999663564296,
+    "rms_dbfs": -28.799059542284127,
+    "true_peak_dbtp": -17.90398979554868,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "6ddc0d5480bf921cfa0e731cf31b171f0541ad21de971eb375ab9c69b337674c",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_ai_arrival",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/question_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_metal_heavy_01",
+    "title": "坠毁重金属碰撞 A",
+    "path": "Audio/02_Single_Shots/07_Crash/CRASH_metal_heavy_01.wav",
+    "duration": 0.4036,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.7679853305347,
+    "rms_dbfs": -24.572914653600012,
+    "true_peak_dbtp": -4.000024179983549,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -1.767978155262596,
+    "loop_join_delta": null,
+    "sha256": "7e9c14bb02754b88ee33a5a4ebfef9de4ec38c7391feb6a77ce9deb33dc8939a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_metal_heavy_01",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/impactMetal_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_metal_heavy_02",
+    "title": "坠毁重金属碰撞 B",
+    "path": "Audio/02_Single_Shots/07_Crash/CRASH_metal_heavy_02.wav",
+    "duration": 0.3593,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -27.612233025496437,
+    "true_peak_dbtp": -4.000368453246083,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -6.612293335044244,
+    "loop_join_delta": null,
+    "sha256": "f6e24d3d544cfd2160be3a487886657b634f4d2ed9c3ef8eb716c9b0741813c6",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_metal_heavy_02",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/impact-sounds",
+        "source_file": "extracted/kenney_impact/Audio/impactMetal_heavy_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_metal_plate",
+    "title": "舱板撞击／变形素材",
+    "path": "Audio/02_Single_Shots/07_Crash/CRASH_metal_plate.wav",
+    "duration": 0.5603,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000002448150575,
+    "rms_dbfs": -24.660497633065802,
+    "true_peak_dbtp": -5.155271642011044,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "403b699b8ded9715f86d50c4cd40e7a4ef676a1e575098f4b9dec66067245d98",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_metal_plate",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_sheet_06.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_debris",
+    "title": "残骸碎片掉落",
+    "path": "Audio/02_Single_Shots/07_Crash/CRASH_debris.wav",
+    "duration": 1.4947,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000005723093086,
+    "rms_dbfs": -28.549722581625495,
+    "true_peak_dbtp": -7.416969756153523,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "717309440874827e4a9c7db82fe150393bb5c94aedafe7b66c794188237a1a82",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_debris",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_01.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_explosion",
+    "title": "爆炸／断裂冲击",
+    "path": "Audio/02_Single_Shots/07_Crash/CRASH_explosion.wav",
+    "duration": 0.7775,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.999996797578866,
+    "rms_dbfs": -22.07041502235385,
+    "true_peak_dbtp": -8.892373155560364,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "5b86e9ccf8b74f13fe2c1b839e4e9df4da0dec2e995b8ef605a803d791d9406f",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_explosion",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/explosionCrunch_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_sub_boom",
+    "title": "坠毁低频冲击",
+    "path": "Audio/02_Single_Shots/07_Crash/CRASH_sub_boom.wav",
+    "duration": 1.9945,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000002469775374,
+    "rms_dbfs": -24.614348106247274,
+    "true_peak_dbtp": -6.609075021157861,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "fbfc584096c4e590099f3d533fdd197b7f90e6155a212a12beb2b0cd54371596",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_sub_boom",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/lowFrequency_explosion_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "STORY_power_restore",
+    "title": "能源修复／供电恢复",
+    "path": "Audio/02_Single_Shots/08_Repair_Story/STORY_power_restore.wav",
+    "duration": 0.1899,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -25.611235905298702,
+    "true_peak_dbtp": -4.000338100988049,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -4.611218041739295,
+    "loop_join_delta": null,
+    "sha256": "37ed77cdf58d1cc2afd720c9b5cb512864f3bfb3e21be4b6a842ce32cbc2b7d9",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "STORY_power_restore",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/switch_004.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "STORY_navigation_online",
+    "title": "导航上线／星图亮起",
+    "path": "Audio/02_Single_Shots/08_Repair_Story/STORY_navigation_online.wav",
+    "duration": 0.2569,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": null,
+    "rms_dbfs": -21.000007155244887,
+    "true_peak_dbtp": -10.670692875119624,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "e5d52fa081012a4a49d7abc299d73a00d2cfb057ae23f1e810e686b95e65a4f0",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "STORY_navigation_online",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/maximize_001.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "STORY_engine_test",
+    "title": "推进引擎试车",
+    "path": "Audio/02_Single_Shots/08_Repair_Story/STORY_engine_test.wav",
+    "duration": 5.0,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000000122342676,
+    "rms_dbfs": -22.15003800179509,
+    "true_peak_dbtp": -10.66665670161565,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "227e61f9f8aace2af40765005a5d803de65c70d0f54e7260907c759d43e7e142",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "STORY_engine_test",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/spaceEngineLarge_000.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "STORY_life_support_valve",
+    "title": "生命维持恢复／阀门泄压",
+    "path": "Audio/02_Single_Shots/08_Repair_Story/STORY_life_support_valve.wav",
+    "duration": 0.8973,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000001059325474,
+    "rms_dbfs": -26.827393288117655,
+    "true_peak_dbtp": -6.688170586772804,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "9a39259343d546d106d5ebfd346837a03c69a0fa9bb7e6cb5abaef66a6a62909",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "STORY_life_support_valve",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #5.wav"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "STORY_ready_departure",
+    "title": "修复完成／允许返航",
+    "path": "Audio/02_Single_Shots/08_Repair_Story/STORY_ready_departure.wav",
+    "duration": 0.4904,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.00000244499974,
+    "rms_dbfs": -25.197678746907698,
+    "true_peak_dbtp": -14.301642616766886,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "7a45c95c6407cc2a8b2ef172673f0871dba144dea495a07bab6e1d9eb769865e",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "STORY_ready_departure",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_004.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "STORY_takeoff",
+    "title": "最终起飞引擎候选",
+    "path": "Audio/02_Single_Shots/08_Repair_Story/STORY_takeoff.wav",
+    "duration": 5.0,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.999997865002843,
+    "rms_dbfs": -23.332471899635507,
+    "true_peak_dbtp": -12.888287674191252,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "66636e19adb41d2691a3464a13d81afb8c67c9e01d9b634fe2ca58b17e206816",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "STORY_takeoff",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/spaceEngineLarge_002.ogg"
+      }
+    ],
+    "notes": "清理版独立音效；原始素材的长静音已裁除。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "ASSEMBLY_Work_Loop",
+    "title": "组装机械工作循环 · 8 秒",
+    "path": "Audio/01_Loops/ASSEMBLY_Work_Loop.wav",
+    "duration": 8.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -26.98346091150278,
+    "rms_dbfs": -30.83599413086504,
+    "true_peak_dbtp": -6.0005065863580835,
+    "target_lufs_or_short_rms": -25,
+    "peak_reduction_db": -1.983466272230066,
+    "loop_join_delta": 0.0,
+    "sha256": "b57dbc47b31afc7d42a9629742ec73a22cfc801c8f748d58d01ba6e274d04e62",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_dismantle",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/tools_04.ogg"
+      },
+      {
+        "cue": "SFX_part_fit_01",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_01.ogg"
+      },
+      {
+        "cue": "SFX_part_fit_02",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_02.ogg"
+      },
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      }
+    ],
+    "notes": "开始后循环；完成时淡出 0.12 秒，再播放 ASSEMBLY_Complete。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SALVAGE_Work_Loop",
+    "title": "打捞马达与绞盘循环 · 8 秒",
+    "path": "Audio/01_Loops/SALVAGE_Work_Loop.wav",
+    "duration": 8.0,
+    "loop": true,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.99999185580474,
+    "rms_dbfs": -28.25432642811593,
+    "true_peak_dbtp": -9.888618326365354,
+    "target_lufs_or_short_rms": -25,
+    "peak_reduction_db": 0,
+    "loop_join_delta": 0.0,
+    "sha256": "1654fb1a7bf09b327de1dd5aa52c02e6496b488ba1406e152ec4b18cda72247c",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      },
+      {
+        "cue": "SFX_winch_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #8.wav"
+      },
+      {
+        "cue": "SFX_winch_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #9.wav"
+      }
+    ],
+    "notes": "与 SALVAGE_Start、SALVAGE_Complete 配合；停止时淡出 0.12–0.2 秒。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "ASSEMBLY_Start",
+    "title": "组装开始：拨杆与零件拿取",
+    "path": "Audio/03_Composites/ASSEMBLY_Start.wav",
+    "duration": 0.9,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.999997283734178,
+    "rms_dbfs": -30.837352566551818,
+    "true_peak_dbtp": -5.673618253180514,
+    "target_lufs_or_short_rms": -23,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "2c57e2d2c2f40de1b1e9777de0cbc27f7598a06b255a0439c27b7c43008e2709",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_part_pickup",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/tools_01.ogg"
+      },
+      {
+        "cue": "UI_relay_switch",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/switch_001.ogg"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "ASSEMBLY_Complete",
+    "title": "组装完成：贴合、锁扣与确认",
+    "path": "Audio/03_Composites/ASSEMBLY_Complete.wav",
+    "duration": 1.45,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.000007590613368,
+    "rms_dbfs": -27.6853979775283,
+    "true_peak_dbtp": -4.260626538784559,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "69aa258c7c50fc7f6786b87997445b39c9c958861210cc4163763679e9f6ec79",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_part_fit_01",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_01.ogg"
+      },
+      {
+        "cue": "SFX_part_lock",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_close_01.ogg"
+      },
+      {
+        "cue": "UI_assembly_success",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_002.ogg"
+      }
+    ],
+    "notes": "",
+    "events": [
+      {
+        "time": 0.14,
+        "event": "零件锁定"
+      },
+      {
+        "time": 0.42,
+        "event": "成功提示"
+      }
+    ],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "ASSEMBLY_Full",
+    "title": "组装完整动作 · 3.6 秒",
+    "path": "Audio/03_Composites/ASSEMBLY_Full.wav",
+    "duration": 3.6,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.286894084402146,
+    "rms_dbfs": -28.203747638569276,
+    "true_peak_dbtp": -2.9999441570881435,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": -1.286886121435575,
+    "loop_join_delta": null,
+    "sha256": "e8522679e7da92f9ae94eea1cfd604a3c301c01d21d0a958094a1166c8af4c7a",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_dismantle",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/tools_04.ogg"
+      },
+      {
+        "cue": "SFX_part_fit_01",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_01.ogg"
+      },
+      {
+        "cue": "SFX_part_fit_02",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_hit_02.ogg"
+      },
+      {
+        "cue": "SFX_part_lock",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_close_01.ogg"
+      },
+      {
+        "cue": "SFX_part_pickup",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/tools_01.ogg"
+      },
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      },
+      {
+        "cue": "UI_assembly_success",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_002.ogg"
+      },
+      {
+        "cue": "UI_relay_switch",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/switch_001.ogg"
+      }
+    ],
+    "notes": "固定时长演出直接播放；可变时长玩法使用开始、循环、完成三段。",
+    "events": [
+      {
+        "time": 0,
+        "event": "开始"
+      },
+      {
+        "time": 0.35,
+        "event": "机械组装"
+      },
+      {
+        "time": 2.34,
+        "event": "锁扣"
+      },
+      {
+        "time": 2.62,
+        "event": "成功"
+      }
+    ],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SALVAGE_Start",
+    "title": "打捞开始：开关与马达起动",
+    "path": "Audio/03_Composites/SALVAGE_Start.wav",
+    "duration": 1.2,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.99999966375428,
+    "rms_dbfs": -25.775789247146488,
+    "true_peak_dbtp": -8.202705373305374,
+    "target_lufs_or_short_rms": -23,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "09556a0cdf6d6999228d509765442ad45e85a7f7bcaab6a0ae3672b2ebc5fb23",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      },
+      {
+        "cue": "UI_salvage_start",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/toggle_001.ogg"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SALVAGE_Complete",
+    "title": "打捞完成：回收碰撞与提示",
+    "path": "Audio/03_Composites/SALVAGE_Complete.wav",
+    "duration": 2.4,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -21.00000678784983,
+    "rms_dbfs": -28.797867464892335,
+    "true_peak_dbtp": -6.327914109527933,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "3142f43fe14ac2576792dfe4c044242340d2228d6723ec3fa05198c8434437bb",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_salvage_contact",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/impact-sounds",
+        "source_file": "extracted/kenney_impact/Audio/impactMining_000.ogg"
+      },
+      {
+        "cue": "SFX_salvage_recovered",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_01.ogg"
+      },
+      {
+        "cue": "UI_salvage_success",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_003.ogg"
+      }
+    ],
+    "notes": "",
+    "events": [
+      {
+        "time": 0,
+        "event": "物体触舱"
+      },
+      {
+        "time": 0.18,
+        "event": "零件落舱"
+      },
+      {
+        "time": 0.75,
+        "event": "打捞成功"
+      }
+    ],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SALVAGE_Full",
+    "title": "打捞完整动作 · 6.2 秒",
+    "path": "Audio/03_Composites/SALVAGE_Full.wav",
+    "duration": 6.2,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -20.999999893916975,
+    "rms_dbfs": -25.422406433559857,
+    "true_peak_dbtp": -4.115347797939487,
+    "target_lufs_or_short_rms": -21,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "89dccdfc7bbeef6e7de0ee078a32baca7fef6f1a99e6c8d4b0c3954c96aa6e93",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      },
+      {
+        "cue": "SFX_salvage_contact",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/impact-sounds",
+        "source_file": "extracted/kenney_impact/Audio/impactMining_000.ogg"
+      },
+      {
+        "cue": "SFX_salvage_recovered",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_01.ogg"
+      },
+      {
+        "cue": "SFX_winch_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #8.wav"
+      },
+      {
+        "cue": "SFX_winch_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #9.wav"
+      },
+      {
+        "cue": "UI_salvage_start",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/toggle_001.ogg"
+      },
+      {
+        "cue": "UI_salvage_success",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/confirmation_003.ogg"
+      }
+    ],
+    "notes": "固定时长演出直接播放；可变时长玩法使用开始、循环、完成三段。",
+    "events": [
+      {
+        "time": 0,
+        "event": "开始"
+      },
+      {
+        "time": 0.3,
+        "event": "绞盘运作"
+      },
+      {
+        "time": 3.8,
+        "event": "触舱"
+      },
+      {
+        "time": 4.55,
+        "event": "成功"
+      }
+    ],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "SALVAGE_Cancel",
+    "title": "打捞取消／机械停止",
+    "path": "Audio/03_Composites/SALVAGE_Cancel.wav",
+    "duration": 1.3,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.000006601824435,
+    "rms_dbfs": -29.787866323065046,
+    "true_peak_dbtp": -5.361006162378129,
+    "target_lufs_or_short_rms": -24,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "50113c586b3abced5057ac55e6f9b05c4f3ac9ac385e216a1191f9e70bfd6a36",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "SFX_rover_motor",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/engineCircular_000.ogg"
+      },
+      {
+        "cue": "SFX_winch_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #8.wav"
+      },
+      {
+        "cue": "SFX_winch_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/chain-winch-sounds",
+        "source_file": "extracted/winch/winch - Marker #9.wav"
+      },
+      {
+        "cue": "UI_relay_switch",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/interface-sounds",
+        "source_file": "extracted/kenney_interface/Audio/switch_001.ogg"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_Cinematic",
+    "title": "飞船坠毁完整过场 · 8 秒",
+    "path": "Audio/03_Composites/CRASH_Cinematic.wav",
+    "duration": 8.0,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -19.032036947822608,
+    "rms_dbfs": -23.995463127147882,
+    "true_peak_dbtp": -3.0001305766042567,
+    "target_lufs_or_short_rms": -19,
+    "peak_reduction_db": -0.03204107045268323,
+    "loop_join_delta": null,
+    "sha256": "cc1e7abd9a0a9d5d844f17453688d1f011ea5b06b4502fef6d7db102960912a6",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_debris",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_01.ogg"
+      },
+      {
+        "cue": "CRASH_explosion",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/explosionCrunch_000.ogg"
+      },
+      {
+        "cue": "CRASH_metal_heavy_01",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/impactMetal_000.ogg"
+      },
+      {
+        "cue": "CRASH_metal_heavy_02",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/impact-sounds",
+        "source_file": "extracted/kenney_impact/Audio/impactMetal_heavy_001.ogg"
+      },
+      {
+        "cue": "CRASH_metal_plate",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_sheet_06.ogg"
+      },
+      {
+        "cue": "CRASH_sub_boom",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/lowFrequency_explosion_000.ogg"
+      },
+      {
+        "cue": "SFX_air_leak_01",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #1.wav"
+      },
+      {
+        "cue": "SFX_air_leak_02",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #3.wav"
+      },
+      {
+        "cue": "SFX_metal_strain",
+        "author": "ingudios",
+        "license": "CC0-1.0",
+        "source_page": "https://freesound.org/people/ingudios/sounds/119468/",
+        "source_file": "originals/metal_creak/metal_creak_4_HQ_preview.mp3"
+      },
+      {
+        "cue": "STORY_life_support_valve",
+        "author": "bart",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/steam-release-sounds",
+        "source_file": "extracted/steam/steam hisses - Marker #5.wav"
+      },
+      {
+        "cue": "STORY_takeoff",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/spaceEngineLarge_002.ogg"
+      }
+    ],
+    "notes": "主撞击在 1.80 秒；适合画面预先震动后撞地。",
+    "events": [
+      {
+        "time": 0,
+        "event": "失控引擎"
+      },
+      {
+        "time": 0.35,
+        "event": "金属挤压"
+      },
+      {
+        "time": 1.8,
+        "event": "主撞击"
+      },
+      {
+        "time": 2.25,
+        "event": "次级碰撞"
+      },
+      {
+        "time": 2.65,
+        "event": "碎片"
+      },
+      {
+        "time": 3.5,
+        "event": "漏气余声"
+      }
+    ],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_Impact_Short",
+    "title": "即时坠毁撞击 · 3.4 秒",
+    "path": "Audio/03_Composites/CRASH_Impact_Short.wav",
+    "duration": 3.4,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -18.999994995164226,
+    "rms_dbfs": -23.348288078888693,
+    "true_peak_dbtp": -4.131756238381631,
+    "target_lufs_or_short_rms": -19,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "7a8e59d98323b638b24e2f330e644962b9333526da55dfc7f6595da1f6a99d7f",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_debris",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_falling_01.ogg"
+      },
+      {
+        "cue": "CRASH_explosion",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/explosionCrunch_000.ogg"
+      },
+      {
+        "cue": "CRASH_metal_heavy_01",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/impactMetal_000.ogg"
+      },
+      {
+        "cue": "CRASH_sub_boom",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/sci-fi-sounds",
+        "source_file": "extracted/kenney_scifi/Audio/lowFrequency_explosion_000.ogg"
+      }
+    ],
+    "notes": "零延迟主撞击；在实际碰撞事件触发。",
+    "events": [
+      {
+        "time": 0,
+        "event": "主撞击"
+      },
+      {
+        "time": 0.35,
+        "event": "碎片"
+      }
+    ],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "CRASH_Hull_Buckle",
+    "title": "舱体挤压与断裂 · 4.8 秒",
+    "path": "Audio/03_Composites/CRASH_Hull_Buckle.wav",
+    "duration": 4.8,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -22.99998985658419,
+    "rms_dbfs": -29.32405677975602,
+    "true_peak_dbtp": -3.9088575450428857,
+    "target_lufs_or_short_rms": -23,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "7c27a52a21535585bfef42f3f76ad08145b70a81f481bac9d2f07e06a21563d9",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "CRASH_metal_heavy_02",
+        "author": "Kenney",
+        "license": "CC0-1.0",
+        "source_page": "https://kenney.nl/assets/impact-sounds",
+        "source_file": "extracted/kenney_impact/Audio/impactMetal_heavy_001.ogg"
+      },
+      {
+        "cue": "CRASH_metal_plate",
+        "author": "rubberduck",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/100-cc0-metal-and-wood-sfx",
+        "source_file": "extracted/metal_wood/metal_sheet_06.ogg"
+      },
+      {
+        "cue": "SFX_metal_strain",
+        "author": "ingudios",
+        "license": "CC0-1.0",
+        "source_page": "https://freesound.org/people/ingudios/sounds/119468/",
+        "source_file": "originals/metal_creak/metal_creak_4_HQ_preview.mp3"
+      }
+    ],
+    "notes": "",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_Telegraph_SOS",
+    "title": "电报 SOS",
+    "path": "Audio/03_Composites/COM_Telegraph_SOS.wav",
+    "duration": 2.25,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.99999031582448,
+    "rms_dbfs": -28.30520274482059,
+    "true_peak_dbtp": -18.984154975229956,
+    "target_lufs_or_short_rms": -25,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "cb082ef11cda0f159c269c360c49bd201cd43d9df1110f2b3424943b12c42c1d",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_telegraph_beep",
+        "author": "Test User",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/beep-sound",
+        "source_file": "originals/telegraph_beep/beep.ogg"
+      }
+    ],
+    "notes": "由下载的 beep 编排；非真人电报录音。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  },
+  {
+    "name": "COM_Telegraph_ACK",
+    "title": "通讯应答 R",
+    "path": "Audio/03_Composites/COM_Telegraph_ACK.wav",
+    "duration": 0.75,
+    "loop": false,
+    "sample_rate": 48000,
+    "channels": 2,
+    "format": "WAV PCM 16-bit",
+    "integrated_lufs": -24.999987768520814,
+    "rms_dbfs": -28.903628720396913,
+    "true_peak_dbtp": -19.582408220979197,
+    "target_lufs_or_short_rms": -25,
+    "peak_reduction_db": 0,
+    "loop_join_delta": null,
+    "sha256": "9c048f8d2bf78a767953ee74cc0d40525f41d99ba9a9027bac426aec7594dad3",
+    "license": "CC0-1.0",
+    "sources": [
+      {
+        "cue": "COM_telegraph_beep",
+        "author": "Test User",
+        "license": "CC0-1.0",
+        "source_page": "https://opengameart.org/content/beep-sound",
+        "source_file": "originals/telegraph_beep/beep.ogg"
+      }
+    ],
+    "notes": "由下载的 beep 编排；非真人电报录音。",
+    "events": [],
+    "modifications": "Resampled to 48 kHz; DC/low-cut filtering; trimming/EQ/envelopes as applicable; gain and true-peak headroom; 16-bit TPDF dither. Loops use overlapping crossfades and circular endpoint matching; composites use edited/pitched/panned source layers."
+  }
+]
