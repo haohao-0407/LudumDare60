@@ -1,0 +1,5 @@
+{
+  "name": "LudumDare60.AssemblyDemo",
+  "rootNamespace": "LudumDare60.AssemblyDemo",
+  "references": ["Unity.InputSystem", "WhiteboxModule.Runtime"]
+}

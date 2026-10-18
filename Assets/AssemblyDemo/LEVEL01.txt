@@ -1,0 +1,39 @@
+第一关：工业设备组装
+
+场景：Assets/AssemblyDemo/Scenes/AssemblyDemo.unity
+运行：打开场景后点击 Play，或 Tools > Assembly Demo > Play Level 01。
+
+四个独立部件
+ControlCabinet：控制柜
+MachineCore：主机（保留管路和顶部伸出的部件）
+PressureTank：储气罐
+SupportFrame：底座
+
+透明 PNG 与 Sprite：Assets/AssemblyDemo/Art/Level01/
+独立部件及整组预制体：Assets/AssemblyDemo/Prefabs/Level01/
+PNG 基于用户提供的参考图片，通过内置 imagegen 分别提取。
+Unity 使用按 alpha 包围盒裁定的 Sprite 区域，不修改生成 PNG 的像素。
+这些是正视角二维部件，并非可从各方向观察的三维模型。
+
+操作
+1 / 2 / 3 / 4、Tab 或鼠标左键：选择部件。
+WASD：移动；Q / E：旋转；按住 Shift：微调。
+接口靠近且方向相对时自动吸附，绿色接口表示已连接。
+控制柜接主机左侧，储气罐接主机右侧，底座接主机底部。
+连接后的部件作为整体移动和旋转。
+X：拆下选中的部件；R：清除连接，恢复本次进入 Play 时的位置和方向。
+
+第一关采用固定的打乱布局：主机正向作为参照，控制柜在左侧横置 90°，储气罐在右侧倒置 180°，底座保持水平并移到右下侧。
+R 不重新洗牌；移动、旋转或完成组装后按 R，都会回到本次开局的同一布局。
+
+编辑
+Assembly Module Inspector 可调整 Artwork、Artwork Height、Artwork Offset、Port Angles、Port Distances 和 Port Keys。
+角度按顺时针计算：0 上、90 右、180 下、270 左。
+CONTROL / PRESSURE / MOUNT 分别限定三个连接位置。
+不配置 Artwork 的模块继续显示原白模。
+重新导入并重建第一关：Tools > Assembly Demo > Install Level 01 Artwork。
+原场景首次替换前的副本位于工程外 output/assembly-level01/AssemblyDemo.before-artwork.unity。
+
+验证
+Tools > Assembly Demo > Run EditMode Tests。
+报告：Library/AssemblyDemoTestResults.xml。
