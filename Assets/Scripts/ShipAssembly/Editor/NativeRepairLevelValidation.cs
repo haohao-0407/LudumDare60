@@ -143,11 +143,18 @@ namespace LudumDare60.ShipAssembly.Editor
                 var service = Object.FindFirstObjectByType<ShipAssemblyController>();
                 Require(service != null,"SHIP assembly service exists",runtimeReport);
                 Require(service.Recipes.Length == 4,"four production repair recipes retained",runtimeReport);
-                service.SelectRecipe(2);
-                Require(!service.CanStartSelected(out _),"engine remains locked before energy and navigation repairs",runtimeReport);
+                // Prepare this validation explicitly; the production landing/repair availability gate stays intact.
+                Require(service.ApplyCrashDamage(),"validation starts with damaged ship systems",runtimeReport);
+                service.SetRepairsAvailable(true);
                 foreach (var id in service.Recipes.SelectMany(r => r.Materials).Select(c => c.ItemId).Distinct())
                     Require(service.Inventory.Items.TryAdd(id,100),"test materials added to shared inventory: "+id,runtimeReport);
                 for (int index = 0; index < 4; index++)
+                {
+                    Require(service.SelectRecipe(index),"select independent repair recipe "+index,runtimeReport);
+                    Require(service.RepairScreen.GetState(index) == RepairDeviceState.Unrepaired,"device is unrepaired before independent availability check "+index,runtimeReport);
+                    Require(service.CanStartSelected(out var reason),"device can start before any other device is repaired "+index+": "+reason,runtimeReport);
+                }
+                foreach (int index in new[] { 2, 3, 1, 0 })
                 {
                     Require(service.SelectRecipe(index),"select production recipe "+index,runtimeReport);
                     var recipe = service.SelectedRecipe;
@@ -179,6 +186,7 @@ namespace LudumDare60.ShipAssembly.Editor
                     puzzle.InputBlocked = false; puzzle.ResetDemo(); puzzle.DetachSelected();
                     Require(puzzle.IsAssemblyComplete && puzzle.InputBlocked,"completed production puzzle is immutable "+index,runtimeReport);
                 }
+                Require(service.RepairScreen.AllRepaired,"all devices complete after independent repair order",runtimeReport);
                 service.SelectRecipe(2); var engine = service.ActivePuzzle; service.SelectRecipe(3); var life = service.ActivePuzzle;
                 service.SelectRecipe(2); Require(service.ActivePuzzle == engine && engine.IsAssemblyComplete,"switching back retains engine model and joints",runtimeReport);
                 service.SelectRecipe(3); Require(service.ActivePuzzle == life && life.IsAssemblyComplete,"switching back retains life model and joints",runtimeReport);

@@ -83,11 +83,6 @@ namespace LudumDare60.UI
         [Range(0.1f, 6f)]
         [SerializeField] private float repairingPulseSpeed = 1.6f;
 
-        [Header("规则")]
-        [SerializeField]
-        [Tooltip("强制从左到右修复：只有前面全部 REPAIRED，当前这台才能进入 REPAIRING / REPAIRED。")]
-        private bool enforceSequentialOrder = true;
-
         [Header("运行")]
         [SerializeField]
         [Tooltip("进入 Play 时把所有装置重置为 UNREPAIRED / 0%。关掉则沿用在编辑器里预览的状态。")]
@@ -190,14 +185,11 @@ namespace LudumDare60.UI
 
         public float GetProgress(int index) => targetProgress[Mathf.Clamp(index, 0, DeviceCount - 1)];
 
-        /// <summary>该装置现在能不能开始修（顺序约束 + 状态判断）。</summary>
+        /// <summary>Each device can be repaired independently while it is not yet repaired.</summary>
         public bool CanBeginRepair(int index)
         {
             if (index < 0 || index >= DeviceCount) return false;
             if (states[index] == RepairDeviceState.Repaired) return false;
-            if (!enforceSequentialOrder) return true;
-            for (int i = 0; i < index; i++)
-                if (states[i] != RepairDeviceState.Repaired) return false;
             return true;
         }
 
@@ -210,10 +202,9 @@ namespace LudumDare60.UI
                 return false;
             }
 
-            if (enforceSequentialOrder && state != RepairDeviceState.Unrepaired && !CanBeginRepair(index))
+            if (state != RepairDeviceState.Unrepaired && !CanBeginRepair(index))
             {
-                Debug.LogWarning(
-                    $"[RepairScreen] 拒绝乱序：装置 {index + 1} 想进入 {state}，但它左边的装置还没修完。", this);
+                Debug.LogWarning($"[RepairScreen] Device {index + 1} is already repaired.", this);
                 return false;
             }
 
@@ -246,7 +237,7 @@ namespace LudumDare60.UI
             if (index < 0 || index >= DeviceCount) return;
             if (states[index] == RepairDeviceState.Repaired) return;
 
-            if (enforceSequentialOrder && states[index] != RepairDeviceState.Repairing)
+            if (states[index] != RepairDeviceState.Repairing)
             {
                 Debug.LogWarning($"[RepairScreen] 装置 {index + 1} 不在修复中，进度被忽略。先调 BeginRepair()。", this);
                 return;

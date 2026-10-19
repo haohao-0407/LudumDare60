@@ -1290,6 +1290,10 @@ MonoBehaviour:
   historyLimit: 150
   useUnscaledTime: 1
   eventBindings: []
+  sfxSource: {fileID: 0}
+  openClip: {fileID: 8300000, guid: aa350911db74f39429229aae9bf7b406, type: 3}
+  closeClip: {fileID: 8300000, guid: 110b35149d5c5874a972ebea97abbfa5, type: 3}
+  sfxVolume: 1
   interactionChanged:
     m_PersistentCalls:
       m_Calls: []

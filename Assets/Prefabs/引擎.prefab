@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 6.02
       objectReference: {fileID: 0}
+    - target: {fileID: -7623664336439382971, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6145683337337129500, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
+    - target: {fileID: -4803746149374716804, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3655483744140236750, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
     - target: {fileID: -4157113011246840326, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -188,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8467890692586862310, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -4090183868718204173, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
     - target: {fileID: 8771091787928289351, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
       propertyPath: m_Name
       value: "\u5F15\u64CE"
