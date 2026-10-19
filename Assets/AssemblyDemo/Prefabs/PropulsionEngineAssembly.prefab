@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b39bda522e61dd48b3dbf454695e9fe, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
   moduleLabel: END PLATE
   radius: 1.7220193
@@ -86,9 +86,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 691364176055722360}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6500216, y: -0.6500217, z: -0.2783378, w: -0.27833778}
-  m_LocalPosition: {x: 0, y: 0, z: -1.0361489}
-  m_LocalScale: {x: 0.9169461, y: 0.9169461, z: 0.9169461}
+  m_LocalRotation: {x: -0.65653867, y: 0.26259673, z: -0.26259673, w: 0.65653867}
+  m_LocalPosition: {x: -4.8736043, y: 0.43765044, z: 3.215001}
+  m_LocalScale: {x: 0.88120145, y: 0.88120145, z: 0.88120145}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7329203887939904736}
@@ -118,9 +118,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698610489294904992}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.70403105, y: 0.70403105, z: 0.0658811, w: -0.0658811}
-  m_LocalPosition: {x: 0, y: 0, z: -1.5588082}
-  m_LocalScale: {x: 0.9169461, y: 0.9169461, z: 0.9169461}
+  m_LocalRotation: {x: -0.45120198, y: -0.5444417, z: -0.5444417, w: -0.45120198}
+  m_LocalPosition: {x: 5.725946, y: 0.4325324, z: -7.8364983}
+  m_LocalScale: {x: 0.87829846, y: 0.87829846, z: 0.87829846}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 869002839906986384}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b39bda522e61dd48b3dbf454695e9fe, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
   moduleLabel: NOZZLE
   radius: 3.4866126
@@ -228,7 +228,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4176082820783774067}
-  m_Mesh: {fileID: -6145683337337129500, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
+  m_Mesh: {fileID: -6145683337337129500, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
 --- !u!23 &1212871601621728616
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -302,9 +302,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4328658168404594483}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7740305, y: -0.20910554, z: 0.5811369, w: -0.13939707}
-  m_LocalPosition: {x: 0, y: 0, z: -2.4207375}
-  m_LocalScale: {x: 0.9169461, y: 0.9169461, z: 0.9169461}
+  m_LocalRotation: {x: 0.13624199, y: -0.049635157, z: 0.9582035, w: -0.24661826}
+  m_LocalPosition: {x: -0.5199112, y: 0.47539747, z: 0.0984993}
+  m_LocalScale: {x: 0.88023895, y: 0.88023895, z: 0.88023895}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7318676663163728887}
@@ -350,7 +350,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5146260791529089496}
-  m_Mesh: {fileID: 3655483744140236750, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
+  m_Mesh: {fileID: 3655483744140236750, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
 --- !u!23 &1851981527776845393
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -447,7 +447,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9870701295efae4aa2defab449897c9, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: LudumDare60.AssemblyDemo::LudumDare60.AssemblyDemo.AssemblyDemoController
   Modules:
   - {fileID: 195767604624760640}
@@ -468,7 +468,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8569358085093da4a8584e5aff70a8ba, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.ReturnWindow.DeviceAssemblyLayout
   assembly: {fileID: 3960998835565673528}
   assembledLocalPositions:
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6f21cb2b882a464db696dbc04a9fcfb, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Xray
   wireframeSourceRoot: {fileID: 6113445168789685887}
   effectMaterial: {fileID: 2100000, guid: ffd0b606e60c23a48be667fbb45eb1ff, type: 2}
@@ -591,7 +591,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8363897587488121324}
-  m_Mesh: {fileID: -4090183868718204173, guid: 2a9e1e96a7845844ea2657be0470377e, type: 3}
+  m_Mesh: {fileID: -4090183868718204173, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
 --- !u!23 &5859329201973746187
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b39bda522e61dd48b3dbf454695e9fe, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
   moduleLabel: ENGINE BODY
   radius: 5.133657

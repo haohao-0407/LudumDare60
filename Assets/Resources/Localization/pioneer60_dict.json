@@ -3169,16 +3169,6 @@
       ]
     },
     {
-      "key": "esc.volume",
-      "category": "esc",
-      "speaker": "",
-      "note": "新译（无中文原文）",
-      "texts": [
-        { "lang": "en", "text": "VOLUME" },
-        { "lang": "zh-Hans", "text": "音量" }
-      ]
-    },
-    {
       "key": "esc.language",
       "category": "esc",
       "speaker": "",
@@ -3218,11 +3208,11 @@
       "texts": [
         {
           "lang": "en",
-          "text": "DISPLAY / AUDIO / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows."
+          "text": "DISPLAY / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows."
         },
         {
           "lang": "zh-Hans",
-          "text": "显示 / 音量 / 语言\n\n用左右方向键\n切换界面语言。"
+          "text": "显示 / 语言\n\n用左右方向键\n切换界面语言。"
         }
       ]
     },
@@ -6322,11 +6312,11 @@
       "texts": [
         {
           "lang": "en",
-          "text": "SKIP"
+          "text": "SHOW FULL TEXT"
         },
         {
           "lang": "zh-Hans",
-          "text": "跳过"
+          "text": "显示全文"
         }
       ]
     },
@@ -7607,6 +7597,1510 @@
         {
           "lang": "zh-Hans",
           "text": "未知"
+        }
+      ]
+    },
+    {
+      "key": "story.begin_landing",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BEGIN LANDING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始着陆"
+        }
+      ]
+    },
+    {
+      "key": "story.all_four_assemblies_are_complete_power_n",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "All four assemblies are complete: power, navigation, propulsion and life support. We still need to test them before departure. Shall we begin?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "四套组件都已组装完成：能源、导航、推进与生命维持。启航前还需要逐一测试。现在开始吗？"
+        }
+      ]
+    },
+    {
+      "key": "story.run_pre_flight_checks",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RUN PRE-FLIGHT CHECKS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行起飞前检查"
+        }
+      ]
+    },
+    {
+      "key": "story.not_yet",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NOT YET"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "暂不"
+        }
+      ]
+    },
+    {
+      "key": "story.first_the_power_unit_i_will_apply_a_test",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "First, the power unit. I will apply a test load and check the restored supply. Authorize the power test when you are ready."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "先从能源装置开始。我会加一段测试负载，检查修复后的供能是否稳定。准备好就授权能源测试。"
+        }
+      ]
+    },
+    {
+      "key": "story.test_power",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TEST POWER"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "测试能源"
+        }
+      ]
+    },
+    {
+      "key": "story.pre_flight_check_running_please_stand_by",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Pre-flight check running. Please stand by."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "起飞前检查执行中，请稍候。"
+        }
+      ]
+    },
+    {
+      "key": "story.ship_systems",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP SYSTEMS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统"
+        }
+      ]
+    },
+    {
+      "key": "story.power_check_passed_the_supply_held_under",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Power check passed. The supply held under load. Next, I will test the navigation solution and guidance response."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源检查通过，负载下供能稳定。接下来测试导航解算与制导响应。"
+        }
+      ]
+    },
+    {
+      "key": "story.test_navigation",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TEST NAVIGATION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "测试导航"
+        }
+      ]
+    },
+    {
+      "key": "story.navigation_check_passed_guidance_is_resp",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Navigation check passed. Guidance is responding. Next, I will check the propulsion controls before ignition."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航检查通过，制导响应正常。下一步在点火前检查推进控制。"
+        }
+      ]
+    },
+    {
+      "key": "story.test_propulsion",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TEST PROPULSION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "测试推进"
+        }
+      ]
+    },
+    {
+      "key": "story.propulsion_check_passed_the_engine_contr",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Propulsion check passed. The engine controls are ready. One check remains: cabin pressure and life support."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "推进检查通过，引擎控制就绪。还剩最后一项：舱压与生命维持。"
+        }
+      ]
+    },
+    {
+      "key": "story.test_life_support",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TEST LIFE SUPPORT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "测试生命维持"
+        }
+      ]
+    },
+    {
+      "key": "story.life_support_check_passed_all_four_syste",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Life support check passed. All four systems have passed their pre-flight checks. The craft is ready for departure. Launch remains under your authority."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "生命维持检查通过。四套系统全部通过起飞前检查，飞船已可启航。发射权限仍在你手里。"
+        }
+      ]
+    },
+    {
+      "key": "story.launch_authorized_ignition_in_three_seco",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Launch authorized. Ignition in three seconds. Hold position."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已授权发射。三秒后点火，保持位置。"
+        }
+      ]
+    },
+    {
+      "key": "story.ignition_confirmed_engines_building_thru",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ignition confirmed. Engines building thrust."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "点火确认，引擎推力上升中。"
+        }
+      ]
+    },
+    {
+      "key": "story.liftoff_climbing_clear_of_the_surface",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Liftoff. Climbing clear of the surface."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "离地。正在脱离地表。"
+        }
+      ]
+    },
+    {
+      "key": "story.leaving_the_atmosphere_guidance_is_acqui",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Leaving the atmosphere. Guidance is acquiring the orbital track."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "正在离开大气层，制导正在捕获轨道。"
+        }
+      ]
+    },
+    {
+      "key": "story.stable_mars_orbit_confirmed_the_earth_re",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Stable Mars orbit confirmed. The Earth-return route is locked. Surface departure is complete; return flight preparations can continue."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已确认进入稳定火星轨道，返地航线锁定。地表离场完成，可以继续返航准备。"
+        }
+      ]
+    },
+    {
+      "key": "story.launch_was_aborted_or_could_not_be_compl",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Launch was aborted or could not be completed. Recheck the systems before requesting another attempt."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "发射中止或未能完成。再次尝试前请重新检查系统。"
+        }
+      ]
+    },
+    {
+      "key": "story.recheck",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RECHECK"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重新检查"
+        }
+      ]
+    },
+    {
+      "key": "story.return",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RETURN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回"
+        }
+      ]
+    },
+    {
+      "key": "story.repair_status_has_changed_restore_all_fo",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Repair status has changed. Restore all four systems, then run the pre-flight checks again."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "维修状态已变化。先修好四套系统，再重新执行起飞前检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.hard_landing_confirmed_location_near_the",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Hard landing confirmed. Location: near the colony."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已确认硬着陆，位置：殖民地附近。"
+        }
+      ]
+    },
+    {
+      "key": "story.check_the_inventory_screen_for_your_supp",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Check the inventory screen for your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "在货舱屏查看现有物资。能源装置需要：轧制机电合金板 6、镀锡铜导线与绕组铜材 4、精密传动齿轮坯 2、耐热绝缘陶瓷件 7、硫化气密橡胶衬料 3。"
+        }
+      ]
+    },
+    {
+      "key": "story.select_activate_salvage_in_the_operation",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Select ACTIVATE SALVAGE in the operations menu to enable the salvage screen and collect materials. Once you have everything, select START ASSEMBLY on the repair workbench to begin the repair."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "在操作菜单里选择「启用回收」打开回收屏收集材料。备齐后在维修台上选择「开始组装」开始修复。"
+        }
+      ]
+    },
+    {
+      "key": "story.ship_operations_terminal_ready_select_a_",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ship operations terminal ready. Select a program."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船操作终端就绪。请选择程序。"
+        }
+      ]
+    },
+    {
+      "key": "story.activate_salvage",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ACTIVATE SALVAGE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启用回收"
+        }
+      ]
+    },
+    {
+      "key": "story.salvage_status",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SALVAGE STATUS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收状态"
+        }
+      ]
+    },
+    {
+      "key": "story.pre_flight_checks",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PRE-FLIGHT CHECKS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "起飞前检查"
+        }
+      ]
+    },
+    {
+      "key": "story.the_salvage_program_is_online_use_the_sa",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The salvage program is online. Use the salvage screen to recover materials, then check the repair screen to assemble the damaged systems."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收程序已上线。用回收屏回收材料，再到维修屏组装受损系统。"
+        }
+      ]
+    },
+    {
+      "key": "story.the_automatic_landing_program_could_not_",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The automatic landing program could not start or was interrupted. Select BEGIN LANDING to retry."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "自动着陆程序未能启动或被中断。选择「开始着陆」重试。"
+        }
+      ]
+    },
+    {
+      "key": "ui.quit_game",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "QUIT GAME?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "退出游戏？"
+        }
+      ]
+    },
+    {
+      "key": "ui.session_paused",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SESSION PAUSED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "会话已暂停"
+        }
+      ]
+    },
+    {
+      "key": "ui.display_language_switch_interface_langua",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DISPLAY / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "显示 / 语言\n\n用左右方向键\n切换界面语言。"
+        }
+      ]
+    },
+    {
+      "key": "ui.no_recovered_items",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NO RECOVERED ITEMS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "尚未回收任何物品"
+        }
+      ]
+    },
+    {
+      "key": "ui.personal_log_habitat_03",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PERSONAL LOG / HABITAT 03"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "个人日志 / 居住舱 03"
+        }
+      ]
+    },
+    {
+      "key": "ui.arrival_record_arrival_date",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ARRIVAL RECORD / {ARRIVAL_DATE}."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "到达记录 / {ARRIVAL_DATE}。"
+        }
+      ]
+    },
+    {
+      "key": "ui.space_lock_signal",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SPACE: LOCK SIGNAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "空格：锁定信号"
+        }
+      ]
+    },
+    {
+      "key": "ui.mouse_look_around",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MOUSE: LOOK AROUND"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "鼠标：环视"
+        }
+      ]
+    },
+    {
+      "key": "ui.1_recover_salvage_optional_supplies_if_y",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "1. RECOVER: salvage optional supplies if you can spare the time. Then check the repair bench."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "1. 回收：有余力就回收可选物资，之后查看维修台。"
+        }
+      ]
+    },
+    {
+      "key": "ui.remote_link_offline_activate_via_termina",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REMOTE LINK OFFLINE / ACTIVATE VIA TERMINAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "远程链路离线 / 请通过终端启用"
+        }
+      ]
+    },
+    {
+      "key": "ui.all_systems_nominal_monitoring",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ALL SYSTEMS NOMINAL / MONITORING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "全系统正常 / 监测中"
+        }
+      ]
+    },
+    {
+      "key": "ui.console_online_low_power",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CONSOLE ONLINE / LOW POWER"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "控制台在线 / 低功率"
+        }
+      ]
+    },
+    {
+      "key": "ui.standby",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "STANDBY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "待机"
+        }
+      ]
+    },
+    {
+      "key": "ui.unavailable",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "UNAVAILABLE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "不可用"
+        }
+      ]
+    },
+    {
+      "key": "ui.ready_awaiting_command",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "READY / AWAITING COMMAND"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "就绪 / 等待指令"
+        }
+      ]
+    },
+    {
+      "key": "ui.independent_repair_protocol",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "INDEPENDENT REPAIR PROTOCOL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "独立维修协议"
+        }
+      ]
+    },
+    {
+      "key": "ui.repair_station_unavailable",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR STATION UNAVAILABLE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "维修站不可用"
+        }
+      ]
+    },
+    {
+      "key": "ui.ship_os_repair_workbench",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS / REPAIR WORKBENCH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统 / 维修台"
+        }
+      ]
+    },
+    {
+      "key": "ui.ship_os_ship_diagnostics",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS / SHIP DIAGNOSTICS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统 / 舰船诊断"
+        }
+      ]
+    },
+    {
+      "key": "ui.repair_any_system",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR ANY SYSTEM"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复任意系统"
+        }
+      ]
+    },
+    {
+      "key": "ui.repair_controls_are_locked",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR CONTROLS ARE LOCKED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "维修控制已锁定"
+        }
+      ]
+    },
+    {
+      "key": "ui.all_systems_nominal_no_repairs_required",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ALL SYSTEMS NOMINAL / NO REPAIRS REQUIRED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "全系统正常 / 无需维修"
+        }
+      ]
+    },
+    {
+      "key": "demo.signal_detected",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Captain, an unusual signal has been detected ahead."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰长，前方检测到一段异常信号。"
+        }
+      ]
+    },
+    {
+      "key": "demo.signal_source",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Its source is approximately three kilometers away."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "信号源大约在三公里外。"
+        }
+      ]
+    },
+    {
+      "key": "demo.analyze",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ANALYZE SIGNAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "分析信号"
+        }
+      ]
+    },
+    {
+      "key": "demo.assess",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ASSESS RISK"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "评估风险"
+        }
+      ]
+    },
+    {
+      "key": "demo.coords",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHOW COORDINATES"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "显示坐标"
+        }
+      ]
+    },
+    {
+      "key": "demo.end",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "END TRANSMISSION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "结束传输"
+        }
+      ]
+    },
+    {
+      "key": "demo.scan",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "scan nearby\nScan complete: derelict transport identified."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "扫描附近\n扫描完成：识别为废弃运输舰。"
+        }
+      ]
+    },
+    {
+      "key": "demo.marked",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I have marked its position."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已标记它的位置。"
+        }
+      ]
+    },
+    {
+      "key": "demo.save",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SAVE COORDINATES"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "保存坐标"
+        }
+      ]
+    },
+    {
+      "key": "demo.debris",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "There is heavy metal debris nearby. I recommend reducing speed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "附近有大量金属残骸，建议降低速度。"
+        }
+      ]
+    },
+    {
+      "key": "demo.target",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Target coordinates: X 128 / Y -36 / Z 420."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目标坐标：X 128 / Y -36 / Z 420。"
+        }
+      ]
+    },
+    {
+      "key": "demo.ack",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Acknowledged. I will continue monitoring nearby signals."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。我会继续监测附近信号。"
+        }
+      ]
+    },
+    {
+      "key": "esc.volume",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "VOLUME"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "音量"
+        }
+      ]
+    },
+    {
+      "key": "esc.single_player",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SINGLE PLAYER"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "单人模式"
+        }
+      ]
+    },
+    {
+      "key": "ui.lang.english",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ENGLISH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "英文"
+        }
+      ]
+    },
+    {
+      "key": "ui.skip",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SKIP"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "跳过"
+        }
+      ]
+    },
+    {
+      "key": "ui.legend.line1",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LMB DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "左键拖拽 / WASD 移动   Q/E 旋转   Shift 微调"
+        }
+      ]
+    },
+    {
+      "key": "ui.legend.line2",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "X DETACH   R RESET"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "X 拆卸   R 重置"
+        }
+      ]
+    },
+    {
+      "key": "ui.legend.line3",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CLICK PUZZLE TO OPERATE   RMB LOOK   ESC PAUSE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "点击谜题开始操作   右键环视   ESC 暂停"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.landing",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Begin the landing sequence."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始着陆程序。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.preflight",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the pre-flight checks."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行起飞前检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.not_yet",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Not yet. Return to ship operations."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "暂不。返回舰船操作。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.check_power",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the power check."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行能源检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.check_nav",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the navigation check."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行导航检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.check_prop",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the propulsion check."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行推进检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.check_life",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the life support check."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行生命维持检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.authorize",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Authorize launch. Take us into orbit."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "授权发射。送我们进入轨道。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.hold",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Hold launch. Return to ship operations."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "暂缓发射。返回舰船操作。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.recheck",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the departure checks again."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重新执行起飞检查。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.return_ops",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Return to ship operations."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回舰船操作。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.salvage_on",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Activate the salvage program and begin collecting repair materials."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启动回收程序，开始收集维修材料。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.salvage_status",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Show the salvage program status."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "显示回收程序状态。"
+        }
+      ]
+    },
+    {
+      "key": "story.pt.prepare",
+      "category": "story",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Prepare the repaired systems for departure."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "让已修复的系统做好启航准备。"
+        }
+      ]
+    },
+    {
+      "key": "demo.pt.analyze",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Analyze the signal for me."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "帮我分析这段信号。"
+        }
+      ]
+    },
+    {
+      "key": "demo.pt.risk",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "What are the risks of approaching it?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "接近它有什么风险？"
+        }
+      ]
+    },
+    {
+      "key": "demo.pt.coords",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Display the target coordinates."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "显示目标坐标。"
+        }
+      ]
+    },
+    {
+      "key": "demo.pt.leave",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Keep monitoring. End transmission."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续监测。结束传输。"
+        }
+      ]
+    },
+    {
+      "key": "demo.pt.mark",
+      "category": "demo",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Save the coordinates and return to the comms menu."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "保存坐标，返回通讯菜单。"
+        }
+      ]
+    },
+    {
+      "key": "ui.tab_select",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TAB SELECT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "TAB 选择"
         }
       ]
     }
