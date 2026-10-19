@@ -944,6 +944,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Salvage.SalvageController
   pool: {fileID: 11400000, guid: 45636d9d8f27db3438dee266c0a1ca9e, type: 2}
   defaultDefinition: {fileID: 0}
+  sfxSource: {fileID: 0}
+  workLoopSource: {fileID: 0}
+  startClip: {fileID: 8300000, guid: 7b7aee4f3bd3f0c4381fd058e2ba9249, type: 3}
+  workLoopClip: {fileID: 8300000, guid: a474658c051634f4095fe407759caa24, type: 3}
+  successClip: {fileID: 8300000, guid: 1d4d2d48c2d9af54b95954fede2989b5, type: 3}
+  failureClip: {fileID: 8300000, guid: a347e5de54bea784a877c525063e8283, type: 3}
+  startVolume: 0.9
+  workLoopVolume: 0.7
+  successVolume: 1
+  failureVolume: 1
+  loopFadeOut: 0.15
+  loopStartDelay: 0.06
 --- !u!114 &4262155867218317682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +980,7 @@ MonoBehaviour:
   progressLabel: {fileID: 1042054254382907476}
   hintLabel: {fileID: 7842180097820588701}
   restartDelaySeconds: 1.4
+  controlAction: {fileID: 0}
   idleZoneColor: {r: 0.28, g: 0.62, b: 0.32, a: 1}
   hitZoneColor: {r: 0.55, g: 0.95, b: 0.45, a: 1}
   idleFishColor: {r: 0.95, g: 0.66, b: 0.12, a: 1}
@@ -998,6 +1011,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Storage.SalvageInventoryBridge
   salvageController: {fileID: 8161556958510240279}
   inventoryController: {fileID: 481037667216787869}
+  materialYieldCatalog: {fileID: 0}
 --- !u!1 &2793620487307827536
 GameObject:
   m_ObjectHideFlags: 0

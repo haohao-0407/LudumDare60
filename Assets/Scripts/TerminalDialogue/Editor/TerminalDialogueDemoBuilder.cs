@@ -75,7 +75,31 @@ namespace LudumDare60.TerminalDialogue.Editor
             scroll.viewport = viewport; scroll.content = content;
             var cursor = CreateText("Cursor", screen.transform, "> _", 25);
             Stretch(cursor.rectTransform, new Vector2(24, 8), new Vector2(976, 45), screenRect.sizeDelta);
-            screen.gameObject.AddComponent<TerminalTranscriptView>().Configure(terminal, text, cursor, scroll);
+            var transcriptView = screen.gameObject.AddComponent<TerminalTranscriptView>();
+            // 逐字击键音：三条键音随机挑，音高/音量在运行时随机，避免机械重复
+            var typingSource = screen.gameObject.AddComponent<AudioSource>();
+            typingSource.playOnAwake = false; typingSource.loop = false;
+            typingSource.spatialBlend = 0f; typingSource.priority = 96;
+            var viewSo = new UnityEditor.SerializedObject(transcriptView);
+            viewSo.FindProperty("typingAudio").objectReferenceValue = typingSource;
+            var clipProp = viewSo.FindProperty("typingClips");
+            string[] keyClips =
+            {
+                "Assets/Pioneer60Audio/Audio/02_Single_Shots/03_Terminal/UI_key_01.wav",
+                "Assets/Pioneer60Audio/Audio/02_Single_Shots/03_Terminal/UI_key_02.wav",
+                "Assets/Pioneer60Audio/Audio/02_Single_Shots/03_Terminal/UI_key_03.wav"
+            };
+            clipProp.arraySize = keyClips.Length;
+            for (int i = 0; i < keyClips.Length; i++)
+                clipProp.GetArrayElementAtIndex(i).objectReferenceValue =
+                    UnityEditor.AssetDatabase.LoadAssetAtPath<AudioClip>(keyClips[i]);
+            viewSo.FindProperty("typingVoices").intValue = 4;
+            viewSo.FindProperty("typingMinInterval").floatValue = 0.035f;
+            viewSo.FindProperty("typingPitch").vector2Value = new Vector2(0.93f, 1.09f);
+            viewSo.FindProperty("typingVolume").vector2Value = new Vector2(0.65f, 1f);
+            viewSo.FindProperty("typingBurstLimit").intValue = 6;
+            viewSo.ApplyModifiedPropertiesWithoutUndo();
+            transcriptView.Configure(terminal, text, cursor, scroll);
 
             var overlay = CreateCanvas("Reply UI (Screen Space)", root.transform, RenderMode.ScreenSpaceOverlay);
             var scaler = overlay.GetComponent<UnityEngine.UI.CanvasScaler>();
