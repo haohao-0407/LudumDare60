@@ -22,6 +22,17 @@ namespace LudumDare60.ReturnWindow
         public TMP_Text status;
         private bool presented;
 
+        protected void OnEnable()
+        {
+            if (assembly != null) assembly.Completed += PresentCompletion;
+            PresentCompletion();
+        }
+
+        protected void OnDisable()
+        {
+            if (assembly != null) assembly.Completed -= PresentCompletion;
+        }
+
         private void LateUpdate() => PresentCompletion();
 
         public void PresentCompletion()
