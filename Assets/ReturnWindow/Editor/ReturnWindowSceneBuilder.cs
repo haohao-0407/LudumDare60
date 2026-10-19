@@ -71,9 +71,6 @@ namespace LudumDare60.ReturnWindow.Editor
             var service = new GameObject("Mission Session - 20 minutes / 7 days");
             var mission = service.AddComponent<MissionController>();
             var inventory = service.AddComponent<InventoryController>();
-            SetBool(inventory, "loadOnAwake", false);
-            SetBool(inventory, "autoSave", false);
-            SetString(inventory, "saveFileName", "return-window-session-unused.json");
 
             var terminalObject = InstantiateAsset("Assets/Prefabs/TerminalDialogue/DOS Terminal System.prefab");
             terminalObject.name = "Return Mission AI";

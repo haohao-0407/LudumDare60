@@ -33,8 +33,6 @@ namespace LudumDare60.Storage
         public bool TryCollect(SalvageResult result)
         {
             if (result == null || !result.IsSuccess || inventoryController == null) return false;
-            // A failed load blocks rewards as well as writes: its transaction history is unavailable.
-            if (!inventoryController.CanSave) return false;
             return inventoryController.Items.TryAddOnce(result.AttemptId, result.RewardId, result.RewardQuantity);
         }
 
@@ -43,7 +41,7 @@ namespace LudumDare60.Storage
             if (result == null || !result.IsSuccess || inventoryController == null) return;
             if (inventoryController.Items.HasProcessedReward(result.AttemptId)) return;
             if (!TryCollect(result))
-                Debug.LogError($"Could not store salvage reward for attempt {result.AttemptId}. Check inventory persistence and quantity limits.", this);
+                Debug.LogError($"Could not store salvage reward for attempt {result.AttemptId}. Check the inventory reference and quantity limits.", this);
         }
     }
 }

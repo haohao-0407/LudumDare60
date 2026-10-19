@@ -128,7 +128,7 @@ namespace LudumDare60.ReturnWindow
             if (result == null || mission == null || mission.State != MissionState.Running) return;
             if (result.IsSuccess)
             {
-                // The mission inventory is configured with loading and auto-save disabled.
+                // The mission inventory lives in memory for the current journey.
                 // The attempt ID makes repeated notifications harmless; never call Save here.
                 var stored = inventory != null && (inventory.Items.HasProcessedReward(result.AttemptId)
                     || inventory.Items.TryAddOnce(result.AttemptId, result.RewardId, result.RewardQuantity));

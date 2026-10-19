@@ -999,9 +999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e49a6e83ca14f87ba319b70675f0982, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Storage.InventoryController
-  saveFileName: return-window-session-unused.json
-  loadOnAwake: 0
-  autoSave: 0
 --- !u!114 &370256869
 MonoBehaviour:
   m_ObjectHideFlags: 0

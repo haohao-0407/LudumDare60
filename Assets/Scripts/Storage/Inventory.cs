@@ -6,8 +6,8 @@ namespace LudumDare60.Storage
     /// <summary>Single-threaded item storage without Unity, file or presentation dependencies.</summary>
     public sealed class Inventory
     {
-        private Dictionary<string, int> items = new Dictionary<string, int>(StringComparer.Ordinal);
-        private HashSet<Guid> processedRewardIds = new HashSet<Guid>();
+        private readonly Dictionary<string, int> items = new Dictionary<string, int>(StringComparer.Ordinal);
+        private readonly HashSet<Guid> processedRewardIds = new HashSet<Guid>();
 
         public int DistinctItemCount => items.Count;
         public long TotalQuantity
@@ -31,7 +31,7 @@ namespace LudumDare60.Storage
             return true;
         }
 
-        /// <summary>Atomically adds a reward and remembers its ID, including across save/load.</summary>
+        /// <summary>Atomically adds a reward and remembers its ID for this inventory's lifetime.</summary>
         public bool TryAddOnce(Guid rewardId, string itemId, int quantity)
         {
             if (rewardId == Guid.Empty || processedRewardIds.Contains(rewardId) || !CanAdd(itemId, quantity))
@@ -99,62 +99,6 @@ namespace LudumDare60.Storage
                     result.Add(new InventoryItem(entry.Key, entry.Value));
             result.Sort((left, right) => StringComparer.Ordinal.Compare(left.ItemId, right.ItemId));
             return result.AsReadOnly();
-        }
-
-        public InventorySaveData CreateSaveData()
-        {
-            var data = new InventorySaveData
-            {
-                Format = InventorySaveData.FormatName,
-                Version = InventorySaveData.CurrentVersion,
-                Items = new List<InventoryItemData>(),
-                ProcessedRewardIds = new List<string>()
-            };
-            foreach (var item in GetItems())
-                data.Items.Add(new InventoryItemData { ItemId = item.ItemId, Quantity = item.Quantity });
-            foreach (var id in processedRewardIds) data.ProcessedRewardIds.Add(id.ToString("D"));
-            data.ProcessedRewardIds.Sort(StringComparer.Ordinal);
-            return data;
-        }
-
-        /// <summary>Validates the entire save before replacing anything. Failure preserves live data.</summary>
-        public bool TryRestore(InventorySaveData data, out string error)
-        {
-            error = null;
-            if (data == null || data.Format != InventorySaveData.FormatName || data.Version != InventorySaveData.CurrentVersion)
-            {
-                error = "Invalid inventory format or unsupported save version.";
-                return false;
-            }
-            if (data.Items == null || data.ProcessedRewardIds == null)
-            {
-                error = "Inventory save is missing required lists.";
-                return false;
-            }
-
-            var restoredItems = new Dictionary<string, int>(StringComparer.Ordinal);
-            foreach (var item in data.Items)
-            {
-                if (item == null || string.IsNullOrWhiteSpace(item.ItemId) || item.Quantity <= 0 || restoredItems.ContainsKey(item.ItemId))
-                {
-                    error = "Inventory save contains an invalid or duplicate item stack.";
-                    return false;
-                }
-                restoredItems.Add(item.ItemId, item.Quantity);
-            }
-            var restoredRewards = new HashSet<Guid>();
-            foreach (var id in data.ProcessedRewardIds)
-            {
-                if (!Guid.TryParse(id, out var parsed) || parsed == Guid.Empty || !restoredRewards.Add(parsed))
-                {
-                    error = "Inventory save contains an invalid or duplicate reward ID.";
-                    return false;
-                }
-            }
-            items = restoredItems;
-            processedRewardIds = restoredRewards;
-            Changed?.Invoke();
-            return true;
         }
 
         private bool CanAdd(string itemId, int quantity)

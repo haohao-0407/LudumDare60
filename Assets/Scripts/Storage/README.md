@@ -1,15 +1,15 @@
 # 库存系统
 
-命名空间：`LudumDare60.Storage`。核心 `Inventory` 不依赖 Unity；`InventoryJsonStore` 负责 JSON 文件，`InventoryController` 负责 Unity 生命周期，`SalvageInventoryBridge` 连接打捞完成事件。
+命名空间：`LudumDare60.Storage`。库存仅保存在内存中：核心 `Inventory` 不依赖 Unity；`InventoryController` 持有当前游戏过程中的库存，`SalvageInventoryBridge` 连接打捞完成事件。没有文件读写、自动存档或读档接口。
 
 ## 数据与规则
 
 - 一个物品 ID 对应一项库存，数量为正整数；ID 区分大小写，直接使用 `SalvageResult.RewardId`，例如 `scrap`。暂不限制容量，也不引入尚未定义的格子、品质、重量或装备规则。
-- 物品名称、图标等静态配置可由后续物品目录根据 ID 查找。当前保存的数据是物品 ID、数量、存档格式/版本，以及已领取的奖励事务 ID。
+- 物品名称、图标等静态配置由 `ItemCatalog` 根据 ID 查找。内存中只保留物品 ID、数量和本次库存对象已领取的奖励事务 ID。
 - 同 ID 自动合并；单项数量最多为 `int.MaxValue`。空白 ID、非正增减量、数量不足、溢出等操作返回 `false`，不改变数据。
 - 修改数量只接受已有物品；设为 0 删除该项，负数无效。删除/清空不删除奖励领取历史，已消耗的打捞奖励不能重新领取。
-- 查询结果是只读快照，不能绕过接口修改库存。`Changed` 在一次成功修改后触发；无效操作和数量未变不触发。加载有效存档也会触发。
-- 按主线程/单线程使用。事件处理程序应正常返回；不要抛出异常中断保存或其他订阅者。
+- 查询结果是只读快照，不能绕过接口修改库存。`Changed` 在一次成功修改后触发；无效操作和数量未变不触发。
+- 按主线程/单线程使用。事件处理程序应正常返回；不要抛出异常中断其他订阅者。
 
 ## 增删改查
 
@@ -33,30 +33,37 @@ inventory.Clear();                         // 清空物品，保留奖励去重�
 
 ## Unity 接入
 
-1. 在负责玩家数据的 GameObject 上添加 `InventoryController`。每个存档文件只使用一个控制器，其他系统共享其引用。
-2. 默认启用 `Load On Awake` 和 `Auto Save`，保存地址为 `Application.persistentDataPath/inventory.json`；可通过 `SavePath` 查看完整路径。`Save File Name` 只能填写文件名。跨场景时由现有场景管理系统保留宿主对象，或在新场景加载同一份存档。
+1. 在负责当前游戏状态的 GameObject 上添加 `InventoryController`，其他系统共享其引用。
+2. 控制器首次初始化时创建空库存，库存随宿主对象存活。需要在本局跨场景保留物品时，由场景管理系统保留宿主对象；新一局创建新的控制器，库存和奖励去重历史都会重新开始。
 3. 在打捞终端的 `SalvageController` 所在物体上添加 `SalvageInventoryBridge`，将 `Inventory Controller` 指向上述共享库存。`Salvage Controller` 留空时使用同物体的组件。
 4. 桥接器订阅 `Completed`，只有成功结果会入库，使用 `AttemptId` 去重。失败和取消不入库。重新启用桥接器会尝试接收源控制器保留的最后一次结果；重复接收安全。桥接器应覆盖整个作业周期，禁用期间多次完成的历史结果不会被源控制器保留。
 5. UI/其他系统通过 `inventoryController.Items` 调用上述接口，通过 `inventoryController.Changed` 刷新显示；在 `OnEnable` 订阅、`OnDisable` 取消订阅，并在打开时读取一次当前库存。
 
-`Assets/Scenes/TerminalDialogueDemo.unity` 已完成场景接入：`Salvage Screen (World Space)` 根物体同时挂载 `SalvageController`、`InventoryController` 和 `SalvageInventoryBridge`，桥接器的两个引用指向同物体上的对应组件。`Load On Awake` 和 `Auto Save` 均开启，成功打捞后自动增加库存并保存，失败/取消不入库；重新进入场景会加载同一份存档。
+`Assets/Scenes/TerminalDialogueDemo.unity` 已完成场景接入：`Salvage Screen (World Space)` 根物体同时挂载 `SalvageController`、`InventoryController` 和 `SalvageInventoryBridge`，桥接器的两个引用指向同物体上的对应组件。成功打捞后自动增加内存中的库存，失败/取消不入库。停止游戏或销毁该库存对象后，物品不会保留到下次游戏。
 
-菜单 `Tools > Salvage > 在当前场景搭建打捞屏` 也会创建并绑定这三个组件。新场景已有共享库存时，将桥接器改为引用该库存，并移除屏幕上的独立库存，确保每个存档文件只有一个控制器。本模块没有新增库存界面。
+菜单 `Tools > Salvage > 在当前场景搭建打捞屏` 也会创建并绑定这三个组件。新场景已有本局的共享库存时，将桥接器改为引用该库存，并移除屏幕上的独立库存。
 
-## 保存、加载与错误处理
+## CRT 库存显示屏
+
+`TerminalDialogueDemo` 场景中的 `Storage Screen` 已制作成世界空间库存屏，与对话屏、打捞屏共用 Glass TTY 字体。画面包含绿字清单、扫描线、暗角、缓慢移动的亮带、物品种类/总件数、连接状态和空库存提示；超过显示高度后可用鼠标滚轮查看。
+
+`InventoryScreenView` 绑定打捞屏上的共享 `InventoryController`，通过 `Changed` 刷新列表。成功打捞、增加/扣除/删除物品都会更新显示；禁用时取消订阅，重新打开时读取最新快照。显示屏只查询库存，不创建第二份库存，也不修改物品。`ONLINE` / `OFFLINE` 表示是否绑定了库存控制器。
+
+`ItemCatalog` 的名称包含可打印 ASCII 字符时直接使用；当前中文名称超出 Glass TTY 的字库，因此回退为物品 ID 转成的英文名称（与打捞屏一致）。物品数量和总数带千位分隔符。列表按物品 ID 排序，缺少目录条目仍可正常显示。
+
+菜单 `Tools > Storage > 在当前场景搭建库存屏` 可重新创建显示内容，优先使用场景中已有的 `Storage Screen` 并保留其位置；只有 `Inventory Display` 子层级由生成器管理。它会复用场景中的库存，并补齐缺少的打捞桥接。界面显示逻辑在 `InventoryScreenView.cs`，CRT 图形在 `InventoryCrtOverlay.cs`，场景生成器在 `Editor/InventoryScreenBuilder.cs`。
+
+## 内存生命周期
 
 ```csharp
 // inventoryController 是场景中的共享 InventoryController 引用。
-inventoryController.Items.TryAdd("scrap", 1); // 默认立即自动保存
-bool saved = inventoryController.Save();     // 手动保存
-bool loaded = inventoryController.Load();    // 手动重读；成功后替换内存数据
+inventoryController.Items.TryAdd("scrap", 1); // 只修改当前内存，立即通知界面
+inventoryController.Items.TryRemove("scrap", 1);
 ```
 
-- 自动保存发生在库存变更之后，应用挂起/退出或宿主销毁时会再尝试保存待写入数据。关闭 `Auto Save` 后由调用方显式调用 `Save()`。
-- 保存先写同目录 `.tmp` 文件并刷新，再替换正式文件；覆盖时将上一版保留为 `.bak`。物品和事务历史写在同一文件，避免正常读档后重复领取。
-- 读档会校验格式、版本、物品数量/重复 ID 和奖励事务 ID；全部通过才替换内存数据。首次没有存档时以空库存开始，不立即创建文件。
-- 读档损坏或版本不支持时，通过 Console、`LastError` 和 `PersistenceFailed` 报告；`CanSave` 变为 `false`，阻止覆盖旧文件，也阻止打捞桥接器在缺少领取历史时发奖。先备份问题文件、用有效 `.bak` 恢复正式文件，再调用 `Load()`；新游戏则显式移走旧文件并重启宿主。没有自动回退或删除旧档的行为。
-- 写入失败时，内存修改保留，`HasUnsavedChanges` 为 `true`，可在处理错误后再次 `Save()`。入库成功表示内存修改成功，持久化状态须另看 `HasUnsavedChanges`/`LastError`。
-- 手动 `Load()` 会丢弃尚未保存的修改；失败则保留现有内存数据。请只在需要重新读档时调用。
+- 暂停、关闭库存屏、失焦不会清空仍然存活的库存对象，也不会写入文件。
+- `Clear()` 清空当前物品，同时保留本对象已领取的奖励 ID，防止已消耗的奖励被重复领取。
+- 全新一局应创建新的 `InventoryController` / `Inventory`，以同时清空物品和奖励历史。保留旧控制器的场景切换仍共享本局库存。
+- 退出游戏后内存释放，下次游戏从空库存开始。旧版生成的 JSON 文件不会再被读取或更新。
 
-纯逻辑宿主可使用 `CreateSaveData()`/`TryRestore(data, out error)` 获取或恢复数据，或者直接调用 `InventoryJsonStore.TrySave/TryLoad`，无需创建场景对象。存档是本地 JSON，不承担防作弊或云同步功能。
+纯逻辑宿主可以直接 `new Inventory()` 并订阅 `Changed`，无需创建场景对象。
