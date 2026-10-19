@@ -2,6 +2,7 @@ using LudumDare60.Salvage;
 using LudumDare60.Storage;
 using LudumDare60.TerminalDialogue;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -110,7 +111,7 @@ namespace LudumDare60.ReturnWindow
             if (mission.IsGameplayPaused)
             {
                 salvage.ReleaseControl();
-                if (statusText != null) statusText.text = "RECOVERY PAUSED";
+                if (statusText != null) statusText.text = Loc.Say("RECOVERY PAUSED");
                 return;
             }
 
@@ -135,12 +136,13 @@ namespace LudumDare60.ReturnWindow
                 var stored = inventory != null && (inventory.Items.HasProcessedReward(result.AttemptId)
                     || inventory.Items.TryAddOnce(result.AttemptId, result.RewardId, result.RewardQuantity));
                 resultText = stored
-                    ? "SUPPLIES RECOVERED: " + result.RewardId + " x " + result.RewardQuantity + ". Return to repairs or recover another cache."
-                    : "Recovery complete, but supplies could not be stored.";
+                    ? Loc.T("SUPPLIES RECOVERED: {0} x {1}. Return to repairs or recover another cache.",
+                        Loc.Say(result.RewardId.Replace('_', ' ').ToUpperInvariant()), result.RewardQuantity)
+                    : Loc.Say("Recovery complete, but supplies could not be stored.");
             }
             else resultText = result.Reason == SalvageEndReason.Cancelled
-                ? "Recovery cancelled. No supplies recovered."
-                : "SIGNAL LOST: " + ReasonText(result.Reason) + ". Retry or return to repairs.";
+                ? Loc.Say("Recovery cancelled. No supplies recovered.")
+                : Loc.T("SIGNAL LOST: {0}. Retry or return to repairs.", Loc.Say(ReasonText(result.Reason)));
             terminal?.PostSystemMessage(resultText);
             if (salvage != null) Refresh(salvage.Snapshot);
         }
@@ -150,15 +152,15 @@ namespace LudumDare60.ReturnWindow
             if (!IsOpen) return;
             if (statusText != null)
             {
-                if (mission != null && mission.IsGameplayPaused) statusText.text = "RECOVERY PAUSED";
+                if (mission != null && mission.IsGameplayPaused) statusText.text = Loc.Say("RECOVERY PAUSED");
                 else if (!string.IsNullOrEmpty(resultText)) statusText.text = resultText;
-                else if (snapshot.State == SalvageState.Searching) statusText.text = "SEARCHING... Wait for the signal, then press SPACE.";
-                else if (snapshot.State == SalvageState.SignalDetected) statusText.text = "SIGNAL DETECTED - PRESS SPACE NOW";
-                else if (snapshot.State == SalvageState.Salvaging) statusText.text = "HOLD SPACE to lift the control band; release to lower it. Keep the target inside.";
-                else statusText.text = "Optional supplies. Mission time continues during recovery.";
+                else if (snapshot.State == SalvageState.Searching) statusText.text = Loc.Say("SEARCHING... Wait for the signal, then press SPACE.");
+                else if (snapshot.State == SalvageState.SignalDetected) statusText.text = Loc.Say("SIGNAL DETECTED - PRESS SPACE NOW");
+                else if (snapshot.State == SalvageState.Salvaging) statusText.text = Loc.Say("HOLD SPACE to lift the control band; release to lower it. Keep the target inside.");
+                else statusText.text = Loc.Say("Optional supplies. Mission time continues during recovery.");
             }
-            if (progressText != null) progressText.text = Mathf.RoundToInt(snapshot.Progress * 100) + "% RECOVERED  /  "
-                + Mathf.CeilToInt(snapshot.TimeRemaining) + "s ATTEMPT TIME\nMission departure clock keeps running.";
+            if (progressText != null) progressText.text = Loc.T("{0}% RECOVERED  /  {1}s ATTEMPT TIME\nMission departure clock keeps running.",
+                Mathf.RoundToInt(snapshot.Progress * 100), Mathf.CeilToInt(snapshot.TimeRemaining));
             if (progressFill != null) progressFill.fillAmount = Mathf.Clamp01(snapshot.Progress);
             if (targetMarker != null)
             {

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,6 +45,7 @@ namespace LudumDare60.Storage
 
         private void OnEnable()
         {
+            Loc.LanguageChanged -= HandleLanguageChanged;
             Unsubscribe();
             subscribedInventory = inventoryController;
             if (subscribedInventory != null)
@@ -51,9 +53,12 @@ namespace LudumDare60.Storage
                 subscribedInventory.Changed += Refresh;
             }
             Refresh();
+            Loc.LanguageChanged += HandleLanguageChanged;
         }
 
-        private void OnDisable() => Unsubscribe();
+        private void OnDisable() { Loc.LanguageChanged -= HandleLanguageChanged; Unsubscribe(); }
+
+        private void HandleLanguageChanged(string code) => Refresh();
 
         private void Unsubscribe()
         {
@@ -93,6 +98,7 @@ namespace LudumDare60.Storage
                 summaryLabel.text = string.Format(CultureInfo.InvariantCulture, "{0:00} ITEM TYPES  /  {1:N0} UNITS",
                     inventory?.DistinctItemCount ?? 0, inventory?.TotalQuantity ?? 0);
             RefreshStatus();
+            Pioneer60.Localization.LocAutoTranslate.Refresh(gameObject);
         }
 
         private Row CreateRow()
@@ -111,9 +117,9 @@ namespace LudumDare60.Storage
         private string DisplayName(string itemId)
         {
             var name = itemCatalog != null ? itemCatalog.GetDisplayName(itemId) : itemId;
-            // Glass TTY's authored atlas contains printable ASCII only, matching the other screens.
-            foreach (var character in name)
-                if (character < 32 || character > 126) return itemId.Replace('_', ' ').ToUpperInvariant();
+            // 过去这里有个「含非 ASCII 字符就退回大写物品 ID」的兜底，是因为旧字体图集只有 ASCII。
+            // 字体换过之后它会把中文物品名整个吃掉（HEAT RESISTANT CERAMIC INSULATORS 就是这么来的），已删除。
+            // 保留 ToUpper：终端字体是小写缺失的端子字体，中文不受影响。
             return name.Replace('_', ' ').ToUpperInvariant();
         }
 

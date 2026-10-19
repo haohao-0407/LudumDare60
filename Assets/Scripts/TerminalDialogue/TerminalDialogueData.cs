@@ -150,14 +150,27 @@ namespace LudumDare60.TerminalDialogue
     public sealed class TerminalMessage
     {
         public TerminalSpeaker Speaker { get; }
-        public string Text { get; }
+        public string Text { get; private set; }
         public TerminalTextColor TextColor { get; }
-        public string DisplayName { get; }
+        public string DisplayName { get; private set; }
         public TerminalMessage(TerminalSpeaker speaker, string text) : this(speaker, text, TerminalTextColor.Default) { }
         public TerminalMessage(TerminalSpeaker speaker, string text, TerminalTextColor color, string displayName = "")
         {
             Speaker = speaker; Text = text; TextColor = color;
             DisplayName = string.IsNullOrWhiteSpace(displayName) ? "" : displayName.Trim();
+        }
+
+        /// <summary>切语言时把已经写进转写的这句台词换掉。</summary>
+        internal void Relocalize(System.Func<string, string> translate)
+        {
+            if (translate == null) return;
+            var text = translate(Text);
+            if (!string.IsNullOrEmpty(text)) Text = text;
+            if (DisplayName.Length > 0)
+            {
+                var name = translate(DisplayName);
+                if (!string.IsNullOrEmpty(name)) DisplayName = name;
+            }
         }
 
         public string GetPrefix(string aiName)

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 
 namespace LudumDare60.TerminalDialogue
@@ -35,8 +36,10 @@ namespace LudumDare60.TerminalDialogue
             Refresh();
         }
 
-        private void OnEnable() { Subscribe(); optionsRevision = -1; Refresh(); }
-        private void OnDisable() => Unsubscribe();
+        private void OnEnable() { Subscribe(); optionsRevision = -1; Refresh(); Loc.LanguageChanged += HandleLanguageChanged; }
+        private void OnDisable() { Loc.LanguageChanged -= HandleLanguageChanged; Unsubscribe(); }
+
+        private void HandleLanguageChanged(string code) => Refresh();
         private void Subscribe()
         {
             if (controller != null) controller.Changed += Refresh;
@@ -86,14 +89,14 @@ namespace LudumDare60.TerminalDialogue
             var canAdvance = open && (lastPhase == TerminalPhase.Typing || lastPhase == TerminalPhase.Holding
                 || lastPhase == TerminalPhase.WaitingForContinue);
             if (advanceButton != null) advanceButton.gameObject.SetActive(canAdvance);
-            if (advanceLabel != null) advanceLabel.text = lastPhase == TerminalPhase.Typing ? "SHOW FULL TEXT" : "CONTINUE";
+            if (advanceLabel != null) advanceLabel.text = Loc.Say(lastPhase == TerminalPhase.Typing ? "SHOW FULL TEXT" : "CONTINUE");
             if (statusText != null)
             {
-                statusText.text = !open ? "TERMINAL OFFLINE" : lastPhase == TerminalPhase.WaitingForChoice
+                statusText.text = Loc.Say(!open ? "TERMINAL OFFLINE" : lastPhase == TerminalPhase.WaitingForChoice
                     ? (count > 0 ? "SELECT A RESPONSE" : "WAITING FOR AVAILABLE ACTIONS")
                     : lastPhase == TerminalPhase.Completed ? "SESSION ENDED" : lastPhase == TerminalPhase.WaitingForContinue
-                        ? "AWAITING CONTINUE" : "TRANSMITTING...";
-                if (open && session.IsStoryReading) statusText.text = "STORY READING / MISSION PAUSED";
+                        ? "AWAITING CONTINUE" : "TRANSMITTING...");
+                if (open && session.IsStoryReading) statusText.text = Loc.Say("STORY READING / MISSION PAUSED");
             }
         }
     }

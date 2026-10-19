@@ -1,0 +1,603 @@
+﻿key,category,speaker,en,zh-Hans,note
+speaker.player,speaker,,Pioneer-60:,Pioneer-60：,原文/润色稿
+speaker.colony_signal,speaker,,COLONY SIGNAL:,殖民地信号：,原文/润色稿
+speaker.ai,speaker,,AI:,AI：,原文/润色稿
+speaker.earth,speaker,,[EARTH],[地球],原文/润色稿
+speaker.colony,speaker,,[COLONY],[殖民地],原文/润色稿
+speaker.system,speaker,,[SYSTEM],[SYSTEM],日志规则：中英均用 [SYSTEM]
+speaker.narration,speaker,,,,旁白无标签
+log.title,log,,PIONEER-60 FLIGHT LOG,PIONEER-60 飞船日志,原文/润色稿
+log.common.checkin,log,player,This is {callsign}. On course. All onboard systems nominal. Please confirm contact.,这里是{callsign}。航向正常，船载系统运行正常。请求通信确认。,原文/润色稿
+log.d1.earth.copy,log,earth,Copy. Continue on your planned course.,收到。继续按计划航行。,原文/润色稿
+log.d1.colony.copy,log,colony,Copy. Reading you loud and clear.,收到。通信清晰。,原文/润色稿
+log.dx.earth.copy,log,earth,Copy.,收到。,原文/润色稿
+log.dx.sys.await,log,system,Awaiting colony response...,等待殖民地回复……,原文/润色稿
+log.dx.sys.timeout,log,system,Response timed out.,应答超时。,原文/润色稿
+log.dx.player.hail,log,player,{callsign} to colony. Do you read?,{callsign} 呼叫殖民地。收到请回复。,原文/润色稿
+log.dx.player.ask_earth,log,player,"Earth Control, no response from the colony. Should I continue the mission?",地球联络部，殖民地没有回应。是否继续任务？,原文/润色稿
+log.dx.earth.continue,log,earth,Continue the mission. Maintain your current course and keep trying to establish contact.,继续任务。保持当前航向，继续尝试联络。,原文/润色稿
+log.dx.player.copy,log,player,Copy.,收到。,原文/润色稿
+log.dx1.player.status,log,player,This is {callsign}. On course. Still no response from the colony. Please confirm whether I should continue the mission.,这里是{callsign}。航向正常。殖民地仍未回应，请确认是否继续任务。,原文/润色稿
+log.dx1.earth.copy_hail,log,earth,Copy. Try hailing the colony again.,收到。请再次尝试呼叫殖民地。,原文/润色稿
+log.dx1.player.hail_repeat,log,player,"{callsign} to colony. Do you read? I repeat, do you read?",{callsign} 呼叫殖民地。收到请回复。重复，收到请回复。,原文/润色稿
+log.dx1.sys.weak_signal,log,system,Weak signal detected.,检测到微弱信号。,原文/润色稿
+log.dx1.colony.who,log,colony,...Who... are you?,……你是……谁？,原文/润色稿
+log.dx1.player.identify,log,player,"This is {callsign}, en route to the colony as scheduled. Report your situation.",这里是{callsign}，正按计划前往殖民地。请报告你们的情况。,原文/润色稿
+log.dx1.colony.accident,log,colony,There's been... an accident... Everyone... only...,这里……出了意外……所有人都……只剩……,原文/润色稿
+log.dx1.sys.distorted,log,system,Signal distorted. Audio partially unintelligible.,信号失真。部分语音无法辨识。,原文/润色稿
+log.dx1.player.say_again,log,player,What happened to everyone? Say again.,你说所有人怎么了？请重复。,原文/润色稿
+log.dx1.sys.no_response,log,system,No intelligible response.,未收到清晰回应。,原文/润色稿
+log.dx1.earth.mission_changed,log,earth,"{callsign}, your mission has changed. Land near the colony and investigate the incident.",{callsign}，任务变更。你需要在殖民地附近着陆，调查事故情况。,原文/润色稿
+log.dx1.earth.supplies,log,earth,"Take all emergency supplies. Once you've landed, prioritize restoring communications with Earth.",带齐应急物资。着陆后，优先恢复与地球的通信。,原文/润色稿
+log.dx1.earth.window_warning,log,earth,Your return window is limited. Allow enough time for departure. We cannot guarantee a rescue after that window closes.,返航窗口有限。务必预留返航时间，我们无法保证窗口关闭后的救援。,原文/润色稿
+log.dx1.earth.stay_safe,log,earth,Stay safe.,注意安全。,原文/润色稿
+log.dx1.player.mars_orbit,log,player,Copy. Expecting Mars orbit in {hours} hours. Beginning landing preparations.,收到。预计 {hours} 小时后进入火星轨道，开始准备着陆。,原文/润色稿
+log.dx1.player.need_calibration,log,player,"Colony, if you can hear me, I need calibration data for the landing zone.",殖民地，如果你能听见，我需要着陆区的校准数据。,原文/润色稿
+log.dx1.colony.try_help,log,colony,...I'll... try to... help you...,……我会……试着……帮助你……,原文/润色稿
+log.dx2.player.check_data,log,player,Check the landing data.,检查着陆数据。,原文/润色稿
+log.dx2.sys.descent,log,system,Descent underway. No time remains to wait for calibration data.,已进入下降阶段。无法继续等待校准数据。,原文/润色稿
+log.dx2.sys.await_final,log,system,Awaiting the final set of terrain calibration data.,等待最后一组地形校准数据。,原文/润色稿
+log.dx2.sys.transfer_interrupted,log,system,Data transfer interrupted.,数据传输中断。,原文/润色稿
+log.dx2.player.resend,log,player,{callsign} to colony. Data transfer interrupted. Please resend the final set of calibration data.,{callsign} 呼叫殖民地。数据传输中断，请重新发送最后一组校准数据。,原文/润色稿
+log.dx2.colony.damaged,log,colony,...Communications equipment... damaged... signal...,……通信设备……受损……信号……,原文/润色稿
+log.dx2.player.need_data,log,player,I need that data to confirm the landing site. Try again. Send whatever you can.,我需要这些数据确认着陆点。请再试一次，先把能发送的部分传过来。,原文/润色稿
+log.dx2.colony.retrying,log,colony,...Retrying...,……正在……重试……,原文/润色稿
+log.dx2.sys.resuming,log,system,Resuming data transfer...,正在重新接收数据……,原文/润色稿
+log.dx2.sys.unstable,log,system,Connection unstable. Terrain calibration data incomplete.,连接不稳定。地形校准数据不完整。,原文/润色稿
+log.dx2.player.confirm_landing,log,player,Confirm the final landing sequence.,确认最终着陆程序。,原文/润色稿
+log.dx2.sys.landing_confirmed,log,system,Final landing sequence confirmed.,最终着陆程序已确认。,原文/润色稿
+log.dx2.sys.landing_complete,log,system,Landing complete. Location: near the colony.,着陆完成。位置：殖民地附近。,原文/润色稿
+log.dx2.sys.damage,log,system,Damage assessment: severe structural damage to the landing craft.,损伤检测：舱体严重受损。,原文/润色稿
+log.dx2.sys.end_of_log,log,system,End of log.,日志结束。,原文/润色稿
+ui.log.end_of_log,ui,,END OF LOG,日志结束,原文/润色稿
+dlg.player.rescue,dialogue,player,This is Pioneer-60. Something went wrong during landing. I'm trapped in the lander. I need rescue!,这里是 Pioneer-60。着陆出了意外，我被困在着陆舱里了，需要救援！,原文/润色稿
+dlg.colony.hello,dialogue,colony_signal,Hello. How may I help you?,您好，有什么可以帮您的吗？,原文/润色稿
+dlg.player.who,dialogue,player,Wait. Who are you? What happened to the colony? Why did communications go down?,等等，你是谁？殖民地出了什么事？通信为什么中断了？,原文/润色稿
+dlg.colony.identity.p1,dialogue,colony_signal,I am the colony's AI assistant. A serious accident occurred at the colony. All registered personnel have died.,我是殖民地的 AI 助手。殖民地发生了严重事故，所有登记人员均已丧生。,原文/润色稿
+dlg.colony.identity.p2,dialogue,colony_signal,"I tried to respond to your transmissions two days ago, but the communications console was designed for human operation only. Bypassing its restrictions and taking control took some time. I also appear to have accidentally burned out some communications components in the process, causing the unstable connection.",两天前，我曾尝试回应您的通信，但通信控制台仅允许人类操作。我花了一些时间绕过限制并接管系统。在此过程中，我似乎还意外烧坏了一些通信元件，导致连接不稳定。,原文/润色稿
+dlg.colony.identity.p3,dialogue,colony_signal,I have granted your device full access to the colony's systems. You can now control all colony facilities through your terminal. I will assist you however I can.,我已向您的设备开放殖民地系统的全部权限。您现在可以通过终端控制所有殖民地设施，我会尽力提供协助。,原文/润色稿
+dlg.player.return_mission,dialogue,player,"How could this have happened? Now that I know the situation, I need to begin the return mission. You're the AI assistant recovered from the ancient ruins, right? Can you assess my situation and find a solution?",怎么会这样？既然已经了解情况，我需要开始返航任务。你应该就是从古代遗迹里发现的 AI 助手，对吧？能分析一下我目前的情况，找出解决办法吗？,原文/润色稿
+dlg.ai.damage_report,dialogue,ai,"I've detected severe damage to your ship. I'm afraid it cannot simply take off and return home, but I can help you repair it. Some facilities aboard the space station are still operational.",我检测到你的飞船损坏严重，恐怕无法直接起飞返航。但我可以帮你修复，空间站内仍有一些可用设施。,原文/润色稿
+dlg.player.window_question,dialogue,player,Earth Control said our return window was limited. How much time do we have?,地球联络部说我们的返航窗口有限。我们还有多少时间？,新译（无中文原文）
+dlg.ai.window_dates,dialogue,ai,Today is 25 August 1981. The navigation archive lists 3 to 13 September as the planned Mars-to-Earth departure period.,今天是 1981 年 8 月 25 日。导航档案中登记的、计划中的火星—地球出发时段是 9 月 3 日至 13 日。,新译（无中文原文）
+dlg.player.why_those_dates,dialogue,player,Why those dates? Can't we just leave when the repairs are done?,为什么非得是那几天？不能修好就走吗？,新译（无中文原文）
+dlg.ai.fuel_p1,dialogue,ai,"I will explain it in the plainest, most direct terms possible. Repairs can make the ship work again. They cannot replace the fuel we have lost. With our remaining fuel margin, this low-energy return plan is our only viable option for this departure period.",我会用最直白、最不绕弯子的话解释。修复能让飞船重新运转，但补不回已经损失掉的燃料。以我们剩下的燃料余量，这个低能耗返航方案是本次出发时段唯一可行的选择。,新译（无中文原文）
+dlg.ai.fuel_p2,dialogue,ai,"After the cutoff calculated for this ship, the required trajectory adjustments would exceed the margin I can safely commit. Firing the engine is not the same as getting home.",一旦超过按这艘飞船算出的截止时刻，所需的轨道调整量就会超出我能安全动用的余量。点燃引擎，并不等于回得了家。,新译（无中文原文）
+dlg.player.next_chance,dialogue,player,Then when is the next chance?,那下一次机会是什么时候？,新译（无中文原文）
+dlg.ai.next_plan,dialogue,ai,"The next return plan listed in the archive is dated 9 to 19 November 1983. That is about two years and two months after this window. It is a reference for replanning, not a guarantee. We would have to reassess whether this damaged ship could use it.",档案里登记的下一个返航方案是 1983 年 11 月 9 日至 19 日。那大约是这个窗口之后两年零两个月。它只是重新规划时的参考，不是保证。还得重新评估这艘受损的飞船能不能用上它。,新译（无中文原文）
+dlg.ai.supplies_limit,dialogue,ai,"Your emergency supplies will not last that long. Earth has also told us that rescue cannot be guaranteed after this window closes. If we stay, we will have to restore the colony's life support, water recycling and food production.",你的应急物资撑不到那时候。地球也说过，窗口关闭后无法保证救援。如果留下来，我们就得恢复殖民地的生命维持、水循环和食物生产。,新译（无中文原文）
+dlg.player.make_window,dialogue,player,Then let's make this window. Tell me what needs fixing.,那就抓住这个窗口。告诉我该修什么。,新译（无中文原文）
+dlg.player.repair_request,dialogue,player,Assess the damage to the ship and put together a repair plan. Help me repair it so I can return to Earth.,帮我评估飞船的损坏情况，制定修复计划。帮我修好它，让我回到地球。,原文/润色稿
+dlg.ai.objective_received,dialogue,ai,"Understood. Objective received. I will explain everything in the plainest, most direct terms possible. I have taken control of your ship's information systems and am preparing a repair plan.",明白，任务目标已接收。我会用最直白、最直接的方式解释一切。我已接管你飞船的信息系统，正在制定修复计划。,原文/润色稿
+dlg.ai.repair_order,dialogue,ai,"First, repair the power unit to restore full power to the ship, along with the interstellar navigation system. Then repair the propulsion engine, and finally the life support system.",首先修复能源装置，恢复飞船的全部供电，以及修复星际导航系统。然后修复推进引擎，最后修复生命维持系统。,原文/润色稿
+dlg.ai.calendar_plan,dialogue,ai,"I have put the repair plan on the calendar beside your seat. It runs from 25 August to 13 September: twenty dates. Power, navigation, propulsion, life support. The sequence has not changed.",我已经把修复计划放在你座位旁边的日历上。从 8 月 25 日到 9 月 13 日，一共二十格日期。能源、导航、推进、生命维持，顺序没有变。,新译（无中文原文）
+dlg.player.why_circled,dialogue,player,Why is 13 September circled?,9 月 13 日为什么被圈出来了？,新译（无中文原文）
+dlg.ai.deadline_explain,dialogue,ai,"That is the deadline. When each day ends, I will cross out its date in red. There is only one circle. It marks the last day.",那是截止日。每过完一天，我会用红笔把对应的日期划掉。整张日历只有一个圈，它标的是最后一天。,新译（无中文原文）
+dlg.ai.timer_explain,dialogue,ai,The amber instrument beside it is labeled LATEST DEPARTURE. It counts down to the last moment you can authorize departure. The allowance for surface ascent and reaching orbit is already included. You do not need to calculate it separately.,旁边那台琥珀色的仪表标着 LATEST DEPARTURE。它倒数的是你能授权启航的最后时刻。地表上升和进入轨道的预留量已经算进去了，你不用自己再算。,新译（无中文原文）
+dlg.player.finish_early,dialogue,player,What if I finish early?,要是我提前修完了呢？,新译（无中文原文）
+dlg.ai.early_launch,dialogue,ai,"We can launch early and enter a waiting orbit, then perform the Earth-return burn during the planned window. You do not have to sit here until the last day.",可以提前发射，进入等待轨道，然后在计划窗口内做地球返航点火。你不必在这儿干等到最后一天。,新译（无中文原文）
+dlg.ai.must_select_launch,dialogue,ai,"Once repairs are complete, you must still select Launch yourself. Your authorization must reach me before the countdown reaches zero.",修复完成后，启航仍然必须由你自己选。你的授权要在倒计时归零之前送到我这儿。,新译（无中文原文）
+dlg.ai.collect_hint,dialogue,ai,"You can now send out the Mars rover to continue collecting materials. I will explain how. Enter ""collect"" in the terminal.",你现在可以派出火星车，继续采集材料。我会说明如何操作。请在终端输入“collect”。,原文/润色稿
+dlg.ai.repair_power_compartment,dialogue,ai,"I will explain everything in the plainest, most direct terms possible. You can now repair the power compartment.",我会用最直白、最直接的方式解释一切。你现在可以修复能源舱了。,原文/润色稿
+dlg.player.old_ai,dialogue,player,"Why do you talk like some old AI from the early twenty-first century? Was that some strange quirk of your creator's? It's unsettling, especially when your appearance is actually quite well designed.",你怎么说起话来像二十一世纪初的某种老式 AI？这是你创造者的什么怪癖吗？真诡异，明明你的外貌设计还挺不错的。,原文/润色稿
+dlg.ai.old_tech,dialogue,ai,What do you know? It's called old tech.,你懂什么？这叫 old tech。,原文/润色稿
+dlg.player.old_tech_reply,dialogue,player,"Yeah, very old tech. Only an AI dug out of ancient ruins would talk like that. Anyway, how do I start the repairs?",是啊，确实很 old tech。只有从古代遗迹里挖出来的 AI 才会这么说话。好了，我该怎么开始修复？,原文/润色稿
+dlg.ai.inventory_instructions.p1,dialogue,ai,"Enter ""inventory"" to check your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners.",输入“inventory”查看库存。修复能源装置需要：轧制机电合金板 6 个、镀锡铜导线与绕组铜材 4 个、精密传动齿轮坯 2 个、耐热绝缘陶瓷件 7 个、硫化气密橡胶衬料 3 个。,原文/润色稿
+dlg.ai.inventory_instructions.p2,dialogue,ai,"Once you have everything, enter ""assemble"" to begin. If you forget a command, enter ""help"" to see the list.",材料齐全后，输入“assemble”开始。忘记指令时，输入“help”查看列表。,原文/润色稿
+sys.notice.compress,system,system,"Twenty Earth-standard days are compressed into twenty minutes of active work. Story reading pauses the mission clock and all work. Salvage, repairs and ordinary status queries consume time.",二十个地球标准日压缩为二十分钟的有效操作时间。剧情阅读期间，任务计时与所有作业都会暂停；回收、维修与普通状态查询会消耗时间。,新译（无中文原文）
+sys.notice.clock_start,system,system,The clock will start when you select BEGIN REPAIRS after this briefing.,计时会在简报结束后、你选择 BEGIN REPAIRS 时启动。,新译（无中文原文）
+sys.mission_started,system,system,MISSION STARTED.,任务开始。,新译（无中文原文）
+sys.current_date,system,system,CURRENT DATE: {date},当前日期：{date},新译（无中文原文）
+sys.last_departure_date,system,system,LAST DEPARTURE DATE: {date},最晚启航日期：{date},新译（无中文原文）
+sys.return_period_archived,system,system,Return reference period archived: 03-13 SEP 1981. Surface ascent and orbital preparation allowances will be assessed after landing.,返航参考时段已归档：1981 年 9 月 3 日至 13 日。地表上升与入轨的预留量将在着陆后评估。,新译（无中文原文）
+upd.half,update,ai,Half of our departure preparation time has passed. The calendar has been updated.,出发准备时间已经过半。日历已更新。,新译（无中文原文）
+upd.quarter,update,ai,Only one quarter of our original preparation time remains before the departure cutoff.,距离最晚启航时刻，最初准备时间只剩四分之一。,新译（无中文原文）
+upd.tenth,update,ai,Final time warning. One tenth of our original preparation time remains.,最后的时间警告。最初准备时间只剩十分之一。,新译（无中文原文）
+upd.step.power,update,ai,"The power unit is still awaiting repair. Check your inventory, then prepare the assembly.",能源装置仍未修复。检查仓库，然后准备组装。,新译（无中文原文）
+upd.step.navigation,update,ai,"The interstellar navigation system is next. Check your inventory, then prepare the assembly.",接下来是星际导航系统。检查仓库，然后准备组装。,新译（无中文原文）
+upd.step.propulsion,update,ai,"The propulsion engine is next. Check your inventory, then prepare the assembly.",接下来是推进引擎。检查仓库，然后准备组装。,新译（无中文原文）
+upd.step.life_support,update,ai,"The life support system is next. Check your inventory, then prepare the assembly.",接下来是生命维持装置。检查仓库，然后准备组装。,新译（无中文原文）
+upd.short_materials,update,ai,You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.,材料还不够。先看看仓库里还差什么，再派出火星车。,新译（无中文原文）
+upd.ready_to_assemble,update,ai,You have the required materials. Complete the current assembly.,材料已经齐了。完成当前的组装。,新译（无中文原文）
+upd.not_all_checked,update,ai,"Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.",还有系统没有通过检查。我会继续帮忙，但截止日我挪不动。,新译（无中文原文）
+upd.all_passed,update,ai,All four systems have passed their checks. Return to the terminal and select Launch. We can still leave.,四套系统全部通过检查。回到终端，选择启航。我们还来得及走。,新译（无中文原文）
+eng.p1,engine_test,ai,"Sorry. I just tested the engine. I wasn't expecting it to be so powerful. I hope I didn't startle you. I've also adjusted the ship's attitude for flight. Once repairs are complete, you can start it up.",抱歉，我刚测试了一下引擎，没想到它这么强劲。希望没有吓到你。我也已经把飞船调整到可飞行姿态。修复完成后，就可以启动它了。,原文/润色稿
+eng.p2,engine_test,ai,That was only a test. We have not launched. The deadline on the calendar still applies.,那只是试车。我们没有发射。日历上的截止日仍然有效。,新译（无中文原文）
+dep.dest_earth,departure,,Destination: Earth,目的地：地球,原文/润色稿
+dep.unable_damaged,departure,,Unable to launch: ship damaged.,无法启航：飞船受损。,原文/润色稿
+dep.ready,departure,,Ready to launch.,可以启航。,新译（无中文原文）
+dep.unable_window_closed,departure,,Unable to launch: departure window closed.,无法启航：返航窗口已关闭。,新译（无中文原文）
+dep.ai.farewell,departure,ai,The ship is fully repaired. You can now return home. I won't miss you. Goodbye.,飞船已全部修复。你现在可以返航了。我不会想念你的。再见。,原文/润色稿
+dep.player.begin_launch,departure,player,Begin launch.,开始启航。,新译（无中文原文）
+home.sys.accepted,ending,system,DEPARTURE AUTHORIZATION ACCEPTED.,启航授权已接受。,新译（无中文原文）
+home.sys.plan_locked,ending,system,RETURN PLAN LOCKED.,返航方案已锁定。,新译（无中文原文）
+home.sys.countdown_stopped,ending,system,MISSION COUNTDOWN STOPPED.,任务倒计时已停止。,新译（无中文原文）
+home.narr.liftoff,ending,narration,The ship lifts away from the surface. The colony and its broken transmissions slowly fall behind you.,飞船升离地表。殖民地和它断断续续的通信，在你身后缓缓退去。,新译（无中文原文）
+home.narr.waiting_orbit,ending,narration,"You reach the waiting orbit. When the planned return window arrives, the Earth-return burn begins.",你进入等待轨道。等到计划中的返航窗口，地球返航点火开始。,新译（无中文原文）
+home.narr.climb_orbit,ending,narration,"The ship climbs from the surface into orbit. Within the planned return window, the Earth-return burn begins.",飞船从地表升入轨道。在计划中的返航窗口内，地球返航点火开始。,新译（无中文原文）
+home.narr.far_away,ending,narration,Earth is still far away. You do not know what you will find when you get there.,地球仍然很远。你不知道到那里会看到什么。,新译（无中文原文）
+home.narr.going_home,ending,narration,But you are finally on your way home.,但你终于踏上了回家的路。,新译（无中文原文）
+alt.sys.window_closed,ending,system,WINDOW CLOSED.,窗口已关闭。,新译（无中文原文）
+alt.sys.deadline_exceeded,ending,system,DEPARTURE AUTHORIZATION DEADLINE EXCEEDED.,启航授权已超期。,新译（无中文原文）
+alt.ai.window_gone,ending,ai,The window has closed. We cannot make this departure.,窗口关闭了。这一次我们走不了。,新译（无中文原文）
+alt.player.check_again,ending,player,Check again. Is there another route?,再查一遍。还有别的路线吗？,新译（无中文原文）
+alt.ai.no_route,ending,ai,"I have checked. With the ship in its present condition and the fuel we have left, I cannot give you an alternative route we can safely fly.",查过了。以飞船现在的状态和我们剩下的燃料，我给不出能安全飞行的替代路线。,新译（无中文原文）
+alt.player.wait_next,ending,player,Then we wait for the next one.,那就等下一次。,新译（无中文原文）
+alt.ai.next_1983,ending,ai,"The next return plan in the archive is in November 1983. That means more than two years of waiting, and the ship would need to be reassessed. Your emergency supplies will not last that long.",档案里的下一个返航方案在 1983 年 11 月。那意味着两年多的等待，而且飞船还得重新评估。你的应急物资撑不了那么久。,新译（无中文原文）
+alt.player.earth_send,ending,player,Can Earth send someone?,地球能派人来吗？,新译（无中文原文）
+alt.ai.no_rescue,ending,ai,"We will keep trying to restore contact. But in their last transmission, they said they could not guarantee rescue after the window closed.",我们会继续尝试恢复通信。但在最后一次通信里，他们说过窗口关闭后无法保证救援。,新译（无中文原文）
+alt.player.what_now,ending,player,...Then what do we do now?,……那我们现在怎么办？,新译（无中文原文）
+alt.ai.stay_alive,ending,ai,"I will explain it in the plainest, most direct terms possible. Your first priority now is to stay alive until we can try to leave again.",我会用最直白、最不绕弯子的话说清楚。你现在最优先的事，是活到我们能再次尝试离开。,新译（无中文原文）
+alt.player.give_plan,ending,player,That part I understand. Give me the plan.,这个我懂。把计划给我。,新译（无中文原文）
+alt.ai.plan_air_power,ending,ai,"First, check the lander's air supply and power. Then restore whatever water recycling equipment we can use in the colony. Until then, we will keep you alive with the facilities that still work.",先检查着陆舱的空气供应和电力。然后恢复殖民地里还能用的水循环设备。在那之前，我们靠还能运转的设施维持你的生命。,新译（无中文原文）
+alt.ai.plan_greenhouse,ending,ai,"After that, repair the greenhouse and check the seed reserves. Emergency rations are not enough. We need to start producing food.",之后修复温室，检查种子储备。应急口粮不够，我们必须开始生产食物。,新译（无中文原文）
+alt.player.ship_to_growing,ending,player,From repairing a ship to growing things.,从修飞船，变成种东西。,新译（无中文原文）
+alt.ai.objective_intact,ending,ai,The original objective has not been canceled. We just need a different schedule first.,最初的任务目标并没有取消。我们只是得先换一份日程。,新译（无中文原文）
+alt.sys.date_sow,ending,system,14 SEP 1981 / SOW,1981 年 9 月 14 日 / 播种,新译（无中文原文）
+alt.player.tomorrow,ending,player,Then tell me what we do first tomorrow.,那就告诉我，明天先做什么。,新译（无中文原文）
+alt.ai.greenhouse_water,ending,ai,"Check the greenhouse water supply. If it is usable, prepare to sow.",检查温室的供水。如果还能用，就准备播种。,新译（无中文原文）
+alt.narr.empty_colony,ending,narration,"Outside, the colony is still empty.",外面，殖民地依然空无一人。,新译（无中文原文）
+alt.narr.first_seed,ending,narration,"Tomorrow, you will prepare to plant the first seed.",明天，你将准备种下第一粒种子。,新译（无中文原文）
+cal.standard,ui,,EARTH STANDARD / MM/DD,地球标准 / 月/日,新译（无中文原文）
+cal.phase_before_departure,ui,,BEFORE DEPARTURE,出发前,新译（无中文原文）
+cal.system.power,ui,,POWER UNIT,能源装置,新译（无中文原文）
+cal.system.navigation,ui,,INTERSTELLAR NAVIGATION SYSTEM,星际导航系统,新译（无中文原文）
+cal.system.propulsion,ui,,PROPULSION ENGINE,推进引擎,新译（无中文原文）
+cal.system.life_support,ui,,LIFE SUPPORT SYSTEM,生命维持系统,新译（无中文原文）
+cal.latest_departure,ui,,LATEST DEPARTURE,最晚启航,新译（无中文原文）
+cal.unit.days,ui,,DAYS,天,新译（无中文原文）
+cal.unit.hours,ui,,HOURS,小时,新译（无中文原文）
+cal.unit.minutes,ui,,MINUTES,分,新译（无中文原文）
+cal.state.locked,ui,,DEPARTURE LOCKED,启航已锁定,新译（无中文原文）
+cal.state.window_closed,ui,,WINDOW CLOSED,窗口已关闭,新译（无中文原文）
+ui.section.mission_updates,ui,,MISSION UPDATES,任务更新,新译（无中文原文）
+ui.section.engine_test,ui,,ENGINE TEST,引擎测试,新译（无中文原文）
+ui.section.departure_status,ui,,DEPARTURE STATUS,启航状态,新译（无中文原文）
+ui.section.the_way_home,ui,,THE WAY HOME,回家的路,新译（无中文原文）
+ui.section.another_tomorrow,ui,,ANOTHER TOMORROW,另一个明天,新译（无中文原文）
+ui.section.mission_calendar,ui,,MISSION CALENDAR,任务日历,新译（无中文原文）
+ui.section.salvageable_items,ui,,SALVAGEABLE ITEMS,可回收物品,原文/润色稿
+ui.section.materials,ui,,MATERIALS,材料,原文/润色稿
+ui.section.repair_requirements,ui,,REPAIR REQUIREMENTS,修复需求,原文/润色稿
+ui.field.description,ui,,Description:,物品描述：,原文/润色稿
+ui.field.dismantle_yields,ui,,Dismantling yields:,拆解产出：,原文/润色稿
+ui.button.launch,ui,,Launch,启航,原文/润色稿
+ui.button.begin_repairs,ui,,BEGIN REPAIRS,开始修复,新译（无中文原文）
+ui.language.title,ui,,LANGUAGE,语言,新译（无中文原文）
+item.panel.name,item,,Discarded Electromechanical Instrument Panel,废弃机电仪表组,原文/润色稿
+item.panel.desc,item,,"A bank of brass-rimmed analog gauges beneath a curved, dust-protective glass cover coated with space dust. Slender needles sit frozen against faded scales, with levers and tiny adjustment knobs protruding from the side. Aboard the colony ships of the old era, it served as the senses of an entire compartment, providing readings of pressure, energy flux, and temperature.",一组带黄铜边框的模拟仪表，弧形防尘玻璃罩上蒙着宇宙尘埃。细长指针停在褪色刻度上，侧面伸出拨杆和微型调节旋钮。在旧时代的殖民飞船上，它是整座舱段的感官，提供压力、能量通量和温度读数。,原文/润色稿
+item.radio.name,item,,Vacuum-Tube Radio Receiver,真空管广播接收机,原文/润色稿
+item.radio.desc,item,,"A heavy cast-iron case houses several clear glass vacuum tubes behind its front grille. The tuning dial's etched markings are worn, and much of the speaker diaphragm is dry and cracked. It was once the sole communications link for a distant interstellar colony, receiving broadcasts from the homeworld across the void. After the old era ended, this receiver became a symbol of romance. Now, it is only good for salvaging the copper and insulating components inside.",厚重的铸铁机箱里，几支透明玻璃真空管立在正面格栅后方。调谐转盘上的蚀刻刻度已经磨损，喇叭振膜大部分干燥开裂。它曾是遥远星际殖民地唯一的通信联系，接收母星跨越虚空传来的广播。旧时代结束后，这台接收机成了浪漫的象征。如今，它只适合拆取内部的铜材与绝缘件。,原文/润色稿
+item.relay.name,item,,Electromechanical Relay Switching Unit,机电继电器交换单元,原文/润色稿
+item.relay.desc,item,,"A boxy metal housing covered in scorch marks, densely packed with electromagnetic relays, copper terminals, and stepping dials. This was an ancient civilization's primitive logic center, opening and closing contacts to transmit signals and coordinate the compartment's electromechanical equipment. It could perform complex timing control without silicon chips. Remarkable.",一个方形金属壳，外面布满灼痕，里面密集装着电磁继电器、铜质接线端子和步进拨轮。这是古文明的原始逻辑中枢，通过触点开合传递信号，协调舱内的机电设备。不用硅芯片，就能完成复杂的时序控制。真了不起。,原文/润色稿
+item.manifold.name,item,,Old Compartment Fluid Manifold Assembly,旧舱段流体歧管总成,原文/润色稿
+item.manifold.desc,item,,"A tangled cluster of metal pipes fitted with needle valves and corrugated pressure bellows. Hardened sealing gaskets still cling to its connections. It once carried oxygen, cooling water, and propellant, sustaining life within the compartment and keeping the engines running.",一簇交错缠绕的金属管路，装有针阀和褶皱压力波纹管，接口上仍附着已经硬化的密封垫圈。它曾输送氧气、冷却水和推进剂，维持舱内生命与引擎运转。,原文/润色稿
+item.sleeve.name,item,,Discarded Thermoelectric Insulation Sleeve,废弃热电隔热衬套,原文/润色稿
+item.sleeve.desc,item,,"A thick, heavy cast-iron outer cylinder lined with large slabs of grayish-white insulating ceramic. Aged rubber gaskets are pressed into its seams, and dark brown marks from scorching heat stain the surface. It once encased a thermoelectric power core, insulating the surrounding hull structure from its fearsome heat. This outer sleeve is safe and provides heat-resistant material essential for building a power unit.",厚重的铸铁外筒内衬大块灰白色隔热陶瓷，老化的橡胶垫片压在接缝里，表面留有高温造成的深褐色灼痕。它曾包裹热电能源核心，隔绝可怕的高温，保护周围船体结构。这层外衬是安全的，提供建造能源装置所必需的耐热材料。,原文/润色稿
+mat.alloy,material,,Rolled Electromechanical Alloy Sheets,轧制机电合金板,原文/润色稿
+mat.copper,material,,Tinned Copper Wire & Windings,镀锡铜导线与绕组铜材,原文/润色稿
+mat.gear,material,,Precision Drive Gear Blanks,精密传动齿轮坯,原文/润色稿
+mat.ceramic,material,,Heat-Resistant Ceramic Insulators,耐热绝缘陶瓷件,原文/润色稿
+mat.rubber,material,,Vulcanized Airtight Rubber Liners,硫化气密橡胶衬料,原文/润色稿
+mat.alloy.short,material,,Alloy,合金,缩略名
+mat.copper.short,material,,Copper,铜,缩略名
+mat.gear.short,material,,Gear,齿轮,缩略名
+mat.ceramic.short,material,,Ceramic,陶瓷,缩略名
+mat.rubber.short,material,,Rubber,橡胶,缩略名
+repair.power_unit,repair,,Power Unit,能源装置,原文/润色稿
+repair.navigation,repair,,Interstellar Navigation System,星际导航系统,原文/润色稿
+repair.propulsion,repair,,Propulsion Engine,推进引擎,原文/润色稿
+repair.life_support,repair,,Life Support System,生命维持装置,原文/润色稿
+esc.title.paused,esc,,PAUSED / SHIP SYSTEMS,暂停 / 舰船系统,原文
+esc.title.settings,esc,,SETTINGS / SHIP SYSTEMS,设置 / 舰船系统,原文
+esc.resume,esc,,RESUME,继续,原文
+esc.settings,esc,,SETTINGS,设置,原文
+esc.quit,esc,,QUIT GAME,退出游戏,原文
+esc.back,esc,,BACK,返回,原文
+esc.fullscreen,esc,,FULLSCREEN,全屏,原文
+esc.reset_audio,esc,,RESET AUDIO,重置音频,原文
+esc.language,esc,,LANGUAGE,语言,新译（无中文原文）
+esc.hint.paused,esc,,"SESSION PAUSED
+
+ESC      RESUME
+ENTER    SELECT
+ARROWS   NAVIGATE","会话已暂停
+
+ESC      继续
+ENTER    确认
+方向键   移动",新译（无中文原文）
+esc.hint.settings,esc,,"DISPLAY / LANGUAGE
+
+Switch interface language
+with the left and right arrows.","显示 / 语言
+
+用左右方向键
+切换界面语言。",新译（无中文原文）
+esc.footer,esc,,ESC / RESUME       SHIP OS / SYSTEM CONTROL,ESC / 继续      舰船系统 / 系统控制,新译（无中文原文）
+esc.quit.question,esc,,"QUIT GAME?
+
+Return to desktop?","退出游戏？
+
+返回桌面？",新译（无中文原文）
+esc.quit.cancel,esc,,CANCEL,取消,新译（无中文原文）
+esc.quit.confirm,esc,,QUIT,退出,新译（无中文原文）
+cmd.help.title,command,,AVAILABLE COMMANDS,可用指令,新译（无中文原文）
+cmd.help.collect,command,,collect - send the Mars rover out to salvage materials,collect（采集）—— 派出火星车回收材料,新译（无中文原文）
+cmd.help.inventory,command,,inventory - check the materials you have salvaged,inventory（仓库）—— 查看已回收的材料,新译（无中文原文）
+cmd.help.assemble,command,,assemble - build the current repair from available materials,assemble（组装）—— 用现有材料完成当前修复,新译（无中文原文）
+cmd.help.help,command,,help - list every available command,help（帮助）—— 列出全部可用指令,新译（无中文原文）
+cmd.unknown,command,system,"Unknown command: {input}. Enter ""help"" to see the list.",无法识别的指令：{input}。输入 help 查看指令列表。,新译（无中文原文）
+src.ui.ship_os_communication_terminal,ui,,SHIP OS  /  COMMUNICATION TERMINAL,舰船系统  /  通信终端,原文反查
+src.ui.ship_os_assembly_workbench,ui,,SHIP OS / ASSEMBLY WORKBENCH,舰船系统 / 组装工作台,原文反查
+src.ui.ship_os_cargo_manifest,ui,,SHIP OS  /  CARGO MANIFEST,舰船系统  /  货舱清单,原文反查
+src.ui.ship_os_salvage_control,ui,,SHIP OS  /  SALVAGE CONTROL,舰船系统  /  回收控制,原文反查
+src.ui.ship_os_repair_status,ui,,SHIP OS / REPAIR STATUS,舰船系统 / 维修状态,原文反查
+src.ui.select_a_response,ui,,SELECT A RESPONSE,选择回应,原文反查
+src.ui.waiting_for_available_actions,ui,,WAITING FOR AVAILABLE ACTIONS,等待可用操作,原文反查
+src.ui.response,ui,,RESPONSE,回应,原文反查
+src.ui.connect,ui,,CONNECT,连接,原文反查
+src.ui.continue,ui,,CONTINUE,继续,原文反查
+src.ui.leave_terminal,ui,,LEAVE TERMINAL,离开终端,原文反查
+src.ui.terminal_offline,ui,,TERMINAL OFFLINE,终端离线,原文反查
+src.ui.start_assembly,ui,,START ASSEMBLY,开始组装,原文反查
+src.ui.repaired,ui,,REPAIRED,已修复,原文反查
+src.ui.repairing,ui,,REPAIRING,修复中,原文反查
+src.ui.unrepaired,ui,,UNREPAIRED,未修复,原文反查
+src.ui.reset_parts,ui,,RESET PARTS,重置零件,原文反查
+src.ui.detach,ui,,DETACH,拆下,原文反查
+src.ui.repair,ui,,REPAIR,修复,原文反查
+src.ui.repair_order_left_to_right,ui,,REPAIR ORDER:  LEFT TO RIGHT,修复顺序： 从左到右,原文反查
+src.ui.sequential_repair_protocol,ui,,SEQUENTIAL REPAIR PROTOCOL,顺序修复协议,原文反查
+src.ui.collect_materials_to_begin,ui,,Collect materials to begin.,先收集材料再开始。,原文反查
+src.ui.materials_are_charged_once_switching_scr,ui,,Materials are charged once. Switching screens keeps your progress.,材料只在开始组装时扣除一次。切换界面不会丢失进度。,原文反查
+src.ui.engine,ui,,ENGINE,引擎,原文反查
+src.ui.navigation,ui,,NAVIGATION,导航,原文反查
+src.ui.life_support,ui,,LIFE SUPPORT,生命维持,原文反查
+src.ui.power_cell,ui,,POWER CELL,能源电池,原文反查
+src.ui.no,ui,,NO.,序号,原文反查
+src.ui.qty,ui,,QTY,数量,原文反查
+src.ui.recovered_item,ui,,RECOVERED ITEM,回收物品,原文反查
+src.ui.salvage_link_active_scroll_to_inspect_ho,ui,,SALVAGE LINK ACTIVE                  SCROLL TO INSPECT HOLD,回收链路已连接                  滚动查看货舱,原文反查
+src.ui.no_recovered_items_successful_salvage_wi,ui,,"NO RECOVERED ITEMS
+
+    SUCCESSFUL SALVAGE WILL APPEAR HERE","尚未回收任何物品
+
+    成功回收的物品会出现在这里",原文反查
+src.ui.online,ui,,[ ONLINE ],[ 在线 ],原文反查
+src.ui.local_hold_recovery_register,ui,,LOCAL HOLD   //   RECOVERY REGISTER,本舱储藏   //   回收登记,原文反查
+src.ui.hold_space_or_click_the_screen,ui,,HOLD  [SPACE]  OR  CLICK THE SCREEN,按住 [空格] 或 点击屏幕,原文反查
+src.ui.standby,ui,,>> STANDBY,>> 待机,原文反查
+src.ui.unknown_signal,ui,,UNKNOWN SIGNAL,未知信号,原文反查
+src.ui.progress_0,ui,,PROGRESS 0%,进度 0%,原文反查
+src.ui.navigation_device_repair_workbench,ui,,NAVIGATION DEVICE / REPAIR WORKBENCH,导航装置 / 维修工作台,原文反查
+src.ui.surface_recovery_remote_winch,ui,,SURFACE RECOVERY / REMOTE WINCH,地表回收 / 远程绞盘,原文反查
+src.ui.return_to_cabin,ui,,RETURN TO CABIN,返回舱内,原文反查
+src.ui.mission_paused,ui,,MISSION PAUSED,任务已暂停,原文反查
+src.ui.searching,ui,,SEARCHING,搜索中,原文反查
+src.ui.retry_recovery,ui,,RETRY RECOVERY,重试回收,原文反查
+src.ui.begin_again,ui,,BEGIN AGAIN,重新开始,原文反查
+src.ui.time_to_last_departure,ui,,TIME TO LAST DEPARTURE,距最晚启航,原文反查
+src.ui.next_greenhouse_sowing,ui,,NEXT: GREENHOUSE / SOWING,下一步：温室 / 播种,原文反查
+src.ui.1_4_click_select_wasd_move_q_e_rotate_sh,ui,,"1-4 / CLICK: SELECT    WASD: MOVE    Q/E: ROTATE    SHIFT: FINE
+
+    X: DISCONNECT    R: RESET PARTS    ESC: RETURN TO CABIN
+
+    Join matching TANK, OPTICS and ANTENNA ports. Completed assembly stays intact until the next run.","1-4 / 点击：选择    WASD：移动    Q/E：旋转    SHIFT：微调
+
+    X：断开    R：重置零件    ESC：返回舱内
+
+    把 TANK、OPTICS、ANTENNA 端口对接上。已完成的组装会保留到下一次运行。",原文反查
+src.ui.space_lock_signal_hold_space_raise_contr,ui,,"SPACE: LOCK SIGNAL
+
+    HOLD SPACE: RAISE CONTROL ZONE
+
+    RELEASE: LOWER
+
+
+    Keep the target inside the green zone.
+
+    Mission time continues during recovery.
+
+    Supplies are optional; repairs authorize departure.","空格：锁定信号
+
+    按住空格：抬升控制区
+
+    松开：下降
+
+
+    让目标保持在绿区内。
+
+    回收期间任务时间照常流逝。
+
+    物资是选做的；修好才能启航。",原文反查
+src.ui.mouse_look_around_e_connect_leave_termin,ui,,"MOUSE: LOOK AROUND
+
+    E: CONNECT / LEAVE TERMINAL
+
+    ESC: PAUSE / RETURN
+
+
+    Story reading freezes the mission and all repair work.
+
+    Routine terminal queries do not stop the clock.","鼠标：环视
+
+    E：连接 / 离开终端
+
+    ESC：暂停 / 返回
+
+
+    阅读剧情时，任务和所有维修作业都会静止。
+
+    普通终端查询不会让计时停下。",原文反查
+src.speaker.flight_log,speaker,,FLIGHT LOG,飞行日志,原文反查
+src.speaker.narration,speaker,,NARRATION,旁白,原文反查
+src.speaker.colony,speaker,,COLONY,殖民地,原文反查
+src.speaker.colony_signal,speaker,,COLONY SIGNAL,殖民地信号,原文反查
+src.speaker.earth,speaker,,EARTH,地球,原文反查
+src.dlg.who_are_you,dlg,,Who are you?,你是谁？,原文反查
+src.dlg.why_those_dates,dlg,,Why those dates?,为什么非得是那几天？,原文反查
+src.dlg.how_do_i_start_repairs,dlg,,How do I start repairs?,我该怎么开始修复？,原文反查
+src.dlg.how_much_time_do_we_have,dlg,,How much time do we have?,我们还有多少时间？,原文反查
+src.dlg.let_s_make_this_window,dlg,,Let's make this window.,那就抓住这个窗口。,原文反查
+src.dlg.when_is_the_next_chance,dlg,,When is the next chance?,下一次机会是什么时候？,原文反查
+src.dlg.why_do_you_sound_so_old,dlg,,Why do you sound so old?,你说话的腔调怎么这么老派？,原文反查
+src.dlg.prepare_a_repair_plan,dlg,,Prepare a repair plan.,制定一个修复计划。,原文反查
+src.dlg.assess_my_situation,dlg,,Assess my situation.,评估一下我的处境。,原文反查
+src.dlg.understood_let_s_get_started,dlg,,Understood. Let's get started.,明白。开始吧。,原文反查
+src.dlg.send_distress_signal,dlg,,SEND DISTRESS SIGNAL,发送求救信号,原文反查
+src.dlg.copy_expecting_mars_orbit_tomorrow_begin,dlg,,Copy. Expecting Mars orbit tomorrow. Beginning landing preparations.,收到。预计明天进入火星轨道，开始准备着陆。,原文反查
+src.dlg.flight_log_22_aug_1981,dlg,,Flight log / 22-AUG-1981,飞行日志 / 22-AUG-1981,原文反查
+src.dlg.flight_log_23_aug_1981,dlg,,Flight log / 23-AUG-1981,飞行日志 / 23-AUG-1981,原文反查
+src.dlg.flight_log_24_aug_1981,dlg,,Flight log / 24-AUG-1981,飞行日志 / 24-AUG-1981,原文反查
+src.dlg.flight_log_25_aug_1981,dlg,,Flight log / 25-AUG-1981,飞行日志 / 25-AUG-1981,原文反查
+src.story.all_inhabited_sectors_are_silent_no_crew,story,,All inhabited sectors are silent. No crew transponders. No response from the surface relay.,所有有人居住的星区都沉默了。没有船员应答信号。地表中继台也没有任何回应。,原文反查
+src.story.begin_another_journey,story,,BEGIN ANOTHER JOURNEY,再启一段旅程,原文反查
+src.story.begin_mission,story,,BEGIN MISSION,开始任务,原文反查
+src.story.back_to_the_mission_channel,story,,Back to the mission channel.,回到任务频道。,原文反查
+src.story.begin_another_journey_2,story,,Begin another journey.,开始另一段旅程。,原文反查
+src.story.close_log_resume_work,story,,CLOSE LOG / RESUME WORK,关闭日志 / 继续工作,原文反查
+src.story.confirm_departure,story,,CONFIRM DEPARTURE,确认启航,原文反查
+src.story.checking_propulsion_reserves_and_the_dep,story,,"Checking propulsion, reserves and the departure assembly. There is a problem.",正在检查推进、储备和启航组件。出问题了。,原文反查
+src.story.close_the_log_we_still_have_work_to_do,story,,Close the log. We still have work to do.,关掉日志吧，我们还有活要干。,原文反查
+src.story.colony_control_this_is_the_return_craft,story,,"Colony control, this is the return craft. Does anyone read me?",殖民地控制台，这里是返航船。有人能收到吗？,原文反查
+src.story.departure_accepted_the_countdown_has_sto,story,,DEPARTURE ACCEPTED. The countdown has stopped at your authorization time. Ascent to the waiting orbit is cleared.,启航已接受。倒计时停在你授权的那一刻。可以上升进入等待轨道。,原文反查
+src.story.departure_authorization_the_assembly_mus,story,,"Departure authorization. The assembly must remain complete, and the latest-departure clock must be above zero. Your confirmation is registered at the moment you select it.",启航授权。启航组件必须保持完整，最晚启航计时必须大于零。你的确认在按下那一刻生效。,原文反查
+src.story.explain_the_departure_window_once_more,story,,Explain the departure window once more.,再解释一次返航窗口。,原文反查
+src.story.give_me_a_schedule_we_are_not_staying_he,story,,Give me a schedule. We are not staying here.,给我一份日程。我们不会留在这儿。,原文反查
+src.story.i_do_not_know_i_will_keep_listening,story,,I do not know. I will keep listening.,我不知道。我会继续听着。,原文反查
+src.story.i_have_the_sequence,story,,I have the sequence.,顺序我记住了。,原文反查
+src.story.is_anyone_waiting_for_us,story,,Is anyone waiting for us?,有人在等我们吗？,原文反查
+src.story.keep_working,story,,KEEP WORKING,继续工作,原文反查
+src.story.keep_the_log_someone_should_remember_the,story,,Keep the log. Someone should remember them.,留着日志。总得有人记得他们。,原文反查
+src.story.keep_the_mission_channel_open,story,,Keep the mission channel open.,保持任务频道畅通。,原文反查
+src.story.let_me_read_the_last_colony_log,story,,Let me read the last colony log.,让我看看殖民地最后的日志。,原文反查
+src.story.make_a_plan,story,,MAKE A PLAN,制定计划,原文反查
+src.story.mouse_look_around_e_connect_or_leave_thi,story,,"MOUSE: look around. E: connect or leave this terminal. ESC: return from a workstation, close the terminal, or pause the mission.",鼠标：环视。E：连接或离开终端。ESC：从工作台返回、关闭终端，或暂停任务。,原文反查
+src.story.mission_channel_ready_the_clock_is_runni,story,,Mission channel ready. The clock is running. Check the calendar and the amber departure instrument beside your seat.,任务频道就绪，计时已经开始。看看日历，还有你座位旁那台琥珀色的启航仪表。,原文反查
+src.story.not_yet_return_to_the_mission_channel,story,,Not yet. Return to the mission channel.,还不行。回到任务频道。,原文反查
+src.story.open_repair_workstation,story,,OPEN REPAIR WORKSTATION,打开维修工作台,原文反查
+src.story.open_the_repair_workstation_now,story,,Open the repair workstation now.,现在打开维修工作台。,原文反查
+src.story.open_the_repair_workstation,story,,Open the repair workstation.,打开维修工作台。,原文反查
+src.story.our_navigation_archive_lists_03_13_sep_1,story,,Our navigation archive lists 03-13 SEP 1981 for the planned Mars-to-Earth departure. The lower-energy route is the only one inside our remaining fuel budget. Missing our cutoff would demand more fuel than we can safely commit.,导航档案里登记的、计划中的火星—地球出发时段是 1981 年 9 月 3 日至 13 日。低能耗路线是剩余燃料预算里唯一可行的。错过截止时刻，所需燃料会超出我能安全动用的量。,原文反查
+src.story.prepare_to_depart,story,,PREPARE TO DEPART,准备启航,原文反查
+src.story.query_time_and_repairs,story,,QUERY TIME AND REPAIRS,查询时间与维修,原文反查
+src.story.read_the_colony_log,story,,READ THE COLONY LOG,读取殖民地日志,原文反查
+src.story.rebuild_departure_assembly,story,,REBUILD DEPARTURE ASSEMBLY,重建启航组件,原文反查
+src.story.recover_optional_supplies,story,,RECOVER OPTIONAL SUPPLIES,回收可选物资,原文反查
+src.story.return_to_mission,story,,RETURN TO MISSION,返回任务,原文反查
+src.story.review_the_route,story,,REVIEW THE ROUTE,复核路线,原文反查
+src.story.reading_the_live_mission_instruments_the,story,,Reading the live mission instruments. The remaining time and assembly report follow in the system channel. Querying does not stop the clock.,正在读取实时任务仪表。剩余时间和组装报告随后发到系统频道。查询不会让计时停下。,原文反查
+src.story.report_the_time_remaining_and_the_assemb,story,,Report the time remaining and the assembly status.,报告剩余时间和组装状态。,原文反查
+src.story.run_the_departure_checks,story,,Run the departure checks.,执行启航检查。,原文反查
+src.story.show_me_the_damage,story,,SHOW ME THE DAMAGE,让我看看损坏情况,原文反查
+src.story.saved_your_work_will_resume_when_you_lea,story,,Saved. Your work will resume when you leave this reading window.,已保存。离开这个阅读窗口后，你的工作会继续。,原文反查
+src.story.show_the_work_sequence,story,,Show the work sequence.,展示工作顺序。,原文反查
+src.story.start_the_clock_i_am_ready,story,,Start the clock. I am ready.,开始计时，我准备好了。,原文反查
+src.story.start_the_salvage_program,story,,Start the salvage program.,启动回收程序。,原文反查
+src.story.take_us_home,story,,Take us home.,带我们回家。,原文反查
+src.story.tell_me_what_we_have_left,story,,Tell me what we have left.,告诉我我们还剩什么。,原文反查
+src.story.the_amber_instrument_marks_our_latest_de,story,,"The amber instrument marks our LATEST DEPARTURE authorization. The circled date is {LAST_DATE}; the ascent allowance is already reserved. If we repair early, we can launch to a waiting orbit, then make the Earth-return burn inside the planned window.",那台琥珀色仪表标的是最晚启航授权。被圈出的日期是 {LAST_DATE}；上升段的预留量已经算进去了。如果提前修完，可以先发射进入等待轨道，再在计划窗口内做地球返航点火。,原文反查
+src.story.the_colony_is_below_us_we_reach_the_wait,story,,"The colony is below us. We reach the waiting orbit. Later, inside the planned return window, the Earth-return burn carries us away from Mars.",殖民地在下方。我们进入等待轨道。之后，在计划中的返航窗口内，地球返航点火带我们离开火星。,原文反查
+src.story.the_countdown_begins_when_you_select_beg,story,,The countdown begins when you select BEGIN MISSION. Completing repairs will not launch the craft. You must return here and confirm departure before the clock reaches zero.,倒计时在你选择 BEGIN MISSION 时开始。修完设备不会自动发射。你必须在计时归零前回到这里确认启航。,原文反查
+src.story.the_damaged_propulsion_system_has_very_l,story,,"The damaged propulsion system has very little fuel margin. Rebuild the departure assembly, and we can still reach a low-energy Earth-return trajectory.",受损的推进系统几乎没有燃料余量。重建启航组件，我们还能进入低能耗的地球返航轨道。,原文反查
+src.story.the_departure_assembly_reports_complete,story,,The departure assembly reports complete. That is enough for the low-energy return plan. We can leave as soon as you authorize departure; the window is still counting down.,启航组件报告完整，已经够低能耗返航方案用了。你一授权我们就能走；窗口还在倒计时。,原文反查
+src.story.the_greenhouse_still_has_a_sealed_seed_c,story,,The greenhouse still has a sealed seed cabinet. We can bring its water loop back online. I have made a new entry on the calendar.,温室里还有一个密封的种子柜。我们可以把它那套水循环重新开起来。我已经在日历上加了新的一条。,原文反查
+src.story.the_next_period_in_our_navigation_study,story,,The next period in our navigation study is {NEXT_OPPORTUNITY}. We must reassess the craft before using it. Stored food will not last that long. I am sorry.,导航研究里的下一个时段是 {NEXT_OPPORTUNITY}。用之前必须重新评估这艘飞船。储备食物撑不到那时候。抱歉。,原文反查
+src.story.the_next_return_period_listed_in_the_stu,story,,"The next return period listed in the study is {NEXT_OPPORTUNITY}: more than two years later. It is a planning reference, not a guarantee for this damaged craft. Our stored food cannot cover that wait. We would have to restore the greenhouse.",研究里登记的下一个返航时段是 {NEXT_OPPORTUNITY}，要在两年多以后。它只是规划参考，对这艘受损飞船不作保证。储备食物撑不过那段等待，我们得先把温室恢复起来。,原文反查
+src.story.the_paper_calendar_runs_from_start_date,story,,"The paper calendar runs from {START_DATE} through {LAST_DATE}: {DAY_COUNT} dated workdays. The cells use MONTH/DAY, not numbered mission days. I will add a red cross after each date has ended. Only the final deadline is circled.",纸质日历从 {START_DATE} 排到 {LAST_DATE}，共 {DAY_COUNT} 个标注日期。格子用的是月/日，不是任务第几天。每过完一天，我会补一个红叉。只有最后期限被圈出来。,原文反查
+src.story.the_route_gets_us_away_from_mars_i_canno,story,,The route gets us away from Mars. I cannot promise what waits at Earth. Shall we go?,这条路线能带我们离开火星。地球那边等着什么，我不敢保证。走吗？,原文反查
+src.story.the_simulation_compresses_day_count_eart,story,,"The simulation compresses {DAY_COUNT} Earth-standard 24-hour dates into {ACTIVE_MINUTES} minutes of active work. Explicit story reading pauses the mission and all work. Repairs, salvage and ordinary terminal queries use time.",这个模拟把 {DAY_COUNT} 个地球标准日压缩成 {ACTIVE_MINUTES} 分钟的有效操作时间。明确的剧情阅读会暂停任务和所有作业。维修、回收和普通终端查询会消耗时间。,原文反查
+src.story.then_i_want_to_go_home,story,,Then I want to go home.,那我想回家。,原文反查
+src.story.then_tell_me_what_we_do_tomorrow,story,,Then tell me what we do tomorrow.,那告诉我明天做什么。,原文反查
+src.story.there_is_no_departure_entry_after_this_r,story,,There is no departure entry after this recording. I cannot tell you where they went.,这段记录之后没有启航条目。我无法告诉你他们去了哪里。,原文反查
+src.story.view_work_schedule,story,,VIEW WORK SCHEDULE,查看工作日程,原文反查
+src.story.window_closed_we_can_no_longer_commit_to,story,,WINDOW CLOSED. We can no longer commit to this return plan with the fuel margin available.,窗口已关闭。以现有的燃料余量，我们无法再执行这个返航方案。,原文反查
+src.story.you_do_not_know_whether_home_still_remem,story,,"You do not know whether home still remembers you. But at last, you are on your way back.",你不知道故乡是否还记得你。但至少，你终于踏上了返程。,原文反查
+src.story.1_recover_salvage_optional_supplies_if_y,story,,1. RECOVER: salvage optional supplies if you can spare the time. The repair parts are already at the workstation; extra supplies are not required to depart.,1. 回收：时间允许的话，可以再回收一些可选物资。维修零件已经放在工作台上，额外物资不是启航的必需条件。,原文反查
+src.story.2_rebuild_fit_every_required_assembly_pa,story,,2. REBUILD: fit every required assembly part into its socket.,2. 重建：把每一件所需的组件装进对应插槽。,原文反查
+src.story.3_check_wait_for_the_assembly_to_report,story,,3. CHECK: wait for the assembly to report complete.,3. 检查：等待组装报告完成。,原文反查
+src.story.4_depart_select_prepare_to_depart_then_c,story,,"4. DEPART: select PREPARE TO DEPART, then confirm while time remains. The complete dated calendar is available; its dates are planning marks, not separate task deadlines.",4. 出发：选择「准备启航」，然后在时间还够时确认。带日期的完整日历已经开放；上面的日期只是规划标记，不是各自独立的任务期限。,原文反查
+src.story.personal_log_habitat_03_if_anyone_return,story,,"PERSONAL LOG / HABITAT 03
+
+          If anyone returns, the seed cabinet is under the greenhouse bench. Leave the small lamp on. It helps to think somebody is coming back.","个人日志 / 居住舱 03
+
+          如果有人回来：种子柜在温室长凳下面。把那盏小灯留着。想着有人会回来，心里会好受些。",原文反查
+src.story.arrival_record_arrival_date_now_start_da,story,,"ARRIVAL RECORD / {ARRIVAL_DATE}.
+
+          NOW / {START_DATE}. After months at a remote survey station, you return to the colony. Nobody comes to meet you.","抵达记录 / {ARRIVAL_DATE}。
+
+          现在 / {START_DATE}。在偏远的勘测站待了几个月后，你回到殖民地。没有人来接你。",原文反查
+src.story.sowing_date_sow_outside_the_dust_moves_a,story,,"{SOWING_DATE}: SOW.
+
+          Outside, the dust moves across an empty settlement. Tomorrow, you will plant the first seed.","{SOWING_DATE}：播种。
+
+          外面，尘土拂过空无一人的定居点。明天，你将种下第一粒种子。",原文反查
+src.story.departure_authorization_accepted_return,story,,"DEPARTURE AUTHORIZATION ACCEPTED.
+
+          RETURN PLAN LOCKED.
+
+          MISSION COUNTDOWN STOPPED.","启航授权已接受。
+
+          返航方案已锁定。
+
+          任务倒计时已停止。",原文反查
+src.story.mission_started_current_date_25_aug_1981,story,,"MISSION STARTED.
+
+          CURRENT DATE: 25 AUG 1981.
+
+          LAST DEPARTURE DATE: 13 SEP 1981.","任务开始。
+
+          当前日期：1981 年 8 月 25 日。
+
+          最晚启航日期：1981 年 9 月 13 日。",原文反查
+src.story.window_closed_departure_authorization_de,story,,"WINDOW CLOSED.
+
+          DEPARTURE AUTHORIZATION DEADLINE EXCEEDED.","窗口已关闭。
+
+          启航授权已超期。",原文反查
+src.story.destination_earth_unable_to_launch_ship,story,,"Destination: Earth
+
+          Unable to launch: ship damaged.","目的地：地球
+
+          无法启航：飞船受损。",原文反查
+src.story.destination_earth_unable_to_launch_depar,story,,"Destination: Earth
+
+          Unable to launch: departure window closed.","目的地：地球
+
+          无法启航：返航窗口已关闭。",原文反查
+src.story.destination_earth_ready_to_launch,story,,"Destination: Earth
+
+          Ready to launch.","目的地：地球
+
+          可以启航。",原文反查
+src.preview.pioneer_60_text_preview,ui,,PIONEER-60 / TEXT PREVIEW,PIONEER-60 / 文本预览,原文反查
+src.preview.main_story_flight_log,ui,,MAIN STORY / FLIGHT LOG,主线剧情 / 飞行日志,原文反查
+src.preview.time_warnings,ui,,TIME WARNINGS,时间预警,原文反查
+src.preview.time_warning_preview,ui,,TIME WARNING PREVIEW,时间预警预览,原文反查
+src.preview.departure_status_preview,ui,,DEPARTURE STATUS PREVIEW,启航状态预览,原文反查
+src.preview.endings,ui,,ENDINGS,结局,原文反查
+src.preview.ending_preview_select_one,ui,,ENDING PREVIEW / SELECT ONE,结局预览 / 选择一个,原文反查
+src.preview.back_to_archive,ui,,BACK TO ARCHIVE,返回档案库,原文反查
+src.preview.back_to_time_warnings,ui,,BACK TO TIME WARNINGS,返回时间预警,原文反查
+src.preview.item_name_list,ui,,ITEM NAME LIST,物品名称清单,原文反查
+src.preview.all_repair_requirements,ui,,ALL REPAIR REQUIREMENTS,全部修复需求,原文反查
+src.preview.all_systems_ready,ui,,ALL SYSTEMS READY,全部系统就绪,原文反查
+src.preview.choose_a_section_using_the_response_pane,ui,,Choose a section using the response panel.,用右侧回应面板选择分区。,原文反查
+src.preview.10_time_remaining,ui,,10% TIME REMAINING,剩余 10% 时间,原文反查
+src.preview.25_time_remaining,ui,,25% TIME REMAINING,剩余 25% 时间,原文反查
+src.preview.50_time_remaining,ui,,50% TIME REMAINING,剩余 50% 时间,原文反查
+src.preview.power_materials_missing,ui,,POWER / MATERIALS MISSING,能源 / 缺材料,原文反查
+src.preview.power_materials_ready,ui,,POWER / MATERIALS READY,能源 / 材料齐全,原文反查
+src.preview.navigation_materials_missing,ui,,NAVIGATION / MATERIALS MISSING,导航 / 缺材料,原文反查
+src.preview.navigation_materials_ready,ui,,NAVIGATION / MATERIALS READY,导航 / 材料齐全,原文反查
+src.preview.propulsion_materials_missing,ui,,PROPULSION / MATERIALS MISSING,推进 / 缺材料,原文反查
+src.preview.propulsion_materials_ready,ui,,PROPULSION / MATERIALS READY,推进 / 材料齐全,原文反查
+src.preview.life_support_materials_missing,ui,,LIFE SUPPORT / MATERIALS MISSING,生命维持 / 缺材料,原文反查
+src.preview.life_support_materials_ready,ui,,LIFE SUPPORT / MATERIALS READY,生命维持 / 材料齐全,原文反查
+src.preview.the_way_home_early_launch,ui,,THE WAY HOME / EARLY LAUNCH,回家的路 / 提前发射,原文反查
+src.preview.the_way_home_in_return_window,ui,,THE WAY HOME / IN RETURN WINDOW,回家的路 / 窗口内发射,原文反查
+src.preview.engine_test_not_a_launch,ui,,Engine test / not a launch,引擎试车 / 不是发射,原文反查
+src.preview.ship_damaged,ui,,Ship damaged,飞船受损,原文反查
+src.preview.departure_window_closed,ui,,Departure window closed,返航窗口已关闭,原文反查
+src.preview.ready_wait_for_launch,ui,,Ready / wait for Launch,就绪 / 等待启航,原文反查
+src.preview.from_repairs_to_growing_things,ui,,From repairs to growing things.,从修飞船，变成种东西。,原文反查
+src.preview.give_me_the_plan,ui,,Give me the plan.,把计划给我。,原文反查
+src.preview.is_there_another_route,ui,,Is there another route?,还有别的路线吗？,原文反查
+src.preview.wait_for_the_next_one,ui,,Wait for the next one.,那就等下一次。,原文反查
+src.preview.what_comes_first_tomorrow,ui,,What comes first tomorrow?,明天先做什么？,原文反查
+src.preview.what_do_we_do_now,ui,,What do we do now?,那我们现在怎么办？,原文反查
+src.ui.show_full_text,ui,,SHOW FULL TEXT,显示全文,原文反查
+src.ui.session_ended,ui,,SESSION ENDED,会话已结束,原文反查
+src.ui.awaiting_continue,ui,,AWAITING CONTINUE,等待继续,原文反查
+src.ui.transmitting,ui,,TRANSMITTING...,传输中…,原文反查
+src.ui.story_reading_mission_paused,ui,,STORY READING / MISSION PAUSED,剧情阅读 / 任务已暂停,原文反查
+src.ui.recovery_paused,ui,,RECOVERY PAUSED,回收已暂停,原文反查
+src.ui.searching_wait_for_the_signal_then_press,ui,,"SEARCHING... Wait for the signal, then press SPACE.",搜索中… 等到信号出现，然后按空格。,原文反查
+src.ui.signal_detected_press_space_now,ui,,SIGNAL DETECTED - PRESS SPACE NOW,检测到信号 - 现在按空格,原文反查
+src.ui.hold_space_to_lift_the_control_band_rele,ui,,HOLD SPACE to lift the control band; release to lower it. Keep the target inside.,按住空格抬升控制带，松开下降。让目标保持在带内。,原文反查
+src.ui.s_attempt_time_mission_departure_clock_k,ui,,"s ATTEMPT TIME
+Mission departure clock keeps running."," 秒尝试时间
+任务启航计时仍在继续。",原文反查
+src.ui.propulsion_manifold_verified_all_three_c,ui,,PROPULSION MANIFOLD VERIFIED. All three connections are secure. You may now confirm departure.,推进管路已验证。三处连接都已紧固。你现在可以确认启航了。,原文反查
+src.ui.manifold_connection_lost_repair_verifica,ui,,MANIFOLD CONNECTION LOST. Repair verification is no longer valid.,管路连接已断开。维修验证已失效。,原文反查
+src.ui.departure_not_authorized_complete_the_ma,ui,,DEPARTURE NOT AUTHORIZED. Complete the manifold repair first.,不允许启航。请先完成管路维修。,原文反查
+src.ui.manifold_verified_departure_available,ui,,MANIFOLD: VERIFIED. Departure available.,管路：已验证。可以启航。,原文反查
+src.ui.manifold_offline_reconnect_control_press,ui,,MANIFOLD: OFFLINE. Reconnect CONTROL / PRESSURE / MOUNT.,管路：离线。请重新连接 CONTROL / PRESSURE / MOUNT。,原文反查
+src.ui.inventory_offline_check_cargo_link,ui,,"INVENTORY OFFLINE
+CHECK CARGO LINK","库存离线
+请检查货舱链路",原文反查
+src.ui.offline,ui,,[ OFFLINE ],[ 离线 ],原文反查
+src.ui.ready_to_launch,ui,,READY TO LAUNCH,可以启航,原文反查
+src.ui.preview,ui,,PREVIEW,预览,原文反查
+src.ui.ship_assembly,ui,,SHIP ASSEMBLY,舰船组装,原文反查
+src.ui.assembly_controller_is_not_configured,ui,,Assembly controller is not configured.,组装控制器未配置。,原文反查
+src.ui.no_recipe_materials_configured,ui,,No recipe materials configured.,未配置配方材料。,原文反查
+src.ui.repair_complete_system_restored,ui,,REPAIR COMPLETE - SYSTEM RESTORED,修复完成 - 系统已恢复,原文反查
+src.ui.repair_recorded_choose_another_system,ui,,REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM,已记录修复  /  选择另一套系统,原文反查
+src.ui.materials_are_consumed_once_when_assembl,ui,,MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS,材料在开始组装时一次性扣除,原文反查
+src.ui.click_puzzle_to_operate_right_mouse_to_l,ui,,"CLICK PUZZLE TO OPERATE  /  RIGHT MOUSE TO LOOK
+PROGRESS IS KEPT WHEN YOU SWITCH SCREENS","点击谜题开始操作  /  右键环视
+切换界面时进度会保留",原文反查
+src.ui.drag_wasd_move_q_e_rotate_shift_fine_1_4,ui,,"DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE
+1-4 / TAB SELECT   X DETACH   R RESET   ESC PAUSE","拖拽 / WASD 移动   Q/E 旋转   SHIFT 微调
+1-4 / TAB 选择   X 拆下   R 重置   ESC 暂停",原文反查
+src.ui.catch_0_1_2,ui,,CATCH {0} - {1}  /  {2},捕获 {0} - {1}  /  {2},原文反查
+src.ui.target_0,ui,,TARGET {0},目标 {0},原文反查
+src.ui.progress_0_2,ui,,PROGRESS {0}%,进度 {0}%,原文反查
+src.ui.recovery_paused_2,ui,,>> RECOVERY PAUSED,>> 回收已暂停,原文反查
+src.ui.scanning_debris_field,ui,,>> SCANNING DEBRIS FIELD,>> 正在扫描碎片区,原文反查
+src.ui.signal_lock_press_now_0_s,ui,,>> SIGNAL LOCK  -  PRESS NOW  [{0}s],>> 信号锁定 - 现在按下  [{0} 秒],原文反查
+src.ui.grappling_stable,ui,,>> GRAPPLING  + STABLE,>> 抓取中  + 稳定,原文反查
+src.ui.grappling_slipping,ui,,>> GRAPPLING  -  SLIPPING,>> 抓取中  -  打滑,原文反查
+src.ui.recovery_complete,ui,,>> RECOVERY COMPLETE,>> 回收完成,原文反查
+src.ui.recovery_cancelled,ui,,>> RECOVERY CANCELLED,>> 回收已取消,原文反查
+src.ui.signal_lost,ui,,>> SIGNAL LOST,>> 信号丢失,原文反查
+src.ui.paused_release_control_before_resuming,ui,,PAUSED  /  RELEASE CONTROL BEFORE RESUMING,已暂停  /  恢复前请先松手,原文反查
+src.ui.wait_for_signal_then_press_control,ui,,"WAIT FOR SIGNAL, THEN PRESS CONTROL",等信号出现，再按下控制键,原文反查
+src.ui.release_and_press_to_lock_target,ui,,RELEASE AND PRESS TO LOCK TARGET,松手后再按，锁定目标,原文反查
+src.ui.hold_control_to_lift_release_to_lower,ui,,HOLD CONTROL TO LIFT  /  RELEASE TO LOWER,按住控制键抬升  /  松开下降,原文反查
+src.ui.re_acquiring_target,ui,,RE-ACQUIRING TARGET ...,正在重新捕获目标…,原文反查
+src.ui.recovered_0_x_1,ui,,RECOVERED  {0}  x{1},已回收  {0}  ×{1},原文反查
+src.ui.recovered_0_cargo_not_stored,ui,,RECOVERED  {0}  /  CARGO NOT STORED,已回收  {0}  /  货物未入库,原文反查
+src.ui.salvage_failed,ui,,SALVAGE FAILED,回收失败,原文反查
+src.ui.an_assembly_operation_is_already_in_prog,ui,,An assembly operation is already in progress.,已有一次组装正在进行。,原文反查
+src.ui.assembly_station_is_unavailable,ui,,Assembly station is unavailable.,组装台不可用。,原文反查
+src.ui.this_device_is_already_repaired,ui,,This device is already repaired.,这套装置已经修好了。,原文反查
+src.ui.repair_the_preceding_devices_first,ui,,Repair the preceding devices first.,请先修好前面的装置。,原文反查
+src.ui.this_device_cannot_be_repaired_in_the_cu,ui,,This device cannot be repaired in the current repair order.,按当前修复顺序，这套装置还不能修。,原文反查
+src.ui.the_paid_assembly_instance_is_unavailabl,ui,,The paid assembly instance is unavailable; materials will not be charged again.,已付费的组装实例不可用；材料不会再次扣除。,原文反查
+src.ui.continue_the_existing_assembly_materials,ui,,Continue the existing assembly; materials have already been allocated.,继续现有的组装；材料已经分配好了。,原文反查
+src.ui.no_assembly_recipe_is_selected,ui,,No assembly recipe is selected.,没有选中任何组装配方。,原文反查
+src.ui.assembly_station_references_are_incomple,ui,,Assembly station references are incomplete.,组装台的引用不完整。,原文反查
+src.ui.the_assembly_workspace_is_inactive,ui,,The assembly workspace is inactive.,组装工作区未激活。,原文反查
+src.ui.the_assembly_render_layer_is_invalid,ui,,The assembly render layer is invalid.,组装渲染层无效。,原文反查
+src.ui.the_assembly_workspace_must_use_world_xy,ui,,The assembly workspace must use world XY orientation and unit scale.,组装工作区必须使用世界 XY 朝向和单位缩放。,原文反查
+src.ui.every_assembly_recipe_requires_a_unique,ui,,"Every assembly recipe requires a unique, nonempty ID.",每个组装配方都需要唯一且非空的 ID。,原文反查
+src.ui.every_assembly_recipe_must_target_a_diff,ui,,Every assembly recipe must target a different valid repair device.,每个组装配方必须指向不同的有效修复装置。,原文反查
+src.ui.the_selected_recipe_requires_one_assembl,ui,,The selected recipe requires one assembly controller in its puzzle prefab.,所选配方的谜题预制体里需要一个组装控制器。,原文反查
+src.ui.the_selected_recipe_has_no_material_requ,ui,,The selected recipe has no material requirements.,所选配方没有材料需求。,原文反查
+src.ui.the_selected_recipe_has_invalid_camera_o,ui,,The selected recipe has invalid camera or puzzle placement settings.,所选配方的相机或谜题摆放设置无效。,原文反查
+src.ui.optional_supplies_mission_time_continues,ui,,Optional supplies. Mission time continues during recovery.,可选物资。回收期间任务时间照常流逝。,原文反查
+src.ui.recovery_complete_but_supplies_could_not,ui,,"Recovery complete, but supplies could not be stored.",回收完成，但物资未能入库。,原文反查
+src.ui.recovery_cancelled_no_supplies_recovered,ui,,Recovery cancelled. No supplies recovered.,回收已取消，未取得任何物资。,原文反查
+src.ui.supplies_recovered_0_x_1_return_to_repai,ui,,SUPPLIES RECOVERED: {0} x {1}. Return to repairs or recover another cache.,物资已回收：{0} × {1}。回到维修，或继续回收其它物资。,原文反查
+src.ui.signal_lost_0_retry_or_return_to_repairs,ui,,SIGNAL LOST: {0}. Retry or return to repairs.,信号丢失：{0}。重试，或回到维修。,原文反查
+src.ui.lock_window_missed,ui,,lock window missed,错过锁定窗口,原文反查
+src.ui.target_left_the_control_band,ui,,target left the control band,目标离开了控制带,原文反查
+src.ui.attempt_time_expired,ui,,attempt time expired,尝试时间耗尽,原文反查
+src.ui.recovery_interrupted,ui,,recovery interrupted,回收被中断,原文反查
+src.ui.0_recovered_1_s_attempt_time_mission_dep,ui,,"{0}% RECOVERED  /  {1}s ATTEMPT TIME
+Mission departure clock keeps running.","{0}% 已回收  /  尝试时间 {1} 秒
+任务启航计时仍在继续。",原文反查
+src.ui.0_assembly_complete_all_joints_secured_t,ui,,"{0} / ASSEMBLY COMPLETE
+All joints secured. The completed device stays intact until the next run.","{0} / 组装完成
+所有接头已固定。已完成的装置会保留到下一次运行。",原文反查
+src.ui.navigation_device_assembly_complete_all,ui,,"NAVIGATION DEVICE / ASSEMBLY COMPLETE
+All three joints secured. Return to the cabin to continue.","导航装置 / 组装完成
+三处接头已固定。返回舱内继续。",原文反查
+src.item.vacuum_tube_receiver,item,,VACUUM TUBE RECEIVER,真空管广播接收机,原文反查
+src.item.thermal_liner_bushing,item,,THERMAL LINER BUSHING,废弃热电隔热衬套,原文反查
+src.item.fluid_manifold_assembly,item,,FLUID MANIFOLD ASSEMBLY,旧舱段流体歧管总成,原文反查
+src.item.relay_switch_unit,item,,RELAY SWITCH UNIT,机电继电器交换单元,原文反查
+src.item.electromechanical_gauge_set,item,,ELECTROMECHANICAL GAUGE SET,废弃机电仪表组,原文反查
+src.ui.unknown,ui,,UNKNOWN,未知,原文反查

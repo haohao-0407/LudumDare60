@@ -16,7 +16,7 @@ namespace LudumDare60.TerminalDialogue
             public TerminalChoice Choice;
         }
 
-        private readonly TerminalDialogueGraph graph;
+        private TerminalDialogueGraph graph;
         private readonly Dictionary<string, bool> flags = new Dictionary<string, bool>(StringComparer.Ordinal);
         private readonly Queue<Task> tasks = new Queue<Task>();
         private readonly Queue<string> events = new Queue<string>();
@@ -152,6 +152,36 @@ namespace LudumDare60.TerminalDialogue
         }
 
         /// <summary>Queued between lines; never cuts a player's input or an AI line in half.</summary>
+        /// <summary>
+        /// 中途切换语言：把已经写进转写的台词、当前正在打的那一行、以及还没播的节点全部换成新语言。
+        /// 不重置进度、变量和任务队列，玩家的选择与历史都保留。
+        /// </summary>
+        public void Relocalize(TerminalDialogueGraph localized, System.Func<string, string> translate)
+        {
+            if (translate == null) return;
+            if (localized != null) graph = localized;
+
+            for (int i = 0; i < messages.Count; i++) messages[i].Relocalize(translate);
+
+            if (activeLine != null)
+            {
+                int oldLength = activeLine.Text != null ? activeLine.Text.Length : 0;
+                bool fullyTyped = VisibleCodeUnits >= oldLength;
+                var lineText = translate(activeLine.Text);
+                if (!string.IsNullOrEmpty(lineText)) activeLine.Text = lineText;
+                var lineName = translate(activeLine.DisplayName);
+                if (!string.IsNullOrEmpty(lineName)) activeLine.DisplayName = lineName;
+                textElements = StringInfo.ParseCombiningCharacters(activeLine.Text);
+                VisibleCodeUnits = fullyTyped
+                    ? activeLine.Text.Length
+                    : System.Math.Min(VisibleCodeUnits, activeLine.Text.Length);
+            }
+
+            RefreshChoices();
+            TranscriptRevision++;
+            Touch();
+        }
+
         public void PostSystemMessage(string text)
         {
             if (string.IsNullOrWhiteSpace(text)) return;
