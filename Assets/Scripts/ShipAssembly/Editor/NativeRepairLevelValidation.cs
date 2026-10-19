@@ -69,6 +69,7 @@ namespace LudumDare60.ShipAssembly.Editor
                 }
                 if (name == "engine")
                 {
+                    CheckUpdatedEngine(puzzle,report);
                     var scale = puzzle.Modules[1].modelVisual.GetChild(0).localScale;
                     Require(scale.x < 0 && scale.y < 0 && scale.z < 0,"engine end plate negative scale retained",report);
                     Require(Mathf.Abs(scale.x+.2371762f) < .00001f && Mathf.Abs(scale.z+.2783778f) < .00001f,"engine end plate scale matches screenshot",report);
@@ -79,6 +80,15 @@ namespace LudumDare60.ShipAssembly.Editor
                 puzzle.SelectModule(1); var start = puzzle.Selected.Position;
                 puzzle.ApplyMotion(new Vector2(.2f,.3f),17); puzzle.ResetDemo();
                 Require(Vector2.Distance(puzzle.Modules[1].Position,start) < .0001f,name+" reset restores scatter",report);
+                if (name == "engine")
+                {
+                    puzzle.SelectModule(2); float turn = puzzle.Selected.RotationDegrees;
+                    Require(Mathf.Abs(Mathf.DeltaAngle(0,turn)) > 175,"engine nozzle starts flipped",report);
+                    puzzle.ApplyMotion(Vector2.one*.1f,35); puzzle.ResetDemo(); puzzle.SelectModule(2);
+                    Require(Mathf.Abs(Mathf.DeltaAngle(turn,puzzle.Selected.RotationDegrees)) < .001f,"engine reset restores nozzle flip",report);
+                    SetGoalPoses(puzzle); puzzle.SelectModule(2); puzzle.Selected.RotationDegrees = 180;
+                    Require(!puzzle.TrySnapSelected(),"engine flipped nozzle is rejected at target position",report);
+                }
                 SetGoalPoses(puzzle);
                 puzzle.SelectModule(1); puzzle.Selected.RotationDegrees += 25;
                 Require(!puzzle.TrySnapSelected(),name+" wrong orientation is rejected",report);
@@ -104,6 +114,22 @@ namespace LudumDare60.ShipAssembly.Editor
             {
                 puzzle.Modules[i].transform.localPosition = layout.assembledLocalPositions[i];
                 puzzle.Modules[i].RotationDegrees = 0;
+            }
+        }
+
+        private static void CheckUpdatedEngine(AssemblyDemoController puzzle,StringBuilder report)
+        {
+            var layout = puzzle.GetComponent<DeviceAssemblyLayout>();
+            for (int i = 0; i < NativeRepairLevelInstaller.EngineNames.Length; i++)
+            {
+                var module = puzzle.Modules[i];
+                Require(Vector3.Distance(layout.nativeStartPositions[i],NativeRepairLevelInstaller.EngineStart[i]) < .00001f,"engine recorded scatter 2026-10-20 "+i,report);
+                Require(Vector3.Distance(layout.nativeTargetPositions[i],NativeRepairLevelInstaller.EngineTarget[i]) < .00001f,"engine recorded target 2026-10-20 "+i,report);
+                Require(Quaternion.Angle(layout.nativeStartRotations[i],Quaternion.Euler(NativeRepairLevelInstaller.EngineStartEuler[i])) < .02f,"engine recorded start rotation "+i,report);
+                Require(Quaternion.Angle(layout.nativeTargetRotations[i],Quaternion.Euler(NativeRepairLevelInstaller.EngineTargetEuler[i])) < .02f,"engine recorded target rotation "+i,report);
+                var model = module.modelVisual.GetChild(0);
+                Require(Vector3.Distance(model.localScale,NativeRepairLevelInstaller.EngineScales[i]) < .00001f,"engine recorded signed scale "+i,report);
+                Require(AssetDatabase.GetAssetPath(model.GetComponent<MeshFilter>().sharedMesh) == NativeRepairLevelInstaller.EngineMeshAsset,"engine uses raptor_low mesh "+i,report);
             }
         }
         private static void CheckTargets(AssemblyDemoController puzzle,string name,StringBuilder report)
@@ -166,6 +192,7 @@ namespace LudumDare60.ShipAssembly.Editor
                         Require(service.Inventory.Items.GetQuantity(recipe.Materials[cost].ItemId) == counts[cost]-recipe.Materials[cost].Quantity,"material deducted exactly once "+index+"/"+cost,runtimeReport);
                     if (index == 2 || index == 3)
                     {
+                        if (index == 2) CheckUpdatedEngine(puzzle,runtimeReport);
                         Require(puzzle.Modules.Length == (index == 2 ? 3 : 4),"production uses new native part count "+index,runtimeReport);
                         CapturePuzzle(puzzle,index == 2 ? "engine-ship-before" : "life-ship-before");
                     }
