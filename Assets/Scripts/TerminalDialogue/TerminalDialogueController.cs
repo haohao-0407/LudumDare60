@@ -22,6 +22,15 @@ namespace LudumDare60.TerminalDialogue
         [SerializeField, Min(2)] private int historyLimit = 150;
         [SerializeField] private bool useUnscaledTime = true;
         [SerializeField] private List<TerminalEventBinding> eventBindings = new List<TerminalEventBinding>();
+
+        [Header("音效")]
+        [Tooltip("留空则用本物体上的 AudioSource，没有就自动建一个子物体")]
+        [SerializeField] private AudioSource sfxSource;
+        [Tooltip("终端/AI 出现（UI_terminal_boot）")]
+        [SerializeField] private AudioClip openClip;
+        [Tooltip("终端/AI 消失（UI_terminal_close）")]
+        [SerializeField] private AudioClip closeClip;
+        [SerializeField, Range(0f, 1f)] private float sfxVolume = 1f;
         [SerializeField] private UnityEvent<bool> interactionChanged = new UnityEvent<bool>();
         private TerminalDialogueSession session;
         private int lastRevision = -1;
@@ -71,6 +80,21 @@ namespace LudumDare60.TerminalDialogue
 
         public void Configure(TerminalDialogueDefinition definition) => conversation = definition;
 
+        private void PlaySfx(AudioClip clip)
+        {
+            if (clip == null) return;
+            if (sfxSource == null)
+            {
+                var go = new GameObject("Terminal SFX");
+                go.transform.SetParent(transform, false);
+                sfxSource = go.AddComponent<AudioSource>();
+                sfxSource.playOnAwake = false;
+                sfxSource.loop = false;
+                sfxSource.spatialBlend = 0f;
+            }
+            sfxSource.PlayOneShot(clip, sfxVolume);
+        }
+
         /// <summary>Explicit new run: resets history, progress and flags. Open resumes instead.</summary>
         public void Begin()
         {
@@ -96,6 +120,7 @@ namespace LudumDare60.TerminalDialogue
             if (session == null) { Begin(); return; }
             if (session.IsOpen) return;
             session.Open();
+            PlaySfx(openClip);
             interactionChanged.Invoke(true);
             Publish();
         }
@@ -104,6 +129,7 @@ namespace LudumDare60.TerminalDialogue
         {
             if (session == null || !session.IsOpen) return;
             session.Close();
+            PlaySfx(closeClip);
             interactionChanged.Invoke(false);
             Publish();
         }

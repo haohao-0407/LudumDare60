@@ -124,13 +124,15 @@ namespace LudumDare60.ShipAssembly
             var puzzle = Controller != null ? Controller.ActivePuzzle : null;
             int moduleCount = puzzle != null && puzzle.Modules != null ? puzzle.Modules.Length : 0;
             string selectionKeys = moduleCount > 0 ? "1-" + Mathf.Min(moduleCount, 5) + " / TAB SELECT" : "TAB SELECT";
-            // Keep the full English control legend visible while waiting for puzzle focus too.
+            // 操作说明按行本地化：模块数不同会让 "1-4 / TAB SELECT" 变化，交给词典的模板规则处理，
+            // 不能整段硬译（整段是动态拼接的，永远匹配不到词条）。
+            string legend = Loc.Say("LMB DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE") + "\n"
+                + Loc.Say(selectionKeys) + "   " + Loc.Say("X DETACH   R RESET") + "\n"
+                + Loc.Say("CLICK PUZZLE TO OPERATE   RMB LOOK   ESC PAUSE");
             SetText(Hint, !available ? "REPAIR CONTROLS ARE LOCKED"
                 : completed ? "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
                 : !started ? "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS"
-                : "LMB DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n"
-                    + selectionKeys + "   X DETACH   R RESET\n"
-                    + "CLICK PUZZLE TO OPERATE   RMB LOOK   ESC PAUSE");
+                : legend);
             Pioneer60.Localization.LocAutoTranslate.Refresh(gameObject);
         }
 

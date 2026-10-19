@@ -197,7 +197,6 @@ esc.back,esc,,BACK,返回,原文
 esc.fullscreen,esc,,FULLSCREEN,全屏,原文
 esc.reset_audio,esc,,RESET AUDIO,重置音频,原文
 esc.language,esc,,LANGUAGE,语言,新译（无中文原文）
-esc.volume,esc,,VOLUME,音量,新译（无中文原文）
 esc.hint.paused,esc,,"SESSION PAUSED
 
 ESC      RESUME
@@ -207,10 +206,10 @@ ARROWS   NAVIGATE","会话已暂停
 ESC      继续
 ENTER    确认
 方向键   移动",新译（无中文原文）
-esc.hint.settings,esc,,"DISPLAY / AUDIO / LANGUAGE
+esc.hint.settings,esc,,"DISPLAY / LANGUAGE
 
 Switch interface language
-with the left and right arrows.","显示 / 音量 / 语言
+with the left and right arrows.","显示 / 语言
 
 用左右方向键
 切换界面语言。",新译（无中文原文）
@@ -507,7 +506,7 @@ src.preview.is_there_another_route,ui,,Is there another route?,还有别的路�
 src.preview.wait_for_the_next_one,ui,,Wait for the next one.,那就等下一次。,原文反查
 src.preview.what_comes_first_tomorrow,ui,,What comes first tomorrow?,明天先做什么？,原文反查
 src.preview.what_do_we_do_now,ui,,What do we do now?,那我们现在怎么办？,原文反查
-src.ui.show_full_text,ui,,SKIP,跳过,原文反查
+src.ui.show_full_text,ui,,SHOW FULL TEXT,显示全文,原文反查
 src.ui.session_ended,ui,,SESSION ENDED,会话已结束,原文反查
 src.ui.awaiting_continue,ui,,AWAITING CONTINUE,等待继续,原文反查
 src.ui.transmitting,ui,,TRANSMITTING...,传输中…,原文反查
@@ -602,3 +601,105 @@ src.item.fluid_manifold_assembly,item,,FLUID MANIFOLD ASSEMBLY,旧舱段流体�
 src.item.relay_switch_unit,item,,RELAY SWITCH UNIT,机电继电器交换单元,原文反查
 src.item.electromechanical_gauge_set,item,,ELECTROMECHANICAL GAUGE SET,废弃机电仪表组,原文反查
 src.ui.unknown,ui,,UNKNOWN,未知,原文反查
+story.begin_landing,story,,BEGIN LANDING,开始着陆,原文
+story.all_four_assemblies_are_complete_power_n,story,,"All four assemblies are complete: power, navigation, propulsion and life support. We still need to test them before departure. Shall we begin?",四套组件都已组装完成：能源、导航、推进与生命维持。启航前还需要逐一测试。现在开始吗？,原文
+story.run_pre_flight_checks,story,,RUN PRE-FLIGHT CHECKS,执行起飞前检查,原文
+story.not_yet,story,,NOT YET,暂不,原文
+story.first_the_power_unit_i_will_apply_a_test,story,,"First, the power unit. I will apply a test load and check the restored supply. Authorize the power test when you are ready.",先从能源装置开始。我会加一段测试负载，检查修复后的供能是否稳定。准备好就授权能源测试。,原文
+story.test_power,story,,TEST POWER,测试能源,原文
+story.pre_flight_check_running_please_stand_by,story,,Pre-flight check running. Please stand by.,起飞前检查执行中，请稍候。,原文
+story.ship_systems,story,,SHIP SYSTEMS,舰船系统,原文
+story.power_check_passed_the_supply_held_under,story,,"Power check passed. The supply held under load. Next, I will test the navigation solution and guidance response.",能源检查通过，负载下供能稳定。接下来测试导航解算与制导响应。,原文
+story.test_navigation,story,,TEST NAVIGATION,测试导航,原文
+story.navigation_check_passed_guidance_is_resp,story,,"Navigation check passed. Guidance is responding. Next, I will check the propulsion controls before ignition.",导航检查通过，制导响应正常。下一步在点火前检查推进控制。,原文
+story.test_propulsion,story,,TEST PROPULSION,测试推进,原文
+story.propulsion_check_passed_the_engine_contr,story,,Propulsion check passed. The engine controls are ready. One check remains: cabin pressure and life support.,推进检查通过，引擎控制就绪。还剩最后一项：舱压与生命维持。,原文
+story.test_life_support,story,,TEST LIFE SUPPORT,测试生命维持,原文
+story.life_support_check_passed_all_four_syste,story,,Life support check passed. All four systems have passed their pre-flight checks. The craft is ready for departure. Launch remains under your authority.,生命维持检查通过。四套系统全部通过起飞前检查，飞船已可启航。发射权限仍在你手里。,原文
+story.launch_authorized_ignition_in_three_seco,story,,Launch authorized. Ignition in three seconds. Hold position.,已授权发射。三秒后点火，保持位置。,原文
+story.ignition_confirmed_engines_building_thru,story,,Ignition confirmed. Engines building thrust.,点火确认，引擎推力上升中。,原文
+story.liftoff_climbing_clear_of_the_surface,story,,Liftoff. Climbing clear of the surface.,离地。正在脱离地表。,原文
+story.leaving_the_atmosphere_guidance_is_acqui,story,,Leaving the atmosphere. Guidance is acquiring the orbital track.,正在离开大气层，制导正在捕获轨道。,原文
+story.stable_mars_orbit_confirmed_the_earth_re,story,,Stable Mars orbit confirmed. The Earth-return route is locked. Surface departure is complete; return flight preparations can continue.,已确认进入稳定火星轨道，返地航线锁定。地表离场完成，可以继续返航准备。,原文
+story.launch_was_aborted_or_could_not_be_compl,story,,Launch was aborted or could not be completed. Recheck the systems before requesting another attempt.,发射中止或未能完成。再次尝试前请重新检查系统。,原文
+story.recheck,story,,RECHECK,重新检查,原文
+story.return,story,,RETURN,返回,原文
+story.repair_status_has_changed_restore_all_fo,story,,"Repair status has changed. Restore all four systems, then run the pre-flight checks again.",维修状态已变化。先修好四套系统，再重新执行起飞前检查。,原文
+story.hard_landing_confirmed_location_near_the,story,,Hard landing confirmed. Location: near the colony.,已确认硬着陆，位置：殖民地附近。,原文
+story.check_the_inventory_screen_for_your_supp,story,,"Check the inventory screen for your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners.",在货舱屏查看现有物资。能源装置需要：轧制机电合金板 6、镀锡铜导线与绕组铜材 4、精密传动齿轮坯 2、耐热绝缘陶瓷件 7、硫化气密橡胶衬料 3。,原文
+story.select_activate_salvage_in_the_operation,story,,"Select ACTIVATE SALVAGE in the operations menu to enable the salvage screen and collect materials. Once you have everything, select START ASSEMBLY on the repair workbench to begin the repair.",在操作菜单里选择「启用回收」打开回收屏收集材料。备齐后在维修台上选择「开始组装」开始修复。,原文
+story.ship_operations_terminal_ready_select_a_,story,,Ship operations terminal ready. Select a program.,舰船操作终端就绪。请选择程序。,原文
+story.activate_salvage,story,,ACTIVATE SALVAGE,启用回收,原文
+story.salvage_status,story,,SALVAGE STATUS,回收状态,原文
+story.pre_flight_checks,story,,PRE-FLIGHT CHECKS,起飞前检查,原文
+story.the_salvage_program_is_online_use_the_sa,story,,"The salvage program is online. Use the salvage screen to recover materials, then check the repair screen to assemble the damaged systems.",回收程序已上线。用回收屏回收材料，再到维修屏组装受损系统。,原文
+story.the_automatic_landing_program_could_not_,story,,The automatic landing program could not start or was interrupted. Select BEGIN LANDING to retry.,自动着陆程序未能启动或被中断。选择「开始着陆」重试。,原文
+ui.quit_game,ui,,QUIT GAME?,退出游戏？,原文
+ui.session_paused,ui,,SESSION PAUSED,会话已暂停,原文
+ui.display_language_switch_interface_langua,ui,,"DISPLAY / LANGUAGE
+
+Switch interface language
+with the left and right arrows.","显示 / 语言
+
+用左右方向键
+切换界面语言。",原文
+ui.no_recovered_items,ui,,NO RECOVERED ITEMS,尚未回收任何物品,原文
+ui.personal_log_habitat_03,ui,,PERSONAL LOG / HABITAT 03,个人日志 / 居住舱 03,原文
+ui.arrival_record_arrival_date,ui,,ARRIVAL RECORD / {ARRIVAL_DATE}.,到达记录 / {ARRIVAL_DATE}。,原文
+ui.space_lock_signal,ui,,SPACE: LOCK SIGNAL,空格：锁定信号,原文
+ui.mouse_look_around,ui,,MOUSE: LOOK AROUND,鼠标：环视,原文
+ui.1_recover_salvage_optional_supplies_if_y,ui,,1. RECOVER: salvage optional supplies if you can spare the time. Then check the repair bench.,1. 回收：有余力就回收可选物资，之后查看维修台。,原文
+ui.remote_link_offline_activate_via_termina,ui,,REMOTE LINK OFFLINE / ACTIVATE VIA TERMINAL,远程链路离线 / 请通过终端启用,原文
+ui.all_systems_nominal_monitoring,ui,,ALL SYSTEMS NOMINAL / MONITORING,全系统正常 / 监测中,原文
+ui.console_online_low_power,ui,,CONSOLE ONLINE / LOW POWER,控制台在线 / 低功率,原文
+ui.standby,ui,,STANDBY,待机,原文
+ui.unavailable,ui,,UNAVAILABLE,不可用,原文
+ui.ready_awaiting_command,ui,,READY / AWAITING COMMAND,就绪 / 等待指令,原文
+ui.independent_repair_protocol,ui,,INDEPENDENT REPAIR PROTOCOL,独立维修协议,原文
+ui.repair_station_unavailable,ui,,REPAIR STATION UNAVAILABLE,维修站不可用,原文
+ui.ship_os_repair_workbench,ui,,SHIP OS / REPAIR WORKBENCH,舰船系统 / 维修台,原文
+ui.ship_os_ship_diagnostics,ui,,SHIP OS / SHIP DIAGNOSTICS,舰船系统 / 舰船诊断,原文
+ui.repair_any_system,ui,,REPAIR ANY SYSTEM,修复任意系统,原文
+ui.repair_controls_are_locked,ui,,REPAIR CONTROLS ARE LOCKED,维修控制已锁定,原文
+ui.all_systems_nominal_no_repairs_required,ui,,ALL SYSTEMS NOMINAL / NO REPAIRS REQUIRED,全系统正常 / 无需维修,原文
+demo.signal_detected,demo,,"Captain, an unusual signal has been detected ahead.",舰长，前方检测到一段异常信号。,原文
+demo.signal_source,demo,,Its source is approximately three kilometers away.,信号源大约在三公里外。,原文
+demo.analyze,demo,,ANALYZE SIGNAL,分析信号,原文
+demo.assess,demo,,ASSESS RISK,评估风险,原文
+demo.coords,demo,,SHOW COORDINATES,显示坐标,原文
+demo.end,demo,,END TRANSMISSION,结束传输,原文
+demo.scan,demo,,"scan nearby
+Scan complete: derelict transport identified.","扫描附近
+扫描完成：识别为废弃运输舰。",原文
+demo.marked,demo,,I have marked its position.,已标记它的位置。,原文
+demo.save,demo,,SAVE COORDINATES,保存坐标,原文
+demo.debris,demo,,There is heavy metal debris nearby. I recommend reducing speed.,附近有大量金属残骸，建议降低速度。,原文
+demo.target,demo,,Target coordinates: X 128 / Y -36 / Z 420.,目标坐标：X 128 / Y -36 / Z 420。,原文
+demo.ack,demo,,Acknowledged. I will continue monitoring nearby signals.,收到。我会继续监测附近信号。,原文
+esc.volume,esc,,VOLUME,音量,原文
+esc.single_player,esc,,SINGLE PLAYER,单人模式,原文
+ui.lang.english,ui,,ENGLISH,英文,原文
+ui.skip,ui,,SKIP,跳过,原文
+ui.legend.line1,ui,,LMB DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE,左键拖拽 / WASD 移动   Q/E 旋转   Shift 微调,原文
+ui.legend.line2,ui,,X DETACH   R RESET,X 拆卸   R 重置,原文
+ui.legend.line3,ui,,CLICK PUZZLE TO OPERATE   RMB LOOK   ESC PAUSE,点击谜题开始操作   右键环视   ESC 暂停,原文
+story.pt.landing,story,,Begin the landing sequence.,开始着陆程序。,原文
+story.pt.preflight,story,,Run the pre-flight checks.,执行起飞前检查。,原文
+story.pt.not_yet,story,,Not yet. Return to ship operations.,暂不。返回舰船操作。,原文
+story.pt.check_power,story,,Run the power check.,执行能源检查。,原文
+story.pt.check_nav,story,,Run the navigation check.,执行导航检查。,原文
+story.pt.check_prop,story,,Run the propulsion check.,执行推进检查。,原文
+story.pt.check_life,story,,Run the life support check.,执行生命维持检查。,原文
+story.pt.authorize,story,,Authorize launch. Take us into orbit.,授权发射。送我们进入轨道。,原文
+story.pt.hold,story,,Hold launch. Return to ship operations.,暂缓发射。返回舰船操作。,原文
+story.pt.recheck,story,,Run the departure checks again.,重新执行起飞检查。,原文
+story.pt.return_ops,story,,Return to ship operations.,返回舰船操作。,原文
+story.pt.salvage_on,story,,Activate the salvage program and begin collecting repair materials.,启动回收程序，开始收集维修材料。,原文
+story.pt.salvage_status,story,,Show the salvage program status.,显示回收程序状态。,原文
+story.pt.prepare,story,,Prepare the repaired systems for departure.,让已修复的系统做好启航准备。,原文
+demo.pt.analyze,demo,,Analyze the signal for me.,帮我分析这段信号。,原文
+demo.pt.risk,demo,,What are the risks of approaching it?,接近它有什么风险？,原文
+demo.pt.coords,demo,,Display the target coordinates.,显示目标坐标。,原文
+demo.pt.leave,demo,,Keep monitoring. End transmission.,继续监测。结束传输。,原文
+demo.pt.mark,demo,,Save the coordinates and return to the comms menu.,保存坐标，返回通讯菜单。,原文
+ui.tab_select,ui,,TAB SELECT,TAB 选择,原文
