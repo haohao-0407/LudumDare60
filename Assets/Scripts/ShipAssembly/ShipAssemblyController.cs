@@ -22,6 +22,7 @@ namespace LudumDare60.ShipAssembly
         [Range(0, 31)] public int WorkspaceLayer = 29;
         public bool EnforceSequentialOrder = true;
 
+        public bool RepairsAvailable { get; private set; } = true;
         public int SelectedRecipeIndex { get; private set; }
         public AssemblyRecipe SelectedRecipe => Recipes != null && SelectedRecipeIndex >= 0 && SelectedRecipeIndex < Recipes.Length
             ? Recipes[SelectedRecipeIndex] : null;
@@ -35,7 +36,7 @@ namespace LudumDare60.ShipAssembly
             get
             {
                 var session = SelectedSession;
-                return focused && isActiveAndEnabled && !operationInProgress && Application.isFocused && Time.timeScale > 0f &&
+                return RepairsAvailable && focused && isActiveAndEnabled && !operationInProgress && Application.isFocused && Time.timeScale > 0f &&
                        session != null && session.Puzzle != null && session.Puzzle.isActiveAndEnabled &&
                        !session.Completed && !DeviceIsRepaired((int)session.Recipe.Device) &&
                        RepairScreen != null && RepairScreen.CanBeginRepair((int)session.Recipe.Device) &&
@@ -124,7 +125,7 @@ namespace LudumDare60.ShipAssembly
 
         public bool SelectRecipe(int index)
         {
-            if (operationInProgress || publishingChanged || Recipes == null || index < 0 || index >= Recipes.Length || Recipes[index] == null)
+            if (!RepairsAvailable || operationInProgress || publishingChanged || Recipes == null || index < 0 || index >= Recipes.Length || Recipes[index] == null)
                 return false;
             if (index == SelectedRecipeIndex) return true;
             SelectedRecipeIndex = index;
@@ -138,13 +139,77 @@ namespace LudumDare60.ShipAssembly
 
         public void SetFocused(bool value)
         {
-            focused = value && isActiveAndEnabled;
+            focused = value && RepairsAvailable && isActiveAndEnabled;
             RefreshVisibilityAndInput();
+        }
+
+        /// <summary>Locks repair commands and puzzle input without changing device state or charging materials.</summary>
+        public void SetRepairsAvailable(bool available)
+        {
+            if (RepairsAvailable == available) return;
+            RepairsAvailable = available;
+            if (!available) focused = false;
+            StatusMessage = !available ? "Repairs are currently unavailable." : IsSelectedCompleted ? "Repair complete."
+                : HasActiveSession ? "Assembly in progress. Materials already allocated." : "Allocate materials to begin assembly.";
+            RefreshVisibilityAndInput();
+            NotifyChanged();
+        }
+
+        /// <summary>
+        /// Initializes an intact ship after scene Awake. It does not simulate repairs, spend inventory,
+        /// or invoke puzzle completion; old sessions are discarded before publishing the complete snapshot.
+        /// </summary>
+        public bool InitializeOperationalDevices()
+        {
+            return ReplaceDeviceCondition(true);
+        }
+
+        /// <summary>Discards the old repair generation and marks every device damaged atomically.</summary>
+        public bool ApplyCrashDamage()
+        {
+            return ReplaceDeviceCondition(false);
+        }
+
+        private bool ReplaceDeviceCondition(bool operational)
+        {
+            if (operationInProgress || publishingChanged) return false;
+            if (RepairScreen == null)
+            {
+                StatusMessage = "The repair screen is not configured.";
+                NotifyChanged();
+                return false;
+            }
+
+            operationInProgress = true;
+            try
+            {
+                focused = false;
+                foreach (var session in sessions.Values) DestroySession(session);
+                sessions.Clear();
+                for (int device = 0; device < completedDevices.Length; device++)
+                    completedDevices[device] = operational;
+                SelectedRecipeIndex = 0;
+                // SynchronizeRepairScreen is blocked during publication: listeners see the full new
+                // snapshot, and LateUpdate can no longer restore a completion from before the crash.
+                if (operational) RepairScreen.InitializeOperationalDevices();
+                else RepairScreen.ResetAll();
+                StatusMessage = operational ? "All ship systems are operational."
+                    : RepairsAvailable ? "Crash damage detected. Allocate materials to begin repairs."
+                    : "Ship systems damaged. Repairs are currently unavailable.";
+                return true;
+            }
+            finally
+            {
+                operationInProgress = false;
+                RefreshVisibilityAndInput();
+                NotifyChanged();
+            }
         }
 
         public bool CanStartSelected(out string reason)
         {
             if (operationInProgress) return Fail("An assembly operation is already in progress.", out reason);
+            if (!RepairsAvailable) return Fail("Repairs are currently unavailable.", out reason);
             if (!isActiveAndEnabled) return Fail("Assembly station is unavailable.", out reason);
             if (!ValidateConfiguration(out reason)) return false;
             var recipe = SelectedRecipe;
@@ -164,6 +229,12 @@ namespace LudumDare60.ShipAssembly
         public bool TryStartSelected()
         {
             if (operationInProgress || publishingChanged) return false;
+            if (!RepairsAvailable)
+            {
+                StatusMessage = "Repairs are currently unavailable.";
+                NotifyChanged();
+                return false;
+            }
             // Restore completed predecessors before checking the presentation's sequential rule.
             SynchronizeRepairScreen();
             if (!CanStartSelected(out string reason))
@@ -190,9 +261,9 @@ namespace LudumDare60.ShipAssembly
                     return false;
                 }
                 // Awake and all required puzzle references have been checked before any deduction.
-                if (!RepairScreen.CanBeginRepair((int)recipe.Device) || !PrecedingDevicesRepaired((int)recipe.Device))
+                if (!RepairsAvailable || !isActiveAndEnabled || !RepairScreen.CanBeginRepair((int)recipe.Device) || !PrecedingDevicesRepaired((int)recipe.Device))
                 {
-                    StatusMessage = "Repair order changed before assembly could begin.";
+                    StatusMessage = "Repair availability or order changed before assembly could begin.";
                     return false;
                 }
                 if (!Inventory.Items.TryConsumeOnce(pending.AttemptId, recipe.Materials, out reason))
@@ -263,7 +334,7 @@ namespace LudumDare60.ShipAssembly
         private bool CanOperateSelected()
         {
             var session = SelectedSession;
-            return isActiveAndEnabled && Application.isFocused && Time.timeScale > 0f && session != null && session.Puzzle != null &&
+            return RepairsAvailable && isActiveAndEnabled && Application.isFocused && Time.timeScale > 0f && session != null && session.Puzzle != null &&
                    !IsSelectedCompleted && RepairScreen != null && RepairScreen.CanBeginRepair((int)session.Recipe.Device) &&
                    PrecedingDevicesRepaired((int)session.Recipe.Device);
         }
@@ -348,7 +419,7 @@ namespace LudumDare60.ShipAssembly
 
         private void OnPuzzleProgress(Session session)
         {
-            if (session.Completed || session.Puzzle == null) return;
+            if (!RepairsAvailable || !OwnsSession(session) || session.Completed || session.Puzzle == null) return;
             session.Progress = session.Puzzle.RequiredConnectionCount > 0
                 ? Mathf.Clamp01((float)session.Puzzle.ConnectionCount / session.Puzzle.RequiredConnectionCount) : 0f;
             SynchronizeRepairScreen();
@@ -357,7 +428,7 @@ namespace LudumDare60.ShipAssembly
 
         private void OnPuzzleCompleted(Session session)
         {
-            if (session.Completed || session.Puzzle == null || !session.Puzzle.IsAssemblyComplete) return;
+            if (!RepairsAvailable || !OwnsSession(session) || session.Completed || session.Puzzle == null || !session.Puzzle.IsAssemblyComplete) return;
             session.Completed = true;
             session.Progress = 1f;
             completedDevices[(int)session.Recipe.Device] = true;
@@ -417,6 +488,12 @@ namespace LudumDare60.ShipAssembly
                 (completedDevices[device] || (RepairScreen != null && RepairScreen.GetState(device) == RepairDeviceState.Repaired));
         }
 
+        private bool OwnsSession(Session session)
+        {
+            return session != null && session.Recipe != null && !string.IsNullOrEmpty(session.Recipe.RecipeId)
+                && sessions.TryGetValue(session.Recipe.RecipeId, out var current) && ReferenceEquals(current, session);
+        }
+
         private bool PrecedingDevicesRepaired(int device)
         {
             if (!EnforceSequentialOrder) return true;
@@ -429,7 +506,7 @@ namespace LudumDare60.ShipAssembly
             var selected = SelectedSession;
             foreach (var session in sessions.Values)
             {
-                bool visible = isActiveAndEnabled && session == selected;
+                bool visible = RepairsAvailable && isActiveAndEnabled && session == selected;
                 if (session.Root != null && session.Root.activeSelf != visible) session.Root.SetActive(visible);
                 if (session.Puzzle != null) session.Puzzle.InputBlocked = !visible || !InputEnabled;
             }

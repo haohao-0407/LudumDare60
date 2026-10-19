@@ -1,5 +1,7 @@
 using System;
 using System.Linq;
+using LudumDare60.ShipAssembly;
+using LudumDare60.UI;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -30,6 +32,8 @@ namespace LudumDare60.Landing.Editor
             var impact = Required<AudioClip>(AudioRoot + "03_Composites/CRASH_Impact_Short.wav");
             var hull = Required<AudioClip>(AudioRoot + "03_Composites/CRASH_Hull_Buckle.wav");
             var ambience = Required<AudioClip>(AudioRoot + "01_Loops/AMB_Cabin_Damaged_Loop.wav");
+            var healthyAmbience = Required<AudioClip>(AudioRoot + "01_Loops/AMB_Cabin_Healthy_Loop.wav");
+            var repairScreen = scene.GetRootGameObjects().SelectMany(r => r.GetComponentsInChildren<RepairScreenController>(true)).Single();
             var electrical = new[] {
                 Required<AudioClip>(AudioRoot + "02_Single_Shots/02_Damage/SFX_electrical_glitch_01.wav"),
                 Required<AudioClip>(AudioRoot + "02_Single_Shots/02_Damage/SFX_electrical_glitch_02.wav")
@@ -48,6 +52,8 @@ namespace LudumDare60.Landing.Editor
             damage.ImpactAudio = Sound(root, "Impact Audio", impact, .85f, false, 0f);
             damage.HullAudio = Sound(root, "Hull Buckling Audio", hull, .42f, false, 0f);
             damage.DamagedAmbience = Sound(root, "Damaged Cabin Ambience", ambience, .19f, true, 0f);
+            damage.HealthyAmbience = Sound(root, "Healthy Cabin Ambience", healthyAmbience, .19f, true, 0f);
+            damage.AmbienceCrossfadeDuration = 1.2f;
             damage.AlarmAudio = Sound(root, "Damage Warning Audio", warning, .22f, false, 0f);
             damage.ElectricalClips = electrical;
             damage.Sites = new[] {
@@ -55,6 +61,13 @@ namespace LudumDare60.Landing.Editor
                 Site(root, "Right Console Wiring", new Vector3(-.74f, 1.50f, -.40f), new Vector3(.35f, .1f, .55f), sparksAsset),
                 Site(root, "Overhead Harness", new Vector3(0f, 1.94f, -.50f), new Vector3(.15f, -.5f, .35f), sparksAsset)
             };
+            var repairs = root.GetComponent<HardLandingRepairBridge>();
+            if (!repairs) repairs = Undo.AddComponent<HardLandingRepairBridge>(root.gameObject);
+            Undo.RecordObject(repairs, "Connect cabin faults to existing repairs");
+            repairs.Effects = damage;
+            repairs.RepairScreen = repairScreen;
+            repairs.SiteDevices = new[] { RepairDeviceId.PowerUnit, RepairDeviceId.Navigation, RepairDeviceId.LifeSupport };
+            EditorUtility.SetDirty(repairs);
 
             Undo.RecordObject(sequence, "Configure hard landing impact");
             sequence.TouchdownSpeed = 4f;
