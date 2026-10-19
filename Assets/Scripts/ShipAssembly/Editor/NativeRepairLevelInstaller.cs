@@ -14,7 +14,7 @@ using Object = UnityEngine.Object;
 
 namespace LudumDare60.ShipAssembly.Editor
 {
-    /// <summary>Builds the 2026-10-19 engine and revised life-support levels from recorded native poses.</summary>
+    /// <summary>Builds native repair levels from recorded engine and life-support poses.</summary>
     public static class NativeRepairLevelInstaller
     {
         public const string EnginePrefab = "Assets/AssemblyDemo/Prefabs/PropulsionEngineAssembly.prefab";
@@ -22,15 +22,23 @@ namespace LudumDare60.ShipAssembly.Editor
         public const string PreviewScene = "Assets/AssemblyDemo/Scenes/EngineAndLifeAssembly.unity";
         public const string EngineScene = "Assets/AssemblyDemo/Scenes/PropulsionEngineAssembly.unity";
         public const string LifeScene = "Assets/AssemblyDemo/Scenes/LifeSupportAssembly.unity";
+        public const string EngineMeshAsset = "Assets/ArtAssets/3DModels/raptor_low.glb";
         public static readonly string[] EngineNames = { "BezierCurve.011", "Cube.007", "Cylinder.001" };
+        // Screenshots 2026-10-20 01:54:15--01:55:42, in source-prefab local coordinates.
         public static readonly Vector3[] EngineStart = {
-            new Vector3(2.64f,1.47f,.23f), new Vector3(1.13f,4.55f,.54f), new Vector3(1.7f,-6.37f,.71f)
+            new Vector3(2.64f,1.47f,.23f), new Vector3(1.13f,5.12f,.57f), new Vector3(1.7f,-7.391827f,-1.037691f)
         };
         public static readonly Vector3[] EngineTarget = {
-            EngineStart[0], new Vector3(1.13f,2.24f,-.1f), new Vector3(1.7f,-1.33f,.69f)
+            EngineStart[0], new Vector3(1.13f,2.09f,-.12f), new Vector3(1.7f,-2.26f,.63f)
         };
-        public static readonly Vector3[] EngineEuler = {
+        public static readonly Vector3[] EngineStartEuler = {
+            new Vector3(-73.322f,84.553f,124.291f), new Vector3(0,136.361f,180), new Vector3(-.056f,79.308f,179.704f)
+        };
+        public static readonly Vector3[] EngineTargetEuler = {
             new Vector3(-73.322f,84.553f,124.291f), new Vector3(0,136.361f,180), new Vector3(0,100.692f,0)
+        };
+        public static readonly Vector3[] EngineScales = {
+            Vector3.one*.6111977f, new Vector3(-.2371762f,-.2371762f,-.2783778f), Vector3.one*.2447915f
         };
         public static readonly string[] LifeNames = { "CUT_test", "CUT_test.001", "CUT_test.003", "CUT_test.004" };
         public static readonly Vector3[] LifeStart = {
@@ -53,8 +61,7 @@ namespace LudumDare60.ShipAssembly.Editor
             Backup(LifePrefab,"life-previous.prefab");
             Backup("Assets/ShipAssembly/Recipes/PropulsionEngine.asset","engine-previous-recipe.asset");
             Backup("Assets/ShipAssembly/Recipes/LifeSupport.asset","life-previous-recipe.asset");
-            Build("Assets/Prefabs/引擎.prefab",EnginePrefab,"PROPULSION ENGINE",EngineNames,new[] { "ENGINE BODY", "END PLATE", "NOZZLE" },
-                EngineStart,EngineTarget,EngineEuler,EngineEuler,Quaternion.Euler(0,90,0)*Quaternion.Euler(90,0,0));
+            BuildEngine();
             Build("Assets/Prefabs/生命装置.prefab",LifePrefab,"LIFE SUPPORT",LifeNames,new[] { "BODY", "RESERVOIR", "FILTER", "BASE RAIL" },
                 LifeStart,LifeTarget,LifeStartEuler,new Vector3[4],Quaternion.Euler(0,180,0));
             BindRecipe("PropulsionEngine",EnginePrefab);
@@ -64,6 +71,48 @@ namespace LudumDare60.ShipAssembly.Editor
             BuildPreview(LifeScene,1);
             AssetDatabase.SaveAssets();
             Debug.Log("[NativeRepairLevels] Engine (3 parts) and life support (4 parts) built; SHIP recipes updated.");
+        }
+
+        [MenuItem("Tools/Ship Assembly/Rebuild Updated Low Poly Engine Only")]
+        public static void InstallEngine()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Stop Play mode before rebuilding the engine.");
+            StageUtility.GoToMainStage();
+            Directory.CreateDirectory("Logs/EngineRefresh");
+            foreach (var path in new[] { "Assets/Prefabs/引擎.prefab", EnginePrefab, "Assets/ShipAssembly/Recipes/PropulsionEngine.asset" })
+            {
+                var backup = "Logs/EngineRefresh/"+Path.GetFileName(path)+".before";
+                if (File.Exists(path) && !File.Exists(backup)) File.Copy(path,backup);
+            }
+            BuildEngine();
+            BindRecipe("PropulsionEngine",EnginePrefab);
+            foreach (var path in new[] { PreviewScene,EngineScene,LifeScene }) RefreshEnginePreview(path);
+            AssetDatabase.SaveAssets();
+            Debug.Log("[NativeRepairLevels] Low-poly engine rebuilt from 2026-10-20 screenshots; existing preview UI and other repair assets preserved.");
+        }
+
+        private static void BuildEngine()
+        {
+            Build("Assets/Prefabs/引擎.prefab",EnginePrefab,"PROPULSION ENGINE",EngineNames,new[] { "ENGINE BODY", "END PLATE", "NOZZLE" },
+                EngineStart,EngineTarget,EngineStartEuler,EngineTargetEuler,Quaternion.Euler(0,90,0)*Quaternion.Euler(90,0,0));
+        }
+
+        private static void RefreshEnginePreview(string path)
+        {
+            if (!File.Exists(path)) return;
+            var scene = EditorSceneManager.OpenScene(path,OpenSceneMode.Additive);
+            try
+            {
+                foreach (var root in scene.GetRootGameObjects())
+                    foreach (var layout in root.GetComponentsInChildren<DeviceAssemblyLayout>(true))
+                    {
+                        var source = PrefabUtility.GetCorrespondingObjectFromSource(layout.gameObject);
+                        if (AssetDatabase.GetAssetPath(source) != EnginePrefab) continue;
+                        layout.transform.localPosition = new Vector3(-layout.viewCenter.x,-layout.viewCenter.y,0);
+                    }
+                EditorSceneManager.SaveScene(scene);
+            }
+            finally { EditorSceneManager.CloseScene(scene,true); }
         }
 
         private static void Backup(string path,string name)

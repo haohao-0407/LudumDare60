@@ -16,8 +16,20 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 | Propulsion Engine | `PropulsionEngineAssembly.prefab` | 3 |
 | Life Support System | `LifeSupportAssembly.prefab` | 4 |
 
-引擎与生命关卡按 2026-10-19 19:46–19:51 的组装前后截图配置。
+引擎按 2026-10-20 01:54–01:55 的新截图和 `raptor_low.glb` 低模配置；生命关卡沿用 2026-10-19 截图。
 引擎保留 BezierCurve.011、Cube.007、Cylinder.001 的原始三维旋转和缩放，包括端板的负缩放。
+引擎的位置均为源预制体内的局部坐标：
+
+| 零件 | 拆开后 Position | 组装后 Position | 拆开后 Rotation | 组装后 Rotation |
+| --- | --- | --- | --- | --- |
+| BezierCurve.011 | (2.64, 1.47, 0.23) | 同左 | (-73.322, 84.553, 124.291) | 同左 |
+| Cube.007 | (1.13, 5.12, 0.57) | (1.13, 2.09, -0.12) | (0, 136.361, 180) | 同左 |
+| Cylinder.001 | (1.7, -7.391827, -1.037691) | (1.7, -2.26, 0.63) | (-0.056, 79.308, 179.704) | (0, 100.692, 0) |
+
+喷口初始翻转约 180°，需旋转后才能吸附；重排会恢复这一初始朝向。
+三块模型的 Scale 分别为 (0.6111977, 0.6111977, 0.6111977)、(-0.2371762, -0.2371762, -0.2783778)、
+(0.2447915, 0.2447915, 0.2447915)。源根物体的展示变换不参与逻辑拼图。
+
 生命系统采用 CUT_test、CUT_test.001、CUT_test.003、CUT_test.004 四块，不包含旧版水箱和门。
 各配方的 `PuzzleOffset` 抵消关卡的 `viewCenter`，适配现有工作台相机。
 完成后显示完整模型并锁定，切换配方保留当前单局进度；材料需求沿用原配置，维修不限制先后顺序。
@@ -25,6 +37,8 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 独立试玩：`Assets/AssemblyDemo/Scenes/EngineAndLifeAssembly.unity`，Play 后 F1 引擎 / F2 生命。
 单项入口：`PropulsionEngineAssembly.unity`、`LifeSupportAssembly.unity`，均位于同一 Scenes 目录。
 重建菜单：`Tools > Ship Assembly > Build Engine And Revised Life Support Levels`。原始模型预制体不被改写。
+只重建新版引擎：`Tools > Ship Assembly > Rebuild Updated Low Poly Engine Only`。
+此菜单更新引擎配方和三个现有试玩场景中的引擎取景偏移，保留其他维修资产及场景 UI。
 
 ### Engine-only model updates
 
@@ -48,7 +62,9 @@ If needed, both poses receive the same depth translation to fit the existing cam
 Source root presentation transforms are ignored. Repeating the update with unchanged source data does not accumulate scaling.
 Before saving, the previous engine prefab and recipe are copied to `Logs/EngineAssemblyUpdates/<timestamp>/`.
 Independent preview scenes keep their saved camera framing; the SHIP screen uses the updated recipe framing.
-The legacy combined rebuild menu still uses its recorded layouts; use the engine-only entry for these model edits.
+Both `Rebuild Updated Low Poly Engine Only` and the combined rebuild menu restore the recorded screenshot layouts.
+The snapshot rebuild also saves the three preview scenes and calls `SaveAssets`; finish unrelated asset edits first.
+Use `Update Engine Assembly Only` for subsequent source-model edits that should retain the current assembly relationship.
 
 | 材料 | Power Unit | Interstellar Navigation System | Propulsion Engine | Life Support System |
 | --- | ---: | ---: | ---: | ---: |
@@ -89,7 +105,7 @@ SHIP 的 `SalvageInventoryBridge.materialYieldCatalog` 已连接
 点击拼图区域取得操作焦点。
 
 - 鼠标点击选择，按住左键拖动零件；WASD 也可移动。
-- Q/E 旋转，Shift 微调，数字键或 Tab 选择零件（能源 1–3，导航／引擎 1–4，生命 1–5）。
+- Q/E 旋转，Shift 微调，数字键或 Tab 选择零件（能源／引擎 1–3，导航／生命 1–4）。
 - X / DETACH 拆开选中零件，R / RESET PARTS 重排当前拼图，不重复扣料。
 - 点击屏幕外、按右键观察或按 Esc 释放操作焦点；返回时点击拼图继续。
 - Esc 同时遵循现有 ESC 菜单行为，菜单打开或游戏暂停时停止组装输入。
@@ -109,8 +125,9 @@ SHIP 的 `SalvageInventoryBridge.materialYieldCatalog` 已连接
 编辑器菜单 `Tools > Ship Assembly > Install In SHIP And Save` 可补装引用和创建缺失资产；
 它只接受当前打开的 SHIP，不会打开或改写 NavigationAssembly，也不会覆盖已有配方配置或屏幕布局。
 
-移除顺序限制前，引擎及新版生命系统曾通过 74 项原有组装测试、74 项几何检查和 SHIP Play Mode 中的 97 项检查。
-这些历史运行检查包含旧顺序规则、共享库存扣料、继续组装不重复扣料、吸附完成、维修屏同步、切换保留进度和完成锁定；不代表当前无顺序版本已经通过运行验证。
-本次移除顺序限制仅修改和保存，未运行测试或 Play Mode。
+来源分支 `codex/engine-assembly-refresh-20261020` 的提交 `66f7e44` 记录：更新引擎后，通过 95 项几何检查和 SHIP Play Mode 中的 128 项运行检查。
+检查覆盖新低模来源、截图三维坐标与缩放、喷口翻转与重排、错误朝向拒绝吸附、完成模型位置，
+以及四系统独立维修、共享库存扣料、继续不重复扣料、维修屏回写、切换保留进度和完成锁定。
+这些是来源分支的历史验证记录；本次合并只检查文件差异、引用和编译，不运行测试或 Play Mode。
 报告位于 `Logs/NativeRepairLevels/geometry-validation.txt`、`Logs/NativeRepairLevels/ship-runtime-validation.txt`。
 验证菜单：`Tools > Ship Assembly > Validate Engine And Revised Life Support Geometry` 和 `Validate Native Levels In SHIP Play Mode`。
