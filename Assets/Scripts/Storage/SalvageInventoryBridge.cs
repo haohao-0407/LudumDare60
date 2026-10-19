@@ -12,6 +12,12 @@ namespace LudumDare60.Storage
         [SerializeField] private SalvageController salvageController;
         [SerializeField] private InventoryController inventoryController;
 
+        public InventoryController InventoryController => inventoryController;
+
+        /// <summary>Presentation can distinguish a recovered target from a credited cargo transaction.</summary>
+        public bool HasCollected(SalvageResult result) => result != null && result.IsSuccess
+            && inventoryController != null && inventoryController.Items.HasProcessedReward(result.AttemptId);
+
         private void OnEnable()
         {
             if (salvageController == null) salvageController = GetComponent<SalvageController>();

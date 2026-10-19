@@ -9,6 +9,7 @@ using UnityEngine.UI;
 namespace LudumDare60.ReturnWindow
 {
     /// <summary>Optional supply recovery. Uses the existing simulation; never creates a second timer or save.</summary>
+    [DefaultExecutionOrder(-100)]
     public sealed class ReturnSalvageStation : MonoBehaviour
     {
         public MissionController mission;
@@ -81,6 +82,8 @@ namespace LudumDare60.ReturnWindow
             Refresh(salvage.Snapshot);
         }
 
+        private void LateUpdate() { if (IsOpen && salvage != null) Refresh(salvage.Snapshot); }
+
         public void CloseSalvage() => CloseSalvage(true);
 
         public void CloseSalvage(bool reconnect)
@@ -115,7 +118,6 @@ namespace LudumDare60.ReturnWindow
             if (salvage.Snapshot.State == SalvageState.SignalDetected && space != null && space.wasPressedThisFrame)
                 salvage.TryLockTarget();
             salvage.SetControlHeld(salvage.Snapshot.State == SalvageState.Salvaging && space != null && space.isPressed);
-            Refresh(salvage.Snapshot);
         }
 
         private void OnMissionStateChanged(MissionState state)
@@ -160,9 +162,11 @@ namespace LudumDare60.ReturnWindow
             if (progressFill != null) progressFill.fillAmount = Mathf.Clamp01(snapshot.Progress);
             if (targetMarker != null)
             {
-                targetMarker.anchorMin = new Vector2(0, snapshot.TargetPosition);
-                targetMarker.anchorMax = new Vector2(1, snapshot.TargetPosition);
-                targetMarker.anchoredPosition = Vector2.zero;
+                targetMarker.anchorMin = new Vector2(0, snapshot.TargetMin);
+                targetMarker.anchorMax = new Vector2(1, snapshot.TargetMax);
+                targetMarker.offsetMin = targetMarker.offsetMax = Vector2.zero;
+                if (snapshot.TargetSize == 0f)
+                    targetMarker.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 2f);
             }
             if (controlZone != null)
             {

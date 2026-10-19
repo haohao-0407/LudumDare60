@@ -7,7 +7,7 @@
 1. 开始打捞，进入 `Searching`，随机等待信号。
 2. 进入 `SignalDetected` 后，在 `SignalWindow` 秒内重新按下控制键，或调用 `TryLockTarget()`。提前一直按住不会自动锁定。
 3. 进入 `Salvaging`：按住使控制区加速上升，松开使其下落；控制区有惯性、速度上限和边界反弹。目标会随机选择目的地并平滑移动。
-4. 目标点处于控制区内时增加进度，离开时降低进度。进度到 1 成功，到 0 失败，超过最大作业时间也失败。
+4. 目标色块的范围与控制区重叠时增加进度，完全离开时降低进度。进度到 1 成功，到 0 失败，超过最大作业时间也失败。
 5. 成功、失败、取消后可以再次开始。作业过程中再次开始会返回 `false`，不会覆盖当前作业。
 
 状态流转：`Idle → Searching → SignalDetected → Salvaging → Succeeded / Failed`。等待时间为 0 时直接进入 `SignalDetected`。所有活动阶段都允许取消；暂停不改变阶段。
@@ -28,7 +28,8 @@ controller.SnapshotChanged += snapshot =>
 {
     // snapshot.State：阶段；snapshot.TimeRemaining：当前阶段剩余秒数。
     // snapshot.ControlMin/ControlMax：控制区边界，0 为轨道底部，1 为顶部。
-    // snapshot.TargetPosition：目标点；snapshot.Progress：打捞进度。
+    // snapshot.TargetPosition/TargetSize：目标中心与长度；TargetMin/TargetMax：目标边界。
+    // snapshot.Progress：打捞进度。
     // snapshot.IsTargetInControl / IsPaused / IsControlHeld：其他显示状态。
 };
 controller.Completed += result =>
@@ -75,10 +76,18 @@ session.TryStart(settings, target, randomSeed: 12345);
 | 信号 | `SearchDurationMin/Max`, `SignalWindow` | 搜索等待范围与响应时间 |
 | 控制区 | `ControlSize`, `InitialControlPosition` | 轨道占比与初始中心位置 |
 | 操控 | `LiftAcceleration`, `Gravity`, `MaxControlSpeed`, `BoundaryBounce` | 上升、下落、惯性与边界手感 |
-| 目标 | `InitialTargetPosition`, `TargetSpeed`, `TargetAcceleration`, `RetargetIntervalMin/Max` | 初始位置、移动强度与变向频率；速度 0 可制作静止目标 |
+| 目标 | `TargetSize`, `InitialTargetPosition`, `TargetSpeed`, `TargetAcceleration`, `RetargetIntervalMin/Max` | 目标长度、初始位置、移动强度与变向频率；速度 0 可制作静止目标 |
 | 进度 | `InitialProgress`, `ProgressGainPerSecond`, `ProgressLossPerSecond`, `MaxSalvageDuration` | 初始进度、每秒增减及作业限时 |
 
-坐标及进度归一化为 `[0, 1]`；速度、加速度分别按“轨道长度/秒”“轨道长度/秒²”计。初始控制区必须完全位于轨道内；初始进度必须大于 0 且小于 1。单阶段时间最多为 600 秒，响应窗口/作业限时/变向间隔最少为 0.01 秒。
+坐标及进度归一化为 `[0, 1]`；速度、加速度分别按“轨道长度/秒”“轨道长度/秒²”计。初始控制区和目标范围必须完全位于轨道内；目标运动也限制在该范围内。`TargetSize` 默认为 `0.1`，设为 0 可使用点目标。初始进度必须大于 0 且小于 1。单阶段时间最多为 600 秒，响应窗口/作业限时/变向间隔最少为 0.01 秒。
+
+## 屏幕与判定的一致性
+
+- `SalvageSession` 与 `SalvageSnapshot.IsTargetInControl` 共用同一范围重叠判定，显示层直接使用 `ControlMin/ControlMax` 和 `TargetMin/TargetMax`，不要再独立固定目标长度或重算命中。
+- `SalvageScreenView` 在较早的 `Update` 转发输入，在 `LateUpdate` 读取已经完成本帧模拟的快照。控制区、目标和进度条使用归一化锚点，避免屏幕挂载组件改变尺寸后留下旧像素坐标。
+- 序列化场景启用时会初始化 Image 缓存。重开作业会清除上一作业的奖励文案；暂停时不会开始下一局。配置 `Control Action` 可接 Input System；未配置时保留 Space 操作。暂停/失焦后须先松开，再重新按下。
+- `TerminalCurvedDisplay` 仅保留副本中的绘制与布局组件，禁用打捞、库存、输入、对话等业务脚本。曲面副本镜像源界面的层级、启用状态、RectTransform、文字、颜色、Image 填充和动态库存行，不运行第二套作业。
+- 成功打捞和实际入库是两个结果。配置库存桥接后，屏幕会检查事务领取记录；入库失败时显示 `CARGO NOT STORED`。库存仍为本局内存数据。
 
 `SalvageEndReason` 区分 `Recovered`、`SignalMissed`、`TargetLost`、`TimedOut`、`Cancelled`。只有 `IsSuccess` 时奖励数量大于 0，数量范围含上下限；失败/取消数量为 0。
 

@@ -35,7 +35,7 @@ namespace LudumDare60.Salvage
         public bool IsActive => State == SalvageState.Searching || State == SalvageState.SignalDetected || State == SalvageState.Salvaging;
         public SalvageSnapshot Snapshot => new SalvageSnapshot(attemptId, State, target?.TargetId,
             controlPosition, settings?.ControlSize ?? 0f, targetPosition, progress, (float)elapsed,
-            RemainingTime(), controlHeld, paused);
+            RemainingTime(), controlHeld, paused, settings?.TargetSize ?? 0f);
 
         /// <summary>Emitted after a command or simulation tick; inspect State for phase changes.</summary>
         public event Action<SalvageSnapshot> SnapshotChanged;
@@ -172,13 +172,15 @@ namespace LudumDare60.Salvage
             var desiredVelocity = Clamp((targetDestination - targetPosition) * 3f, -settings.TargetSpeed, settings.TargetSpeed);
             targetVelocity = MoveTowards(targetVelocity, desiredVelocity, settings.TargetAcceleration * dt);
             targetPosition += targetVelocity * dt;
-            if (targetPosition < 0f || targetPosition > 1f)
+            var targetHalfSize = settings.TargetSize / 2f;
+            if (targetPosition < targetHalfSize || targetPosition > 1f - targetHalfSize)
             {
-                targetPosition = Clamp(targetPosition, 0f, 1f);
+                targetPosition = Clamp(targetPosition, targetHalfSize, 1f - targetHalfSize);
                 targetVelocity = 0f;
             }
 
-            var inside = targetPosition >= controlPosition - halfSize && targetPosition <= controlPosition + halfSize;
+            var inside = SalvageSnapshot.RangesOverlap(controlPosition - halfSize, controlPosition + halfSize,
+                targetPosition - targetHalfSize, targetPosition + targetHalfSize);
             progress = Clamp(progress + (inside ? settings.ProgressGainPerSecond : -settings.ProgressLossPerSecond) * dt, 0f, 1f);
             if (progress >= 1f) Finish(SalvageState.Succeeded, SalvageEndReason.Recovered);
             else if (progress <= 0f) Finish(SalvageState.Failed, SalvageEndReason.TargetLost);
@@ -187,7 +189,7 @@ namespace LudumDare60.Salvage
 
         private void ChooseDestination()
         {
-            targetDestination = RandomRange(0f, 1f);
+            targetDestination = RandomRange(settings.TargetSize / 2f, 1f - settings.TargetSize / 2f);
             retargetRemaining = RandomRange(settings.RetargetIntervalMin, settings.RetargetIntervalMax);
         }
 

@@ -17,6 +17,7 @@ namespace LudumDare60.Salvage
         public float MaxControlSpeed = 1f;
         public float BoundaryBounce = 0.15f;
 
+        public float TargetSize = 0.1f;
         public float InitialTargetPosition = 0.3f;
         public float TargetSpeed = 0.5f;
         public float TargetAcceleration = 1.6f;
@@ -46,7 +47,8 @@ namespace LudumDare60.Salvage
             Positive(Gravity, nameof(Gravity));
             Positive(MaxControlSpeed, nameof(MaxControlSpeed));
             Range(BoundaryBounce, 0f, 1f, nameof(BoundaryBounce));
-            Range(InitialTargetPosition, 0f, 1f, nameof(InitialTargetPosition));
+            Range(TargetSize, 0f, 1f, nameof(TargetSize));
+            Range(InitialTargetPosition, TargetSize / 2f, 1f - TargetSize / 2f, nameof(InitialTargetPosition));
             Range(TargetSpeed, 0f, float.MaxValue, nameof(TargetSpeed));
             Positive(TargetAcceleration, nameof(TargetAcceleration));
             Range(RetargetIntervalMin, 0.01f, 600f, nameof(RetargetIntervalMin));
