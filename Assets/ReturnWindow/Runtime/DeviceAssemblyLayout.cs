@@ -1,5 +1,6 @@
 using LudumDare60.AssemblyDemo;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 
 namespace LudumDare60.ReturnWindow
@@ -41,7 +42,7 @@ namespace LudumDare60.ReturnWindow
                 }
                 module.enabled = false;
             }
-            if (status != null) status.text = deviceLabel + " / ASSEMBLY COMPLETE\nAll joints secured. The completed device stays intact until the next run.";
+            if (status != null) status.text = Loc.T("{0} / ASSEMBLY COMPLETE\nAll joints secured. The completed device stays intact until the next run.", Loc.Say(deviceLabel));
         }
     }
 }

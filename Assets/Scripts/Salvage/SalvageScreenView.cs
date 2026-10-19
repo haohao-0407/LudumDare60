@@ -1,3 +1,4 @@
+using Pioneer60.Localization;
 using TMPro;
 using LudumDare60.Storage;
 using UnityEngine;
@@ -173,47 +174,47 @@ namespace LudumDare60.Salvage
                 progressImage.color = Color.Lerp(new Color(0.95f, 0.55f, 0.10f), new Color(1f, 0.80f, 0.28f), snapshot.Progress);
 
             if (zoneLabel != null)
-                zoneLabel.text = "CATCH " + snapshot.ControlMin.ToString("0.00") + " - " + snapshot.ControlMax.ToString("0.00")
-                               + "  /  " + snapshot.ControlSize.ToString("0.00");
-            if (fishLabel != null) fishLabel.text = "TARGET " + snapshot.TargetPosition.ToString("0.00");
-            if (progressLabel != null) progressLabel.text = "PROGRESS " + Mathf.RoundToInt(snapshot.Progress * 100f) + "%";
+                zoneLabel.text = Loc.T("CATCH {0} - {1}  /  {2}", snapshot.ControlMin.ToString("0.00"),
+                    snapshot.ControlMax.ToString("0.00"), snapshot.ControlSize.ToString("0.00"));
+            if (fishLabel != null) fishLabel.text = Loc.T("TARGET {0}", snapshot.TargetPosition.ToString("0.00"));
+            if (progressLabel != null) progressLabel.text = Loc.T("PROGRESS {0}%", Mathf.RoundToInt(snapshot.Progress * 100f));
 
             if (stateLabel != null)
             {
                 if (isPaused)
                 {
-                    stateLabel.text = ">> RECOVERY PAUSED";
+                    stateLabel.text = Loc.Say(">> RECOVERY PAUSED");
                     stateLabel.color = new Color(1f, 0.78f, 0.25f);
                 }
                 else
                 switch (snapshot.State)
                 {
                     case SalvageState.Idle:
-                        stateLabel.text = ">> STANDBY";
+                        stateLabel.text = Loc.Say(">> STANDBY");
                         stateLabel.color = new Color(0.45f, 0.72f, 0.66f);
                         break;
                     case SalvageState.Searching:
-                        stateLabel.text = ">> SCANNING DEBRIS FIELD";
+                        stateLabel.text = Loc.Say(">> SCANNING DEBRIS FIELD");
                         stateLabel.color = new Color(0.45f, 0.72f, 0.66f);
                         break;
                     case SalvageState.SignalDetected:
-                        stateLabel.text = ">> SIGNAL LOCK  -  PRESS NOW  [" + snapshot.TimeRemaining.ToString("0.0") + "s]";
+                        stateLabel.text = Loc.T(">> SIGNAL LOCK  -  PRESS NOW  [{0}s]", snapshot.TimeRemaining.ToString("0.0"));
                         stateLabel.color = new Color(1f, 0.78f, 0.25f);
                         break;
                     case SalvageState.Salvaging:
-                        stateLabel.text = isHit ? ">> GRAPPLING  + STABLE" : ">> GRAPPLING  -  SLIPPING";
+                        stateLabel.text = isHit ? Loc.Say(">> GRAPPLING  + STABLE") : Loc.Say(">> GRAPPLING  -  SLIPPING");
                         stateLabel.color = isHit ? new Color(0.62f, 0.95f, 0.55f) : new Color(0.9f, 0.42f, 0.40f);
                         break;
                     case SalvageState.Succeeded:
-                        stateLabel.text = ">> RECOVERY COMPLETE";
+                        stateLabel.text = Loc.Say(">> RECOVERY COMPLETE");
                         stateLabel.color = new Color(0.62f, 0.95f, 0.55f);
                         break;
                     case SalvageState.Cancelled:
-                        stateLabel.text = ">> RECOVERY CANCELLED";
+                        stateLabel.text = Loc.Say(">> RECOVERY CANCELLED");
                         stateLabel.color = new Color(0.9f, 0.42f, 0.40f);
                         break;
                     default:
-                        stateLabel.text = ">> SIGNAL LOST";
+                        stateLabel.text = Loc.Say(">> SIGNAL LOST");
                         stateLabel.color = new Color(0.9f, 0.42f, 0.40f);
                         break;
                 }
@@ -221,11 +222,11 @@ namespace LudumDare60.Salvage
 
             if (hintLabel != null)
             {
-                hintLabel.text = isPaused ? "PAUSED  /  RELEASE CONTROL BEFORE RESUMING"
+                hintLabel.text = Loc.Say(isPaused ? "PAUSED  /  RELEASE CONTROL BEFORE RESUMING"
                     : snapshot.State == SalvageState.Searching ? "WAIT FOR SIGNAL, THEN PRESS CONTROL"
                     : snapshot.State == SalvageState.SignalDetected ? "RELEASE AND PRESS TO LOCK TARGET"
                     : snapshot.IsActive ? "HOLD CONTROL TO LIFT  /  RELEASE TO LOWER"
-                    : "RE-ACQUIRING TARGET ...";
+                    : "RE-ACQUIRING TARGET ...");
             }
             RenderItem(snapshot);
         }
@@ -242,19 +243,19 @@ namespace LudumDare60.Salvage
             if (!snapshot.IsActive && result != null && result.AttemptId == snapshot.AttemptId)
             {
                 itemLabel.text = result.IsSuccess
-                    ? "RECOVERED  " + Label(result.RewardId) + "  x" + result.RewardQuantity
-                    : "SALVAGE FAILED  -  " + result.Reason.ToString().ToUpperInvariant();
+                    ? Loc.T("RECOVERED  {0}  x{1}", Label(result.RewardId), result.RewardQuantity)
+                    : Loc.Say("SALVAGE FAILED") + "  -  " + Loc.Say(result.Reason.ToString().ToUpperInvariant());
                 itemLabel.color = result.IsSuccess ? new Color(0.72f, 1f, 0.78f) : new Color(0.9f, 0.45f, 0.42f);
                 if (result.IsSuccess && inventoryBridge != null && !inventoryBridge.HasCollected(result))
                 {
-                    itemLabel.text = "RECOVERED  " + Label(result.RewardId) + "  /  CARGO NOT STORED";
+                    itemLabel.text = Loc.T("RECOVERED  {0}  /  CARGO NOT STORED", Label(result.RewardId));
                     itemLabel.color = new Color(0.9f, 0.45f, 0.42f);
                 }
             }
             else
             {
                 itemLabel.text = snapshot.State == SalvageState.Searching || snapshot.State == SalvageState.Idle
-                    ? "UNKNOWN SIGNAL" : "TARGET  " + Label(snapshot.TargetId);
+                    ? Loc.Say("UNKNOWN SIGNAL") : Loc.T("TARGET  {0}", Label(snapshot.TargetId));
                 itemLabel.color = new Color(0.8f, 0.94f, 0.9f);
             }
         }
@@ -269,6 +270,10 @@ namespace LudumDare60.Salvage
         }
 
         /// <summary>ASCII-only label: the Glass TTY glyph atlas holds 95 printable ASCII characters.</summary>
-        private static string Label(string rewardId) => string.IsNullOrEmpty(rewardId) ? "UNKNOWN" : rewardId.Replace('_', ' ').ToUpperInvariant();
+        // 物资 ID → 显示名。回收记录里的 ID 是 snake_case，这里统一成大写空格形式再查词典，
+        // 所以「VACUUM TUBE RECEIVER」在中文下会显示成「真空管广播接收机」。
+        private static string Label(string rewardId) => string.IsNullOrEmpty(rewardId)
+            ? Loc.Say("UNKNOWN")
+            : Loc.Say(rewardId.Replace('_', ' ').ToUpperInvariant());
     }
 }

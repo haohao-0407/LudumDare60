@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 
 namespace LudumDare60.ReturnWindow
@@ -50,7 +51,7 @@ namespace LudumDare60.ReturnWindow
                 }
                 if (stateLabel)
                 {
-                    stateLabel.text = closed ? "WINDOW CLOSED" : departureLocked ? "DEPARTURE LOCKED" : "TIME TO LAST DEPARTURE";
+                    stateLabel.text = Loc.Say(closed ? "WINDOW CLOSED" : departureLocked ? "DEPARTURE LOCKED" : "TIME TO LAST DEPARTURE");
                     stateLabel.transform.localPosition = new Vector3(0, closed ? .088f : .058f, .0655f);
                     stateLabel.fontSize = closed ? .19f : .084f;
                 }

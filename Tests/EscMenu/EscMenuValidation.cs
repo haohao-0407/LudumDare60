@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using LudumDare60.UI;
 using LudumDare60.UI.Editor;
+using Pioneer60.Localization;
 using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -77,6 +78,7 @@ public static class EscMenuValidation
         try
         {
             var menu = UnityEngine.Object.FindObjectsByType<EscMenuController>(FindObjectsInactive.Include, FindObjectsSortMode.None).Single();
+            LocalizationManager.Instance.SetLanguage("en", false);
             Require(menu != null && !menu.IsOpen && !menu.gameObject.activeSelf, "Menu root should start inactive.");
             var manager = UIManager.Instance;
             Require(manager != null && manager.name == "manager" && manager.isActiveAndEnabled, "Global manager missing.");
@@ -100,8 +102,13 @@ public static class EscMenuValidation
             Press(keyboard); Release(keyboard);
             Find<Button>(menu, "Settings").onClick.Invoke();
             Require(menu.transform.Find("Menu Overlay/Menu Window/Settings Page").gameObject.activeSelf, "Settings page did not open.");
-            var slider = Find<Slider>(menu, "Master Volume"); slider.value = 0.37f;
-            Require(Mathf.Abs(AudioListener.volume - 0.37f) < 0.001f && Find<TMP_Text>(menu, "Value").text == "37%", "Volume slider is not connected to audio.");
+            var language = Find<EscLanguageOption>(menu, "Language");
+            Require(language != null && language.IsInteractable(), "Language option missing after merge.");
+            LocalizationManager.Instance.SetLanguage("zh-Hans", false);
+            Require(Find<TMP_Text>(menu, "Title").text == Loc.Get("esc.title.settings") && language.ValueLabel.text.Contains("中文"), "Language change did not refresh menu labels.");
+            LocalizationManager.Instance.SetLanguage("en", false);
+            Require(Find<TMP_Text>(menu, "Title").text == "SETTINGS / SHIP SYSTEMS", "English menu did not restore.");
+            AudioListener.volume = 0.37f;
             Find<Button>(menu, "Reset Audio").onClick.Invoke(); Require(AudioListener.volume == 1, "Reset audio failed.");
             Find<Button>(menu, "Back").onClick.Invoke();
             Find<Button>(menu, "Quit").onClick.Invoke();
@@ -159,7 +166,7 @@ public static class EscMenuValidation
                 Require(!replacement.IsOpen && Mathf.Approximately(Time.timeScale, 0.35f), "Scene replacement input fired more than once or failed to restore time.");
                 Require(UnityEngine.Object.FindObjectsByType<EventSystem>().Length == 1, "Runtime EventSystem duplicated.");
                 AudioListener.volume = initialVolume; Time.timeScale = 1;
-                File.WriteAllText(Path.Combine(Output, "EscMenuValidation.txt"), "PASS: initially inactive ESC root awakened by real Input System input; single global manager; idempotent registration; generic inactive panel input/open/close/toggle; hide-while-paused restoration; manager disable/re-enable; real scene replacement/rebinding; singleton duplicate prevention; independent prefab, settings, audio, quit confirmation, pointer raycast, English Glass TTY font, background sprite, 16:9 and 4:3 previews.");
+                File.WriteAllText(Path.Combine(Output, "EscMenuValidation.txt"), "PASS: initially inactive ESC root awakened by real Input System input; single global manager; idempotent registration; generic inactive panel input/open/close/toggle; hide-while-paused restoration; manager disable/re-enable; real scene replacement/rebinding; singleton duplicate prevention; independent prefab, settings, EN/Chinese switching, audio reset, quit confirmation, pointer raycast, Glass TTY font, background sprite, 16:9 and 4:3 previews.");
                 SessionState.SetBool(RunKey, false); Debug.Log("ESC_MENU_VALIDATION_OK"); EditorApplication.Exit(0);
             }
             catch (Exception error) { AudioListener.volume = initialVolume; Time.timeScale = 1; Fail(error); }

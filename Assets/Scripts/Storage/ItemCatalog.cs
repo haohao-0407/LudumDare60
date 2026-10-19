@@ -12,14 +12,34 @@ namespace LudumDare60.Storage
         public sealed class Entry
         {
             [SerializeField] private string itemId = "item";
-            [SerializeField] private string displayName = "Item";
-            [SerializeField, TextArea(2, 4)] private string description = string.Empty;
+            [SerializeField, Tooltip("英文/默认名称")] private string displayName = "Item";
+            [SerializeField, Tooltip("中文名称。留空则回退到英文")] private string displayNameZh = string.Empty;
+            [SerializeField, TextArea(2, 4), Tooltip("英文/默认描述")] private string description = string.Empty;
+            [SerializeField, TextArea(2, 4), Tooltip("中文描述。留空则回退到英文")] private string descriptionZh = string.Empty;
             [SerializeField] private Sprite icon;
 
             public string ItemId => itemId;
             public string DisplayName => displayName;
+            public string DisplayNameZh => displayNameZh;
             public string Description => description;
+            public string DescriptionZh => descriptionZh;
             public Sprite Icon => icon;
+
+            // 加语言就在这两处各加一列（并在 LocalizationManager 的语言表里登记）。
+            public string DisplayNameFor(string language)
+                => PickLocalized(displayName, displayNameZh, language);
+
+            public string DescriptionFor(string language)
+                => PickLocalized(description, descriptionZh, language);
+        }
+
+        private static string PickLocalized(string english, string chinese, string language)
+        {
+            bool wantChinese = !string.IsNullOrEmpty(language)
+                && language.StartsWith("zh", StringComparison.OrdinalIgnoreCase);
+            if (wantChinese && !string.IsNullOrWhiteSpace(chinese)) return chinese;
+            if (!string.IsNullOrWhiteSpace(english)) return english;
+            return chinese;
         }
 
         [SerializeField] private List<Entry> items = new List<Entry>();
@@ -42,12 +62,14 @@ namespace LudumDare60.Storage
         /// <summary>Falls back to the raw ID so missing catalog entries never produce empty UI text.</summary>
         public string GetDisplayName(string itemId)
         {
-            if (!TryGetEntry(itemId, out var entry) || string.IsNullOrWhiteSpace(entry.DisplayName)) return itemId;
-            return entry.DisplayName;
+            if (!TryGetEntry(itemId, out var entry)) return itemId;
+            var name = entry.DisplayNameFor(Pioneer60.Localization.Loc.Language);
+            return string.IsNullOrWhiteSpace(name) ? itemId : name;
         }
 
         public Sprite GetIcon(string itemId) => TryGetEntry(itemId, out var entry) ? entry.Icon : null;
 
-        public string GetDescription(string itemId) => TryGetEntry(itemId, out var entry) ? entry.Description : string.Empty;
+        public string GetDescription(string itemId)
+            => TryGetEntry(itemId, out var entry) ? entry.DescriptionFor(Pioneer60.Localization.Loc.Language) : string.Empty;
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -335,7 +336,7 @@ namespace LudumDare60.UI
 
             if (w.StatusLabel != null)
             {
-                w.StatusLabel.text = LabelFor(states[index]);
+                w.StatusLabel.text = Pioneer60.Localization.Loc.Say(LabelFor(states[index]));
                 w.StatusLabel.color = tint;
             }
 

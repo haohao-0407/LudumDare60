@@ -35,6 +35,21 @@ namespace LudumDare60.TerminalDialogue
         /// <summary>Accepted input at click time; normal authored events still wait for player typing.</summary>
         public event Action<string, string> ChoiceAccepted;
 
+        private void OnEnable()
+        {
+            Pioneer60.Localization.Loc.LanguageChanged += HandleLanguageChanged;
+        }
+
+        /// <summary>中途切换语言：不重置进度，只把已经显示的和还没播的台词换成新语言。</summary>
+        private void HandleLanguageChanged(string code)
+        {
+            if (session == null) return;
+            session.Relocalize(
+                LudumDare60.Localization.TerminalDialogueLocalizer.Localize(conversation != null ? conversation.Graph : null),
+                Pioneer60.Localization.Loc.Say);
+            Publish();
+        }
+
         private void Start()
         {
             if (startAutomatically && session == null) Begin();
@@ -48,7 +63,11 @@ namespace LudumDare60.TerminalDialogue
             Publish();
         }
 
-        private void OnDisable() => Close();
+        private void OnDisable()
+        {
+            Pioneer60.Localization.Loc.LanguageChanged -= HandleLanguageChanged;
+            Close();
+        }
 
         public void Configure(TerminalDialogueDefinition definition) => conversation = definition;
 
@@ -61,7 +80,7 @@ namespace LudumDare60.TerminalDialogue
                 return;
             }
             TerminalDialogueSession next;
-            try { next = new TerminalDialogueSession(conversation.Graph, historyLimit); }
+            try { next = new TerminalDialogueSession(LudumDare60.Localization.TerminalDialogueLocalizer.Localize(conversation.Graph), historyLimit); }
             catch (ArgumentException exception) { Debug.LogError(exception.Message, conversation); return; }
             var wasOpen = session != null && session.IsOpen;
             session = next;
@@ -108,7 +127,7 @@ namespace LudumDare60.TerminalDialogue
         public void SetFlag(string key, bool value) { session?.SetFlag(key, value); Publish(); }
         public void SetFlagTrue(string key) => SetFlag(key, true);
         public void SetFlagFalse(string key) => SetFlag(key, false);
-        public void PostSystemMessage(string text) { session?.PostSystemMessage(text); Publish(); }
+        public void PostSystemMessage(string text) { session?.PostSystemMessage(Pioneer60.Localization.Loc.Say(text)); Publish(); }
 
         private void Publish()
         {

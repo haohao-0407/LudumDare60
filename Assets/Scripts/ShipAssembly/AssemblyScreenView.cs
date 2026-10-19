@@ -1,6 +1,7 @@
 using System.Text;
 using LudumDare60.Storage;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ namespace LudumDare60.ShipAssembly
             if (DetachButton != null) DetachButton.onClick.AddListener(DetachModule);
             Subscribe();
             Refresh();
+            Loc.LanguageChanged += HandleLanguageChanged;
         }
 
         private void OnDisable()
@@ -39,9 +41,12 @@ namespace LudumDare60.ShipAssembly
             if (NextButton != null) NextButton.onClick.RemoveListener(NextRecipe);
             if (ResetButton != null) ResetButton.onClick.RemoveListener(ResetPuzzle);
             if (DetachButton != null) DetachButton.onClick.RemoveListener(DetachModule);
+            Loc.LanguageChanged -= HandleLanguageChanged;
             Unsubscribe();
             if (Controller != null) Controller.SetFocused(false);
         }
+
+        private void HandleLanguageChanged(string code) => Refresh();
 
         private void LateUpdate()
         {
@@ -122,6 +127,7 @@ namespace LudumDare60.ShipAssembly
                 : Controller.InputEnabled
                     ? "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n" + selectionKeys + "   X DETACH   R RESET   ESC PAUSE"
                     : "CLICK PUZZLE TO OPERATE  /  RIGHT MOUSE TO LOOK\nPROGRESS IS KEPT WHEN YOU SWITCH SCREENS");
+            Pioneer60.Localization.LocAutoTranslate.Refresh(gameObject);
         }
 
         private void StartOrResume()

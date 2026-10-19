@@ -1,0 +1,7908 @@
+{
+  "schemaVersion": 1,
+  "defaultLanguage": "en",
+  "fallbackLanguage": "en",
+  "missingKeyFormat": "⟦{key}⟧",
+  "languages": [
+    {
+      "code": "en",
+      "displayName": "English",
+      "shortLabel": "EN"
+    },
+    {
+      "code": "zh-Hans",
+      "displayName": "简体中文",
+      "shortLabel": "中文"
+    }
+  ],
+  "entries": [
+    {
+      "key": "speaker.player",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Pioneer-60:"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "Pioneer-60："
+        }
+      ]
+    },
+    {
+      "key": "speaker.colony_signal",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "COLONY SIGNAL:"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "殖民地信号："
+        }
+      ]
+    },
+    {
+      "key": "speaker.ai",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "AI:"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "AI："
+        }
+      ]
+    },
+    {
+      "key": "speaker.earth",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "[EARTH]"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "[地球]"
+        }
+      ]
+    },
+    {
+      "key": "speaker.colony",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "[COLONY]"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "[殖民地]"
+        }
+      ]
+    },
+    {
+      "key": "speaker.system",
+      "category": "speaker",
+      "speaker": "",
+      "note": "日志规则：中英均用 [SYSTEM]",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "[SYSTEM]"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "[SYSTEM]"
+        }
+      ]
+    },
+    {
+      "key": "speaker.narration",
+      "category": "speaker",
+      "speaker": "",
+      "note": "旁白无标签",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ""
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "key": "log.title",
+      "category": "log",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PIONEER-60 FLIGHT LOG"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "PIONEER-60 飞船日志"
+        }
+      ]
+    },
+    {
+      "key": "log.common.checkin",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This is {callsign}. On course. All onboard systems nominal. Please confirm contact."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这里是{callsign}。航向正常，船载系统运行正常。请求通信确认。"
+        }
+      ]
+    },
+    {
+      "key": "log.d1.earth.copy",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy. Continue on your planned course."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。继续按计划航行。"
+        }
+      ]
+    },
+    {
+      "key": "log.d1.colony.copy",
+      "category": "log",
+      "speaker": "colony",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy. Reading you loud and clear."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。通信清晰。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.earth.copy",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.sys.await",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Awaiting colony response..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "等待殖民地回复……"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.sys.timeout",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Response timed out."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "应答超时。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.player.hail",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{callsign} to colony. Do you read?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{callsign} 呼叫殖民地。收到请回复。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.player.ask_earth",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Earth Control, no response from the colony. Should I continue the mission?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地球联络部，殖民地没有回应。是否继续任务？"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.earth.continue",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Continue the mission. Maintain your current course and keep trying to establish contact."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续任务。保持当前航向，继续尝试联络。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx.player.copy",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.player.status",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This is {callsign}. On course. Still no response from the colony. Please confirm whether I should continue the mission."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这里是{callsign}。航向正常。殖民地仍未回应，请确认是否继续任务。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.earth.copy_hail",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy. Try hailing the colony again."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。请再次尝试呼叫殖民地。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.player.hail_repeat",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{callsign} to colony. Do you read? I repeat, do you read?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{callsign} 呼叫殖民地。收到请回复。重复，收到请回复。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.sys.weak_signal",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Weak signal detected."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "检测到微弱信号。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.colony.who",
+      "category": "log",
+      "speaker": "colony",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "...Who... are you?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "……你是……谁？"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.player.identify",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This is {callsign}, en route to the colony as scheduled. Report your situation."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这里是{callsign}，正按计划前往殖民地。请报告你们的情况。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.colony.accident",
+      "category": "log",
+      "speaker": "colony",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "There's been... an accident... Everyone... only..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这里……出了意外……所有人都……只剩……"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.sys.distorted",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Signal distorted. Audio partially unintelligible."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "信号失真。部分语音无法辨识。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.player.say_again",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "What happened to everyone? Say again."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你说所有人怎么了？请重复。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.sys.no_response",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "No intelligible response."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "未收到清晰回应。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.earth.mission_changed",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{callsign}, your mission has changed. Land near the colony and investigate the incident."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{callsign}，任务变更。你需要在殖民地附近着陆，调查事故情况。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.earth.supplies",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Take all emergency supplies. Once you've landed, prioritize restoring communications with Earth."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "带齐应急物资。着陆后，优先恢复与地球的通信。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.earth.window_warning",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Your return window is limited. Allow enough time for departure. We cannot guarantee a rescue after that window closes."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返航窗口有限。务必预留返航时间，我们无法保证窗口关闭后的救援。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.earth.stay_safe",
+      "category": "log",
+      "speaker": "earth",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Stay safe."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "注意安全。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.player.mars_orbit",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy. Expecting Mars orbit in {hours} hours. Beginning landing preparations."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。预计 {hours} 小时后进入火星轨道，开始准备着陆。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.player.need_calibration",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Colony, if you can hear me, I need calibration data for the landing zone."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "殖民地，如果你能听见，我需要着陆区的校准数据。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx1.colony.try_help",
+      "category": "log",
+      "speaker": "colony",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "...I'll... try to... help you..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "……我会……试着……帮助你……"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.player.check_data",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Check the landing data."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "检查着陆数据。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.descent",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Descent underway. No time remains to wait for calibration data."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已进入下降阶段。无法继续等待校准数据。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.await_final",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Awaiting the final set of terrain calibration data."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "等待最后一组地形校准数据。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.transfer_interrupted",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Data transfer interrupted."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "数据传输中断。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.player.resend",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{callsign} to colony. Data transfer interrupted. Please resend the final set of calibration data."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{callsign} 呼叫殖民地。数据传输中断，请重新发送最后一组校准数据。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.colony.damaged",
+      "category": "log",
+      "speaker": "colony",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "...Communications equipment... damaged... signal..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "……通信设备……受损……信号……"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.player.need_data",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I need that data to confirm the landing site. Try again. Send whatever you can."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我需要这些数据确认着陆点。请再试一次，先把能发送的部分传过来。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.colony.retrying",
+      "category": "log",
+      "speaker": "colony",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "...Retrying..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "……正在……重试……"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.resuming",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Resuming data transfer..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "正在重新接收数据……"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.unstable",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Connection unstable. Terrain calibration data incomplete."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "连接不稳定。地形校准数据不完整。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.player.confirm_landing",
+      "category": "log",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Confirm the final landing sequence."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "确认最终着陆程序。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.landing_confirmed",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Final landing sequence confirmed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最终着陆程序已确认。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.landing_complete",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Landing complete. Location: near the colony."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "着陆完成。位置：殖民地附近。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.damage",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Damage assessment: severe structural damage to the landing craft."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "损伤检测：舱体严重受损。"
+        }
+      ]
+    },
+    {
+      "key": "log.dx2.sys.end_of_log",
+      "category": "log",
+      "speaker": "system",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "End of log."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "日志结束。"
+        }
+      ]
+    },
+    {
+      "key": "ui.log.end_of_log",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "END OF LOG"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "日志结束"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.rescue",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This is Pioneer-60. Something went wrong during landing. I'm trapped in the lander. I need rescue!"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这里是 Pioneer-60。着陆出了意外，我被困在着陆舱里了，需要救援！"
+        }
+      ]
+    },
+    {
+      "key": "dlg.colony.hello",
+      "category": "dialogue",
+      "speaker": "colony_signal",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Hello. How may I help you?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "您好，有什么可以帮您的吗？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.who",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Wait. Who are you? What happened to the colony? Why did communications go down?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "等等，你是谁？殖民地出了什么事？通信为什么中断了？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.colony.identity.p1",
+      "category": "dialogue",
+      "speaker": "colony_signal",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I am the colony's AI assistant. A serious accident occurred at the colony. All registered personnel have died."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我是殖民地的 AI 助手。殖民地发生了严重事故，所有登记人员均已丧生。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.colony.identity.p2",
+      "category": "dialogue",
+      "speaker": "colony_signal",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I tried to respond to your transmissions two days ago, but the communications console was designed for human operation only. Bypassing its restrictions and taking control took some time. I also appear to have accidentally burned out some communications components in the process, causing the unstable connection."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "两天前，我曾尝试回应您的通信，但通信控制台仅允许人类操作。我花了一些时间绕过限制并接管系统。在此过程中，我似乎还意外烧坏了一些通信元件，导致连接不稳定。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.colony.identity.p3",
+      "category": "dialogue",
+      "speaker": "colony_signal",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I have granted your device full access to the colony's systems. You can now control all colony facilities through your terminal. I will assist you however I can."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我已向您的设备开放殖民地系统的全部权限。您现在可以通过终端控制所有殖民地设施，我会尽力提供协助。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.return_mission",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "How could this have happened? Now that I know the situation, I need to begin the return mission. You're the AI assistant recovered from the ancient ruins, right? Can you assess my situation and find a solution?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "怎么会这样？既然已经了解情况，我需要开始返航任务。你应该就是从古代遗迹里发现的 AI 助手，对吧？能分析一下我目前的情况，找出解决办法吗？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.damage_report",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I've detected severe damage to your ship. I'm afraid it cannot simply take off and return home, but I can help you repair it. Some facilities aboard the space station are still operational."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我检测到你的飞船损坏严重，恐怕无法直接起飞返航。但我可以帮你修复，空间站内仍有一些可用设施。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.window_question",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Earth Control said our return window was limited. How much time do we have?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地球联络部说我们的返航窗口有限。我们还有多少时间？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.window_dates",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Today is 25 August 1981. The navigation archive lists 3 to 13 September as the planned Mars-to-Earth departure period."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "今天是 1981 年 8 月 25 日。导航档案中登记的、计划中的火星—地球出发时段是 9 月 3 日至 13 日。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.why_those_dates",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Why those dates? Can't we just leave when the repairs are done?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "为什么非得是那几天？不能修好就走吗？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.fuel_p1",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I will explain it in the plainest, most direct terms possible. Repairs can make the ship work again. They cannot replace the fuel we have lost. With our remaining fuel margin, this low-energy return plan is our only viable option for this departure period."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我会用最直白、最不绕弯子的话解释。修复能让飞船重新运转，但补不回已经损失掉的燃料。以我们剩下的燃料余量，这个低能耗返航方案是本次出发时段唯一可行的选择。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.fuel_p2",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "After the cutoff calculated for this ship, the required trajectory adjustments would exceed the margin I can safely commit. Firing the engine is not the same as getting home."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "一旦超过按这艘飞船算出的截止时刻，所需的轨道调整量就会超出我能安全动用的余量。点燃引擎，并不等于回得了家。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.next_chance",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Then when is the next chance?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那下一次机会是什么时候？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.next_plan",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The next return plan listed in the archive is dated 9 to 19 November 1983. That is about two years and two months after this window. It is a reference for replanning, not a guarantee. We would have to reassess whether this damaged ship could use it."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "档案里登记的下一个返航方案是 1983 年 11 月 9 日至 19 日。那大约是这个窗口之后两年零两个月。它只是重新规划时的参考，不是保证。还得重新评估这艘受损的飞船能不能用上它。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.supplies_limit",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Your emergency supplies will not last that long. Earth has also told us that rescue cannot be guaranteed after this window closes. If we stay, we will have to restore the colony's life support, water recycling and food production."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你的应急物资撑不到那时候。地球也说过，窗口关闭后无法保证救援。如果留下来，我们就得恢复殖民地的生命维持、水循环和食物生产。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.make_window",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Then let's make this window. Tell me what needs fixing."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那就抓住这个窗口。告诉我该修什么。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.repair_request",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assess the damage to the ship and put together a repair plan. Help me repair it so I can return to Earth."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "帮我评估飞船的损坏情况，制定修复计划。帮我修好它，让我回到地球。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.objective_received",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Understood. Objective received. I will explain everything in the plainest, most direct terms possible. I have taken control of your ship's information systems and am preparing a repair plan."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "明白，任务目标已接收。我会用最直白、最直接的方式解释一切。我已接管你飞船的信息系统，正在制定修复计划。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.repair_order",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "First, repair the power unit to restore full power to the ship, along with the interstellar navigation system. Then repair the propulsion engine, and finally the life support system."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "首先修复能源装置，恢复飞船的全部供电，以及修复星际导航系统。然后修复推进引擎，最后修复生命维持系统。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.calendar_plan",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I have put the repair plan on the calendar beside your seat. It runs from 25 August to 13 September: twenty dates. Power, navigation, propulsion, life support. The sequence has not changed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我已经把修复计划放在你座位旁边的日历上。从 8 月 25 日到 9 月 13 日，一共二十格日期。能源、导航、推进、生命维持，顺序没有变。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.why_circled",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Why is 13 September circled?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "9 月 13 日为什么被圈出来了？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.deadline_explain",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "That is the deadline. When each day ends, I will cross out its date in red. There is only one circle. It marks the last day."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那是截止日。每过完一天，我会用红笔把对应的日期划掉。整张日历只有一个圈，它标的是最后一天。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.timer_explain",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The amber instrument beside it is labeled LATEST DEPARTURE. It counts down to the last moment you can authorize departure. The allowance for surface ascent and reaching orbit is already included. You do not need to calculate it separately."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "旁边那台琥珀色的仪表标着 LATEST DEPARTURE。它倒数的是你能授权启航的最后时刻。地表上升和进入轨道的预留量已经算进去了，你不用自己再算。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.finish_early",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "What if I finish early?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "要是我提前修完了呢？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.early_launch",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "We can launch early and enter a waiting orbit, then perform the Earth-return burn during the planned window. You do not have to sit here until the last day."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "可以提前发射，进入等待轨道，然后在计划窗口内做地球返航点火。你不必在这儿干等到最后一天。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.must_select_launch",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Once repairs are complete, you must still select Launch yourself. Your authorization must reach me before the countdown reaches zero."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复完成后，启航仍然必须由你自己选。你的授权要在倒计时归零之前送到我这儿。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.collect_hint",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "You can now send out the Mars rover to continue collecting materials. I will explain how. Enter \"collect\" in the terminal."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你现在可以派出火星车，继续采集材料。我会说明如何操作。请在终端输入“collect”。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.repair_power_compartment",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I will explain everything in the plainest, most direct terms possible. You can now repair the power compartment."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我会用最直白、最直接的方式解释一切。你现在可以修复能源舱了。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.old_ai",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Why do you talk like some old AI from the early twenty-first century? Was that some strange quirk of your creator's? It's unsettling, especially when your appearance is actually quite well designed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你怎么说起话来像二十一世纪初的某种老式 AI？这是你创造者的什么怪癖吗？真诡异，明明你的外貌设计还挺不错的。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.old_tech",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "What do you know? It's called old tech."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你懂什么？这叫 old tech。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.player.old_tech_reply",
+      "category": "dialogue",
+      "speaker": "player",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Yeah, very old tech. Only an AI dug out of ancient ruins would talk like that. Anyway, how do I start the repairs?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "是啊，确实很 old tech。只有从古代遗迹里挖出来的 AI 才会这么说话。好了，我该怎么开始修复？"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.inventory_instructions.p1",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Enter \"inventory\" to check your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "输入“inventory”查看库存。修复能源装置需要：轧制机电合金板 6 个、镀锡铜导线与绕组铜材 4 个、精密传动齿轮坯 2 个、耐热绝缘陶瓷件 7 个、硫化气密橡胶衬料 3 个。"
+        }
+      ]
+    },
+    {
+      "key": "dlg.ai.inventory_instructions.p2",
+      "category": "dialogue",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Once you have everything, enter \"assemble\" to begin. If you forget a command, enter \"help\" to see the list."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料齐全后，输入“assemble”开始。忘记指令时，输入“help”查看列表。"
+        }
+      ]
+    },
+    {
+      "key": "sys.notice.compress",
+      "category": "system",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Twenty Earth-standard days are compressed into twenty minutes of active work. Story reading pauses the mission clock and all work. Salvage, repairs and ordinary status queries consume time."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "二十个地球标准日压缩为二十分钟的有效操作时间。剧情阅读期间，任务计时与所有作业都会暂停；回收、维修与普通状态查询会消耗时间。"
+        }
+      ]
+    },
+    {
+      "key": "sys.notice.clock_start",
+      "category": "system",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The clock will start when you select BEGIN REPAIRS after this briefing."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "计时会在简报结束后、你选择 BEGIN REPAIRS 时启动。"
+        }
+      ]
+    },
+    {
+      "key": "sys.mission_started",
+      "category": "system",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MISSION STARTED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务开始。"
+        }
+      ]
+    },
+    {
+      "key": "sys.current_date",
+      "category": "system",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CURRENT DATE: {date}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "当前日期：{date}"
+        }
+      ]
+    },
+    {
+      "key": "sys.last_departure_date",
+      "category": "system",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LAST DEPARTURE DATE: {date}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最晚启航日期：{date}"
+        }
+      ]
+    },
+    {
+      "key": "sys.return_period_archived",
+      "category": "system",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Return reference period archived: 03-13 SEP 1981. Surface ascent and orbital preparation allowances will be assessed after landing."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返航参考时段已归档：1981 年 9 月 3 日至 13 日。地表上升与入轨的预留量将在着陆后评估。"
+        }
+      ]
+    },
+    {
+      "key": "upd.half",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Half of our departure preparation time has passed. The calendar has been updated."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "出发准备时间已经过半。日历已更新。"
+        }
+      ]
+    },
+    {
+      "key": "upd.quarter",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Only one quarter of our original preparation time remains before the departure cutoff."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "距离最晚启航时刻，最初准备时间只剩四分之一。"
+        }
+      ]
+    },
+    {
+      "key": "upd.tenth",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Final time warning. One tenth of our original preparation time remains."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最后的时间警告。最初准备时间只剩十分之一。"
+        }
+      ]
+    },
+    {
+      "key": "upd.step.power",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The power unit is still awaiting repair. Check your inventory, then prepare the assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源装置仍未修复。检查仓库，然后准备组装。"
+        }
+      ]
+    },
+    {
+      "key": "upd.step.navigation",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The interstellar navigation system is next. Check your inventory, then prepare the assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "接下来是星际导航系统。检查仓库，然后准备组装。"
+        }
+      ]
+    },
+    {
+      "key": "upd.step.propulsion",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The propulsion engine is next. Check your inventory, then prepare the assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "接下来是推进引擎。检查仓库，然后准备组装。"
+        }
+      ]
+    },
+    {
+      "key": "upd.step.life_support",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The life support system is next. Check your inventory, then prepare the assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "接下来是生命维持装置。检查仓库，然后准备组装。"
+        }
+      ]
+    },
+    {
+      "key": "upd.short_materials",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "You are still short of materials. Check the remaining requirements in your inventory before sending out the rover."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料还不够。先看看仓库里还差什么，再派出火星车。"
+        }
+      ]
+    },
+    {
+      "key": "upd.ready_to_assemble",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "You have the required materials. Complete the current assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料已经齐了。完成当前的组装。"
+        }
+      ]
+    },
+    {
+      "key": "upd.not_all_checked",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Some systems have not passed their checks. I will keep helping, but I cannot move the deadline."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "还有系统没有通过检查。我会继续帮忙，但截止日我挪不动。"
+        }
+      ]
+    },
+    {
+      "key": "upd.all_passed",
+      "category": "update",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "All four systems have passed their checks. Return to the terminal and select Launch. We can still leave."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "四套系统全部通过检查。回到终端，选择启航。我们还来得及走。"
+        }
+      ]
+    },
+    {
+      "key": "eng.p1",
+      "category": "engine_test",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Sorry. I just tested the engine. I wasn't expecting it to be so powerful. I hope I didn't startle you. I've also adjusted the ship's attitude for flight. Once repairs are complete, you can start it up."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "抱歉，我刚测试了一下引擎，没想到它这么强劲。希望没有吓到你。我也已经把飞船调整到可飞行姿态。修复完成后，就可以启动它了。"
+        }
+      ]
+    },
+    {
+      "key": "eng.p2",
+      "category": "engine_test",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "That was only a test. We have not launched. The deadline on the calendar still applies."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那只是试车。我们没有发射。日历上的截止日仍然有效。"
+        }
+      ]
+    },
+    {
+      "key": "dep.dest_earth",
+      "category": "departure",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Destination: Earth"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目的地：地球"
+        }
+      ]
+    },
+    {
+      "key": "dep.unable_damaged",
+      "category": "departure",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Unable to launch: ship damaged."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "无法启航：飞船受损。"
+        }
+      ]
+    },
+    {
+      "key": "dep.ready",
+      "category": "departure",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ready to launch."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "可以启航。"
+        }
+      ]
+    },
+    {
+      "key": "dep.unable_window_closed",
+      "category": "departure",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Unable to launch: departure window closed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "无法启航：返航窗口已关闭。"
+        }
+      ]
+    },
+    {
+      "key": "dep.ai.farewell",
+      "category": "departure",
+      "speaker": "ai",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The ship is fully repaired. You can now return home. I won't miss you. Goodbye."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞船已全部修复。你现在可以返航了。我不会想念你的。再见。"
+        }
+      ]
+    },
+    {
+      "key": "dep.player.begin_launch",
+      "category": "departure",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Begin launch."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始启航。"
+        }
+      ]
+    },
+    {
+      "key": "home.sys.accepted",
+      "category": "ending",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE AUTHORIZATION ACCEPTED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航授权已接受。"
+        }
+      ]
+    },
+    {
+      "key": "home.sys.plan_locked",
+      "category": "ending",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RETURN PLAN LOCKED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返航方案已锁定。"
+        }
+      ]
+    },
+    {
+      "key": "home.sys.countdown_stopped",
+      "category": "ending",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MISSION COUNTDOWN STOPPED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务倒计时已停止。"
+        }
+      ]
+    },
+    {
+      "key": "home.narr.liftoff",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The ship lifts away from the surface. The colony and its broken transmissions slowly fall behind you."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞船升离地表。殖民地和它断断续续的通信，在你身后缓缓退去。"
+        }
+      ]
+    },
+    {
+      "key": "home.narr.waiting_orbit",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "You reach the waiting orbit. When the planned return window arrives, the Earth-return burn begins."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你进入等待轨道。等到计划中的返航窗口，地球返航点火开始。"
+        }
+      ]
+    },
+    {
+      "key": "home.narr.climb_orbit",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The ship climbs from the surface into orbit. Within the planned return window, the Earth-return burn begins."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞船从地表升入轨道。在计划中的返航窗口内，地球返航点火开始。"
+        }
+      ]
+    },
+    {
+      "key": "home.narr.far_away",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Earth is still far away. You do not know what you will find when you get there."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地球仍然很远。你不知道到那里会看到什么。"
+        }
+      ]
+    },
+    {
+      "key": "home.narr.going_home",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "But you are finally on your way home."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "但你终于踏上了回家的路。"
+        }
+      ]
+    },
+    {
+      "key": "alt.sys.window_closed",
+      "category": "ending",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "WINDOW CLOSED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "窗口已关闭。"
+        }
+      ]
+    },
+    {
+      "key": "alt.sys.deadline_exceeded",
+      "category": "ending",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE AUTHORIZATION DEADLINE EXCEEDED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航授权已超期。"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.window_gone",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The window has closed. We cannot make this departure."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "窗口关闭了。这一次我们走不了。"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.check_again",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Check again. Is there another route?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "再查一遍。还有别的路线吗？"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.no_route",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I have checked. With the ship in its present condition and the fuel we have left, I cannot give you an alternative route we can safely fly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "查过了。以飞船现在的状态和我们剩下的燃料，我给不出能安全飞行的替代路线。"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.wait_next",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Then we wait for the next one."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那就等下一次。"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.next_1983",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The next return plan in the archive is in November 1983. That means more than two years of waiting, and the ship would need to be reassessed. Your emergency supplies will not last that long."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "档案里的下一个返航方案在 1983 年 11 月。那意味着两年多的等待，而且飞船还得重新评估。你的应急物资撑不了那么久。"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.earth_send",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Can Earth send someone?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地球能派人来吗？"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.no_rescue",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "We will keep trying to restore contact. But in their last transmission, they said they could not guarantee rescue after the window closed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我们会继续尝试恢复通信。但在最后一次通信里，他们说过窗口关闭后无法保证救援。"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.what_now",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "...Then what do we do now?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "……那我们现在怎么办？"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.stay_alive",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I will explain it in the plainest, most direct terms possible. Your first priority now is to stay alive until we can try to leave again."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我会用最直白、最不绕弯子的话说清楚。你现在最优先的事，是活到我们能再次尝试离开。"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.give_plan",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "That part I understand. Give me the plan."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这个我懂。把计划给我。"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.plan_air_power",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "First, check the lander's air supply and power. Then restore whatever water recycling equipment we can use in the colony. Until then, we will keep you alive with the facilities that still work."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "先检查着陆舱的空气供应和电力。然后恢复殖民地里还能用的水循环设备。在那之前，我们靠还能运转的设施维持你的生命。"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.plan_greenhouse",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "After that, repair the greenhouse and check the seed reserves. Emergency rations are not enough. We need to start producing food."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "之后修复温室，检查种子储备。应急口粮不够，我们必须开始生产食物。"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.ship_to_growing",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "From repairing a ship to growing things."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "从修飞船，变成种东西。"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.objective_intact",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The original objective has not been canceled. We just need a different schedule first."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最初的任务目标并没有取消。我们只是得先换一份日程。"
+        }
+      ]
+    },
+    {
+      "key": "alt.sys.date_sow",
+      "category": "ending",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "14 SEP 1981 / SOW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "1981 年 9 月 14 日 / 播种"
+        }
+      ]
+    },
+    {
+      "key": "alt.player.tomorrow",
+      "category": "ending",
+      "speaker": "player",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Then tell me what we do first tomorrow."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那就告诉我，明天先做什么。"
+        }
+      ]
+    },
+    {
+      "key": "alt.ai.greenhouse_water",
+      "category": "ending",
+      "speaker": "ai",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Check the greenhouse water supply. If it is usable, prepare to sow."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "检查温室的供水。如果还能用，就准备播种。"
+        }
+      ]
+    },
+    {
+      "key": "alt.narr.empty_colony",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Outside, the colony is still empty."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "外面，殖民地依然空无一人。"
+        }
+      ]
+    },
+    {
+      "key": "alt.narr.first_seed",
+      "category": "ending",
+      "speaker": "narration",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Tomorrow, you will prepare to plant the first seed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "明天，你将准备种下第一粒种子。"
+        }
+      ]
+    },
+    {
+      "key": "cal.standard",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "EARTH STANDARD / MM/DD"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地球标准 / 月/日"
+        }
+      ]
+    },
+    {
+      "key": "cal.phase_before_departure",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BEFORE DEPARTURE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "出发前"
+        }
+      ]
+    },
+    {
+      "key": "cal.system.power",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "POWER UNIT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源装置"
+        }
+      ]
+    },
+    {
+      "key": "cal.system.navigation",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "INTERSTELLAR NAVIGATION SYSTEM"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "星际导航系统"
+        }
+      ]
+    },
+    {
+      "key": "cal.system.propulsion",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROPULSION ENGINE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "推进引擎"
+        }
+      ]
+    },
+    {
+      "key": "cal.system.life_support",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LIFE SUPPORT SYSTEM"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "生命维持系统"
+        }
+      ]
+    },
+    {
+      "key": "cal.latest_departure",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LATEST DEPARTURE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最晚启航"
+        }
+      ]
+    },
+    {
+      "key": "cal.unit.days",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DAYS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "天"
+        }
+      ]
+    },
+    {
+      "key": "cal.unit.hours",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "HOURS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "小时"
+        }
+      ]
+    },
+    {
+      "key": "cal.unit.minutes",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MINUTES"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "分"
+        }
+      ]
+    },
+    {
+      "key": "cal.state.locked",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE LOCKED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航已锁定"
+        }
+      ]
+    },
+    {
+      "key": "cal.state.window_closed",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "WINDOW CLOSED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "窗口已关闭"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.mission_updates",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MISSION UPDATES"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务更新"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.engine_test",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ENGINE TEST"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "引擎测试"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.departure_status",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE STATUS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航状态"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.the_way_home",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "THE WAY HOME"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回家的路"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.another_tomorrow",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ANOTHER TOMORROW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "另一个明天"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.mission_calendar",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MISSION CALENDAR"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务日历"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.salvageable_items",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SALVAGEABLE ITEMS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "可回收物品"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.materials",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MATERIALS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料"
+        }
+      ]
+    },
+    {
+      "key": "ui.section.repair_requirements",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR REQUIREMENTS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复需求"
+        }
+      ]
+    },
+    {
+      "key": "ui.field.description",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Description:"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "物品描述："
+        }
+      ]
+    },
+    {
+      "key": "ui.field.dismantle_yields",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Dismantling yields:"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "拆解产出："
+        }
+      ]
+    },
+    {
+      "key": "ui.button.launch",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Launch"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航"
+        }
+      ]
+    },
+    {
+      "key": "ui.button.begin_repairs",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BEGIN REPAIRS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始修复"
+        }
+      ]
+    },
+    {
+      "key": "ui.language.title",
+      "category": "ui",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LANGUAGE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "语言"
+        }
+      ]
+    },
+    {
+      "key": "item.panel.name",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Discarded Electromechanical Instrument Panel"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "废弃机电仪表组"
+        }
+      ]
+    },
+    {
+      "key": "item.panel.desc",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "A bank of brass-rimmed analog gauges beneath a curved, dust-protective glass cover coated with space dust. Slender needles sit frozen against faded scales, with levers and tiny adjustment knobs protruding from the side. Aboard the colony ships of the old era, it served as the senses of an entire compartment, providing readings of pressure, energy flux, and temperature."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "一组带黄铜边框的模拟仪表，弧形防尘玻璃罩上蒙着宇宙尘埃。细长指针停在褪色刻度上，侧面伸出拨杆和微型调节旋钮。在旧时代的殖民飞船上，它是整座舱段的感官，提供压力、能量通量和温度读数。"
+        }
+      ]
+    },
+    {
+      "key": "item.radio.name",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Vacuum-Tube Radio Receiver"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "真空管广播接收机"
+        }
+      ]
+    },
+    {
+      "key": "item.radio.desc",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "A heavy cast-iron case houses several clear glass vacuum tubes behind its front grille. The tuning dial's etched markings are worn, and much of the speaker diaphragm is dry and cracked. It was once the sole communications link for a distant interstellar colony, receiving broadcasts from the homeworld across the void. After the old era ended, this receiver became a symbol of romance. Now, it is only good for salvaging the copper and insulating components inside."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "厚重的铸铁机箱里，几支透明玻璃真空管立在正面格栅后方。调谐转盘上的蚀刻刻度已经磨损，喇叭振膜大部分干燥开裂。它曾是遥远星际殖民地唯一的通信联系，接收母星跨越虚空传来的广播。旧时代结束后，这台接收机成了浪漫的象征。如今，它只适合拆取内部的铜材与绝缘件。"
+        }
+      ]
+    },
+    {
+      "key": "item.relay.name",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Electromechanical Relay Switching Unit"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "机电继电器交换单元"
+        }
+      ]
+    },
+    {
+      "key": "item.relay.desc",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "A boxy metal housing covered in scorch marks, densely packed with electromagnetic relays, copper terminals, and stepping dials. This was an ancient civilization's primitive logic center, opening and closing contacts to transmit signals and coordinate the compartment's electromechanical equipment. It could perform complex timing control without silicon chips. Remarkable."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "一个方形金属壳，外面布满灼痕，里面密集装着电磁继电器、铜质接线端子和步进拨轮。这是古文明的原始逻辑中枢，通过触点开合传递信号，协调舱内的机电设备。不用硅芯片，就能完成复杂的时序控制。真了不起。"
+        }
+      ]
+    },
+    {
+      "key": "item.manifold.name",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Old Compartment Fluid Manifold Assembly"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "旧舱段流体歧管总成"
+        }
+      ]
+    },
+    {
+      "key": "item.manifold.desc",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "A tangled cluster of metal pipes fitted with needle valves and corrugated pressure bellows. Hardened sealing gaskets still cling to its connections. It once carried oxygen, cooling water, and propellant, sustaining life within the compartment and keeping the engines running."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "一簇交错缠绕的金属管路，装有针阀和褶皱压力波纹管，接口上仍附着已经硬化的密封垫圈。它曾输送氧气、冷却水和推进剂，维持舱内生命与引擎运转。"
+        }
+      ]
+    },
+    {
+      "key": "item.sleeve.name",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Discarded Thermoelectric Insulation Sleeve"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "废弃热电隔热衬套"
+        }
+      ]
+    },
+    {
+      "key": "item.sleeve.desc",
+      "category": "item",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "A thick, heavy cast-iron outer cylinder lined with large slabs of grayish-white insulating ceramic. Aged rubber gaskets are pressed into its seams, and dark brown marks from scorching heat stain the surface. It once encased a thermoelectric power core, insulating the surrounding hull structure from its fearsome heat. This outer sleeve is safe and provides heat-resistant material essential for building a power unit."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "厚重的铸铁外筒内衬大块灰白色隔热陶瓷，老化的橡胶垫片压在接缝里，表面留有高温造成的深褐色灼痕。它曾包裹热电能源核心，隔绝可怕的高温，保护周围船体结构。这层外衬是安全的，提供建造能源装置所必需的耐热材料。"
+        }
+      ]
+    },
+    {
+      "key": "mat.alloy",
+      "category": "material",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Rolled Electromechanical Alloy Sheets"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "轧制机电合金板"
+        }
+      ]
+    },
+    {
+      "key": "mat.copper",
+      "category": "material",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Tinned Copper Wire & Windings"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "镀锡铜导线与绕组铜材"
+        }
+      ]
+    },
+    {
+      "key": "mat.gear",
+      "category": "material",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Precision Drive Gear Blanks"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "精密传动齿轮坯"
+        }
+      ]
+    },
+    {
+      "key": "mat.ceramic",
+      "category": "material",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Heat-Resistant Ceramic Insulators"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "耐热绝缘陶瓷件"
+        }
+      ]
+    },
+    {
+      "key": "mat.rubber",
+      "category": "material",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Vulcanized Airtight Rubber Liners"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "硫化气密橡胶衬料"
+        }
+      ]
+    },
+    {
+      "key": "mat.alloy.short",
+      "category": "material",
+      "speaker": "",
+      "note": "缩略名",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Alloy"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "合金"
+        }
+      ]
+    },
+    {
+      "key": "mat.copper.short",
+      "category": "material",
+      "speaker": "",
+      "note": "缩略名",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copper"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "铜"
+        }
+      ]
+    },
+    {
+      "key": "mat.gear.short",
+      "category": "material",
+      "speaker": "",
+      "note": "缩略名",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Gear"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "齿轮"
+        }
+      ]
+    },
+    {
+      "key": "mat.ceramic.short",
+      "category": "material",
+      "speaker": "",
+      "note": "缩略名",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ceramic"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "陶瓷"
+        }
+      ]
+    },
+    {
+      "key": "mat.rubber.short",
+      "category": "material",
+      "speaker": "",
+      "note": "缩略名",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Rubber"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "橡胶"
+        }
+      ]
+    },
+    {
+      "key": "repair.power_unit",
+      "category": "repair",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Power Unit"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源装置"
+        }
+      ]
+    },
+    {
+      "key": "repair.navigation",
+      "category": "repair",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Interstellar Navigation System"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "星际导航系统"
+        }
+      ]
+    },
+    {
+      "key": "repair.propulsion",
+      "category": "repair",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Propulsion Engine"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "推进引擎"
+        }
+      ]
+    },
+    {
+      "key": "repair.life_support",
+      "category": "repair",
+      "speaker": "",
+      "note": "原文/润色稿",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Life Support System"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "生命维持装置"
+        }
+      ]
+    },
+    {
+      "key": "esc.title.paused",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PAUSED / SHIP SYSTEMS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "暂停 / 舰船系统"
+        }
+      ]
+    },
+    {
+      "key": "esc.title.settings",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SETTINGS / SHIP SYSTEMS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "设置 / 舰船系统"
+        }
+      ]
+    },
+    {
+      "key": "esc.resume",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RESUME"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续"
+        }
+      ]
+    },
+    {
+      "key": "esc.settings",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SETTINGS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "设置"
+        }
+      ]
+    },
+    {
+      "key": "esc.quit",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "QUIT GAME"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "退出游戏"
+        }
+      ]
+    },
+    {
+      "key": "esc.back",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BACK"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回"
+        }
+      ]
+    },
+    {
+      "key": "esc.fullscreen",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "FULLSCREEN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "全屏"
+        }
+      ]
+    },
+    {
+      "key": "esc.reset_audio",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RESET AUDIO"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重置音频"
+        }
+      ]
+    },
+    {
+      "key": "esc.language",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LANGUAGE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "语言"
+        }
+      ]
+    },
+    {
+      "key": "esc.hint.paused",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SESSION PAUSED\n\nESC      RESUME\nENTER    SELECT\nARROWS   NAVIGATE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "会话已暂停\n\nESC      继续\nENTER    确认\n方向键   移动"
+        }
+      ]
+    },
+    {
+      "key": "esc.hint.settings",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DISPLAY / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "显示 / 语言\n\n用左右方向键\n切换界面语言。"
+        }
+      ]
+    },
+    {
+      "key": "esc.footer",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ESC / RESUME       SHIP OS / SYSTEM CONTROL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "ESC / 继续      舰船系统 / 系统控制"
+        }
+      ]
+    },
+    {
+      "key": "esc.quit.question",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "QUIT GAME?\n\nReturn to desktop?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "退出游戏？\n\n返回桌面？"
+        }
+      ]
+    },
+    {
+      "key": "esc.quit.cancel",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CANCEL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "取消"
+        }
+      ]
+    },
+    {
+      "key": "esc.quit.confirm",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "QUIT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "退出"
+        }
+      ]
+    },
+    {
+      "key": "cmd.help.title",
+      "category": "command",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "AVAILABLE COMMANDS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "可用指令"
+        }
+      ]
+    },
+    {
+      "key": "cmd.help.collect",
+      "category": "command",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "collect - send the Mars rover out to salvage materials"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "collect（采集）—— 派出火星车回收材料"
+        }
+      ]
+    },
+    {
+      "key": "cmd.help.inventory",
+      "category": "command",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "inventory - check the materials you have salvaged"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "inventory（仓库）—— 查看已回收的材料"
+        }
+      ]
+    },
+    {
+      "key": "cmd.help.assemble",
+      "category": "command",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "assemble - build the current repair from available materials"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "assemble（组装）—— 用现有材料完成当前修复"
+        }
+      ]
+    },
+    {
+      "key": "cmd.help.help",
+      "category": "command",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "help - list every available command"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "help（帮助）—— 列出全部可用指令"
+        }
+      ]
+    },
+    {
+      "key": "cmd.unknown",
+      "category": "command",
+      "speaker": "system",
+      "note": "新译（无中文原文）",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Unknown command: {input}. Enter \"help\" to see the list."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "无法识别的指令：{input}。输入 help 查看指令列表。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ship_os_communication_terminal",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS  /  COMMUNICATION TERMINAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统  /  通信终端"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ship_os_assembly_workbench",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS / ASSEMBLY WORKBENCH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统 / 组装工作台"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ship_os_cargo_manifest",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS  /  CARGO MANIFEST"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统  /  货舱清单"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ship_os_salvage_control",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS  /  SALVAGE CONTROL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统  /  回收控制"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ship_os_repair_status",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP OS / REPAIR STATUS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统 / 维修状态"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.select_a_response",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SELECT A RESPONSE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "选择回应"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.waiting_for_available_actions",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "WAITING FOR AVAILABLE ACTIONS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "等待可用操作"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.response",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RESPONSE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回应"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.connect",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CONNECT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "连接"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.continue",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CONTINUE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.leave_terminal",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LEAVE TERMINAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "离开终端"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.terminal_offline",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TERMINAL OFFLINE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "终端离线"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.start_assembly",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "START ASSEMBLY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始组装"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repaired",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIRED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已修复"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repairing",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIRING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复中"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.unrepaired",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "UNREPAIRED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "未修复"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.reset_parts",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RESET PARTS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重置零件"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.detach",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DETACH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "拆下"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repair",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repair_order_left_to_right",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR ORDER:  LEFT TO RIGHT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复顺序： 从左到右"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.sequential_repair_protocol",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SEQUENTIAL REPAIR PROTOCOL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "顺序修复协议"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.collect_materials_to_begin",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Collect materials to begin."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "先收集材料再开始。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.materials_are_charged_once_switching_scr",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Materials are charged once. Switching screens keeps your progress."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料只在开始组装时扣除一次。切换界面不会丢失进度。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.engine",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ENGINE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "引擎"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.navigation",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NAVIGATION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.life_support",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LIFE SUPPORT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "生命维持"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.power_cell",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "POWER CELL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源电池"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.no",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NO."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "序号"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.qty",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "QTY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "数量"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovered_item",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RECOVERED ITEM"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收物品"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.salvage_link_active_scroll_to_inspect_ho",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SALVAGE LINK ACTIVE                  SCROLL TO INSPECT HOLD"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收链路已连接                  滚动查看货舱"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.no_recovered_items_successful_salvage_wi",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NO RECOVERED ITEMS\n\n    SUCCESSFUL SALVAGE WILL APPEAR HERE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "尚未回收任何物品\n\n    成功回收的物品会出现在这里"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.online",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "[ ONLINE ]"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "[ 在线 ]"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.local_hold_recovery_register",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LOCAL HOLD   //   RECOVERY REGISTER"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "本舱储藏   //   回收登记"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.hold_space_or_click_the_screen",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "HOLD  [SPACE]  OR  CLICK THE SCREEN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "按住 [空格] 或 点击屏幕"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.standby",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> STANDBY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 待机"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.unknown_signal",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "UNKNOWN SIGNAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "未知信号"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.progress_0",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROGRESS 0%"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "进度 0%"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.navigation_device_repair_workbench",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NAVIGATION DEVICE / REPAIR WORKBENCH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航装置 / 维修工作台"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.surface_recovery_remote_winch",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SURFACE RECOVERY / REMOTE WINCH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地表回收 / 远程绞盘"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.return_to_cabin",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RETURN TO CABIN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回舱内"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.mission_paused",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MISSION PAUSED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务已暂停"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.searching",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SEARCHING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "搜索中"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.retry_recovery",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RETRY RECOVERY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重试回收"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.begin_again",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BEGIN AGAIN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重新开始"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.time_to_last_departure",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TIME TO LAST DEPARTURE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "距最晚启航"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.next_greenhouse_sowing",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NEXT: GREENHOUSE / SOWING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "下一步：温室 / 播种"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.1_4_click_select_wasd_move_q_e_rotate_sh",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "1-4 / CLICK: SELECT    WASD: MOVE    Q/E: ROTATE    SHIFT: FINE\n\n    X: DISCONNECT    R: RESET PARTS    ESC: RETURN TO CABIN\n\n    Join matching TANK, OPTICS and ANTENNA ports. Completed assembly stays intact until the next run."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "1-4 / 点击：选择    WASD：移动    Q/E：旋转    SHIFT：微调\n\n    X：断开    R：重置零件    ESC：返回舱内\n\n    把 TANK、OPTICS、ANTENNA 端口对接上。已完成的组装会保留到下一次运行。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.space_lock_signal_hold_space_raise_contr",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SPACE: LOCK SIGNAL\n\n    HOLD SPACE: RAISE CONTROL ZONE\n\n    RELEASE: LOWER\n\n\n    Keep the target inside the green zone.\n\n    Mission time continues during recovery.\n\n    Supplies are optional; repairs authorize departure."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "空格：锁定信号\n\n    按住空格：抬升控制区\n\n    松开：下降\n\n\n    让目标保持在绿区内。\n\n    回收期间任务时间照常流逝。\n\n    物资是选做的；修好才能启航。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.mouse_look_around_e_connect_leave_termin",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MOUSE: LOOK AROUND\n\n    E: CONNECT / LEAVE TERMINAL\n\n    ESC: PAUSE / RETURN\n\n\n    Story reading freezes the mission and all repair work.\n\n    Routine terminal queries do not stop the clock."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "鼠标：环视\n\n    E：连接 / 离开终端\n\n    ESC：暂停 / 返回\n\n\n    阅读剧情时，任务和所有维修作业都会静止。\n\n    普通终端查询不会让计时停下。"
+        }
+      ]
+    },
+    {
+      "key": "src.speaker.flight_log",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "FLIGHT LOG"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞行日志"
+        }
+      ]
+    },
+    {
+      "key": "src.speaker.narration",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NARRATION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "旁白"
+        }
+      ]
+    },
+    {
+      "key": "src.speaker.colony",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "COLONY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "殖民地"
+        }
+      ]
+    },
+    {
+      "key": "src.speaker.colony_signal",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "COLONY SIGNAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "殖民地信号"
+        }
+      ]
+    },
+    {
+      "key": "src.speaker.earth",
+      "category": "speaker",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "EARTH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "地球"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.who_are_you",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Who are you?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你是谁？"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.why_those_dates",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Why those dates?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "为什么非得是那几天？"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.how_do_i_start_repairs",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "How do I start repairs?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我该怎么开始修复？"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.how_much_time_do_we_have",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "How much time do we have?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我们还有多少时间？"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.let_s_make_this_window",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Let's make this window."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那就抓住这个窗口。"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.when_is_the_next_chance",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "When is the next chance?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "下一次机会是什么时候？"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.why_do_you_sound_so_old",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Why do you sound so old?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你说话的腔调怎么这么老派？"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.prepare_a_repair_plan",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Prepare a repair plan."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "制定一个修复计划。"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.assess_my_situation",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assess my situation."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "评估一下我的处境。"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.understood_let_s_get_started",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Understood. Let's get started."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "明白。开始吧。"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.send_distress_signal",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SEND DISTRESS SIGNAL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "发送求救信号"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.copy_expecting_mars_orbit_tomorrow_begin",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Copy. Expecting Mars orbit tomorrow. Beginning landing preparations."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "收到。预计明天进入火星轨道，开始准备着陆。"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.flight_log_22_aug_1981",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Flight log / 22-AUG-1981"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞行日志 / 22-AUG-1981"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.flight_log_23_aug_1981",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Flight log / 23-AUG-1981"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞行日志 / 23-AUG-1981"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.flight_log_24_aug_1981",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Flight log / 24-AUG-1981"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞行日志 / 24-AUG-1981"
+        }
+      ]
+    },
+    {
+      "key": "src.dlg.flight_log_25_aug_1981",
+      "category": "dlg",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Flight log / 25-AUG-1981"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞行日志 / 25-AUG-1981"
+        }
+      ]
+    },
+    {
+      "key": "src.story.all_inhabited_sectors_are_silent_no_crew",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "All inhabited sectors are silent. No crew transponders. No response from the surface relay."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "所有有人居住的星区都沉默了。没有船员应答信号。地表中继台也没有任何回应。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.begin_another_journey",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BEGIN ANOTHER JOURNEY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "再启一段旅程"
+        }
+      ]
+    },
+    {
+      "key": "src.story.begin_mission",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BEGIN MISSION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始任务"
+        }
+      ]
+    },
+    {
+      "key": "src.story.back_to_the_mission_channel",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Back to the mission channel."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回到任务频道。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.begin_another_journey_2",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Begin another journey."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始另一段旅程。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.close_log_resume_work",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CLOSE LOG / RESUME WORK"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "关闭日志 / 继续工作"
+        }
+      ]
+    },
+    {
+      "key": "src.story.confirm_departure",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CONFIRM DEPARTURE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "确认启航"
+        }
+      ]
+    },
+    {
+      "key": "src.story.checking_propulsion_reserves_and_the_dep",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Checking propulsion, reserves and the departure assembly. There is a problem."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "正在检查推进、储备和启航组件。出问题了。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.close_the_log_we_still_have_work_to_do",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Close the log. We still have work to do."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "关掉日志吧，我们还有活要干。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.colony_control_this_is_the_return_craft",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Colony control, this is the return craft. Does anyone read me?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "殖民地控制台，这里是返航船。有人能收到吗？"
+        }
+      ]
+    },
+    {
+      "key": "src.story.departure_accepted_the_countdown_has_sto",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE ACCEPTED. The countdown has stopped at your authorization time. Ascent to the waiting orbit is cleared."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航已接受。倒计时停在你授权的那一刻。可以上升进入等待轨道。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.departure_authorization_the_assembly_mus",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Departure authorization. The assembly must remain complete, and the latest-departure clock must be above zero. Your confirmation is registered at the moment you select it."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航授权。启航组件必须保持完整，最晚启航计时必须大于零。你的确认在按下那一刻生效。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.explain_the_departure_window_once_more",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Explain the departure window once more."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "再解释一次返航窗口。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.give_me_a_schedule_we_are_not_staying_he",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Give me a schedule. We are not staying here."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "给我一份日程。我们不会留在这儿。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.i_do_not_know_i_will_keep_listening",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I do not know. I will keep listening."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "我不知道。我会继续听着。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.i_have_the_sequence",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "I have the sequence."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "顺序我记住了。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.is_anyone_waiting_for_us",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Is anyone waiting for us?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "有人在等我们吗？"
+        }
+      ]
+    },
+    {
+      "key": "src.story.keep_working",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "KEEP WORKING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续工作"
+        }
+      ]
+    },
+    {
+      "key": "src.story.keep_the_log_someone_should_remember_the",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Keep the log. Someone should remember them."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "留着日志。总得有人记得他们。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.keep_the_mission_channel_open",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Keep the mission channel open."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "保持任务频道畅通。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.let_me_read_the_last_colony_log",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Let me read the last colony log."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "让我看看殖民地最后的日志。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.make_a_plan",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MAKE A PLAN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "制定计划"
+        }
+      ]
+    },
+    {
+      "key": "src.story.mouse_look_around_e_connect_or_leave_thi",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MOUSE: look around. E: connect or leave this terminal. ESC: return from a workstation, close the terminal, or pause the mission."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "鼠标：环视。E：连接或离开终端。ESC：从工作台返回、关闭终端，或暂停任务。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.mission_channel_ready_the_clock_is_runni",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Mission channel ready. The clock is running. Check the calendar and the amber departure instrument beside your seat."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务频道就绪，计时已经开始。看看日历，还有你座位旁那台琥珀色的启航仪表。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.not_yet_return_to_the_mission_channel",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Not yet. Return to the mission channel."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "还不行。回到任务频道。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.open_repair_workstation",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "OPEN REPAIR WORKSTATION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "打开维修工作台"
+        }
+      ]
+    },
+    {
+      "key": "src.story.open_the_repair_workstation_now",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Open the repair workstation now."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "现在打开维修工作台。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.open_the_repair_workstation",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Open the repair workstation."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "打开维修工作台。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.our_navigation_archive_lists_03_13_sep_1",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Our navigation archive lists 03-13 SEP 1981 for the planned Mars-to-Earth departure. The lower-energy route is the only one inside our remaining fuel budget. Missing our cutoff would demand more fuel than we can safely commit."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航档案里登记的、计划中的火星—地球出发时段是 1981 年 9 月 3 日至 13 日。低能耗路线是剩余燃料预算里唯一可行的。错过截止时刻，所需燃料会超出我能安全动用的量。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.prepare_to_depart",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PREPARE TO DEPART"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "准备启航"
+        }
+      ]
+    },
+    {
+      "key": "src.story.query_time_and_repairs",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "QUERY TIME AND REPAIRS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "查询时间与维修"
+        }
+      ]
+    },
+    {
+      "key": "src.story.read_the_colony_log",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "READ THE COLONY LOG"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "读取殖民地日志"
+        }
+      ]
+    },
+    {
+      "key": "src.story.rebuild_departure_assembly",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REBUILD DEPARTURE ASSEMBLY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "重建启航组件"
+        }
+      ]
+    },
+    {
+      "key": "src.story.recover_optional_supplies",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RECOVER OPTIONAL SUPPLIES"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收可选物资"
+        }
+      ]
+    },
+    {
+      "key": "src.story.return_to_mission",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RETURN TO MISSION"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回任务"
+        }
+      ]
+    },
+    {
+      "key": "src.story.review_the_route",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REVIEW THE ROUTE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "复核路线"
+        }
+      ]
+    },
+    {
+      "key": "src.story.reading_the_live_mission_instruments_the",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Reading the live mission instruments. The remaining time and assembly report follow in the system channel. Querying does not stop the clock."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "正在读取实时任务仪表。剩余时间和组装报告随后发到系统频道。查询不会让计时停下。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.report_the_time_remaining_and_the_assemb",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Report the time remaining and the assembly status."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "报告剩余时间和组装状态。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.run_the_departure_checks",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Run the departure checks."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "执行启航检查。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.show_me_the_damage",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHOW ME THE DAMAGE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "让我看看损坏情况"
+        }
+      ]
+    },
+    {
+      "key": "src.story.saved_your_work_will_resume_when_you_lea",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Saved. Your work will resume when you leave this reading window."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已保存。离开这个阅读窗口后，你的工作会继续。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.show_the_work_sequence",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Show the work sequence."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "展示工作顺序。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.start_the_clock_i_am_ready",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Start the clock. I am ready."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始计时，我准备好了。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.start_the_salvage_program",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Start the salvage program."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启动回收程序。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.take_us_home",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Take us home."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "带我们回家。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.tell_me_what_we_have_left",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Tell me what we have left."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "告诉我我们还剩什么。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_amber_instrument_marks_our_latest_de",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The amber instrument marks our LATEST DEPARTURE authorization. The circled date is {LAST_DATE}; the ascent allowance is already reserved. If we repair early, we can launch to a waiting orbit, then make the Earth-return burn inside the planned window."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那台琥珀色仪表标的是最晚启航授权。被圈出的日期是 {LAST_DATE}；上升段的预留量已经算进去了。如果提前修完，可以先发射进入等待轨道，再在计划窗口内做地球返航点火。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_colony_is_below_us_we_reach_the_wait",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The colony is below us. We reach the waiting orbit. Later, inside the planned return window, the Earth-return burn carries us away from Mars."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "殖民地在下方。我们进入等待轨道。之后，在计划中的返航窗口内，地球返航点火带我们离开火星。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_countdown_begins_when_you_select_beg",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The countdown begins when you select BEGIN MISSION. Completing repairs will not launch the craft. You must return here and confirm departure before the clock reaches zero."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "倒计时在你选择 BEGIN MISSION 时开始。修完设备不会自动发射。你必须在计时归零前回到这里确认启航。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_damaged_propulsion_system_has_very_l",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The damaged propulsion system has very little fuel margin. Rebuild the departure assembly, and we can still reach a low-energy Earth-return trajectory."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "受损的推进系统几乎没有燃料余量。重建启航组件，我们还能进入低能耗的地球返航轨道。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_departure_assembly_reports_complete",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The departure assembly reports complete. That is enough for the low-energy return plan. We can leave as soon as you authorize departure; the window is still counting down."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航组件报告完整，已经够低能耗返航方案用了。你一授权我们就能走；窗口还在倒计时。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_greenhouse_still_has_a_sealed_seed_c",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The greenhouse still has a sealed seed cabinet. We can bring its water loop back online. I have made a new entry on the calendar."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "温室里还有一个密封的种子柜。我们可以把它那套水循环重新开起来。我已经在日历上加了新的一条。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_next_period_in_our_navigation_study",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The next period in our navigation study is {NEXT_OPPORTUNITY}. We must reassess the craft before using it. Stored food will not last that long. I am sorry."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航研究里的下一个时段是 {NEXT_OPPORTUNITY}。用之前必须重新评估这艘飞船。储备食物撑不到那时候。抱歉。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_next_return_period_listed_in_the_stu",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The next return period listed in the study is {NEXT_OPPORTUNITY}: more than two years later. It is a planning reference, not a guarantee for this damaged craft. Our stored food cannot cover that wait. We would have to restore the greenhouse."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "研究里登记的下一个返航时段是 {NEXT_OPPORTUNITY}，要在两年多以后。它只是规划参考，对这艘受损飞船不作保证。储备食物撑不过那段等待，我们得先把温室恢复起来。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_paper_calendar_runs_from_start_date",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The paper calendar runs from {START_DATE} through {LAST_DATE}: {DAY_COUNT} dated workdays. The cells use MONTH/DAY, not numbered mission days. I will add a red cross after each date has ended. Only the final deadline is circled."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "纸质日历从 {START_DATE} 排到 {LAST_DATE}，共 {DAY_COUNT} 个标注日期。格子用的是月/日，不是任务第几天。每过完一天，我会补一个红叉。只有最后期限被圈出来。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_route_gets_us_away_from_mars_i_canno",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The route gets us away from Mars. I cannot promise what waits at Earth. Shall we go?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这条路线能带我们离开火星。地球那边等着什么，我不敢保证。走吗？"
+        }
+      ]
+    },
+    {
+      "key": "src.story.the_simulation_compresses_day_count_eart",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The simulation compresses {DAY_COUNT} Earth-standard 24-hour dates into {ACTIVE_MINUTES} minutes of active work. Explicit story reading pauses the mission and all work. Repairs, salvage and ordinary terminal queries use time."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这个模拟把 {DAY_COUNT} 个地球标准日压缩成 {ACTIVE_MINUTES} 分钟的有效操作时间。明确的剧情阅读会暂停任务和所有作业。维修、回收和普通终端查询会消耗时间。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.then_i_want_to_go_home",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Then I want to go home."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那我想回家。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.then_tell_me_what_we_do_tomorrow",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Then tell me what we do tomorrow."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那告诉我明天做什么。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.there_is_no_departure_entry_after_this_r",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "There is no departure entry after this recording. I cannot tell you where they went."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这段记录之后没有启航条目。我无法告诉你他们去了哪里。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.view_work_schedule",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "VIEW WORK SCHEDULE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "查看工作日程"
+        }
+      ]
+    },
+    {
+      "key": "src.story.window_closed_we_can_no_longer_commit_to",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "WINDOW CLOSED. We can no longer commit to this return plan with the fuel margin available."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "窗口已关闭。以现有的燃料余量，我们无法再执行这个返航方案。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.you_do_not_know_whether_home_still_remem",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "You do not know whether home still remembers you. But at last, you are on your way back."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "你不知道故乡是否还记得你。但至少，你终于踏上了返程。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.1_recover_salvage_optional_supplies_if_y",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "1. RECOVER: salvage optional supplies if you can spare the time. The repair parts are already at the workstation; extra supplies are not required to depart."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "1. 回收：时间允许的话，可以再回收一些可选物资。维修零件已经放在工作台上，额外物资不是启航的必需条件。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.2_rebuild_fit_every_required_assembly_pa",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "2. REBUILD: fit every required assembly part into its socket."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "2. 重建：把每一件所需的组件装进对应插槽。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.3_check_wait_for_the_assembly_to_report",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "3. CHECK: wait for the assembly to report complete."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "3. 检查：等待组装报告完成。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.4_depart_select_prepare_to_depart_then_c",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "4. DEPART: select PREPARE TO DEPART, then confirm while time remains. The complete dated calendar is available; its dates are planning marks, not separate task deadlines."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "4. 出发：选择「准备启航」，然后在时间还够时确认。带日期的完整日历已经开放；上面的日期只是规划标记，不是各自独立的任务期限。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.personal_log_habitat_03_if_anyone_return",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PERSONAL LOG / HABITAT 03\n\n          If anyone returns, the seed cabinet is under the greenhouse bench. Leave the small lamp on. It helps to think somebody is coming back."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "个人日志 / 居住舱 03\n\n          如果有人回来：种子柜在温室长凳下面。把那盏小灯留着。想着有人会回来，心里会好受些。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.arrival_record_arrival_date_now_start_da",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ARRIVAL RECORD / {ARRIVAL_DATE}.\n\n          NOW / {START_DATE}. After months at a remote survey station, you return to the colony. Nobody comes to meet you."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "抵达记录 / {ARRIVAL_DATE}。\n\n          现在 / {START_DATE}。在偏远的勘测站待了几个月后，你回到殖民地。没有人来接你。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.sowing_date_sow_outside_the_dust_moves_a",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{SOWING_DATE}: SOW.\n\n          Outside, the dust moves across an empty settlement. Tomorrow, you will plant the first seed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{SOWING_DATE}：播种。\n\n          外面，尘土拂过空无一人的定居点。明天，你将种下第一粒种子。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.departure_authorization_accepted_return",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE AUTHORIZATION ACCEPTED.\n\n          RETURN PLAN LOCKED.\n\n          MISSION COUNTDOWN STOPPED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航授权已接受。\n\n          返航方案已锁定。\n\n          任务倒计时已停止。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.mission_started_current_date_25_aug_1981",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MISSION STARTED.\n\n          CURRENT DATE: 25 AUG 1981.\n\n          LAST DEPARTURE DATE: 13 SEP 1981."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "任务开始。\n\n          当前日期：1981 年 8 月 25 日。\n\n          最晚启航日期：1981 年 9 月 13 日。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.window_closed_departure_authorization_de",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "WINDOW CLOSED.\n\n          DEPARTURE AUTHORIZATION DEADLINE EXCEEDED."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "窗口已关闭。\n\n          启航授权已超期。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.destination_earth_unable_to_launch_ship",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Destination: Earth\n\n          Unable to launch: ship damaged."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目的地：地球\n\n          无法启航：飞船受损。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.destination_earth_unable_to_launch_depar",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Destination: Earth\n\n          Unable to launch: departure window closed."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目的地：地球\n\n          无法启航：返航窗口已关闭。"
+        }
+      ]
+    },
+    {
+      "key": "src.story.destination_earth_ready_to_launch",
+      "category": "story",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Destination: Earth\n\n          Ready to launch."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目的地：地球\n\n          可以启航。"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.pioneer_60_text_preview",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PIONEER-60 / TEXT PREVIEW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "PIONEER-60 / 文本预览"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.main_story_flight_log",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MAIN STORY / FLIGHT LOG"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "主线剧情 / 飞行日志"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.time_warnings",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TIME WARNINGS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "时间预警"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.time_warning_preview",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TIME WARNING PREVIEW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "时间预警预览"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.departure_status_preview",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE STATUS PREVIEW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "启航状态预览"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.endings",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ENDINGS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "结局"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.ending_preview_select_one",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ENDING PREVIEW / SELECT ONE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "结局预览 / 选择一个"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.back_to_archive",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BACK TO ARCHIVE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回档案库"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.back_to_time_warnings",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "BACK TO TIME WARNINGS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返回时间预警"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.item_name_list",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ITEM NAME LIST"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "物品名称清单"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.all_repair_requirements",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ALL REPAIR REQUIREMENTS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "全部修复需求"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.all_systems_ready",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ALL SYSTEMS READY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "全部系统就绪"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.choose_a_section_using_the_response_pane",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Choose a section using the response panel."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "用右侧回应面板选择分区。"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.10_time_remaining",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "10% TIME REMAINING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "剩余 10% 时间"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.25_time_remaining",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "25% TIME REMAINING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "剩余 25% 时间"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.50_time_remaining",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "50% TIME REMAINING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "剩余 50% 时间"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.power_materials_missing",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "POWER / MATERIALS MISSING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源 / 缺材料"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.power_materials_ready",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "POWER / MATERIALS READY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "能源 / 材料齐全"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.navigation_materials_missing",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NAVIGATION / MATERIALS MISSING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航 / 缺材料"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.navigation_materials_ready",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NAVIGATION / MATERIALS READY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航 / 材料齐全"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.propulsion_materials_missing",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROPULSION / MATERIALS MISSING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "推进 / 缺材料"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.propulsion_materials_ready",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROPULSION / MATERIALS READY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "推进 / 材料齐全"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.life_support_materials_missing",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LIFE SUPPORT / MATERIALS MISSING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "生命维持 / 缺材料"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.life_support_materials_ready",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LIFE SUPPORT / MATERIALS READY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "生命维持 / 材料齐全"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.the_way_home_early_launch",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "THE WAY HOME / EARLY LAUNCH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回家的路 / 提前发射"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.the_way_home_in_return_window",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "THE WAY HOME / IN RETURN WINDOW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回家的路 / 窗口内发射"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.engine_test_not_a_launch",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Engine test / not a launch"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "引擎试车 / 不是发射"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.ship_damaged",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ship damaged"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "飞船受损"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.departure_window_closed",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Departure window closed"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "返航窗口已关闭"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.ready_wait_for_launch",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ready / wait for Launch"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "就绪 / 等待启航"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.from_repairs_to_growing_things",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "From repairs to growing things."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "从修飞船，变成种东西。"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.give_me_the_plan",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Give me the plan."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "把计划给我。"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.is_there_another_route",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Is there another route?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "还有别的路线吗？"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.wait_for_the_next_one",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Wait for the next one."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那就等下一次。"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.what_comes_first_tomorrow",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "What comes first tomorrow?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "明天先做什么？"
+        }
+      ]
+    },
+    {
+      "key": "src.preview.what_do_we_do_now",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "What do we do now?"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "那我们现在怎么办？"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.show_full_text",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHOW FULL TEXT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "显示全文"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.session_ended",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SESSION ENDED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "会话已结束"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.awaiting_continue",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "AWAITING CONTINUE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "等待继续"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.transmitting",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TRANSMITTING..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "传输中…"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.story_reading_mission_paused",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "STORY READING / MISSION PAUSED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "剧情阅读 / 任务已暂停"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_paused",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RECOVERY PAUSED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收已暂停"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.searching_wait_for_the_signal_then_press",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SEARCHING... Wait for the signal, then press SPACE."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "搜索中… 等到信号出现，然后按空格。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.signal_detected_press_space_now",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SIGNAL DETECTED - PRESS SPACE NOW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "检测到信号 - 现在按空格"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.hold_space_to_lift_the_control_band_rele",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "HOLD SPACE to lift the control band; release to lower it. Keep the target inside."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "按住空格抬升控制带，松开下降。让目标保持在带内。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.s_attempt_time_mission_departure_clock_k",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "s ATTEMPT TIME\nMission departure clock keeps running."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": " 秒尝试时间\n任务启航计时仍在继续。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.propulsion_manifold_verified_all_three_c",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROPULSION MANIFOLD VERIFIED. All three connections are secure. You may now confirm departure."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "推进管路已验证。三处连接都已紧固。你现在可以确认启航了。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.manifold_connection_lost_repair_verifica",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MANIFOLD CONNECTION LOST. Repair verification is no longer valid."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "管路连接已断开。维修验证已失效。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.departure_not_authorized_complete_the_ma",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DEPARTURE NOT AUTHORIZED. Complete the manifold repair first."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "不允许启航。请先完成管路维修。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.manifold_verified_departure_available",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MANIFOLD: VERIFIED. Departure available."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "管路：已验证。可以启航。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.manifold_offline_reconnect_control_press",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MANIFOLD: OFFLINE. Reconnect CONTROL / PRESSURE / MOUNT."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "管路：离线。请重新连接 CONTROL / PRESSURE / MOUNT。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.inventory_offline_check_cargo_link",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "INVENTORY OFFLINE\nCHECK CARGO LINK"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "库存离线\n请检查货舱链路"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.offline",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "[ OFFLINE ]"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "[ 离线 ]"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ready_to_launch",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "READY TO LAUNCH"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "可以启航"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.preview",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PREVIEW"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "预览"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.ship_assembly",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SHIP ASSEMBLY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船组装"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.assembly_controller_is_not_configured",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assembly controller is not configured."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装控制器未配置。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.no_recipe_materials_configured",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "No recipe materials configured."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "未配置配方材料。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repair_complete_system_restored",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR COMPLETE - SYSTEM RESTORED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复完成 - 系统已恢复"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repair_recorded_choose_another_system",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已记录修复  /  选择另一套系统"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.materials_are_consumed_once_when_assembl",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料在开始组装时一次性扣除"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.click_puzzle_to_operate_right_mouse_to_l",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CLICK PUZZLE TO OPERATE  /  RIGHT MOUSE TO LOOK\nPROGRESS IS KEPT WHEN YOU SWITCH SCREENS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "点击谜题开始操作  /  右键环视\n切换界面时进度会保留"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.drag_wasd_move_q_e_rotate_shift_fine_1_4",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n1-4 / TAB SELECT   X DETACH   R RESET   ESC PAUSE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "拖拽 / WASD 移动   Q/E 旋转   SHIFT 微调\n1-4 / TAB 选择   X 拆下   R 重置   ESC 暂停"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.catch_0_1_2",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CATCH {0} - {1}  /  {2}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "捕获 {0} - {1}  /  {2}"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.target_0",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TARGET {0}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目标 {0}"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.progress_0_2",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROGRESS {0}%"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "进度 {0}%"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_paused_2",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> RECOVERY PAUSED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 回收已暂停"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.scanning_debris_field",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> SCANNING DEBRIS FIELD"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 正在扫描碎片区"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.signal_lock_press_now_0_s",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> SIGNAL LOCK  -  PRESS NOW  [{0}s]"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 信号锁定 - 现在按下  [{0} 秒]"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.grappling_stable",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> GRAPPLING  + STABLE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 抓取中  + 稳定"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.grappling_slipping",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> GRAPPLING  -  SLIPPING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 抓取中  -  打滑"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_complete",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> RECOVERY COMPLETE"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 回收完成"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_cancelled",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> RECOVERY CANCELLED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 回收已取消"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.signal_lost",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": ">> SIGNAL LOST"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": ">> 信号丢失"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.paused_release_control_before_resuming",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PAUSED  /  RELEASE CONTROL BEFORE RESUMING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已暂停  /  恢复前请先松手"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.wait_for_signal_then_press_control",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "WAIT FOR SIGNAL, THEN PRESS CONTROL"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "等信号出现，再按下控制键"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.release_and_press_to_lock_target",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RELEASE AND PRESS TO LOCK TARGET"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "松手后再按，锁定目标"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.hold_control_to_lift_release_to_lower",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "HOLD CONTROL TO LIFT  /  RELEASE TO LOWER"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "按住控制键抬升  /  松开下降"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.re_acquiring_target",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RE-ACQUIRING TARGET ..."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "正在重新捕获目标…"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovered_0_x_1",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RECOVERED  {0}  x{1}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已回收  {0}  ×{1}"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovered_0_cargo_not_stored",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RECOVERED  {0}  /  CARGO NOT STORED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已回收  {0}  /  货物未入库"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.salvage_failed",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SALVAGE FAILED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收失败"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.an_assembly_operation_is_already_in_prog",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "An assembly operation is already in progress."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已有一次组装正在进行。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.assembly_station_is_unavailable",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assembly station is unavailable."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装台不可用。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.this_device_is_already_repaired",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This device is already repaired."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "这套装置已经修好了。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.repair_the_preceding_devices_first",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Repair the preceding devices first."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "请先修好前面的装置。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.this_device_cannot_be_repaired_in_the_cu",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This device cannot be repaired in the current repair order."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "按当前修复顺序，这套装置还不能修。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_paid_assembly_instance_is_unavailabl",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The paid assembly instance is unavailable; materials will not be charged again."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已付费的组装实例不可用；材料不会再次扣除。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.continue_the_existing_assembly_materials",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Continue the existing assembly; materials have already been allocated."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续现有的组装；材料已经分配好了。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.no_assembly_recipe_is_selected",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "No assembly recipe is selected."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "没有选中任何组装配方。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.assembly_station_references_are_incomple",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assembly station references are incomplete."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装台的引用不完整。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_assembly_workspace_is_inactive",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The assembly workspace is inactive."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装工作区未激活。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_assembly_render_layer_is_invalid",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The assembly render layer is invalid."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装渲染层无效。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_assembly_workspace_must_use_world_xy",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The assembly workspace must use world XY orientation and unit scale."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装工作区必须使用世界 XY 朝向和单位缩放。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.every_assembly_recipe_requires_a_unique",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Every assembly recipe requires a unique, nonempty ID."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "每个组装配方都需要唯一且非空的 ID。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.every_assembly_recipe_must_target_a_diff",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Every assembly recipe must target a different valid repair device."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "每个组装配方必须指向不同的有效修复装置。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_selected_recipe_requires_one_assembl",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The selected recipe requires one assembly controller in its puzzle prefab."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "所选配方的谜题预制体里需要一个组装控制器。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_selected_recipe_has_no_material_requ",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The selected recipe has no material requirements."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "所选配方没有材料需求。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.the_selected_recipe_has_invalid_camera_o",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "The selected recipe has invalid camera or puzzle placement settings."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "所选配方的相机或谜题摆放设置无效。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.optional_supplies_mission_time_continues",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Optional supplies. Mission time continues during recovery."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "可选物资。回收期间任务时间照常流逝。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_complete_but_supplies_could_not",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Recovery complete, but supplies could not be stored."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收完成，但物资未能入库。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_cancelled_no_supplies_recovered",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Recovery cancelled. No supplies recovered."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收已取消，未取得任何物资。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.supplies_recovered_0_x_1_return_to_repai",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SUPPLIES RECOVERED: {0} x {1}. Return to repairs or recover another cache."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "物资已回收：{0} × {1}。回到维修，或继续回收其它物资。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.signal_lost_0_retry_or_return_to_repairs",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SIGNAL LOST: {0}. Retry or return to repairs."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "信号丢失：{0}。重试，或回到维修。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.lock_window_missed",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "lock window missed"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "错过锁定窗口"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.target_left_the_control_band",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "target left the control band"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目标离开了控制带"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.attempt_time_expired",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "attempt time expired"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "尝试时间耗尽"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.recovery_interrupted",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "recovery interrupted"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "回收被中断"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.0_recovered_1_s_attempt_time_mission_dep",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0}% RECOVERED  /  {1}s ATTEMPT TIME\nMission departure clock keeps running."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{0}% 已回收  /  尝试时间 {1} 秒\n任务启航计时仍在继续。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.0_assembly_complete_all_joints_secured_t",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0} / ASSEMBLY COMPLETE\nAll joints secured. The completed device stays intact until the next run."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{0} / 组装完成\n所有接头已固定。已完成的装置会保留到下一次运行。"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.navigation_device_assembly_complete_all",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NAVIGATION DEVICE / ASSEMBLY COMPLETE\nAll three joints secured. Return to the cabin to continue."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航装置 / 组装完成\n三处接头已固定。返回舱内继续。"
+        }
+      ]
+    },
+    {
+      "key": "src.item.vacuum_tube_receiver",
+      "category": "item",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "VACUUM TUBE RECEIVER"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "真空管广播接收机"
+        }
+      ]
+    },
+    {
+      "key": "src.item.thermal_liner_bushing",
+      "category": "item",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "THERMAL LINER BUSHING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "废弃热电隔热衬套"
+        }
+      ]
+    },
+    {
+      "key": "src.item.fluid_manifold_assembly",
+      "category": "item",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "FLUID MANIFOLD ASSEMBLY"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "旧舱段流体歧管总成"
+        }
+      ]
+    },
+    {
+      "key": "src.item.relay_switch_unit",
+      "category": "item",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "RELAY SWITCH UNIT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "机电继电器交换单元"
+        }
+      ]
+    },
+    {
+      "key": "src.item.electromechanical_gauge_set",
+      "category": "item",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ELECTROMECHANICAL GAUGE SET"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "废弃机电仪表组"
+        }
+      ]
+    },
+    {
+      "key": "src.ui.unknown",
+      "category": "ui",
+      "speaker": "",
+      "note": "原文反查",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "UNKNOWN"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "未知"
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "id": "collect",
+      "canonical": "collect",
+      "aliases": [
+        "collect",
+        "采集",
+        "cai ji",
+        "caiji"
+      ]
+    },
+    {
+      "id": "inventory",
+      "canonical": "inventory",
+      "aliases": [
+        "inventory",
+        "inv",
+        "仓库",
+        "cangku"
+      ]
+    },
+    {
+      "id": "assemble",
+      "canonical": "assemble",
+      "aliases": [
+        "assemble",
+        "asm",
+        "组装",
+        "zuzhuang"
+      ]
+    },
+    {
+      "id": "help",
+      "canonical": "help",
+      "aliases": [
+        "help",
+        "?",
+        "帮助",
+        "bangzhu"
+      ]
+    }
+  ],
+  "patterns": [
+    {
+      "regex": "^OWNED (\\d+)\\s*/\\s*REQUIRED (\\d+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "OWNED {0}  /  REQUIRED {1}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已有 {0}  /  需要 {1}"
+        }
+      ]
+    },
+    {
+      "regex": "^ASSEMBLY (\\d+)%$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "ASSEMBLY {0}%"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装 {0}%"
+        }
+      ]
+    },
+    {
+      "regex": "^(\\d+)% TIME REMAINING$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0}% TIME REMAINING"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "剩余 {0}% 时间"
+        }
+      ]
+    },
+    {
+      "regex": "^(\\d+)%\\s*/\\s*NOT STARTED$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0}% / NOT STARTED"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{0}% / 未开始"
+        }
+      ]
+    },
+    {
+      "regex": "^(\\d+) OF (\\d+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0} OF {1}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已完成 {0} / {1}"
+        }
+      ]
+    },
+    {
+      "regex": "^(\\d+) ITEM TYPES\\s*/\\s*(\\d+) UNITS$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0} ITEM TYPES  /  {1} UNITS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{0} 类物品  /  {1} 件"
+        }
+      ]
+    },
+    {
+      "regex": "^CATCH ([\\d.]+) - ([\\d.]+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CATCH {0} - {1}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "捕获 {0} - {1}"
+        }
+      ]
+    },
+    {
+      "regex": "^TARGET ([\\d.]+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "TARGET {0}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "目标 {0}"
+        }
+      ]
+    },
+    {
+      "regex": "^PROGRESS (\\d+)%$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "PROGRESS {0}%"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "进度 {0}%"
+        }
+      ]
+    },
+    {
+      "regex": "^(\\d+) EARTH STANDARD DAYS$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0} EARTH STANDARD DAYS"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "{0} 个地球标准日"
+        }
+      ]
+    },
+    {
+      "regex": "^DATE: (.+) / LAST DATE: (.+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "DATE: {0} / LAST DATE: {1}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "日期：{0} / 最晚日期：{1}"
+        }
+      ]
+    },
+    {
+      "regex": "^LATEST DEPARTURE: T-(\\d+)D (\\d+)H (\\d+)M\\.$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LATEST DEPARTURE: T-{0}D {1}H {2}M."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最晚启航：剩 {0} 天 {1} 时 {2} 分。"
+        }
+      ]
+    },
+    {
+      "regex": "^NAVIGATION WARNING: (\\d+)% of the departure interval remains\\.$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "NAVIGATION WARNING: {0}% of the departure interval remains."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "导航警告：出发时段还剩 {0}%。"
+        }
+      ]
+    },
+    {
+      "regex": "^(\\d+)% RECOVERED\\s*/\\s*(\\d+)s ATTEMPT TIME$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "{0}% RECOVERED  /  {1}s ATTEMPT TIME"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "已回收 {0}%  /  尝试时间 {1} 秒"
+        }
+      ]
+    },
+    {
+      "regex": "^SUPPLIES RECOVERED: (.+) x (\\d+)\\. (.+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SUPPLIES RECOVERED: {0} x {1}. {2}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "物资已回收：{0} × {1}。回到维修，或继续回收其他物资。"
+        }
+      ]
+    },
+    {
+      "regex": "^SIGNAL LOST: (.+)\\. (.+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SIGNAL LOST: {0}. {1}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "信号丢失：{0}。重试，或回到维修。"
+        }
+      ]
+    },
+    {
+      "regex": "^LAST DAY\\s*/\\s*(.+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "LAST DAY / {0}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "最后一天 / {0}"
+        }
+      ]
+    },
+    {
+      "regex": "^1-(\\d+) / TAB SELECT$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "1-{0} / TAB SELECT"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "1-{0} / TAB 选择"
+        }
+      ]
+    },
+    {
+      "regex": "^Insufficient (.+): (\\d+)/(\\d+)\\.$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Insufficient {0}: {1}/{2}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料不足（{1}/{2}）"
+        }
+      ]
+    },
+    {
+      "regex": "^CATCH ([\\d.]+) - ([\\d.]+)\\s*/\\s*([\\d.]+)$",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "CATCH {0} - {1}  /  {2}"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "捕获 {0} - {1}  /  {2}"
+        }
+      ]
+    }
+  ]
+}
