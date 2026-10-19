@@ -32,6 +32,10 @@ public static class EscMenuValidation
             EscMenuBuilder.Build();
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(EscMenuBuilder.PrefabPath);
             Require(prefab != null, "Prefab missing.");
+            var background = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ArtAssets/UI/ui1111_components/00_Background.png");
+            Require(background != null, "Menu background must be imported as Sprite (2D and UI).");
+            Require(prefab.transform.Find("Menu Overlay/Menu Window").GetComponent<UnityEngine.UI.Image>().sprite == background,
+                "Menu background reference is missing or points to the wrong sprite. Check its .meta GUID.");
             Require(prefab.GetComponentsInChildren<Camera>(true).Length == 0 && prefab.GetComponentsInChildren<EventSystem>(true).Length == 0, "Prefab contains scene-owned objects.");
             Require(!prefab.transform.Find("Menu Overlay").gameObject.activeSelf, "Prefab should start closed.");
             var actions = AssetDatabase.LoadAssetAtPath<InputActionAsset>("Assets/InputSystem_Actions.inputactions");
@@ -50,6 +54,16 @@ public static class EscMenuValidation
             EscMenuBuilder.Install(); EscMenuBuilder.Install();
             Require(UnityEngine.Object.FindObjectsByType<EscMenuController>().Length == 1, "Install duplicated the menu.");
             Require(UnityEngine.Object.FindObjectsByType<EventSystem>().Length == 1, "Install duplicated EventSystem.");
+            Require(UnityEngine.Object.FindObjectsByType<UIManager>().Length == 1, "Install duplicated UI Manager.");
+            // Reproduce the reported case: the entire menu root is inactive before Play, not just its overlay.
+            UnityEngine.Object.FindAnyObjectByType<EscMenuController>().gameObject.SetActive(false);
+            var panel = new GameObject("Test Hidden Panel").AddComponent<ManagedUIPanel>();
+            var panelData = new SerializedObject(panel);
+            panelData.FindProperty("panelId").stringValue = "test-panel"; panelData.ApplyModifiedPropertiesWithoutUndo();
+            var panelInput = InputActionReference.Create(actions.FindAction("Player/Jump"));
+            AssetDatabase.CreateAsset(panelInput, AssetDatabase.GenerateUniqueAssetPath("Assets/TestPanelInput.asset"));
+            panelData.FindProperty("toggleInput").objectReferenceValue = panelInput; panelData.ApplyModifiedPropertiesWithoutUndo();
+            panel.gameObject.SetActive(false);
             EditorSceneManager.SaveScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene(), "Assets/EscMenuValidation.unity");
             SessionState.SetBool(RunKey, true); EditorApplication.isPlaying = true;
         }
@@ -62,8 +76,11 @@ public static class EscMenuValidation
         var initialVolume = AudioListener.volume;
         try
         {
-            var menu = UnityEngine.Object.FindAnyObjectByType<EscMenuController>();
-            Require(menu != null && !menu.IsOpen, "Menu should start closed.");
+            var menu = UnityEngine.Object.FindObjectsByType<EscMenuController>(FindObjectsInactive.Include, FindObjectsSortMode.None).Single();
+            Require(menu != null && !menu.IsOpen && !menu.gameObject.activeSelf, "Menu root should start inactive.");
+            var manager = UIManager.Instance;
+            Require(manager != null && manager.name == "manager" && manager.isActiveAndEnabled, "Global manager missing.");
+            manager.Refresh(); manager.Refresh();
             // The isolated batch Editor has no focused Game view; route synthetic device input to the player loop.
             InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
             InputSystem.settings.editorInputBehaviorInPlayMode = InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
@@ -95,14 +112,60 @@ public static class EscMenuValidation
             Require(!menu.IsOpen && Mathf.Approximately(Time.timeScale, 0.35f), "Disabling menu left the game paused.");
             menu.enabled = true; Press(keyboard); Release(keyboard); Require(menu.IsOpen, "ESC did not work after re-enabling.");
             menu.Close();
-            Require(UnityEngine.Object.FindObjectsByType<EventSystem>().Length == 1, "Runtime EventSystem duplicated.");
-            AudioListener.volume = initialVolume; Time.timeScale = 1;
-            File.WriteAllText(Path.Combine(Output, "EscMenuValidation.txt"), "PASS: independent prefab, authored ESC input binding, hidden by default, ESC open/close/reopen, time-scale restoration, pointer raycast, keyboard selection, settings/back, master volume/reset, quit/cancel modal blocking, safe disable/re-enable, English Glass TTY font, 16:9 and 4:3 render previews.");
-            SessionState.SetBool(RunKey, false); Debug.Log("ESC_MENU_VALIDATION_OK"); EditorApplication.Exit(0);
+            menu.gameObject.SetActive(false);
+            Press(keyboard); Release(keyboard);
+            Require(menu.IsOpen && menu.gameObject.activeSelf, "ESC cannot awaken an inactive root.");
+            menu.gameObject.SetActive(false);
+            Require(!menu.IsOpen && Mathf.Approximately(Time.timeScale, 0.35f), "Hiding root while open leaked pause state.");
+            Press(keyboard); Release(keyboard); Require(menu.IsOpen, "ESC failed after hiding the root while paused.");
+            manager.Close(UIManager.EscMenuId);
+            var shared = AssetDatabase.LoadAssetAtPath<InputActionAsset>("Assets/InputSystem_Actions.inputactions");
+            Require(!shared.FindAction("ESCMenu/Toggle").enabled && !shared.FindAction("Player/Jump").enabled, "Manager enabled shared source actions.");
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Space)); InputSystem.Update(); Release(keyboard);
+            Require(manager.IsOpen("test-panel"), "Generic inactive UI cannot be awakened by its Input System action.");
+            InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Space)); InputSystem.Update(); Release(keyboard);
+            Require(!manager.IsOpen("test-panel"), "Generic UI input did not toggle closed.");
+            manager.Open("test-panel"); Require(manager.IsOpen("test-panel"), "Generic inactive UI failed to open.");
+            manager.Toggle("test-panel"); Require(!manager.IsOpen("test-panel"), "Generic UI failed to hide.");
+            manager.Open("test-panel"); manager.Close("test-panel");
+            Require(!manager.IsOpen("test-panel"), "Generic UI close failed.");
+            manager.enabled = false; manager.enabled = true;
+            Press(keyboard); Release(keyboard); Require(menu.IsOpen, "Manager re-enable lost input or duplicated subscriptions.");
+            menu.Close();
+            CheckSceneChange(manager, keyboard, initialVolume);
         }
         catch (Exception error) { AudioListener.volume = initialVolume; Time.timeScale = 1; Fail(error); }
     }
     private static string Output => Path.GetFullPath(Path.Combine(Application.dataPath, "../../..", "Logs"));
+    private static void CheckSceneChange(UIManager manager, Keyboard keyboard, float initialVolume)
+    {
+        var previousMenu = UnityEngine.Object.FindObjectsByType<EscMenuController>(FindObjectsInactive.Include, FindObjectsSortMode.None).Single();
+        EditorSceneManager.LoadSceneInPlayMode("Assets/EscMenuValidation.unity",
+            new UnityEngine.SceneManagement.LoadSceneParameters(UnityEngine.SceneManagement.LoadSceneMode.Single));
+        var waitFrames = 0;
+        void CheckLoadedScene()
+        {
+            if (++waitFrames < 10) return;
+            EditorApplication.update -= CheckLoadedScene;
+            try
+            {
+                Require(previousMenu == null, "Previous scene was not unloaded.");
+                Require(UIManager.Instance == manager && UnityEngine.Object.FindObjectsByType<UIManager>().Length == 1, "Scene replaced or duplicated singleton.");
+                var replacement = UnityEngine.Object.FindObjectsByType<EscMenuController>(FindObjectsInactive.Include, FindObjectsSortMode.None).Single();
+                Require(!replacement.gameObject.activeSelf, "New scene menu must still start inactive.");
+                Press(keyboard); Release(keyboard);
+                Require(replacement.IsOpen && Time.timeScale == 0, "New scene's inactive menu failed to bind.");
+                Press(keyboard); Release(keyboard);
+                Require(!replacement.IsOpen && Mathf.Approximately(Time.timeScale, 0.35f), "Scene replacement input fired more than once or failed to restore time.");
+                Require(UnityEngine.Object.FindObjectsByType<EventSystem>().Length == 1, "Runtime EventSystem duplicated.");
+                AudioListener.volume = initialVolume; Time.timeScale = 1;
+                File.WriteAllText(Path.Combine(Output, "EscMenuValidation.txt"), "PASS: initially inactive ESC root awakened by real Input System input; single global manager; idempotent registration; generic inactive panel input/open/close/toggle; hide-while-paused restoration; manager disable/re-enable; real scene replacement/rebinding; singleton duplicate prevention; independent prefab, settings, audio, quit confirmation, pointer raycast, English Glass TTY font, background sprite, 16:9 and 4:3 previews.");
+                SessionState.SetBool(RunKey, false); Debug.Log("ESC_MENU_VALIDATION_OK"); EditorApplication.Exit(0);
+            }
+            catch (Exception error) { AudioListener.volume = initialVolume; Time.timeScale = 1; Fail(error); }
+        }
+        EditorApplication.update += CheckLoadedScene;
+    }
     private static T Find<T>(Component root, string name) where T : Component => root.GetComponentsInChildren<T>(true).Single(item => item.name == name);
     private static void Press(Keyboard keyboard) { InputSystem.QueueStateEvent(keyboard, new KeyboardState(Key.Escape)); InputSystem.Update(); }
     private static void Release(Keyboard keyboard) { InputSystem.QueueStateEvent(keyboard, new KeyboardState()); InputSystem.Update(); }

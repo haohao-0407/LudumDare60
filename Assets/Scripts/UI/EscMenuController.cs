@@ -18,7 +18,7 @@ namespace LudumDare60.UI
         public UnityEngine.UI.Toggle Fullscreen;
     }
 
-    /// <summary>Keep this root enabled: only the child overlay is hidden so ESC can reopen it.</summary>
+    /// <summary>Menu view; UIManager owns the input even when this root is inactive.</summary>
     [DisallowMultipleComponent]
     public sealed class EscMenuController : MonoBehaviour
     {
@@ -28,12 +28,12 @@ namespace LudumDare60.UI
         [SerializeField, Tooltip("打开菜单时暂停使用 Time.timeScale 的游戏逻辑，关闭时恢复之前的值。")]
         private bool pauseGame = true;
         [SerializeField] private UnityEvent<bool> openChanged = new UnityEvent<bool>();
-        private InputAction toggleAction;
         private float previousTimeScale;
         private bool previousCursorVisible;
         private CursorLockMode previousCursorLock;
         private GameObject previousSelection;
         public bool IsOpen { get; private set; }
+        internal InputAction ToggleInput => inputActions != null ? inputActions.FindAction(toggleActionPath, false) : null;
 
         public void Configure(InputActionAsset actions, EscMenuWidgets menuWidgets)
         { inputActions = actions; widgets = menuWidgets; }
@@ -56,27 +56,23 @@ namespace LudumDare60.UI
 
         private void OnEnable()
         {
-            var source = inputActions != null ? inputActions.FindAction(toggleActionPath, false) : null;
-            if (source == null) { Debug.LogError("ESC Menu: configure Input Actions / " + toggleActionPath, this); return; }
-            // Own just this action's subscription/lifetime; never disable a shared PlayerInput/UI action map.
-            toggleAction = source.Clone();
-            toggleAction.performed += OnToggle;
-            toggleAction.Enable();
+            if (ToggleInput == null) Debug.LogError("ESC Menu: configure Input Actions / " + toggleActionPath, this);
+            UIManager.EnsureInstance().Register(this);
         }
 
         private void OnDisable()
         {
             Close();
-            if (toggleAction == null) return;
-            toggleAction.performed -= OnToggle;
-            toggleAction.Disable(); toggleAction.Dispose(); toggleAction = null;
         }
 
-        private void OnToggle(InputAction.CallbackContext context) => Toggle();
+        private void OnDestroy() { if (UIManager.Instance != null) UIManager.Instance.Unregister(this); }
         public void Toggle() { if (IsOpen) Close(); else Open(); }
         public void Open()
         {
-            if (IsOpen || !isActiveAndEnabled || widgets.Overlay == null) return;
+            if (IsOpen || !enabled || widgets.Overlay == null) return;
+            // Activating a never-enabled root first runs Awake and binds its widgets.
+            gameObject.SetActive(true);
+            if (!isActiveAndEnabled) return;
             previousTimeScale = Time.timeScale;
             previousCursorVisible = Cursor.visible; previousCursorLock = Cursor.lockState;
             previousSelection = EventSystem.current != null ? EventSystem.current.currentSelectedGameObject : null;
