@@ -5309,7 +5309,6 @@ MonoBehaviour:
   Workspace: {fileID: 1692053890}
   AssemblyCamera: {fileID: 407402868}
   WorkspaceLayer: 29
-  EnforceSequentialOrder: 1
   sfxSource: {fileID: 711176804}
   assemblyCompleteClip: {fileID: 8300000, guid: 807ad53de0e977e4ea7e2fc189bfa88c, type: 3}
   assemblyCompleteVolume: 1
@@ -7346,7 +7345,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3833094232420656547, guid: 1461d089439d88c40a0a0e00e5c1493a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4807523990038861823, guid: 1461d089439d88c40a0a0e00e5c1493a, type: 3}
       propertyPath: showHidden
@@ -7511,7 +7510,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'REPAIR ORDER:  LEFT TO RIGHT'
+  m_text: REPAIR ANY SYSTEM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
   m_sharedMaterial: {fileID: -2755806001019088881, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
@@ -8205,7 +8204,6 @@ MonoBehaviour:
   flashDuration: 0.35
   repairingPulse: 0.18
   repairingPulseSpeed: 1.6
-  enforceSequentialOrder: 1
   resetOnPlay: 1
   stateChanged:
     m_PersistentCalls:
@@ -9208,7 +9206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5424943094807408216, guid: a9e37c0302b94d74393b34b00ae7b572, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5651154461147339663, guid: a9e37c0302b94d74393b34b00ae7b572, type: 3}
       propertyPath: m_Layer
@@ -10896,7 +10894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6306840393164243962, guid: e996513a8b474e94ea20de1a55b337dd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6618752021243324995, guid: e996513a8b474e94ea20de1a55b337dd, type: 3}
       propertyPath: m_Layer
@@ -10980,7 +10978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SEQUENTIAL REPAIR PROTOCOL
+  m_text: INDEPENDENT REPAIR PROTOCOL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
   m_sharedMaterial: {fileID: -2755806001019088881, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}

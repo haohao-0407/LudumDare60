@@ -100,7 +100,6 @@ namespace LudumDare60.ShipAssembly.Editor
                 service.AssemblyCamera = camera;
                 service.WorkspaceLayer = WorkbenchLayer;
                 service.Recipes = recipes;
-                service.EnforceSequentialOrder = true;
             }
             Undo.RecordObject(service, "Connect ship assembly");
             service.Inventory = inventoryBridge.InventoryController;
