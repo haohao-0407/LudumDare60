@@ -94,16 +94,19 @@ namespace LudumDare60.ReturnWindow.Editor
             var countdown = countdownObject.GetComponent<ReturnCountdownView>();
 
             var repair = new GameObject("Repair Workbench Controller").AddComponent<ReturnRepairStation>();
-            var assemblyObject = InstantiateAsset("Assets/AssemblyDemo/Prefabs/Level01/Level01Assembly.prefab");
-            assemblyObject.name = "Propulsion Manifold - Existing Assembly Puzzle";
+            NavigationAssemblyInstaller.BuildPrefab();
+            ShipDeviceAssemblyInstaller.BuildDevices();
+            var assemblyObject = ShipDeviceAssemblyInstaller.CreateWorkshop(scene);
             assemblyObject.transform.position = new Vector3(50, 0, 0);
-            var assembly = assemblyObject.GetComponent<AssemblyDemoController>();
+            repair.deviceWorkbench = assemblyObject.GetComponent<DeviceAssemblyWorkbench>();
+            var assembly = repair.deviceWorkbench.Current;
             assembly.ViewCamera = camera;
             var repairBridge = repair.gameObject.AddComponent<MissionRepairBridge>();
-            repairBridge.Configure(assembly);
+            repairBridge.Configure(repair.deviceWorkbench);
             repair.pilotCamera = camera; repair.pilot = pilot; repair.terminal = terminal;
             repair.mission = mission; repair.workshop = assemblyObject; repair.assembly = assembly;
             repair.workshopUI = MakeRepairUI(repair);
+            ShipDeviceAssemblyInstaller.ConfigureMissionUI(repair);
             assemblyObject.SetActive(false);
 
             var salvage = new GameObject("Supply Recovery Controller").AddComponent<ReturnSalvageStation>();
@@ -232,8 +235,8 @@ namespace LudumDare60.ReturnWindow.Editor
         private static GameObject MakeRepairUI(ReturnRepairStation repair)
         {
             var canvas = Overlay("Repair Instructions", 10);
-            Text("Title", canvas.transform, "PROPULSION MANIFOLD / REPAIR WORKBENCH", 33, new Vector2(.06f, .91f), new Vector2(.94f, .98f));
-            Text("Instructions", canvas.transform, "1-4 / CLICK: SELECT    WASD: MOVE    Q/E: ROTATE    SHIFT: FINE\nX: DISCONNECT    R: RESET PARTS    ESC: RETURN TO CABIN\nJoin matching CONTROL, PRESSURE and MOUNT ports. Mission time continues.",
+            Text("Title", canvas.transform, "NAVIGATION DEVICE / REPAIR WORKBENCH", 33, new Vector2(.06f, .91f), new Vector2(.94f, .98f));
+            Text("Instructions", canvas.transform, "1-4 / CLICK: SELECT    WASD: MOVE    Q/E: ROTATE    SHIFT: FINE\nX: DISCONNECT    R: RESET PARTS    ESC: RETURN TO CABIN\nJoin matching TANK, OPTICS and ANTENNA ports. Completed assembly stays intact until the next run.",
                 24, new Vector2(.06f, .02f), new Vector2(.73f, .14f));
             Button("RETURN TO CABIN", canvas.transform, new Vector2(.77f, .04f), new Vector2(.96f, .10f), repair.CloseRepair);
             canvas.gameObject.SetActive(false); return canvas.gameObject;

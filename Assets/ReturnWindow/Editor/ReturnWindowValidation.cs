@@ -139,10 +139,23 @@ namespace LudumDare60.ReturnWindow.Editor
                         mission.SetReadingPaused(false);
                         AssembleActualPorts(station.assembly);
                         UnityEngine.Object.FindFirstObjectByType<MissionRepairBridge>().RefreshRepairState();
+                        if (station.deviceWorkbench != null)
+                        {
+                            Require(!mission.RepairComplete, "Navigation alone must not complete all device repairs.");
+                            for (int deviceIndex = 1; deviceIndex < station.deviceWorkbench.devices.Length; deviceIndex++)
+                            {
+                                station.SelectDevice(deviceIndex);
+                                AssembleActualPorts(station.assembly);
+                                UnityEngine.Object.FindFirstObjectByType<MissionRepairBridge>().RefreshRepairState();
+                                if (deviceIndex < station.deviceWorkbench.devices.Length-1)
+                                    Require(!mission.RepairComplete, "One remaining device must block departure.");
+                            }
+                            station.SelectDevice(0);
+                        }
                         Require(mission.RepairComplete, "Actual joints did not unlock departure.");
                         station.CloseRepair();
                         Require(mission.RepairComplete && !station.workshop.activeSelf, "Closing workstation lost the completed assembly state.");
-                        Pass("Actual CONTROL/PRESSURE/MOUNT joint repair, input guards and inactive-workshop persistence");
+                        Pass("Navigation, life support and energy physical joints, all-device launch gate, input guards and inactive-workshop persistence");
 
                         firstRun = mission;
                         new GameObject("Duplicate mission validation").AddComponent<MissionController>();
@@ -180,6 +193,21 @@ namespace LudumDare60.ReturnWindow.Editor
                         Require(terminal.GetFlag("repair_ready"), "New terminal did not restore verified repair status.");
                         Require(mission.GetComponent<InventoryController>().Items.GetQuantity("validation_scene_sentinel") == 3,
                             "Scene transition lost session inventory.");
+                        if (station.deviceWorkbench != null)
+                        {
+                            station.OpenRepair();
+                            Require(station.IsOpen, "Cannot reopen the retained device workbench.");
+                            for (int deviceIndex = 1; deviceIndex < station.deviceWorkbench.devices.Length; deviceIndex++)
+                            {
+                                string prefix = "F" + (deviceIndex+1);
+                                station.workshopUI.GetComponentsInChildren<UnityEngine.UI.Button>(true)
+                                    .First(button => button.name.StartsWith(prefix)).onClick.Invoke();
+                                Require(station.deviceWorkbench.selectedDevice == deviceIndex && station.assembly.IsAssemblyComplete,
+                                    "Reloaded workbench button lost its persistent device target.");
+                            }
+                            station.SelectDevice(0); station.CloseRepair(false);
+                            Pass("Device selection buttons reconnect to retained assemblies after scene reload");
+                        }
                         Pass("Real asynchronous scene transition preserves clock, physical joints, AI status and inventory without loading-time cost");
                         terminal.GoToNode("launch"); terminal.Open(); ReachChoices(terminal);
                         Require(terminal.Choose("confirm_launch"), "Departure choice rejected.");
@@ -253,7 +281,7 @@ namespace LudumDare60.ReturnWindow.Editor
 
         private static void AssembleActualPorts(AssemblyDemoController assembly)
         {
-            var core = assembly.Modules.First(module => module.PortCount >= 3);
+            var core = assembly.Modules.OrderByDescending(module => module.PortCount).First();
             foreach (var module in assembly.Modules)
             {
                 if (module == core) continue;

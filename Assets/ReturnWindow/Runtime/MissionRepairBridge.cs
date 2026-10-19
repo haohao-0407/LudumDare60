@@ -8,6 +8,7 @@ namespace LudumDare60.ReturnWindow
     public sealed class MissionRepairBridge : MonoBehaviour
     {
         [SerializeField] private AssemblyDemoController assembly;
+        [SerializeField] private DeviceAssemblyWorkbench workbench;
         public AssemblyDemoController Assembly => assembly;
 
         private void Start()
@@ -21,7 +22,16 @@ namespace LudumDare60.ReturnWindow
 
         public void Configure(AssemblyDemoController source)
         {
+            workbench = null;
             assembly = source;
+            RefreshRepairState();
+            MissionController.Instance?.GetComponent<MissionPauseCoordinator>()?.RefreshTargets();
+        }
+
+        public void Configure(DeviceAssemblyWorkbench source)
+        {
+            workbench = source;
+            assembly = source.Current;
             RefreshRepairState();
             MissionController.Instance?.GetComponent<MissionPauseCoordinator>()?.RefreshTargets();
         }
@@ -29,7 +39,7 @@ namespace LudumDare60.ReturnWindow
         public void RefreshRepairState()
         {
             if (assembly != null && MissionController.Instance != null)
-                MissionController.Instance.SetRepairComplete(assembly.IsAssemblyComplete);
+                MissionController.Instance.SetRepairComplete(workbench != null ? workbench.IsComplete : assembly.IsAssemblyComplete);
         }
     }
 }
