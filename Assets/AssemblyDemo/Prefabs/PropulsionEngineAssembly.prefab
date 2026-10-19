@@ -59,8 +59,8 @@ MonoBehaviour:
   - 0.30337915
   portKeys:
   - END PLATE
-  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
-  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
+  fillMaterial: {fileID: 0}
+  inkMaterial: {fileID: 0}
   selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
 --- !u!1 &698610489294904992
 GameObject:
@@ -153,8 +153,8 @@ MonoBehaviour:
   - 1.5985141
   portKeys:
   - NOZZLE
-  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
-  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
+  fillMaterial: {fileID: 0}
+  inkMaterial: {fileID: 0}
   selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
 --- !u!1 &2229509918691515269
 GameObject:
@@ -703,6 +703,6 @@ MonoBehaviour:
   portKeys:
   - END PLATE
   - NOZZLE
-  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
-  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
+  fillMaterial: {fileID: 0}
+  inkMaterial: {fileID: 0}
   selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
