@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427054586407441319}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.1721044, y: -0.4951504, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3450247, y: 0.29739863, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,21 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
   moduleLabel: END PLATE
-  radius: 1.7220193
+  radius: 1.5728719
   portAngles:
-  - 246.80139
+  - 82.69412
   artwork: {fileID: 0}
   artworkHeight: 3
   artworkOffset: {x: 0, y: 0}
   modelVisual: {fileID: 1674879702004343109}
-  modelBoundsCenter: {x: 0.25951087, y: 0.36904198}
-  modelBoundsSize: {x: 1.0665114, y: 2.3138318}
+  modelBoundsCenter: {x: 0.00000011920929, y: 0}
+  modelBoundsSize: {x: 2.2260952, y: 2.222657}
   portDistances:
-  - 0.38407883
+  - 1.1354268
   portKeys:
   - END PLATE
-  fillMaterial: {fileID: 0}
-  inkMaterial: {fileID: 0}
+  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
+  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
   selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
 --- !u!1 &691364176055722360
 GameObject:
@@ -87,7 +87,7 @@ Transform:
   m_GameObject: {fileID: 691364176055722360}
   serializedVersion: 2
   m_LocalRotation: {x: -0.65653867, y: 0.26259673, z: -0.26259673, w: 0.65653867}
-  m_LocalPosition: {x: -4.8736043, y: 0.43765044, z: 3.215001}
+  m_LocalPosition: {x: -0.35647523, y: -0.35489857, z: 4.2625074}
   m_LocalScale: {x: 0.88120145, y: 0.88120145, z: 0.88120145}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -119,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 698610489294904992}
   serializedVersion: 2
   m_LocalRotation: {x: -0.45120198, y: -0.5444417, z: -0.5444417, w: -0.45120198}
-  m_LocalPosition: {x: 5.725946, y: 0.4325324, z: -7.8364983}
+  m_LocalPosition: {x: 0.14590073, y: -0.75917387, z: -6.788992}
   m_LocalScale: {x: 0.87829846, y: 0.87829846, z: 0.87829846}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -151,8 +151,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341076973763840382}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.8409457, y: -0.6510323, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2609005, y: 0.5406739, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -172,21 +172,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
   moduleLabel: NOZZLE
-  radius: 3.4866126
+  radius: 1.7071484
   portAngles:
-  - 80.67047
+  - 277.65012
   artwork: {fileID: 0}
   artworkHeight: 3
   artworkOffset: {x: 0, y: 0}
   modelVisual: {fileID: 843114433595560426}
-  modelBoundsCenter: {x: -0.20000553, y: 0.7822038}
-  modelBoundsSize: {x: 5.9883566, y: 2.7684543}
+  modelBoundsCenter: {x: 0, y: 0}
+  modelBoundsSize: {x: 2.164919, y: 2.6401796}
   portDistances:
-  - 1.300933
+  - 2.3061562
   portKeys:
   - NOZZLE
-  fillMaterial: {fileID: 0}
-  inkMaterial: {fileID: 0}
+  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
+  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
   selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}
 --- !u!1 &4176082820783774067
 GameObject:
@@ -214,13 +214,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4176082820783774067}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.6867927, y: -0.1099402, z: 0.014454789, w: 0.71834534}
+  m_LocalPosition: {x: 0.49, y: -0.17, z: -3.68}
   m_LocalScale: {x: 0.24479151, y: 0.24479151, z: 0.24479151}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 843114433595560426}
-  m_LocalEulerAnglesHint: {x: 0, y: 100.692, z: 0}
+  m_LocalEulerAnglesHint: {x: -79.587, y: 280.345, z: -288.12}
 --- !u!33 &1725249162203030900
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -303,7 +303,7 @@ Transform:
   m_GameObject: {fileID: 4328658168404594483}
   serializedVersion: 2
   m_LocalRotation: {x: 0.13624199, y: -0.049635157, z: 0.9582035, w: -0.24661826}
-  m_LocalPosition: {x: -0.5199112, y: 0.47539747, z: 0.0984993}
+  m_LocalPosition: {x: 1.0387523, y: -0.90852, z: 1.1460056}
   m_LocalScale: {x: 0.88023895, y: 0.88023895, z: 0.88023895}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -336,13 +336,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5146260791529089496}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.19888458, y: -0.3429798, z: -0.648182, w: 0.6501308}
+  m_LocalPosition: {x: 0.6147693, y: -0.3474109, z: 0.37246925}
   m_LocalScale: {x: -0.23717618, y: -0.23717616, z: -0.2783778}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1674879702004343109}
-  m_LocalEulerAnglesHint: {x: 0, y: 136.361, z: 180}
+  m_LocalEulerAnglesHint: {x: 190.721, y: 134.251, z: 94.706}
 --- !u!33 &3306572582976020531
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -472,19 +472,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.ReturnWindow.DeviceAssemblyLayout
   assembly: {fileID: 3960998835565673528}
   assembledLocalPositions:
-  - {x: 1.3479109, y: -0.21089742, z: 0}
-  - {x: 2.0539591, y: 0.09169485, z: 0}
-  - {x: -1.2195381, y: -0.6326929, z: 0}
+  - {x: -0.21075267, y: 1.17302, z: 0}
+  - {x: -2.46317, y: 0.8842442, z: 0}
+  - {x: 4.360508, y: 0.5590129, z: 0}
   assembledModelPositions:
-  - {x: 0, y: 0, z: -2.4207375}
-  - {x: 0, y: 0, z: -1.036149}
-  - {x: 0, y: 0, z: -1.5588082}
+  - {x: 1.0387523, y: -0.90852, z: 1.1460056}
+  - {x: -0.35647535, y: -0.35489857, z: 4.2625074}
+  - {x: 0.14590073, y: -0.75917387, z: -6.788992}
   assembledModelRotations:
-  - {x: 0.7740305, y: -0.20910554, z: 0.5811369, w: -0.13939707}
-  - {x: 0.65002155, y: -0.6500216, z: -0.27833778, w: -0.27833775}
-  - {x: 0.704031, y: 0.704031, z: 0.065881096, w: -0.065881096}
+  - {x: 0.13624199, y: -0.049635157, z: 0.9582035, w: -0.24661826}
+  - {x: -0.65653867, y: 0.26259673, z: -0.26259673, w: 0.65653867}
+  - {x: -0.45120198, y: -0.5444417, z: -0.5444417, w: -0.45120198}
   deviceLabel: PROPULSION ENGINE
-  viewCenter: {x: -2.0351286, y: 0.73572016}
+  viewCenter: {x: 0.9333749, y: 1.17302}
   modelToBoard: {x: 0.49999997, y: 0.49999997, z: -0.49999997, w: 0.49999997}
   modelScale: 0.9169461
   nativeStartPositions:
@@ -497,8 +497,8 @@ MonoBehaviour:
   - {x: 0, y: 0.7699121, z: 0, w: 0.6381499}
   nativeTargetPositions:
   - {x: 2.64, y: 1.47, z: 0.23}
-  - {x: 1.13, y: 2.24, z: -0.1}
-  - {x: 1.7, y: -1.33, z: 0.69}
+  - {x: 1.13, y: 2.24, z: -0.100000024}
+  - {x: 1.7, y: -1.3299999, z: 0.69}
   nativeTargetRotations:
   - {x: 0.27069813, y: 0.6427295, z: 0.712438, w: -0.077804506}
   - {x: 0.9283594, y: -0.000000040579877, z: 0.37168384, w: -0.000000016246817}
@@ -577,13 +577,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8363897587488121324}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.25449193, y: 0.67765486, z: -0.021835178, w: 0.68959486}
+  m_LocalPosition: {x: 1.4366375, y: -0.5291988, z: 0.32071742}
   m_LocalScale: {x: 0.61119765, y: 0.61119765, z: 0.61119765}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4601744066180448124}
-  m_LocalEulerAnglesHint: {x: -73.322, y: 84.553, z: 124.291}
+  m_LocalEulerAnglesHint: {x: -202.37, y: 272.973, z: 199.90201}
 --- !u!33 &5613235692388763342
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -666,8 +666,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9016486432463585264}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3479109, y: -0.21089742, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.21075273, y: 1.17302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -687,22 +687,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: WhiteboxModule.Runtime::LudumDare60.AssemblyDemo.AssemblyModule
   moduleLabel: ENGINE BODY
-  radius: 5.133657
+  radius: 3.6896033
   portAngles:
-  - 66.8014
-  - 260.67047
+  - 262.69412
+  - 97.65012
   artwork: {fileID: 0}
   artworkHeight: 3
   artworkOffset: {x: 0, y: 0}
   modelVisual: {fileID: 4601744066180448124}
-  modelBoundsCenter: {x: -0.16414785, y: 0.9466176}
-  modelBoundsSize: {x: 6.818351, y: 4.947771}
+  modelBoundsCenter: {x: 0, y: 0.00000023841858}
+  modelBoundsSize: {x: 5.6381745, y: 4.760638}
   portDistances:
-  - 0.38407883
-  - 1.300933
+  - 1.1354268
+  - 2.3061562
   portKeys:
   - END PLATE
   - NOZZLE
-  fillMaterial: {fileID: 0}
-  inkMaterial: {fileID: 0}
+  fillMaterial: {fileID: 2100000, guid: 01d72c60f71fb6c4e9b0c67df5ea9088, type: 2}
+  inkMaterial: {fileID: 2100000, guid: 8aadd8c713ec171419416c99e527dc0c, type: 2}
   selectionColor: {r: 0.36, g: 0.94, b: 0.73, a: 1}

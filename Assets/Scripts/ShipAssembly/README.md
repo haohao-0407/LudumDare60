@@ -26,6 +26,30 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 单项入口：`PropulsionEngineAssembly.unity`、`LifeSupportAssembly.unity`，均位于同一 Scenes 目录。
 重建菜单：`Tools > Ship Assembly > Build Engine And Revised Life Support Levels`。原始模型预制体不被改写。
 
+### Engine-only model updates
+
+After saving edits to `Assets/Prefabs/引擎.prefab`, close its Prefab Stage and run
+`Tools > Ship Assembly > Update Engine Assembly Only` in Edit Mode.
+This updates the existing engine prefab in place and only its recipe's `PuzzleOffset` / `OrthographicSize`.
+It does not save scenes, rebuild other levels, replace the screen, or change material costs.
+
+The three named source parts remain `BezierCurve.011`, `Cube.007`, and `Cylinder.001`, directly under the source root.
+Mesh, material, child hierarchy and signed scale changes are copied from those parts.
+Existing matching nodes and components keep their prefab identities.
+The engine's existing `Native model` visual corrections are retained; source position/rotation changes migrate
+both the scattered and completed poses by the same delta from the previous `nativeStart` snapshot.
+The existing assembly relationship is preserved, not inferred anew from mesh contact.
+For a deliberately different finished arrangement, author the engine layout's `nativeTargetPositions` /
+`nativeTargetRotations` before updating. Keep their order identical to the three controller modules.
+
+Hit bounds, logical pivots, paired connectors and completion poses are regenerated from the refreshed geometry.
+The view fits the union of the starting and completed bounds without rescaling the logical modules.
+If needed, both poses receive the same depth translation to fit the existing camera's clipping range.
+Source root presentation transforms are ignored. Repeating the update with unchanged source data does not accumulate scaling.
+Before saving, the previous engine prefab and recipe are copied to `Logs/EngineAssemblyUpdates/<timestamp>/`.
+Independent preview scenes keep their saved camera framing; the SHIP screen uses the updated recipe framing.
+The legacy combined rebuild menu still uses its recorded layouts; use the engine-only entry for these model edits.
+
 | 材料 | Power Unit | Interstellar Navigation System | Propulsion Engine | Life Support System |
 | --- | ---: | ---: | ---: | ---: |
 | Rolled Electromechanical Alloy Sheets | 6 | 4 | 7 | 5 |
