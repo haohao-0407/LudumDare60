@@ -36,6 +36,7 @@ namespace LudumDare60.TerminalDialogue
             public Graphic OriginalGraphic, CopyGraphic;
             public TMP_Text OriginalText, CopyText;
             public Image OriginalImage, CopyImage;
+            public RawImage OriginalRawImage, CopyRawImage;
             public CanvasGroup OriginalGroup, CopyGroup;
         }
 
@@ -134,6 +135,7 @@ namespace LudumDare60.TerminalDialogue
                 OriginalGraphic = original.GetComponent<Graphic>(), CopyGraphic = copy.GetComponent<Graphic>(),
                 OriginalText = original.GetComponent<TMP_Text>(), CopyText = copy.GetComponent<TMP_Text>(),
                 OriginalImage = original.GetComponent<Image>(), CopyImage = copy.GetComponent<Image>(),
+                OriginalRawImage = original.GetComponent<RawImage>(), CopyRawImage = copy.GetComponent<RawImage>(),
                 OriginalGroup = original.GetComponent<CanvasGroup>(), CopyGroup = copy.GetComponent<CanvasGroup>()
             };
             var renderer = original.GetComponent<CanvasRenderer>();
@@ -197,6 +199,13 @@ namespace LudumDare60.TerminalDialogue
             }
             if (visual.OriginalGroup != null && visual.CopyGroup != null)
                 visual.CopyGroup.alpha = visual.OriginalGroup.alpha;
+
+            // Workbench screens bind their live camera texture after the visual copy is created.
+            if (visual.OriginalRawImage != null && visual.CopyRawImage != null)
+            {
+                visual.CopyRawImage.texture = visual.OriginalRawImage.texture;
+                visual.CopyRawImage.uvRect = visual.OriginalRawImage.uvRect;
+            }
 
             for (var i = 0; i < original.childCount; i++)
             {

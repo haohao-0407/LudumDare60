@@ -20,13 +20,27 @@ namespace LudumDare60.Storage
             if (inventory != null) return;
             inventory = new Inventory();
             inventory.Changed += OnInventoryChanged;
+            inventory.NotificationFailed += OnNotificationFailed;
         }
 
-        private void OnInventoryChanged() => Changed?.Invoke();
+        private void OnInventoryChanged()
+        {
+            Action listeners = Changed;
+            if (listeners == null) return;
+            foreach (Action listener in listeners.GetInvocationList())
+            {
+                try { listener(); }
+                catch (Exception exception) { Debug.LogException(exception, this); }
+            }
+        }
+
+        private void OnNotificationFailed(Exception exception) => Debug.LogException(exception, this);
 
         private void OnDestroy()
         {
-            if (inventory != null) inventory.Changed -= OnInventoryChanged;
+            if (inventory == null) return;
+            inventory.Changed -= OnInventoryChanged;
+            inventory.NotificationFailed -= OnNotificationFailed;
         }
     }
 }

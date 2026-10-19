@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 824a5cc05ad74f489509bd573e2852de, type: 3}
+  m_Name: SalvageMaterialYields
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Storage.SalvageMaterialYieldCatalog
+  entries:
+  - rewardId: thermal_liner_bushing
+    yields:
+    - ItemId: rolled_electromechanical_alloy_sheets
+      Quantity: 3
+    - ItemId: tinned_copper_wire_windings
+      Quantity: 1
+    - ItemId: precision_drive_gear_blanks
+      Quantity: 1
+    - ItemId: heat_resistant_ceramic_insulators
+      Quantity: 4
+    - ItemId: vulcanized_airtight_rubber_liners
+      Quantity: 2
+  - rewardId: fluid_manifold_assembly
+    yields:
+    - ItemId: rolled_electromechanical_alloy_sheets
+      Quantity: 3
+    - ItemId: tinned_copper_wire_windings
+      Quantity: 1
+    - ItemId: precision_drive_gear_blanks
+      Quantity: 1
+    - ItemId: heat_resistant_ceramic_insulators
+      Quantity: 1
+    - ItemId: vulcanized_airtight_rubber_liners
+      Quantity: 4
+  - rewardId: relay_switch_unit
+    yields:
+    - ItemId: rolled_electromechanical_alloy_sheets
+      Quantity: 2
+    - ItemId: tinned_copper_wire_windings
+      Quantity: 2
+    - ItemId: precision_drive_gear_blanks
+      Quantity: 4
+    - ItemId: heat_resistant_ceramic_insulators
+      Quantity: 1
+    - ItemId: vulcanized_airtight_rubber_liners
+      Quantity: 1
+  - rewardId: vacuum_tube_receiver
+    yields:
+    - ItemId: rolled_electromechanical_alloy_sheets
+      Quantity: 2
+    - ItemId: tinned_copper_wire_windings
+      Quantity: 4
+    - ItemId: precision_drive_gear_blanks
+      Quantity: 1
+    - ItemId: heat_resistant_ceramic_insulators
+      Quantity: 2
+    - ItemId: vulcanized_airtight_rubber_liners
+      Quantity: 1
+  - rewardId: electromechanical_gauge_set
+    yields:
+    - ItemId: rolled_electromechanical_alloy_sheets
+      Quantity: 3
+    - ItemId: tinned_copper_wire_windings
+      Quantity: 2
+    - ItemId: precision_drive_gear_blanks
+      Quantity: 1
+    - ItemId: heat_resistant_ceramic_insulators
+      Quantity: 1
+    - ItemId: vulcanized_airtight_rubber_liners
+      Quantity: 1

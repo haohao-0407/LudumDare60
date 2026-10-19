@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LudumDare60.Storage
 {
-    /// <summary>Credits successful salvage attempts to an explicitly assigned inventory.</summary>
+    /// <summary>Credits successful salvage attempts, optionally dismantled into configured materials.</summary>
     [DisallowMultipleComponent]
     [RequireComponent(typeof(SalvageController))]
     [AddComponentMenu("Storage/Salvage Inventory Bridge")]
@@ -11,6 +11,7 @@ namespace LudumDare60.Storage
     {
         [SerializeField] private SalvageController salvageController;
         [SerializeField] private InventoryController inventoryController;
+        [SerializeField] private SalvageMaterialYieldCatalog materialYieldCatalog;
 
         public InventoryController InventoryController => inventoryController;
 
@@ -39,6 +40,9 @@ namespace LudumDare60.Storage
         public bool TryCollect(SalvageResult result)
         {
             if (result == null || !result.IsSuccess || inventoryController == null) return false;
+            if (materialYieldCatalog != null)
+                return materialYieldCatalog.TryGetYields(result.RewardId, result.RewardQuantity, out var yields)
+                    && inventoryController.Items.TryAddBatchOnce(result.AttemptId, yields);
             return inventoryController.Items.TryAddOnce(result.AttemptId, result.RewardId, result.RewardQuantity);
         }
 
@@ -47,7 +51,7 @@ namespace LudumDare60.Storage
             if (result == null || !result.IsSuccess || inventoryController == null) return;
             if (inventoryController.Items.HasProcessedReward(result.AttemptId)) return;
             if (!TryCollect(result))
-                Debug.LogError($"Could not store salvage reward for attempt {result.AttemptId}. Check the inventory reference and quantity limits.", this);
+                Debug.LogError($"Could not store salvage reward for attempt {result.AttemptId}. Check the inventory reference, material yield mapping, and quantity limits.", this);
         }
     }
 }

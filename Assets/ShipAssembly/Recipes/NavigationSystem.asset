@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91b6f69d5c984e459470a078be49918a, type: 3}
+  m_Name: NavigationSystem
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.ShipAssembly.AssemblyRecipe
+  RecipeId: interstellar_navigation
+  DisplayName: Interstellar Navigation System
+  Device: 1
+  Materials:
+  - ItemId: rolled_electromechanical_alloy_sheets
+    Quantity: 4
+  - ItemId: tinned_copper_wire_windings
+    Quantity: 5
+  - ItemId: precision_drive_gear_blanks
+    Quantity: 7
+  - ItemId: heat_resistant_ceramic_insulators
+    Quantity: 2
+  - ItemId: vulcanized_airtight_rubber_liners
+    Quantity: 2
+  PuzzlePrefab: {fileID: 4844242919200692190, guid: 8b4b40625ad13554ead46ef0ac4a0a8e, type: 3}
+  OrthographicSize: 5.4
+  PuzzleOffset: {x: 0, y: -1.4, z: 0}

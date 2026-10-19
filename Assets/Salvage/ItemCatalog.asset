@@ -33,3 +33,23 @@ MonoBehaviour:
     displayName: "\u5E9F\u5F03\u673A\u7535\u4EEA\u8868\u7EC4"
     description: "\u6307\u9488\u5F0F\u4EEA\u8868\u62FC\u6210\u7684\u63A7\u5236\u9762\u677F\uFF0C\u73BB\u7483\u788E\u4E86\u4E24\u5757\uFF0C\u673A\u82AF\u5012\u662F\u9F50\u7684\u3002"
     icon: {fileID: 0}
+  - itemId: rolled_electromechanical_alloy_sheets
+    displayName: Rolled Electromechanical Alloy Sheets
+    description: Recovered alloy sheets used to assemble ship systems.
+    icon: {fileID: 0}
+  - itemId: tinned_copper_wire_windings
+    displayName: Tinned Copper Wire & Windings
+    description: Recovered copper conductors and windings used to assemble ship systems.
+    icon: {fileID: 0}
+  - itemId: precision_drive_gear_blanks
+    displayName: Precision Drive Gear Blanks
+    description: Recovered precision gear blanks used to assemble ship systems.
+    icon: {fileID: 0}
+  - itemId: heat_resistant_ceramic_insulators
+    displayName: Heat-Resistant Ceramic Insulators
+    description: Recovered ceramic insulation used to assemble ship systems.
+    icon: {fileID: 0}
+  - itemId: vulcanized_airtight_rubber_liners
+    displayName: Vulcanized Airtight Rubber Liners
+    description: Recovered airtight rubber lining used to assemble ship systems.
+    icon: {fileID: 0}

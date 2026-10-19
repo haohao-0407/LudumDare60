@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -14,8 +15,13 @@ namespace LudumDare60.AssemblyDemo
         public const float ContactTolerance = AssemblyModule.ContactTolerance;
         [Min(0)] public float MoveSpeed = 2.4f;
         [Min(0)] public float RotationSpeed = 80f;
-        public AssemblyModule Selected => Modules != null && Modules.Length > 0 ? Modules[selectedIndex] : null;
+        [Tooltip("Read keyboard and mouse directly. Disable when a screen input adapter owns this puzzle.")]
+        public bool ReadDeviceInput = true;
+        public AssemblyModule Selected => Modules != null && selectedIndex >= 0 && selectedIndex < Modules.Length ? Modules[selectedIndex] : null;
         public int ConnectionCount => connections.Count;
+        public bool IsInitialized { get; private set; }
+        public event Action ProgressChanged;
+        public event Action Completed;
         /// <summary>External reading/menu/end-state lock. Also guards programmatic input.</summary>
         private bool externalInputBlocked;
         [Tooltip("Keep the finished assembly intact until the next run.")]
@@ -52,6 +58,7 @@ namespace LudumDare60.AssemblyDemo
         private float[] startRotations;
         private int selectedIndex;
         private float snapBlockedUntil;
+        private bool completionReported;
 
         private void Awake()
         {
@@ -60,22 +67,24 @@ namespace LudumDare60.AssemblyDemo
             startRotations = new float[Modules.Length];
             for (int i = 0; i < Modules.Length; i++)
             {
+                if (Modules[i] == null) continue;
                 startPositions[i] = Modules[i].Position;
                 startRotations[i] = Modules[i].RotationDegrees;
             }
             connections.Clear();
             selectedIndex = 0;
             UpdateHighlights();
+            IsInitialized = true;
         }
 
         private void Update()
         {
-            if (InputBlocked || Selected == null || !Application.isFocused) return;
+            if (!ReadDeviceInput || InputBlocked || Selected == null || !Application.isFocused) return;
             var keys = Keyboard.current;
             if (keys != null)
             {
                 if (keys.rKey.wasPressedThisFrame) { ResetDemo(); return; }
-                if (keys.tabKey.wasPressedThisFrame) SelectModule((selectedIndex + 1) % Modules.Length);
+                if (keys.tabKey.wasPressedThisFrame) SelectNext();
                 if (keys.digit1Key.wasPressedThisFrame) SelectModule(0);
                 if (keys.digit2Key.wasPressedThisFrame) SelectModule(1);
                 if (keys.digit3Key.wasPressedThisFrame) SelectModule(2);
@@ -91,23 +100,50 @@ namespace LudumDare60.AssemblyDemo
             var pickingCamera = ViewCamera != null ? ViewCamera : Camera.main;
             if (mouse != null && pickingCamera != null && mouse.leftButton.wasPressedThisFrame && pickingCamera.pixelRect.Contains(mouse.position.ReadValue()))
             {
-                Ray ray = pickingCamera.ScreenPointToRay(mouse.position.ReadValue());
-                for (int i = Modules.Length - 1; i >= 0; i--)
-                {
-                    var plane = new Plane(Vector3.forward, Modules[i].transform.position);
-                    if (!plane.Raycast(ray, out float distance)) continue;
-                    Vector3 world = ray.GetPoint(distance);
-                    Vector3 local = Modules[i].transform.InverseTransformPoint(world);
-                    if (Modules[i].ContainsLocalPoint(local))
-                    { SelectModule(i); break; }
-                }
+                TrySelect(pickingCamera.ScreenPointToRay(mouse.position.ReadValue()));
             }
-            if (Time.unscaledTime >= snapBlockedUntil) TrySnapSelected();
+            TickSnap();
+        }
+
+        /// <summary>Pick on the puzzle's world XY plane using a ray supplied by any screen.</summary>
+        public bool TrySelect(Ray ray)
+        {
+            if (InputBlocked || Modules == null) return false;
+            for (int i = Modules.Length - 1; i >= 0; i--)
+            {
+                var module = Modules[i];
+                if (module == null || !module.gameObject.activeInHierarchy) continue;
+                var plane = new Plane(Vector3.forward, module.transform.position);
+                if (!plane.Raycast(ray, out float distance)) continue;
+                Vector3 local = module.transform.InverseTransformPoint(ray.GetPoint(distance));
+                if (!module.ContainsLocalPoint(local)) continue;
+                SelectModule(i);
+                return true;
+            }
+            return false;
+        }
+
+        public void SelectNext()
+        {
+            if (InputBlocked || Modules == null || Modules.Length == 0) return;
+            for (int step = 1; step <= Modules.Length; step++)
+            {
+                int index = (Mathf.Max(0, selectedIndex) + step) % Modules.Length;
+                if (Modules[index] == null) continue;
+                SelectModule(index);
+                return;
+            }
+        }
+
+        /// <summary>Automatic capture respects the grace period after detaching a module.</summary>
+        public bool TickSnap()
+        {
+            return Time.unscaledTime >= snapBlockedUntil && TrySnapSelected();
         }
 
         public void SelectModule(int index)
         {
-            if (InputBlocked || Modules == null || index < 0 || index >= Modules.Length) return;
+            if (InputBlocked || Modules == null || index < 0 || index >= Modules.Length || Modules[index] == null) return;
             selectedIndex = index;
             UpdateHighlights();
         }
@@ -121,25 +157,29 @@ namespace LudumDare60.AssemblyDemo
 
         public void ResetDemo()
         {
-            if (InputBlocked || startPositions == null) return;
+            if (InputBlocked || startPositions == null || Modules == null) return;
             connections.Clear();
-            for (int i = 0; i < Modules.Length; i++)
+            completionReported = false;
+            for (int i = 0; i < Mathf.Min(Modules.Length, startPositions.Length); i++)
             {
+                if (Modules[i] == null) continue;
                 Modules[i].Position = startPositions[i];
                 Modules[i].RotationDegrees = startRotations[i];
             }
             selectedIndex = 0;
             snapBlockedUntil = 0;
             UpdateHighlights();
+            ReportProgress();
         }
 
         public void DetachSelected()
         {
             if (InputBlocked || Selected == null) return;
-            connections.RemoveAll(c => c.A == Selected || c.B == Selected);
+            int removed = connections.RemoveAll(c => c.A == Selected || c.B == Selected);
             // Give the player time to move clear before magnetic capture can happen again.
             snapBlockedUntil = Time.unscaledTime + 1.5f;
             UpdateHighlights();
+            if (removed > 0) ReportProgress();
         }
 
         private void CollectGroup(AssemblyModule start)
@@ -189,10 +229,10 @@ namespace LudumDare60.AssemblyDemo
             int fromPort = -1, toPort = -1;
             foreach (var candidate in Modules)
             {
-                if (!group.Contains(candidate)) continue;
+                if (candidate == null || !group.Contains(candidate)) continue;
                 foreach (var other in Modules)
                 {
-                    if (group.Contains(other)) continue;
+                    if (other == null || group.Contains(other)) continue;
                     for (int a = 0; a < candidate.PortCount; a++)
                     {
                         if (PortOccupied(candidate, a)) continue;
@@ -228,7 +268,26 @@ namespace LudumDare60.AssemblyDemo
             }
             connections.Add(new Connection { A = moving, PortA = fromPort, B = target, PortB = toPort });
             UpdateHighlights();
+            ReportProgress();
             return true;
+        }
+
+        private void ReportProgress()
+        {
+            bool justCompleted = !completionReported && IsAssemblyComplete;
+            if (justCompleted) completionReported = true;
+            NotifyListeners(ProgressChanged);
+            if (justCompleted) NotifyListeners(Completed);
+        }
+
+        private void NotifyListeners(Action listeners)
+        {
+            if (listeners == null) return;
+            foreach (Action listener in listeners.GetInvocationList())
+            {
+                try { listener(); }
+                catch (Exception exception) { Debug.LogException(exception, this); }
+            }
         }
 
         private void UpdateHighlights()
@@ -236,6 +295,7 @@ namespace LudumDare60.AssemblyDemo
             if (Modules == null) return;
             foreach (var module in Modules)
             {
+                if (module == null) continue;
                 occupied.Clear();
                 for (int i = 0; i < module.PortCount; i++) if (PortOccupied(module, i)) occupied.Add(i);
                 module.SetHighlight(module == Selected, occupied);
