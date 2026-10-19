@@ -55,17 +55,25 @@ namespace LudumDare60.Salvage
         public float ControlMin => ControlPosition - ControlSize / 2f;
         public float ControlMax => ControlPosition + ControlSize / 2f;
         public float TargetPosition { get; }
+        public float TargetSize { get; }
+        public float TargetMin => TargetPosition - TargetSize / 2f;
+        public float TargetMax => TargetPosition + TargetSize / 2f;
         public float Progress { get; }
         public float ElapsedSeconds { get; }
         public float TimeRemaining { get; }
         public bool IsControlHeld { get; }
         public bool IsPaused { get; }
         public bool IsActive => State == SalvageState.Searching || State == SalvageState.SignalDetected || State == SalvageState.Salvaging;
-        public bool IsTargetInControl => State == SalvageState.Salvaging && TargetPosition >= ControlMin && TargetPosition <= ControlMax;
+        public bool IsTargetInControl => State == SalvageState.Salvaging
+            && RangesOverlap(ControlMin, ControlMax, TargetMin, TargetMax);
+
+        // Shared by the simulation and presentation snapshot; visible overlap is the capture rule.
+        internal static bool RangesOverlap(float controlMin, float controlMax, float targetMin, float targetMax)
+            => targetMax >= controlMin && targetMin <= controlMax;
 
         internal SalvageSnapshot(Guid attemptId, SalvageState state, string targetId, float controlPosition,
             float controlSize, float targetPosition, float progress, float elapsedSeconds, float timeRemaining,
-            bool isControlHeld, bool isPaused)
+            bool isControlHeld, bool isPaused, float targetSize = 0f)
         {
             AttemptId = attemptId;
             State = state;
@@ -73,6 +81,7 @@ namespace LudumDare60.Salvage
             ControlPosition = controlPosition;
             ControlSize = controlSize;
             TargetPosition = targetPosition;
+            TargetSize = targetSize;
             Progress = progress;
             ElapsedSeconds = elapsedSeconds;
             TimeRemaining = timeRemaining;

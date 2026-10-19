@@ -29,6 +29,7 @@ namespace LudumDare60.Salvage
         public SalvageSnapshot Snapshot => Session.Snapshot;
         public SalvageResult Result => Session.Result;
         public bool IsActive => Session.IsActive;
+        public bool CanAcceptInput => isActiveAndEnabled && !gameplayBlocked && !manuallyPaused;
         public SalvagePool Pool => pool;
         public SalvageDefinition DefaultDefinition => defaultDefinition;
 
@@ -53,7 +54,7 @@ namespace LudumDare60.Salvage
         /// <summary>The same seed drives both the pool draw and the simulation, so a seed reproduces the whole attempt.</summary>
         public bool TryStartRandomSalvage(int? randomSeed = null)
         {
-            if (!isActiveAndEnabled || Session.IsActive) return false;
+            if (!CanAcceptInput || Session.IsActive) return false;
             var seed = randomSeed ?? Guid.NewGuid().GetHashCode();
             var definition = pool != null ? pool.Pick(seed) : defaultDefinition;
             if (definition == null) return false;
@@ -62,7 +63,7 @@ namespace LudumDare60.Salvage
 
         public bool TryStartSalvage(SalvageDefinition definition, int? randomSeed = null)
         {
-            if (gameplayBlocked || manuallyPaused || !isActiveAndEnabled || definition == null || Session.IsActive) return false;
+            if (!CanAcceptInput || definition == null || Session.IsActive) return false;
             return Session.TryStart(definition.CreateSettings(), definition.CreateTarget(), randomSeed);
         }
 
@@ -70,8 +71,8 @@ namespace LudumDare60.Salvage
         public void StartSalvage() => TryStartSalvage();
         public void PressControl() => SetControlHeld(true);
         public void ReleaseControl() => SetControlHeld(false);
-        public void SetControlHeld(bool held) { if (!held || !gameplayBlocked) Session.SetControlHeld(held); }
-        public bool TryLockTarget() => !gameplayBlocked && Session.TryLockTarget();
+        public void SetControlHeld(bool held) { if (!held || CanAcceptInput) Session.SetControlHeld(held); }
+        public bool TryLockTarget() => CanAcceptInput && Session.TryLockTarget();
         public void SetPaused(bool paused) { manuallyPaused = paused; Session.SetPaused(paused || gameplayBlocked); }
         public void CancelSalvage() => Session.Cancel();
 

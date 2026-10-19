@@ -39,6 +39,8 @@ inventory.Clear();                         // 清空物品，保留奖励去重�
 4. 桥接器订阅 `Completed`，只有成功结果会入库，使用 `AttemptId` 去重。失败和取消不入库。重新启用桥接器会尝试接收源控制器保留的最后一次结果；重复接收安全。桥接器应覆盖整个作业周期，禁用期间多次完成的历史结果不会被源控制器保留。
 5. UI/其他系统通过 `inventoryController.Items` 调用上述接口，通过 `inventoryController.Changed` 刷新显示；在 `OnEnable` 订阅、`OnDisable` 取消订阅，并在打开时读取一次当前库存。
 
+`SalvageInventoryBridge.HasCollected(result)` 可以查询对应成功结果是否已入库；只判断 `result.IsSuccess` 不能代表库存事务成功。重复领取或删除/消耗已入库物品之后，领取记录仍保留。
+
 `Assets/Scenes/TerminalDialogueDemo.unity` 已完成场景接入：`Salvage Screen (World Space)` 根物体同时挂载 `SalvageController`、`InventoryController` 和 `SalvageInventoryBridge`，桥接器的两个引用指向同物体上的对应组件。成功打捞后自动增加内存中的库存，失败/取消不入库。停止游戏或销毁该库存对象后，物品不会保留到下次游戏。
 
 菜单 `Tools > Salvage > 在当前场景搭建打捞屏` 也会创建并绑定这三个组件。新场景已有本局的共享库存时，将桥接器改为引用该库存，并移除屏幕上的独立库存。
@@ -50,6 +52,8 @@ inventory.Clear();                         // 清空物品，保留奖励去重�
 `InventoryScreenView` 绑定打捞屏上的共享 `InventoryController`，通过 `Changed` 刷新列表。成功打捞、增加/扣除/删除物品都会更新显示；禁用时取消订阅，重新打开时读取最新快照。显示屏只查询库存，不创建第二份库存，也不修改物品。`ONLINE` / `OFFLINE` 表示是否绑定了库存控制器。
 
 `ItemCatalog` 的名称包含可打印 ASCII 字符时直接使用；当前中文名称超出 Glass TTY 的字库，因此回退为物品 ID 转成的英文名称（与打捞屏一致）。物品数量和总数带千位分隔符。列表按物品 ID 排序，缺少目录条目仍可正常显示。
+
+曲面屏幕上的库存行由 `TerminalCurvedDisplay` 镜像源界面，包括首次入库时新建的行、数量变化与行的隐藏。捕获副本不启用 `InventoryController`、`InventoryScreenView` 或打捞奖励桥接器。
 
 菜单 `Tools > Storage > 在当前场景搭建库存屏` 可重新创建显示内容，优先使用场景中已有的 `Storage Screen` 并保留其位置；只有 `Inventory Display` 子层级由生成器管理。它会复用场景中的库存，并补齐缺少的打捞桥接。界面显示逻辑在 `InventoryScreenView.cs`，CRT 图形在 `InventoryCrtOverlay.cs`，场景生成器在 `Editor/InventoryScreenBuilder.cs`。
 
