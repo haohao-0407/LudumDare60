@@ -1,0 +1,20 @@
+Generator: built-in image_gen
+Output: Mars_RetroFuture_Cover_v4_Landscape.png
+Reference: Mars_RetroFuture_Cover_v3_Redrawn.png
+Purpose: recomposed landscape game cover
+
+Create a finished HORIZONTAL LANDSCAPE version of the supplied retro-futurist Mars game poster, with a 16:9 wide canvas, ideally 1920 x 1080 or higher-resolution equivalent. Repaint and recompose the complete scene to make deliberate use of the wide format. This is a new landscape composition based on the same art direction, NOT the portrait image stretched, squeezed, letterboxed, or simply cropped.
+
+Use the supplied portrait as the visual continuity reference: blue and golden painted sky, orange Martian mesas, cream cylindrical colony buildings with vermilion stripes, curved glass connecting corridors, geodesic greenhouse, slim turquoise pointed rocket with a round porthole and coral-red tail fins, and a single suited explorer carrying a small case.
+
+Composition for the wide cover:
+A broad panorama of the quiet Mars colony and surrounding red-rock desert. Place the compact retro rocket standing securely on its circular landing apron in the left third, with a modest maintenance stair/platform beside it. Keep the full rocket and all fins visible, engine off, naturally grounded with a contact shadow. Height about one third of the image height; it is a small one-person craft at believable scale beside two-storey habitat buildings. The rocket retains its elegant tapered pointed ivory nose, turquoise fuselage, round window and integrated coral-red tail fins.
+The cream colony spreads across the central middle ground and right side, with cylindrical living modules, enclosed connecting corridors, a communications mast and greenhouse dome. Human-size doors, windows, railings, stairs and service vehicles establish coherent scale.
+A foreground access walkway enters from the lower right and curves toward the colony and launch apron. A single naturally proportioned explorer in an off-white suit walks away from the viewer near the right third, carrying a modest tool case. Show the entire figure, about 17 percent of the canvas height, with ample surrounding breathing room. Rails are waist-high relative to the explorer and share the same perspective. A portion of a nearby cream habitation building frames the far right edge without dominating the image.
+The left and far background open into spacious orange desert, layered mesas and soft atmospheric haze. Give the scene expansive lateral depth. Upper third is beautiful painterly blue sky with soft golden light from the upper left, a restrained pale sun, delicate stars and a tiny distant blue-white Earth. Leave natural calm space in the upper sky for a possible title later, but include NO typography.
+
+Maintain a unified camera perspective, natural distance-based scaling, realistic grounding, consistent warm sunlight and long soft cool-blue shadows across every object. The astronaut, rocket, service stairs and buildings must all belong to one believable spatial scene. Preserve the latest portrait's improved proportions.
+
+Style: traditional mid-century retro-futurist science-fiction cover illustration, hand-painted gouache/tempera, rich but slightly faded blue-gold palette, warm cream architectural surfaces, dusty turquoise enamel, coral fins, visible brushwork and subtle old-paper/offset-print grain. Quiet wonder, hopeful exploration, restrained weathering. Painterly, NOT a glossy 3D render or photoreal screenshot. Art should read clearly as a sophisticated game-cover illustration at thumbnail size.
+
+No giant rocket, no hovering spacecraft, no exhaust flame, no giant planet, no crowds, no combat, no neon effects, no stretched shapes, no duplicated characters, no distorted hands, no mismatched perspective, no title, no letters, no logos, no watermark, no borders or black bars. Full-bleed wide 16:9 landscape artwork.
