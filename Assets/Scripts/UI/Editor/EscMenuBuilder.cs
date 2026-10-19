@@ -105,22 +105,36 @@ namespace LudumDare60.UI.Editor
         private static void AddHoverEffects(GameObject root)
         {
             const string window = "Menu Overlay/Menu Window/";
-            foreach (var name in new[] { "Resume", "Settings", "Quit" })
+            foreach (var path in new[] { "Main Page/Resume", "Main Page/Settings", "Main Page/Quit",
+                "Settings Page/Back", "Settings Page/Fullscreen", "Settings Page/Language" })
             {
-                var target = root.transform.Find(window + "Main Page/" + name);
-                if (target.GetComponent<EscMenuHoverEffect>() != null) continue;
+                var target = root.transform.Find(window + path);
+                if (target == null) continue;
                 var hitImage = target.GetComponent<UnityEngine.UI.Image>();
-                var visual = Rect("Hover Visual", target); Stretch(visual);
-                var image = visual.gameObject.AddComponent<UnityEngine.UI.Image>();
-                image.sprite = hitImage.sprite; image.color = hitImage.color; image.raycastTarget = false;
-                // Move only the artwork and caption, preserving the original button's stable hit area.
-                var label = target.Find("Label"); label.SetParent(visual, false);
+                var visual = target.Find("Hover Visual") as RectTransform;
+                if (visual == null)
+                {
+                    visual = Rect("Hover Visual", target); Stretch(visual);
+                    var picture = visual.gameObject.AddComponent<UnityEngine.UI.Image>();
+                    picture.sprite = hitImage.sprite; picture.color = hitImage.color;
+                }
+                var image = visual.GetComponent<UnityEngine.UI.Image>(); image.raycastTarget = false;
+                // Keep the Selectable and hit rectangle stationary. Move art, labels, value and checkmark together.
+                for (var i = target.childCount - 1; i >= 0; i--)
+                {
+                    var child = target.GetChild(i);
+                    if (child != visual) child.SetParent(visual, false);
+                }
                 hitImage.color = Color.clear;
-                target.GetComponent<UnityEngine.UI.Button>().targetGraphic = image;
-                var sweep = CreateSweep(visual); sweep.transform.SetSiblingIndex(0);
-                target.gameObject.AddComponent<EscMenuHoverEffect>().Configure(visual, sweep, 22);
+                target.GetComponent<UnityEngine.UI.Selectable>().targetGraphic = image;
+                var sweep = visual.GetComponentInChildren<EscMenuSweepGraphic>(true);
+                if (sweep == null) sweep = CreateSweep(visual);
+                sweep.transform.SetSiblingIndex(0);
+                var effect = target.GetComponent<EscMenuHoverEffect>();
+                if (effect == null) effect = target.gameObject.AddComponent<EscMenuHoverEffect>();
+                effect.Configure(visual, sweep, 22);
             }
-            foreach (var name in new[] { "Language", "Master Volume" })
+            foreach (var name in new[] { "Master Volume" })
             {
                 var row = root.transform.Find(window + "Settings Page/" + name);
                 if (row == null || row.GetComponent<EscMenuHoverEffect>() != null) continue;
@@ -192,15 +206,15 @@ namespace LudumDare60.UI.Editor
             if (language == null) throw new InvalidOperationException("Missing language option.");
             language.SetParent(settings, false);
             Place((RectTransform)language, 308 * Scale, 1883 * Scale, 2921 * Scale, 314 * Scale);
-            language.GetComponent<UnityEngine.UI.Image>().sprite = Sprite("04_BarMedium.png");
+            (language.Find("Hover Visual") ?? language).GetComponent<UnityEngine.UI.Image>().sprite = Sprite("04_BarMedium.png");
             // The previous conversion left the old volume handle inside the language row.
             var legacySlider = language.GetComponent<UnityEngine.UI.Slider>();
             if (legacySlider != null) UnityEngine.Object.DestroyImmediate(legacySlider);
             var legacyHandle = language.Find("Handle Slide Area");
             if (legacyHandle != null) UnityEngine.Object.DestroyImmediate(legacyHandle.gameObject);
             var option = language.GetComponent<EscLanguageOption>();
-            var label = language.Find("Label").GetComponent<TMP_Text>();
-            var value = language.Find("Value").GetComponent<TMP_Text>();
+            var label = option.RowLabel;
+            var value = option.ValueLabel;
             label.text = "LANGUAGE"; label.fontSize = 23;
             Place(label.rectTransform, 24, 0, 180, 314 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
             Place(value.rectTransform, 210, 0, 435, 314 * Scale); value.alignment = TextAlignmentOptions.MidlineRight;
