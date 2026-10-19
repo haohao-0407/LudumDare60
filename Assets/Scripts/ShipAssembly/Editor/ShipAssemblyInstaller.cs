@@ -178,7 +178,7 @@ namespace LudumDare60.ShipAssembly.Editor
             view.NextButton = Button("Next Recipe", root.transform, ">", .895f, .855f, .965f, .935f, out _);
             Panel("Header Line", root.transform, Dim, .035f, .842f, .965f, .845f);
 
-            var requirementsPanel = Rect("Requirements Panel", root.transform, .035f, .25f, .965f, .82f);
+            var requirementsPanel = Rect("Requirements Panel", root.transform, .035f, .28f, .965f, .82f);
             view.RequirementsPanel = requirementsPanel.gameObject;
             view.Requirements = Text("Materials", requirementsPanel, "", 28, Ink, 0, 0, 1, 1);
             view.Requirements.richText = true;
@@ -188,7 +188,7 @@ namespace LudumDare60.ShipAssembly.Editor
             var counts = new[] { 6, 4, 2, 7, 3 };
             view.Requirements.text = string.Join("\n", materialNames.Select((name, i) => name + "\n    OWNED 0 / REQUIRED " + counts[i]));
 
-            var puzzlePanel = Rect("Puzzle Panel", root.transform, .035f, .25f, .965f, .82f);
+            var puzzlePanel = Rect("Puzzle Panel", root.transform, .035f, .28f, .965f, .82f);
             view.PuzzlePanel = puzzlePanel.gameObject;
             Panel("Puzzle Background", puzzlePanel, new Color(.005f, .012f, .008f), 0, 0, 1, 1);
             var surface = Rect("Assembly Viewport", puzzlePanel, 0, 0, 1, 1);
@@ -201,16 +201,18 @@ namespace LudumDare60.ShipAssembly.Editor
             input.Controller = service; input.Surface = image; input.Actions = actions; input.PauseMenu = pause;
             puzzlePanel.gameObject.SetActive(false);
 
-            view.Status = Text("Status", root.transform, "Collect materials to begin.", 24, Ink, .035f, .19f, .965f, .245f);
-            view.ProgressLabel = Text("Progress", root.transform, "00% / NOT STARTED", 22, Dim, .035f, .145f, .965f, .19f);
-            view.StartButton = Button("Start Or Resume", root.transform, "START ASSEMBLY", .035f, .075f, .47f, .14f, out var startLabel);
+            view.Status = Text("Status", root.transform, "Collect materials to begin.", 24, Ink, .035f, .22f, .965f, .275f);
+            view.ProgressLabel = Text("Progress", root.transform, "00% / NOT STARTED", 22, Dim, .035f, .175f, .965f, .22f);
+            view.StartButton = Button("Start Or Resume", root.transform, "START ASSEMBLY", .035f, .105f, .47f, .17f, out var startLabel);
             view.StartLabel = startLabel;
-            view.ResetButton = Button("Reset Parts", root.transform, "RESET PARTS", .49f, .075f, .73f, .14f, out _);
-            view.DetachButton = Button("Detach Part", root.transform, "DETACH", .75f, .075f, .965f, .14f, out _);
+            view.ResetButton = Button("Reset Parts", root.transform, "RESET PARTS", .49f, .105f, .73f, .17f, out _);
+            view.DetachButton = Button("Detach Part", root.transform, "DETACH", .75f, .105f, .965f, .17f, out _);
             view.ResetButton.interactable = false; view.DetachButton.interactable = false;
             view.StartButton.interactable = false;
-            view.Hint = Text("Controls", root.transform, "Materials are charged once. Switching screens keeps your progress.", 18, Dim, .035f, .008f, .965f, .07f);
+            view.Hint = Text("Controls", root.transform, "Materials are charged once. Switching screens keeps your progress.", 18, Ink, .035f, .008f, .965f, .10f);
             view.Hint.alignment = TextAlignmentOptions.Center;
+            view.Hint.enableAutoSizing = true;
+            view.Hint.fontSizeMin = 16; view.Hint.fontSizeMax = 18;
             var mount = root.AddComponent<TerminalScreenMount>();
             mount.Configure(canvas);
             mount.SetCurvedRendering(true);
