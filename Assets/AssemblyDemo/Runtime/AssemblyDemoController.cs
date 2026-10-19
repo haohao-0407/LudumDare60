@@ -17,7 +17,14 @@ namespace LudumDare60.AssemblyDemo
         public AssemblyModule Selected => Modules != null && Modules.Length > 0 ? Modules[selectedIndex] : null;
         public int ConnectionCount => connections.Count;
         /// <summary>External reading/menu/end-state lock. Also guards programmatic input.</summary>
-        public bool InputBlocked { get; set; }
+        private bool externalInputBlocked;
+        [Tooltip("Keep the finished assembly intact until the next run.")]
+        public bool LockWhenComplete;
+        public bool InputBlocked
+        {
+            get => externalInputBlocked || (LockWhenComplete && IsAssemblyComplete);
+            set => externalInputBlocked = value;
+        }
         public int RequiredConnectionCount => Modules == null ? 0 : Mathf.Max(0, Modules.Length - 1);
         /// <summary>All required modules belong to one real, compatible-port assembly.</summary>
         public bool IsAssemblyComplete

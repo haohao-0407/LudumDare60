@@ -20,6 +20,10 @@ namespace LudumDare60.AssemblyDemo
         public Sprite artwork;
         [Min(0.01f)] public float artworkHeight = 3f;
         public Vector2 artworkOffset = Vector2.zero;
+        [Tooltip("Use an existing mesh hierarchy instead of generating a square or sprite.")]
+        public Transform modelVisual;
+        public Vector2 modelBoundsCenter;
+        public Vector2 modelBoundsSize = Vector2.one;
         [Tooltip("Distance from the module origin for each port. Missing or invalid entries use Radius.")]
         public float[] portDistances = Array.Empty<float>();
         [Tooltip("Ports with matching keys connect; an empty key accepts any other key.")]
@@ -68,6 +72,11 @@ namespace LudumDare60.AssemblyDemo
         /// <summary>Hit bounds in unscaled module-local coordinates, including the artwork offset.</summary>
         public bool ContainsLocalPoint(Vector2 point)
         {
+            if (modelVisual != null)
+            {
+                point -= modelBoundsCenter;
+                return Mathf.Abs(point.x) <= modelBoundsSize.x * 0.5f && Mathf.Abs(point.y) <= modelBoundsSize.y * 0.5f;
+            }
             if (artwork == null) return Mathf.Abs(point.x) <= radius && Mathf.Abs(point.y) <= radius;
             Vector2 halfSize = ArtworkSize * 0.5f;
             point -= artworkOffset;
@@ -136,6 +145,9 @@ namespace LudumDare60.AssemblyDemo
                 hash = hash * 397 ^ (artwork != null ? artwork.GetHashCode() : 0);
                 hash = hash * 397 ^ artworkHeight.GetHashCode();
                 hash = hash * 397 ^ artworkOffset.GetHashCode();
+                hash = hash * 397 ^ (modelVisual != null ? modelVisual.GetHashCode() : 0);
+                hash = hash * 397 ^ modelBoundsCenter.GetHashCode();
+                hash = hash * 397 ^ modelBoundsSize.GetHashCode();
                 for (int i = 0; i < PortCount; i++)
                 {
                     hash = hash * 397 ^ PortAngle(i).GetHashCode();
@@ -176,6 +188,13 @@ namespace LudumDare60.AssemblyDemo
             if (inkMaterial == null) inkMaterial = Resources.Load<Material>("WhiteboxModule/VertexInk");
             if (inkMaterial == null || (artwork == null && fillMaterial == null)) return;
             ClearGeometry();
+            if (modelVisual != null)
+            {
+                RebuildModelGuides();
+                visualSignature = VisualSignature();
+                ApplyHighlight();
+                return;
+            }
             if (artwork != null)
             {
                 RebuildArtwork();
@@ -217,6 +236,29 @@ namespace LudumDare60.AssemblyDemo
             MakeLine("Center",new[] { new Vector3(-radius * 0.045f,0,-radius * 0.02f),new Vector3(radius * 0.045f,0,-radius * 0.02f) },radius * 0.09f,false);
             visualSignature = VisualSignature();
             ApplyHighlight();
+        }
+
+        private void RebuildModelGuides()
+        {
+            geometryRoot = MakeObject("Model connector guides", transform).transform;
+            // Draw guides in front of the entire 3D mesh, including its source X offset.
+            geometryRoot.localPosition = new Vector3(0, 0, -4);
+            Vector2 half = modelBoundsSize * 0.5f + Vector2.one * 0.04f;
+            Vector2 center = modelBoundsCenter;
+            outline = MakeLine("Model selection frame", new[] {
+                new Vector3(center.x-half.x, center.y-half.y, 0), new Vector3(center.x-half.x, center.y+half.y, 0),
+                new Vector3(center.x+half.x, center.y+half.y, 0), new Vector3(center.x+half.x, center.y-half.y, 0)
+            }, 0.018f, true);
+            arrows = new LineRenderer[PortCount * 2];
+            for (int i = 0; i < PortCount; i++)
+            {
+                Vector2 direction = AssemblySnapSolver.Direction(PortAngle(i));
+                Vector2 tip = direction * PortDistance(i);
+                Vector2 neck = tip - direction * 0.10f;
+                Vector2 side = new Vector2(-direction.y, direction.x) * 0.065f;
+                arrows[i*2] = MakeLine($"Port {i} shaft", new Vector3[] { tip-direction*0.20f, tip }, 0.024f, false);
+                arrows[i*2+1] = MakeLine($"Port {i} arrowhead", new Vector3[] { neck+side, tip, neck-side }, 0.026f, false);
+            }
         }
 
         private void RebuildArtwork()
@@ -310,15 +352,15 @@ namespace LudumDare60.AssemblyDemo
         {
             if (outline != null)
             {
-                outline.enabled = artwork == null || selected;
+                outline.enabled = (artwork == null && modelVisual == null) || selected;
                 outline.startColor = outline.endColor = selected ? selectionColor : new Color(0.55f,0.61f,0.66f);
-                outline.widthMultiplier = artwork != null ? 0.018f : radius * (selected ? 0.055f : 0.025f);
+                outline.widthMultiplier = artwork != null || modelVisual != null ? 0.018f : radius * (selected ? 0.055f : 0.025f);
             }
             if (arrows == null) return;
             for (int i = 0; i < arrows.Length; i++)
                 if (arrows[i] != null) arrows[i].startColor = arrows[i].endColor = highlightedPorts.Contains(i / 2)
-                    ? (artwork != null ? selectionColor : new Color(0.02f,0.60f,0.40f))
-                    : (artwork != null ? new Color(0.96f,0.64f,0.28f) : new Color(0.18f,0.25f,0.32f));
+                    ? (artwork != null || modelVisual != null ? selectionColor : new Color(0.02f,0.60f,0.40f))
+                    : (artwork != null || modelVisual != null ? new Color(0.96f,0.64f,0.28f) : new Color(0.18f,0.25f,0.32f));
         }
     }
 }
