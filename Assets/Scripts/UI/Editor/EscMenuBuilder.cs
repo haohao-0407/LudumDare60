@@ -59,10 +59,10 @@ namespace LudumDare60.UI.Editor
                 ui.Back = ArtButton("Back", settings, "03_BarLong.png", "BACK", 313, 925, 2921, 346);
                 ui.Fullscreen = Fullscreen(settings);
                 ui.ResetAudio = ArtButton("Reset Audio", settings, "05_BarShort.png", "RESET AUDIO", 308, 1883, 1557, 314);
-                var settingsHelp = Text("Settings Hint", settings, "DISPLAY / AUDIO\n\nAdjust master volume\nusing the slider below.", 23, Light);
+                var settingsHelp = Text("Settings Hint", settings, "DISPLAY / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows.", 23, Light);
                 Place(settingsHelp.rectTransform, 835, 235, 300, 245); settingsHelp.lineSpacing = 14;
                 settings.gameObject.SetActive(false);
-                BuildVolume(window, ui);
+                BuildLanguageOption(window, ui);
                 Picture("Footer Strip", window, "09_FooterStrip.png", 95, 3210, 5025, 190);
                 var footer = Text("Footer", window, "ESC / RESUME       SHIP OS / SYSTEM CONTROL", 19, Light);
                 Place(footer.rectTransform, 40, 736, 1110, 40); footer.alignment = TextAlignmentOptions.Center;
@@ -119,8 +119,8 @@ namespace LudumDare60.UI.Editor
                 var sweep = CreateSweep(visual); sweep.transform.SetSiblingIndex(0);
                 target.gameObject.AddComponent<EscMenuHoverEffect>().Configure(visual, sweep, 22);
             }
-            var volume = root.transform.Find(window + "Master Volume");
-            if (volume.GetComponent<EscMenuHoverEffect>() == null)
+            var volume = root.transform.Find(window + "Language");
+            if (volume != null && volume.GetComponent<EscMenuHoverEffect>() == null)
             {
                 var sweep = CreateSweep(volume); sweep.transform.SetSiblingIndex(0);
                 volume.gameObject.AddComponent<EscMenuHoverEffect>().Configure(null, sweep, 0);
@@ -134,18 +134,27 @@ namespace LudumDare60.UI.Editor
             return graphic;
         }
 
-        private static void BuildVolume(Transform window, EscMenuWidgets ui)
+        /// <summary>语言选项行：复用原音量滑条的长条美术，滑槽正好当左右切换的轨道。</summary>
+        private static void BuildLanguageOption(Transform window, EscMenuWidgets ui)
         {
-            var row = Picture("Master Volume", window, "06_SliderBackground.png", 313, 2399, 2921, 321);
-            var label = Text("Label", row, "VOLUME", 23, Ink); Place(label.rectTransform, 20, 0, 155, 321 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
-            var slider = row.gameObject.AddComponent<UnityEngine.UI.Slider>(); slider.minValue = 0; slider.maxValue = 1; slider.value = 1;
-            var area = Rect("Handle Slide Area", row); Place(area, 835 * Scale, 117 * Scale, 1756 * Scale, 69 * Scale);
-            var handle = Rect("Handle", area); handle.sizeDelta = new Vector2(133 * Scale, (133 - 69) * Scale);
-            var image = handle.gameObject.AddComponent<UnityEngine.UI.Image>(); image.sprite = Sprite("08_SliderHandle.png"); image.raycastTarget = true;
-            slider.handleRect = handle; slider.targetGraphic = image; slider.direction = UnityEngine.UI.Slider.Direction.LeftToRight;
+            var row = Picture("Language", window, "06_SliderBackground.png", 313, 2399, 2921, 321);
             row.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
-            var value = Text("Value", row, "100%", 21, Ink); Place(value.rectTransform, 603, 0, 60, 321 * Scale); value.alignment = TextAlignmentOptions.Center;
-            ui.Volume = slider; ui.VolumeValue = value;
+            var label = Text("Label", row, "LANGUAGE", 23, Ink);
+            Place(label.rectTransform, 20, 0, 200, 321 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
+            var value = Text("Value", row, "English", 23, Ink);
+            Place(value.rectTransform, 520, 0, 140, 321 * Scale); value.alignment = TextAlignmentOptions.MidlineRight;
+
+            var option = row.gameObject.AddComponent<EscLanguageOption>();
+            option.Configure(label, value);
+            var colors = option.colors;
+            colors.normalColor = Color.white;
+            colors.highlightedColor = new Color(1.13f, 1.13f, 1.13f);
+            colors.selectedColor = colors.highlightedColor;
+            colors.pressedColor = new Color(0.65f, 0.85f, 0.7f);
+            colors.fadeDuration = 0.08f;
+            option.colors = colors;
+            option.targetGraphic = row.GetComponent<UnityEngine.UI.Image>();
+            ui.Language = option;
         }
 
         private static UnityEngine.UI.Toggle Fullscreen(Transform parent)

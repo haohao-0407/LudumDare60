@@ -1,5 +1,6 @@
 using LudumDare60.AssemblyDemo;
 using TMPro;
+using Pioneer60.Localization;
 using UnityEngine;
 
 namespace LudumDare60.ReturnWindow
@@ -26,7 +27,7 @@ namespace LudumDare60.ReturnWindow
                 // Remove only the disposable selection/connector guides; retain the native model.
                 module.enabled = false;
             }
-            if (status != null) status.text = "NAVIGATION DEVICE / ASSEMBLY COMPLETE\nAll three joints secured. Return to the cabin to continue.";
+            if (status != null) status.text = Loc.Say("NAVIGATION DEVICE / ASSEMBLY COMPLETE\nAll three joints secured. Return to the cabin to continue.");
         }
     }
 }

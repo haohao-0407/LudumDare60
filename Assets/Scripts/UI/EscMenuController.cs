@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using Pioneer60.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -12,9 +14,9 @@ namespace LudumDare60.UI
     public sealed class EscMenuWidgets
     {
         public GameObject Overlay, MainPage, SettingsPage, QuitConfirmation;
-        public TMP_Text Title, VolumeValue;
+        public TMP_Text Title;
         public UnityEngine.UI.Button Resume, Settings, Quit, Back, ResetAudio, CancelQuit, ConfirmQuit;
-        public UnityEngine.UI.Slider Volume;
+        public EscLanguageOption Language;
         public UnityEngine.UI.Toggle Fullscreen;
     }
 
@@ -33,6 +35,11 @@ namespace LudumDare60.UI
         private bool previousCursorVisible;
         private CursorLockMode previousCursorLock;
         private GameObject previousSelection;
+
+        // label → dictionary key. Filled once in Awake so language switches are just re-assignment.
+        private readonly List<TMP_Text> _localizedLabels = new List<TMP_Text>();
+        private readonly List<string> _localizedKeys = new List<string>();
+
         public bool IsOpen { get; private set; }
 
         public void Configure(InputActionAsset actions, EscMenuWidgets menuWidgets)
@@ -49,13 +56,26 @@ namespace LudumDare60.UI
             widgets.ResetAudio.onClick.AddListener(ResetAudio);
             widgets.CancelQuit.onClick.AddListener(CancelQuit);
             widgets.ConfirmQuit.onClick.AddListener(ConfirmQuit);
-            widgets.Volume.onValueChanged.AddListener(SetVolume);
             widgets.Fullscreen.onValueChanged.AddListener(SetFullscreen);
             widgets.Overlay.SetActive(false);
         }
 
+        private void Start()
+        {
+            // Start 而不是 Awake：确保词典实例与整棵 UI 层级都已就绪。
+            // The terminal font is ASCII-only; attach a CJK fallback before any Chinese text is assigned.
+            LocFontFallback.EnsureFor(widgets.Title);
+            ApplyLanguage();
+        }
+
+        private void OnDestroy()
+        {
+            Loc.LanguageChanged -= OnLanguageChanged;
+        }
+
         private void OnEnable()
         {
+            Loc.LanguageChanged += OnLanguageChanged;
             var source = inputActions != null ? inputActions.FindAction(toggleActionPath, false) : null;
             if (source == null) { Debug.LogError("ESC Menu: configure Input Actions / " + toggleActionPath, this); return; }
             // Own just this action's subscription/lifetime; never disable a shared PlayerInput/UI action map.
@@ -66,6 +86,7 @@ namespace LudumDare60.UI
 
         private void OnDisable()
         {
+            Loc.LanguageChanged -= OnLanguageChanged;
             Close();
             if (toggleAction == null) return;
             toggleAction.performed -= OnToggle;
@@ -84,7 +105,6 @@ namespace LudumDare60.UI
             if (pauseGame) Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
             widgets.Overlay.SetActive(true);
-            widgets.Volume.SetValueWithoutNotify(AudioListener.volume); UpdateVolumeLabel();
             widgets.Fullscreen.SetIsOnWithoutNotify(Screen.fullScreen);
             ShowMain(); openChanged.Invoke(true);
         }
@@ -105,7 +125,7 @@ namespace LudumDare60.UI
         {
             SetPageInteraction(true);
             widgets.MainPage.SetActive(true); widgets.SettingsPage.SetActive(false); widgets.QuitConfirmation.SetActive(false);
-            widgets.Title.text = "PAUSED / SHIP SYSTEMS";
+            widgets.Title.text = Loc.Get("esc.title.paused");
             Select(widgets.Resume.gameObject);
         }
 
@@ -113,7 +133,7 @@ namespace LudumDare60.UI
         {
             SetPageInteraction(true);
             widgets.MainPage.SetActive(false); widgets.SettingsPage.SetActive(true); widgets.QuitConfirmation.SetActive(false);
-            widgets.Title.text = "SETTINGS / SHIP SYSTEMS";
+            widgets.Title.text = Loc.Get("esc.title.settings");
             Select(widgets.Back.gameObject);
         }
 
@@ -123,7 +143,7 @@ namespace LudumDare60.UI
         {
             widgets.MainPage.GetComponent<CanvasGroup>().interactable = enabled;
             widgets.SettingsPage.GetComponent<CanvasGroup>().interactable = enabled;
-            widgets.Volume.interactable = enabled;
+            if (widgets.Language != null) widgets.Language.interactable = enabled;
         }
         public void ConfirmQuit()
         {
@@ -134,9 +154,9 @@ namespace LudumDare60.UI
             Application.Quit();
 #endif
         }
-        private void ResetAudio() { widgets.Volume.value = 1; SetVolume(1); }
-        private void SetVolume(float value) { AudioListener.volume = Mathf.Clamp01(value); UpdateVolumeLabel(); }
-        private void UpdateVolumeLabel() => widgets.VolumeValue.text = Mathf.RoundToInt(widgets.Volume.value * 100) + "%";
+
+        // Volume no longer has a slider in this page. Keep the reset as a one-click "fix loud audio".
+        private void ResetAudio() { AudioListener.volume = 1f; }
         private void SetFullscreen(bool value) => Screen.fullScreen = value;
         private static void Select(GameObject target)
         { if (EventSystem.current != null) { EventSystem.current.SetSelectedGameObject(null); EventSystem.current.SetSelectedGameObject(target); } }
@@ -144,6 +164,50 @@ namespace LudumDare60.UI
         {
             if (UnityEngine.Object.FindAnyObjectByType<EventSystem>() != null) return;
             new GameObject("EventSystem", typeof(EventSystem), typeof(InputSystemUIInputModule));
+        }
+
+        // ── 本地化 ──────────────────────────────────────────────
+        private void BindLocalizedText()
+        {
+            Add("Menu Overlay/Menu Window/Main Page/Resume/Hover Visual/Label", "esc.resume");
+            Add("Menu Overlay/Menu Window/Main Page/Settings/Hover Visual/Label", "esc.settings");
+            Add("Menu Overlay/Menu Window/Main Page/Quit/Hover Visual/Label", "esc.quit");
+            Add("Menu Overlay/Menu Window/Main Page/Controls", "esc.hint.paused");
+            Add("Menu Overlay/Menu Window/Settings Page/Back/Label", "esc.back");
+            Add("Menu Overlay/Menu Window/Settings Page/Fullscreen/Label", "esc.fullscreen");
+            Add("Menu Overlay/Menu Window/Settings Page/Reset Audio/Label", "esc.reset_audio");
+            Add("Menu Overlay/Menu Window/Settings Page/Settings Hint", "esc.hint.settings");
+            Add("Menu Overlay/Menu Window/Language/Label", "esc.language");
+            Add("Menu Overlay/Menu Window/Footer", "esc.footer");
+            Add("Menu Overlay/Menu Window/Quit Confirmation/Question", "esc.quit.question");
+            Add("Menu Overlay/Menu Window/Quit Confirmation/Cancel Quit/Label", "esc.quit.cancel");
+            Add("Menu Overlay/Menu Window/Quit Confirmation/Confirm Quit/Label", "esc.quit.confirm");
+        }
+
+        private void Add(string path, string key)
+        {
+            Transform node = transform.Find(path);
+            if (node == null) { Debug.LogWarning("ESC Menu: missing node " + path, this); return; }
+            var text = node.GetComponent<TMP_Text>();
+            if (text == null) { Debug.LogWarning("ESC Menu: no TMP_Text on " + path, this); return; }
+            _localizedLabels.Add(text);
+            _localizedKeys.Add(key);
+        }
+
+        private void OnLanguageChanged(string code) => ApplyLanguage();
+
+        private void ApplyLanguage()
+        {
+            if (_localizedLabels.Count == 0) BindLocalizedText(); // 自愈：层级晚于脚本就绪时补绑
+            for (int i = 0; i < _localizedLabels.Count; i++)
+            {
+                if (_localizedLabels[i] == null) continue;
+                _localizedLabels[i].text = Loc.Get(_localizedKeys[i]);
+            }
+            if (widgets.Title != null)
+                widgets.Title.text = Loc.Get(widgets.SettingsPage != null && widgets.SettingsPage.activeSelf
+                    ? "esc.title.settings"
+                    : "esc.title.paused");
         }
     }
 }
