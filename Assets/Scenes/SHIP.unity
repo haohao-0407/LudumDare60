@@ -4459,7 +4459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalScreenMount
   screenCanvas: {fileID: 586397643}
   screenTarget: {fileID: 1501154774}
-  curvedScreen: 1
+  curvedScreen: 0
   textureWidth: 1024
   fill: 0.98
   surfaceOffset: 0.002
