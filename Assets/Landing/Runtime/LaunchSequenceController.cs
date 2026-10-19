@@ -34,7 +34,6 @@ namespace LudumDare60.Landing
         public Vector3 AccelerationShakeRotation = new Vector3(.35f, .2f, .45f);
 
         [Header("Owned launch effects")]
-        public Vector3 EngineLocalPosition = new Vector3(0f, -.3f, 0f);
         [Min(0)] public int LiftoffDustBurstCount = 220;
         [Min(0f)] public float GroundDustEmission = 110f;
         [Range(0f, 1f)] public float CountdownVolume = .45f;
@@ -99,11 +98,9 @@ namespace LudumDare60.Landing
         Material skyMaterial;
         Material hazeMaterial;
         Material dustMaterial;
-        Material flameMaterial;
         GameObject effectsRoot;
         Transform hazeDome;
         ParticleSystem groundDust;
-        ParticleSystem engineFlame;
         AudioSource countdownAudio;
         AudioSource ignitionAudio;
         AudioSource engineAudio;
@@ -221,7 +218,6 @@ namespace LudumDare60.Landing
                 SetPhase(LaunchPhase.Ignition);
                 if (IgnitionClip) ignitionAudio.PlayOneShot(IgnitionClip, IgnitionVolume);
                 if (EngineLoopClip) { engineAudio.clip = EngineLoopClip; engineAudio.Play(); }
-                engineFlame.Play();
                 groundDust.Play();
                 OnIgnition.Invoke();
                 if (!IsLaunching) return;
@@ -292,9 +288,6 @@ namespace LudumDare60.Landing
             groundDust.transform.position = groundPosition + Vector3.up * .3f;
             ParticleSystem.EmissionModule dustEmission = groundDust.emission;
             dustEmission.rateOverTime = GroundDustEmission * ignition * (1f - Smooth(.02f, .20f, flight));
-            engineFlame.transform.SetPositionAndRotation(rig.TransformPoint(EngineLocalPosition), rig.rotation * Quaternion.Euler(90f, 0f, 0f));
-            ParticleSystem.EmissionModule flameEmission = engineFlame.emission;
-            flameEmission.rateOverTime = thrust * 145f;
             engineAudio.volume = EngineVolume * thrust;
         }
 
@@ -337,7 +330,6 @@ namespace LudumDare60.Landing
             ResetShake();
             cabinFillState.Restore();
             groundDust.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
-            engineFlame.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
             hazeDome.gameObject.SetActive(false);
             StopAudio();
             routine = null;
@@ -426,8 +418,6 @@ namespace LudumDare60.Landing
             CopyPanorama(environment.SkyboxMaterial, skyMaterial);
             hazeMaterial = new Material(Landing.HazeMaterialTemplate) { name = "Launch Exterior Haze (runtime)" };
             dustMaterial = new Material(Landing.DustMaterialTemplate) { name = "Launch Dust (runtime)" };
-            flameMaterial = new Material(Landing.DustMaterialTemplate) { name = "Launch Flame (runtime)" };
-            flameMaterial.SetColor("_Color", new Color(3f, 1.8f, .75f, 1f));
             effectsRoot = new GameObject("Launch Effects (runtime)");
             SceneManager.MoveGameObjectToScene(effectsRoot, shipScene);
             effectsRoot.transform.SetParent(transform, false);
@@ -445,17 +435,16 @@ namespace LudumDare60.Landing
             renderer.lightProbeUsage = LightProbeUsage.Off;
             renderer.reflectionProbeUsage = ReflectionProbeUsage.Off;
             hazeDome = dome.transform;
-            groundDust = CreateParticles("Launch Ground Dust", dustMaterial, false);
-            engineFlame = CreateParticles("Engine Exhaust", flameMaterial, true);
+            groundDust = CreateGroundDust();
             countdownAudio = CreateAudio("Countdown", false);
             ignitionAudio = CreateAudio("Engine Ignition", false);
             engineAudio = CreateAudio("Ascent Engine Loop", true);
             engineAudio.volume = 0f;
         }
 
-        ParticleSystem CreateParticles(string name, Material material, bool flame)
+        ParticleSystem CreateGroundDust()
         {
-            GameObject child = new GameObject(name);
+            GameObject child = new GameObject("Launch Ground Dust");
             child.transform.SetParent(effectsRoot.transform, false);
             ParticleSystem particles = child.AddComponent<ParticleSystem>();
             particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
@@ -465,49 +454,39 @@ namespace LudumDare60.Landing
             main.duration = 4f;
             main.simulationSpace = ParticleSystemSimulationSpace.World;
             main.useUnscaledTime = false;
-            main.startLifetime = flame ? new ParticleSystem.MinMaxCurve(.22f, .45f) : new ParticleSystem.MinMaxCurve(3f, 5f);
-            main.startSpeed = flame ? new ParticleSystem.MinMaxCurve(15f, 22f) : new ParticleSystem.MinMaxCurve(0f);
-            main.startSize = flame ? new ParticleSystem.MinMaxCurve(.8f, 1.3f) : new ParticleSystem.MinMaxCurve(4f, 7f);
+            main.startLifetime = new ParticleSystem.MinMaxCurve(3f, 5f);
+            main.startSpeed = new ParticleSystem.MinMaxCurve(0f);
+            main.startSize = new ParticleSystem.MinMaxCurve(4f, 7f);
             main.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
-            main.startColor = flame ? new Color(1f, .9f, .65f, .8f) : new Color(.78f, .43f, .24f, .4f);
-            main.maxParticles = flame ? 350 : Mathf.Max(850, LiftoffDustBurstCount + 600);
+            main.startColor = new Color(.78f, .43f, .24f, .4f);
+            main.maxParticles = Mathf.Max(850, LiftoffDustBurstCount + 600);
             ParticleSystem.EmissionModule emission = particles.emission;
             emission.rateOverTime = 0f;
             ParticleSystem.ShapeModule shape = particles.shape;
-            shape.shapeType = flame ? ParticleSystemShapeType.Cone : ParticleSystemShapeType.Circle;
-            shape.radius = flame ? .45f : 5.5f;
-            if (flame) shape.angle = 10f;
-            else
-            {
-                shape.rotation = new Vector3(90f, 0f, 0f);
-                ParticleSystem.VelocityOverLifetimeModule velocity = particles.velocityOverLifetime;
-                velocity.enabled = true;
-                velocity.space = ParticleSystemSimulationSpace.World;
-                velocity.radial = new ParticleSystem.MinMaxCurve(6f, 13f);
-                velocity.x = new ParticleSystem.MinMaxCurve(0f, 0f);
-                velocity.y = new ParticleSystem.MinMaxCurve(.8f, 1.8f);
-                velocity.z = new ParticleSystem.MinMaxCurve(0f, 0f);
-            }
+            shape.shapeType = ParticleSystemShapeType.Circle;
+            shape.radius = 5.5f;
+            shape.rotation = new Vector3(90f, 0f, 0f);
+            ParticleSystem.VelocityOverLifetimeModule velocity = particles.velocityOverLifetime;
+            velocity.enabled = true;
+            velocity.space = ParticleSystemSimulationSpace.World;
+            velocity.radial = new ParticleSystem.MinMaxCurve(6f, 13f);
+            velocity.x = new ParticleSystem.MinMaxCurve(0f, 0f);
+            velocity.y = new ParticleSystem.MinMaxCurve(.8f, 1.8f);
+            velocity.z = new ParticleSystem.MinMaxCurve(0f, 0f);
             ParticleSystem.SizeOverLifetimeModule size = particles.sizeOverLifetime;
             size.enabled = true;
-            size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, .4f, 1f, flame ? 1.3f : 2.2f));
+            size.size = new ParticleSystem.MinMaxCurve(1f, AnimationCurve.Linear(0f, .4f, 1f, 2.2f));
             Gradient fade = new Gradient();
-            fade.SetKeys(new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(flame ? new Color(1f, .25f, .05f) : Color.white, 1f) },
-                new[] { new GradientAlphaKey(flame ? .8f : 0f, 0f), new GradientAlphaKey(1f, .05f), new GradientAlphaKey(0f, 1f) });
+            fade.SetKeys(new[] { new GradientColorKey(Color.white, 0f), new GradientColorKey(Color.white, 1f) },
+                new[] { new GradientAlphaKey(0f, 0f), new GradientAlphaKey(1f, .05f), new GradientAlphaKey(0f, 1f) });
             ParticleSystem.ColorOverLifetimeModule color = particles.colorOverLifetime;
             color.enabled = true;
             color.color = fade;
             ParticleSystemRenderer renderer = particles.GetComponent<ParticleSystemRenderer>();
-            renderer.sharedMaterial = material;
+            renderer.sharedMaterial = dustMaterial;
             renderer.shadowCastingMode = ShadowCastingMode.Off;
             renderer.receiveShadows = false;
             renderer.sortMode = ParticleSystemSortMode.Distance;
-            if (flame)
-            {
-                renderer.renderMode = ParticleSystemRenderMode.Stretch;
-                renderer.lengthScale = 1.6f;
-                renderer.velocityScale = .07f;
-            }
             return particles;
         }
 
@@ -564,12 +543,10 @@ namespace LudumDare60.Landing
             if (skyMaterial) Destroy(skyMaterial);
             if (hazeMaterial) Destroy(hazeMaterial);
             if (dustMaterial) Destroy(dustMaterial);
-            if (flameMaterial) Destroy(flameMaterial);
             effectsRoot = null;
             skyMaterial = null;
             hazeMaterial = null;
             dustMaterial = null;
-            flameMaterial = null;
         }
 
         void OnApplicationQuit() { applicationQuitting = true; }

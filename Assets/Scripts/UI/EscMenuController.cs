@@ -173,10 +173,10 @@ namespace LudumDare60.UI
             Add("Menu Overlay/Menu Window/Main Page/Settings/Hover Visual/Label", "esc.settings");
             Add("Menu Overlay/Menu Window/Main Page/Quit/Hover Visual/Label", "esc.quit");
             Add("Menu Overlay/Menu Window/Main Page/Controls", "esc.hint.paused");
-            Add("Menu Overlay/Menu Window/Settings Page/Back/Label", "esc.back");
-            Add("Menu Overlay/Menu Window/Settings Page/Fullscreen/Label", "esc.fullscreen");
+            Add("Menu Overlay/Menu Window/Settings Page/Back/Hover Visual/Label", "esc.back");
+            Add("Menu Overlay/Menu Window/Settings Page/Fullscreen/Hover Visual/Label", "esc.fullscreen");
             Add("Menu Overlay/Menu Window/Settings Page/Settings Hint", "esc.hint.settings");
-            Add("Menu Overlay/Menu Window/Settings Page/Language/Label", "esc.language");
+            Add("Menu Overlay/Menu Window/Settings Page/Language/Hover Visual/Label", "esc.language");
             Add("Menu Overlay/Menu Window/Settings Page/Master Volume/Label", "esc.volume");
             Add("Menu Overlay/Menu Window/Footer", "esc.footer");
             Add("Menu Overlay/Menu Window/Quit Confirmation/Question", "esc.quit.question");
@@ -186,7 +186,7 @@ namespace LudumDare60.UI
 
         private void Add(string path, string key)
         {
-            Transform node = transform.Find(path);
+            Transform node = transform.Find(path) ?? transform.Find(path.Replace("/Hover Visual/", "/"));
             if (node == null) { Debug.LogWarning("ESC Menu: missing node " + path, this); return; }
             var text = node.GetComponent<TMP_Text>();
             if (text == null) { Debug.LogWarning("ESC Menu: no TMP_Text on " + path, this); return; }
