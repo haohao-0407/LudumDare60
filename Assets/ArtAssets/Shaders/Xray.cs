@@ -676,6 +676,18 @@ public sealed class Xray : MonoBehaviour
     // Shader Parameters
     // =========================
 
+    /// <summary>
+    /// 运行时切换线框颜色并立即生效（修复进度屏的状态配色用）。
+    /// 直接改字段不会触发重刷，因为只有 OnValidate 会置 needsApply。
+    /// </summary>
+    public void SetWireframeColors(Color visible, Color hidden)
+    {
+        visibleColor = visible;
+        hiddenColor = hidden;
+        needsApply = true;
+        ApplyProperties();
+    }
+
     private void ApplyProperties()
     {
         if (propertyBlock == null)

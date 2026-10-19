@@ -12,7 +12,9 @@ namespace LudumDare60.Salvage.Editor
         private const string RootName = "Salvage Screen (World Space)";
         private const string PoolPath = "Assets/Salvage/SalvagePool_Main.asset";
         private const float CanvasWidth = 1000f;
-        private const float CanvasHeight = 620f;
+        // 与 TerminalScreenMount 的算法同源：1000 × (屏幕高 / 屏宽)。SCREEN_ATTITUDE 玻璃面
+        // 实测 0.585 × 0.465 m，故 1000 × 465/585 = 794.87。改屏幕模型后这个值要跟着重算。
+        private const float CanvasHeight = 794.87f;
 
         private static readonly Color BackColor = new Color(0.012f, 0.021f, 0.025f, 1f);
         private static readonly Color TitleColor = new Color(0.3f, 0.7f, 0.65f);
@@ -72,10 +74,10 @@ namespace LudumDare60.Salvage.Editor
             background.raycastTarget = true;
 
             var title = Text("Title", root.transform, "SHIP OS  /  SALVAGE CONTROL", 24, TitleColor);
-            Place(title.rectTransform, 24, 558, CanvasWidth - 48, 46);
+            Place(title.rectTransform, 24, 732.87f, CanvasWidth - 48, 46);
 
             // ---- 打捞轨道 ----
-            const float trackX = 40f, trackY = 78f, trackW = 200f, trackH = 420f;
+            const float trackX = 40f, trackY = 165.44f, trackW = 200f, trackH = 420f;
             var bezel = Panel("Track Bezel", root.transform, trackX - 4, trackY - 4, trackW + 8, trackH + 8, BezelColor);
             bezel.name = "Track Bezel";
             var track = Panel("Track", root.transform, trackX, trackY, trackW, trackH, TrackColor);
@@ -113,19 +115,19 @@ namespace LudumDare60.Salvage.Editor
             // ---- 右侧读数 ----
             const float colX = 330f;
             var item = Text("Item", root.transform, "UNKNOWN SIGNAL", 26, TextColor);
-            Place(item.rectTransform, colX, 498, CanvasWidth - colX - 32, 42);
+            Place(item.rectTransform, colX, 585.44f, CanvasWidth - colX - 32, 42);
 
             var state = Text("State", root.transform, ">> STANDBY", 20, DimColor);
-            Place(state.rectTransform, colX, 452, CanvasWidth - colX - 32, 32);
+            Place(state.rectTransform, colX, 539.44f, CanvasWidth - colX - 32, 32);
 
             var zoneReadout = Text("Zone Readout", root.transform, "CATCH 0.00 - 0.00", 19, DimColor);
-            Place(zoneReadout.rectTransform, colX, 300, CanvasWidth - colX - 32, 30);
+            Place(zoneReadout.rectTransform, colX, 387.44f, CanvasWidth - colX - 32, 30);
 
             var fishReadout = Text("Target Readout", root.transform, "TARGET 0.00", 19, DimColor);
-            Place(fishReadout.rectTransform, colX, 266, CanvasWidth - colX - 32, 30);
+            Place(fishReadout.rectTransform, colX, 353.44f, CanvasWidth - colX - 32, 30);
 
             var progressReadout = Text("Progress Readout", root.transform, "PROGRESS 0%", 19, DimColor);
-            Place(progressReadout.rectTransform, colX, 232, CanvasWidth - colX - 32, 30);
+            Place(progressReadout.rectTransform, colX, 319.44f, CanvasWidth - colX - 32, 30);
 
             var hint = Text("Hint", root.transform, "HOLD  [SPACE]  OR  CLICK THE SCREEN", 18, DimColor);
             Place(hint.rectTransform, 24, 26, CanvasWidth - 48, 30);
