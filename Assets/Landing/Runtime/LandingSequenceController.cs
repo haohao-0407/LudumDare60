@@ -36,6 +36,18 @@ namespace LudumDare60.Landing
         [Min(5f)] public float ExteriorHazeRadius = 25f;
         [Range(0f, 1f)] public float SpaceAmbientScale = .18f;
         [Range(0f, 1f)] public float SpaceSunIntensityMultiplier = .35f;
+
+        [Header("Hard landing")]
+        [Tooltip("Requested vertical speed at contact in metres/second; capped to keep the descent monotonic.")]
+        [Min(.1f)] public float TouchdownSpeed = 4f;
+        [Min(.1f)] public float HardLandingShakeDuration = 3f;
+        [Tooltip("Maximum local camera-pivot displacement per axis, in metres.")]
+        public Vector3 HardLandingPosition = new Vector3(.09f, .16f, .10f);
+        [Tooltip("Maximum camera-pivot rotation per axis, in degrees.")]
+        public Vector3 HardLandingRotation = new Vector3(3.5f, 2.2f, 4f);
+        [Min(0f)] public float DustEmissionRate = 90f;
+        [Min(0)] public int DustBurstCount = 160;
+        [Min(.1f)] public float DustRadius = 5f;
         public UnityEvent OnTouchdown = new UnityEvent();
         public UnityEvent OnLanded = new UnityEvent();
 
@@ -71,6 +83,7 @@ namespace LudumDare60.Landing
         bool applicationQuitting;
         float loadStartedAt;
         float shakeClock;
+        float touchdownElapsed;
         float sourceVolumeWeight;
         Vector3 originalRigPosition;
         Quaternion originalRigRotation;
@@ -118,6 +131,7 @@ namespace LudumDare60.Landing
             touchdownInvoked = false;
             Progress = 0f;
             shakeClock = 0f;
+            touchdownElapsed = 0f;
             FailureReason = null;
             Phase = LandingPhase.SpaceApproach;
             CaptureSource();
@@ -192,7 +206,8 @@ namespace LudumDare60.Landing
         IEnumerator PlaySequence()
         {
             float elapsed = 0f;
-            while (!cancelled && Progress < 1f)
+            // The impact clock is independent of Duration: a short sequence still plays its full settle.
+            while (!cancelled && (Progress < 1f || (touchdownInvoked && touchdownElapsed < Mathf.Max(.1f, HardLandingShakeDuration))))
             {
                 if (pendingLoad != null && Time.realtimeSinceStartup - loadStartedAt > LoadTimeout)
                 {
@@ -226,13 +241,25 @@ namespace LudumDare60.Landing
                     }
                     RevealDestination();
                 }
+                bool startingTouchdown = next >= TouchdownProgress && !touchdownInvoked;
+                if (startingTouchdown)
+                {
+                    // Render contact and the first impulse together, even when a frame crosses the marker.
+                    next = TouchdownProgress;
+                    touchdownInvoked = true;
+                    touchdownElapsed = 0f;
+                }
+                else if (touchdownInvoked)
+                {
+                    touchdownElapsed += Time.deltaTime;
+                }
                 elapsed = next * Mathf.Max(5f, Duration);
                 Progress = next;
                 Phase = next < .18f ? LandingPhase.SpaceApproach : next < HandoffProgress ? LandingPhase.AtmosphericEntry : next < TouchdownProgress ? LandingPhase.Descent : LandingPhase.Touchdown;
                 ApplyFrame(next);
-                if (next >= TouchdownProgress && !touchdownInvoked)
+                if (startingTouchdown)
                 {
-                    touchdownInvoked = true;
+                    if (dust && DustBurstCount > 0) dust.Emit(DustBurstCount);
                     OnTouchdown.Invoke();
                 }
                 yield return null;
@@ -281,12 +308,21 @@ namespace LudumDare60.Landing
             }
             if (exteriorRevealed)
             {
-                float descent = SmoothRange(HandoffProgress, TouchdownProgress, progress);
-                ShipRig.position = Vector3.Lerp(descentStart, destination.LandingAnchor.position, descent);
+                float descent = Mathf.InverseLerp(HandoffProgress, TouchdownProgress, progress);
+                Vector3 target = destination.LandingAnchor.position;
+                Vector3 position = Vector3.Lerp(descentStart, target, Mathf.SmoothStep(0f, 1f, descent));
+                float height = Mathf.Max(.01f, descentStart.y - target.y);
+                float descentSeconds = Mathf.Max(5f, Duration) * (TouchdownProgress - HandoffProgress);
+                float arrivalSlope = Mathf.Clamp(Mathf.Max(.1f, TouchdownSpeed) * descentSeconds / height, .01f, 2.5f);
+                // Hermite position: starts from rest, but retains downward velocity until contact.
+                float verticalDescent = descent * descent * ((3f - arrivalSlope) + (arrivalSlope - 2f) * descent);
+                position.y = Mathf.Lerp(descentStart.y, target.y, verticalDescent);
+                ShipRig.position = progress >= TouchdownProgress ? target : position;
                 dust.transform.position = destination.LandingAnchor.position + Vector3.up * .3f;
-                float landingDust = SmoothRange(.75f, .91f, progress) * (1f - SmoothRange(.94f, 1f, progress));
+                float settle = touchdownElapsed / Mathf.Max(.1f, HardLandingShakeDuration);
+                float landingDust = SmoothRange(.75f, .91f, progress) * (touchdownInvoked ? 1f - SmoothRange(.15f, 1f, settle) : 1f);
                 ParticleSystem.EmissionModule emission = dust.emission;
-                emission.rateOverTime = landingDust * 42f;
+                emission.rateOverTime = landingDust * Mathf.Max(0f, DustEmissionRate);
             }
             ApplyShake(progress, entry);
             // The rig may have moved since the first dome update; follow the same rendered viewpoint.
@@ -329,10 +365,26 @@ namespace LudumDare60.Landing
             float strength = .0015f * (1f - SmoothRange(.1f, .2f, progress)) + entry * .012f + braking * .006f;
             float x = (Mathf.PerlinNoise(13f, shakeClock * 13f) - .5f) * 2f;
             float y = (Mathf.PerlinNoise(39f, shakeClock * 17f) - .5f) * 2f;
-            float settleSeconds = Mathf.Max(0f, (progress - TouchdownProgress) * Mathf.Max(5f, Duration));
-            float bump = progress >= TouchdownProgress ? Mathf.Sin(settleSeconds * 17f) * Mathf.Exp(-settleSeconds * 4f) : 0f;
-            ShakePivot.localPosition = originalShakePosition + new Vector3(x * strength, y * strength - bump * .055f, 0f);
-            ShakePivot.localRotation = originalShakeRotation * Quaternion.Euler(y * strength * 15f + bump * .7f, 0f, x * strength * 10f);
+            Vector3 positionOffset = new Vector3(x * strength, y * strength, 0f);
+            Vector3 rotationOffset = new Vector3(y * strength * 15f, 0f, x * strength * 10f);
+            if (touchdownInvoked)
+            {
+                float settle = touchdownElapsed / Mathf.Max(.1f, HardLandingShakeDuration);
+                float envelope = Mathf.Exp(-3.2f * settle) * (1f - SmoothRange(.70f, 1f, settle));
+                // Non-zero first sample gives a sharp impact, followed by different frequencies on each axis.
+                Vector3 translation = new Vector3(
+                    Mathf.Cos(touchdownElapsed * 31f) * .65f + Mathf.Cos(touchdownElapsed * 53f + .8f) * .35f,
+                    -Mathf.Cos(touchdownElapsed * 26f),
+                    Mathf.Cos(touchdownElapsed * 37f + .55f));
+                Vector3 rotation = new Vector3(
+                    Mathf.Cos(touchdownElapsed * 24f) * .75f + Mathf.Sin(touchdownElapsed * 47f) * .25f,
+                    Mathf.Sin(touchdownElapsed * 29f + .7f),
+                    Mathf.Cos(touchdownElapsed * 21f + .4f));
+                positionOffset += Vector3.Scale(HardLandingPosition, translation) * envelope;
+                rotationOffset += Vector3.Scale(HardLandingRotation, rotation) * envelope;
+            }
+            ShakePivot.localPosition = originalShakePosition + positionOffset;
+            ShakePivot.localRotation = originalShakeRotation * Quaternion.Euler(rotationOffset);
         }
 
         void FinishLanding()
@@ -407,26 +459,26 @@ namespace LudumDare60.Landing
             main.playOnAwake = false;
             main.loop = true;
             main.duration = 4f;
-            main.startLifetime = new ParticleSystem.MinMaxCurve(2f, 4f);
+            main.startLifetime = new ParticleSystem.MinMaxCurve(3f, 5f);
             main.startSpeed = 0f;
-            main.startSize = new ParticleSystem.MinMaxCurve(2.5f, 5f);
+            main.startSize = new ParticleSystem.MinMaxCurve(4f, 7f);
             main.startRotation = new ParticleSystem.MinMaxCurve(0f, Mathf.PI * 2f);
-            main.startColor = new ParticleSystem.MinMaxGradient(new Color(.7f, .35f, .18f, .28f), new Color(.85f, .53f, .31f, .38f));
-            main.maxParticles = 300;
+            main.startColor = new ParticleSystem.MinMaxGradient(new Color(.7f, .35f, .18f, .32f), new Color(.85f, .53f, .31f, .44f));
+            main.maxParticles = Mathf.Max(600, DustBurstCount + Mathf.CeilToInt(Mathf.Max(0f, DustEmissionRate) * 6f));
             main.simulationSpace = ParticleSystemSimulationSpace.World;
             main.useUnscaledTime = false;
             ParticleSystem.EmissionModule emission = dust.emission;
             emission.rateOverTime = 0f;
             ParticleSystem.ShapeModule shape = dust.shape;
             shape.shapeType = ParticleSystemShapeType.Circle;
-            shape.radius = 3.5f;
+            shape.radius = Mathf.Max(.1f, DustRadius);
             shape.rotation = new Vector3(90f, 0f, 0f);
             ParticleSystem.VelocityOverLifetimeModule velocity = dust.velocityOverLifetime;
             velocity.enabled = true;
             velocity.space = ParticleSystemSimulationSpace.World;
-            velocity.radial = new ParticleSystem.MinMaxCurve(3f, 7f);
+            velocity.radial = new ParticleSystem.MinMaxCurve(5f, 11f);
             velocity.x = new ParticleSystem.MinMaxCurve(0f, 0f);
-            velocity.y = new ParticleSystem.MinMaxCurve(.35f, .8f);
+            velocity.y = new ParticleSystem.MinMaxCurve(.7f, 1.5f);
             velocity.z = new ParticleSystem.MinMaxCurve(0f, 0f);
             ParticleSystem.SizeOverLifetimeModule size = dust.sizeOverLifetime;
             size.enabled = true;
