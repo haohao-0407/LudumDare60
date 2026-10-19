@@ -1,0 +1,15 @@
+Generator: built-in image_gen
+Output: Mars_RetroFuture_Cover_v2_Rocket.png
+Edit target: Mars_RetroFuture_Cover_v1.png
+Shape reference: user-attached turquoise pointed rocket with magenta fins
+
+Use case: precise-object-edit.
+Edit the FIRST reference image, the vertical painted Mars game poster. The SECOND reference image, the small turquoise rocket with magenta fins, is a SHAPE/DESIGN reference for replacing the spacecraft.
+
+Change only the large spacecraft in the upper-middle of the poster and the immediately adjoining exhaust/occluded background needed for that replacement. Replace the bulky cylindrical transport ship with a graceful, iconic mid-century retro-futurist rocket closely following the second reference's silhouette: a sharply pointed slender nose, a smooth elongated tapered spindle/teardrop fuselage, ONE prominent round porthole near the upper/front third with a thick raised metal rim, three broad swept curved stabilizer fins near the tail (two or three visible according to perspective), a compact ringed rear engine and a restrained warm golden exhaust. No aircraft-style panoramic windshield, no bulky passenger-transport nose, no large attached side engine pods. This must clearly read as the charming classic pointed rocket in reference 2.
+
+Place the new rocket in the original spacecraft's visual area, about the same overall visual prominence and center position, nose pointing diagonally toward the upper right and tail toward the lower left, depicted in a convincing low three-quarter perspective. Translate the reference's turquoise enamel fuselage and pink/magenta fins into gently weathered muted turquoise/seafoam metal with dusty coral/rose-red fins and warm ivory trim; warm sunlight from the upper left reflects golden across it. Fine subtle rivets, minimal seams and hand-painted highlights give it plausible physicality without destroying the sleek rocket silhouette. Keep the round window very readable.
+
+Strictly preserve the ORIGINAL POSTER'S vintage retro-futurist gouache / tempera book-cover painting style, soft brushwork, textured paper, faded print quality, rich blue-gold lighting and mood. Repaint the new rocket in that exact medium, not as a pasted neon icon or modern 3D render.
+
+Preserve everything else: the 2:3 portrait canvas, sky and pale sun on upper left, distant Earth on upper right, Martian orange cliffs and distant horizon, entire quiet cream-and-red colony architecture, radio tower, enclosed walkways, geodesic greenhouse, foreground buildings, the lone astronaut carrying the case, all original camera/framing and lower-half placement. Keep the top breathing room. Entirely text-free; no title, letters, symbols, logos, decorative orbit rings, watermark or border. Do not copy the dark purple neon background of reference 2. The result is the same poster with its hero spacecraft replaced by the requested pointed retro rocket.
