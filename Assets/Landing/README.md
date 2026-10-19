@@ -31,6 +31,15 @@ ESC 使用现有暂停菜单，检查计时、起飞移动、粒子和各自音�
 
 SHIP 当前未绑定独立 `ReturnWindow` 演示场景的任务时钟/结局组件，本流程不调用会立即暂停游戏的旧结算入口。此处完成到离开火星、建立轨道与返航航线，不添加地球抵达或新关卡。
 
+## 起飞后的 Thanks 与 Credits
+
+`SHIP/Orbit Ending Overlay` 是左侧纯文字 Screen Space Overlay，没有背景面板，也不拦截鼠标。它绑定同一个 `LaunchSequenceController`：抵达轨道后等待 `launch_orbit` 的最后一句返航台词结束，渐显 `Thanks for playing`，随后向上滚动 Credits，结束后保留致谢文字。暂停菜单同时暂停字幕动画；起飞取消不会播放结尾。相机和太空画面保持原状。
+
+- 在 `Assets/Landing/OrbitCredits.asset` 配置项目标题、致谢文字、完整 Credits 文本、结尾文字、显示延迟、淡入淡出时间、停留时间和滚动速度。支持换行与 TMP 富文本，字体沿用终端字体及其中文 fallback；默认仅填通用致谢，团队名单由你填写。
+- 在 `Assets/Landing/Prefabs/Orbit Ending Overlay.prefab` 的 `Left Text Area` 调整屏幕位置和尺寸，各文字对象可调整字号与颜色。Canvas 采用 1920×1080 参考分辨率；排序低于 ESC 菜单。
+- 选中场景中的 `Orbit Ending Overlay`，Inspector 底部的 `Preview time` 可预览各段字幕；`Hide preview` 收起，离开 Inspector 也会收起。预览不启动起飞或对话。正常开局始终隐藏，运行时按完成事件播放一次。
+- `Tools/Landing/Install orbit ending overlay in SHIP` 只安装/重接结尾引用；重复执行保留已有 Credits 内容和预制体布局。
+
 ## 场景与参数
 
 - `ShipRig` 保留原驾驶舱、相机、两块终端。`CameraLook` 负责转头，`CameraShake` 负责演出震动。
