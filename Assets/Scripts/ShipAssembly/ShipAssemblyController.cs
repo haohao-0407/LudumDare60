@@ -45,6 +45,13 @@ namespace LudumDare60.ShipAssembly
         }
         public event Action Changed;
 
+        [Header("音效")]
+        [Tooltip("留空则用本物体上的 AudioSource")]
+        [SerializeField] private AudioSource sfxSource;
+        [Tooltip("组装完成（贴合 + 锁扣 + 确认）")]
+        [SerializeField] private AudioClip assemblyCompleteClip;
+        [SerializeField, Range(0f, 1f)] private float assemblyCompleteVolume = 1f;
+
         private sealed class Session
         {
             public Guid AttemptId;
@@ -434,9 +441,17 @@ namespace LudumDare60.ShipAssembly
             completedDevices[(int)session.Recipe.Device] = true;
             session.Puzzle.InputBlocked = true;
             if (session == SelectedSession) StatusMessage = "Repair complete.";
+            PlayAssemblyComplete();
             SynchronizeRepairScreen();
             RefreshVisibilityAndInput();
             NotifyChanged();
+        }
+
+        private void PlayAssemblyComplete()
+        {
+            var source = sfxSource != null ? sfxSource : GetComponent<AudioSource>();
+            if (source == null || assemblyCompleteClip == null) return;
+            source.PlayOneShot(assemblyCompleteClip, assemblyCompleteVolume);
         }
 
         /// <summary>Replay durable in-session state in device order after a screen reset or re-enable.</summary>
