@@ -12630,7 +12630,6 @@ MonoBehaviour:
   PlanetLocalDirection: {x: 0.45, y: -0.25, z: 1}
   AccelerationShakePosition: {x: 0.008, y: 0.025, z: 0.012}
   AccelerationShakeRotation: {x: 0.35, y: 0.2, z: 0.45}
-  EngineLocalPosition: {x: 0, y: -0.3, z: 0}
   LiftoffDustBurstCount: 220
   GroundDustEmission: 110
   CountdownVolume: 0.45
