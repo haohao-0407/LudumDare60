@@ -467,7 +467,6 @@ MonoBehaviour:
         Events:
         - pioneer60.begin_landing
       NextNodeId: 
-
     - Id: departure_ready
       Title: "PRE-FLIGHT CHECKLIST"
       PauseGameplayWhileReading: 0
