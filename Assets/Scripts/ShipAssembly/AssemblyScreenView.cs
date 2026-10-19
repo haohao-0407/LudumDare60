@@ -82,6 +82,7 @@ namespace LudumDare60.ShipAssembly
         public void Refresh()
         {
             var recipe = Controller != null ? Controller.SelectedRecipe : null;
+            bool available = Controller != null && Controller.RepairsAvailable;
             bool started = Controller != null && Controller.HasActiveSession;
             bool completed = Controller != null && Controller.IsSelectedCompleted;
             string reason = "Assembly controller is not configured.";
@@ -89,16 +90,16 @@ namespace LudumDare60.ShipAssembly
 
             SetText(Title, recipe != null ? recipe.DisplayName : "SHIP ASSEMBLY");
             SetText(ProgressLabel, "ASSEMBLY " + Mathf.RoundToInt((Controller != null ? Controller.Progress : 0f) * 100f) + "%");
-            SetText(StartLabel, completed ? "REPAIRED" : started ? "RESUME" : "START ASSEMBLY");
+            SetText(StartLabel, !available ? "UNAVAILABLE" : completed ? "REPAIRED" : started ? "RESUME" : "START ASSEMBLY");
             if (StartButton != null) StartButton.interactable = !completed && canStart;
-            bool canChangeRecipe = Controller != null && Controller.Recipes != null && Controller.Recipes.Length > 1;
+            bool canChangeRecipe = available && Controller.Recipes != null && Controller.Recipes.Length > 1;
             if (PreviousButton != null) PreviousButton.interactable = canChangeRecipe;
             if (NextButton != null) NextButton.interactable = canChangeRecipe;
-            if (ResetButton != null) ResetButton.interactable = started && !completed;
-            if (DetachButton != null) DetachButton.interactable = started && !completed;
+            if (ResetButton != null) ResetButton.interactable = available && started && !completed;
+            if (DetachButton != null) DetachButton.interactable = available && started && !completed;
 
-            if (RequirementsPanel != null) RequirementsPanel.SetActive(!started);
-            if (PuzzlePanel != null) PuzzlePanel.SetActive(started);
+            if (RequirementsPanel != null) RequirementsPanel.SetActive(available && !started);
+            if (PuzzlePanel != null) PuzzlePanel.SetActive(available && started);
             if (PuzzleImage != null && Controller != null && Controller.AssemblyCamera != null)
                 PuzzleImage.texture = Controller.AssemblyCamera.targetTexture;
 
@@ -117,12 +118,14 @@ namespace LudumDare60.ShipAssembly
 
             string message = Controller != null ? Controller.StatusMessage : reason;
             if (!started && !canStart && !string.IsNullOrEmpty(reason)) message = reason;
-            if (completed) message = "REPAIR COMPLETE - SYSTEM RESTORED";
+            if (!available) message = "REPAIR STATION UNAVAILABLE";
+            else if (completed) message = "REPAIR COMPLETE - SYSTEM RESTORED";
             SetText(Status, message);
             var puzzle = Controller != null ? Controller.ActivePuzzle : null;
             int moduleCount = puzzle != null && puzzle.Modules != null ? puzzle.Modules.Length : 0;
             string selectionKeys = moduleCount > 0 ? "1-" + Mathf.Min(moduleCount, 5) + " / TAB SELECT" : "TAB SELECT";
-            SetText(Hint, completed ? "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
+            SetText(Hint, !available ? "REPAIR CONTROLS ARE LOCKED"
+                : completed ? "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
                 : !started ? "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS"
                 : Controller.InputEnabled
                     ? "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n" + selectionKeys + "   X DETACH   R RESET   ESC PAUSE"

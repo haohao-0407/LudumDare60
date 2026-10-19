@@ -271,17 +271,38 @@ namespace LudumDare60.UI
             return SetState(index, RepairDeviceState.Repaired, 1f);
         }
 
+        /// <summary>Publishes an intact starting ship without running individual repair commands or completion flashes.</summary>
+        public void InitializeOperationalDevices()
+        {
+            SetAllDeviceStates(RepairDeviceState.Repaired, 1f);
+        }
+
         public void ResetAll()
         {
+            SetAllDeviceStates(RepairDeviceState.Unrepaired, 0f);
+        }
+
+        private void SetAllDeviceStates(RepairDeviceState state, float progress)
+        {
+            EnsureArrays();
+            int changedDevices = 0;
             for (int i = 0; i < DeviceCount; i++)
             {
-                states[i] = RepairDeviceState.Unrepaired;
-                targetProgress[i] = 0f;
-                shownProgress[i] = 0f;
+                if (states[i] != state) changedDevices |= 1 << i;
+                states[i] = state;
+                targetProgress[i] = progress;
+                shownProgress[i] = progress;
                 flashTimers[i] = 0f;
             }
 
             RefreshAll();
+            // Commit every device before publication, so a listener always reads a complete snapshot.
+            for (int i = 0; i < DeviceCount; i++)
+            {
+                if ((changedDevices & (1 << i)) == 0) continue;
+                stateChanged?.Invoke(i, state);
+                StateChanged?.Invoke(i, state);
+            }
         }
 
         // ========================

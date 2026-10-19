@@ -10,6 +10,7 @@ namespace LudumDare60.Salvage
     {
         [SerializeField] private SalvagePool pool;
         [SerializeField] private SalvageDefinition defaultDefinition;
+        [SerializeField] private bool featureEnabled = true;
         private SalvageSession session;
         private bool gameplayBlocked;
         private bool manuallyPaused;
@@ -29,7 +30,8 @@ namespace LudumDare60.Salvage
         public SalvageSnapshot Snapshot => Session.Snapshot;
         public SalvageResult Result => Session.Result;
         public bool IsActive => Session.IsActive;
-        public bool CanAcceptInput => isActiveAndEnabled && !gameplayBlocked && !manuallyPaused;
+        public bool FeatureEnabled => featureEnabled;
+        public bool CanAcceptInput => featureEnabled && isActiveAndEnabled && !gameplayBlocked && !manuallyPaused;
         public SalvagePool Pool => pool;
         public SalvageDefinition DefaultDefinition => defaultDefinition;
 
@@ -41,7 +43,7 @@ namespace LudumDare60.Salvage
             {
                 if (gameplayBlocked == value) return;
                 gameplayBlocked = value;
-                Session.SetPaused(gameplayBlocked || manuallyPaused);
+                Session.SetPaused(!featureEnabled || gameplayBlocked || manuallyPaused);
                 if (gameplayBlocked) Session.SetControlHeld(false);
             }
         }
@@ -72,6 +74,14 @@ namespace LudumDare60.Salvage
         private Coroutine loopFade;
         private Coroutine loopStart;
         private bool engaged;
+        /// <summary>Locks the feature while retaining any current attempt and the other pause reasons.</summary>
+        public void SetFeatureEnabled(bool enabled)
+        {
+            if (featureEnabled == enabled) return;
+            featureEnabled = enabled;
+            Session.SetPaused(!featureEnabled || gameplayBlocked || manuallyPaused);
+            if (!featureEnabled) Session.SetControlHeld(false);
+        }
 
         /// <summary>Draws one target from the pool, falling back to the default definition when no pool is assigned.</summary>
         public bool TryStartSalvage() => TryStartRandomSalvage();
@@ -114,10 +124,10 @@ namespace LudumDare60.Salvage
             }
         }
         public bool TryLockTarget() => CanAcceptInput && Session.TryLockTarget();
-        public void SetPaused(bool paused) { manuallyPaused = paused; Session.SetPaused(paused || gameplayBlocked); }
+        public void SetPaused(bool paused) { manuallyPaused = paused; Session.SetPaused(!featureEnabled || paused || gameplayBlocked); }
         public void CancelSalvage() => Session.Cancel();
 
-        private void Update() { if (!gameplayBlocked) Session.Tick(Time.deltaTime); }
+        private void Update() { if (featureEnabled && !gameplayBlocked) Session.Tick(Time.deltaTime); }
 
         private void OnDisable()
         {

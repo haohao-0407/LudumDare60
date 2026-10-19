@@ -82,6 +82,7 @@ namespace LudumDare60.UI.Editor
             if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("请先退出 Play。");
             var scene = SceneManager.GetActiveScene();
             if (!scene.IsValid() || string.IsNullOrEmpty(scene.path)) throw new InvalidOperationException("请先保存目标场景。");
+            UIManagerInstaller.Install();
             foreach (var root in scene.GetRootGameObjects())
                 if (root.GetComponentInChildren<EscMenuController>(true) != null) { Selection.activeGameObject = root; return; }
             Build();

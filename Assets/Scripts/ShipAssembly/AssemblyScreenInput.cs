@@ -26,7 +26,7 @@ namespace LudumDare60.ShipAssembly
         private AssemblyModule draggedModule;
         private Camera eventCamera;
 
-        private bool CanUseSurface => Controller != null && Surface != null && Surface.isActiveAndEnabled
+        private bool CanUseSurface => Controller != null && Controller.RepairsAvailable && Surface != null && Surface.isActiveAndEnabled
             && Surface.canvas != null && Surface.canvas.isActiveAndEnabled && Application.isFocused
             && Time.timeScale > 0f && (PauseMenu == null || !PauseMenu.IsOpen);
 

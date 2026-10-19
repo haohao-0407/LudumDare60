@@ -27,8 +27,10 @@ namespace LudumDare60.Landing
         public AudioSource ImpactAudio;
         public AudioSource HullAudio;
         public AudioSource DamagedAmbience;
+        public AudioSource HealthyAmbience;
         public AudioSource AlarmAudio;
         public AudioClip[] ElectricalClips = Array.Empty<AudioClip>();
+        [Min(0f)] public float AmbienceCrossfadeDuration = 1.2f;
 
         [Header("Scaled-time choreography")]
         public Vector2 HullDelayRange = new Vector2(.1f, .3f);
@@ -54,12 +56,14 @@ namespace LudumDare60.Landing
             public float NextPulse;
             public float FlashEnds;
             public bool Bursting;
+            public bool Repaired;
         }
 
         struct AudioState
         {
             public AudioSource Source;
             public float Pitch;
+            public float Volume;
         }
 
         readonly List<AudioState> audioStates = new List<AudioState>();
@@ -70,15 +74,25 @@ namespace LudumDare60.Landing
         bool bindingsCaptured;
         bool hadSequence;
         bool touchdownConsumed;
+        bool damageTriggered;
+        bool allRepairsComplete;
         bool effectsRunning;
+        bool operationalAmbience;
+        bool resumeOperationalAmbience;
         bool paused;
         bool impactStarted;
         bool hullStarted;
         bool ambienceStarted;
         bool alarmStopped;
+        bool ambienceFading;
         float elapsed;
         float hullDelay;
         float nextAlarmPulse;
+        float ambienceFadeElapsed;
+        float damagedFadeStart;
+        float healthyFadeStart;
+        float damagedFadeTarget;
+        float healthyFadeTarget;
 
         void Awake()
         {
@@ -92,12 +106,36 @@ namespace LudumDare60.Landing
         {
             CaptureBindings();
             Subscribe();
+            if (resumeOperationalAmbience && !damageTriggered)
+            {
+                resumeOperationalAmbience = false;
+                StartOperationalAmbience();
+                return;
+            }
+            if (!damageTriggered) return;
+            if (Sequence && (Sequence.Phase == LandingSequenceController.LandingPhase.Cancelled ||
+                             Sequence.Phase == LandingSequenceController.LandingPhase.Failed ||
+                             Sequence.Phase == LandingSequenceController.LandingPhase.Idle))
+            {
+                ResetPresentation();
+                return;
+            }
+
+            // Re-enabling resumes only persistent damage/ambience, never the collision cues.
+            effectsRunning = true;
+            IsDamaged = !allRepairsComplete;
+            impactStarted = true;
+            hullStarted = true;
+            CrossfadeAmbience(allRepairsComplete);
+            ApplyPause(Time.timeScale <= 0f);
         }
 
         void OnDisable()
         {
             Unsubscribe();
+            bool wasOperational = operationalAmbience;
             StopDamageEffects();
+            resumeOperationalAmbience = wasOperational;
         }
 
         void Subscribe()
@@ -122,33 +160,36 @@ namespace LudumDare60.Landing
         {
             if (subscribedSequence != Sequence)
             {
-                RepairAll();
-                touchdownConsumed = false;
+                ResetPresentation();
                 Subscribe();
             }
 
             if (Sequence)
             {
                 LandingSequenceController.LandingPhase phase = Sequence.Phase;
-                bool reset = phase == LandingSequenceController.LandingPhase.Cancelled ||
+                bool reset = !operationalAmbience && (phase == LandingSequenceController.LandingPhase.Cancelled ||
                              phase == LandingSequenceController.LandingPhase.Failed ||
                              phase == LandingSequenceController.LandingPhase.Idle ||
-                             (phase == LandingSequenceController.LandingPhase.SpaceApproach && phase != lastPhase);
+                             (phase == LandingSequenceController.LandingPhase.SpaceApproach && phase != lastPhase));
                 if (reset)
                 {
-                    if (IsDamaged || effectsRunning) RepairAll();
+                    if (damageTriggered || IsDamaged || effectsRunning) ResetPresentation();
                     touchdownConsumed = false;
                 }
                 lastPhase = phase;
             }
-            else if (hadSequence && (IsDamaged || effectsRunning))
+            else if (hadSequence && (damageTriggered || IsDamaged || effectsRunning))
             {
-                RepairAll();
-                touchdownConsumed = false;
+                ResetPresentation();
             }
 
             ApplyPause(Time.timeScale <= 0f);
             if (!effectsRunning || paused) return;
+            if (operationalAmbience)
+            {
+                UpdateAmbience();
+                return;
+            }
 
             elapsed += Time.deltaTime;
             if (!impactStarted)
@@ -162,16 +203,15 @@ namespace LudumDare60.Landing
                 Play(HullAudio);
             }
             if (!ambienceStarted && elapsed >= Mathf.Max(0f, AmbienceDelay))
-            {
-                ambienceStarted = true;
-                Play(DamagedAmbience);
-            }
+                CrossfadeAmbience(allRepairsComplete);
+            UpdateAmbience();
+            if (!IsDamaged) return;
             UpdateAlarm();
 
             for (int i = 0; i < siteStates.Length; i++)
             {
                 SiteState state = siteStates[i];
-                if (state.Site == null) continue;
+                if (state.Site == null || state.Repaired) continue;
                 if (!state.Bursting && elapsed >= state.NextBurst)
                     BeginBurst(state);
                 if (!state.Bursting) continue;
@@ -196,20 +236,32 @@ namespace LudumDare60.Landing
             TriggerDamage();
         }
 
-        /// <summary>Starts the presentation once. RepairAll permits a deliberate manual replay.</summary>
+        /// <summary>Runs the normal cabin bed during the opening without any collision cues.</summary>
+        public void StartOperationalAmbience()
+        {
+            if (!isActiveAndEnabled || damageTriggered) return;
+            StopDamageEffects();
+            operationalAmbience = true;
+            effectsRunning = true;
+            CrossfadeAmbience(true);
+            ApplyPause(Time.timeScale <= 0f);
+        }
+
+        /// <summary>Starts this landing once, preserving repair state already supplied by the caller.</summary>
         public void TriggerDamage()
         {
-            if (!isActiveAndEnabled || IsDamaged || effectsRunning) return;
+            if (!isActiveAndEnabled || damageTriggered) return;
             CaptureBindings();
             StopDamageEffects();
-            IsDamaged = true;
+            damageTriggered = true;
+            IsDamaged = !allRepairsComplete;
             effectsRunning = true;
             elapsed = 0f;
             hullDelay = Sample(HullDelayRange, 0f);
             impactStarted = false;
             hullStarted = false;
             ambienceStarted = false;
-            alarmStopped = false;
+            alarmStopped = allRepairsComplete;
             nextAlarmPulse = Mathf.Max(0f, AlarmDelay);
 
             for (int i = 0; i < siteStates.Length; i++)
@@ -218,7 +270,7 @@ namespace LudumDare60.Landing
                 state.NextBurst = Mathf.Max(0f, FirstSiteDelay) + i * Mathf.Max(0f, SiteStagger);
                 state.Bursting = false;
                 if (state.Site != null && state.Site.Sparks)
-                    state.Site.Sparks.pause = Time.timeScale <= 0f;
+                    state.Site.Sparks.pause = Time.timeScale <= 0f || state.Repaired || allRepairsComplete;
             }
 
             paused = false;
@@ -294,9 +346,10 @@ namespace LudumDare60.Landing
             paused = shouldPause;
             for (int i = 0; i < siteStates.Length; i++)
             {
-                DamageSite site = siteStates[i].Site;
+                SiteState state = siteStates[i];
+                DamageSite site = state.Site;
                 if (site != null && site.Sparks)
-                    site.Sparks.pause = shouldPause || !effectsRunning;
+                    site.Sparks.pause = shouldPause || !effectsRunning || !IsDamaged || state.Repaired;
             }
 
             if (shouldPause)
@@ -322,36 +375,176 @@ namespace LudumDare60.Landing
         {
             CaptureBindings();
             effectsRunning = false;
+            operationalAmbience = false;
+            resumeOperationalAmbience = false;
+            ambienceFading = false;
+            ambienceStarted = false;
             for (int i = 0; i < siteStates.Length; i++)
-            {
-                SiteState state = siteStates[i];
-                state.Bursting = false;
-                if (state.Site != null && state.Site.Sparks)
-                {
-                    // Reinit clears residual live particles on cancellation/repair. The authored
-                    // initial event is OnStop; Stop is repeated for safely configured other graphs.
-                    state.Site.Sparks.Reinit();
-                    state.Site.Sparks.Stop();
-                    state.Site.Sparks.pause = true;
-                }
-                RestoreFlash(state);
-            }
+                ClearSite(siteStates[i]);
             for (int i = 0; i < audioStates.Count; i++)
             {
                 AudioState state = audioStates[i];
                 if (!state.Source) continue;
                 state.Source.Stop();
                 state.Source.pitch = state.Pitch;
+                state.Source.volume = state.Volume;
             }
             pausedAudio.Clear();
             paused = false;
         }
 
-        /// <summary>Integration point for a future repair system. A consumed touchdown stays consumed.</summary>
+        /// <summary>Immediately clears a repaired site. Before touchdown this only caches repair state.</summary>
+        public void SetSiteRepaired(int siteIndex, bool repaired)
+        {
+            CaptureBindings();
+            if (siteIndex < 0 || siteIndex >= siteStates.Length) return;
+            SiteState state = siteStates[siteIndex];
+            if (state.Repaired == repaired) return;
+            state.Repaired = repaired;
+            if (repaired)
+            {
+                ClearSite(state);
+            }
+            else if (damageTriggered && !allRepairsComplete && isActiveAndEnabled)
+            {
+                bool wasRunning = effectsRunning;
+                effectsRunning = true;
+                IsDamaged = true;
+                state.NextBurst = elapsed + Sample(RepeatInterval, .1f);
+                if (!wasRunning) CrossfadeAmbience(false);
+            }
+        }
+
+        public bool IsSiteRepaired(int siteIndex)
+        {
+            CaptureBindings();
+            return siteIndex >= 0 && siteIndex < siteStates.Length && siteStates[siteIndex].Repaired;
+        }
+
+        /// <summary>
+        /// Global repair result, including devices without a spark site. Site masks remain authoritative
+        /// and independent, so an unrepaired site can resume if the global completion is revoked.
+        /// </summary>
+        public void SetAllRepairsComplete(bool complete)
+        {
+            CaptureBindings();
+            if (allRepairsComplete == complete) return;
+            allRepairsComplete = complete;
+            IsDamaged = damageTriggered && !complete;
+            if (complete)
+            {
+                for (int i = 0; i < siteStates.Length; i++) ClearSite(siteStates[i]);
+                StopOwnedAudio(AlarmAudio);
+                alarmStopped = true;
+            }
+
+            if (!damageTriggered || !isActiveAndEnabled) return;
+            effectsRunning = true;
+            if (!complete)
+            {
+                // Restore periodic faults without repeating the one-time collision choreography.
+                for (int i = 0; i < siteStates.Length; i++)
+                    if (!siteStates[i].Repaired)
+                        siteStates[i].NextBurst = elapsed + Sample(RepeatInterval, .1f);
+                alarmStopped = elapsed >= Mathf.Max(0f, AlarmDelay) + Mathf.Max(0f, AlarmDuration);
+                nextAlarmPulse = Mathf.Max(elapsed, AlarmDelay);
+            }
+            CrossfadeAmbience(complete);
+        }
+
+        /// <summary>Manual full repair: clear every site and restore healthy ambience after touchdown.</summary>
         public void RepairAll()
+        {
+            CaptureBindings();
+            for (int i = 0; i < siteStates.Length; i++) SetSiteRepaired(i, true);
+            SetAllRepairsComplete(true);
+            // A deliberate manual repair can restore healthy ambience after an explicit full stop;
+            // repeated state synchronization through SetAllRepairsComplete remains side-effect free.
+            if (damageTriggered && isActiveAndEnabled && !effectsRunning)
+            {
+                effectsRunning = true;
+                CrossfadeAmbience(true);
+            }
+        }
+
+        void ResetPresentation()
         {
             StopDamageEffects();
             IsDamaged = false;
+            damageTriggered = false;
+            touchdownConsumed = false;
+            // Repair masks are owned by the repair system and may already have been synchronized
+            // for the next landing. A cancellation is not a successful repair or an ambience cue.
+        }
+
+        void ClearSite(SiteState state)
+        {
+            state.Bursting = false;
+            if (state.Site != null)
+            {
+                if (state.Site.Sparks)
+                {
+                    state.Site.Sparks.Reinit();
+                    state.Site.Sparks.Stop();
+                    state.Site.Sparks.pause = true;
+                }
+                StopOwnedAudio(state.Site.ElectricalAudio);
+            }
+            RestoreFlash(state);
+        }
+
+        void StopOwnedAudio(AudioSource source)
+        {
+            if (!source) return;
+            source.Stop();
+            source.pitch = OriginalPitch(source);
+            pausedAudio.Remove(source);
+        }
+
+        void CrossfadeAmbience(bool healthy)
+        {
+            ambienceStarted = true;
+            damagedFadeStart = PlayingVolume(DamagedAmbience);
+            healthyFadeStart = PlayingVolume(HealthyAmbience);
+            damagedFadeTarget = healthy ? 0f : OriginalVolume(DamagedAmbience);
+            healthyFadeTarget = healthy ? OriginalVolume(HealthyAmbience) : 0f;
+            if (DamagedAmbience) DamagedAmbience.volume = damagedFadeStart;
+            if (HealthyAmbience) HealthyAmbience.volume = healthyFadeStart;
+            StartAmbience(healthy ? HealthyAmbience : DamagedAmbience);
+            ambienceFadeElapsed = 0f;
+            ambienceFading = true;
+            if (AmbienceCrossfadeDuration <= 0f) UpdateAmbience();
+        }
+
+        void StartAmbience(AudioSource source)
+        {
+            if (!source || !source.clip || !source.isActiveAndEnabled || source.isPlaying || pausedAudio.Contains(source)) return;
+            source.Play();
+            // Repair UI can send completion while the game is paused. Never let its newly started
+            // ambience escape the same per-source pause used by an already-playing ambience.
+            if (Time.timeScale <= 0f)
+            {
+                source.Pause();
+                pausedAudio.Add(source);
+            }
+        }
+
+        float PlayingVolume(AudioSource source)
+        {
+            return source && (source.isPlaying || pausedAudio.Contains(source)) ? source.volume : 0f;
+        }
+
+        void UpdateAmbience()
+        {
+            if (!ambienceFading) return;
+            ambienceFadeElapsed += Time.deltaTime;
+            float t = AmbienceCrossfadeDuration <= 0f ? 1f : Mathf.Clamp01(ambienceFadeElapsed / AmbienceCrossfadeDuration);
+            if (DamagedAmbience) DamagedAmbience.volume = Mathf.Lerp(damagedFadeStart, damagedFadeTarget, t);
+            if (HealthyAmbience) HealthyAmbience.volume = Mathf.Lerp(healthyFadeStart, healthyFadeTarget, t);
+            if (t < 1f) return;
+            ambienceFading = false;
+            if (damagedFadeTarget <= 0f) StopOwnedAudio(DamagedAmbience);
+            if (healthyFadeTarget <= 0f) StopOwnedAudio(HealthyAmbience);
         }
 
         void CaptureBindings()
@@ -375,6 +568,7 @@ namespace LudumDare60.Landing
             AddAudio(ImpactAudio);
             AddAudio(HullAudio);
             AddAudio(DamagedAmbience);
+            AddAudio(HealthyAmbience);
             AddAudio(AlarmAudio);
         }
 
@@ -383,7 +577,7 @@ namespace LudumDare60.Landing
             if (!source) return;
             for (int i = 0; i < audioStates.Count; i++)
                 if (audioStates[i].Source == source) return;
-            audioStates.Add(new AudioState { Source = source, Pitch = source.pitch });
+            audioStates.Add(new AudioState { Source = source, Pitch = source.pitch, Volume = source.volume });
         }
 
         float OriginalPitch(AudioSource source)
@@ -391,6 +585,14 @@ namespace LudumDare60.Landing
             for (int i = 0; i < audioStates.Count; i++)
                 if (audioStates[i].Source == source) return audioStates[i].Pitch;
             return 1f;
+        }
+
+        float OriginalVolume(AudioSource source)
+        {
+            if (!source) return 0f;
+            for (int i = 0; i < audioStates.Count; i++)
+                if (audioStates[i].Source == source) return audioStates[i].Volume;
+            return source.volume;
         }
 
         static void RestoreFlash(SiteState state)
