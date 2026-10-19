@@ -89,7 +89,7 @@ namespace LudumDare60.TerminalDialogue
             var canAdvance = open && (lastPhase == TerminalPhase.Typing || lastPhase == TerminalPhase.Holding
                 || lastPhase == TerminalPhase.WaitingForContinue);
             if (advanceButton != null) advanceButton.gameObject.SetActive(canAdvance);
-            if (advanceLabel != null) advanceLabel.text = Loc.Say(lastPhase == TerminalPhase.Typing ? "SHOW FULL TEXT" : "CONTINUE");
+            if (advanceLabel != null) advanceLabel.text = Loc.Say(lastPhase == TerminalPhase.Typing ? "SKIP" : "CONTINUE");
             if (statusText != null)
             {
                 statusText.text = Loc.Say(!open ? "TERMINAL OFFLINE" : lastPhase == TerminalPhase.WaitingForChoice

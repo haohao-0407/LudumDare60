@@ -124,12 +124,13 @@ namespace LudumDare60.ShipAssembly
             var puzzle = Controller != null ? Controller.ActivePuzzle : null;
             int moduleCount = puzzle != null && puzzle.Modules != null ? puzzle.Modules.Length : 0;
             string selectionKeys = moduleCount > 0 ? "1-" + Mathf.Min(moduleCount, 5) + " / TAB SELECT" : "TAB SELECT";
+            // Keep the full English control legend visible while waiting for puzzle focus too.
             SetText(Hint, !available ? "REPAIR CONTROLS ARE LOCKED"
                 : completed ? "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
                 : !started ? "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS"
-                : Controller.InputEnabled
-                    ? "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n" + selectionKeys + "   X DETACH   R RESET   ESC PAUSE"
-                    : "CLICK PUZZLE TO OPERATE  /  RIGHT MOUSE TO LOOK\nPROGRESS IS KEPT WHEN YOU SWITCH SCREENS");
+                : "LMB DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n"
+                    + selectionKeys + "   X DETACH   R RESET\n"
+                    + "CLICK PUZZLE TO OPERATE   RMB LOOK   ESC PAUSE");
             Pioneer60.Localization.LocAutoTranslate.Refresh(gameObject);
         }
 

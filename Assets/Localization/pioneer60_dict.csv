@@ -197,6 +197,7 @@ esc.back,esc,,BACK,返回,原文
 esc.fullscreen,esc,,FULLSCREEN,全屏,原文
 esc.reset_audio,esc,,RESET AUDIO,重置音频,原文
 esc.language,esc,,LANGUAGE,语言,新译（无中文原文）
+esc.volume,esc,,VOLUME,音量,新译（无中文原文）
 esc.hint.paused,esc,,"SESSION PAUSED
 
 ESC      RESUME
@@ -206,10 +207,10 @@ ARROWS   NAVIGATE","会话已暂停
 ESC      继续
 ENTER    确认
 方向键   移动",新译（无中文原文）
-esc.hint.settings,esc,,"DISPLAY / LANGUAGE
+esc.hint.settings,esc,,"DISPLAY / AUDIO / LANGUAGE
 
 Switch interface language
-with the left and right arrows.","显示 / 语言
+with the left and right arrows.","显示 / 音量 / 语言
 
 用左右方向键
 切换界面语言。",新译（无中文原文）
@@ -506,7 +507,7 @@ src.preview.is_there_another_route,ui,,Is there another route?,还有别的路�
 src.preview.wait_for_the_next_one,ui,,Wait for the next one.,那就等下一次。,原文反查
 src.preview.what_comes_first_tomorrow,ui,,What comes first tomorrow?,明天先做什么？,原文反查
 src.preview.what_do_we_do_now,ui,,What do we do now?,那我们现在怎么办？,原文反查
-src.ui.show_full_text,ui,,SHOW FULL TEXT,显示全文,原文反查
+src.ui.show_full_text,ui,,SKIP,跳过,原文反查
 src.ui.session_ended,ui,,SESSION ENDED,会话已结束,原文反查
 src.ui.awaiting_continue,ui,,AWAITING CONTINUE,等待继续,原文反查
 src.ui.transmitting,ui,,TRANSMITTING...,传输中…,原文反查

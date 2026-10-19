@@ -58,11 +58,11 @@ namespace LudumDare60.UI.Editor
                 settings.gameObject.AddComponent<CanvasGroup>();
                 ui.Back = ArtButton("Back", settings, "03_BarLong.png", "BACK", 313, 925, 2921, 346);
                 ui.Fullscreen = Fullscreen(settings);
-                ui.ResetAudio = ArtButton("Reset Audio", settings, "05_BarShort.png", "RESET AUDIO", 308, 1883, 1557, 314);
-                var settingsHelp = Text("Settings Hint", settings, "DISPLAY / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows.", 23, Light);
+                var settingsHelp = Text("Settings Hint", settings, "DISPLAY / AUDIO / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows.", 23, Light);
                 Place(settingsHelp.rectTransform, 835, 235, 300, 245); settingsHelp.lineSpacing = 14;
                 settings.gameObject.SetActive(false);
-                BuildLanguageOption(window, ui);
+                BuildLanguageOption(settings, ui);
+                BuildVolume(settings, ui);
                 Picture("Footer Strip", window, "09_FooterStrip.png", 95, 3210, 5025, 190);
                 var footer = Text("Footer", window, "ESC / RESUME       SHIP OS / SYSTEM CONTROL", 19, Light);
                 Place(footer.rectTransform, 40, 736, 1110, 40); footer.alignment = TextAlignmentOptions.Center;
@@ -120,11 +120,12 @@ namespace LudumDare60.UI.Editor
                 var sweep = CreateSweep(visual); sweep.transform.SetSiblingIndex(0);
                 target.gameObject.AddComponent<EscMenuHoverEffect>().Configure(visual, sweep, 22);
             }
-            var volume = root.transform.Find(window + "Language");
-            if (volume != null && volume.GetComponent<EscMenuHoverEffect>() == null)
+            foreach (var name in new[] { "Language", "Master Volume" })
             {
-                var sweep = CreateSweep(volume); sweep.transform.SetSiblingIndex(0);
-                volume.gameObject.AddComponent<EscMenuHoverEffect>().Configure(null, sweep, 0);
+                var row = root.transform.Find(window + "Settings Page/" + name);
+                if (row == null || row.GetComponent<EscMenuHoverEffect>() != null) continue;
+                var sweep = CreateSweep(row); sweep.transform.SetSiblingIndex(0);
+                row.gameObject.AddComponent<EscMenuHoverEffect>().Configure(null, sweep, 0);
             }
         }
 
@@ -135,15 +136,14 @@ namespace LudumDare60.UI.Editor
             return graphic;
         }
 
-        /// <summary>语言选项行：复用原音量滑条的长条美术，滑槽正好当左右切换的轨道。</summary>
         private static void BuildLanguageOption(Transform window, EscMenuWidgets ui)
         {
-            var row = Picture("Language", window, "06_SliderBackground.png", 313, 2399, 2921, 321);
+            var row = Picture("Language", window, "04_BarMedium.png", 308, 1883, 2921, 314);
             row.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
             var label = Text("Label", row, "LANGUAGE", 23, Ink);
-            Place(label.rectTransform, 20, 0, 200, 321 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
+            Place(label.rectTransform, 24, 0, 180, 314 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
             var value = Text("Value", row, "English", 23, Ink);
-            Place(value.rectTransform, 520, 0, 140, 321 * Scale); value.alignment = TextAlignmentOptions.MidlineRight;
+            Place(value.rectTransform, 210, 0, 435, 314 * Scale); value.alignment = TextAlignmentOptions.MidlineRight;
 
             var option = row.gameObject.AddComponent<EscLanguageOption>();
             option.Configure(label, value);
@@ -156,6 +156,67 @@ namespace LudumDare60.UI.Editor
             option.colors = colors;
             option.targetGraphic = row.GetComponent<UnityEngine.UI.Image>();
             ui.Language = option;
+        }
+
+        private static void BuildVolume(Transform settings, EscMenuWidgets ui)
+        {
+            var row = Picture("Master Volume", settings, "06_SliderBackground.png", 313, 2399, 2921, 321);
+            var label = Text("Label", row, "VOLUME", 23, Ink);
+            Place(label.rectTransform, 20, 0, 155, 321 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
+            var slider = row.gameObject.AddComponent<UnityEngine.UI.Slider>(); slider.minValue = 0; slider.maxValue = 1; slider.value = 1;
+            var area = Rect("Handle Slide Area", row); Place(area, 835 * Scale, 117 * Scale, 1756 * Scale, 69 * Scale);
+            var handle = Rect("Handle", area); handle.sizeDelta = new Vector2(133 * Scale, (133 - 69) * Scale);
+            var image = handle.gameObject.AddComponent<UnityEngine.UI.Image>(); image.sprite = Sprite("08_SliderHandle.png"); image.raycastTarget = true;
+            slider.handleRect = handle; slider.targetGraphic = image; slider.direction = UnityEngine.UI.Slider.Direction.LeftToRight;
+            row.GetComponent<UnityEngine.UI.Image>().raycastTarget = true;
+            var value = Text("Value", row, "100%", 21, Ink);
+            Place(value.rectTransform, 603, 0, 60, 321 * Scale); value.alignment = TextAlignmentOptions.Center;
+            ui.Volume = slider; ui.VolumeValue = value;
+        }
+
+        [MenuItem("Tools/UI/更新 ESC 设置页语言与音量布局")]
+        public static void UpdateSettingsLayout()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("请先退出 Play。");
+            var root = PrefabUtility.LoadPrefabContents(PrefabPath);
+            try { UpgradeSettingsLayout(root); PrefabUtility.SaveAsPrefabAsset(root, PrefabPath); }
+            finally { PrefabUtility.UnloadPrefabContents(root); }
+        }
+
+        public static void UpgradeSettingsLayout(GameObject root)
+        {
+            font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Fonts/Terminal/Glass_TTY_VT220 SDF.asset");
+            var window = root.transform.Find("Menu Overlay/Menu Window");
+            var settings = window.Find("Settings Page");
+            var language = settings.Find("Language") ?? window.Find("Language");
+            if (language == null) throw new InvalidOperationException("Missing language option.");
+            language.SetParent(settings, false);
+            Place((RectTransform)language, 308 * Scale, 1883 * Scale, 2921 * Scale, 314 * Scale);
+            language.GetComponent<UnityEngine.UI.Image>().sprite = Sprite("04_BarMedium.png");
+            // The previous conversion left the old volume handle inside the language row.
+            var legacySlider = language.GetComponent<UnityEngine.UI.Slider>();
+            if (legacySlider != null) UnityEngine.Object.DestroyImmediate(legacySlider);
+            var legacyHandle = language.Find("Handle Slide Area");
+            if (legacyHandle != null) UnityEngine.Object.DestroyImmediate(legacyHandle.gameObject);
+            var option = language.GetComponent<EscLanguageOption>();
+            var label = language.Find("Label").GetComponent<TMP_Text>();
+            var value = language.Find("Value").GetComponent<TMP_Text>();
+            label.text = "LANGUAGE"; label.fontSize = 23;
+            Place(label.rectTransform, 24, 0, 180, 314 * Scale); label.alignment = TextAlignmentOptions.MidlineLeft;
+            Place(value.rectTransform, 210, 0, 435, 314 * Scale); value.alignment = TextAlignmentOptions.MidlineRight;
+            option.Configure(label, value); option.targetGraphic = language.GetComponent<UnityEngine.UI.Image>();
+            var reset = settings.Find("Reset Audio");
+            if (reset != null) UnityEngine.Object.DestroyImmediate(reset.gameObject);
+            var ui = new EscMenuWidgets();
+            var volume = settings.Find("Master Volume");
+            if (volume == null) BuildVolume(settings, ui);
+            else { ui.Volume = volume.GetComponent<UnityEngine.UI.Slider>(); ui.VolumeValue = volume.Find("Value").GetComponent<TMP_Text>(); }
+            var data = new SerializedObject(root.GetComponent<EscMenuController>());
+            data.FindProperty("widgets.Language").objectReferenceValue = option;
+            data.FindProperty("widgets.Volume").objectReferenceValue = ui.Volume;
+            data.FindProperty("widgets.VolumeValue").objectReferenceValue = ui.VolumeValue;
+            data.ApplyModifiedPropertiesWithoutUndo();
+            AddHoverEffects(root);
         }
 
         private static UnityEngine.UI.Toggle Fullscreen(Transform parent)

@@ -8,7 +8,7 @@ namespace LudumDare60.UI
 {
     /// <summary>
     /// 设置页的「选项行」。左右方向键（或鼠标点击 / 回车）循环切换界面语言。
-    /// 取代原来的音量滑条：滑条是连续值，这个是离散选项，键盘导航更直观。
+    /// 与音量滑条分别控制语言和音量。
     /// 上下方向键仍然交给 Selectable 做默认导航，所以不会破坏整页的焦点移动。
     /// </summary>
     [AddComponentMenu("PIONEER-60/UI/Language Option")]
