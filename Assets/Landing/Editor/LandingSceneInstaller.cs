@@ -182,6 +182,9 @@ namespace LudumDare60.Landing.Editor
             controller.CabinFill = fill;
             controller.SourceVolume = volume;
             controller.DestinationScenePath = MarsPath;
+            if (!controller.AtmosphericEntryClip)
+                controller.AtmosphericEntryClip = AssetDatabase.LoadAssetAtPath<AudioClip>(
+                    "Assets/Pioneer60Audio/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3");
             controller.TransitionSkyTemplate = CreateMaterial("SpaceToMarsSky", "Custom/Landing/SpaceToMarsSky", mars.SkyboxMaterial);
             controller.DustMaterialTemplate = CreateMaterial("LandingDust", "Custom/Landing/SoftDust", null);
             controller.HazeMaterialTemplate = CreateMaterial("ExteriorHaze", "Custom/Landing/ExteriorHaze", null);

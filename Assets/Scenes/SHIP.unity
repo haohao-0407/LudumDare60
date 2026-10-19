@@ -11261,6 +11261,8 @@ MonoBehaviour:
   ExteriorHazeRadius: 25
   SpaceAmbientScale: 0.18
   SpaceSunIntensityMultiplier: 0.35
+  AtmosphericEntryClip: {fileID: 8300000, guid: 1acebf4d6d74f164cbd4158b71d23761, type: 3}
+  AtmosphericEntryVolume: 0.55
   TouchdownSpeed: 4
   HardLandingShakeDuration: 3
   HardLandingPosition: {x: 0.09, y: 0.16, z: 0.1}

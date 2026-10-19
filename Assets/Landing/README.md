@@ -35,6 +35,8 @@ SHIP 当前未绑定独立 `ReturnWindow` 演示场景的任务时钟/结局组�
 
 - `ShipRig` 保留原驾驶舱、相机、两块终端。`CameraLook` 负责转头，`CameraShake` 负责演出震动。
 - `Landing Sequence` 上的 `Duration` 调整总时长，`ApproachHeight` / `ApproachOffset` 调整最后下降段；后者相对于火星落点朝向。
+- `AtmosphericEntryClip` 使用新增的 `494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3`，`AtmosphericEntryVolume` 默认 `0.55`。进度 18% 开始循环，23% 完成渐入，55%–69% 淡出并停止；默认 45 秒演出对应约 8.1 秒开始、31.05 秒停止。ESC 暂停保留播放位置，取消/失败/禁用会停止并清理音源。
+- 开场火星在 `SpaceToMarsSky` 材质中微调。着陆启动时读取当前天空的火星方向、角半径、受光方向、可见度和大气/辉光参数；从这些初值开始动画，受光方向随进入大气过渡到场景太阳。当前天空使用不同 shader 时回退到 `TransitionSkyTemplate`。目标地面的全景、曝光和旋转在雾罩完全遮挡时切换，不会因场景加载完成而提前覆盖开场材质。
 - SHIP 中 `AutoStart` 已关闭，由上述对话事件调用 `BeginLanding()`。`Progress`、`Phase`、`HasLanded` 可查询状态，`OnTouchdown` 和 `OnLanded` 用于接声音、任务或舱门。
 - `MarsBase_RetroFuture` 的 `Mars Landing Environment/LandingAnchor` 保存原基地驾驶舱的位置、朝向。移动此锚点即可调整落点。
 - 火星基地异步 Additive 加载。驾驶舱、终端、相机和 ESC 始终留在 SHIP，着陆完成后火星基地成为活动场景。

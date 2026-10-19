@@ -37,6 +37,10 @@ namespace LudumDare60.Landing
         [Range(0f, 1f)] public float SpaceAmbientScale = .18f;
         [Range(0f, 1f)] public float SpaceSunIntensityMultiplier = .35f;
 
+        [Header("Atmospheric entry audio")]
+        public AudioClip AtmosphericEntryClip;
+        [Range(0f, 1f)] public float AtmosphericEntryVolume = .55f;
+
         [Header("Hard landing")]
         [Tooltip("Requested vertical speed at contact in metres/second; capped to keep the descent monotonic.")]
         [Min(.1f)] public float TouchdownSpeed = 4f;
@@ -67,6 +71,8 @@ namespace LudumDare60.Landing
         public Quaternion SpaceSunRotation => originalSun.Rotation;
         public float SpaceVolumeWeight => sourceVolumeWeight;
 
+        const float AtmosphericEntryProgress = .18f;
+        const float EntryAudioEndProgress = .69f;
         const float HandoffProgress = .50f;
         const float TouchdownProgress = .93f;
         static readonly int AtmosphereBlendId = Shader.PropertyToID("_AtmosphereBlend");
@@ -94,6 +100,11 @@ namespace LudumDare60.Landing
         float shakeClock;
         float touchdownElapsed;
         float sourceVolumeWeight;
+        float sourcePlanetRadius;
+        float sourcePlanetVisibility;
+        float sourceStarVisibility;
+        float sourceAtmosphereBlend;
+        float sourceEntryGlow;
         Vector3 originalRigPosition;
         Quaternion originalRigRotation;
         Vector3 originalShakePosition;
@@ -103,14 +114,19 @@ namespace LudumDare60.Landing
         RenderState originalRender;
         LightState originalSun;
         LightState originalCabin;
+        Material sourceSkyMaterial;
         Material skyMaterial;
         Material hazeMaterial;
         Material dustMaterial;
         GameObject effectsRoot;
         Transform hazeDome;
         ParticleSystem dust;
+        AudioSource entryAudio;
+        bool entryAudioStarted;
+        bool entryAudioPaused;
         Vector3 descentStart;
         Vector3 planetDirection;
+        Vector3 planetSunDirection;
 
         void Start()
         {
@@ -208,7 +224,6 @@ namespace LudumDare60.Landing
                 return false;
             }
             destination.PrepareForLanding();
-            CopyPanorama(destination.SkyboxMaterial, skyMaterial);
             return true;
         }
 
@@ -218,6 +233,7 @@ namespace LudumDare60.Landing
             // The impact clock is independent of Duration: a short sequence still plays its full settle.
             while (!cancelled && (Progress < 1f || (touchdownInvoked && touchdownElapsed < Mathf.Max(.1f, HardLandingShakeDuration))))
             {
+                ApplyEntryAudioPause(Time.timeScale <= 0f);
                 if (pendingLoad != null && Time.realtimeSinceStartup - loadStartedAt > LoadTimeout)
                 {
                     Fail("The Mars scene did not finish loading within " + LoadTimeout.ToString("0") + " seconds.");
@@ -264,7 +280,7 @@ namespace LudumDare60.Landing
                 }
                 elapsed = next * Mathf.Max(5f, Duration);
                 Progress = next;
-                Phase = next < .18f ? LandingPhase.SpaceApproach : next < HandoffProgress ? LandingPhase.AtmosphericEntry : next < TouchdownProgress ? LandingPhase.Descent : LandingPhase.Touchdown;
+                Phase = next < AtmosphericEntryProgress ? LandingPhase.SpaceApproach : next < HandoffProgress ? LandingPhase.AtmosphericEntry : next < TouchdownProgress ? LandingPhase.Descent : LandingPhase.Touchdown;
                 ApplyFrame(next);
                 if (startingTouchdown)
                 {
@@ -279,6 +295,9 @@ namespace LudumDare60.Landing
 
         void RevealDestination()
         {
+            // Swap the destination panorama only under the opaque haze, after the planet has faded.
+            // Loading the scene must not reset the authored space exposure, tint or rotation.
+            CopyPanorama(destination.SkyboxMaterial, skyMaterial);
             Transform anchor = destination.LandingAnchor;
             descentStart = anchor.position + Vector3.up * ApproachHeight + anchor.TransformDirection(ApproachOffset);
             ShipRig.SetPositionAndRotation(descentStart, anchor.rotation);
@@ -291,16 +310,16 @@ namespace LudumDare60.Landing
         void ApplyFrame(float progress)
         {
             if (!skyMaterial) return;
+            ApplyEntryAudio(progress);
             float atmosphere = SmoothRange(.15f, .69f, progress);
             float entry = Mathf.Sin(SmoothRange(.16f, .64f, progress) * Mathf.PI);
             float haze = SmoothRange(.31f, .47f, progress) * (1f - SmoothRange(.55f, .71f, progress));
-            skyMaterial.SetFloat(AtmosphereBlendId, atmosphere);
-            skyMaterial.SetFloat(StarVisibilityId, 1f - SmoothRange(.12f, .40f, progress));
-            skyMaterial.SetFloat(PlanetVisibilityId, 1f - SmoothRange(.33f, .48f, progress));
-            skyMaterial.SetFloat(PlanetAngularRadiusId, Mathf.Lerp(.28f, 1.05f, SmoothRange(0f, .48f, progress)));
+            skyMaterial.SetFloat(AtmosphereBlendId, Mathf.Lerp(sourceAtmosphereBlend, 1f, atmosphere));
+            skyMaterial.SetFloat(StarVisibilityId, sourceStarVisibility * (1f - SmoothRange(.12f, .40f, progress)));
+            skyMaterial.SetFloat(PlanetVisibilityId, sourcePlanetVisibility * (1f - SmoothRange(.33f, .48f, progress)));
+            skyMaterial.SetFloat(PlanetAngularRadiusId, Mathf.Lerp(sourcePlanetRadius, Mathf.Max(sourcePlanetRadius, 1.05f), SmoothRange(0f, .48f, progress)));
             skyMaterial.SetVector(PlanetDirectionId, planetDirection);
-            skyMaterial.SetFloat(EntryGlowId, entry * .65f);
-            skyMaterial.SetVector(SunDirectionId, -ShipSun.transform.forward);
+            skyMaterial.SetFloat(EntryGlowId, sourceEntryGlow * (1f - SmoothRange(0f, .16f, progress)) + entry * .65f);
             RenderSettings.skybox = skyMaterial;
             Color hazeColor = destination ? destination.FogColor : new Color(.72f, .43f, .29f);
             hazeColor.a = haze;
@@ -309,6 +328,8 @@ namespace LudumDare60.Landing
             hazeDome.position = ViewCamera.transform.position;
 
             ApplyLighting(atmosphere);
+            // The authored planet lighting is independent of the cabin's directional light in space.
+            skyMaterial.SetVector(SunDirectionId, Vector3.Slerp(planetSunDirection, -ShipSun.transform.forward, atmosphere));
             if (CabinFill)
             {
                 CabinFill.enabled = true;
@@ -336,6 +357,39 @@ namespace LudumDare60.Landing
             ApplyShake(progress, entry);
             // The rig may have moved since the first dome update; follow the same rendered viewpoint.
             hazeDome.position = ViewCamera.transform.position;
+        }
+
+        void ApplyEntryAudio(float progress)
+        {
+            if (!entryAudio) return;
+            if (progress < AtmosphericEntryProgress || progress >= EntryAudioEndProgress)
+            {
+                StopEntryAudio();
+                return;
+            }
+            entryAudio.volume = AtmosphericEntryVolume * SmoothRange(AtmosphericEntryProgress, .23f, progress)
+                * (1f - SmoothRange(.55f, EntryAudioEndProgress, progress));
+            if (!entryAudioStarted)
+            {
+                entryAudio.Play();
+                entryAudioStarted = true;
+            }
+            ApplyEntryAudioPause(Time.timeScale <= 0f);
+        }
+
+        void ApplyEntryAudioPause(bool shouldPause)
+        {
+            if (!entryAudio || !entryAudioStarted || entryAudioPaused == shouldPause) return;
+            entryAudioPaused = shouldPause;
+            if (shouldPause) entryAudio.Pause();
+            else entryAudio.UnPause();
+        }
+
+        void StopEntryAudio()
+        {
+            if (entryAudio && entryAudioStarted) entryAudio.Stop();
+            entryAudioStarted = false;
+            entryAudioPaused = false;
         }
 
         void ApplyLighting(float blend)
@@ -398,6 +452,7 @@ namespace LudumDare60.Landing
 
         void FinishLanding()
         {
+            StopEntryAudio();
             ShipRig.SetPositionAndRotation(destination.LandingAnchor.position, destination.LandingAnchor.rotation);
             ResetShake();
             destination.ApplyFinalEnvironment();
@@ -431,21 +486,50 @@ namespace LudumDare60.Landing
             originalFarClip = ViewCamera.farClipPlane;
             ViewCamera.clearFlags = CameraClearFlags.Skybox;
             ViewCamera.farClipPlane = Mathf.Max(originalFarClip, 1500f);
-            Vector4 authoredPlanet = TransitionSkyTemplate.HasProperty(PlanetDirectionId)
-                ? TransitionSkyTemplate.GetVector(PlanetDirectionId) : Vector4.zero;
+            // Match the displayed opening sky, including another material using the transition shader.
+            sourceSkyMaterial = originalRender.Sky && originalRender.Sky.shader == TransitionSkyTemplate.shader
+                ? originalRender.Sky : TransitionSkyTemplate;
+            Vector4 authoredPlanet = sourceSkyMaterial.HasProperty(PlanetDirectionId)
+                ? sourceSkyMaterial.GetVector(PlanetDirectionId) : Vector4.zero;
             planetDirection = new Vector3(authoredPlanet.x, authoredPlanet.y, authoredPlanet.z);
             planetDirection = planetDirection.sqrMagnitude > .0001f ? planetDirection.normalized : ViewCamera.transform.forward;
+            Vector4 authoredSun = sourceSkyMaterial.HasProperty(SunDirectionId)
+                ? sourceSkyMaterial.GetVector(SunDirectionId) : Vector4.zero;
+            planetSunDirection = new Vector3(authoredSun.x, authoredSun.y, authoredSun.z);
+            planetSunDirection = planetSunDirection.sqrMagnitude > .0001f ? planetSunDirection.normalized : -ShipSun.transform.forward;
+            sourcePlanetRadius = Mathf.Clamp(ReadSkyFloat(PlanetAngularRadiusId, .28f), .005f, 1.5f);
+            sourcePlanetVisibility = Mathf.Clamp01(ReadSkyFloat(PlanetVisibilityId, 1f));
+            sourceStarVisibility = Mathf.Clamp01(ReadSkyFloat(StarVisibilityId, 1f));
+            sourceAtmosphereBlend = Mathf.Clamp01(ReadSkyFloat(AtmosphereBlendId, 0f));
+            sourceEntryGlow = Mathf.Clamp01(ReadSkyFloat(EntryGlowId, 0f));
             captured = true;
+        }
+
+        float ReadSkyFloat(int property, float fallback)
+        {
+            return sourceSkyMaterial.HasProperty(property) ? sourceSkyMaterial.GetFloat(property) : fallback;
         }
 
         void CreateEffects()
         {
-            skyMaterial = new Material(TransitionSkyTemplate) { name = "Landing Sky (runtime)" };
+            skyMaterial = new Material(sourceSkyMaterial) { name = "Landing Sky (runtime)" };
             hazeMaterial = new Material(HazeMaterialTemplate) { name = "Landing Exterior Haze (runtime)" };
             dustMaterial = new Material(DustMaterialTemplate) { name = "Landing Dust (runtime)" };
             effectsRoot = new GameObject("Landing Effects (runtime)");
             SceneManager.MoveGameObjectToScene(effectsRoot, gameObject.scene);
             effectsRoot.transform.SetParent(transform, false);
+            if (AtmosphericEntryClip)
+            {
+                GameObject audioObject = new GameObject("Atmospheric Entry Audio");
+                audioObject.transform.SetParent(effectsRoot.transform, false);
+                entryAudio = audioObject.AddComponent<AudioSource>();
+                entryAudio.playOnAwake = false;
+                entryAudio.loop = true;
+                entryAudio.spatialBlend = 0f;
+                entryAudio.dopplerLevel = 0f;
+                entryAudio.volume = 0f;
+                entryAudio.clip = AtmosphericEntryClip;
+            }
             GameObject dome = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             dome.name = "Exterior Haze Dome";
             dome.transform.SetParent(effectsRoot.transform, false);
@@ -556,6 +640,7 @@ namespace LudumDare60.Landing
 
         void DestroyEffects()
         {
+            StopEntryAudio();
             if (effectsRoot) Destroy(effectsRoot);
             if (skyMaterial) Destroy(skyMaterial);
             if (hazeMaterial) Destroy(hazeMaterial);
@@ -564,6 +649,7 @@ namespace LudumDare60.Landing
             skyMaterial = null;
             hazeMaterial = null;
             dustMaterial = null;
+            entryAudio = null;
         }
 
         void OnApplicationQuit() { applicationQuitting = true; }
