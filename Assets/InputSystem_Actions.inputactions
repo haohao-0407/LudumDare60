@@ -1145,6 +1145,16 @@
                     "priority": 0
                 },
                 {
+                    "name": "Select5",
+                    "type": "Button",
+                    "id": "994892e2-ef73-4a6d-8dc9-5f6ab41e8304",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
                     "name": "Detach",
                     "type": "Button",
                     "id": "066a5c0f-60e9-42e3-a990-4d26b5dcd37c",
@@ -1370,6 +1380,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Select4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b447ee9e-9f24-44fa-84a7-b95219014fa5",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select5",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

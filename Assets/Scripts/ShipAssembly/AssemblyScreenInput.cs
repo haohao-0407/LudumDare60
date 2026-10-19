@@ -20,7 +20,7 @@ namespace LudumDare60.ShipAssembly
         private InputActionAsset ownedActions;
         private InputActionMap actionMap;
         private InputAction point, click, move, rotate, fine, next, detach, reset, releaseFocus, lookHold;
-        private readonly InputAction[] select = new InputAction[4];
+        private readonly InputAction[] select = new InputAction[5];
         private bool dragging;
         private Vector2 dragOffset;
         private AssemblyModule draggedModule;

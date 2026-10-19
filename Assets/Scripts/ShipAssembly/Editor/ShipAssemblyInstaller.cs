@@ -45,9 +45,11 @@ namespace LudumDare60.ShipAssembly.Editor
             var pilotCamera = objects.Select(t => t.GetComponent<Camera>()).Single(c => c != null && c.CompareTag("MainCamera"));
             var pause = objects.Select(t => t.GetComponent<EscMenuController>()).FirstOrDefault(c => c != null);
             var puzzle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/NavigationAssembly.prefab");
+            var energyPuzzle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/EnergyAssembly.prefab");
+            var lifeSupportPuzzle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/LifeSupportAssembly.prefab");
             var catalog = AssetDatabase.LoadAssetAtPath<ItemCatalog>("Assets/Salvage/ItemCatalog.asset");
             font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Fonts/Terminal/Glass_TTY_VT220 SDF.asset");
-            if (puzzle == null || catalog == null || font == null)
+            if (puzzle == null || energyPuzzle == null || lifeSupportPuzzle == null || catalog == null || font == null)
                 throw new InvalidOperationException("Missing assembly prefab, item catalog or terminal font.");
             var yields = AssetDatabase.LoadAssetAtPath<SalvageMaterialYieldCatalog>("Assets/Salvage/SalvageMaterialYields.asset");
             if (yields == null) throw new InvalidOperationException("Missing salvage material yields.");
@@ -58,10 +60,10 @@ namespace LudumDare60.ShipAssembly.Editor
             var actions = EnsureInputActions();
             var recipes = new[]
             {
-                Recipe("PowerUnit", "power_unit", "Power Unit", RepairDeviceId.PowerUnit, new[] { 6, 4, 2, 7, 3 }, puzzle),
+                Recipe("PowerUnit", "power_unit", "Power Unit", RepairDeviceId.PowerUnit, new[] { 6, 4, 2, 7, 3 }, energyPuzzle),
                 Recipe("NavigationSystem", "interstellar_navigation", "Interstellar Navigation System", RepairDeviceId.Navigation, new[] { 4, 5, 7, 2, 2 }, puzzle),
                 Recipe("PropulsionEngine", "propulsion_engine", "Propulsion Engine", RepairDeviceId.PropulsionEngine, new[] { 7, 3, 3, 6, 4 }, puzzle),
-                Recipe("LifeSupport", "life_support", "Life Support System", RepairDeviceId.LifeSupport, new[] { 5, 3, 2, 2, 7 }, puzzle)
+                Recipe("LifeSupport", "life_support", "Life Support System", RepairDeviceId.LifeSupport, new[] { 5, 3, 2, 2, 7 }, lifeSupportPuzzle)
             };
 
             // A rerun preserves recipe edits, input bindings and the installed scene hierarchy.
@@ -128,6 +130,9 @@ namespace LudumDare60.ShipAssembly.Editor
             recipe = ScriptableObject.CreateInstance<AssemblyRecipe>();
             recipe.RecipeId = id; recipe.DisplayName = title; recipe.Device = device;
             recipe.PuzzlePrefab = puzzle;
+            var layout = puzzle.GetComponent<LudumDare60.ReturnWindow.DeviceAssemblyLayout>();
+            if (layout != null)
+                recipe.PuzzleOffset = new Vector3(-layout.viewCenter.x, -layout.viewCenter.y, 0);
             var ids = new[] { "rolled_electromechanical_alloy_sheets", "tinned_copper_wire_windings", "precision_drive_gear_blanks", "heat_resistant_ceramic_insulators", "vulcanized_airtight_rubber_liners" };
             recipe.Materials = ids.Select((material, index) => new InventoryCost { ItemId = material, Quantity = quantities[index] }).ToArray();
             AssetDatabase.CreateAsset(recipe, path);
@@ -234,7 +239,7 @@ namespace LudumDare60.ShipAssembly.Editor
                 var fine = map.AddAction("Fine", InputActionType.Button, "<Keyboard>/leftShift");
                 fine.AddBinding("<Keyboard>/rightShift");
                 map.AddAction("Next", InputActionType.Button, "<Keyboard>/tab");
-                for (var i = 1; i <= 4; i++) map.AddAction("Select" + i, InputActionType.Button, "<Keyboard>/" + i);
+                for (var i = 1; i <= 5; i++) map.AddAction("Select" + i, InputActionType.Button, "<Keyboard>/" + i);
                 map.AddAction("Detach", InputActionType.Button, "<Keyboard>/x");
                 map.AddAction("Reset", InputActionType.Button, "<Keyboard>/r");
                 map.AddAction("ReleaseFocus", InputActionType.Button, "<Keyboard>/escape");

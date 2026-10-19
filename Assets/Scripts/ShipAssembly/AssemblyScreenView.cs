@@ -114,10 +114,13 @@ namespace LudumDare60.ShipAssembly
             if (!started && !canStart && !string.IsNullOrEmpty(reason)) message = reason;
             if (completed) message = "REPAIR COMPLETE - SYSTEM RESTORED";
             SetText(Status, message);
+            var puzzle = Controller != null ? Controller.ActivePuzzle : null;
+            int moduleCount = puzzle != null && puzzle.Modules != null ? puzzle.Modules.Length : 0;
+            string selectionKeys = moduleCount > 0 ? "1-" + Mathf.Min(moduleCount, 5) + " / TAB SELECT" : "TAB SELECT";
             SetText(Hint, completed ? "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
                 : !started ? "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS"
                 : Controller.InputEnabled
-                    ? "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n1-4 / TAB SELECT   X DETACH   R RESET   ESC PAUSE"
+                    ? "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n" + selectionKeys + "   X DETACH   R RESET   ESC PAUSE"
                     : "CLICK PUZZLE TO OPERATE  /  RIGHT MOUSE TO LOOK\nPROGRESS IS KEPT WHEN YOU SWITCH SCREENS");
         }
 

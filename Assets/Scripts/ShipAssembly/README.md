@@ -7,8 +7,19 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 ## 配置
 
 四份可编辑的 ScriptableObject 在 `Assets/ShipAssembly/Recipes/`。每份配置包含稳定配方 ID、
-维修设备、材料需求、组装 Prefab、相机大小和拼图偏移。当前四份都复用同事制作的导航谜题，
-每份拥有独立实例和进度；之后可逐项替换为不同设备的组装 Prefab。
+维修设备、材料需求、组装 Prefab、相机大小和拼图偏移。每份拥有独立实例和进度。
+
+| 配方 | 组装 Prefab | 零件数 |
+| --- | --- | ---: |
+| Power Unit | `EnergyAssembly.prefab` | 3 |
+| Interstellar Navigation System | `NavigationAssembly.prefab` | 4 |
+| Propulsion Engine | 暂复用 `NavigationAssembly.prefab` | 4 |
+| Life Support System | `LifeSupportAssembly.prefab` | 5 |
+
+能源、生命关卡及其 `DeviceAssemblyLayout` 来自
+`origin/codex/assembly-snapshot-engine-pending-20261019` 的 `90402b9`。
+该提交尚无引擎关卡，因此引擎保留原配置。只接入拼装资源，没有导入远端屏幕、场景或维修逻辑。
+能源与生命配方的 `PuzzleOffset` 抵消各自的 `viewCenter`，适配现有工作台相机。
 
 | 材料 | Power Unit | Interstellar Navigation System | Propulsion Engine | Life Support System |
 | --- | ---: | ---: | ---: | ---: |
@@ -49,7 +60,7 @@ SHIP 的 `SalvageInventoryBridge.materialYieldCatalog` 已连接
 点击拼图区域取得操作焦点。
 
 - 鼠标点击选择，按住左键拖动零件；WASD 也可移动。
-- Q/E 旋转，Shift 微调，1–4 或 Tab 选择零件。
+- Q/E 旋转，Shift 微调，数字键或 Tab 选择零件（能源 1–3，导航／引擎 1–4，生命 1–5）。
 - X / DETACH 拆开选中零件，R / RESET PARTS 重排当前拼图，不重复扣料。
 - 点击屏幕外、按右键观察或按 Esc 释放操作焦点；返回时点击拼图继续。
 - Esc 同时遵循现有 ESC 菜单行为，菜单打开或游戏暂停时停止组装输入。
