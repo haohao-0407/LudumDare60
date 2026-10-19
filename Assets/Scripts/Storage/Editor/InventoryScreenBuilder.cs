@@ -63,19 +63,21 @@ namespace LudumDare60.Storage.Editor
             Fill(display);
             Undo.RegisterCreatedObjectUndo(display.gameObject, "Create inventory display");
             display.gameObject.AddComponent<Image>().color = new Color(0.005f, 0.012f, 0.01f);
-            Panel("Phosphor Bezel", display, 7, 7, 986, 606, new Color(0.12f, 0.28f, 0.22f));
-            Panel("Glass", display, 10, 10, 980, 600, new Color(0.012f, 0.026f, 0.021f));
-            Text("Title", display, "SHIP OS  /  CARGO MANIFEST", 25, Phosphor, 32, 553, 936, 35);
-            Text("Subtitle", display, "LOCAL HOLD   //   RECOVERY REGISTER", 18, Dim, 32, 517, 936, 28);
-            Panel("Header Rule", display, 32, 503, 936, 1, Dim);
-            Text("Number Column", display, "NO.", 19, Dim, 38, 462, 70, 32);
-            Text("Name Column", display, "RECOVERED ITEM", 19, Dim, 114, 462, 664, 32);
+            Fill(Panel("Phosphor Bezel", display, 7, 7, 986, 606, new Color(0.12f, 0.28f, 0.22f)), 7);
+            Fill(Panel("Glass", display, 10, 10, 980, 600, new Color(0.012f, 0.026f, 0.021f)), 10);
+            AnchorVertically(Text("Title", display, "SHIP OS  /  CARGO MANIFEST", 25, Phosphor, 32, 553, 936, 35).rectTransform, 1, 1);
+            AnchorVertically(Text("Subtitle", display, "LOCAL HOLD   //   RECOVERY REGISTER", 18, Dim, 32, 517, 936, 28).rectTransform, 1, 1);
+            AnchorVertically(Panel("Header Rule", display, 32, 503, 936, 1, Dim), 1, 1);
+            AnchorVertically(Text("Number Column", display, "NO.", 19, Dim, 38, 462, 70, 32).rectTransform, 1, 1);
+            AnchorVertically(Text("Name Column", display, "RECOVERED ITEM", 19, Dim, 114, 462, 664, 32).rectTransform, 1, 1);
             var quantityHeader = Text("Quantity Column", display, "QTY", 19, Dim, 798, 462, 160, 32);
+            AnchorVertically(quantityHeader.rectTransform, 1, 1);
             quantityHeader.alignment = TextAlignmentOptions.MidlineRight;
-            Panel("Column Rule", display, 32, 455, 936, 1, new Color(0.11f, 0.23f, 0.18f));
+            AnchorVertically(Panel("Column Rule", display, 32, 455, 936, 1, new Color(0.11f, 0.23f, 0.18f)), 1, 1);
 
             var viewport = NewRect("Manifest Viewport", display);
             Place(viewport, 32, 149, 936, 296);
+            AnchorVertically(viewport, 0, 1);
             viewport.gameObject.AddComponent<Image>().color = new Color(0.012f, 0.025f, 0.02f);
             viewport.gameObject.AddComponent<RectMask2D>();
             var scroll = viewport.gameObject.AddComponent<ScrollRect>();
@@ -100,7 +102,10 @@ namespace LudumDare60.Storage.Editor
             var quantity = Text("Quantity", template, "0", 24, Phosphor, 766, 0, 160, 48);
             quantity.alignment = TextAlignmentOptions.MidlineRight;
             template.gameObject.SetActive(false);
-            var empty = Text("Empty Hold", display, "NO RECOVERED ITEMS\nSUCCESSFUL SALVAGE WILL APPEAR HERE", 22, Dim, 48, 210, 904, 150);
+            var empty = Text("Empty Hold", display, "NO RECOVERED ITEMS\nSUCCESSFUL SALVAGE WILL APPEAR HERE", 22, Dim, 48, 149, 904, 296);
+            AnchorVertically(empty.rectTransform, 0, 1);
+            empty.rectTransform.anchorMax = Vector2.one;
+            empty.rectTransform.sizeDelta = new Vector2(-96, empty.rectTransform.sizeDelta.y);
             empty.alignment = TextAlignmentOptions.Center;
             Panel("Footer Rule", display, 32, 128, 936, 1, Dim);
             var summary = Text("Summary", display, "00 ITEM TYPES  /  0 UNITS", 22, Phosphor, 32, 83, 630, 34);
@@ -127,10 +132,19 @@ namespace LudumDare60.Storage.Editor
             return rect;
         }
 
-        private static void Fill(RectTransform rect)
+        private static void Fill(RectTransform rect, float inset = 0f)
         {
             rect.anchorMin = Vector2.zero; rect.anchorMax = Vector2.one;
-            rect.offsetMin = rect.offsetMax = Vector2.zero;
+            rect.offsetMin = Vector2.one * inset; rect.offsetMax = Vector2.one * -inset;
+        }
+
+        private static void AnchorVertically(RectTransform rect, float minimum, float maximum)
+        {
+            // Preserve the authored 620px layout while following the mounted screen's height.
+            rect.anchorMin = new Vector2(rect.anchorMin.x, minimum);
+            rect.anchorMax = new Vector2(rect.anchorMax.x, maximum);
+            rect.anchoredPosition -= Vector2.up * (Height * minimum);
+            rect.sizeDelta -= Vector2.up * (Height * (maximum - minimum));
         }
 
         private static void Place(RectTransform rect, float x, float y, float width, float height)
@@ -139,10 +153,11 @@ namespace LudumDare60.Storage.Editor
             rect.anchoredPosition = new Vector2(x, y); rect.sizeDelta = new Vector2(width, height);
         }
 
-        private static void Panel(string name, Transform parent, float x, float y, float width, float height, Color color)
+        private static RectTransform Panel(string name, Transform parent, float x, float y, float width, float height, Color color)
         {
             var rect = NewRect(name, parent); Place(rect, x, y, width, height);
             var image = rect.gameObject.AddComponent<Image>(); image.color = color; image.raycastTarget = false;
+            return rect;
         }
 
         private static TMP_Text Text(string name, Transform parent, string value, float size, Color color,
