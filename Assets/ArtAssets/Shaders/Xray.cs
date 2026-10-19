@@ -684,6 +684,9 @@ public sealed class Xray : MonoBehaviour
     {
         visibleColor = visible;
         hiddenColor = hidden;
+        // 外轮廓跟着主体颜色走：状态变红/蓝时不会留下一条白边。
+        // 只改 RGB，保留原有的 alpha（0 表示该装置不画轮廓）。
+        outlineColor = new Color(visible.r, visible.g, visible.b, outlineColor.a);
         needsApply = true;
         ApplyProperties();
     }
