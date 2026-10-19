@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 namespace LudumDare60.Rendering
 {
-    public enum WireframeEdgeMode { RetroQuads, AllTriangles, FeatureEdges, SparseStructure }
+    public enum WireframeEdgeMode { RetroQuads, AllTriangles, FeatureEdges, SparseStructure, StructuralEdges }
 
     /// <summary>Reconstructs likely quad diagonals for display only. Never modifies the source mesh.</summary>
     public static class RetroWireframeMeshBuilder
@@ -23,6 +23,7 @@ namespace LudumDare60.Rendering
             public int A, B, First, Second = -1, Count;
             public long Key;
             public bool Hidden;
+            public float Strength = 1f;   // 0~1，喂给 shader 调制线宽
         }
         private struct Candidate
         {
@@ -38,7 +39,9 @@ namespace LudumDare60.Rendering
         }
 
         public static Mesh Build(Mesh source, WireframeEdgeMode mode, float quadAngle, float featureAngle, out Statistics statistics,
-            int curveSegments = 4, float minimumPartSize = 0, float seamTolerance = 0, float lineSpacing = 0)
+            int curveSegments = 4, float minimumPartSize = 0, float seamTolerance = 0, float lineSpacing = 0,
+            float planarAngle = 15f, float minEdgeLength = 0f, float strongAngle = 90f, float chainSeparation = 0f,
+            int pruneMode = 0)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (!source.isReadable) throw new InvalidOperationException(source.name + " is not readable. Enable Read/Write or use a readable low-poly proxy.");
@@ -133,6 +136,12 @@ namespace LudumDare60.Rendering
                 if (lineSpacing > 0) MergeCloseLines(edges, positions, lineSpacing);
             }
 
+            else if (mode == WireframeEdgeMode.StructuralEdges)
+            {
+                removedParts = BuildStructuralEdges(edges, triangles, positions, minimumPartSize,
+                    planarAngle, minEdgeLength, strongAngle, chainSeparation, pruneMode);
+            }
+
             var vertices = new List<Vector3>();
             var masks = new List<Vector3>();
             var outputIndices = new List<int>();
@@ -140,10 +149,15 @@ namespace LudumDare60.Rendering
             {
                 var triangle = triangles[i];
                 // Barycentric X measures distance to BC, Y to CA, Z to AB.
-                var mask = new Vector3(edges[Key(triangle.B, triangle.C)].Hidden ? 0 : 1,
-                    edges[Key(triangle.C, triangle.A)].Hidden ? 0 : 1,
-                    edges[Key(triangle.A, triangle.B)].Hidden ? 0 : 1);
-                if (mask == Vector3.zero) continue;
+                // 分量现在是 0~1 的边强度，不再是布尔值，shader 用它调制线宽。
+                var edgeBC = edges[Key(triangle.B, triangle.C)];
+                var edgeCA = edges[Key(triangle.C, triangle.A)];
+                var edgeAB = edges[Key(triangle.A, triangle.B)];
+                var mask = new Vector3(
+                    edgeBC.Hidden ? 0f : edgeBC.Strength,
+                    edgeCA.Hidden ? 0f : edgeCA.Strength,
+                    edgeAB.Hidden ? 0f : edgeAB.Strength);
+                if (mask.x <= 0f && mask.y <= 0f && mask.z <= 0f) continue;
                 var firstVertex = vertices.Count;
                 vertices.Add(positions[triangle.A]);
                 vertices.Add(positions[triangle.B]);
@@ -164,6 +178,290 @@ namespace LudumDare60.Rendering
             foreach (var edge in edges.Values) if (!edge.Hidden) visible++;
             statistics = new Statistics(edges.Count, visible, pairedQuads, removedParts);
             return mesh;
+        }
+
+        /// <summary>
+        /// 结构线模式：只在「平面区域」的交界处画线，并给折角大的边更高权重。
+        /// 1) 并查集把夹角小于 planarAngle 的相邻三角形并成同一平面区域 —— 这一步吞掉曲面细分和小几何噪声；
+        /// 2) 区域内部的共面边全部丢弃，只留区域边界；
+        /// 3) 把候选边按「首尾相接 + 方向接近共线」串成完整的线，按整条线的总长度过滤 ——
+        ///    一条线要么完整出现、要么完全不出现，不会留下半截毛刺；
+        /// 4) 按折角大小算 0~1 强度，交给 shader 决定线宽（强折角粗、弱结构细）。
+        /// </summary>
+        private static int BuildStructuralEdges(Dictionary<long, Edge> edges, List<Triangle> triangles,
+            List<Vector3> positions, float minimumPartSize, float planarAngle, float minEdgeLength, float strongAngle,
+            float chainSeparation, int pruneMode)
+        {
+            var removedParts = FilterSmallParts(triangles, positions, minimumPartSize);
+
+            var parent = new int[triangles.Count];
+            for (var i = 0; i < parent.Length; i++) parent[i] = i;
+
+            var cosPlanar = Mathf.Cos(Mathf.Clamp(planarAngle, 0f, 179f) * Mathf.Deg2Rad);
+
+            // 1) 平面区域合并
+            foreach (var edge in edges.Values)
+            {
+                if (edge.Count != 2) continue;
+                var first = triangles[edge.First];
+                var second = triangles[edge.Second];
+                if (!first.Keep || !second.Keep) continue;
+                if (first.Submesh != second.Submesh) continue;
+                if (Vector3.Dot(first.Normal, second.Normal) >= cosPlanar)
+                    Join(parent, edge.First, edge.Second);
+            }
+
+            var strong = Mathf.Max(strongAngle, planarAngle + 0.01f);
+
+            // 2) 收集候选结构边，先全部置为隐藏
+            var candidates = new List<Edge>();
+            foreach (var edge in edges.Values)
+            {
+                edge.Hidden = true;
+
+                var first = triangles[edge.First];
+                if (!first.Keep) continue;
+
+                var weight = 1f;
+
+                if (edge.Count == 2)
+                {
+                    var second = triangles[edge.Second];
+                    if (Find(parent, edge.First) == Find(parent, edge.Second)) continue;
+                    weight = Mathf.InverseLerp(planarAngle, strong, Vector3.Angle(first.Normal, second.Normal));
+                }
+
+                // 3) 强度：最低 0.3，保证弱结构线仍能看见但不抢戏
+                edge.Strength = Mathf.Lerp(0.3f, 1f, weight);
+                candidates.Add(edge);
+            }
+
+            // 4) 串成完整的线，按「整条线」的总长度过滤 —— 不会再留半截毛刺
+            // 5) 线级 NMS 压掉密集平行线（同心圆弧等）
+            FilterLineChains(candidates, positions, minEdgeLength, chainSeparation, pruneMode);
+
+            return removedParts;
+        }
+
+        /// <summary>
+        /// 把候选边串成完整的直线段，整条线长度不足时全部丢弃。
+        /// 从一条边出发，向两端分别延伸：每一步只接受与当前走向夹角很小（默认 20° 内）的相邻边，
+        /// 因此拐角处不会被误并成一条线，每条结构线保持独立且完整。
+        ///
+        /// 串完之后再做一轮「线级非极大值抑制」：如果两条线质心距离小于 minSeparation
+        /// 且方向近似平行，只保留更长（更强）的那条。同心圆弧这类密集平行线会被大幅压掉。
+        /// </summary>
+        private static void FilterLineChains(List<Edge> candidates, List<Vector3> positions,
+            float minChainLength, float minSeparation, int pruneMode)
+        {
+            if (candidates.Count == 0) return;
+
+            var incident = new Dictionary<int, List<int>>(candidates.Count * 2);
+            for (var i = 0; i < candidates.Count; i++)
+            {
+                AddIncident(incident, candidates[i].A, i);
+                AddIncident(incident, candidates[i].B, i);
+            }
+
+            var visited = new bool[candidates.Count];
+            var chain = new List<int>();
+            const float collinearCos = 0.94f;
+
+            var chains = new List<LineChain>();
+
+            for (var seed = 0; seed < candidates.Count; seed++)
+            {
+                if (visited[seed]) continue;
+
+                chain.Clear();
+                chain.Add(seed);
+                visited[seed] = true;
+
+                var first = candidates[seed];
+                var length = (positions[first.B] - positions[first.A]).magnitude;
+
+                length += ExtendChain(first.B, first, chain, visited, candidates, incident, positions, collinearCos);
+                length += ExtendChain(first.A, first, chain, visited, candidates, incident, positions, collinearCos);
+
+                if (length < minChainLength) continue;
+
+                chains.Add(BuildChainInfo(chain, candidates, positions, length));
+            }
+
+            // 线级 NMS：长的优先保留，近距离近平行的弱者整条丢弃
+            chains.Sort((a, b) => b.Length.CompareTo(a.Length));
+
+            var kept = new List<LineChain>();
+            for (var i = 0; i < chains.Count; i++)
+            {
+                var current = chains[i];
+
+                if (minSeparation > 0f)
+                {
+                    var suppressed = false;
+                    for (var k = 0; k < kept.Count; k++)
+                    {
+                        if ((kept[k].Centroid - current.Centroid).sqrMagnitude >= minSeparation * minSeparation) continue;
+                        if (Mathf.Abs(Vector3.Dot(kept[k].Direction, current.Direction)) < 0.9f) continue;
+                        suppressed = true;
+                        break;
+                    }
+                    if (suppressed) continue;
+                }
+
+                kept.Add(current);
+                for (var e = 0; e < current.Edges.Count; e++)
+                    candidates[current.Edges[e]].Hidden = false;
+            }
+
+            if (pruneMode > 0) PruneDanglingLines(candidates, positions, pruneMode);
+        }
+
+        /// <summary>
+        /// 悬空线处理，两档：
+        /// 1) Fragments Only：单轮，只删「两端都悬空」的孤立碎片 —— 安全，不会吃掉结构线；
+        /// 2) Closed Or Connected：反复剪掉任一端悬空的线，直到所有线闭环或首尾相连。
+        ///    该方法很激进，机械模型的结构线大多是开放线，实测会几乎剪光。
+        /// </summary>
+        private static void PruneDanglingLines(List<Edge> candidates, List<Vector3> positions, int mode)
+        {
+            if (candidates.Count == 0 || positions.Count == 0) return;
+
+            var degree = new int[positions.Count];
+            var maxPasses = mode >= 2 ? 512 : 1;
+
+            for (var pass = 0; pass < maxPasses; pass++)
+            {
+                System.Array.Clear(degree, 0, degree.Length);
+
+                var alive = 0;
+                for (var i = 0; i < candidates.Count; i++)
+                {
+                    var edge = candidates[i];
+                    if (edge.Hidden) continue;
+                    alive++;
+                    degree[edge.A]++;
+                    degree[edge.B]++;
+                }
+
+                if (alive == 0) return;
+
+                var removed = 0;
+                for (var i = 0; i < candidates.Count; i++)
+                {
+                    var edge = candidates[i];
+                    if (edge.Hidden) continue;
+
+                    var danglingA = degree[edge.A] <= 1;
+                    var danglingB = degree[edge.B] <= 1;
+
+                    if (mode == 1)
+                    {
+                        if (danglingA && danglingB) { edge.Hidden = true; removed++; }
+                        continue;
+                    }
+
+                    if (danglingA || danglingB) { edge.Hidden = true; removed++; }
+                }
+
+                if (removed == 0) return;
+            }
+        }
+
+        private struct LineChain
+        {
+            public List<int> Edges;
+            public Vector3 Centroid;
+            public Vector3 Direction;
+            public float Length;
+        }
+
+        private static LineChain BuildChainInfo(List<int> chain, List<Edge> candidates,
+            List<Vector3> positions, float length)
+        {
+            var sumMid = Vector3.zero;
+            var sumDir = Vector3.zero;
+            Vector3 reference = Vector3.zero;
+
+            for (var i = 0; i < chain.Count; i++)
+            {
+                var edge = candidates[chain[i]];
+                var a = positions[edge.A];
+                var b = positions[edge.B];
+                sumMid += (a + b) * 0.5f;
+
+                var delta = b - a;
+                if (i == 0) reference = delta;
+                else if (Vector3.Dot(delta, reference) < 0f) delta = -delta;
+                sumDir += delta.normalized;
+            }
+
+            var info = new LineChain();
+            info.Edges = new List<int>(chain);
+            info.Centroid = sumMid / Mathf.Max(1, chain.Count);
+            info.Direction = sumDir.sqrMagnitude > 1e-9f ? sumDir.normalized : reference.normalized;
+            info.Length = length;
+            return info;
+        }
+
+        private static void AddIncident(Dictionary<int, List<int>> incident, int node, int edgeIndex)
+        {
+            if (!incident.TryGetValue(node, out var list))
+            {
+                list = new List<int>(4);
+                incident.Add(node, list);
+            }
+            list.Add(edgeIndex);
+        }
+
+        private static float ExtendChain(int fromNode, Edge anchor, List<int> chain, bool[] visited,
+            List<Edge> candidates, Dictionary<int, List<int>> incident, List<Vector3> positions, float collinearCos)
+        {
+            var total = 0f;
+            var current = fromNode;
+
+            // 走向 = 锚点边在当前节点处「向外」的方向，用它来挑“最直”的下一条
+            var direction = anchor.A == current
+                ? positions[current] - positions[anchor.B]
+                : positions[current] - positions[anchor.A];
+            if (direction.sqrMagnitude < 1e-12f) return 0f;
+            direction.Normalize();
+
+            while (true)
+            {
+                if (!incident.TryGetValue(current, out var list)) break;
+
+                var best = -1;
+                var bestDot = collinearCos;
+
+                for (var i = 0; i < list.Count; i++)
+                {
+                    var id = list[i];
+                    if (visited[id]) continue;
+
+                    var edge = candidates[id];
+                    var other = edge.A == current ? edge.B : edge.A;
+                    var delta = positions[other] - positions[current];
+                    if (delta.sqrMagnitude < 1e-12f) continue;
+                    delta.Normalize();
+
+                    var dot = Vector3.Dot(delta, direction);
+                    if (dot > bestDot) { bestDot = dot; best = id; }
+                }
+
+                if (best < 0) break;
+
+                visited[best] = true;
+                chain.Add(best);
+
+                var next = candidates[best].A == current ? candidates[best].B : candidates[best].A;
+                var step = positions[next] - positions[current];
+                total += step.magnitude;
+                if (step.sqrMagnitude > 1e-12f) direction = step.normalized;
+                current = next;
+            }
+
+            return total;
         }
 
         private readonly struct LineCell : IEquatable<LineCell>
