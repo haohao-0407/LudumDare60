@@ -1235,6 +1235,7 @@ MonoBehaviour:
   advanceButton: {fileID: 3647113706098073694}
   closeButton: {fileID: 3272017167348637396}
   openButton: {fileID: 2891809150420284565}
+  showConnectButton: 1
 --- !u!1 &3084136369444289358
 GameObject:
   m_ObjectHideFlags: 0
@@ -1306,10 +1307,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalScreenMount
   screenCanvas: {fileID: 2025291012680200313}
   screenTarget: {fileID: 0}
+  curvedScreen: 1
+  textureWidth: 1024
   fill: 0.98
   surfaceOffset: 0.002
   flipFacing: 0
   followTarget: 1
+  autoFit: 1
 --- !u!1 &3234351002204226822
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2318,7 @@ GameObject:
   - component: {fileID: 3932705346432372159}
   - component: {fileID: 5125940648731782220}
   - component: {fileID: 4317463457113233556}
+  - component: {fileID: 6944621818789774632}
   m_Layer: 0
   m_Name: Computer Screen (World Space)
   m_TagString: Untagged
@@ -2461,9 +2466,113 @@ MonoBehaviour:
   transcriptText: {fileID: 3130586070509417253}
   cursorText: {fileID: 1852614289090314656}
   scrollRect: {fileID: 1658680447551327828}
-  typingAudio: {fileID: 0}
-  typingClip: {fileID: 0}
-  soundInterval: 0.06
+  typingAudio: {fileID: 6944621818789774632}
+  typingClips:
+  - {fileID: 8300000, guid: 1c4062ee1ce87414b949924cc11042ba, type: 3}
+  - {fileID: 8300000, guid: 89e956b680b5ea84482ce1107b141e95, type: 3}
+  - {fileID: 8300000, guid: 96cf85468b33a364097d0b84138a79e6, type: 3}
+  typingVoices: 4
+  typingMinInterval: 0.035
+  typingPitch: {x: 0.93, y: 1.09}
+  typingVolume: {x: 0.65, y: 1}
+  typingBurstLimit: 6
+--- !u!82 &6944621818789774632
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8785853546485086946}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 96
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8933468383543479254
 GameObject:
   m_ObjectHideFlags: 0

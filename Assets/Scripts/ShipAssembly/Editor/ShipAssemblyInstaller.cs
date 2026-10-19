@@ -47,9 +47,10 @@ namespace LudumDare60.ShipAssembly.Editor
             var puzzle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/NavigationAssembly.prefab");
             var energyPuzzle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/EnergyAssembly.prefab");
             var lifeSupportPuzzle = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/LifeSupportAssembly.prefab");
+            var enginePuzzle = AssetDatabase.LoadAssetAtPath<GameObject>(NativeRepairLevelInstaller.EnginePrefab);
             var catalog = AssetDatabase.LoadAssetAtPath<ItemCatalog>("Assets/Salvage/ItemCatalog.asset");
             font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>("Assets/Fonts/Terminal/Glass_TTY_VT220 SDF.asset");
-            if (puzzle == null || energyPuzzle == null || lifeSupportPuzzle == null || catalog == null || font == null)
+            if (puzzle == null || energyPuzzle == null || lifeSupportPuzzle == null || enginePuzzle == null || catalog == null || font == null)
                 throw new InvalidOperationException("Missing assembly prefab, item catalog or terminal font.");
             var yields = AssetDatabase.LoadAssetAtPath<SalvageMaterialYieldCatalog>("Assets/Salvage/SalvageMaterialYields.asset");
             if (yields == null) throw new InvalidOperationException("Missing salvage material yields.");
@@ -62,7 +63,7 @@ namespace LudumDare60.ShipAssembly.Editor
             {
                 Recipe("PowerUnit", "power_unit", "Power Unit", RepairDeviceId.PowerUnit, new[] { 6, 4, 2, 7, 3 }, energyPuzzle),
                 Recipe("NavigationSystem", "interstellar_navigation", "Interstellar Navigation System", RepairDeviceId.Navigation, new[] { 4, 5, 7, 2, 2 }, puzzle),
-                Recipe("PropulsionEngine", "propulsion_engine", "Propulsion Engine", RepairDeviceId.PropulsionEngine, new[] { 7, 3, 3, 6, 4 }, puzzle),
+                Recipe("PropulsionEngine", "propulsion_engine", "Propulsion Engine", RepairDeviceId.PropulsionEngine, new[] { 7, 3, 3, 6, 4 }, enginePuzzle),
                 Recipe("LifeSupport", "life_support", "Life Support System", RepairDeviceId.LifeSupport, new[] { 5, 3, 2, 2, 7 }, lifeSupportPuzzle)
             };
 

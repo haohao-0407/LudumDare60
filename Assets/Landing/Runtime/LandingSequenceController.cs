@@ -57,6 +57,15 @@ namespace LudumDare60.Landing
         public bool IsSequenceActive => Phase >= LandingPhase.SpaceApproach && Phase <= LandingPhase.Touchdown;
         public bool HasLanded => Phase == LandingPhase.Landed;
         public string FailureReason { get; private set; }
+        public MarsLandingEnvironment DestinationEnvironment => destination;
+        public Color SpaceAmbientSkyColor => originalRender.AmbientSky * SpaceAmbientScale;
+        public Color SpaceAmbientEquatorColor => originalRender.AmbientEquator * SpaceAmbientScale;
+        public Color SpaceAmbientGroundColor => originalRender.AmbientGround * SpaceAmbientScale;
+        public float SpaceAmbientIntensity => originalRender.AmbientIntensity;
+        public Color SpaceSunColor => originalSun.EffectiveColor;
+        public float SpaceSunIntensity => originalSun.Intensity * SpaceSunIntensityMultiplier;
+        public Quaternion SpaceSunRotation => originalSun.Rotation;
+        public float SpaceVolumeWeight => sourceVolumeWeight;
 
         const float HandoffProgress = .50f;
         const float TouchdownProgress = .93f;

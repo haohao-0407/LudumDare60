@@ -26,6 +26,6 @@ MonoBehaviour:
     Quantity: 6
   - ItemId: vulcanized_airtight_rubber_liners
     Quantity: 4
-  PuzzlePrefab: {fileID: 4844242919200692190, guid: 8b4b40625ad13554ead46ef0ac4a0a8e, type: 3}
+  PuzzlePrefab: {fileID: 6696755844158632553, guid: e3edf47ff68628f429950fd01f255936, type: 3}
   OrthographicSize: 5.4
-  PuzzleOffset: {x: 0, y: -1.4, z: 0}
+  PuzzleOffset: {x: 2.0351286, y: -0.73572016, z: 0}

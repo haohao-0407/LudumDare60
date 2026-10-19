@@ -363,7 +363,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 14, y: 24}
-  m_SizeDelta: {x: 205.84, y: 3}
+  m_SizeDelta: {x: 332, y: 3}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &56348324
 MonoBehaviour:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27, g: 0.72, b: 1, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -923,6 +923,7 @@ GameObject:
   m_Component:
   - component: {fileID: 145245626}
   - component: {fileID: 145245627}
+  - component: {fileID: 1800000003}
   m_Layer: 0
   m_Name: Hard Landing Damage
   m_TagString: Untagged
@@ -943,6 +944,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1800000001}
   - {fileID: 854961572}
   - {fileID: 1915384230}
   - {fileID: 569390081}
@@ -981,10 +983,12 @@ MonoBehaviour:
   ImpactAudio: {fileID: 854961573}
   HullAudio: {fileID: 1915384231}
   DamagedAmbience: {fileID: 569390082}
+  HealthyAmbience: {fileID: 0}
   AlarmAudio: {fileID: 1969873359}
   ElectricalClips:
   - {fileID: 8300000, guid: 4a1844e27efbda84f939a25d7b6e93fc, type: 3}
   - {fileID: 8300000, guid: 272ae550aad65a845ae8405994b06f7f, type: 3}
+  AmbienceCrossfadeDuration: 1.2
   HullDelayRange: {x: 0.1, y: 0.3}
   FirstSiteDelay: 0.2
   SiteStagger: 0.3
@@ -1529,6 +1533,7 @@ GameObject:
   m_Component:
   - component: {fileID: 203918795}
   - component: {fileID: 203918796}
+  - component: {fileID: 1800000112}
   m_Layer: 0
   m_Name: Salvage Screen
   m_TagString: Untagged
@@ -1630,7 +1635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 62%
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
   m_sharedMaterial: {fileID: -2755806001019088881, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
@@ -1639,8 +1644,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294948933
-  m_fontColor: {r: 0.27, g: 0.72, b: 1, a: 1}
+    rgba: 4287299389
+  m_fontColor: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1881,7 +1886,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.29, b: 0.29, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2312,7 +2317,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: REPAIRING
+  m_text: REPAIRED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
   m_sharedMaterial: {fileID: -2755806001019088881, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
@@ -2321,8 +2326,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294948933
-  m_fontColor: {r: 0.27, g: 0.72, b: 1, a: 1}
+    rgba: 4287299389
+  m_fontColor: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2449,7 +2454,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0%
+  m_text: 100%
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
   m_sharedMaterial: {fileID: -2755806001019088881, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
@@ -2458,8 +2463,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283058943
-  m_fontColor: {r: 1, g: 0.29, b: 0.29, a: 1}
+    rgba: 4287299389
+  m_fontColor: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2564,7 +2569,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 14, y: 24}
-  m_SizeDelta: {x: 0, y: 3}
+  m_SizeDelta: {x: 332, y: 3}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &378686151
 MonoBehaviour:
@@ -2579,7 +2584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.29, b: 0.29, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2654,7 +2659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.29, b: 0.29, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4400,6 +4405,7 @@ GameObject:
   - component: {fileID: 586397639}
   - component: {fileID: 586397638}
   - component: {fileID: 586397637}
+  - component: {fileID: 1800000110}
   m_Layer: 0
   m_Name: Assembly Screen
   m_TagString: Untagged
@@ -4752,7 +4758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27, g: 0.72, b: 1, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4834,7 +4840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UNREPAIRED
+  m_text: REPAIRED
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
   m_sharedMaterial: {fileID: -2755806001019088881, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
@@ -4843,8 +4849,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283058943
-  m_fontColor: {r: 1, g: 0.29, b: 0.29, a: 1}
+    rgba: 4287299389
+  m_fontColor: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5273,6 +5279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 711176803}
   - component: {fileID: 711176802}
+  - component: {fileID: 711176804}
   m_Layer: 0
   m_Name: Ship Assembly System
   m_TagString: Untagged
@@ -5303,6 +5310,9 @@ MonoBehaviour:
   AssemblyCamera: {fileID: 407402868}
   WorkspaceLayer: 29
   EnforceSequentialOrder: 1
+  sfxSource: {fileID: 711176804}
+  assemblyCompleteClip: {fileID: 8300000, guid: 807ad53de0e977e4ea7e2fc189bfa88c, type: 3}
+  assemblyCompleteVolume: 1
 --- !u!4 &711176803
 Transform:
   m_ObjectHideFlags: 0
@@ -5319,6 +5329,103 @@ Transform:
   - {fileID: 1692053890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &711176804
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711176801}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 96
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &712533904
 GameObject:
   m_ObjectHideFlags: 0
@@ -6365,6 +6472,10 @@ PrefabInstance:
       propertyPath: materialYieldCatalog
       value: 
       objectReference: {fileID: 11400000, guid: 769977e625dd4683ba9429599b24b838, type: 2}
+    - target: {fileID: 8161556958510240279, guid: be327643574b69f4e98eba17ef91683c, type: 3}
+      propertyPath: featureEnabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8161556958510240279, guid: be327643574b69f4e98eba17ef91683c, type: 3}
       propertyPath: defaultDefinition
       value: 
@@ -7853,7 +7964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27, g: 0.72, b: 1, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8099,12 +8210,12 @@ MonoBehaviour:
   stateChanged:
     m_PersistentCalls:
       m_Calls: []
-  states: 02000000020000000100000000000000i
+  states: 02000000020000000200000002000000i
   targetProgress:
   - 1
   - 1
-  - 0.62
-  - 0
+  - 1
+  - 1
 --- !u!1 &1077583311
 GameObject:
   m_ObjectHideFlags: 0
@@ -8292,7 +8403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27, g: 0.72, b: 1, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8579,7 +8690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.29, b: 0.29, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10152,6 +10263,7 @@ GameObject:
   - component: {fileID: 1352427257}
   - component: {fileID: 1352427256}
   - component: {fileID: 1352427255}
+  - component: {fileID: 1800000111}
   m_Layer: 30
   m_Name: REPAIR_SCREEN_UI
   m_TagString: Untagged
@@ -10969,6 +11081,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1555494242}
   - component: {fileID: 1555494241}
+  - component: {fileID: 1800000100}
+  - component: {fileID: 1800000200}
+  - component: {fileID: 1800000201}
   m_Layer: 0
   m_Name: Landing Sequence
   m_TagString: Untagged
@@ -10998,7 +11113,7 @@ MonoBehaviour:
   TransitionSkyTemplate: {fileID: 2100000, guid: a96451a05b68b8c4db38b5e8224359e1, type: 2}
   HazeMaterialTemplate: {fileID: 2100000, guid: f28a0b55a3e7e3148be8634f0aed4af3, type: 2}
   DustMaterialTemplate: {fileID: 2100000, guid: d8a870ba30d2ef446b13f0e9cc3d47ad, type: 2}
-  AutoStart: 1
+  AutoStart: 0
   Duration: 45
   ApproachHeight: 180
   ApproachOffset: {x: 0, y: 0, z: -240}
@@ -12228,6 +12343,337 @@ MonoBehaviour:
   MouseSensitivity: 0.12
   YawLimits: {x: -150, y: 150}
   PitchLimits: {x: -65, y: 65}
+--- !u!1 &1800000000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1800000001}
+  - component: {fileID: 1800000002}
+  m_Layer: 0
+  m_Name: Healthy Cabin Ambience
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1800000001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800000000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 145245626}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1800000002
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800000000}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 602a716b2e52a11498f825dc39e4638d, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.19
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 140
+  DopplerLevel: 0
+  MinDistance: 1.2
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1800000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145245625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6afae8ca8d5741faa17c4f1a7e48f4c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.HardLandingRepairBridge
+  Effects: {fileID: 145245627}
+  RepairScreen: {fileID: 1066902081}
+  SiteDevices: 000000000100000003000000i
+--- !u!114 &1800000100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555494240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b087ba378a0741e293a5f367c2d44952, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.CockpitOpeningController
+  Landing: {fileID: 1555494241}
+  Assembly: {fileID: 711176802}
+  Salvage: {fileID: 1800000102}
+  Terminal: {fileID: 1800000101}
+  DamageEffects: {fileID: 145245627}
+  RepairBridge: {fileID: 1800000003}
+  AssemblyStandby: {fileID: 1800000110}
+  RepairInfoStandby: {fileID: 1800000111}
+  SalvageStandby: {fileID: 1800000112}
+--- !u!114 &1800000101 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3133594140244443630, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
+  m_PrefabInstance: {fileID: 1860711259}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15091dcfd2e5af54db76a4e26d87952a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueController
+--- !u!114 &1800000102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8161556958510240279, guid: be327643574b69f4e98eba17ef91683c, type: 3}
+  m_PrefabInstance: {fileID: 777922348}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30423dac517c4d745b5df9d65bd9e888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Salvage.SalvageController
+--- !u!114 &1800000103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4262155867218317682, guid: be327643574b69f4e98eba17ef91683c, type: 3}
+  m_PrefabInstance: {fileID: 777922348}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7230551117dd3664e97038ad64a09c10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Salvage.SalvageScreenView
+--- !u!114 &1800000110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586397635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e603fd6c2740bab4a8fba25fd7a08175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.CockpitStandbyScreen
+  ScreenRoot: {fileID: 586397636}
+  Font: {fileID: 0}
+  SystemTitle: REPAIR WORKBENCH
+  ModeText: STANDBY
+  PowerStateText: CONSOLE ONLINE / LOW POWER
+  FooterText: READY / AWAITING COMMAND
+  StatusText: ALL SYSTEMS NOMINAL / NO REPAIRS REQUIRED
+  InputBehaviours:
+  - {fileID: 1715427788}
+  standby: 1
+--- !u!114 &1800000111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352427253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e603fd6c2740bab4a8fba25fd7a08175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.CockpitStandbyScreen
+  ScreenRoot: {fileID: 1352427254}
+  Font: {fileID: 0}
+  SystemTitle: SHIP DIAGNOSTICS
+  ModeText: STANDBY
+  PowerStateText: CONSOLE ONLINE / LOW POWER
+  FooterText: READY / AWAITING COMMAND
+  StatusText: ALL SYSTEMS NOMINAL / MONITORING
+  InputBehaviours: []
+  standby: 1
+--- !u!114 &1800000112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203918794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e603fd6c2740bab4a8fba25fd7a08175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.CockpitStandbyScreen
+  ScreenRoot: {fileID: 777922349}
+  Font: {fileID: 0}
+  SystemTitle: SALVAGE CONTROL
+  ModeText: STANDBY
+  PowerStateText: CONSOLE ONLINE / LOW POWER
+  FooterText: READY / AWAITING COMMAND
+  StatusText: REMOTE LINK OFFLINE / ACTIVATE VIA TERMINAL
+  InputBehaviours:
+  - {fileID: 1800000103}
+  standby: 1
+--- !u!114 &1800000200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555494240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04d771c2ec54af099380f1755fe5f98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.LaunchSequenceController
+  Landing: {fileID: 1555494241}
+  RepairScreen: {fileID: 1066902081}
+  CountdownClip: {fileID: 8300000, guid: 1d4d2d48c2d9af54b95954fede2989b5, type: 3}
+  IgnitionClip: {fileID: 8300000, guid: dd2c14751f6ea584ca91626fb0f803ab, type: 3}
+  EngineLoopClip: {fileID: 8300000, guid: b6c6e33abfde2004da9845da0fafbd51, type: 3}
+  Duration: 40
+  CountdownDuration: 3
+  IgnitionDuration: 2
+  AscentHeight: 1400
+  ForwardDistance: 300
+  PitchDegrees: -12
+  PlanetLocalDirection: {x: 0.45, y: -0.25, z: 1}
+  AccelerationShakePosition: {x: 0.008, y: 0.025, z: 0.012}
+  AccelerationShakeRotation: {x: 0.35, y: 0.2, z: 0.45}
+  EngineLocalPosition: {x: 0, y: -0.3, z: 0}
+  LiftoffDustBurstCount: 220
+  GroundDustEmission: 110
+  CountdownVolume: 0.45
+  IgnitionVolume: 0.7
+  EngineVolume: 0.4
+  SpaceReflectionIntensity: 0.25
+  OnIgnition:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLiftoff:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOrbitReached:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLaunchCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1800000201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555494240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83dffda12844f11b5d7bd1e992c80ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.CockpitDepartureController
+  Opening: {fileID: 1800000100}
+  Launch: {fileID: 1800000200}
+  ReadyClip: {fileID: 8300000, guid: 3a2f40f770edeaa42a9de7f1227f59fa, type: 3}
+  CheckClips:
+  - {fileID: 8300000, guid: 3bf202260a69bc24fbd89e898878b3c2, type: 3}
+  - {fileID: 8300000, guid: 6c764b33b653048419887fc30855891b, type: 3}
+  - {fileID: 8300000, guid: 1aaf78528d0900a46ad93099ade279f0, type: 3}
+  - {fileID: 8300000, guid: bfbe1c4ad31d72f4b91ca7c5e0ae501f, type: 3}
+  CheckDuration: 2.5
+  EngineTestDuration: 3.5
+  CheckVolume: 0.3
 --- !u!1 &1833768065
 GameObject:
   m_ObjectHideFlags: 0
@@ -12527,7 +12973,7 @@ PrefabInstance:
     - target: {fileID: 3133594140244443630, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: conversation
       value: 
-      objectReference: {fileID: 11400000, guid: 1883a729fa7c6b34b94dec3487a8fa12, type: 2}
+      objectReference: {fileID: 11400000, guid: 5f37b0bcdadb4af0a181775f0bc4b3a0, type: 2}
     - target: {fileID: 3564961819217103473, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.000061035156
@@ -12733,6 +13179,156 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &1910286359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1910286362}
+  - component: {fileID: 1910286361}
+  - component: {fileID: 1910286360}
+  m_Layer: 0
+  m_Name: '[Crash Music]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1910286360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910286359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ef10bdeb11bc7f48b4580038573c0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Audio.CrashMusicDirector
+  music: {fileID: 1910286361}
+  crash: {fileID: 145245627}
+  repairScreen: {fileID: 1066902081}
+  firstDelay: 30
+  replayGap: 30
+  fadeOutSeconds: 6
+  fadeInSeconds: 2
+  targetVolume: 0.55
+--- !u!82 &1910286361
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910286359}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 32
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1910286362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910286359}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915384229
 GameObject:
   m_ObjectHideFlags: 0
@@ -13125,7 +13721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.29, b: 0.29, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13404,7 +14000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27, g: 0.72, b: 1, a: 1}
+  m_Color: {r: 0.24, g: 1, b: 0.54, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14467,3 +15063,4 @@ SceneRoots:
   - {fileID: 1555494242}
   - {fileID: 711176803}
   - {fileID: 1150390826}
+  - {fileID: 1910286362}
