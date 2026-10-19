@@ -20,9 +20,11 @@ namespace LudumDare60.ShipAssembly
         private ShipAssemblyController subscribedController;
         private InventoryController subscribedInventory;
         private readonly StringBuilder materialText = new StringBuilder(512);
+        private AssemblyKeyGuide keyGuide;
 
         private void OnEnable()
         {
+            if (PuzzleImage != null) keyGuide = AssemblyKeyGuide.Ensure(transform,Hint != null ? Hint.font : null);
             if (StartButton != null) StartButton.onClick.AddListener(StartOrResume);
             if (PreviousButton != null) PreviousButton.onClick.AddListener(PreviousRecipe);
             if (NextButton != null) NextButton.onClick.AddListener(NextRecipe);
@@ -54,6 +56,7 @@ namespace LudumDare60.ShipAssembly
             if (PuzzleImage != null && Controller != null && Controller.AssemblyCamera != null
                 && PuzzleImage.texture != Controller.AssemblyCamera.targetTexture)
                 PuzzleImage.texture = Controller.AssemblyCamera.targetTexture;
+            UpdateGuide();
         }
 
         private void Subscribe()
@@ -94,6 +97,12 @@ namespace LudumDare60.ShipAssembly
 
             if (RequirementsPanel != null) RequirementsPanel.SetActive(!started);
             if (PuzzlePanel != null) PuzzlePanel.SetActive(started);
+            if (keyGuide != null)
+            {
+                keyGuide.gameObject.SetActive(started);
+                keyGuide.ShowInput = Controller != null && Controller.InputEnabled;
+            }
+            LayoutControls(started);
             if (PuzzleImage != null && Controller != null && Controller.AssemblyCamera != null)
                 PuzzleImage.texture = Controller.AssemblyCamera.targetTexture;
 
@@ -114,14 +123,37 @@ namespace LudumDare60.ShipAssembly
             if (!started && !canStart && !string.IsNullOrEmpty(reason)) message = reason;
             if (completed) message = "REPAIR COMPLETE - SYSTEM RESTORED";
             SetText(Status, message);
-            var puzzle = Controller != null ? Controller.ActivePuzzle : null;
-            int moduleCount = puzzle != null && puzzle.Modules != null ? puzzle.Modules.Length : 0;
-            string selectionKeys = moduleCount > 0 ? "1-" + Mathf.Min(moduleCount, 5) + " / TAB SELECT" : "TAB SELECT";
             SetText(Hint, completed ? "REPAIR RECORDED  /  CHOOSE ANOTHER SYSTEM"
-                : !started ? "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS"
-                : Controller.InputEnabled
-                    ? "DRAG / WASD MOVE   Q/E ROTATE   SHIFT FINE\n" + selectionKeys + "   X DETACH   R RESET   ESC PAUSE"
-                    : "CLICK PUZZLE TO OPERATE  /  RIGHT MOUSE TO LOOK\nPROGRESS IS KEPT WHEN YOU SWITCH SCREENS");
+                : !started ? "MATERIALS ARE CONSUMED ONCE WHEN ASSEMBLY STARTS" : string.Empty);
+            UpdateGuide();
+        }
+
+        private void UpdateGuide()
+        {
+            var puzzle = Controller != null ? Controller.ActivePuzzle : null;
+            if (keyGuide == null || puzzle == null) return;
+            keyGuide.ShowInput = Controller.InputEnabled;
+            keyGuide.SetState(puzzle.Selected != null ? puzzle.Selected.moduleLabel : "BODY", puzzle.Modules.Length,
+                puzzle.ConnectionCount, puzzle.RequiredConnectionCount, Controller.IsSelectedCompleted, Controller.InputEnabled);
+        }
+
+        private void LayoutControls(bool started)
+        {
+            // Reserve a footer for the diagram without placing it over movable parts or mouse buttons.
+            if (PuzzlePanel != null) SetVertical(PuzzlePanel.transform, started ? .325f : .25f, .82f);
+            if (Status != null) SetVertical(Status.transform, started ? .28f : .19f, started ? .32f : .245f);
+            if (ProgressLabel != null) ProgressLabel.gameObject.SetActive(!started);
+            if (Hint != null) Hint.gameObject.SetActive(!started);
+            foreach (var button in new[] { StartButton, ResetButton, DetachButton })
+                if (button != null) SetVertical(button.transform, started ? .23f : .075f, started ? .275f : .14f);
+        }
+
+        private static void SetVertical(Transform target, float min, float max)
+        {
+            var rect = target as RectTransform;
+            if (rect == null) return;
+            rect.anchorMin = new Vector2(rect.anchorMin.x, min);
+            rect.anchorMax = new Vector2(rect.anchorMax.x, max);
         }
 
         private void StartOrResume()

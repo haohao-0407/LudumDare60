@@ -6,10 +6,15 @@ using System.Text;
 using LudumDare60.AssemblyDemo;
 using LudumDare60.ReturnWindow;
 using LudumDare60.UI;
+using LudumDare60.TerminalDialogue;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace LudumDare60.ShipAssembly.Editor
@@ -137,6 +142,13 @@ namespace LudumDare60.ShipAssembly.Editor
                 if (EditorApplication.timeSinceStartup-started > 30) Finish(new TimeoutException("SHIP did not start rendering frames."));
                 return;
             }
+            // Real input bindings intentionally ignore a background game window.
+            if (!Application.isFocused)
+            {
+                EditorWindow.GetWindow(typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.GameView")).Focus();
+                if (EditorApplication.timeSinceStartup-started > 90) Finish(new TimeoutException("Focus the Game view to validate real keyboard bindings."));
+                return;
+            }
             runtimeReport = new StringBuilder();
             try
             {
@@ -155,6 +167,7 @@ namespace LudumDare60.ShipAssembly.Editor
                     Require(service.TryStartSelected(),"paid production session starts "+recipe.RecipeId+": "+service.StatusMessage,runtimeReport);
                     var puzzle = service.ActivePuzzle;
                     Require(puzzle != null && puzzle.IsInitialized,"production puzzle initialized "+recipe.RecipeId,runtimeReport);
+                    CheckWorkbenchControls(service,index);
                     for (int cost = 0; cost < counts.Length; cost++)
                         Require(service.Inventory.Items.GetQuantity(recipe.Materials[cost].ItemId) == counts[cost]-recipe.Materials[cost].Quantity,"material deducted exactly once "+index+"/"+cost,runtimeReport);
                     if (index == 2 || index == 3)
@@ -201,6 +214,79 @@ namespace LudumDare60.ShipAssembly.Editor
                 puzzle.SelectModule(Array.IndexOf(puzzle.Modules,part));
                 if (!puzzle.TrySnapSelected()) throw new InvalidOperationException("Production solver rejected "+part.name);
             }
+        }
+
+        private static void CheckWorkbenchControls(ShipAssemblyController service,int index)
+        {
+            var view = Object.FindObjectsByType<AssemblyScreenView>(FindObjectsInactive.Include,FindObjectsSortMode.None)
+                .Single(v => v.Controller == service && v.gameObject.layer != 31);
+            view.gameObject.SetActive(true); view.Refresh();
+            Require(view.isActiveAndEnabled,"main scene workbench view active "+index,runtimeReport);
+            var guide = view.GetComponentInChildren<AssemblyKeyGuide>();
+            Require(guide != null && !guide.IsExpanded,"main scene guide defaults to six keys "+index,runtimeReport);
+            Require(guide.GetComponentsInChildren<TMPro.TMP_Text>().Length == 7,"collapsed guide contains only heading and QWE/ASD "+index,runtimeReport);
+            Require(guide.ExpandButton != null && guide.ExpandButton.isActiveAndEnabled,"main scene expand button available "+index,runtimeReport);
+            Require(guide.GetComponentsInChildren<Graphic>().Count(g => g.raycastTarget) == 1,"only guide toggle intercepts clicks "+index,runtimeReport);
+            var puzzle = service.ActivePuzzle;
+            var poses = puzzle.Modules.Select(m => m.Position).ToArray();
+            service.AssemblyCamera.Render();
+            var mount = view.GetComponent<TerminalScreenMount>();
+            Require(mount != null && mount.CurvedScreen && mount.FitToScreen(),"main scene curved terminal renders "+index,runtimeReport);
+            Canvas.ForceUpdateCanvases();
+            var copy = Object.FindObjectsByType<AssemblyKeyGuide>(FindObjectsInactive.Include,FindObjectsSortMode.None)
+                .Single(g => g != guide && g.gameObject.activeInHierarchy && g.canvas != null
+                    && g.canvas.worldCamera != null && g.canvas.worldCamera.targetTexture == mount.ScreenTexture);
+            Require(!copy.IsExpanded && VertexCount(copy) > 100,"curved terminal retains six drawn keycaps "+index,runtimeReport);
+            int collapsedVertices = VertexCount(copy);
+            CaptureTexture(mount.ScreenTexture,"main-"+index+"-collapsed");
+            var pointer = new PointerEventData(EventSystem.current) { button = PointerEventData.InputButton.Left };
+            ExecuteEvents.Execute(guide.ExpandButton.gameObject,pointer,ExecuteEvents.pointerClickHandler);
+            Require(guide.IsExpanded,"real UI click expands controls "+index,runtimeReport);
+            Require(guide.GetComponentsInChildren<TMPro.TMP_Text>().Length > 20,"expanded controls include remaining keys "+index,runtimeReport);
+            mount.FitToScreen(); Canvas.ForceUpdateCanvases();
+            Require(copy.IsExpanded && VertexCount(copy) > collapsedVertices,"curved terminal synchronizes expanded geometry "+index,runtimeReport);
+            CaptureTexture(mount.ScreenTexture,"main-"+index+"-expanded");
+            ExecuteEvents.Execute(guide.ExpandButton.gameObject,pointer,ExecuteEvents.pointerClickHandler);
+            Require(!guide.IsExpanded,"second real UI click collapses controls "+index,runtimeReport);
+            Require(puzzle.Modules.Select((m,i) => Vector2.Distance(m.Position,poses[i]) < .0001f).All(same => same),"help toggle leaves all part poses unchanged "+index,runtimeReport);
+            mount.FitToScreen();
+            service.SetFocused(true);
+            Require(service.InputEnabled,"main scene accepts focused keyboard input "+index
+                +" (app="+Application.isFocused+", timeScale="+Time.timeScale+", canRepair="+service.RepairScreen.CanBeginRepair(index)+")",runtimeReport);
+            var input = view.PuzzleImage.GetComponent<AssemblyScreenInput>();
+            Require(input != null && input.isActiveAndEnabled,"main scene input adapter enabled "+index,runtimeReport);
+            var keyboard = Keyboard.current;
+            Require(keyboard != null,"keyboard device present "+index,runtimeReport);
+            var update = typeof(AssemblyScreenInput).GetMethod("Update",BindingFlags.Instance|BindingFlags.NonPublic);
+            puzzle.SelectModule(1);
+            var before = puzzle.Selected.Position;
+            float angle = puzzle.Selected.RotationDegrees;
+            try
+            {
+                InputSystem.QueueStateEvent(keyboard,new KeyboardState(Key.D,Key.E)); InputSystem.Update();
+                update.Invoke(input,null);
+                Require(Vector2.Distance(before,puzzle.Selected.Position) > .00001f,"real D binding moves selected part "+index,runtimeReport);
+                Require(Mathf.Abs(Mathf.DeltaAngle(angle,puzzle.Selected.RotationDegrees)) > .0001f,"real E binding rotates selected part "+index,runtimeReport);
+            }
+            finally { InputSystem.QueueStateEvent(keyboard,new KeyboardState()); InputSystem.Update(); puzzle.ResetDemo(); service.SetFocused(false); }
+        }
+
+        private static int VertexCount(Graphic graphic)
+        {
+            var mesh = graphic.canvasRenderer.GetMesh();
+            return mesh != null ? mesh.vertexCount : 0;
+        }
+
+        private static void CaptureTexture(RenderTexture texture,string name)
+        {
+            var pixels = new Texture2D(texture.width,texture.height,TextureFormat.RGB24,false);
+            var previous = RenderTexture.active;
+            try
+            {
+                RenderTexture.active = texture; pixels.ReadPixels(new Rect(0,0,texture.width,texture.height),0,0); pixels.Apply();
+                Directory.CreateDirectory("Logs/NativeRepairLevels"); File.WriteAllBytes("Logs/NativeRepairLevels/"+name+".png",pixels.EncodeToPNG());
+            }
+            finally { RenderTexture.active = previous; Object.DestroyImmediate(pixels); }
         }
         private static void Finish(Exception error)
         {

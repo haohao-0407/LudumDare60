@@ -102,7 +102,8 @@ namespace LudumDare60.ShipAssembly
                 return;
             }
             if (Pressed(releaseFocus)) { ReleaseControl(); return; }
-            if (Pressed(click) && point != null && !TryGetRay(point.ReadValue<Vector2>(), out _))
+            if (Pressed(click) && point != null && !TryGetRay(point.ReadValue<Vector2>(), out _)
+                && !IsGuideToggle(point.ReadValue<Vector2>()))
             {
                 ReleaseControl();
                 return;
@@ -182,6 +183,14 @@ namespace LudumDare60.ShipAssembly
             var canvas = Surface != null ? Surface.canvas : null;
             if (canvas == null || canvas.renderMode == RenderMode.ScreenSpaceOverlay) return null;
             return canvas.worldCamera != null ? canvas.worldCamera : Camera.main;
+        }
+
+        private bool IsGuideToggle(Vector2 position)
+        {
+            var guide = Surface != null && Surface.canvas != null
+                ? Surface.canvas.GetComponentInChildren<AssemblyKeyGuide>() : null;
+            return guide != null && guide.ExpandButton != null && guide.ExpandButton.isActiveAndEnabled
+                && RectTransformUtility.RectangleContainsScreenPoint((RectTransform)guide.ExpandButton.transform, position, CanvasCamera());
         }
 
         private static bool Pressed(InputAction action) => action != null && action.WasPressedThisFrame();

@@ -10,6 +10,12 @@ using UnityEngine.UI;
 
 namespace LudumDare60.TerminalDialogue
 {
+    /// <summary>Transfers procedural graphic data to a terminal's render-only copy.</summary>
+    public interface ITerminalGraphicState
+    {
+        void SyncGraphicState(Graphic source);
+    }
+
     /// <summary>Disposable UI capture and curved surface overlay. Authored geometry/materials/UI remain intact.</summary>
     internal sealed class TerminalCurvedDisplay : IDisposable
     {
@@ -175,6 +181,8 @@ namespace LudumDare60.TerminalDialogue
                 visual.CopyGraphic.enabled = visual.OriginalGraphic.enabled;
                 visual.CopyGraphic.color = visual.OriginalGraphic.color;
                 visual.CopyGraphic.raycastTarget = false;
+                if (visual.CopyGraphic is ITerminalGraphicState state)
+                    state.SyncGraphicState(visual.OriginalGraphic);
             }
             if (visual.OriginalText != null && visual.CopyText != null)
             {

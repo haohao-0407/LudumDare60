@@ -17,6 +17,8 @@ namespace LudumDare60.AssemblyDemo
         [Min(0)] public float RotationSpeed = 80f;
         [Tooltip("Read keyboard and mouse directly. Disable when a screen input adapter owns this puzzle.")]
         public bool ReadDeviceInput = true;
+        /// <summary>Overlay UI can consume a pointer click without blocking keyboard motion.</summary>
+        public bool PointerInputBlocked { get; set; }
         public AssemblyModule Selected => Modules != null && selectedIndex >= 0 && selectedIndex < Modules.Length ? Modules[selectedIndex] : null;
         public int ConnectionCount => connections.Count;
         public bool IsInitialized { get; private set; }
@@ -98,7 +100,7 @@ namespace LudumDare60.AssemblyDemo
             }
             var mouse = Mouse.current;
             var pickingCamera = ViewCamera != null ? ViewCamera : Camera.main;
-            if (mouse != null && pickingCamera != null && mouse.leftButton.wasPressedThisFrame && pickingCamera.pixelRect.Contains(mouse.position.ReadValue()))
+            if (!PointerInputBlocked && mouse != null && pickingCamera != null && mouse.leftButton.wasPressedThisFrame && pickingCamera.pixelRect.Contains(mouse.position.ReadValue()))
             {
                 TrySelect(pickingCamera.ScreenPointToRay(mouse.position.ReadValue()));
             }
