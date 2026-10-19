@@ -1,4 +1,4 @@
-# SHIP → Mars 着陆第一版
+# SHIP → Mars 着陆、维修与起飞
 
 打开 `Assets/Scenes/SHIP.unity` 后进入 Play，先进入正式开局对话，四个设备保持正常，维修与打捞屏显示待机画面。对话到 25-AUG 日志选择 `BEGIN LANDING`，才启动约 45 秒的着陆演出。按住鼠标右键拖动转头，原相机初始位置和朝向保留；ESC 使用现有菜单暂停。左键继续用于终端。
 
@@ -13,6 +13,23 @@
 5. 余振结束的 `OnLanded` 将对话转到 `landing_crash_report`，然后继续原维修教学。教学结束进入 `operations_menu`，选择 `ACTIVATE SALVAGE` 发出 `pioneer60.enable_salvage`，开放打捞屏及其输入；现有打捞逻辑会在允许输入时自动开始作业。
 
 三处漏电仍跟随对应维修部件，四项全修好后恢复健康底噪。`SalvageController.FeatureEnabled` 与现有菜单/任务暂停相互独立；其他场景默认保持功能开启。维修的 `RepairsAvailable` 也默认开启，只由本场景开局流程锁定。
+
+## 全部维修后的检查与起飞
+
+`Landing Sequence` 新增 `CockpitDepartureController` 与 `LaunchSequenceController`。前者读取同一维修系统的四项状态，并且要求已经坠毁、着陆完成，才会自动进入 `departure_ready`；开场四项正常不会误触发离场。检查使用已有部件状态，不替代真实组装判定，也不消耗材料。
+
+1. 全部修好后，终端提示执行 `RUN PRE-FLIGHT CHECKS`；选 `NOT YET` 可以先返回操作菜单，再通过 `PRE-FLIGHT CHECKS` 回来。
+2. 按电源、导航、推进引擎、生命维持顺序逐项确认测试。普通检查约 2.5 秒，引擎测试约 3.5 秒，诊断屏显示各项百分比与 `PASS`，同步播放对应设备检查音效。`departure_testing` 没有自动下一节点，只有实际检查结束才进入下一项，快进对话不会直接完成检测。
+3. 四项全通过后出现 `LAUNCH`。确认时再次检查完整维修状态与检测结果，关闭维修和打捞操作，屏幕切为飞行状态；不会因为组装完毕就自动发射。任何部件状态失效都清除检查结果；中止或禁用途中流程后必须重新检查。
+4. 起飞默认共 40 秒：3 秒倒数、2 秒点火预热，随后真实移动 `ShipRig` 离地加速，并施加轻微俯仰与引擎振动；地面大范围扬尘，舱底喷焰、点火照明、引擎声同步播放。
+5. 升空过程中逐步淡化火星光照、地面雾和后处理，穿过完全覆盖舱外的大气雾罩后隐藏火星外景；然后星空显现、火星缩小。驾驶舱和自由观察相机保持同一套对象，演出不改相机局部位置或视角。
+6. 抵达轨道后熄火、收束震动，屏幕显示 `ORBIT / CRUISE`，播放返航对话并保持太空画面。终端节点 `launch_ignition / launch_ascent / launch_exit / launch_orbit` 跟随真实动画阶段，无法靠快进提前抵达轨道。
+
+`LaunchSequenceController.Duration` 包含倒数与预热；`CountdownDuration / IgnitionDuration / AscentHeight / ForwardDistance / PitchDegrees` 控制节奏与轨迹，`AccelerationShakePosition / AccelerationShakeRotation / GroundDustEmission / LiftoffDustBurstCount` 控制表现。音效使用现有 `STORY_ready_departure / STORY_power_restore / STORY_navigation_online / STORY_engine_test / STORY_life_support_valve / STORY_takeoff / AMB_Engine_Idle_Loop / UI_confirm`。
+
+ESC 使用现有暂停菜单，检查计时、起飞移动、粒子和各自音源都随暂停停止。`CancelLaunch()` 或起飞中禁用组件会清理新效果、恢复起飞前地面姿态与环境，并开放原来可用的维修/打捞功能；不会卸载借用的火星场景或启用其重复驾驶舱、相机。轨道完成后保留太空状态。
+
+SHIP 当前未绑定独立 `ReturnWindow` 演示场景的任务时钟/结局组件，本流程不调用会立即暂停游戏的旧结算入口。此处完成到离开火星、建立轨道与返航航线，不添加地球抵达或新关卡。
 
 ## 场景与参数
 
@@ -65,7 +82,9 @@
 
 `Tools/Landing/Install opening flow in SHIP` 可以重新绑定开局控制器、正式对话和三个待机屏，不重建驾驶舱或调整相机。SHIP 已写入绑定，无需再次安装。
 
-着陆基础版已进行 Unity 编译和编辑器画面检查。追加维修联动与开局流程时 Unity 已关闭；源码编译与场景静态引用检查不代表运行时验收，待机画面布局、播放节奏和实际交互仍需在 Unity 中确认。没有运行 Play Mode 或自动测试。请在 Play 中检查：
+`Tools/Landing/Install departure flow in SHIP` 可重新绑定检查/起飞控制器和八个音频，保留已有演出数值调参。SHIP 已完成接线，无需额外操作。
+
+着陆基础版已进行 Unity 编译和编辑器画面检查。追加维修联动、开局与起飞流程时 Unity 已关闭；源码编译与场景静态引用检查不代表运行时验收，待机画面布局、起飞镜头、音量和实际交互仍需在 Unity 中确认。没有运行 Play Mode 或自动测试。请在 Play 中检查：
 
 1. 右键看向两侧舷窗，星空、大气与地面衔接连续。
 2. ESC 暂停时下降、震动和粒子暂停，恢复后继续。
@@ -74,3 +93,6 @@
 5. 触地撞击、摇晃、扬尘和随后三处电火花的节奏，以及警报停止后的环境音音量。
 6. 初始三张待机画面且四项健康；`BEGIN LANDING` 才启动下降，触地时四项同时损坏、维修屏解除待机；教学末尾 `ACTIVATE SALVAGE` 才解除打捞待机，之前按键/点击不会开始作业。
 7. 通过现有拼装维修依次修好装置，对应火花点停止；四项全部完成后受损底噪淡出、健康底噪淡入，且不会再次播放撞击声。
+8. 全修后只提示检查，不自动起飞；逐项测试显示进度和结果，`NOT YET` 可返回菜单，四项通过后 `LAUNCH` 才有效。
+9. 发射时倒数、预热、扬尘、喷焰和震动同步，窗口能看到地面远离、大气过渡、星空与退远的火星；ESC 暂停/恢复没有音效漏播或画面跳进。
+10. 中止起飞后回到地面并允许重新检查；正常完成后不再受损、不再自动打捞，终端显示进入轨道的返航对话。

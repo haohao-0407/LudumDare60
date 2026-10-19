@@ -10544,6 +10544,8 @@ GameObject:
   - component: {fileID: 1555494242}
   - component: {fileID: 1555494241}
   - component: {fileID: 1800000100}
+  - component: {fileID: 1800000200}
+  - component: {fileID: 1800000201}
   m_Layer: 0
   m_Name: Landing Sequence
   m_TagString: Untagged
@@ -14094,6 +14096,65 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!114 &1800000200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555494240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04d771c2ec54af099380f1755fe5f98, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.LaunchSequenceController
+  Landing: {fileID: 1555494241}
+  RepairScreen: {fileID: 1066902081}
+  Duration: 40
+  CountdownDuration: 3
+  IgnitionDuration: 2
+  AscentHeight: 1400
+  ForwardDistance: 300
+  PitchDegrees: -12
+  PlanetLocalDirection: {x: 0.45, y: -0.25, z: 1}
+  CountdownClip: {fileID: 8300000, guid: 1d4d2d48c2d9af54b95954fede2989b5, type: 3}
+  IgnitionClip: {fileID: 8300000, guid: dd2c14751f6ea584ca91626fb0f803ab, type: 3}
+  EngineLoopClip: {fileID: 8300000, guid: b6c6e33abfde2004da9845da0fafbd51, type: 3}
+  OnIgnition:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLiftoff:
+    m_PersistentCalls:
+      m_Calls: []
+  OnOrbitReached:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLaunchCancelled:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1800000201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555494240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83dffda12844f11b5d7bd1e992c80ec, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.CockpitDepartureController
+  Opening: {fileID: 1800000100}
+  Launch: {fileID: 1800000200}
+  ReadyClip: {fileID: 8300000, guid: 3a2f40f770edeaa42a9de7f1227f59fa, type: 3}
+  CheckClips:
+  - {fileID: 8300000, guid: 3bf202260a69bc24fbd89e898878b3c2, type: 3}
+  - {fileID: 8300000, guid: 6c764b33b653048419887fc30855891b, type: 3}
+  - {fileID: 8300000, guid: 1aaf78528d0900a46ad93099ade279f0, type: 3}
+  - {fileID: 8300000, guid: bfbe1c4ad31d72f4b91ca7c5e0ae501f, type: 3}
+  CheckDuration: 2.5
+  EngineTestDuration: 3.5
+  CheckVolume: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

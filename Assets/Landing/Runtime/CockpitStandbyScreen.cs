@@ -17,6 +17,9 @@ namespace LudumDare60.Landing
         public RectTransform ScreenRoot;
         public TMP_FontAsset Font;
         public string SystemTitle = "AUXILIARY SYSTEM";
+        public string ModeText = "STANDBY";
+        public string PowerStateText = "CONSOLE ONLINE / LOW POWER";
+        public string FooterText = "READY / AWAITING COMMAND";
         [TextArea(2, 4)] public string StatusText = "SYSTEM AVAILABLE WHEN REQUIRED\nAWAITING ACTIVATION";
         [Tooltip("Only input scripts, such as SalvageScreenView or AssemblyScreenInput. Never the Canvas, screen mount, camera or renderer.")]
         public Behaviour[] InputBehaviours = Array.Empty<Behaviour>();
@@ -167,7 +170,7 @@ namespace LudumDare60.Landing
             mode = Label("Power State", "CONSOLE ONLINE / LOW POWER", .12f, .69f, .925f, .765f, Dim, TextAlignmentOptions.MidlineLeft);
             title = Label("Standby Title", "STANDBY", .075f, .445f, .925f, .66f, Ink, TextAlignmentOptions.Center);
             title.characterSpacing = 6f;
-            description = Label("Standby Description", "", .1f, .29f, .9f, .415f, Dim, TextAlignmentOptions.Center);
+            description = Label("Standby Description", "", .1f, .235f, .9f, .425f, Dim, TextAlignmentOptions.Center);
             footer = Label("Footer", "READY / AWAITING COMMAND", .075f, .08f, .925f, .17f, Dim, TextAlignmentOptions.MidlineLeft);
             RefreshText();
             ResizeText();
@@ -236,7 +239,10 @@ namespace LudumDare60.Landing
         void RefreshText()
         {
             if (header) header.text = "SHIP OS / " + (SystemTitle ?? string.Empty);
+            if (title) title.text = ModeText ?? string.Empty;
+            if (mode) mode.text = PowerStateText ?? string.Empty;
             if (description) description.text = StatusText ?? string.Empty;
+            if (footer) footer.text = FooterText ?? string.Empty;
         }
 
         void ResizeText()
