@@ -1,0 +1,11 @@
+Old Compartment Fluid Manifold Assembly
+
+Description:
+A tangled cluster of metal pipes fitted with needle valves and corrugated pressure bellows. Hardened sealing gaskets still cling to its connections. It once carried oxygen, cooling water, and propellant, sustaining life within the compartment and keeping the engines running.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x3
+Tinned Copper Wire & Windings x1
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x1
+Vulcanized Airtight Rubber Liners x4

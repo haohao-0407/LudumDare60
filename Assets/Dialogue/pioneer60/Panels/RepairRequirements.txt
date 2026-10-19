@@ -1,0 +1,29 @@
+REPAIR REQUIREMENTS
+
+Power Unit
+Rolled Electromechanical Alloy Sheets x6
+Tinned Copper Wire & Windings x4
+Precision Drive Gear Blanks x2
+Heat-Resistant Ceramic Insulators x7
+Vulcanized Airtight Rubber Liners x3
+
+Interstellar Navigation System
+Rolled Electromechanical Alloy Sheets x4
+Tinned Copper Wire & Windings x5
+Precision Drive Gear Blanks x7
+Heat-Resistant Ceramic Insulators x2
+Vulcanized Airtight Rubber Liners x2
+
+Propulsion Engine
+Rolled Electromechanical Alloy Sheets x7
+Tinned Copper Wire & Windings x3
+Precision Drive Gear Blanks x3
+Heat-Resistant Ceramic Insulators x6
+Vulcanized Airtight Rubber Liners x4
+
+Life Support System
+Rolled Electromechanical Alloy Sheets x5
+Tinned Copper Wire & Windings x3
+Precision Drive Gear Blanks x2
+Heat-Resistant Ceramic Insulators x2
+Vulcanized Airtight Rubber Liners x7

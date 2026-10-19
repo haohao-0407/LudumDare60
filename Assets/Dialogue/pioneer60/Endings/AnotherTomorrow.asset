@@ -1,0 +1,307 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3839dfbbd097940ad0919d7d9887a0, type: 3}
+  m_Name: AnotherTomorrow
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
+  graph:
+    AIName: AI
+    DefaultTextColor:
+      R: 0.65
+      G: 1
+      B: 0.76
+      A: 1
+    EntryNodeId: another_tomorrow_open
+    InitialFlags: []
+    Nodes:
+    - Id: another_tomorrow_open
+      Title: Is there another route?
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'WINDOW CLOSED.
+
+          DEPARTURE AUTHORIZATION DEADLINE EXCEEDED.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The window has closed. We cannot make this departure.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_01
+        Label: Is there another route?
+        PlayerText: Check again. Is there another route?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_01
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_01
+      Title: Is there another route?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I have checked. With the ship in its present condition and the fuel we have left, I cannot give you an alternative route we can safely fly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_02
+        Label: Wait for the next one.
+        PlayerText: Then we wait for the next one.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_02
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_02
+      Title: Wait for the next one.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The next return plan in the archive is in November 1983. That means more than two years of waiting, and the ship would need to be reassessed. Your emergency supplies will not last that long.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_03
+        Label: Can Earth send someone?
+        PlayerText: Can Earth send someone?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_03
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_03
+      Title: Can Earth send someone?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: We will keep trying to restore contact. But in their last transmission, they said they could not guarantee rescue after the window closed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_04
+        Label: What do we do now?
+        PlayerText: ...Then what do we do now?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_04
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_04
+      Title: What do we do now?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I will explain it in the plainest, most direct terms possible. Your first priority now is to stay alive until we can try to leave again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_05
+        Label: Give me the plan.
+        PlayerText: That part I understand. Give me the plan.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_05
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_05
+      Title: Give me the plan.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: First, check the lander's air supply and power. Then restore whatever water recycling equipment we can use in the colony. Until then, we will keep you alive with the facilities that still work.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: After that, repair the greenhouse and check the seed reserves. Emergency rations are not enough. We need to start producing food.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_06
+        Label: From repairs to growing things.
+        PlayerText: From repairing a ship to growing things.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_06
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_06
+      Title: From repairs to growing things.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The original objective has not been canceled. We just need a different schedule first.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 14 SEP 1981 / SOW
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_07
+        Label: What comes first tomorrow?
+        PlayerText: Then tell me what we do first tomorrow.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_07
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: another_tomorrow_07
+      Title: What comes first tomorrow?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Check the greenhouse water supply. If it is usable, prepare to sow.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Outside, the colony is still empty.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Tomorrow, you will prepare to plant the first seed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: 

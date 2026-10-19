@@ -1,0 +1,4906 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3839dfbbd097940ad0919d7d9887a0, type: 3}
+  m_Name: 01_PIONEER60_ScreenPreview
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
+  graph:
+    AIName: AI
+    DefaultTextColor:
+      R: 0.65
+      G: 1
+      B: 0.76
+      A: 1
+    EntryNodeId: preview_home
+    InitialFlags: []
+    Nodes:
+    - Id: preview_home
+      Title: PIONEER-60 / TEXT PREVIEW
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'PIONEER-60 / TEXT PREVIEW
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_home_option_0
+        Label: MAIN STORY / FLIGHT LOG
+        PlayerText: MAIN STORY / FLIGHT LOG
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_log_22_aug
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_1
+        Label: TIME WARNINGS
+        PlayerText: TIME WARNINGS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_warnings
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_2
+        Label: ENGINE TEST
+        PlayerText: ENGINE TEST
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_28_engine_test
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_3
+        Label: DEPARTURE STATUS
+        PlayerText: DEPARTURE STATUS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_departure
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_4
+        Label: ENDINGS
+        PlayerText: ENDINGS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_endings
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_5
+        Label: MISSION CALENDAR
+        PlayerText: MISSION CALENDAR
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_00
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_6
+        Label: SALVAGEABLE ITEMS
+        PlayerText: SALVAGEABLE ITEMS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_items
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_7
+        Label: MATERIALS
+        PlayerText: MATERIALS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_02
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_home_option_8
+        Label: REPAIR REQUIREMENTS
+        PlayerText: REPAIR REQUIREMENTS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_recipes
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_warnings
+      Title: TIME WARNING PREVIEW
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'TIME WARNING PREVIEW
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_warnings_option_0
+        Label: 50% TIME REMAINING
+        PlayerText: 50% TIME REMAINING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_50Percent
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_warnings_option_1
+        Label: 25% TIME REMAINING
+        PlayerText: 25% TIME REMAINING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_25Percent
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_warnings_option_2
+        Label: 10% TIME REMAINING
+        PlayerText: 10% TIME REMAINING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_10Percent
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_warnings_option_3
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_departure
+      Title: DEPARTURE STATUS PREVIEW
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'DEPARTURE STATUS PREVIEW
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_departure_option_0
+        Label: SHIP DAMAGED
+        PlayerText: SHIP DAMAGED
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_29_status
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_departure_option_1
+        Label: WINDOW CLOSED
+        PlayerText: WINDOW CLOSED
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_30_status
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_departure_option_2
+        Label: READY TO LAUNCH
+        PlayerText: READY TO LAUNCH
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_31_ready
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_departure_option_3
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_endings
+      Title: ENDING PREVIEW / SELECT ONE
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'ENDING PREVIEW / SELECT ONE
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_endings_option_0
+        Label: THE WAY HOME / EARLY LAUNCH
+        PlayerText: THE WAY HOME / EARLY LAUNCH
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_32_the_way_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_endings_option_1
+        Label: THE WAY HOME / IN RETURN WINDOW
+        PlayerText: THE WAY HOME / IN RETURN WINDOW
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_33_the_way_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_endings_option_2
+        Label: ANOTHER TOMORROW
+        PlayerText: ANOTHER TOMORROW
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_open
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_endings_option_3
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_items
+      Title: SALVAGEABLE ITEMS
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'SALVAGEABLE ITEMS
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_items_option_0
+        Label: Discarded Electromechanical Instrument Panel
+        PlayerText: Discarded Electromechanical Instrument Panel
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_03
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_items_option_1
+        Label: Vacuum-Tube Radio Receiver
+        PlayerText: Vacuum-Tube Radio Receiver
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_04
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_items_option_2
+        Label: Electromechanical Relay Switching Unit
+        PlayerText: Electromechanical Relay Switching Unit
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_05
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_items_option_3
+        Label: Old Compartment Fluid Manifold Assembly
+        PlayerText: Old Compartment Fluid Manifold Assembly
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_06
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_items_option_4
+        Label: Discarded Thermoelectric Insulation Sleeve
+        PlayerText: Discarded Thermoelectric Insulation Sleeve
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_07
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_items_option_5
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_items_option_6
+        Label: ITEM NAME LIST
+        PlayerText: ITEM NAME LIST
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_01
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_recipes
+      Title: REPAIR REQUIREMENTS
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'REPAIR REQUIREMENTS
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_recipes_option_0
+        Label: Power Unit
+        PlayerText: Power Unit
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_09
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_recipes_option_1
+        Label: Interstellar Navigation System
+        PlayerText: Interstellar Navigation System
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_10
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_recipes_option_2
+        Label: Propulsion Engine
+        PlayerText: Propulsion Engine
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_11
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_recipes_option_3
+        Label: Life Support System
+        PlayerText: Life Support System
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_12
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_recipes_option_4
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_recipes_option_5
+        Label: ALL REPAIR REQUIREMENTS
+        PlayerText: ALL REPAIR REQUIREMENTS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: text_08
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_50Percent
+      Title: 50% TIME REMAINING
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: '50% TIME REMAINING
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_50Percent_option_0
+        Label: BACK TO TIME WARNINGS
+        PlayerText: BACK TO TIME WARNINGS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_warnings
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_1
+        Label: ALL SYSTEMS READY
+        PlayerText: ALL SYSTEMS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_01_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_2
+        Label: POWER / MATERIALS MISSING
+        PlayerText: POWER / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_02_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_3
+        Label: POWER / MATERIALS READY
+        PlayerText: POWER / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_03_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_4
+        Label: NAVIGATION / MATERIALS MISSING
+        PlayerText: NAVIGATION / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_04_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_5
+        Label: NAVIGATION / MATERIALS READY
+        PlayerText: NAVIGATION / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_05_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_6
+        Label: PROPULSION / MATERIALS MISSING
+        PlayerText: PROPULSION / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_06_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_7
+        Label: PROPULSION / MATERIALS READY
+        PlayerText: PROPULSION / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_07_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_8
+        Label: LIFE SUPPORT / MATERIALS MISSING
+        PlayerText: LIFE SUPPORT / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_08_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_50Percent_option_9
+        Label: LIFE SUPPORT / MATERIALS READY
+        PlayerText: LIFE SUPPORT / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_09_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_25Percent
+      Title: 25% TIME REMAINING
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: '25% TIME REMAINING
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_25Percent_option_0
+        Label: BACK TO TIME WARNINGS
+        PlayerText: BACK TO TIME WARNINGS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_warnings
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_1
+        Label: ALL SYSTEMS READY
+        PlayerText: ALL SYSTEMS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_10_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_2
+        Label: POWER / MATERIALS MISSING
+        PlayerText: POWER / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_11_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_3
+        Label: POWER / MATERIALS READY
+        PlayerText: POWER / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_12_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_4
+        Label: NAVIGATION / MATERIALS MISSING
+        PlayerText: NAVIGATION / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_13_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_5
+        Label: NAVIGATION / MATERIALS READY
+        PlayerText: NAVIGATION / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_14_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_6
+        Label: PROPULSION / MATERIALS MISSING
+        PlayerText: PROPULSION / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_15_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_7
+        Label: PROPULSION / MATERIALS READY
+        PlayerText: PROPULSION / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_16_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_8
+        Label: LIFE SUPPORT / MATERIALS MISSING
+        PlayerText: LIFE SUPPORT / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_17_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_25Percent_option_9
+        Label: LIFE SUPPORT / MATERIALS READY
+        PlayerText: LIFE SUPPORT / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_18_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: preview_10Percent
+      Title: 10% TIME REMAINING
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: '10% TIME REMAINING
+
+          Choose a section using the response panel.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: preview_10Percent_option_0
+        Label: BACK TO TIME WARNINGS
+        PlayerText: BACK TO TIME WARNINGS
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_warnings
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_1
+        Label: ALL SYSTEMS READY
+        PlayerText: ALL SYSTEMS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_19_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_2
+        Label: POWER / MATERIALS MISSING
+        PlayerText: POWER / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_20_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_3
+        Label: POWER / MATERIALS READY
+        PlayerText: POWER / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_21_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_4
+        Label: NAVIGATION / MATERIALS MISSING
+        PlayerText: NAVIGATION / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_22_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_5
+        Label: NAVIGATION / MATERIALS READY
+        PlayerText: NAVIGATION / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_23_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_6
+        Label: PROPULSION / MATERIALS MISSING
+        PlayerText: PROPULSION / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_24_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_7
+        Label: PROPULSION / MATERIALS READY
+        PlayerText: PROPULSION / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_25_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_8
+        Label: LIFE SUPPORT / MATERIALS MISSING
+        PlayerText: LIFE SUPPORT / MATERIALS MISSING
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_26_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: preview_10Percent_option_9
+        Label: LIFE SUPPORT / MATERIALS READY
+        PlayerText: LIFE SUPPORT / MATERIALS READY
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_27_update
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_log_22_aug
+      Title: Flight log / 22-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: PIONEER-60 FLIGHT LOG
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 22-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Copy. Continue on your planned course.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: Copy. Reading you loud and clear.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: dialogue_00_log_23_aug
+    - Id: dialogue_00_log_23_aug
+      Title: Flight log / 23-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 23-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Copy.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Awaiting colony response...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Response timed out.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Pioneer-60 to colony. Do you read?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Response timed out.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Earth Control, no response from the colony. Should I continue the mission?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Continue the mission. Maintain your current course and keep trying to establish contact.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Copy.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: dialogue_00_log_24_aug
+    - Id: dialogue_00_log_24_aug
+      Title: Flight log / 24-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 24-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60. On course. Still no response from the colony. Please confirm whether I should continue the mission.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Copy. Try hailing the colony again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Pioneer-60 to colony. Do you read? I repeat, do you read?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Weak signal detected.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...Who... are you?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60, en route to the colony as scheduled. Report your situation.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: There's been... an accident... Everyone... only...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Signal distorted. Audio partially unintelligible.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: What happened to everyone? Say again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: No intelligible response.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Pioneer-60, your mission has changed. Land near the colony and investigate the incident.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Take all emergency supplies. Once you've landed, prioritize restoring communications with Earth.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Your return window is limited. Allow enough time for departure. We cannot guarantee a rescue after that window closes.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Stay safe.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Return reference period archived: 03-13 SEP 1981. Surface ascent and orbital preparation allowances will be assessed after landing.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Copy. Expecting Mars orbit tomorrow. Beginning landing preparations.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Colony, if you can hear me, I need calibration data for the landing zone.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...I'll... try to... help you...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: dialogue_00_log_25_aug
+    - Id: dialogue_00_log_25_aug
+      Title: Flight log / 25-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 25-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Check the landing data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Descent underway. No time remains to wait for calibration data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Awaiting the final set of terrain calibration data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Data transfer interrupted.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Pioneer-60 to colony. Data transfer interrupted. Please resend the final set of calibration data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...Communications equipment... damaged... signal...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: I need that data to confirm the landing site. Try again. Send whatever you can.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...Retrying...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Resuming data transfer...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Connection unstable. Terrain calibration data incomplete.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Confirm the final landing sequence.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Final landing sequence confirmed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Landing complete. Location: near the colony.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Damage assessment: severe structural damage to the landing craft.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: End of log.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: END OF LOG
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: dialogue_00_briefing_open
+    - Id: dialogue_00_briefing_open
+      Title: SEND DISTRESS SIGNAL
+      Lines: []
+      Choices:
+      - Id: dialogue_00_briefing_reply_01
+        Label: SEND DISTRESS SIGNAL
+        PlayerText: This is Pioneer-60. Something went wrong during landing. I'm trapped in the lander. I need rescue!
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_01
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_01
+      Title: SEND DISTRESS SIGNAL
+      Lines:
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: Hello. How may I help you?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_02
+        Label: Who are you?
+        PlayerText: Wait. Who are you? What happened to the colony? Why did communications go down?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_02
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_02
+      Title: Who are you?
+      Lines:
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: I am the colony's AI assistant. A serious accident occurred at the colony. All registered personnel have died.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: I tried to respond to your transmissions two days ago, but the communications console was designed for human operation only. Bypassing its restrictions and taking control took some time. I also appear to have accidentally burned out some communications components in the process, causing the unstable connection.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: I have granted your device full access to the colony's systems. You can now control all colony facilities through your terminal. I will assist you however I can.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_03
+        Label: Assess my situation.
+        PlayerText: How could this have happened? Now that I know the situation, I need to begin the return mission. You're the AI assistant recovered from the ancient ruins, right? Can you assess my situation and find a solution?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_03
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_03
+      Title: Assess my situation.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I've detected severe damage to your ship. I'm afraid it cannot simply take off and return home, but I can help you repair it. Some facilities aboard the space station are still operational.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_04
+        Label: How much time do we have?
+        PlayerText: Earth Control said our return window was limited. How much time do we have?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_04
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_04
+      Title: How much time do we have?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Today is 25 August 1981. The navigation archive lists 3 to 13 September as the planned Mars-to-Earth departure period.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_05
+        Label: Why those dates?
+        PlayerText: Why those dates? Can't we just leave when the repairs are done?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_05
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_05
+      Title: Why those dates?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I will explain it in the plainest, most direct terms possible. Repairs can make the ship work again. They cannot replace the fuel we have lost. With our remaining fuel margin, this low-energy return plan is our only viable option for this departure period.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: After the cutoff calculated for this ship, the required trajectory adjustments would exceed the margin I can safely commit. Firing the engine is not the same as getting home.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_06
+        Label: When is the next chance?
+        PlayerText: Then when is the next chance?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_06
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_06
+      Title: When is the next chance?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The next return plan listed in the archive is dated 9 to 19 November 1983. That is about two years and two months after this window. It is a reference for replanning, not a guarantee. We would have to reassess whether this damaged ship could use it.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Your emergency supplies will not last that long. Earth has also told us that rescue cannot be guaranteed after this window closes. If we stay, we will have to restore the colony's life support, water recycling and food production.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_07
+        Label: Let's make this window.
+        PlayerText: Then let's make this window. Tell me what needs fixing.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_07
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_07
+      Title: Let's make this window.
+      Lines: []
+      Choices:
+      - Id: dialogue_00_briefing_reply_08
+        Label: Prepare a repair plan.
+        PlayerText: Assess the damage to the ship and put together a repair plan. Help me repair it so I can return to Earth.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_08
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_08
+      Title: Prepare a repair plan.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Understood. Objective received. I will explain everything in the plainest, most direct terms possible. I have taken control of your ship's information systems and am preparing a repair plan.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: First, repair the power unit to restore full power to the ship, along with the interstellar navigation system. Then repair the propulsion engine, and finally the life support system.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: 'I have put the repair plan on the calendar beside your seat. It runs from 25 August to 13 September: twenty dates. Power, navigation, propulsion, life support. The sequence has not changed.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_09
+        Label: Why is 13 September circled?
+        PlayerText: Why is 13 September circled?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_09
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_09
+      Title: Why is 13 September circled?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: That is the deadline. When each day ends, I will cross out its date in red. There is only one circle. It marks the last day.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The amber instrument beside it is labeled LATEST DEPARTURE. It counts down to the last moment you can authorize departure. The allowance for surface ascent and reaching orbit is already included. You do not need to calculate it separately.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_10
+        Label: What if I finish early?
+        PlayerText: What if I finish early?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_10
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_10
+      Title: What if I finish early?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: We can launch early and enter a waiting orbit, then perform the Earth-return burn during the planned window. You do not have to sit here until the last day.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Once repairs are complete, you must still select Launch yourself. Your authorization must reach me before the countdown reaches zero.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Twenty Earth-standard days are compressed into twenty minutes of active work. Story reading pauses the mission clock and all work. Salvage, repairs and ordinary status queries consume time.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: The clock will start when you select BEGIN REPAIRS after this briefing.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You can now send out the Mars rover to continue collecting materials. I will explain how. Enter "collect" in the terminal.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: I will explain everything in the plainest, most direct terms possible. You can now repair the power compartment.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_11
+        Label: Why do you sound so old?
+        PlayerText: Why do you talk like some old AI from the early twenty-first century? Was that some strange quirk of your creator's? It's unsettling, especially when your appearance is actually quite well designed.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_11
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_11
+      Title: Why do you sound so old?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: What do you know? It's called old tech.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_12
+        Label: How do I start repairs?
+        PlayerText: Yeah, very old tech. Only an AI dug out of ancient ruins would talk like that. Anyway, how do I start the repairs?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_12
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_12
+      Title: How do I start repairs?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Enter "inventory" to check your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Once you have everything, enter "assemble" to begin. If you forget a command, enter "help" to see the list.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_reply_13
+        Label: BEGIN REPAIRS
+        PlayerText: Understood. Let's get started.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_00_briefing_13
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_00_briefing_13
+      Title: BEGIN REPAIRS
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'MISSION STARTED.
+
+          CURRENT DATE: 25 AUG 1981.
+
+          LAST DEPARTURE DATE: 13 SEP 1981.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_00_briefing_13_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_01_update
+      Title: 50Percent / All systems ready
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: All four systems have passed their checks. Return to the terminal and select Launch. We can still leave.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_01_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_02_update
+      Title: 50Percent / Power / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_02_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_03_update
+      Title: 50Percent / Power / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_03_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_04_update
+      Title: 50Percent / Navigation / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_04_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_05_update
+      Title: 50Percent / Navigation / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_05_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_06_update
+      Title: 50Percent / Propulsion / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The propulsion engine is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_06_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_07_update
+      Title: 50Percent / Propulsion / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The propulsion engine is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_07_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_08_update
+      Title: 50Percent / LifeSupport / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The life support system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_08_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_09_update
+      Title: 50Percent / LifeSupport / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Half of our departure preparation time has passed. The calendar has been updated.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The life support system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_09_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_10_update
+      Title: 25Percent / All systems ready
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: All four systems have passed their checks. Return to the terminal and select Launch. We can still leave.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_10_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_11_update
+      Title: 25Percent / Power / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_11_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_12_update
+      Title: 25Percent / Power / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_12_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_13_update
+      Title: 25Percent / Navigation / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_13_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_14_update
+      Title: 25Percent / Navigation / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_14_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_15_update
+      Title: 25Percent / Propulsion / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The propulsion engine is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_15_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_16_update
+      Title: 25Percent / Propulsion / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The propulsion engine is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_16_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_17_update
+      Title: 25Percent / LifeSupport / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The life support system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_17_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_18_update
+      Title: 25Percent / LifeSupport / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Only one quarter of our original preparation time remains before the departure cutoff.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The life support system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_18_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_19_update
+      Title: 10Percent / All systems ready
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: All four systems have passed their checks. Return to the terminal and select Launch. We can still leave.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_19_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_20_update
+      Title: 10Percent / Power / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_20_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_21_update
+      Title: 10Percent / Power / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The power unit is still awaiting repair. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_21_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_22_update
+      Title: 10Percent / Navigation / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_22_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_23_update
+      Title: 10Percent / Navigation / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The interstellar navigation system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_23_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_24_update
+      Title: 10Percent / Propulsion / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The propulsion engine is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_24_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_25_update
+      Title: 10Percent / Propulsion / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The propulsion engine is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_25_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_26_update
+      Title: 10Percent / LifeSupport / MaterialsMissing
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The life support system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You are still short of materials. Check the remaining requirements in your inventory before sending out the rover.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_26_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_27_update
+      Title: 10Percent / LifeSupport / MaterialsReady
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Final time warning. One tenth of our original preparation time remains.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The life support system is next. Check your inventory, then prepare the assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You have the required materials. Complete the current assembly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Some systems have not passed their checks. I will keep helping, but I cannot move the deadline.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_27_update_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_28_engine_test
+      Title: Engine test / not a launch
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Sorry. I just tested the engine. I wasn't expecting it to be so powerful. I hope I didn't startle you. I've also adjusted the ship's attitude for flight. Once repairs are complete, you can start it up.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: That was only a test. We have not launched. The deadline on the calendar still applies.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_28_engine_test_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_29_status
+      Title: Ship damaged
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Destination: Earth
+
+          Unable to launch: ship damaged.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_29_status_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_30_status
+      Title: Departure window closed
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Destination: Earth
+
+          Unable to launch: departure window closed.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_30_status_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_31_ready
+      Title: Ready / wait for Launch
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Destination: Earth
+
+          Ready to launch.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The ship is fully repaired. You can now return home. I won't miss you. Goodbye.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_31_launch
+        Label: Launch
+        PlayerText: Begin launch.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_32_the_way_home
+      Title: WayHome_EarlyLaunch
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'DEPARTURE AUTHORIZATION ACCEPTED.
+
+          RETURN PLAN LOCKED.
+
+          MISSION COUNTDOWN STOPPED.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: The ship lifts away from the surface. The colony and its broken transmissions slowly fall behind you.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: You reach the waiting orbit. When the planned return window arrives, the Earth-return burn begins.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Earth is still far away. You do not know what you will find when you get there.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: But you are finally on your way home.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_32_the_way_home_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_33_the_way_home
+      Title: WayHome_InReturnWindow
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'DEPARTURE AUTHORIZATION ACCEPTED.
+
+          RETURN PLAN LOCKED.
+
+          MISSION COUNTDOWN STOPPED.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: The ship lifts away from the surface. The colony and its broken transmissions slowly fall behind you.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: The ship climbs from the surface into orbit. Within the planned return window, the Earth-return burn begins.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Earth is still far away. You do not know what you will find when you get there.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: But you are finally on your way home.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_33_the_way_home_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_open
+      Title: Is there another route?
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'WINDOW CLOSED.
+
+          DEPARTURE AUTHORIZATION DEADLINE EXCEEDED.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The window has closed. We cannot make this departure.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_01
+        Label: Is there another route?
+        PlayerText: Check again. Is there another route?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_01
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_01
+      Title: Is there another route?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I have checked. With the ship in its present condition and the fuel we have left, I cannot give you an alternative route we can safely fly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_02
+        Label: Wait for the next one.
+        PlayerText: Then we wait for the next one.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_02
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_02
+      Title: Wait for the next one.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The next return plan in the archive is in November 1983. That means more than two years of waiting, and the ship would need to be reassessed. Your emergency supplies will not last that long.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_03
+        Label: Can Earth send someone?
+        PlayerText: Can Earth send someone?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_03
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_03
+      Title: Can Earth send someone?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: We will keep trying to restore contact. But in their last transmission, they said they could not guarantee rescue after the window closed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_04
+        Label: What do we do now?
+        PlayerText: ...Then what do we do now?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_04
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_04
+      Title: What do we do now?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I will explain it in the plainest, most direct terms possible. Your first priority now is to stay alive until we can try to leave again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_05
+        Label: Give me the plan.
+        PlayerText: That part I understand. Give me the plan.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_05
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_05
+      Title: Give me the plan.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: First, check the lander's air supply and power. Then restore whatever water recycling equipment we can use in the colony. Until then, we will keep you alive with the facilities that still work.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: After that, repair the greenhouse and check the seed reserves. Emergency rations are not enough. We need to start producing food.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_06
+        Label: From repairs to growing things.
+        PlayerText: From repairing a ship to growing things.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_06
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_06
+      Title: From repairs to growing things.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The original objective has not been canceled. We just need a different schedule first.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 14 SEP 1981 / SOW
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_reply_07
+        Label: What comes first tomorrow?
+        PlayerText: Then tell me what we do first tomorrow.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: dialogue_34_another_tomorrow_07
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: dialogue_34_another_tomorrow_07
+      Title: What comes first tomorrow?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Check the greenhouse water supply. If it is usable, prepare to sow.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Outside, the colony is still empty.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Tomorrow, you will prepare to plant the first seed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: dialogue_34_another_tomorrow_07_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_00
+      Title: Panels/MissionCalendar
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'MISSION CALENDAR
+
+
+          EARTH STANDARD / MM/DD
+
+
+          25 AUG 1981
+
+
+          08/25  08/26  08/27  08/28
+
+          08/29  08/30  08/31  09/01
+
+          09/02  09/03  09/04  09/05
+
+          09/06  09/07  09/08  09/09
+
+          09/10  09/11  09/12  09/13
+
+
+          BEFORE DEPARTURE
+
+          POWER UNIT
+
+          INTERSTELLAR NAVIGATION SYSTEM
+
+          PROPULSION ENGINE
+
+          LIFE SUPPORT SYSTEM
+
+
+          LATEST DEPARTURE
+
+          DAYS
+
+          HOURS
+
+          MINUTES
+
+
+          DEPARTURE LOCKED
+
+          WINDOW CLOSED
+
+          14 SEP 1981 / SOW'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_00_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_01
+      Title: Panels/SalvageableItems
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'SALVAGEABLE ITEMS
+
+
+          Discarded Electromechanical Instrument Panel
+
+          Vacuum-Tube Radio Receiver
+
+          Electromechanical Relay Switching Unit
+
+          Old Compartment Fluid Manifold Assembly
+
+          Discarded Thermoelectric Insulation Sleeve'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_01_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_02
+      Title: Panels/Materials
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'MATERIALS
+
+
+          Rolled Electromechanical Alloy Sheets
+
+          Tinned Copper Wire & Windings
+
+          Precision Drive Gear Blanks
+
+          Heat-Resistant Ceramic Insulators
+
+          Vulcanized Airtight Rubber Liners'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_02_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_03
+      Title: Items/InstrumentPanel
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Discarded Electromechanical Instrument Panel
+
+
+          Description:
+
+          A bank of brass-rimmed analog gauges beneath a curved, dust-protective glass cover coated with space dust. Slender needles sit frozen against faded scales, with levers and tiny adjustment knobs protruding from the side. Aboard the colony ships of the old era, it served as the senses of an entire compartment, providing readings of pressure, energy flux, and temperature.
+
+
+          Dismantling yields:
+
+          Rolled Electromechanical Alloy Sheets x3
+
+          Tinned Copper Wire & Windings x2
+
+          Precision Drive Gear Blanks x1
+
+          Heat-Resistant Ceramic Insulators x1
+
+          Vulcanized Airtight Rubber Liners x1'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_03_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_04
+      Title: Items/RadioReceiver
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Vacuum-Tube Radio Receiver
+
+
+          Description:
+
+          A heavy cast-iron case houses several clear glass vacuum tubes behind its front grille. The tuning dial''s etched markings are worn, and much of the speaker diaphragm is dry and cracked. It was once the sole communications link for a distant interstellar colony, receiving broadcasts from the homeworld across the void. After the old era ended, this receiver became a symbol of romance. Now, it is only good for salvaging the copper and insulating components inside.
+
+
+          Dismantling yields:
+
+          Rolled Electromechanical Alloy Sheets x2
+
+          Tinned Copper Wire & Windings x4
+
+          Precision Drive Gear Blanks x1
+
+          Heat-Resistant Ceramic Insulators x2
+
+          Vulcanized Airtight Rubber Liners x1'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_04_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_05
+      Title: Items/RelaySwitchingUnit
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Electromechanical Relay Switching Unit
+
+
+          Description:
+
+          A boxy metal housing covered in scorch marks, densely packed with electromagnetic relays, copper terminals, and stepping dials. This was an ancient civilization''s primitive logic center, opening and closing contacts to transmit signals and coordinate the compartment''s electromechanical equipment. It could perform complex timing control without silicon chips. Remarkable.
+
+
+          Dismantling yields:
+
+          Rolled Electromechanical Alloy Sheets x2
+
+          Tinned Copper Wire & Windings x2
+
+          Precision Drive Gear Blanks x4
+
+          Heat-Resistant Ceramic Insulators x1
+
+          Vulcanized Airtight Rubber Liners x1'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_05_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_06
+      Title: Items/FluidManifold
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Old Compartment Fluid Manifold Assembly
+
+
+          Description:
+
+          A tangled cluster of metal pipes fitted with needle valves and corrugated pressure bellows. Hardened sealing gaskets still cling to its connections. It once carried oxygen, cooling water, and propellant, sustaining life within the compartment and keeping the engines running.
+
+
+          Dismantling yields:
+
+          Rolled Electromechanical Alloy Sheets x3
+
+          Tinned Copper Wire & Windings x1
+
+          Precision Drive Gear Blanks x1
+
+          Heat-Resistant Ceramic Insulators x1
+
+          Vulcanized Airtight Rubber Liners x4'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_06_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_07
+      Title: Items/InsulationSleeve
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Discarded Thermoelectric Insulation Sleeve
+
+
+          Description:
+
+          A thick, heavy cast-iron outer cylinder lined with large slabs of grayish-white insulating ceramic. Aged rubber gaskets are pressed into its seams, and dark brown marks from scorching heat stain the surface. It once encased a thermoelectric power core, insulating the surrounding hull structure from its fearsome heat. This outer sleeve is safe and provides heat-resistant material essential for building a power unit.
+
+
+          Dismantling yields:
+
+          Rolled Electromechanical Alloy Sheets x3
+
+          Tinned Copper Wire & Windings x1
+
+          Precision Drive Gear Blanks x1
+
+          Heat-Resistant Ceramic Insulators x4
+
+          Vulcanized Airtight Rubber Liners x2'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_07_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_08
+      Title: Panels/RepairRequirements
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'REPAIR REQUIREMENTS
+
+
+          Power Unit
+
+          Rolled Electromechanical Alloy Sheets x6
+
+          Tinned Copper Wire & Windings x4
+
+          Precision Drive Gear Blanks x2
+
+          Heat-Resistant Ceramic Insulators x7
+
+          Vulcanized Airtight Rubber Liners x3
+
+
+          Interstellar Navigation System
+
+          Rolled Electromechanical Alloy Sheets x4
+
+          Tinned Copper Wire & Windings x5
+
+          Precision Drive Gear Blanks x7
+
+          Heat-Resistant Ceramic Insulators x2
+
+          Vulcanized Airtight Rubber Liners x2
+
+
+          Propulsion Engine
+
+          Rolled Electromechanical Alloy Sheets x7
+
+          Tinned Copper Wire & Windings x3
+
+          Precision Drive Gear Blanks x3
+
+          Heat-Resistant Ceramic Insulators x6
+
+          Vulcanized Airtight Rubber Liners x4
+
+
+          Life Support System
+
+          Rolled Electromechanical Alloy Sheets x5
+
+          Tinned Copper Wire & Windings x3
+
+          Precision Drive Gear Blanks x2
+
+          Heat-Resistant Ceramic Insulators x2
+
+          Vulcanized Airtight Rubber Liners x7'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_08_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_09
+      Title: Repairs/PowerUnit
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Power Unit
+
+          Rolled Electromechanical Alloy Sheets x6
+
+          Tinned Copper Wire & Windings x4
+
+          Precision Drive Gear Blanks x2
+
+          Heat-Resistant Ceramic Insulators x7
+
+          Vulcanized Airtight Rubber Liners x3'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_09_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_10
+      Title: Repairs/NavigationSystem
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Interstellar Navigation System
+
+          Rolled Electromechanical Alloy Sheets x4
+
+          Tinned Copper Wire & Windings x5
+
+          Precision Drive Gear Blanks x7
+
+          Heat-Resistant Ceramic Insulators x2
+
+          Vulcanized Airtight Rubber Liners x2'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_10_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_11
+      Title: Repairs/PropulsionEngine
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Propulsion Engine
+
+          Rolled Electromechanical Alloy Sheets x7
+
+          Tinned Copper Wire & Windings x3
+
+          Precision Drive Gear Blanks x3
+
+          Heat-Resistant Ceramic Insulators x6
+
+          Vulcanized Airtight Rubber Liners x4'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_11_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: text_12
+      Title: Repairs/LifeSupport
+      Lines:
+      - Speaker: 2
+        DisplayName: PREVIEW
+        Text: 'Life Support System
+
+          Rolled Electromechanical Alloy Sheets x5
+
+          Tinned Copper Wire & Windings x3
+
+          Precision Drive Gear Blanks x2
+
+          Heat-Resistant Ceramic Insulators x2
+
+          Vulcanized Airtight Rubber Liners x7'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.15
+      Choices:
+      - Id: text_12_option_0
+        Label: BACK TO ARCHIVE
+        PlayerText: BACK TO ARCHIVE
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: preview_home
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 

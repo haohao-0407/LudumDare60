@@ -1,0 +1,11 @@
+Discarded Electromechanical Instrument Panel
+
+Description:
+A bank of brass-rimmed analog gauges beneath a curved, dust-protective glass cover coated with space dust. Slender needles sit frozen against faded scales, with levers and tiny adjustment knobs protruding from the side. Aboard the colony ships of the old era, it served as the senses of an entire compartment, providing readings of pressure, energy flux, and temperature.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x3
+Tinned Copper Wire & Windings x2
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x1
+Vulcanized Airtight Rubber Liners x1

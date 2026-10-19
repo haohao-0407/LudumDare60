@@ -1,0 +1,11 @@
+Electromechanical Relay Switching Unit
+
+Description:
+A boxy metal housing covered in scorch marks, densely packed with electromagnetic relays, copper terminals, and stepping dials. This was an ancient civilization's primitive logic center, opening and closing contacts to transmit signals and coordinate the compartment's electromechanical equipment. It could perform complex timing control without silicon chips. Remarkable.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x2
+Tinned Copper Wire & Windings x2
+Precision Drive Gear Blanks x4
+Heat-Resistant Ceramic Insulators x1
+Vulcanized Airtight Rubber Liners x1

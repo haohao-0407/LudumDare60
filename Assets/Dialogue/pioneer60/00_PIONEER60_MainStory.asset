@@ -1,0 +1,1139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3839dfbbd097940ad0919d7d9887a0, type: 3}
+  m_Name: 00_PIONEER60_MainStory
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
+  graph:
+    AIName: AI
+    DefaultTextColor:
+      R: 0.65
+      G: 1
+      B: 0.76
+      A: 1
+    EntryNodeId: log_22_aug
+    InitialFlags: []
+    Nodes:
+    - Id: log_22_aug
+      Title: Flight log / 22-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: PIONEER-60 FLIGHT LOG
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 22-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Copy. Continue on your planned course.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: Copy. Reading you loud and clear.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: log_23_aug
+    - Id: log_23_aug
+      Title: Flight log / 23-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 23-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60. On course. All onboard systems nominal. Please confirm contact.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Copy.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Awaiting colony response...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Response timed out.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Pioneer-60 to colony. Do you read?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Response timed out.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Earth Control, no response from the colony. Should I continue the mission?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Continue the mission. Maintain your current course and keep trying to establish contact.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Copy.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: log_24_aug
+    - Id: log_24_aug
+      Title: Flight log / 24-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 24-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60. On course. Still no response from the colony. Please confirm whether I should continue the mission.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Copy. Try hailing the colony again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Pioneer-60 to colony. Do you read? I repeat, do you read?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Weak signal detected.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...Who... are you?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: This is Pioneer-60, en route to the colony as scheduled. Report your situation.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: There's been... an accident... Everyone... only...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Signal distorted. Audio partially unintelligible.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: What happened to everyone? Say again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: No intelligible response.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Pioneer-60, your mission has changed. Land near the colony and investigate the incident.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Take all emergency supplies. Once you've landed, prioritize restoring communications with Earth.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Your return window is limited. Allow enough time for departure. We cannot guarantee a rescue after that window closes.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: EARTH
+        Text: Stay safe.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Return reference period archived: 03-13 SEP 1981. Surface ascent and orbital preparation allowances will be assessed after landing.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Copy. Expecting Mars orbit tomorrow. Beginning landing preparations.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Colony, if you can hear me, I need calibration data for the landing zone.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...I'll... try to... help you...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: log_25_aug
+    - Id: log_25_aug
+      Title: Flight log / 25-AUG-1981
+      Lines:
+      - Speaker: 2
+        DisplayName: FLIGHT LOG
+        Text: 25-AUG-1981
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Check the landing data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Descent underway. No time remains to wait for calibration data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Awaiting the final set of terrain calibration data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Data transfer interrupted.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Pioneer-60 to colony. Data transfer interrupted. Please resend the final set of calibration data.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...Communications equipment... damaged... signal...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: I need that data to confirm the landing site. Try again. Send whatever you can.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY
+        Text: ...Retrying...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Resuming data transfer...
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Connection unstable. Terrain calibration data incomplete.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 1
+        DisplayName: Pioneer-60
+        Text: Confirm the final landing sequence.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Final landing sequence confirmed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Landing complete. Location: near the colony.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: 'Damage assessment: severe structural damage to the landing craft.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: End of log.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: END OF LOG
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: briefing_open
+    - Id: briefing_open
+      Title: SEND DISTRESS SIGNAL
+      Lines: []
+      Choices:
+      - Id: briefing_reply_01
+        Label: SEND DISTRESS SIGNAL
+        PlayerText: This is Pioneer-60. Something went wrong during landing. I'm trapped in the lander. I need rescue!
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_01
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_01
+      Title: SEND DISTRESS SIGNAL
+      Lines:
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: Hello. How may I help you?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_02
+        Label: Who are you?
+        PlayerText: Wait. Who are you? What happened to the colony? Why did communications go down?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_02
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_02
+      Title: Who are you?
+      Lines:
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: I am the colony's AI assistant. A serious accident occurred at the colony. All registered personnel have died.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: I tried to respond to your transmissions two days ago, but the communications console was designed for human operation only. Bypassing its restrictions and taking control took some time. I also appear to have accidentally burned out some communications components in the process, causing the unstable connection.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: COLONY SIGNAL
+        Text: I have granted your device full access to the colony's systems. You can now control all colony facilities through your terminal. I will assist you however I can.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_03
+        Label: Assess my situation.
+        PlayerText: How could this have happened? Now that I know the situation, I need to begin the return mission. You're the AI assistant recovered from the ancient ruins, right? Can you assess my situation and find a solution?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_03
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_03
+      Title: Assess my situation.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I've detected severe damage to your ship. I'm afraid it cannot simply take off and return home, but I can help you repair it. Some facilities aboard the space station are still operational.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_04
+        Label: How much time do we have?
+        PlayerText: Earth Control said our return window was limited. How much time do we have?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_04
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_04
+      Title: How much time do we have?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Today is 25 August 1981. The navigation archive lists 3 to 13 September as the planned Mars-to-Earth departure period.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_05
+        Label: Why those dates?
+        PlayerText: Why those dates? Can't we just leave when the repairs are done?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_05
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_05
+      Title: Why those dates?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: I will explain it in the plainest, most direct terms possible. Repairs can make the ship work again. They cannot replace the fuel we have lost. With our remaining fuel margin, this low-energy return plan is our only viable option for this departure period.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: After the cutoff calculated for this ship, the required trajectory adjustments would exceed the margin I can safely commit. Firing the engine is not the same as getting home.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_06
+        Label: When is the next chance?
+        PlayerText: Then when is the next chance?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_06
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_06
+      Title: When is the next chance?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The next return plan listed in the archive is dated 9 to 19 November 1983. That is about two years and two months after this window. It is a reference for replanning, not a guarantee. We would have to reassess whether this damaged ship could use it.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Your emergency supplies will not last that long. Earth has also told us that rescue cannot be guaranteed after this window closes. If we stay, we will have to restore the colony's life support, water recycling and food production.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_07
+        Label: Let's make this window.
+        PlayerText: Then let's make this window. Tell me what needs fixing.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_07
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_07
+      Title: Let's make this window.
+      Lines: []
+      Choices:
+      - Id: briefing_reply_08
+        Label: Prepare a repair plan.
+        PlayerText: Assess the damage to the ship and put together a repair plan. Help me repair it so I can return to Earth.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_08
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_08
+      Title: Prepare a repair plan.
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Understood. Objective received. I will explain everything in the plainest, most direct terms possible. I have taken control of your ship's information systems and am preparing a repair plan.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: First, repair the power unit to restore full power to the ship, along with the interstellar navigation system. Then repair the propulsion engine, and finally the life support system.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: 'I have put the repair plan on the calendar beside your seat. It runs from 25 August to 13 September: twenty dates. Power, navigation, propulsion, life support. The sequence has not changed.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_09
+        Label: Why is 13 September circled?
+        PlayerText: Why is 13 September circled?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_09
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_09
+      Title: Why is 13 September circled?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: That is the deadline. When each day ends, I will cross out its date in red. There is only one circle. It marks the last day.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: The amber instrument beside it is labeled LATEST DEPARTURE. It counts down to the last moment you can authorize departure. The allowance for surface ascent and reaching orbit is already included. You do not need to calculate it separately.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_10
+        Label: What if I finish early?
+        PlayerText: What if I finish early?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_10
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_10
+      Title: What if I finish early?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: We can launch early and enter a waiting orbit, then perform the Earth-return burn during the planned window. You do not have to sit here until the last day.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Once repairs are complete, you must still select Launch yourself. Your authorization must reach me before the countdown reaches zero.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: Twenty Earth-standard days are compressed into twenty minutes of active work. Story reading pauses the mission clock and all work. Salvage, repairs and ordinary status queries consume time.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: 
+        Text: The clock will start when you select BEGIN REPAIRS after this briefing.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: You can now send out the Mars rover to continue collecting materials. I will explain how. Enter "collect" in the terminal.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: I will explain everything in the plainest, most direct terms possible. You can now repair the power compartment.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_11
+        Label: Why do you sound so old?
+        PlayerText: Why do you talk like some old AI from the early twenty-first century? Was that some strange quirk of your creator's? It's unsettling, especially when your appearance is actually quite well designed.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_11
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_11
+      Title: Why do you sound so old?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: What do you know? It's called old tech.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_12
+        Label: How do I start repairs?
+        PlayerText: Yeah, very old tech. Only an AI dug out of ancient ruins would talk like that. Anyway, how do I start the repairs?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_12
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: briefing_12
+      Title: How do I start repairs?
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Enter "inventory" to check your supplies. For the power unit, you need 6 Rolled Electromechanical Alloy Sheets, 4 Tinned Copper Wire & Windings, 2 Precision Drive Gear Blanks, 7 Heat-Resistant Ceramic Insulators, and 3 Vulcanized Airtight Rubber Liners.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName: 
+        Text: Once you have everything, enter "assemble" to begin. If you forget a command, enter "help" to see the list.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: briefing_reply_13
+        Label: BEGIN REPAIRS
+        PlayerText: Understood. Let's get started.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: briefing_13
+        Conditions: []
+        SetFlags:
+        - Key: pioneer60.briefing_complete
+          Value: 1
+        Events:
+        - pioneer60.begin_repairs
+      NextNodeId: 
+    - Id: briefing_13
+      Title: BEGIN REPAIRS
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'MISSION STARTED.
+
+          CURRENT DATE: 25 AUG 1981.
+
+          LAST DEPARTURE DATE: 13 SEP 1981.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId: 
