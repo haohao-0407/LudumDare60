@@ -59,7 +59,8 @@ namespace LudumDare60.Landing.Editor
 
             var countdownClip = RequiredAsset<AudioClip>(AudioRoot + "02_Single_Shots/03_Terminal/UI_confirm.wav");
             var ignitionClip = RequiredAsset<AudioClip>(StoryAudioRoot + "STORY_takeoff.wav");
-            var engineLoopClip = RequiredAsset<AudioClip>(AudioRoot + "01_Loops/AMB_Engine_Idle_Loop.wav");
+            var engineLoopClip = RequiredAsset<AudioClip>(
+                "Assets/Pioneer60Audio/494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3");
             var readyClip = RequiredAsset<AudioClip>(StoryAudioRoot + "STORY_ready_departure.wav");
             var checkClips = new[]
             {

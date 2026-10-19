@@ -12709,7 +12709,7 @@ MonoBehaviour:
   RepairScreen: {fileID: 1066902081}
   CountdownClip: {fileID: 8300000, guid: 1d4d2d48c2d9af54b95954fede2989b5, type: 3}
   IgnitionClip: {fileID: 8300000, guid: dd2c14751f6ea584ca91626fb0f803ab, type: 3}
-  EngineLoopClip: {fileID: 8300000, guid: b6c6e33abfde2004da9845da0fafbd51, type: 3}
+  EngineLoopClip: {fileID: 8300000, guid: 1acebf4d6d74f164cbd4158b71d23761, type: 3}
   Duration: 40
   CountdownDuration: 3
   IgnitionDuration: 2
@@ -14340,7 +14340,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 854987675}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8608228945906164174, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14451,11 +14451,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -4161369568681901532, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
---- !u!4 &2035621021 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -3910990755373119420, guid: a956a7e71c8752b4d815404d8e74c5d9, type: 3}
-  m_PrefabInstance: {fileID: 2035621020}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2037448071 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1974213819963990858, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
@@ -15362,3 +15357,4 @@ SceneRoots:
   - {fileID: 1150390826}
   - {fileID: 1910286362}
   - {fileID: 1161544403}
+  - {fileID: 2035621020}

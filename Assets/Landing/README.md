@@ -25,7 +25,7 @@
 5. 升空过程中逐步淡化火星光照、地面雾和后处理，穿过完全覆盖舱外的大气雾罩后隐藏火星外景；然后星空显现、火星缩小。驾驶舱和自由观察相机保持同一套对象，演出不改相机局部位置或视角。
 6. 抵达轨道后熄火、收束震动，屏幕显示 `ORBIT / CRUISE`，播放返航对话并保持太空画面。终端节点 `launch_ignition / launch_ascent / launch_exit / launch_orbit` 跟随真实动画阶段，无法靠快进提前抵达轨道。
 
-`LaunchSequenceController.Duration` 包含倒数与预热；`CountdownDuration / IgnitionDuration / AscentHeight / ForwardDistance / PitchDegrees` 控制节奏与轨迹，`AccelerationShakePosition / AccelerationShakeRotation / GroundDustEmission / LiftoffDustBurstCount` 控制表现。音效使用现有 `STORY_ready_departure / STORY_power_restore / STORY_navigation_online / STORY_engine_test / STORY_life_support_valve / STORY_takeoff / AMB_Engine_Idle_Loop / UI_confirm`。
+`LaunchSequenceController.Duration` 包含倒数与预热；`CountdownDuration / IgnitionDuration / AscentHeight / ForwardDistance / PitchDegrees` 控制节奏与轨迹，`AccelerationShakePosition / AccelerationShakeRotation / GroundDustEmission / LiftoffDustBurstCount` 控制表现。起飞引擎循环使用 `494827__nicktimesaudio__seamless-rocket-booster-roar-crackle.mp3`，点火时渐入，在天空完全进入太空后渐出；默认 40 秒演出的最后约 2.45 秒淡出，`EngineVolume` 调整音量。其余音效使用现有 `STORY_ready_departure / STORY_power_restore / STORY_navigation_online / STORY_engine_test / STORY_life_support_valve / STORY_takeoff / UI_confirm`。
 
 ESC 使用现有暂停菜单，检查计时、起飞移动、粒子和各自音源都随暂停停止。`CancelLaunch()` 或起飞中禁用组件会清理新效果、恢复起飞前地面姿态与环境，并开放原来可用的维修/打捞功能；不会卸载借用的火星场景或启用其重复驾驶舱、相机。轨道完成后保留太空状态。
 

@@ -54,6 +54,7 @@ namespace LudumDare60.Landing
         public float PhaseElapsed => Mathf.Max(0f, elapsed - phaseStartedAt);
 
         const float ExteriorHandoff = .60f;
+        const float SpaceTransitionComplete = .93f;
         static LaunchSequenceController activeOwner;
         Coroutine routine;
         MarsLandingEnvironment environment;
@@ -250,7 +251,7 @@ namespace LudumDare60.Landing
             float flight = FlightProgress;
             float ignition = Smooth(countdownSeconds, countdownSeconds + ignitionSeconds, elapsed);
             float thrust = ignition * (1f - Smooth(.86f, 1f, flight));
-            float space = Smooth(.28f, .93f, flight);
+            float space = Smooth(.28f, SpaceTransitionComplete, flight);
             float height = flight * flight * (2f - flight);
             rig.position = groundPosition + Vector3.up * (AscentHeight * height) + groundRotation * Vector3.forward * (ForwardDistance * flight * flight);
             float pitch = PitchDegrees * Smooth(.02f, .42f, flight);
@@ -288,7 +289,8 @@ namespace LudumDare60.Landing
             groundDust.transform.position = groundPosition + Vector3.up * .3f;
             ParticleSystem.EmissionModule dustEmission = groundDust.emission;
             dustEmission.rateOverTime = GroundDustEmission * ignition * (1f - Smooth(.02f, .20f, flight));
-            engineAudio.volume = EngineVolume * thrust;
+            // Keep the roar through atmospheric exit; fade only once the sky is fully in space.
+            engineAudio.volume = EngineVolume * ignition * (1f - Smooth(SpaceTransitionComplete, 1f, flight));
         }
 
         void ApplyEnvironment(float space)
