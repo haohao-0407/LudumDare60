@@ -1,0 +1,11 @@
+Vacuum-Tube Radio Receiver
+
+Description:
+A heavy cast-iron case houses several clear glass vacuum tubes behind its front grille. The tuning dial's etched markings are worn, and much of the speaker diaphragm is dry and cracked. It was once the sole communications link for a distant interstellar colony, receiving broadcasts from the homeworld across the void. After the old era ended, this receiver became a symbol of romance. Now, it is only good for salvaging the copper and insulating components inside.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x2
+Tinned Copper Wire & Windings x4
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x2
+Vulcanized Airtight Rubber Liners x1

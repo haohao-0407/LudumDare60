@@ -1,0 +1,11 @@
+Discarded Thermoelectric Insulation Sleeve
+
+Description:
+A thick, heavy cast-iron outer cylinder lined with large slabs of grayish-white insulating ceramic. Aged rubber gaskets are pressed into its seams, and dark brown marks from scorching heat stain the surface. It once encased a thermoelectric power core, insulating the surrounding hull structure from its fearsome heat. This outer sleeve is safe and provides heat-resistant material essential for building a power unit.
+
+Dismantling yields:
+Rolled Electromechanical Alloy Sheets x3
+Tinned Copper Wire & Windings x1
+Precision Drive Gear Blanks x1
+Heat-Resistant Ceramic Insulators x4
+Vulcanized Airtight Rubber Liners x2

@@ -258,13 +258,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 456478083}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.014999172, y: 0.0000041380986, z: 0.000042826327, w: 0.9998875}
-  m_LocalPosition: {x: -0.009819122, y: 0.08122983, z: 0.2593144}
+  m_LocalRotation: {x: -0.0566817261, y: 0.0106721576, z: -0.00074076344, w: 0.998335004}
+  m_LocalPosition: {x: -0.121691875, y: -0.220629379, z: 0.552029669}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1672396309}
-  m_LocalEulerAnglesHint: {x: 0, y: 183.92, z: 0}
+  m_LocalEulerAnglesHint: {x: 353.502563, y: 1.23373353, z: 359.84494}
 --- !u!114 &456478087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1527,6 +1527,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DOS Terminal System
       objectReference: {fileID: 0}
+    - target: {fileID: 3133594140244443630, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
+      propertyPath: conversation
+      value: 
+      objectReference: {fileID: 11400000, guid: 1883a729fa7c6b34b94dec3487a8fa12, type: 2}
     - target: {fileID: 3564961819217103473, guid: ec12e21fc2f211346a27bdf80691bb97, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.000061035156
