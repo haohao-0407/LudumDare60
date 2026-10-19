@@ -13,13 +13,18 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 | --- | --- | ---: |
 | Power Unit | `EnergyAssembly.prefab` | 3 |
 | Interstellar Navigation System | `NavigationAssembly.prefab` | 4 |
-| Propulsion Engine | 暂复用 `NavigationAssembly.prefab` | 4 |
-| Life Support System | `LifeSupportAssembly.prefab` | 5 |
+| Propulsion Engine | `PropulsionEngineAssembly.prefab` | 3 |
+| Life Support System | `LifeSupportAssembly.prefab` | 4 |
 
-能源、生命关卡及其 `DeviceAssemblyLayout` 来自
-`origin/codex/assembly-snapshot-engine-pending-20261019` 的 `90402b9`。
-该提交尚无引擎关卡，因此引擎保留原配置。只接入拼装资源，没有导入远端屏幕、场景或维修逻辑。
-能源与生命配方的 `PuzzleOffset` 抵消各自的 `viewCenter`，适配现有工作台相机。
+引擎与生命关卡按 2026-10-19 19:46–19:51 的组装前后截图配置。
+引擎保留 BezierCurve.011、Cube.007、Cylinder.001 的原始三维旋转和缩放，包括端板的负缩放。
+生命系统采用 CUT_test、CUT_test.001、CUT_test.003、CUT_test.004 四块，不包含旧版水箱和门。
+各配方的 `PuzzleOffset` 抵消关卡的 `viewCenter`，适配现有工作台相机。
+完成后显示完整模型并锁定，切换配方保留当前单局进度；材料需求与维修顺序沿用原配置。
+
+独立试玩：`Assets/AssemblyDemo/Scenes/EngineAndLifeAssembly.unity`，Play 后 F1 引擎 / F2 生命。
+单项入口：`PropulsionEngineAssembly.unity`、`LifeSupportAssembly.unity`，均位于同一 Scenes 目录。
+重建菜单：`Tools > Ship Assembly > Build Engine And Revised Life Support Levels`。原始模型预制体不被改写。
 
 | 材料 | Power Unit | Interstellar Navigation System | Propulsion Engine | Life Support System |
 | --- | ---: | ---: | ---: | ---: |
@@ -80,4 +85,7 @@ SHIP 的 `SalvageInventoryBridge.materialYieldCatalog` 已连接
 编辑器菜单 `Tools > Ship Assembly > Install In SHIP And Save` 可补装引用和创建缺失资产；
 它只接受当前打开的 SHIP，不会打开或改写 NavigationAssembly，也不会覆盖已有配方配置或屏幕布局。
 
-本次交付只编辑、导入和保存资源，未执行自动化测试或 Play Mode。运行时交互由项目作者验收。
+引擎及新版生命系统已通过 74 项原有组装测试、74 项几何检查和 SHIP Play Mode 中的 97 项检查。
+运行检查覆盖四份生产配方的顺序限制、共享库存扣料、继续组装不重复扣料、吸附完成、维修屏同步、切换保留进度和完成锁定。
+报告位于 `Logs/NativeRepairLevels/geometry-validation.txt`、`Logs/NativeRepairLevels/ship-runtime-validation.txt`。
+验证菜单：`Tools > Ship Assembly > Validate Engine And Revised Life Support Geometry` 和 `Validate Native Levels In SHIP Play Mode`。
