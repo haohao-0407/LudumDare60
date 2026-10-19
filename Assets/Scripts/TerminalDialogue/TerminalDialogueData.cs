@@ -54,6 +54,8 @@ namespace LudumDare60.TerminalDialogue
     {
         public string Id = "";
         public string Title = "";
+        // Only explicit story-reading nodes freeze gameplay; operational menus stay live.
+        public bool PauseGameplayWhileReading;
         public List<TerminalLine> Lines = new List<TerminalLine>();
         public List<TerminalChoice> Choices = new List<TerminalChoice>();
         // Used only when this node has no authored choices. Empty means end.

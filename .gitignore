@@ -50,6 +50,9 @@ ExportedObj/
 .consulo/
 *.csproj
 !/Tests/TerminalDialogue/TerminalDialogue.Tests.csproj
+!/Tests/ReturnWindow/ReturnWindow.Tests.csproj
+/Tests/**/bin/
+/Tests/**/obj/
 *.unityproj
 *.sln
 *.suo

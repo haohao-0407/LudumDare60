@@ -34,6 +34,7 @@ namespace LudumDare60.TerminalDialogue
         public TerminalPhase Phase { get; private set; }
         public bool IsOpen { get; private set; }
         public string CurrentNodeId { get; private set; }
+        public bool IsStoryReading => IsOpen && graph.FindNode(CurrentNodeId)?.PauseGameplayWhileReading == true;
         public string AIName => graph.AIName;
         public IReadOnlyList<TerminalMessage> Messages => messageView;
         public IReadOnlyList<TerminalChoice> Choices => choiceView;
@@ -69,6 +70,26 @@ namespace LudumDare60.TerminalDialogue
 
         public void Open() { if (IsOpen) return; IsOpen = true; Touch(); Pump(); }
         public void Close() { if (!IsOpen) return; IsOpen = false; Touch(); }
+
+        /// <summary>Interrupts pending dialogue, preserving history and flags. For mission transitions.</summary>
+        public bool GoToNode(string nodeId)
+        {
+            if (graph.FindNode(nodeId) == null) return false;
+            tasks.Clear();
+            events.Clear();
+            notifications.Clear();
+            choices.Clear();
+            OptionsRevision++;
+            // Complete the displayed line before moving on, without committing its pending choice.
+            if (activeLine != null) VisibleCodeUnits = activeLine.Text.Length;
+            activeLine = null;
+            Phase = TerminalPhase.Idle;
+            CurrentNodeId = nodeId;
+            tasks.Enqueue(new Task { Kind = TaskKind.EnterNode, NodeId = nodeId });
+            Touch();
+            Pump();
+            return true;
+        }
         public bool GetFlag(string key) => key != null && flags.TryGetValue(key, out var value) && value;
 
         public void SetFlag(string key, bool value)
@@ -269,7 +290,8 @@ namespace LudumDare60.TerminalDialogue
                 InitialFlags = CopyFlags(source.InitialFlags) };
             foreach (var node in source.Nodes)
             {
-                var n = new TerminalNode { Id = node.Id, Title = node.Title, NextNodeId = node.NextNodeId };
+                var n = new TerminalNode { Id = node.Id, Title = node.Title, NextNodeId = node.NextNodeId,
+                    PauseGameplayWhileReading = node.PauseGameplayWhileReading };
                 if (node.Lines != null)
                     foreach (var line in node.Lines) n.Lines.Add(new TerminalLine { Speaker = line.Speaker,
                         Text = line.Text, DisplayName = line.DisplayName, WaitForContinue = line.WaitForContinue, DelayAfter = line.DelayAfter,

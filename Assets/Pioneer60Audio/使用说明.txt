@@ -1,0 +1,59 @@
+﻿PIONEER-60 可用音效包
+日期：2026-10-18
+
+交付：69 个 48 kHz / 16-bit PCM / 双声道 WAV。
+11 条循环（9 条环境/通讯、2 条机械作业），12 条组合音效，46 条清理后的独立音效。
+
+快速使用
+1. 整个 Pioneer60Audio 文件夹可放入 Unity 项目的 Assets 下。
+2. Editor/Pioneer60AudioImportSettings.cs 会仅为 Assets/Pioneer60Audio/Audio/ 下的音频设置 PCM、保留采样率、Decompress On Load 和预载。
+3. 循环文件在 AudioSource 上勾选 Loop，播放整个文件，不要按帧反复调用 Play。
+4. 正常/受损舱内环境使用独立 AudioSource，切换时做 0.8–1.5 秒交叉淡化。
+5. 组装/打捞工作循环停止时淡出 0.12–0.2 秒，再接完成或取消音效。一次性音效关闭 Loop。
+6. 文件已统一响度并留出峰值余量。以 AudioSource.volume=1 作为文件相对电平基准，再通过总线调整；多个声源叠加时仍需保留总线余量。
+7. 此包已准备并复制到项目中，但尚未绑定任何玩法事件；下一次打开 Unity 时导入。导入脚本已针对 Unity 6000.6.5f1 程序集独立编译通过；隔离 Unity 6000.6.5f1 工程已验证 69 条音频导入、PCM 解码及 11 条循环接缝；尚未进行游戏内试听。
+
+推荐优先用这些成品
+正常舱内：Audio/01_Loops/AMB_Cabin_Healthy_Loop.wav（16 秒）
+受损舱内：Audio/01_Loops/AMB_Cabin_Damaged_Loop.wav（16 秒）
+火星地表：Audio/01_Loops/AMB_Mars_Wind_Loop.wav（32 秒）
+强风沙尘：Audio/01_Loops/AMB_Mars_Storm_Loop.wav（32 秒）
+单独漏气：Audio/01_Loops/AMB_Air_Leak_Loop.wav（16 秒）
+弱信号底噪：Audio/01_Loops/COM_Radio_Static_Loop.wav（16 秒）
+综合舱内循环已含引擎/风扇等，不必再次叠加相同单层。
+
+坠毁
+CRASH_Cinematic：8.00 秒，1.80 秒主撞击；包含引擎失控、金属挤压、碰撞、爆炸、碎片、漏气余声。
+CRASH_Impact_Short：3.40 秒，0.00 秒主撞击；适合实际碰撞事件即时触发。
+CRASH_Hull_Buckle：4.80 秒，单独舱体挤压/断裂，可用于受损剧情。
+
+组装
+固定时长：ASSEMBLY_Full，3.60 秒；2.34 秒锁扣，2.62 秒成功提示。
+可变时长：ASSEMBLY_Start → ASSEMBLY_Work_Loop → ASSEMBLY_Complete。
+Work_Loop 长 8 秒，可重复任意次数；完成声不在循环内。
+
+打捞
+固定时长：SALVAGE_Full，6.20 秒；3.80 秒回收触舱，4.55 秒成功提示。
+可变时长：SALVAGE_Start → SALVAGE_Work_Loop → SALVAGE_Complete。
+取消：停止/淡出 Work_Loop，播放 SALVAGE_Cancel。
+
+通讯补充
+COM_Telegraph_SOS：2.25 秒，从 beep 素材编排的 SOS。
+COM_Telegraph_ACK：0.75 秒，从 beep 素材编排的 R 应答。
+其余确认、报错、打字、维修剧情音效见 Audio/02_Single_Shots/。
+
+处理与校验
+去除多余静音、DC/极低频，重采样，控制响度与四倍过采样真峰值；瞬态不做硬削波。
+所有成品真峰值 ≤ -3 dBTP（数值容差 0.05 dB）；环境音一般为 -24 至 -33 LUFS。
+短于 0.4 秒的音效按 RMS 调整；撞击等瞬态为保峰值可能低于目标响度。
+循环为连续信号，不在边界淡出到零。11 条循环首尾采样相同，100 ms 窗口无静音断档。
+已完成信号、格式、浏览器播放及隔离 Unity 导入检查，尚未进行人工听感审定或游戏内混音。
+manifest.json 包含每条成品的实际 LUFS、真峰值、时长、来源及关键动作时间。
+
+许可
+通风、故障风扇，以及由它们组合的正常/受损舱内环境，共 4 个文件含 CC BY 3.0 素材，使用时保留 CREDITS.txt 中的作者、链接和修改说明。
+其他音频由 CC0 素材处理而来。金属挤压源素材是作者公开 HQ MP3 试听版。
+
+Unity 导入设置参考（官方）
+https://docs.unity.com/en-us/engine/6000.0/manual/audio/files/compression
+https://docs.unity.com/en-us/engine/6000.3/script-reference/unityeditor/audioimportersamplesettings/preloadaudiodata

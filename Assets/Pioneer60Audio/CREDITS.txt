@@ -1,0 +1,30 @@
+PIONEER-60 / PROCESSED AUDIO CREDITS
+
+Sources downloaded 2026-10-18. Derived audio prepared 2026-10-18.
+All 69 output files are edited versions. Edits include trimming, DC removal, filtering, resampling, gain adjustment, fades, loop crossfades, granular sustain editing, layering, pitch changes, stereo placement and 16-bit dithering. See manifest.json for per-file source mappings.
+
+CC BY 3.0 attribution — retain these credits when distributing the listed files:
+Ventilation version2 — MidFag — https://opengameart.org/content/ventilation-version2 — https://creativecommons.org/licenses/by/3.0/
+Broken Fan Loop — dklon — https://opengameart.org/content/broken-fan-loop — https://creativecommons.org/licenses/by/3.0/
+These recordings have been edited into loops, equalized, resampled, level-adjusted and, where indicated, mixed with other recordings. No endorsement by the original authors is implied.
+
+Audio/01_Loops/AMB_Ventilation_Loop.wav — includes MidFag
+Audio/01_Loops/AMB_Broken_Fan_Loop.wav — includes dklon
+Audio/01_Loops/AMB_Cabin_Healthy_Loop.wav — includes MidFag
+Audio/01_Loops/AMB_Cabin_Damaged_Loop.wav — includes dklon
+
+CC0 recordings — source credits retained voluntarily:
+Kenney — https://kenney.nl/assets/sci-fi-sounds — https://creativecommons.org/publicdomain/zero/1.0/
+Luke.RUSTLTD — https://opengameart.org/content/wind1 — https://creativecommons.org/publicdomain/zero/1.0/
+bart — https://opengameart.org/content/steam-release-sounds — https://creativecommons.org/publicdomain/zero/1.0/
+xhunterko — https://opengameart.org/content/static — https://creativecommons.org/publicdomain/zero/1.0/
+Kenney — https://kenney.nl/assets/interface-sounds — https://creativecommons.org/publicdomain/zero/1.0/
+rubberduck — https://opengameart.org/content/100-cc0-metal-and-wood-sfx — https://creativecommons.org/publicdomain/zero/1.0/
+ingudios — https://freesound.org/people/ingudios/sounds/119468/ — https://creativecommons.org/publicdomain/zero/1.0/
+bart — https://opengameart.org/content/chain-winch-sounds — https://creativecommons.org/publicdomain/zero/1.0/
+Kenney — https://kenney.nl/assets/impact-sounds — https://creativecommons.org/publicdomain/zero/1.0/
+Test User — https://opengameart.org/content/beep-sound — https://creativecommons.org/publicdomain/zero/1.0/
+
+The Metal Creak 4 source is the public HQ MP3 preview by ingudios, not the original WAV.
+The generated audio derived only from CC0 recordings is offered under CC0 1.0. Outputs containing CC BY 3.0 recordings retain CC BY 3.0 attribution requirements.
+License labels in manifest.json refer to audio outputs; they do not relicense third-party marks or software.

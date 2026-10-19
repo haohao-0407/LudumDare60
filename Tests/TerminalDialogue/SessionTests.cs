@@ -20,8 +20,11 @@ internal static class SessionTests
         Run("history remains bounded across loops", BoundedHistory);
         Run("invalid targets, duplicate IDs and empty cycles rejected", ValidateBadGraphs);
         Run("invalid timing rejected", InvalidTiming);
+        Run("story-reading state follows opened snapshotted nodes", StoryReadingState);
+        Run("forced mission transition cancels uncommitted input and queued notifications", InterruptPendingInput);
+        Run("forced closed transition preserves flags and transcript and resumes on open", InterruptWhileClosed);
         Console.WriteLine("Passed " + passed + " terminal dialogue tests.");
-        return passed == 14 ? 0 : 1;
+        return passed == 17 ? 0 : 1;
     }
 
     private static void Run(string name, Action test)
@@ -194,5 +197,55 @@ internal static class SessionTests
         var session = Waiting();
         try { session.Tick(float.NaN); throw new Exception("NaN accepted"); }
         catch (ArgumentOutOfRangeException) { }
+    }
+
+    private static void StoryReadingState()
+    {
+        var graph = Graph();
+        graph.Nodes[0].PauseGameplayWhileReading = true;
+        var session = new TerminalDialogueSession(graph);
+        Check(!session.IsStoryReading, "idle conversation pauses gameplay");
+        session.Start();
+        Check(session.IsStoryReading, "story typing did not pause");
+        graph.Nodes[0].PauseGameplayWhileReading = false;
+        session.Advance();
+        Check(session.IsStoryReading, "story choice did not pause or graph edit changed snapshot");
+        session.Close();
+        Check(!session.IsStoryReading, "closed terminal pauses gameplay");
+        session.Open();
+        Check(session.IsStoryReading, "reopening story failed to restore reading state");
+        session.Choose("scan");
+        Check(session.IsStoryReading, "story player reply stopped pause early");
+        session.Advance();
+        Check(!session.IsStoryReading, "operational node incorrectly pauses gameplay");
+    }
+
+    private static void InterruptPendingInput()
+    {
+        var session = Waiting();
+        session.Choose("scan");
+        session.PostSystemMessage("Stale warning");
+        Check(!session.GoToNode("missing"), "invalid transition accepted");
+        Check(session.GoToNode("result"), "valid transition rejected");
+        Check(!session.GetFlag("scanned") && !session.TryDequeueEvent(out _), "interrupted choice committed");
+        session.Advance();
+        Check(session.Phase == TerminalPhase.Completed && session.Messages.Count == 3, "stale task or notification survived transition");
+        Check(!session.TryDequeueEvent(out _), "cancelled event leaked later");
+    }
+
+    private static void InterruptWhileClosed()
+    {
+        var graph = Graph();
+        graph.Nodes[1].PauseGameplayWhileReading = true;
+        var session = Waiting(graph);
+        session.SetFlag("external_flag", true);
+        session.Close();
+        Check(session.GoToNode("result"), "closed transition rejected");
+        Check(!session.IsOpen && !session.IsStoryReading && session.Messages.Count == 1, "closed transition unexpectedly displayed");
+        session.Open();
+        Check(session.IsStoryReading && session.Messages.Count == 2, "closed transition failed to open target");
+        Check(session.GetFlag("external_flag"), "transition lost external flag");
+        session.Advance();
+        Check(session.Phase == TerminalPhase.Completed, "ending did not complete");
     }
 }

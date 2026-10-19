@@ -1,0 +1,9 @@
+PASS Twenty MM/DD cells cross month boundary; completed dates use two-stroke crosses, only 09/13 is circled, next morning is 09/14
+PASS Briefing -> window -> schedule -> immediate mission start, actual dialogue callbacks
+PASS Story typing/reading pause, launch guard, nested menu pause and clean resume
+PASS Actual CONTROL/PRESSURE/MOUNT joint repair, input guards and inactive-workshop persistence
+PASS Persistent service rejects duplicates; additive scene unload does not freeze the mission
+PASS Real asynchronous scene transition preserves clock, physical joints, AI status and inventory without loading-time cost
+PASS Immediate confirmed departure, repair gate, frozen calendar and mutually exclusive ending
+PASS Restart clears run, exact expiry reaches stay ending, all twenty crosses recorded and launch locked
+PASS Physical calendar and countdown survive both ending transitions

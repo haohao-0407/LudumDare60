@@ -1,4 +1,5 @@
 using LudumDare60.Salvage;
+using LudumDare60.Storage;
 using TMPro;
 using UnityEditor;
 using UnityEditor.SceneManagement;
@@ -73,20 +74,23 @@ namespace LudumDare60.Salvage.Editor
 
             var title = Text("Title", root.transform, "SHIP OS  /  SALVAGE CONTROL", 24, TitleColor);
             Place(title.rectTransform, 24, 558, CanvasWidth - 48, 46);
+            AnchorVertically(title.rectTransform, 1, 1);
 
             // ---- 打捞轨道 ----
             const float trackX = 40f, trackY = 78f, trackW = 200f, trackH = 420f;
             var bezel = Panel("Track Bezel", root.transform, trackX - 4, trackY - 4, trackW + 8, trackH + 8, BezelColor);
             bezel.name = "Track Bezel";
+            AnchorVertically(bezel, 0, 1);
             var track = Panel("Track", root.transform, trackX, trackY, trackW, trackH, TrackColor);
+            AnchorVertically(track, 0, 1);
 
             for (var i = 1; i < 10; i++)
             {
                 var line = Panel("Grid " + i, track, 0, trackH * i / 10f, trackW, 1f, GridColor);
-                line.anchorMin = new Vector2(0f, 0f);
-                line.anchorMax = new Vector2(1f, 0f);
+                line.anchorMin = new Vector2(0f, i / 10f);
+                line.anchorMax = new Vector2(1f, i / 10f);
                 line.pivot = new Vector2(0.5f, 0.5f);
-                line.anchoredPosition = new Vector2(0f, trackH * i / 10f);
+                line.anchoredPosition = Vector2.zero;
                 line.sizeDelta = new Vector2(0f, 1f);
             }
 
@@ -102,7 +106,9 @@ namespace LudumDare60.Salvage.Editor
 
             var progressBezel = Panel("Progress Bezel", root.transform, trackX + trackW + 8, trackY - 4, 20, trackH + 8, BezelColor);
             progressBezel.name = "Progress Bezel";
+            AnchorVertically(progressBezel, 0, 1);
             var progressTrack = Panel("Progress Track", root.transform, trackX + trackW + 10, trackY, 16, trackH, TrackColor);
+            AnchorVertically(progressTrack, 0, 1);
             var progressFill = Panel("Progress Fill", progressTrack, 0, 0, 16, trackH * 0.3f, ProgressColor);
             progressFill.anchorMin = new Vector2(0f, 0f);
             progressFill.anchorMax = new Vector2(1f, 0f);
@@ -114,18 +120,23 @@ namespace LudumDare60.Salvage.Editor
             const float colX = 330f;
             var item = Text("Item", root.transform, "UNKNOWN SIGNAL", 26, TextColor);
             Place(item.rectTransform, colX, 498, CanvasWidth - colX - 32, 42);
+            AnchorVertically(item.rectTransform, 1, 1);
 
             var state = Text("State", root.transform, ">> STANDBY", 20, DimColor);
             Place(state.rectTransform, colX, 452, CanvasWidth - colX - 32, 32);
+            AnchorVertically(state.rectTransform, 1, 1);
 
             var zoneReadout = Text("Zone Readout", root.transform, "CATCH 0.00 - 0.00", 19, DimColor);
             Place(zoneReadout.rectTransform, colX, 300, CanvasWidth - colX - 32, 30);
+            AnchorVertically(zoneReadout.rectTransform, 0.5f, 0.5f);
 
             var fishReadout = Text("Target Readout", root.transform, "TARGET 0.00", 19, DimColor);
             Place(fishReadout.rectTransform, colX, 266, CanvasWidth - colX - 32, 30);
+            AnchorVertically(fishReadout.rectTransform, 0.5f, 0.5f);
 
             var progressReadout = Text("Progress Readout", root.transform, "PROGRESS 0%", 19, DimColor);
             Place(progressReadout.rectTransform, colX, 232, CanvasWidth - colX - 32, 30);
+            AnchorVertically(progressReadout.rectTransform, 0.5f, 0.5f);
 
             var hint = Text("Hint", root.transform, "HOLD  [SPACE]  OR  CLICK THE SCREEN", 18, DimColor);
             Place(hint.rectTransform, 24, 26, CanvasWidth - 48, 30);
@@ -135,6 +146,13 @@ namespace LudumDare60.Salvage.Editor
             poolSource.FindProperty("pool").objectReferenceValue = pool;
             poolSource.ApplyModifiedPropertiesWithoutUndo();
             var controller = root.GetComponent<SalvageController>();
+
+            // Keep inventory and its completion listener alive for the full salvage screen lifetime.
+            var inventory = root.AddComponent<InventoryController>();
+            var inventoryBridge = new SerializedObject(root.AddComponent<SalvageInventoryBridge>());
+            inventoryBridge.FindProperty("salvageController").objectReferenceValue = controller;
+            inventoryBridge.FindProperty("inventoryController").objectReferenceValue = inventory;
+            inventoryBridge.ApplyModifiedPropertiesWithoutUndo();
 
             var view = root.AddComponent<SalvageScreenView>();
             view.Configure(controller, track, catchZone, fish, progressFill, item, state,
@@ -174,6 +192,15 @@ namespace LudumDare60.Salvage.Editor
             var rect = new GameObject(name, typeof(RectTransform)).GetComponent<RectTransform>();
             rect.SetParent(parent, false);
             return rect;
+        }
+
+        private static void AnchorVertically(RectTransform rect, float minimum, float maximum)
+        {
+            // Preserve the authored 620px layout while following the mounted screen's height.
+            rect.anchorMin = new Vector2(rect.anchorMin.x, minimum);
+            rect.anchorMax = new Vector2(rect.anchorMax.x, maximum);
+            rect.anchoredPosition -= Vector2.up * (CanvasHeight * minimum);
+            rect.sizeDelta -= Vector2.up * (CanvasHeight * (maximum - minimum));
         }
 
         private static void Place(RectTransform rect, float x, float y, float w, float h)

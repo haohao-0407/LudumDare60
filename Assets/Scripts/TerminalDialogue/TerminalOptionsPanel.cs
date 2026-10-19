@@ -16,6 +16,7 @@ namespace LudumDare60.TerminalDialogue
         [SerializeField] private UnityEngine.UI.Button advanceButton;
         [SerializeField] private UnityEngine.UI.Button closeButton;
         [SerializeField] private UnityEngine.UI.Button openButton;
+        [SerializeField] private bool showConnectButton = true;
         private readonly List<TerminalChoiceButton> pool = new List<TerminalChoiceButton>();
         private TerminalDialogueSession displayedSession;
         private TerminalPhase lastPhase;
@@ -59,7 +60,7 @@ namespace LudumDare60.TerminalDialogue
             var session = controller != null ? controller.Session : null;
             var open = session != null && session.IsOpen;
             if (windowRoot != null) windowRoot.SetActive(open);
-            if (openButton != null) openButton.gameObject.SetActive(!open);
+            if (openButton != null) openButton.gameObject.SetActive(showConnectButton && !open);
             if (session == displayedSession && session != null && optionsRevision == session.OptionsRevision
                 && lastPhase == session.Phase && wasOpen == open) return;
             displayedSession = session;
@@ -87,10 +88,13 @@ namespace LudumDare60.TerminalDialogue
             if (advanceButton != null) advanceButton.gameObject.SetActive(canAdvance);
             if (advanceLabel != null) advanceLabel.text = lastPhase == TerminalPhase.Typing ? "SHOW FULL TEXT" : "CONTINUE";
             if (statusText != null)
+            {
                 statusText.text = !open ? "TERMINAL OFFLINE" : lastPhase == TerminalPhase.WaitingForChoice
                     ? (count > 0 ? "SELECT A RESPONSE" : "WAITING FOR AVAILABLE ACTIONS")
                     : lastPhase == TerminalPhase.Completed ? "SESSION ENDED" : lastPhase == TerminalPhase.WaitingForContinue
                         ? "AWAITING CONTINUE" : "TRANSMITTING...";
+                if (open && session.IsStoryReading) statusText.text = "STORY READING / MISSION PAUSED";
+            }
         }
     }
 }

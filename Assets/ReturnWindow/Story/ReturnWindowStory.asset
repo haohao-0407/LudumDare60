@@ -1,0 +1,762 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3839dfbbd097940ad0919d7d9887a0, type: 3}
+  m_Name: ReturnWindowStory
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.TerminalDialogue.TerminalDialogueDefinition
+  graph:
+    AIName: NAV AI
+    DefaultTextColor:
+      R: 0.65
+      G: 1
+      B: 0.76
+      A: 1
+    EntryNodeId: intro
+    InitialFlags:
+    - Key: repair_ready
+      Value: 0
+    Nodes:
+    - Id: intro
+      Title: "\u65E0\u4EBA\u6B96\u6C11\u5730"
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'ARRIVAL RECORD / {ARRIVAL_DATE}.
+
+          NOW / {START_DATE}. After months at a remote survey station, you return to the colony. Nobody comes to meet you.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 1
+        DisplayName: 
+        Text: Colony control, this is the return craft. Does anyone read me?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: All inhabited sectors are silent. No crew transponders. No response from the surface relay.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 1
+        DisplayName: 
+        Text: Then I want to go home.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: Checking propulsion, reserves and the departure assembly. There is a problem.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: diagnose
+        Label: SHOW ME THE DAMAGE
+        PlayerText: Tell me what we have left.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: window
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: window
+      Title: "\u4F4E\u80FD\u8017\u8FD4\u822A\u7A97\u53E3"
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The damaged propulsion system has very little fuel margin. Rebuild the departure assembly, and we can still reach a low-energy Earth-return trajectory.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: Our navigation archive lists 03-13 SEP 1981 for the planned Mars-to-Earth departure. The lower-energy route is the only one inside our remaining fuel budget. Missing our cutoff would demand more fuel than we can safely commit.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: 'The next return period listed in the study is {NEXT_OPPORTUNITY}: more than two years later. It is a planning reference, not a guarantee for this damaged craft. Our stored food cannot cover that wait. We would have to restore the greenhouse.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: The amber instrument marks our LATEST DEPARTURE authorization. The circled date is {LAST_DATE}; the ascent allowance is already reserved. If we repair early, we can launch to a waiting orbit, then make the Earth-return burn inside the planned window.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: make_schedule
+        Label: MAKE A PLAN
+        PlayerText: Give me a schedule. We are not staying here.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: schedule
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: schedule
+      Title: "\u4EFB\u52A1\u65E5\u7A0B\u4E0E\u5F00\u59CB\u786E\u8BA4"
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: 'The paper calendar runs from {START_DATE} through {LAST_DATE}: {DAY_COUNT} dated workdays. The cells use MONTH/DAY, not numbered mission days. I will add a red cross after each date has ended. Only the final deadline is circled.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 2
+        DisplayName: 
+        Text: The simulation compresses {DAY_COUNT} Earth-standard 24-hour dates into {ACTIVE_MINUTES} minutes of active work. Explicit story reading pauses the mission and all work. Repairs, salvage and ordinary terminal queries use time.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: The countdown begins when you select BEGIN MISSION. Completing repairs will not launch the craft. You must return here and confirm departure before the clock reaches zero.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 2
+        DisplayName: 
+        Text: 'MOUSE: look around. E: connect or leave this terminal. ESC: return from a workstation, close the terminal, or pause the mission.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: start_mission
+        Label: BEGIN MISSION
+        PlayerText: Start the clock. I am ready.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: review_window
+        Label: REVIEW THE ROUTE
+        PlayerText: Explain the departure window once more.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: window
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: mission
+      Title: "\u8FD0\u884C\u4E2D\u7684\u4EFB\u52A1\u7EC8\u7AEF"
+      PauseGameplayWhileReading: 0
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Mission channel ready. The clock is running. Check the calendar and the amber departure instrument beside your seat.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: status
+        Label: QUERY TIME AND REPAIRS
+        PlayerText: Report the time remaining and the assembly status.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: status
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: tasks
+        Label: VIEW WORK SCHEDULE
+        PlayerText: Show the work sequence.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: tasks
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: salvage
+        Label: RECOVER OPTIONAL SUPPLIES
+        PlayerText: Start the salvage program.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: open_repair
+        Label: REBUILD DEPARTURE ASSEMBLY
+        PlayerText: Open the repair workstation.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: read_story
+        Label: READ THE COLONY LOG
+        PlayerText: Let me read the last colony log.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: story_memory
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: launch
+        Label: PREPARE TO DEPART
+        PlayerText: Run the departure checks.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: launch
+        Conditions:
+        - Key: repair_ready
+          Value: 1
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: status
+      Title: "\u5B9E\u65F6\u72B6\u6001\u67E5\u8BE2"
+      PauseGameplayWhileReading: 0
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Reading the live mission instruments. The remaining time and assembly report follow in the system channel. Querying does not stop the clock.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: return_mission
+        Label: RETURN TO MISSION
+        PlayerText: Back to the mission channel.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: tasks
+      Title: "\u7EF4\u4FEE\u6E05\u5355"
+      PauseGameplayWhileReading: 0
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: '1. RECOVER: salvage optional supplies if you can spare the time. The repair parts are already at the workstation; extra supplies are not required to depart.
+
+          2. REBUILD: fit every required assembly part into its socket.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: '3. CHECK: wait for the assembly to report complete.
+
+          4. DEPART: select PREPARE TO DEPART, then confirm while time remains. The complete dated calendar is available; its dates are planning marks, not separate task deadlines.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: open_repair
+        Label: OPEN REPAIR WORKSTATION
+        PlayerText: Open the repair workstation now.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      - Id: return_mission
+        Label: RETURN TO MISSION
+        PlayerText: I have the sequence.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: story_memory
+      Title: "\u6B96\u6C11\u5730\u65E5\u5FD7\u9605\u8BFB"
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: 'PERSONAL LOG / HABITAT 03
+
+          If anyone returns, the seed cabinet is under the greenhouse bench. Leave the small lamp on. It helps to think somebody is coming back.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: There is no departure entry after this recording. I cannot tell you where they went.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 1
+        DisplayName: 
+        Text: Keep the log. Someone should remember them.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: Saved. Your work will resume when you leave this reading window.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: return_mission
+        Label: CLOSE LOG / RESUME WORK
+        PlayerText: Close the log. We still have work to do.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: repair_ready
+      Title: "\u7EF4\u4FEE\u5B8C\u6210\u63D0\u793A"
+      PauseGameplayWhileReading: 0
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: The departure assembly reports complete. That is enough for the low-energy return plan. We can leave as soon as you authorize departure; the window is still counting down.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: launch
+        Label: PREPARE TO DEPART
+        PlayerText: Run the departure checks.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: launch
+        Conditions:
+        - Key: repair_ready
+          Value: 1
+        SetFlags: []
+        Events: []
+      - Id: return_mission
+        Label: RETURN TO MISSION
+        PlayerText: Keep the mission channel open.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: launch
+      Title: "\u51FA\u53D1\u786E\u8BA4"
+      PauseGameplayWhileReading: 0
+      Lines:
+      - Speaker: 0
+        DisplayName: 
+        Text: Departure authorization. The assembly must remain complete, and the latest-departure clock must be above zero. Your confirmation is registered at the moment you select it.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: The route gets us away from Mars. I cannot promise what waits at Earth. Shall we go?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: confirm_launch
+        Label: CONFIRM DEPARTURE
+        PlayerText: Take us home.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions:
+        - Key: repair_ready
+          Value: 1
+        SetFlags: []
+        Events: []
+      - Id: return_mission
+        Label: KEEP WORKING
+        PlayerText: Not yet. Return to the mission channel.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: mission
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: ending_home
+      Title: "\u5F00\u653E\u7ED3\u5C40\uFF1A\u56DE\u5BB6\u7684\u8DEF"
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: DEPARTURE ACCEPTED. The countdown has stopped at your authorization time. Ascent to the waiting orbit is cleared.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: The colony is below us. We reach the waiting orbit. Later, inside the planned return window, the Earth-return burn carries us away from Mars.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 1
+        DisplayName: 
+        Text: Is anyone waiting for us?
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: I do not know. I will keep listening.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 2
+        DisplayName: 
+        Text: You do not know whether home still remembers you. But at last, you are on your way back.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: restart
+        Label: BEGIN ANOTHER JOURNEY
+        PlayerText: Begin another journey.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: intro
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 
+    - Id: ending_stay
+      Title: "\u5F00\u653E\u7ED3\u5C40\uFF1A\u4E0B\u4E00\u5929"
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 2
+        DisplayName: 
+        Text: WINDOW CLOSED. We can no longer commit to this return plan with the fuel margin available.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: The next period in our navigation study is {NEXT_OPPORTUNITY}. We must reassess the craft before using it. Stored food will not last that long. I am sorry.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 1
+        DisplayName: 
+        Text: Then tell me what we do tomorrow.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 0
+        DisplayName: 
+        Text: The greenhouse still has a sealed seed cabinet. We can bring its water loop back online. I have made a new entry on the calendar.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      - Speaker: 2
+        DisplayName: 
+        Text: '{SOWING_DATE}: SOW.
+
+          Outside, the dust moves across an empty settlement. Tomorrow, you will plant the first seed.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.3
+      Choices:
+      - Id: restart
+        Label: BEGIN ANOTHER JOURNEY
+        PlayerText: Begin another journey.
+        DisplayName: 
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: intro
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId: 

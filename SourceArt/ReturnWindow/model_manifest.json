@@ -1,0 +1,21 @@
+{
+  "units": "metres",
+  "unity_front": "+Z",
+  "unity_up": "+Y",
+  "root": "bottom centre",
+  "calendar_front": [
+    0.3,
+    0.36
+  ],
+  "countdown_front": [
+    0.44,
+    0.16
+  ],
+  "source": "ReturnWindowProps.blend",
+  "exported": [
+    "ReturnCalendar.glb",
+    "ReturnCountdown.glb"
+  ],
+  "calendar_dates": "1981-08-25 through 1981-09-13; MM/DD; editable reference print replaced in Unity",
+  "dynamic_layers": "Unity-generated seven-segment digits, ink crosses, day marker, sowing epilogue, status and warning light"
+}
