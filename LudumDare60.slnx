@@ -1,9 +1,0 @@
-﻿<Solution>
-  <Project Path="Assembly-CSharp.csproj" />
-  <Project Path="Assembly-CSharp-Editor.csproj" />
-  <Project Path="LudumDare60.AssemblyDemo.Tests.csproj" />
-  <Project Path="LudumDare60.AssemblyDemo.Editor.csproj" />
-  <Project Path="WhiteboxModule.Editor.csproj" />
-  <Project Path="LudumDare60.AssemblyDemo.csproj" />
-  <Project Path="WhiteboxModule.Runtime.csproj" />
-</Solution>
