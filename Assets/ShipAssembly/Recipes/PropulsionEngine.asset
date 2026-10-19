@@ -28,4 +28,4 @@ MonoBehaviour:
     Quantity: 4
   PuzzlePrefab: {fileID: 6696755844158632553, guid: e3edf47ff68628f429950fd01f255936, type: 3}
   OrthographicSize: 5.4
-  PuzzleOffset: {x: 2.0351286, y: -0.73572016, z: 0}
+  PuzzleOffset: {x: 1.8997507, y: -0.6837547, z: 0}
