@@ -19,6 +19,9 @@ namespace LudumDare60.TerminalDialogue
         [SerializeField, Min(0.0001f), InspectorName("离屏幕表面距离（米）")] private float surfaceOffset = 0.002f;
         [SerializeField, InspectorName("翻转正反面")] private bool flipFacing;
         [SerializeField, InspectorName("随屏幕移动")] private bool followTarget = true;
+        [SerializeField, InspectorName("自动贴合画面")]
+        [Tooltip("关闭后不再每帧写回 Canvas 的 sizeDelta / 位置 / 旋转 / localScale，可手动调整；曲面投影仍照常刷新。")]
+        private bool autoFit = true;
         private Transform cachedTarget;
         private MeshFilter cachedFilter;
         private bool refreshTarget = true;
@@ -115,10 +118,13 @@ namespace LudumDare60.TerminalDialogue
             var localScale = new Vector3(scale / Mathf.Max(Mathf.Abs(parentScale.x), 0.00001f),
                 scale / Mathf.Max(Mathf.Abs(parentScale.y), 0.00001f), scale / Mathf.Max(Mathf.Abs(parentScale.z), 0.00001f));
             if (screenCanvas.renderMode != RenderMode.WorldSpace) screenCanvas.renderMode = RenderMode.WorldSpace;
-            if (rect.sizeDelta != pixelSize) rect.sizeDelta = pixelSize;
-            if ((rect.position - position).sqrMagnitude > 1e-12f) rect.position = position;
-            if (Quaternion.Angle(rect.rotation, rotation) > 0.001f) rect.rotation = rotation;
-            if ((rect.localScale - localScale).sqrMagnitude > 1e-14f) rect.localScale = localScale;
+            if (autoFit)
+            {
+                if (rect.sizeDelta != pixelSize) rect.sizeDelta = pixelSize;
+                if ((rect.position - position).sqrMagnitude > 1e-12f) rect.position = position;
+                if (Quaternion.Angle(rect.rotation, rotation) > 0.001f) rect.rotation = rotation;
+                if ((rect.localScale - localScale).sqrMagnitude > 1e-14f) rect.localScale = localScale;
+            }
             if (curvedScreen)
             {
                 if (curvedDisplay != null && !curvedDisplay.Matches(screenCanvas, cachedFilter, textureWidth)) ReleaseCurvedDisplay();
