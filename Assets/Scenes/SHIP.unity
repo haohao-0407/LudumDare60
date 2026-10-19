@@ -8794,6 +8794,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1161544403
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.1034316
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.5684414
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9821743
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.18797266
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179813011204790377, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000833845243712983, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: m_Name
+      value: Wanderer (Screen Pet)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
 --- !u!1001 &1194952408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14438,3 +14495,4 @@ SceneRoots:
   - {fileID: 711176803}
   - {fileID: 1150390826}
   - {fileID: 1910286362}
+  - {fileID: 1161544403}
