@@ -131,7 +131,7 @@ namespace LudumDare60.TerminalDialogue.Editor
             var templateButton = CreateButton("Choice Template", choices, "RESPONSE", out var templateText);
             var template = templateButton.gameObject.AddComponent<TerminalChoiceButton>();
             template.ConfigureLabel(templateText); template.gameObject.SetActive(false);
-            var advance = CreateButton("Advance", window, "SHOW FULL TEXT", out var advanceText);
+            var advance = CreateButton("Advance", window, "SKIP", out var advanceText);
             Stretch((RectTransform)advance.transform, new Vector2(20, 20), new Vector2(245, 70), window.sizeDelta);
             var close = CreateButton("Close", window, "LEAVE TERMINAL", out _);
             Stretch((RectTransform)close.transform, new Vector2(255, 20), new Vector2(500, 70), window.sizeDelta);

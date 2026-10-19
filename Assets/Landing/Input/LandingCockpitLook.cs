@@ -17,6 +17,9 @@ namespace LudumDare60.Landing
         private Quaternion restRotation;
         private float yaw, pitch;
         private bool initialized;
+        private bool waitForRightRelease;
+        public bool InputBlocked { get; set; }
+        public void WaitForRightRelease() => waitForRightRelease = true;
 
         private void OnEnable()
         {
@@ -34,8 +37,10 @@ namespace LudumDare60.Landing
 
         private void Update()
         {
-            if (look == null || Time.timeScale <= 0 || !Application.isFocused ||
-                (PauseMenu != null && PauseMenu.IsOpen)) return;
+            if (look == null || !Application.isFocused ||
+                InputBlocked || (PauseMenu != null && PauseMenu.IsOpen)) return;
+            if (hold.ReadValue<float>() < 0.5f) { waitForRightRelease = false; return; }
+            if (waitForRightRelease) return;
             var delta = look.ReadValue<Vector2>();
             // UI/Navigate also uses the gamepad stick in this project. Leave its navigation intact.
             if (look.activeControl == null || !(look.activeControl.device is Pointer) ||

@@ -3169,6 +3169,16 @@
       ]
     },
     {
+      "key": "esc.volume",
+      "category": "esc",
+      "speaker": "",
+      "note": "新译（无中文原文）",
+      "texts": [
+        { "lang": "en", "text": "VOLUME" },
+        { "lang": "zh-Hans", "text": "音量" }
+      ]
+    },
+    {
       "key": "esc.language",
       "category": "esc",
       "speaker": "",
@@ -3208,11 +3218,11 @@
       "texts": [
         {
           "lang": "en",
-          "text": "DISPLAY / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows."
+          "text": "DISPLAY / AUDIO / LANGUAGE\n\nSwitch interface language\nwith the left and right arrows."
         },
         {
           "lang": "zh-Hans",
-          "text": "显示 / 语言\n\n用左右方向键\n切换界面语言。"
+          "text": "显示 / 音量 / 语言\n\n用左右方向键\n切换界面语言。"
         }
       ]
     },
@@ -6312,11 +6322,11 @@
       "texts": [
         {
           "lang": "en",
-          "text": "SHOW FULL TEXT"
+          "text": "SKIP"
         },
         {
           "lang": "zh-Hans",
-          "text": "显示全文"
+          "text": "跳过"
         }
       ]
     },
