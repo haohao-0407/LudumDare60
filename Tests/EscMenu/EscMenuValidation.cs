@@ -31,8 +31,13 @@ public static class EscMenuValidation
             var camera = new GameObject("Main Camera", typeof(Camera)).GetComponent<Camera>();
             camera.tag = "MainCamera"; camera.clearFlags = CameraClearFlags.SolidColor; camera.backgroundColor = new Color(0.1f, 0.14f, 0.16f);
             EscMenuBuilder.Build();
+            EscMenuBuilder.UpdateSettingsLayout(); EscMenuBuilder.UpdateSettingsLayout();
             var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(EscMenuBuilder.PrefabPath);
             Require(prefab != null, "Prefab missing.");
+            var settings = prefab.transform.Find("Menu Overlay/Menu Window/Settings Page");
+            Require(settings.Find("Reset Audio") == null && settings.Find("Language") != null && settings.Find("Master Volume") != null, "Settings layout migration failed.");
+            Require(prefab.GetComponentsInChildren<Slider>(true).Length == 1 && prefab.GetComponentsInChildren<EscLanguageOption>(true).Length == 1, "Settings migration duplicated controls.");
+            Require(settings.Find("Language/Handle Slide Area") == null, "Language row still contains the old volume handle.");
             var background = AssetDatabase.LoadAssetAtPath<Sprite>("Assets/ArtAssets/UI/ui1111_components/00_Background.png");
             Require(background != null, "Menu background must be imported as Sprite (2D and UI).");
             Require(prefab.transform.Find("Menu Overlay/Menu Window").GetComponent<UnityEngine.UI.Image>().sprite == background,
@@ -94,6 +99,8 @@ public static class EscMenuValidation
             var root = menu.transform.Find("Menu Overlay");
             Require(root.gameObject.activeSelf && Cursor.visible, "Menu/cursor hidden after opening.");
             var resume = Find<Button>(menu, "Resume");
+            var volume = Find<Slider>(menu, "Master Volume");
+            Require(!volume.gameObject.activeInHierarchy && !Find<EscLanguageOption>(menu, "Language").gameObject.activeInHierarchy, "Settings controls leaked onto ESC main page.");
             Require(EventSystem.current.currentSelectedGameObject == resume.gameObject, "Resume was not selected for keyboard navigation.");
             Canvas.ForceUpdateCanvases();
             Capture(menu, 1920, 1080, "ESC-Menu-Preview.png");
@@ -104,13 +111,21 @@ public static class EscMenuValidation
             Require(menu.transform.Find("Menu Overlay/Menu Window/Settings Page").gameObject.activeSelf, "Settings page did not open.");
             var language = Find<EscLanguageOption>(menu, "Language");
             Require(language != null && language.IsInteractable(), "Language option missing after merge.");
+            Require(volume.gameObject.activeInHierarchy, "Settings volume slider missing.");
+            volume.value = 0.37f;
+            Require(Mathf.Abs(AudioListener.volume - 0.37f) < 0.001f && volume.transform.Find("Value").GetComponent<TMP_Text>().text == "37%", "Settings slider failed to change audio.");
+            Capture(menu, 1920, 1080, "ESC-Settings-Preview.png");
             LocalizationManager.Instance.SetLanguage("zh-Hans", false);
             Require(Find<TMP_Text>(menu, "Title").text == Loc.Get("esc.title.settings") && language.ValueLabel.text.Contains("中文"), "Language change did not refresh menu labels.");
+            Require(volume.transform.Find("Label").GetComponent<TMP_Text>().text == "音量", "Volume label localization failed.");
+            Capture(menu, 1920, 1080, "ESC-Settings-Preview-Chinese.png");
             LocalizationManager.Instance.SetLanguage("en", false);
             Require(Find<TMP_Text>(menu, "Title").text == "SETTINGS / SHIP SYSTEMS", "English menu did not restore.");
-            AudioListener.volume = 0.37f;
-            Find<Button>(menu, "Reset Audio").onClick.Invoke(); Require(AudioListener.volume == 1, "Reset audio failed.");
             Find<Button>(menu, "Back").onClick.Invoke();
+            Require(!volume.gameObject.activeInHierarchy && !language.gameObject.activeInHierarchy, "Back left settings controls visible.");
+            AudioListener.volume = 0.61f; menu.ShowSettings();
+            Require(Mathf.Abs(volume.value - 0.61f) < 0.001f, "Settings slider did not synchronize external audio changes.");
+            menu.ShowMain();
             Find<Button>(menu, "Quit").onClick.Invoke();
             Require(menu.transform.Find("Menu Overlay/Menu Window/Quit Confirmation").gameObject.activeSelf && !resume.IsInteractable(), "Quit confirmation did not block underlying keyboard controls.");
             Find<Button>(menu, "Cancel Quit").onClick.Invoke(); Require(resume.IsInteractable(), "Quit cancel did not restore controls.");
@@ -166,7 +181,7 @@ public static class EscMenuValidation
                 Require(!replacement.IsOpen && Mathf.Approximately(Time.timeScale, 0.35f), "Scene replacement input fired more than once or failed to restore time.");
                 Require(UnityEngine.Object.FindObjectsByType<EventSystem>().Length == 1, "Runtime EventSystem duplicated.");
                 AudioListener.volume = initialVolume; Time.timeScale = 1;
-                File.WriteAllText(Path.Combine(Output, "EscMenuValidation.txt"), "PASS: initially inactive ESC root awakened by real Input System input; single global manager; idempotent registration; generic inactive panel input/open/close/toggle; hide-while-paused restoration; manager disable/re-enable; real scene replacement/rebinding; singleton duplicate prevention; independent prefab, settings, EN/Chinese switching, audio reset, quit confirmation, pointer raycast, Glass TTY font, background sprite, 16:9 and 4:3 previews.");
+                File.WriteAllText(Path.Combine(Output, "EscMenuValidation.txt"), "PASS: settings-only language and volume; reset-audio removed; no legacy language handle; idempotent prefab migration; volume adjustment and resynchronization; EN/Chinese labels; initially inactive ESC root, global manager, generic panel input, pause restoration, scene replacement, quit confirmation, pointer raycast, background sprite, 16:9 and 4:3 previews.");
                 SessionState.SetBool(RunKey, false); Debug.Log("ESC_MENU_VALIDATION_OK"); EditorApplication.Exit(0);
             }
             catch (Exception error) { AudioListener.volume = initialVolume; Time.timeScale = 1; Fail(error); }
@@ -185,7 +200,7 @@ public static class EscMenuValidation
         Canvas.ForceUpdateCanvases();
         camera.Render();
         // Rendering assigns uGUI's graphic depths. In a hidden batch Editor they are unset before this render.
-        var resume = Find<Button>(menu, "Resume"); var buttonRect = (RectTransform)resume.transform;
+        var resume = Find<Button>(menu, menu.transform.Find("Menu Overlay/Menu Window/Settings Page").gameObject.activeSelf ? "Back" : "Resume"); var buttonRect = (RectTransform)resume.transform;
         var hits = new System.Collections.Generic.List<RaycastResult>();
         EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current)
             { position = RectTransformUtility.WorldToScreenPoint(camera, buttonRect.TransformPoint(buttonRect.rect.center)) }, hits);

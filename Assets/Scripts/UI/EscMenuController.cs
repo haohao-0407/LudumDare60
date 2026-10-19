@@ -14,8 +14,9 @@ namespace LudumDare60.UI
     public sealed class EscMenuWidgets
     {
         public GameObject Overlay, MainPage, SettingsPage, QuitConfirmation;
-        public TMP_Text Title;
-        public UnityEngine.UI.Button Resume, Settings, Quit, Back, ResetAudio, CancelQuit, ConfirmQuit;
+        public TMP_Text Title, VolumeValue;
+        public UnityEngine.UI.Button Resume, Settings, Quit, Back, CancelQuit, ConfirmQuit;
+        public UnityEngine.UI.Slider Volume;
         public EscLanguageOption Language;
         public UnityEngine.UI.Toggle Fullscreen;
     }
@@ -53,7 +54,7 @@ namespace LudumDare60.UI
             widgets.Settings.onClick.AddListener(ShowSettings);
             widgets.Quit.onClick.AddListener(RequestQuit);
             widgets.Back.onClick.AddListener(ShowMain);
-            widgets.ResetAudio.onClick.AddListener(ResetAudio);
+            if (widgets.Volume != null) widgets.Volume.onValueChanged.AddListener(SetVolume);
             widgets.CancelQuit.onClick.AddListener(CancelQuit);
             widgets.ConfirmQuit.onClick.AddListener(ConfirmQuit);
             widgets.Fullscreen.onValueChanged.AddListener(SetFullscreen);
@@ -130,6 +131,7 @@ namespace LudumDare60.UI
             SetPageInteraction(true);
             widgets.MainPage.SetActive(false); widgets.SettingsPage.SetActive(true); widgets.QuitConfirmation.SetActive(false);
             widgets.Title.text = Loc.Get("esc.title.settings");
+            if (widgets.Volume != null) { widgets.Volume.SetValueWithoutNotify(AudioListener.volume); UpdateVolumeLabel(); }
             Select(widgets.Back.gameObject);
         }
 
@@ -140,6 +142,7 @@ namespace LudumDare60.UI
             widgets.MainPage.GetComponent<CanvasGroup>().interactable = enabled;
             widgets.SettingsPage.GetComponent<CanvasGroup>().interactable = enabled;
             if (widgets.Language != null) widgets.Language.interactable = enabled;
+            if (widgets.Volume != null) widgets.Volume.interactable = enabled;
         }
         public void ConfirmQuit()
         {
@@ -151,8 +154,9 @@ namespace LudumDare60.UI
 #endif
         }
 
-        // Volume no longer has a slider in this page. Keep the reset as a one-click "fix loud audio".
-        private void ResetAudio() { AudioListener.volume = 1f; }
+        private void SetVolume(float value) { AudioListener.volume = Mathf.Clamp01(value); UpdateVolumeLabel(); }
+        private void UpdateVolumeLabel()
+        { if (widgets.VolumeValue != null && widgets.Volume != null) widgets.VolumeValue.text = Mathf.RoundToInt(widgets.Volume.value * 100) + "%"; }
         private void SetFullscreen(bool value) => Screen.fullScreen = value;
         private static void Select(GameObject target)
         { if (EventSystem.current != null) { EventSystem.current.SetSelectedGameObject(null); EventSystem.current.SetSelectedGameObject(target); } }
@@ -171,9 +175,9 @@ namespace LudumDare60.UI
             Add("Menu Overlay/Menu Window/Main Page/Controls", "esc.hint.paused");
             Add("Menu Overlay/Menu Window/Settings Page/Back/Label", "esc.back");
             Add("Menu Overlay/Menu Window/Settings Page/Fullscreen/Label", "esc.fullscreen");
-            Add("Menu Overlay/Menu Window/Settings Page/Reset Audio/Label", "esc.reset_audio");
             Add("Menu Overlay/Menu Window/Settings Page/Settings Hint", "esc.hint.settings");
-            Add("Menu Overlay/Menu Window/Language/Label", "esc.language");
+            Add("Menu Overlay/Menu Window/Settings Page/Language/Label", "esc.language");
+            Add("Menu Overlay/Menu Window/Settings Page/Master Volume/Label", "esc.volume");
             Add("Menu Overlay/Menu Window/Footer", "esc.footer");
             Add("Menu Overlay/Menu Window/Quit Confirmation/Question", "esc.quit.question");
             Add("Menu Overlay/Menu Window/Quit Confirmation/Cancel Quit/Label", "esc.quit.cancel");
