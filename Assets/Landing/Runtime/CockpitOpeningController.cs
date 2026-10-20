@@ -33,6 +33,18 @@ namespace LudumDare60.Landing
         [Tooltip("回到自由视角后等多久再开终端（秒）")]
         [Min(0f)] public float TutorialAfterReturnDelay = 0.4f;
 
+        [Header("回收 → 组装 教学（教滑页切换）")]
+        [Tooltip("打捞屏（留空自动找 ATTITUDE）")]
+        public CockpitScreenTarget SalvageScreen;
+        [Tooltip("组装屏（留空自动找 RADAR）")]
+        public CockpitScreenTarget AssemblyScreen;
+        [Tooltip("等材料凑够的最长时间（秒），超时就放弃教学，不卡住玩家")]
+        [Min(1f)] public float SalvageWaitTimeout = 600f;
+        [Tooltip("切到组装屏后停多久再开始演示滑页（秒）")]
+        [Min(0f)] public float AssemblyFocusHold = 0.9f;
+        [Tooltip("每翻一页的间隔（秒）")]
+        [Min(0.2f)] public float PageInterval = 1.1f;
+
         public bool LandingStarted { get; private set; }
         public bool HasCrashed { get; private set; }
         public bool SalvageEnabled { get; private set; }
@@ -112,6 +124,7 @@ namespace LudumDare60.Landing
                     Salvage.SetFeatureEnabled(true);
                     if (SalvageStandby) SalvageStandby.SetStandby(false);
                     Terminal.SetFlag("pioneer60.salvage_enabled", true);
+                    StartCoroutine(SalvageAssemblyTutorial());
                     // The existing screen starts its attempt when dialogue/menu pause permits input.
                     break;
             }
@@ -159,6 +172,69 @@ namespace LudumDare60.Landing
                 Terminal.Open();
                 Terminal.GoToNode("landing_crash_report");
             }
+        }
+
+        /// <summary>
+        /// 回收教学：镜头先拉近打捞屏 → 等材料凑够任意一件 → 切到组装屏 →
+        /// 自动翻一整轮页（就算只有一页也绕一圈）告诉玩家这里可以滑页。
+        /// 中途玩家有任何操作就立刻停手，把控制权还给他。
+        /// </summary>
+        System.Collections.IEnumerator SalvageAssemblyTutorial()
+        {
+            var cam = CockpitCamera != null ? CockpitCamera : FindAnyObjectByType<CockpitCameraController>();
+            var salvage = SalvageScreen != null ? SalvageScreen : FindScreenByName(cam, "ATTITUDE");
+            if (cam != null && salvage != null) cam.FocusScreen(salvage);
+
+            float waited = 0f;
+            int ready = -1;
+            while (waited < SalvageWaitTimeout)
+            {
+                if (PlayerActed()) yield break;
+                ready = Assembly != null ? Assembly.FindCraftableRecipe() : -1;
+                if (ready >= 0) break;
+                waited += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            if (ready < 0 || Assembly == null) yield break;
+
+            var bench = AssemblyScreen != null ? AssemblyScreen : FindScreenByName(cam, "RADAR");
+            if (cam != null && bench != null) cam.FocusScreen(bench);
+            if (AssemblyFocusHold > 0f) yield return new WaitForSecondsRealtime(AssemblyFocusHold);
+            if (PlayerActed()) yield break;
+
+            var recipes = Assembly.Recipes;
+            if (recipes == null || recipes.Length == 0) yield break;
+
+            // 先停到材料够的那一件上
+            Assembly.SelectRecipe(ready);
+            yield return new WaitForSecondsRealtime(PageInterval);
+
+            // 再绕一整圈：让玩家看清左右能翻页
+            for (int step = 0; step < recipes.Length; step++)
+            {
+                if (PlayerActed()) yield break;
+                Assembly.SelectRecipe((Assembly.SelectedRecipeIndex + 1) % recipes.Length);
+                yield return new WaitForSecondsRealtime(PageInterval);
+            }
+        }
+
+        /// <summary>玩家是否自己动了手：任何按键 / 左右键点击。动了就不抢操作。</summary>
+        static bool PlayerActed()
+        {
+            var keyboard = UnityEngine.InputSystem.Keyboard.current;
+            if (keyboard != null && keyboard.anyKey.wasPressedThisFrame) return true;
+            var mouse = UnityEngine.InputSystem.Mouse.current;
+            if (mouse != null && (mouse.leftButton.wasPressedThisFrame || mouse.rightButton.wasPressedThisFrame)) return true;
+            var pad = UnityEngine.InputSystem.Gamepad.current;
+            return pad != null && pad.buttonSouth.wasPressedThisFrame;
+        }
+
+        static CockpitScreenTarget FindScreenByName(CockpitCameraController cam, string fragment)
+        {
+            if (cam == null || cam.Screens == null) return null;
+            foreach (var s in cam.Screens)
+                if (s != null && s.gameObject.name.ToUpperInvariant().Contains(fragment)) return s;
+            return null;
         }
 
         CockpitScreenTarget PickTutorialScreen(CockpitCameraController cam)

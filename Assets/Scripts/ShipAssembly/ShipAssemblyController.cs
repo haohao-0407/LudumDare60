@@ -211,6 +211,27 @@ namespace LudumDare60.ShipAssembly
             }
         }
 
+        /// <summary>
+        /// 找出"现在材料就够、可以开始组装"的配方下标，找不到返回 -1。
+        /// 不改动当前选择，纯查询 —— 教学流程要轮询它来判断什么时候把镜头切到组装屏。
+        /// </summary>
+        public int FindCraftableRecipe()
+        {
+            if (Recipes == null || !RepairsAvailable || !isActiveAndEnabled) return -1;
+            for (int i = 0; i < Recipes.Length; i++)
+            {
+                var recipe = Recipes[i];
+                if (recipe == null) continue;
+                int device = (int)recipe.Device;
+                if (DeviceIsRepaired(device)) continue;
+                if (RepairScreen != null && !RepairScreen.CanBeginRepair(device)) continue;
+                if (Inventory == null) continue;
+                string reason;
+                if (Inventory.Items.CanConsume(recipe.Materials, out reason)) return i;
+            }
+            return -1;
+        }
+
         public bool CanStartSelected(out string reason)
         {
             if (operationInProgress) return Fail("An assembly operation is already in progress.", out reason);
