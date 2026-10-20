@@ -6016,7 +6016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2548318263740355141, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontSize
-      value: 55
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2548318263740355141, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontStyle
@@ -6024,7 +6024,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2548318263740355141, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontSizeBase
-      value: 55
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 2548318263740355141, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -6080,7 +6080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3940845894849835885, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontSize
-      value: 55
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3940845894849835885, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontStyle
@@ -6088,7 +6088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3940845894849835885, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontSizeBase
-      value: 55
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 3940845894849835885, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -6240,7 +6240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5373981623677673436, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontSize
-      value: 40
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5373981623677673436, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontStyle
@@ -6248,7 +6248,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5373981623677673436, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontSizeBase
-      value: 40
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 5373981623677673436, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -13498,8 +13498,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 87abf66127ef4c5eb822455283c6850b, type: 3}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 87abf66127ef4c5eb822455283c6850b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0
   m_Pitch: 1

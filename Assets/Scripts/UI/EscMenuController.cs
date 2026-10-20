@@ -252,6 +252,7 @@ namespace LudumDare60.UI
             Add("Menu Overlay/Menu Window/Settings Page/Settings Hint", "esc.hint.settings");
             Add("Menu Overlay/Menu Window/Settings Page/Language/Hover Visual/Label", "esc.language");
             Add("Menu Overlay/Menu Window/Settings Page/Master Volume/Label", "esc.volume");
+            Add("Menu Overlay/Menu Window/Settings Page/Music Volume/Label", "esc.music");
             Add("Menu Overlay/Menu Window/Footer", "esc.footer");
             Add("Menu Overlay/Menu Window/Quit Confirmation/Question", "esc.quit.question");
             Add("Menu Overlay/Menu Window/Quit Confirmation/Cancel Quit/Label", "esc.quit.cancel");

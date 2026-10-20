@@ -9151,6 +9151,22 @@
           "text": "特别鸣谢\n\n献给每一位玩过的人。"
         }
       ]
+    },
+    {
+      "key": "esc.music",
+      "category": "esc",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "MUSIC"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "音乐"
+        }
+      ]
     }
   ],
   "commands": [
