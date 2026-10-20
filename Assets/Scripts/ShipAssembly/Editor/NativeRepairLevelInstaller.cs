@@ -40,14 +40,17 @@ namespace LudumDare60.ShipAssembly.Editor
         public static readonly Vector3[] EngineScales = {
             Vector3.one*.6111977f, new Vector3(-.2371762f,-.2371762f,-.2783778f), Vector3.one*.2447915f
         };
-        public static readonly string[] LifeNames = { "CUT_test", "CUT_test.001", "CUT_test.003", "CUT_test.004" };
+        public const string LifeSource = "Assets/Prefabs/生命装置组装.prefab";
+        public const string LifeMeshAsset = "Assets/ArtAssets/3DModels/生命装置_v2.glb";
+        public static readonly string[] LifeNames = { "CUT_test", "CUT_test.004", "CUT_test.005", "TANK_01" };
+        // Screenshots 2026-10-20 18:16--18:17; native prefab-local coordinates.
         public static readonly Vector3[] LifeStart = {
-            new Vector3(.071f,0,0), new Vector3(-1.207f,.155f,0), new Vector3(-1.335f,-.004f,0), new Vector3(.22f,.143f,0)
+            new Vector3(.145f,-.004f,0), new Vector3(.156f,.140f,0), new Vector3(-1.128f,.003f,0), new Vector3(-1.007f,-.237f,-.1094627f)
         };
         public static readonly Vector3[] LifeTarget = {
-            LifeStart[0], new Vector3(.056f,.023f,0), new Vector3(-.196f,.011f,0), new Vector3(.063f,.153f,0)
+            LifeStart[0], new Vector3(.091f,.126f,0), new Vector3(-.205f,-.016f,0), new Vector3(-.269f,-.004f,-.1094627f)
         };
-        public static readonly Vector3[] LifeStartEuler = { Vector3.zero, new Vector3(0,0,90), Vector3.zero, new Vector3(0,0,90) };
+        public static readonly Vector3[] LifeStartEuler = { Vector3.zero, new Vector3(0,0,90.382f), Vector3.zero, new Vector3(0,0,89.955f) };
 
         [MenuItem("Tools/Ship Assembly/Build Engine And Revised Life Support Levels")]
         public static void Install()
@@ -57,13 +60,12 @@ namespace LudumDare60.ShipAssembly.Editor
             Directory.CreateDirectory("Logs/NativeRepairLevels");
             EditorSceneManager.SaveOpenScenes();
             Backup("Assets/Prefabs/引擎.prefab", "engine-source.prefab");
-            Backup("Assets/Prefabs/生命装置.prefab", "life-source.prefab");
+            Backup(LifeSource, "life-source-v2.prefab");
             Backup(LifePrefab,"life-previous.prefab");
             Backup("Assets/ShipAssembly/Recipes/PropulsionEngine.asset","engine-previous-recipe.asset");
             Backup("Assets/ShipAssembly/Recipes/LifeSupport.asset","life-previous-recipe.asset");
             BuildEngine();
-            Build("Assets/Prefabs/生命装置.prefab",LifePrefab,"LIFE SUPPORT",LifeNames,new[] { "BODY", "RESERVOIR", "FILTER", "BASE RAIL" },
-                LifeStart,LifeTarget,LifeStartEuler,new Vector3[4],Quaternion.Euler(0,180,0));
+            BuildLife();
             BindRecipe("PropulsionEngine",EnginePrefab);
             BindRecipe("LifeSupport",LifePrefab);
             BuildPreview(PreviewScene,0);
@@ -71,6 +73,36 @@ namespace LudumDare60.ShipAssembly.Editor
             BuildPreview(LifeScene,1);
             AssetDatabase.SaveAssets();
             Debug.Log("[NativeRepairLevels] Engine (3 parts) and life support (4 parts) built; SHIP recipes updated.");
+        }
+
+        [MenuItem("Tools/Ship Assembly/Rebuild Updated Life Support Only")]
+        public static void InstallLife()
+        {
+            if (EditorApplication.isPlayingOrWillChangePlaymode) throw new InvalidOperationException("Stop Play mode before rebuilding life support.");
+            var stage = PrefabStageUtility.GetCurrentPrefabStage();
+            if (stage != null && stage.scene.isDirty) throw new InvalidOperationException("Save the open prefab edits before rebuilding life support.");
+            foreach (var path in new[] { PreviewScene,EngineScene,LifeScene })
+            {
+                var preview = SceneManager.GetSceneByPath(path);
+                if (preview.IsValid() && preview.isLoaded && preview.isDirty)
+                    throw new InvalidOperationException("Save preview scene edits before rebuilding: " + path);
+            }
+            StageUtility.GoToMainStage();
+            Directory.CreateDirectory("Logs/NativeRepairLevels");
+            Backup(LifeSource,"life-source-v2.prefab");
+            Backup(LifePrefab,"life-before-v2.prefab");
+            Backup("Assets/ShipAssembly/Recipes/LifeSupport.asset","life-recipe-before-v2.asset");
+            BuildLife();
+            BindRecipe("LifeSupport",LifePrefab);
+            foreach (var path in new[] { PreviewScene,EngineScene,LifeScene }) RefreshPreview(path,LifePrefab);
+            AssetDatabase.SaveAssetIfDirty(AssetDatabase.LoadAssetAtPath<AssemblyRecipe>("Assets/ShipAssembly/Recipes/LifeSupport.asset"));
+            Debug.Log("[NativeRepairLevels] Life support rebuilt from the four-part v2 source, with centered hit bounds and updated preview framing.");
+        }
+
+        private static void BuildLife()
+        {
+            Build(LifeSource,LifePrefab,"LIFE SUPPORT",LifeNames,new[] { "BODY", "BASE RAIL", "FILTER", "RESERVOIR" },
+                LifeStart,LifeTarget,LifeStartEuler,new Vector3[4],Quaternion.Euler(0,180,0),true);
         }
 
         [MenuItem("Tools/Ship Assembly/Rebuild Updated Low Poly Engine Only")]
@@ -97,22 +129,27 @@ namespace LudumDare60.ShipAssembly.Editor
                 EngineStart,EngineTarget,EngineStartEuler,EngineTargetEuler,Quaternion.Euler(0,90,0)*Quaternion.Euler(90,0,0));
         }
 
-        private static void RefreshEnginePreview(string path)
+        private static void RefreshEnginePreview(string path) => RefreshPreview(path,EnginePrefab);
+
+        private static void RefreshPreview(string path,string prefabPath)
         {
             if (!File.Exists(path)) return;
-            var scene = EditorSceneManager.OpenScene(path,OpenSceneMode.Additive);
+            var scene = SceneManager.GetSceneByPath(path);
+            bool alreadyOpen = scene.IsValid() && scene.isLoaded;
+            if (alreadyOpen && scene.isDirty) throw new InvalidOperationException("Save preview scene edits before refreshing: " + path);
+            if (!alreadyOpen) scene = EditorSceneManager.OpenScene(path,OpenSceneMode.Additive);
             try
             {
                 foreach (var root in scene.GetRootGameObjects())
                     foreach (var layout in root.GetComponentsInChildren<DeviceAssemblyLayout>(true))
                     {
                         var source = PrefabUtility.GetCorrespondingObjectFromSource(layout.gameObject);
-                        if (AssetDatabase.GetAssetPath(source) != EnginePrefab) continue;
+                        if (AssetDatabase.GetAssetPath(source) != prefabPath) continue;
                         layout.transform.localPosition = new Vector3(-layout.viewCenter.x,-layout.viewCenter.y,0);
                     }
                 EditorSceneManager.SaveScene(scene);
             }
-            finally { EditorSceneManager.CloseScene(scene,true); }
+            finally { if (!alreadyOpen) EditorSceneManager.CloseScene(scene,true); }
         }
 
         private static void Backup(string path,string name)
@@ -124,7 +161,7 @@ namespace LudumDare60.ShipAssembly.Editor
         private static Transform Part(GameObject source,string name) => source.GetComponentsInChildren<Transform>(true).Single(t => t.name == name);
 
         private static void Build(string sourcePath,string prefabPath,string label,string[] names,string[] labels,
-            Vector3[] start,Vector3[] target,Vector3[] startEuler,Vector3[] targetEuler,Quaternion basis)
+            Vector3[] start,Vector3[] target,Vector3[] startEuler,Vector3[] targetEuler,Quaternion basis,bool centerPivots = false)
         {
             var source = AssetDatabase.LoadAssetAtPath<GameObject>(sourcePath);
             if (source == null) throw new FileNotFoundException(sourcePath);
@@ -174,6 +211,18 @@ namespace LudumDare60.ShipAssembly.Editor
                     layout.assembledLocalPositions[i] = new Vector3(goal.x,goal.y,0);
                     layout.assembledModelPositions[i] = new Vector3(0,0,goal.z);
                     layout.assembledModelRotations[i] = basis * layout.nativeTargetRotations[i];
+                    if (centerPivots)
+                    {
+                        // Transport the same visible center from the scattered pose to the solved pose.
+                        // Moving the logical pivot must not move or rotate any source geometry.
+                        var center = new Vector3(bounds.center.x,bounds.center.y,0);
+                        module.transform.localPosition += module.transform.localRotation * center;
+                        visual.localPosition -= center;
+                        module.modelBoundsCenter = Vector2.zero;
+                        layout.assembledLocalPositions[i] += center;
+                        layout.assembledModelPositions[i] -= center;
+                        module.radius = Mathf.Max(.1f,new Vector2(bounds.extents.x,bounds.extents.y).magnitude);
+                    }
                 }
                 for (int i = 1; i < names.Length; i++)
                 {

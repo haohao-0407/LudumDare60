@@ -16,7 +16,7 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 | Propulsion Engine | `PropulsionEngineAssembly.prefab` | 3 |
 | Life Support System | `LifeSupportAssembly.prefab` | 4 |
 
-引擎按 2026-10-20 01:54–01:55 的新截图和 `raptor_low.glb` 低模配置；生命关卡沿用 2026-10-19 截图。
+引擎按 2026-10-20 01:54–01:55 的截图和 `raptor_low.glb` 低模配置；生命关卡按同日 18:16–18:17 截图和新版模型配置。
 引擎保留 BezierCurve.011、Cube.007、Cylinder.001 的原始三维旋转和缩放，包括端板的负缩放。
 引擎的位置均为源预制体内的局部坐标：
 
@@ -30,7 +30,17 @@ SHIP 左上角 `ShipRig/CompactCockpit_WallIntegrated/Screen_RADAR/Geometry/SCRE
 三块模型的 Scale 分别为 (0.6111977, 0.6111977, 0.6111977)、(-0.2371762, -0.2371762, -0.2783778)、
 (0.2447915, 0.2447915, 0.2447915)。源根物体的展示变换不参与逻辑拼图。
 
-生命系统采用 CUT_test、CUT_test.001、CUT_test.003、CUT_test.004 四块，不包含旧版水箱和门。
+生命系统使用 `Assets/Prefabs/生命装置组装.prefab` 中的 `生命装置_v2.glb`，
+采用 CUT_test（主体）、CUT_test.004（底座）、CUT_test.005（滤芯）、TANK_01（储罐）四块。
+主体已移除原来扩张选框的侧边几何；逻辑枢轴设在各零件的可见中心，选框和连接点同步重算。
+底座、储罐初始分别旋转 90.382°、89.955°，完成后恢复零度；储罐深度 -0.1094627 保留。
+只重建生命系统：`Tools > Ship Assembly > Rebuild Updated Life Support Only`，同步现有试玩场景的取景偏移。
+保存源预制体后运行此菜单，按上述截图恢复开局和完成姿态。
+全系统的连接箭头共用绘制：模型／图片箭杆长 0.60、箭头长 0.28、全宽 0.36，线宽 0.055／0.065。
+箭尖仍位于原来的连接点；橙色表示待连接，绿色表示已连接，不改变吸附阈值。
+验证菜单：`Tools > Ship Assembly > Validate Updated Life Support And All Arrows`。
+本次新版生命与四系统箭头通过 106 项几何、操作检查；SHIP 中的 128 项维修流程检查通过。
+报告：`Logs/NativeRepairLevels/life-v2-validation.txt`、`Logs/NativeRepairLevels/ship-runtime-validation.txt`。
 各配方的 `PuzzleOffset` 抵消关卡的 `viewCenter`，适配现有工作台相机。
 完成后显示完整模型并锁定，切换配方保留当前单局进度；材料需求沿用原配置，维修不限制先后顺序。
 

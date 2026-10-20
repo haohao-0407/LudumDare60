@@ -34,6 +34,42 @@ namespace LudumDare60.ShipAssembly.Editor
             report.AppendLine("PASS " + label);
         }
 
+        [MenuItem("Tools/Ship Assembly/Validate Updated Life Support And All Arrows")]
+        public static void GeometryLifeOnly()
+        {
+            var report = new StringBuilder(); Directory.CreateDirectory("Logs/NativeRepairLevels");
+            try
+            {
+                CheckGeometry(NativeRepairLevelInstaller.LifePrefab,"life",NativeRepairLevelInstaller.LifeNames,report);
+                foreach (string prefab in new[] { "EnergyAssembly", "NavigationAssembly", "PropulsionEngineAssembly", "LifeSupportAssembly" })
+                {
+                    var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Additive);
+                    try
+                    {
+                        var root = (GameObject)PrefabUtility.InstantiatePrefab(AssetDatabase.LoadAssetAtPath<GameObject>("Assets/AssemblyDemo/Prefabs/"+prefab+".prefab"),scene);
+                        foreach (var module in root.GetComponent<AssemblyDemoController>().Modules)
+                        {
+                            module.Rebuild();
+                            for (int port = 0; port < module.PortCount; port++)
+                            {
+                                var shaft = module.GetComponentsInChildren<LineRenderer>().Single(l => l.name == "Port "+port+" shaft");
+                                var head = module.GetComponentsInChildren<LineRenderer>().Single(l => l.name == "Port "+port+" arrowhead");
+                                var tip = (Vector2)shaft.transform.TransformPoint(shaft.GetPosition(1));
+                                Require(Vector2.Distance(tip,module.PortPosition(port)) < .0001f,prefab+" "+module.name+" arrow tip matches solver "+port,report);
+                                Require(Vector3.Distance(shaft.GetPosition(0),shaft.GetPosition(1)) >= AssemblyModule.GuideLength-.0001f &&
+                                    shaft.widthMultiplier >= AssemblyModule.GuideShaftWidth && head.widthMultiplier >= AssemblyModule.GuideHeadWidth,
+                                    prefab+" "+module.name+" readable arrow "+port,report);
+                            }
+                        }
+                    }
+                    finally { EditorSceneManager.CloseScene(scene,true); }
+                }
+                File.WriteAllText("Logs/NativeRepairLevels/life-v2-validation.txt",report.ToString());
+                Debug.Log("[NativeRepairLevels] Updated life support and all subsystem arrows passed validation.");
+            }
+            catch (Exception e) { File.WriteAllText("Logs/NativeRepairLevels/life-v2-validation.txt",report+"FAIL "+e); throw; }
+        }
+
         [MenuItem("Tools/Ship Assembly/Validate Engine And Revised Life Support Geometry")]
         public static void Geometry()
         {
@@ -74,7 +110,29 @@ namespace LudumDare60.ShipAssembly.Editor
                     Require(scale.x < 0 && scale.y < 0 && scale.z < 0,"engine end plate negative scale retained",report);
                     Require(Mathf.Abs(scale.x+.2371762f) < .00001f && Mathf.Abs(scale.z+.2783778f) < .00001f,"engine end plate scale matches screenshot",report);
                 }
-                else Require(instance.GetComponentsInChildren<MeshFilter>(true).Count(m => !m.name.StartsWith("__XRay")) == 4,"life excludes old tank and door",report);
+                else
+                {
+                    Require(instance.GetComponentsInChildren<MeshFilter>(true).Count(m => !m.name.StartsWith("__XRay")) == 4,"life contains only four v2 parts",report);
+                    for (int i = 0; i < names.Length; i++)
+                    {
+                        var module = puzzle.Modules[i];
+                        Require(AssetDatabase.GetAssetPath(module.modelVisual.GetChild(0).GetComponent<MeshFilter>().sharedMesh) == NativeRepairLevelInstaller.LifeMeshAsset,"life uses v2 mesh "+i,report);
+                        Require(Vector3.Distance(layout.nativeTargetPositions[i],NativeRepairLevelInstaller.LifeTarget[i]) < .00001f,"life target matches 18:16 screenshot "+i,report);
+                        Require(Vector3.Distance(layout.nativeStartPositions[i],NativeRepairLevelInstaller.LifeStart[i]) < .00001f &&
+                            Quaternion.Angle(layout.nativeStartRotations[i],Quaternion.Euler(NativeRepairLevelInstaller.LifeStartEuler[i])) < .02f,"life scatter matches 18:17 screenshot "+i,report);
+                        Require(module.modelBoundsCenter.sqrMagnitude < .000001f,"life pivot is at visible mesh center "+i,report);
+                        var filter = module.modelVisual.GetChild(0).GetComponent<MeshFilter>();
+                        var projected = new Bounds(); bool first = true;
+                        foreach (var vertex in filter.sharedMesh.vertices)
+                        {
+                            Vector3 point = module.transform.InverseTransformPoint(filter.transform.TransformPoint(vertex));
+                            if (first) { projected = new Bounds(point,Vector3.zero); first = false; } else projected.Encapsulate(point);
+                        }
+                        Require(Vector2.Distance(module.modelBoundsSize,new Vector2(projected.size.x,projected.size.y)) < .002f,"life selection frame fits actual projected vertices "+i,report);
+                        Require(!module.ContainsLocalPoint(module.modelBoundsSize*.5f+Vector2.one*.02f),"life empty space outside mesh bounds is not selectable "+i,report);
+                    }
+                    Require(puzzle.Modules[0].modelBoundsSize.x/layout.modelScale < .9f,"life body no longer includes detached side geometry",report);
+                }
                 Require(!puzzle.TrySnapSelected() && !puzzle.IsAssemblyComplete,name+" scattered pieces do not auto-complete",report);
                 CapturePuzzle(puzzle,name+"-before");
                 puzzle.SelectModule(1); var start = puzzle.Selected.Position;

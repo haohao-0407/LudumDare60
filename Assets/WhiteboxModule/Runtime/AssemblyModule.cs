@@ -12,6 +12,12 @@ namespace LudumDare60.AssemblyDemo
         public const float AngleTolerance = 5f;
         public const float LateralTolerance = 0.16f;
         public const float ContactTolerance = 0.12f;
+        // Readable on the cockpit render texture as well as in standalone assembly scenes.
+        public const float GuideLength = 0.60f;
+        public const float GuideHeadLength = 0.28f;
+        public const float GuideHeadHalfWidth = 0.18f;
+        public const float GuideShaftWidth = 0.055f;
+        public const float GuideHeadWidth = 0.065f;
         public string moduleLabel = "MODULE";
         [Min(0.01f)] public float radius = 0.9f;
         [Tooltip("0 = up, 90 = right; empty means one 0-degree port.")]
@@ -223,16 +229,7 @@ namespace LudumDare60.AssemblyDemo
             var circle = new Vector3[96];
             for (int i = 0; i < circle.Length; i++) circle[i] = AssemblySnapSolver.Direction(i * 360f / circle.Length) * radius;
             MakeLine("Inscribed circle",circle,radius * 0.018f,true);
-            arrows = new LineRenderer[PortCount * 2];
-            for (int i = 0; i < PortCount; i++)
-            {
-                Vector2 direction = AssemblySnapSolver.Direction(PortAngle(i));
-                Vector2 tip = direction * radius;
-                Vector2 side = new Vector2(-direction.y,direction.x) * radius * 0.11f;
-                Vector2 neck = tip - direction * radius * 0.22f;
-                arrows[i * 2] = MakeLine($"Port {i} shaft",new Vector3[] { Vector2.zero,tip },radius * 0.035f,false);
-                arrows[i * 2 + 1] = MakeLine($"Port {i} arrowhead",new Vector3[] { neck + side,tip,neck - side },radius * 0.05f,false);
-            }
+            RebuildPortArrows(Mathf.Max(GuideLength,radius));
             MakeLine("Center",new[] { new Vector3(-radius * 0.045f,0,-radius * 0.02f),new Vector3(radius * 0.045f,0,-radius * 0.02f) },radius * 0.09f,false);
             visualSignature = VisualSignature();
             ApplyHighlight();
@@ -249,16 +246,7 @@ namespace LudumDare60.AssemblyDemo
                 new Vector3(center.x-half.x, center.y-half.y, 0), new Vector3(center.x-half.x, center.y+half.y, 0),
                 new Vector3(center.x+half.x, center.y+half.y, 0), new Vector3(center.x+half.x, center.y-half.y, 0)
             }, 0.018f, true);
-            arrows = new LineRenderer[PortCount * 2];
-            for (int i = 0; i < PortCount; i++)
-            {
-                Vector2 direction = AssemblySnapSolver.Direction(PortAngle(i));
-                Vector2 tip = direction * PortDistance(i);
-                Vector2 neck = tip - direction * 0.10f;
-                Vector2 side = new Vector2(-direction.y, direction.x) * 0.065f;
-                arrows[i*2] = MakeLine($"Port {i} shaft", new Vector3[] { tip-direction*0.20f, tip }, 0.024f, false);
-                arrows[i*2+1] = MakeLine($"Port {i} arrowhead", new Vector3[] { neck+side, tip, neck-side }, 0.026f, false);
-            }
+            RebuildPortArrows(GuideLength);
         }
 
         private void RebuildArtwork()
@@ -282,19 +270,24 @@ namespace LudumDare60.AssemblyDemo
                 new Vector3(offset.x + half.x, offset.y + half.y, 0),
                 new Vector3(offset.x + half.x, offset.y - half.y, 0)
             }, 0.018f, true);
+            RebuildPortArrows(GuideLength);
+        }
+
+        private void RebuildPortArrows(float shaftLength)
+        {
             arrows = new LineRenderer[PortCount * 2];
             for (int i = 0; i < PortCount; i++)
             {
                 Vector2 direction = AssemblySnapSolver.Direction(PortAngle(i));
                 Vector2 tip = direction * PortDistance(i);
-                Vector2 neck = tip - direction * 0.1f;
-                Vector2 side = new Vector2(-direction.y, direction.x) * 0.07f;
+                Vector2 neck = tip - direction * GuideHeadLength;
+                Vector2 side = new Vector2(-direction.y, direction.x) * GuideHeadHalfWidth;
                 arrows[i * 2] = MakeLine($"Port {i} shaft", new Vector3[] {
-                    tip - direction * 0.2f, tip
-                }, 0.024f, false);
+                    tip - direction * shaftLength, tip
+                }, GuideShaftWidth, false);
                 arrows[i * 2 + 1] = MakeLine($"Port {i} arrowhead", new Vector3[] {
                     neck + side, tip, neck - side
-                }, 0.026f, false);
+                }, GuideHeadWidth, false);
             }
         }
 
