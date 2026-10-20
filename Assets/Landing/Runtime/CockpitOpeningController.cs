@@ -33,6 +33,12 @@ namespace LudumDare60.Landing
         [Tooltip("回到自由视角后等多久再开终端（秒）")]
         [Min(0f)] public float TutorialAfterReturnDelay = 0.4f;
 
+        [Header("开始着陆时的镜头提示（轻轻右转看舷窗）")]
+        [Tooltip("向右转多少度。0 = 不转")]
+        public float LookHintYaw = 24f;
+        [Tooltip("转过去的时长（秒）。慢一点，像在示范，而不是镜头被抢")]
+        [Min(0.1f)] public float LookHintDuration = 2.2f;
+
         [Header("回收 → 组装 教学（教滑页切换）")]
         [Tooltip("打捞屏（留空自动找 ATTITUDE）")]
         public CockpitScreenTarget SalvageScreen;
@@ -114,6 +120,7 @@ namespace LudumDare60.Landing
                     Terminal.SetFlag("pioneer60.landing_started", true);
                     // 关掉终端窗口：让玩家知道这块屏可以收起来，降落过程看舷窗
                     StartCoroutine(CloseTerminalAfterDelay());
+                    StartCoroutine(LandingLookHint());
                     break;
                 case "pioneer60.begin_repairs":
                     if (HasCrashed) SetRepairStandby(false);
@@ -254,6 +261,34 @@ namespace LudumDare60.Landing
                 if (n.Contains("SYSTEM")) return s;
             }
             return cam.Screens.Length > 0 ? cam.Screens[0] : null;
+        }
+
+        /// <summary>
+        /// 开始降落时轻轻把镜头往右转一点，指向舷窗 —— 暗示视角可以自己控制。
+        /// 玩家一旦自己转视角或按任何键，立刻停手，不跟他抢镜头。
+        /// </summary>
+        System.Collections.IEnumerator LandingLookHint()
+        {
+            if (LookHintYaw == 0f || Landing == null) yield break;
+            var cam = CockpitCamera != null ? CockpitCamera : FindAnyObjectByType<CockpitCameraController>();
+            var look = cam != null ? cam.FreeLook : null;
+            if (look == null) yield break;
+
+            float startYaw = look.Yaw;
+            float targetYaw = Mathf.Clamp(startYaw + LookHintYaw, -150f, 150f);
+            float t = 0f;
+            float duration = Mathf.Max(0.1f, LookHintDuration);
+
+            while (t < duration)
+            {
+                if (cam != null && cam.State != CockpitViewState.Free) yield break;   // 玩家已经点进某块屏
+                if (look.PlayerLooked || PlayerActed()) yield break;                   // 玩家自己动了
+                t += Time.unscaledDeltaTime;
+                float k = Mathf.Clamp01(t / duration);
+                float eased = k * k * (3f - 2f * k);
+                look.ApplyLook(Mathf.Lerp(startYaw, targetYaw, eased), look.Pitch);
+                yield return null;
+            }
         }
 
         /// <summary>延迟一点再关，避免玩家刚点完就看到窗口凭空消失。</summary>

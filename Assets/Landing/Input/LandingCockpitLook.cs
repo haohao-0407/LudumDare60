@@ -19,6 +19,21 @@ namespace LudumDare60.Landing
         private bool initialized;
         private bool waitForRightRelease;
         public bool InputBlocked { get; set; }
+
+        /// <summary>当前水平朝向（度，0 = 初始朝前）。</summary>
+        public float Yaw { get { return yaw; } }
+        /// <summary>当前俯仰（度）。</summary>
+        public float Pitch { get { return pitch; } }
+        /// <summary>玩家这一帧是否自己转了视角（真实鼠标位移）。教学用它判断要不要让位。</summary>
+        public bool PlayerLooked { get; private set; }
+
+        /// <summary>外部驱动视角（教学用）。会立刻应用到旋转上。</summary>
+        public void ApplyLook(float y, float p)
+        {
+            yaw = Mathf.Clamp(y, YawLimits.x, YawLimits.y);
+            pitch = Mathf.Clamp(p, PitchLimits.x, PitchLimits.y);
+            transform.localRotation = restRotation * Quaternion.Euler(pitch, yaw, 0);
+        }
         public void WaitForRightRelease() => waitForRightRelease = true;
 
         private void OnEnable()
@@ -45,6 +60,7 @@ namespace LudumDare60.Landing
             // UI/Navigate also uses the gamepad stick in this project. Leave its navigation intact.
             if (look.activeControl == null || !(look.activeControl.device is Pointer) ||
                 hold.ReadValue<float>() < 0.5f) return;
+            PlayerLooked = delta.sqrMagnitude > 0.000001f;
             delta *= MouseSensitivity;
             yaw = Mathf.Clamp(yaw + delta.x, YawLimits.x, YawLimits.y);
             pitch = Mathf.Clamp(pitch - delta.y, PitchLimits.x, PitchLimits.y);
