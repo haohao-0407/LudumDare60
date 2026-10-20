@@ -46,6 +46,8 @@ namespace LudumDare60.Landing
         public CockpitScreenTarget AssemblyScreen;
         [Tooltip("等材料凑够的最长时间（秒），超时就放弃教学，不卡住玩家")]
         [Min(1f)] public float SalvageWaitTimeout = 600f;
+        [Tooltip("终端打字结束后再等多久才拉近（秒）")]
+        [Min(0f)] public float TerminalAfterTypingDelay = 0.35f;
         [Tooltip("切到组装屏后停多久再开始演示滑页（秒）")]
         [Min(0f)] public float AssemblyFocusHold = 0.9f;
         [Tooltip("每翻一页的间隔（秒）")]
@@ -209,6 +211,17 @@ namespace LudumDare60.Landing
         System.Collections.IEnumerator SalvageAssemblyTutorial()
         {
             var cam = CockpitCamera != null ? CockpitCamera : FindAnyObjectByType<CockpitCameraController>();
+
+            // 先等终端把那句话打完，再拉近——不然镜头一动，玩家还没看完字
+            var session = Terminal != null ? Terminal.Session : null;
+            float textWait = 0f;
+            while (session != null && session.Phase == TerminalPhase.Typing && textWait < 20f)
+            {
+                textWait += Time.unscaledDeltaTime;
+                yield return null;
+            }
+            if (TerminalAfterTypingDelay > 0f) yield return new WaitForSecondsRealtime(TerminalAfterTypingDelay);
+
             var salvage = SalvageScreen != null ? SalvageScreen : FindScreenByName(cam, "ATTITUDE");
             if (cam != null && salvage != null) cam.FocusScreen(salvage);
 
@@ -246,16 +259,29 @@ namespace LudumDare60.Landing
             var recipes = Assembly.Recipes;
             if (recipes == null || recipes.Length == 0) yield break;
 
-            // 先停到材料够的那一件上
-            Assembly.SelectRecipe(ready);
-            yield return new WaitForSecondsRealtime(PageInterval);
-
-            // 再绕一整圈：让玩家看清左右能翻页
-            for (int step = 0; step < recipes.Length; step++)
+            // 演示期间锁住组装屏的交互，避免玩家手动点按钮跟演示打架
+            CanvasGroup lockGroup = null;
+            var benchView = FindAnyObjectByType<LudumDare60.ShipAssembly.AssemblyScreenView>(FindObjectsInactive.Include);
+            if (benchView != null)
             {
-                Assembly.SelectRecipe((Assembly.SelectedRecipeIndex + 1) % recipes.Length);
-                yield return new WaitForSecondsRealtime(PageInterval);
+                lockGroup = benchView.GetComponent<CanvasGroup>();
+                if (lockGroup == null) lockGroup = benchView.gameObject.AddComponent<CanvasGroup>();
+                lockGroup.interactable = false;
             }
+            try
+            {
+                // 停在材料够的那一件上
+                Assembly.SelectRecipe(ready);
+                yield return new WaitForSecondsRealtime(PageInterval);
+
+                // 绕完整一圈：1→2→3→4→1，让玩家看清左右能翻页
+                for (int step = 0; step < recipes.Length; step++)
+                {
+                    Assembly.SelectRecipe((Assembly.SelectedRecipeIndex + 1) % recipes.Length);
+                    yield return new WaitForSecondsRealtime(PageInterval);
+                }
+            }
+            finally { if (lockGroup != null) lockGroup.interactable = true; }
         }
 
         /// <summary>玩家是否自己动了手：任何按键 / 左右键点击。动了就不抢操作。</summary>
