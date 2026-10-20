@@ -68,7 +68,7 @@ namespace LudumDare60.Landing
 
         void OnEnable()
         {
-            if (Terminal) Terminal.EventTriggered += HandleCommand;
+            if (Terminal) { Terminal.EventTriggered += HandleCommand; Terminal.ChoiceAccepted += HandleChoiceAccepted; }
             if (!Landing) return;
             // Subscribe before the damage presentation: its touchdown cue must see the damaged snapshot.
             Landing.OnTouchdown.AddListener(HandleTouchdown);
@@ -90,7 +90,7 @@ namespace LudumDare60.Landing
 
         void OnDisable()
         {
-            if (Terminal) Terminal.EventTriggered -= HandleCommand;
+            if (Terminal) { Terminal.EventTriggered -= HandleCommand; Terminal.ChoiceAccepted -= HandleChoiceAccepted; }
             if (!Landing) return;
             Landing.OnTouchdown.RemoveListener(HandleTouchdown);
             Landing.OnLanded.RemoveListener(HandleLanded);
@@ -102,6 +102,26 @@ namespace LudumDare60.Landing
             if (Landing.Phase == LandingSequenceController.LandingPhase.Failed ||
                 Landing.Phase == LandingSequenceController.LandingPhase.Cancelled)
                 ReportLandingFailure();
+        }
+
+        [Tooltip("点了这些选项就播「回收 → 组装」教学（TerminalChoice 的 Id）")]
+        public string[] SalvageTutorialChoiceIds = { "salvage_status", "activate_salvage" };
+        bool salvageTutorialPlayed;
+
+        /// <summary>
+        /// 「回收状态」本身只是一个查看选项、不带事件，所以教学挂在选项上而不是命令上。
+        /// </summary>
+        void HandleChoiceAccepted(string nodeId, string choiceId)
+        {
+            if (salvageTutorialPlayed || string.IsNullOrEmpty(choiceId)) return;
+            if (SalvageTutorialChoiceIds == null) return;
+            foreach (var id in SalvageTutorialChoiceIds)
+            {
+                if (id != choiceId) continue;
+                salvageTutorialPlayed = true;
+                StartCoroutine(SalvageAssemblyTutorial());
+                return;
+            }
         }
 
         void HandleCommand(string command)
@@ -196,7 +216,6 @@ namespace LudumDare60.Landing
             int ready = -1;
             while (waited < SalvageWaitTimeout)
             {
-                if (PlayerActed()) yield break;
                 ready = Assembly != null ? Assembly.FindCraftableRecipe() : -1;
                 if (ready >= 0) break;
                 waited += Time.unscaledDeltaTime;
@@ -207,7 +226,6 @@ namespace LudumDare60.Landing
             var bench = AssemblyScreen != null ? AssemblyScreen : FindScreenByName(cam, "RADAR");
             if (cam != null && bench != null) cam.FocusScreen(bench);
             if (AssemblyFocusHold > 0f) yield return new WaitForSecondsRealtime(AssemblyFocusHold);
-            if (PlayerActed()) yield break;
 
             var recipes = Assembly.Recipes;
             if (recipes == null || recipes.Length == 0) yield break;
@@ -219,7 +237,6 @@ namespace LudumDare60.Landing
             // 再绕一整圈：让玩家看清左右能翻页
             for (int step = 0; step < recipes.Length; step++)
             {
-                if (PlayerActed()) yield break;
                 Assembly.SelectRecipe((Assembly.SelectedRecipeIndex + 1) % recipes.Length);
                 yield return new WaitForSecondsRealtime(PageInterval);
             }
@@ -274,6 +291,11 @@ namespace LudumDare60.Landing
             var look = cam != null ? cam.FreeLook : null;
             if (look == null) yield break;
 
+            // 提示期间锁住玩家视角，避免两边同时转把画面扯坏；播完立刻解锁
+            bool wasBlocked = look.InputBlocked;
+            look.InputBlocked = true;
+            try
+            {
             float startYaw = look.Yaw;
             float targetYaw = Mathf.Clamp(startYaw + LookHintYaw, -150f, 150f);
             float t = 0f;
@@ -282,13 +304,14 @@ namespace LudumDare60.Landing
             while (t < duration)
             {
                 if (cam != null && cam.State != CockpitViewState.Free) yield break;   // 玩家已经点进某块屏
-                if (look.PlayerLooked || PlayerActed()) yield break;                   // 玩家自己动了
                 t += Time.unscaledDeltaTime;
                 float k = Mathf.Clamp01(t / duration);
                 float eased = k * k * (3f - 2f * k);
                 look.ApplyLook(Mathf.Lerp(startYaw, targetYaw, eased), look.Pitch);
                 yield return null;
             }
+            }
+            finally { look.InputBlocked = wasBlocked; }
         }
 
         /// <summary>延迟一点再关，避免玩家刚点完就看到窗口凭空消失。</summary>
