@@ -5990,6 +5990,14 @@ PrefabInstance:
       propertyPath: m_TextStyleHashCode
       value: -1183493901
       objectReference: {fileID: 0}
+    - target: {fileID: 1565238488151990505, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
+      propertyPath: latinFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 557b464e38314b74cb8fc777a4d60432, type: 2}
+    - target: {fileID: 1565238488151990505, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
+      propertyPath: chineseFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 27ede624283a62c42a718e8991a4e2ec, type: 2}
     - target: {fileID: 1983825388271557023, guid: 8708f823e2cf5ce4aa7e52d6f3dea926, type: 3}
       propertyPath: m_isOrthographic
       value: 1

@@ -46,6 +46,12 @@ namespace LudumDare60.UI
         [Range(0f, 1f)] [SerializeField] private float clickVolume = 0.45f;
         [Tooltip("点击音音高随机范围（1 = 原调）")]
         [SerializeField] private Vector2 clickPitch = new Vector2(0.96f, 1.06f);
+
+        [Header("随语言切换字体")]
+        [Tooltip("英文用的字体（玻璃终端，只有 ASCII）")]
+        [SerializeField] private TMP_FontAsset latinFont;
+        [Tooltip("中文用的字体。中文时整套界面都用它，不再靠 fallback 混排")]
+        [SerializeField] private TMP_FontAsset chineseFont;
         private AudioSource uiAudio;
         private AudioSource uiAccentAudio;
         private float previousTimeScale;
@@ -271,6 +277,25 @@ namespace LudumDare60.UI
 
         private void OnLanguageChanged(string code) => ApplyLanguage();
 
+        /// <summary>
+        /// 按当前语言整套换字体：中文用中文字体，英文用终端字体。
+        /// 以前中文靠 Glass_TTY 的 fallback 逐字兜底，拉丁字符仍走 Glass_TTY，
+        /// 所以"BGM"这种拉丁串会比汉字细一圈 —— 整套换掉就不会混排。
+        /// </summary>
+        private void ApplyFonts()
+        {
+            if (widgets.Overlay == null) return;
+            bool chinese = !string.IsNullOrEmpty(Loc.Language) && Loc.Language.StartsWith("zh");
+            var font = chinese ? chineseFont : latinFont;
+            if (font == null) return;
+            foreach (var text in widgets.Overlay.GetComponentsInChildren<TMP_Text>(true))
+            {
+                if (text == null || text.font == font) continue;
+                text.font = font;
+                text.SetAllDirty();
+            }
+        }
+
         private void ApplyLanguage()
         {
             if (_localizedLabels.Count == 0) BindLocalizedText(); // 自愈：层级晚于脚本就绪时补绑
@@ -279,6 +304,7 @@ namespace LudumDare60.UI
                 if (_localizedLabels[i] == null) continue;
                 _localizedLabels[i].text = Loc.Get(_localizedKeys[i]);
             }
+            ApplyFonts();
             if (widgets.Title != null)
                 widgets.Title.text = Loc.Get(widgets.SettingsPage != null && widgets.SettingsPage.activeSelf
                     ? "esc.title.settings"
