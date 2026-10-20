@@ -20,6 +20,9 @@ namespace LudumDare60.Landing
         public CockpitStandbyScreen RepairInfoStandby;
         public CockpitStandbyScreen SalvageStandby;
 
+        [Tooltip("选完「开始着陆」后，过多久把终端窗口关掉（秒）。让玩家看清窗口是可以开关的")]
+        [Min(0f)] public float CloseTerminalDelay = 0.5f;
+
         public bool LandingStarted { get; private set; }
         public bool HasCrashed { get; private set; }
         public bool SalvageEnabled { get; private set; }
@@ -87,6 +90,8 @@ namespace LudumDare60.Landing
                     }
                     LandingStarted = true;
                     Terminal.SetFlag("pioneer60.landing_started", true);
+                    // 关掉终端窗口：让玩家知道这块屏可以收起来，降落过程看舷窗
+                    StartCoroutine(CloseTerminalAfterDelay());
                     break;
                 case "pioneer60.begin_repairs":
                     if (HasCrashed) SetRepairStandby(false);
@@ -121,7 +126,19 @@ namespace LudumDare60.Landing
         {
             if (!HasCrashed || crashReported) return;
             crashReported = true;
-            Terminal.GoToNode("landing_crash_report");
+            // 落地后剧情继续：自动把终端窗口重新打开
+            if (Terminal != null)
+            {
+                Terminal.Open();
+                Terminal.GoToNode("landing_crash_report");
+            }
+        }
+
+        /// <summary>延迟一点再关，避免玩家刚点完就看到窗口凭空消失。</summary>
+        System.Collections.IEnumerator CloseTerminalAfterDelay()
+        {
+            if (CloseTerminalDelay > 0f) yield return new WaitForSecondsRealtime(CloseTerminalDelay);
+            if (Terminal != null && Terminal.Session != null && Terminal.Session.IsOpen) Terminal.Close();
         }
 
         void ReportLandingFailure()
