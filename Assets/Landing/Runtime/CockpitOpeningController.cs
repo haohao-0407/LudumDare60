@@ -23,6 +23,16 @@ namespace LudumDare60.Landing
         [Tooltip("选完「开始着陆」后，过多久把终端窗口关掉（秒）。让玩家看清窗口是可以开关的")]
         [Min(0f)] public float CloseTerminalDelay = 0.5f;
 
+        [Header("落地镜头教学（告诉玩家能左键拉近、右键/ESC 返回）")]
+        [Tooltip("座舱相机。留空则自动找")]
+        public CockpitCameraController CockpitCamera;
+        [Tooltip("拉近看哪块屏。留空则自动挑名字里带 SYSTEMS / COMMUNICATION 的一块")]
+        public CockpitScreenTarget TutorialScreen;
+        [Tooltip("拉近后停多久再自动回到上级（秒）")]
+        [Min(0f)] public float TutorialFocusHold = 1f;
+        [Tooltip("回到自由视角后等多久再开终端（秒）")]
+        [Min(0f)] public float TutorialAfterReturnDelay = 0.4f;
+
         public bool LandingStarted { get; private set; }
         public bool HasCrashed { get; private set; }
         public bool SalvageEnabled { get; private set; }
@@ -126,12 +136,48 @@ namespace LudumDare60.Landing
         {
             if (!HasCrashed || crashReported) return;
             crashReported = true;
-            // 落地后剧情继续：自动把终端窗口重新打开
+            StartCoroutine(PlayLandingTutorial());
+        }
+
+        /// <summary>
+        /// 落地教学：镜头自动拉近那块变红的屏（示范左键点击的效果）→ 停 1 秒 →
+        /// 自动退回上级视角（示范右键 / ESC）→ 再打开终端把剧情接上。
+        /// </summary>
+        System.Collections.IEnumerator PlayLandingTutorial()
+        {
+            var cam = CockpitCamera != null ? CockpitCamera : FindAnyObjectByType<CockpitCameraController>();
+            var screen = TutorialScreen != null ? TutorialScreen : PickTutorialScreen(cam);
+            if (cam != null && screen != null)
+            {
+                cam.FocusScreen(screen);
+                if (TutorialFocusHold > 0f) yield return new WaitForSecondsRealtime(TutorialFocusHold);
+                cam.ReturnToFree();
+                if (TutorialAfterReturnDelay > 0f) yield return new WaitForSecondsRealtime(TutorialAfterReturnDelay);
+            }
             if (Terminal != null)
             {
                 Terminal.Open();
                 Terminal.GoToNode("landing_crash_report");
             }
+        }
+
+        CockpitScreenTarget PickTutorialScreen(CockpitCameraController cam)
+        {
+            if (cam == null || cam.Screens == null) return null;
+            foreach (var s in cam.Screens)
+            {
+                if (s == null) continue;
+                var n = s.gameObject.name;
+                // 那块变红的损伤屏在 COMMUNICATIONS 上（截图里镜框写着 COMMUNICATION）
+                if (n.Contains("COMMUNICATION")) return s;
+            }
+            foreach (var s in cam.Screens)
+            {
+                if (s == null) continue;
+                var n = s.gameObject.name;
+                if (n.Contains("SYSTEM")) return s;
+            }
+            return cam.Screens.Length > 0 ? cam.Screens[0] : null;
         }
 
         /// <summary>延迟一点再关，避免玩家刚点完就看到窗口凭空消失。</summary>
