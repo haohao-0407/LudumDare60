@@ -9269,6 +9269,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8724464042354866312, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: appearClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 272ae550aad65a845ae8405994b06f7f, type: 3}
+    - target: {fileID: 8724464042354866312, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: disappearClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4a1844e27efbda84f939a25d7b6e93fc, type: 3}
+    - target: {fileID: 8724464042354866312, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
       propertyPath: surfaceOffset
       value: 0.0005
       objectReference: {fileID: 0}

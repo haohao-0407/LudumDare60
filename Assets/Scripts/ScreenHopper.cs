@@ -139,6 +139,17 @@ namespace LudumDare60.Pet
         [Tooltip("关机时第一段（画面压成线）占总时长的比例")]
         [Range(.1f, .9f)] [SerializeField] private float crtCollapsePhase = .6f;
 
+        [Header("可见性（盖过屏幕内容）")]
+        [Tooltip("排序层级。屏幕内容多用世界空间 Canvas，值要压过它们才不会被文字/图元盖住")]
+        [SerializeField] private int renderOrder = 5000;
+
+        [Header("出入场音效（增强被感知）")]
+        [Tooltip("出现时播一次，留空则无声")]
+        [SerializeField] private AudioClip appearClip;
+        [Tooltip("消失时播一次，留空则无声")]
+        [SerializeField] private AudioClip disappearClip;
+        [Range(0f, 1f)] [SerializeField] private float cueVolume = 0.65f;
+
         [Header("调试")]
         [SerializeField] private bool logStateChanges = false;
 
@@ -194,6 +205,7 @@ namespace LudumDare60.Pet
         private bool _hidePending;
         private Vector3 _spawnBaseScale = Vector3.one;
         private SpriteRenderer _crtLine;
+        private AudioSource _cue;
         private TerminalDialogueSession _watchedSession;
 
         // ------------------------------------------------------------------ 生命周期
@@ -213,14 +225,25 @@ namespace LudumDare60.Pet
             }
 
             ApplyScale();
+            _sr.sortingOrder = renderOrder;
+            _cue = GetComponent<AudioSource>();
+            if (_cue == null)
+            {
+                _cue = gameObject.AddComponent<AudioSource>();
+                _cue.playOnAwake = false;
+                _cue.loop = false;
+                _cue.spatialBlend = 0.35f;   // 略偏 3D：位置在屏上，能听出方向
+                _cue.volume = cueVolume;
+            }
 
             _index = IndexOfScreen(appearScreenName);
             if (_index < 0) _index = IndexOfScreen("SCREEN_NAVIGATION");
             if (_index < 0) _index = 0;
             _appearIndex = _index;
 
+            // 出生在屏幕正中：人眼最聚焦的位置，一出现就能看见
             _u = 0f;
-            _v = -_screens[_index].usableHalfHeight * 0.4f;
+            _v = 0f;
             _targetUV = new Vector2(_u, _v);
             _idleTimer = Random.Range(idleDuration.x, idleDuration.y);
             _dwellTimer = Random.Range(dwellDuration.x, dwellDuration.y);
@@ -367,6 +390,8 @@ namespace LudumDare60.Pet
                 _spawnAppearing = true;
                 _spawnBaseScale = _baseScale;
                 _spawnTime = 0f;
+                if (_sr != null) _sr.sortingOrder = renderOrder;
+                PlayCue(appearClip);
                 if (logStateChanges) Debug.Log("[ScreenHopper] 出场", this);
             }
             else
@@ -381,12 +406,21 @@ namespace LudumDare60.Pet
                     _spawnAppearing = false;
                     _spawnBaseScale = transform.localScale;
                     _spawnTime = 0f;
+                    PlayCue(disappearClip);
                 }
                 else
                 {
                     FinishHide();
                 }
             }
+        }
+
+        private void PlayCue(AudioClip clip)
+        {
+            if (clip == null || _cue == null) return;
+            _cue.transform.position = transform.position;
+            _cue.pitch = Random.Range(.96f, 1.04f);
+            _cue.PlayOneShot(clip, cueVolume);
         }
 
         /// <summary>真正关掉：关渲染器与动画器，位置/缩放复位，下次出场从干净状态开始。</summary>
@@ -985,7 +1019,7 @@ namespace LudumDare60.Pet
             _index = Mathf.Clamp(screenIndex, 0, _screens.Length - 1);
             _previousIndex = -1;
             _u = 0f;
-            _v = -_screens[_index].usableHalfHeight * 0.4f;
+            _v = 0f;   // 出场固定在屏幕正中
             _targetUV = new Vector2(_u, _v);
             _dwellTimer = Random.Range(dwellDuration.x, dwellDuration.y);
             _idleTimer = Random.Range(idleDuration.x, idleDuration.y);
