@@ -21,6 +21,10 @@ internal static class MissionClockTests
         Run("launch at zero and late launch enter stay ending", AtAndAfterDeadline);
         Run("incomplete repair cannot launch and does not reset deadline", IncompleteRepair);
         Run("duplicate launch and start cannot change an ending", EndingIsLocked);
+        Run("cancelled departure retains budget, calendar and published warnings", CancelDeparturePreservesDeadline);
+        Run("cancelled departure preserves pause and cannot rewind timestamps", CancelDeparturePreservesPause);
+        Run("departure retry still requires a strictly positive deadline", CancelDepartureRetryDeadline);
+        Run("departure cancellation cannot restart ready, running or expired missions", CancelDepartureStateGuards);
         Run("all crossed warning thresholds publish once in descending order", Warnings);
         Run("warning config is copied, sorted and deduplicated", WarningConfiguration);
         Run("stale timestamps neither rewind nor double count", MonotonicTimestamp);
@@ -189,6 +193,64 @@ internal static class MissionClockTests
         Check(warnings.Count == 3, "warning skipped or duplicated");
         Equal(warnings[0], 0.5); Equal(warnings[1], 0.25); Equal(warnings[2], 0.1);
     }
+    private static void CancelDeparturePreservesDeadline()
+    {
+        var clock = Running(100, 10);
+        var days = new List<int>(); clock.DayCompleted += days.Add;
+        var warnings = new List<double>(); clock.WarningReached += warnings.Add;
+        Check(clock.TryLaunch(true, 60), "initial departure failed");
+        var stateChanges = 0; var changes = 0;
+        clock.StateChanged += state =>
+        {
+            Check(state == MissionState.Running && !clock.HasEnded, "cancellation state not committed before observers");
+            stateChanges++;
+        };
+        clock.Changed += () => changes++;
+        Check(clock.CancelDeparture(1000), "departure cancellation failed");
+        Equal(clock.ElapsedSeconds, 60); Equal(clock.RemainingSeconds, 40);
+        Check(clock.CompletedDays == 6 && clock.CurrentDay == 7, "cancellation reset calendar");
+        Check(stateChanges == 1 && changes == 1, "cancellation notifications were missing or duplicated");
+        clock.AdvanceTo(1001);
+        Equal(clock.ElapsedSeconds, 61);
+        Check(days.Count == 6 && warnings.Count == 1, "cancellation replayed calendar or warning events");
+        clock.AdvanceTo(1015);
+        Equal(clock.RemainingSeconds, 25);
+        Check(days.Count == 7 && warnings.Count == 2, "remaining calendar or warning progress was lost");
+    }
+    private static void CancelDeparturePreservesPause()
+    {
+        var clock = Running(100);
+        clock.SetPaused(true, 20);
+        Check(clock.TryLaunch(true, 30), "paused launch failed");
+        clock.AdvanceTo(1000);
+        Check(clock.CancelDeparture(900) && clock.IsPaused, "cancellation lost the pause");
+        clock.SetPaused(false, 950);
+        clock.AdvanceTo(1001);
+        Equal(clock.ElapsedSeconds, 21);
+    }
+    private static void CancelDepartureRetryDeadline()
+    {
+        foreach (var remainingAfterRetry in new[] { 0.001, 0.0, -0.001 })
+        {
+            var clock = Running(100);
+            Check(clock.TryLaunch(true, 99), "initial last-second launch failed");
+            Check(clock.CancelDeparture(1000), "last-second cancellation failed");
+            var accepted = clock.TryLaunch(true, 1001 - remainingAfterRetry);
+            Check(accepted == (remainingAfterRetry > 0), "retry did not enforce strict cutoff");
+            Check(clock.State == (accepted ? MissionState.Departed : MissionState.Stayed), "retry entered the wrong state");
+        }
+    }
+    private static void CancelDepartureStateGuards()
+    {
+        var clock = new MissionClock(10);
+        Check(!clock.CancelDeparture(1) && clock.State == MissionState.Ready, "cancellation started a ready mission");
+        clock.Start(2);
+        Check(!clock.CancelDeparture(500), "running mission accepted cancellation");
+        clock.AdvanceTo(12);
+        Check(clock.State == MissionState.Stayed && !clock.CancelDeparture(1000), "expired mission resumed");
+        Equal(clock.RemainingSeconds, 0);
+        Check(!clock.TryLaunch(true, 1001), "expired mission departed after cancellation");
+    }
     private static void WarningConfiguration()
     {
         var thresholds = new[] { 0.2, 0.8, 0.2 };
@@ -212,6 +274,7 @@ internal static class MissionClockTests
         Throws(() => new MissionClock(1, 1, new[] { double.PositiveInfinity }));
         var clock = Running(); Throws(() => clock.AdvanceTo(-1));
         Throws(() => clock.TryLaunch(true, double.NaN)); Throws(() => clock.SetPaused(false, double.PositiveInfinity));
+        Throws(() => clock.CancelDeparture(double.NaN)); Throws(() => clock.CancelDeparture(-1));
     }
     private static void ReentrantExpiry()
     {

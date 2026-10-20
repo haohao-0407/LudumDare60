@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using LudumDare60.AssemblyDemo;
+using LudumDare60.Landing;
 using LudumDare60.ReturnWindow;
 using LudumDare60.UI;
 using UnityEditor;
@@ -228,6 +229,11 @@ namespace LudumDare60.ShipAssembly.Editor
                 Require(service != null,"SHIP assembly service exists",runtimeReport);
                 Require(service.Recipes.Length == 4,"four production repair recipes retained",runtimeReport);
                 // Prepare this validation explicitly; the production landing/repair availability gate stays intact.
+                // This repair-only run bypasses story authorization; the mission harness exercises that flow.
+                var mission = Object.FindFirstObjectByType<CockpitMissionController>();
+                if (mission != null) mission.enabled = false;
+                Time.timeScale = 1f;
+                service.GameplayBlocked = false;
                 Require(service.ApplyCrashDamage(),"validation starts with damaged ship systems",runtimeReport);
                 service.SetRepairsAvailable(true);
                 foreach (var id in service.Recipes.SelectMany(r => r.Materials).Select(c => c.ItemId).Distinct())

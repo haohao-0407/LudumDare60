@@ -1,9 +1,35 @@
 返航窗口 / RETURN WINDOW
 
+SHIP 正式场景接入（2026-10-20）
+打开 Assets/Scenes/SHIP.unity 并 Play；原有着陆、四套维修、预检、起飞与片尾流程均保留。
+座舱右侧使用现有 ReturnCalendar / ReturnCountdown 资产；右转查看，左键点击拉近，右键或 ESC 返回。
+在着陆后的简报选择 BEGIN REPAIRS，开始 1200 秒有效操作倒计时；每 60 秒对应日历的一天。
+剧情阅读、ESC 菜单和失焦暂停；操作菜单、打捞、维修、预检消耗时间。
+纸质日历显示 08/25 至 09/13，逐日划叉、圈出末日，并按能源/导航/引擎/生命系统各自的实际维修状态打勾。
+每天结束自动拉近日历，镜头到位后播放划叉，再恢复原先的自由视角或操作屏幕；过程中倒计时继续，ESC 可暂停。
+倒计时仪表及预警不强制切换镜头；最后一天先展示划叉，再转入超时终端剧情。
+剩余 50%、25%、10% 发布不打断操作的提示；最后 10% 亮灯并提示音。
+必须修复四系统、完成四项预检，再于零点前点击 LAUNCH。点击即锁定返航授权，起飞演出可正常继续。
+发射失败不锁定时钟；取消发射保留原剩余时间并要求重新预检。归零后接入现有 AnotherTomorrow 剧情与播种日历。
+确认 AnotherTomorrow 最后一条旁白后，舱内画面淡入黑屏，依次播放四幕报幕字幕：未能启程、漫长的等候、播种之日、另一个明天。
+字幕自动推进；每幕完全显示后，空格、回车或单击可提前进入下一幕。ESC 菜单、失焦和系统挂起暂停字幕，后台座舱操作锁定。
+终幕保持黑屏并提供“再次启程”，重新加载 SHIP 开始新一局；成功返航不播放这段坏结局。
+报幕文案/时长：Assets/Landing/AnotherTomorrow.asset；布局：Assets/Landing/Prefabs/Another Tomorrow Ending.prefab。
+中英文跟随设置即时切换；专用字体为 Cormorant Garamond / 思源宋体（SIL OFL 1.1，许可证在 Assets/Fonts/Theatre），静态字形图集随游戏打包。
+若改文案新增字形，需重新烘焙上述目录的专用 SDF 字体；不要修改终端的全局字体。
+安装入口：Tools > Landing > Install Another Tomorrow theatre ending in SHIP；预览：Tools > Landing > Preview Another Tomorrow。
+黑屏结局验证：AnotherTomorrowEndingValidation.Run()；报告：Logs/CockpitMission/theatre-ending-validation.txt。
+SHIP 使用 CockpitMissionController 管理本局，复用纯 C# MissionClock；不挂载下述旧原型的 MissionController。
+安装/修复引用：Tools > Landing > Install mission clock and calendar in SHIP。
+联动验证：Tools > Landing > Validate SHIP mission clock in Play Mode；完整返航验证使用 CockpitMissionValidation.RunSuccess()。
+报告：Logs/CockpitMission/validation.txt、success-validation.txt。纯计时测试：Tests/ReturnWindow/ReturnWindow.Tests.csproj。
+.NET 8 SDK 仅用于上述独立开发测试；Unity 发布游戏无需向玩家分发 SDK。正常运行 Unity 游戏不调用 dotnet。
+以下章节保留旧 ReturnWindow 单系统原型的操作与开发记录，不能作为 SHIP 当前玩法说明。
+
 本次交接版本
 最新剧情以 Exports/ReturnWindow/StoryReview/PIONEER-60_英文剧情交接稿.txt 为准；中文接入指示集中在文档开头。
 该稿沿用用户原剧情，日志日期为 1981-08-22 至 1981-08-25，维修日历为 08/25 至 09/13。
-最新剧情稿及四套维修系统尚未接入 Unity；当前可玩场景仍是上一版剧情与单套组装维修原型。
+该段记录的是旧 ReturnWindow 独立原型；最新 SHIP 接入状态见本文开头。
 当前维修台已改用导航装置的四块原生模型，按提供的组装前/后坐标和方向配置；不使用模型截图或渲染图贴片。
 以下操作说明、抵达记录及验证结果描述当前可玩原型，不代表最新剧情稿已完成接入。
 

@@ -31,6 +31,16 @@ namespace LudumDare60.ReturnWindow
         public int DayCount { get => dayCount; set => dayCount = Mathf.Max(1, value); }
         public DateTime StartDate { get; set; } = new DateTime(1981, 8, 25);
         public bool DepartureConfirmed { get; set; }
+        // Negative keeps the prototype's salvage/repair/launch checklist.
+        public int RepairChecklistMask { get; set; } = -1;
+        public bool StrokeAnimationPaused { get; set; }
+
+        public bool IsCrossAnimationComplete(int oneBasedDay)
+        {
+            int cell = oneBasedDay - 1 - page * CellsPerPage;
+            return initialized && cell >= 0 && cell < completed.Length &&
+                   completed[cell] && strokeProgress[cell] >= 2f;
+        }
 
         public void Configure(TMP_Text caption, TMP_Text[] labels, LineRenderer[] first, LineRenderer[] second,
             Transform marker, Transform finalCircle, GameObject plan, GameObject sowingPage,
@@ -99,7 +109,9 @@ namespace LudumDare60.ReturnWindow
             }
             float progress = Mathf.Clamp01(normalizedRepairProgress);
             for (int i = 0; i < checklistTicks.Length; i++)
-                if (checklistTicks[i]) checklistTicks[i].SetActive(i == 0 ? progress > 0f : i == 3 ? DepartureConfirmed : progress >= 1f);
+                if (checklistTicks[i]) checklistTicks[i].SetActive(RepairChecklistMask >= 0
+                    ? (RepairChecklistMask & (1 << i)) != 0
+                    : i == 0 ? progress > 0f : i == 3 ? DepartureConfirmed : progress >= 1f);
         }
 
         // Front faces +Z. Viewed from the front, visual right is local -X.
@@ -107,7 +119,7 @@ namespace LudumDare60.ReturnWindow
 
         private void Update()
         {
-            if (!initialized || sowing) return;
+            if (!initialized || sowing || StrokeAnimationPaused) return;
             for (int i = 0; i < completed.Length; i++)
             {
                 if (!completed[i] || strokeProgress[i] >= 2f) continue;

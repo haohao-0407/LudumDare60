@@ -36,6 +36,7 @@ MonoBehaviour:
     Nodes:
     - Id: log_22_aug
       Title: Flight log / 22-AUG-1981
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 2
         DisplayName: FLIGHT LOG
@@ -96,6 +97,7 @@ MonoBehaviour:
       NextNodeId: log_23_aug
     - Id: log_23_aug
       Title: Flight log / 23-AUG-1981
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 2
         DisplayName: FLIGHT LOG
@@ -211,6 +213,7 @@ MonoBehaviour:
       NextNodeId: log_24_aug
     - Id: log_24_aug
       Title: Flight log / 24-AUG-1981
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 2
         DisplayName: FLIGHT LOG
@@ -425,6 +428,7 @@ MonoBehaviour:
       NextNodeId: log_25_aug
     - Id: log_25_aug
       Title: Flight log / 25-AUG-1981
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 2
         DisplayName: FLIGHT LOG
@@ -468,12 +472,12 @@ MonoBehaviour:
         - pioneer60.begin_landing
       NextNodeId: 
     - Id: departure_ready
-      Title: "PRE-FLIGHT CHECKLIST"
+      Title: PRE-FLIGHT CHECKLIST
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "All four assemblies are complete: power, navigation, propulsion and life support. We still need to test them before departure. Shall we begin?"
+        DisplayName: AI
+        Text: 'All four assemblies are complete: power, navigation, propulsion and life support. We still need to test them before departure. Shall we begin?'
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -484,8 +488,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: run_preflight
-        Label: "RUN PRE-FLIGHT CHECKS"
-        PlayerText: "Run the pre-flight checks."
+        Label: RUN PRE-FLIGHT CHECKS
+        PlayerText: Run the pre-flight checks.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -502,8 +506,8 @@ MonoBehaviour:
         SetFlags: []
         Events: []
       - Id: not_yet
-        Label: "NOT YET"
-        PlayerText: "Not yet. Return to ship operations."
+        Label: NOT YET
+        PlayerText: Not yet. Return to ship operations.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -517,12 +521,12 @@ MonoBehaviour:
         Events: []
       NextNodeId:
     - Id: departure_power
-      Title: "CHECK 1 / POWER"
+      Title: CHECK 1 / POWER
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "First, the power unit. I will apply a test load and check the restored supply. Authorize the power test when you are ready."
+        DisplayName: AI
+        Text: First, the power unit. I will apply a test load and check the restored supply. Authorize the power test when you are ready.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -533,8 +537,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: check_power
-        Label: "TEST POWER"
-        PlayerText: "Run the power check."
+        Label: TEST POWER
+        PlayerText: Run the power check.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -553,12 +557,12 @@ MonoBehaviour:
         - pioneer60.check_power
       NextNodeId:
     - Id: departure_testing
-      Title: "CHECK IN PROGRESS"
+      Title: CHECK IN PROGRESS
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 2
-        DisplayName: "SHIP SYSTEMS"
-        Text: "Pre-flight check running. Please stand by."
+        DisplayName: SHIP SYSTEMS
+        Text: Pre-flight check running. Please stand by.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -570,12 +574,12 @@ MonoBehaviour:
       Choices: []
       NextNodeId:
     - Id: departure_navigation
-      Title: "CHECK 2 / NAVIGATION"
+      Title: CHECK 2 / NAVIGATION
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "Power check passed. The supply held under load. Next, I will test the navigation solution and guidance response."
+        DisplayName: AI
+        Text: Power check passed. The supply held under load. Next, I will test the navigation solution and guidance response.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -586,8 +590,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: check_navigation
-        Label: "TEST NAVIGATION"
-        PlayerText: "Run the navigation check."
+        Label: TEST NAVIGATION
+        PlayerText: Run the navigation check.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -606,12 +610,12 @@ MonoBehaviour:
         - pioneer60.check_navigation
       NextNodeId:
     - Id: departure_propulsion
-      Title: "CHECK 3 / PROPULSION"
+      Title: CHECK 3 / PROPULSION
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "Navigation check passed. Guidance is responding. Next, I will check the propulsion controls before ignition."
+        DisplayName: AI
+        Text: Navigation check passed. Guidance is responding. Next, I will check the propulsion controls before ignition.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -622,8 +626,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: check_propulsion
-        Label: "TEST PROPULSION"
-        PlayerText: "Run the propulsion check."
+        Label: TEST PROPULSION
+        PlayerText: Run the propulsion check.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -642,12 +646,12 @@ MonoBehaviour:
         - pioneer60.check_propulsion
       NextNodeId:
     - Id: departure_life_support
-      Title: "CHECK 4 / LIFE SUPPORT"
+      Title: CHECK 4 / LIFE SUPPORT
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "Propulsion check passed. The engine controls are ready. One check remains: cabin pressure and life support."
+        DisplayName: AI
+        Text: 'Propulsion check passed. The engine controls are ready. One check remains: cabin pressure and life support.'
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -658,8 +662,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: check_life_support
-        Label: "TEST LIFE SUPPORT"
-        PlayerText: "Run the life support check."
+        Label: TEST LIFE SUPPORT
+        PlayerText: Run the life support check.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -678,12 +682,12 @@ MonoBehaviour:
         - pioneer60.check_life_support
       NextNodeId:
     - Id: departure_launch_ready
-      Title: "READY FOR LAUNCH"
+      Title: READY FOR LAUNCH
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "Life support check passed. All four systems have passed their pre-flight checks. The craft is ready for departure. Launch remains under your authority."
+        DisplayName: AI
+        Text: Life support check passed. All four systems have passed their pre-flight checks. The craft is ready for departure. Launch remains under your authority.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -694,8 +698,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: launch
-        Label: "LAUNCH"
-        PlayerText: "Authorize launch. Take us into orbit."
+        Label: LAUNCH
+        PlayerText: Authorize launch. Take us into orbit.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -715,8 +719,8 @@ MonoBehaviour:
         Events:
         - pioneer60.launch_requested
       - Id: not_yet
-        Label: "NOT YET"
-        PlayerText: "Hold launch. Return to ship operations."
+        Label: NOT YET
+        PlayerText: Hold launch. Return to ship operations.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -730,12 +734,12 @@ MonoBehaviour:
         Events: []
       NextNodeId:
     - Id: launch_countdown
-      Title: "LAUNCH COUNTDOWN"
+      Title: LAUNCH COUNTDOWN
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 2
-        DisplayName: "SHIP SYSTEMS"
-        Text: "Launch authorized. Ignition in three seconds. Hold position."
+        DisplayName: SHIP SYSTEMS
+        Text: Launch authorized. Ignition in three seconds. Hold position.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -747,12 +751,12 @@ MonoBehaviour:
       Choices: []
       NextNodeId:
     - Id: launch_ignition
-      Title: "IGNITION"
+      Title: IGNITION
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 2
-        DisplayName: "SHIP SYSTEMS"
-        Text: "Ignition confirmed. Engines building thrust."
+        DisplayName: SHIP SYSTEMS
+        Text: Ignition confirmed. Engines building thrust.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -764,12 +768,12 @@ MonoBehaviour:
       Choices: []
       NextNodeId:
     - Id: launch_ascent
-      Title: "ASCENT"
+      Title: ASCENT
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 2
-        DisplayName: "SHIP SYSTEMS"
-        Text: "Liftoff. Climbing clear of the surface."
+        DisplayName: SHIP SYSTEMS
+        Text: Liftoff. Climbing clear of the surface.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -781,12 +785,12 @@ MonoBehaviour:
       Choices: []
       NextNodeId:
     - Id: launch_exit
-      Title: "ATMOSPHERIC EXIT"
+      Title: ATMOSPHERIC EXIT
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 2
-        DisplayName: "SHIP SYSTEMS"
-        Text: "Leaving the atmosphere. Guidance is acquiring the orbital track."
+        DisplayName: SHIP SYSTEMS
+        Text: Leaving the atmosphere. Guidance is acquiring the orbital track.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -798,12 +802,12 @@ MonoBehaviour:
       Choices: []
       NextNodeId:
     - Id: launch_orbit
-      Title: "ORBIT ESTABLISHED"
+      Title: ORBIT ESTABLISHED
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "Stable Mars orbit confirmed. The Earth-return route is locked. Surface departure is complete; return flight preparations can continue."
+        DisplayName: AI
+        Text: Stable Mars orbit confirmed. The Earth-return route is locked. Surface departure is complete; return flight preparations can continue.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -815,12 +819,12 @@ MonoBehaviour:
       Choices: []
       NextNodeId:
     - Id: launch_failed
-      Title: "LAUNCH INTERRUPTED"
+      Title: LAUNCH INTERRUPTED
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 2
-        DisplayName: "SHIP SYSTEMS"
-        Text: "Launch was aborted or could not be completed. Recheck the systems before requesting another attempt."
+        DisplayName: SHIP SYSTEMS
+        Text: Launch was aborted or could not be completed. Recheck the systems before requesting another attempt.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -831,8 +835,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: recheck
-        Label: "RECHECK"
-        PlayerText: "Run the departure checks again."
+        Label: RECHECK
+        PlayerText: Run the departure checks again.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -847,8 +851,8 @@ MonoBehaviour:
         SetFlags: []
         Events: []
       - Id: return
-        Label: "RETURN"
-        PlayerText: "Return to ship operations."
+        Label: RETURN
+        PlayerText: Return to ship operations.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -862,12 +866,12 @@ MonoBehaviour:
         Events: []
       NextNodeId:
     - Id: departure_blocked
-      Title: "PRE-FLIGHT CLEARANCE WITHDRAWN"
+      Title: PRE-FLIGHT CLEARANCE WITHDRAWN
       PauseGameplayWhileReading: 0
       Lines:
       - Speaker: 0
-        DisplayName: "AI"
-        Text: "Repair status has changed. Restore all four systems, then run the pre-flight checks again."
+        DisplayName: AI
+        Text: Repair status has changed. Restore all four systems, then run the pre-flight checks again.
         UseCustomColor: 0
         CustomColor:
           R: 0.65
@@ -878,8 +882,8 @@ MonoBehaviour:
         DelayAfter: 0.2
       Choices:
       - Id: return
-        Label: "RETURN"
-        PlayerText: "Return to ship operations."
+        Label: RETURN
+        PlayerText: Return to ship operations.
         DisplayName: Pioneer-60
         UseCustomColor: 0
         CustomColor:
@@ -1021,6 +1025,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: landing_crash_report
       Title: Hard landing report
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 2
         DisplayName: 
@@ -1070,6 +1075,7 @@ MonoBehaviour:
       NextNodeId: briefing_open
     - Id: briefing_open
       Title: SEND DISTRESS SIGNAL
+      PauseGameplayWhileReading: 1
       Lines: []
       Choices:
       - Id: briefing_reply_01
@@ -1089,6 +1095,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_01
       Title: SEND DISTRESS SIGNAL
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: COLONY SIGNAL
@@ -1119,6 +1126,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_02
       Title: Who are you?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: COLONY SIGNAL
@@ -1171,6 +1179,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_03
       Title: Assess my situation.
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1201,6 +1210,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_04
       Title: How much time do we have?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1231,6 +1241,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_05
       Title: Why those dates?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1272,6 +1283,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_06
       Title: When is the next chance?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1313,6 +1325,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_07
       Title: Let's make this window.
+      PauseGameplayWhileReading: 1
       Lines: []
       Choices:
       - Id: briefing_reply_08
@@ -1332,6 +1345,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_08
       Title: Prepare a repair plan.
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1384,6 +1398,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_09
       Title: Why is 13 September circled?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1425,6 +1440,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_10
       Title: What if I finish early?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1510,6 +1526,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_11
       Title: Why do you sound so old?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1540,6 +1557,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_12
       Title: How do I start repairs?
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 0
         DisplayName: 
@@ -1584,6 +1602,7 @@ MonoBehaviour:
       NextNodeId: 
     - Id: briefing_13
       Title: BEGIN REPAIRS
+      PauseGameplayWhileReading: 1
       Lines:
       - Speaker: 2
         DisplayName: 
@@ -1723,3 +1742,294 @@ MonoBehaviour:
         Events:
         - pioneer60.begin_landing
       NextNodeId: 
+    - Id: another_tomorrow_open
+      Title: Is there another route?
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 2
+        DisplayName:
+        Text: 'WINDOW CLOSED.
+
+          DEPARTURE AUTHORIZATION DEADLINE EXCEEDED.'
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName:
+        Text: The window has closed. We cannot make this departure.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_01
+        Label: Is there another route?
+        PlayerText: Check again. Is there another route?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_01
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_01
+      Title: Is there another route?
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: I have checked. With the ship in its present condition and the fuel we have left, I cannot give you an alternative route we can safely fly.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_02
+        Label: Wait for the next one.
+        PlayerText: Then we wait for the next one.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_02
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_02
+      Title: Wait for the next one.
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: The next return plan in the archive is in November 1983. That means more than two years of waiting, and the ship would need to be reassessed. Your emergency supplies will not last that long.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_03
+        Label: Can Earth send someone?
+        PlayerText: Can Earth send someone?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_03
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_03
+      Title: Can Earth send someone?
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: We will keep trying to restore contact. But in their last transmission, they said they could not guarantee rescue after the window closed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_04
+        Label: What do we do now?
+        PlayerText: ...Then what do we do now?
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_04
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_04
+      Title: What do we do now?
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: I will explain it in the plainest, most direct terms possible. Your first priority now is to stay alive until we can try to leave again.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_05
+        Label: Give me the plan.
+        PlayerText: That part I understand. Give me the plan.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_05
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_05
+      Title: Give me the plan.
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: First, check the lander's air supply and power. Then restore whatever water recycling equipment we can use in the colony. Until then, we will keep you alive with the facilities that still work.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 0
+        DisplayName:
+        Text: After that, repair the greenhouse and check the seed reserves. Emergency rations are not enough. We need to start producing food.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_06
+        Label: From repairs to growing things.
+        PlayerText: From repairing a ship to growing things.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_06
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_06
+      Title: From repairs to growing things.
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: The original objective has not been canceled. We just need a different schedule first.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName:
+        Text: 14 SEP 1981 / SOW
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 0
+        DelayAfter: 0.5
+      Choices:
+      - Id: another_tomorrow_reply_07
+        Label: What comes first tomorrow?
+        PlayerText: Then tell me what we do first tomorrow.
+        DisplayName: Pioneer-60
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        NextNodeId: another_tomorrow_07
+        Conditions: []
+        SetFlags: []
+        Events: []
+      NextNodeId:
+    - Id: another_tomorrow_07
+      Title: What comes first tomorrow?
+      PauseGameplayWhileReading: 1
+      Lines:
+      - Speaker: 0
+        DisplayName:
+        Text: Check the greenhouse water supply. If it is usable, prepare to sow.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Outside, the colony is still empty.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      - Speaker: 2
+        DisplayName: NARRATION
+        Text: Tomorrow, you will prepare to plant the first seed.
+        UseCustomColor: 0
+        CustomColor:
+          R: 0.65
+          G: 1
+          B: 0.76
+          A: 1
+        WaitForContinue: 1
+        DelayAfter: 0.5
+      Choices: []
+      NextNodeId:

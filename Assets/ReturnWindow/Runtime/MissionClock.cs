@@ -116,6 +116,21 @@ namespace LudumDare60.ReturnWindow
         }
 
         /// <summary>
+        /// Resume the existing deadline when a confirmed flight is cancelled.
+        /// Time spent in the departure sequence is discarded without restoring any budget.
+        /// </summary>
+        public bool CancelDeparture(double timestamp)
+        {
+            ValidateTimestamp(timestamp);
+            if (State != MissionState.Departed) return false;
+            lastTimestamp = Math.Max(lastTimestamp, timestamp);
+            State = MissionState.Running;
+            StateChanged?.Invoke(State);
+            Changed?.Invoke();
+            return true;
+        }
+
+        /// <summary>
         /// Re-anchor after a blocking scene load whose start callback Unity does not expose.
         /// Gameplay cannot run during that gap, so none of its wall time is mission time.
         /// </summary>

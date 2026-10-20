@@ -28,6 +28,10 @@ namespace LudumDare60.Landing
         public CockpitViewState State { get; private set; } = CockpitViewState.Free;
         public CockpitScreenTarget CurrentScreen { get; private set; }
         public bool IsFreeView => State == CockpitViewState.Free;
+        public bool PresentationBlocked { get; set; }
+        public bool IsForcedFocus { get; private set; }
+        public bool IsForcedFocusSettled => IsForcedFocus && !restoringForcedFocus &&
+            State == CockpitViewState.Screen && IsValidScreen(forcedScreen) && CurrentScreen == forcedScreen;
 
         private InputAction point, click, back;
         private InputAction escBack;
@@ -36,6 +40,8 @@ namespace LudumDare60.Landing
         private Quaternion freeRotation, startRotation;
         private float freeFov, startFov, elapsed;
         private bool hasFreePose;
+        private CockpitScreenTarget forcedScreen, forcedReturnScreen;
+        private bool restoringForcedFocus;
         private readonly List<RaycastResult> uiHits = new List<RaycastResult>(16);
         private PointerEventData pointerData;
         private EventSystem pointerSystem;
@@ -49,8 +55,9 @@ namespace LudumDare60.Landing
             escBack = Clone("ESCMenu/Toggle");
             if (PauseMenu != null)
             {
-                // 只要不在自由视角（进入中/已聚焦/退回中），ESC 都算"返回上一级"，不弹菜单。
-                blockMenuWhileFocused = () => State != CockpitViewState.Free;
+                // 手动聚焦屏幕时，ESC 算"返回上一级"，不弹菜单。
+                // A scripted calendar close-up must still let the player pause the game.
+                blockMenuWhileFocused = () => State != CockpitViewState.Free && !IsForcedFocus && !PresentationBlocked;
                 PauseMenu.OpenBlocker = blockMenuWhileFocused;
             }
         }
@@ -63,12 +70,12 @@ namespace LudumDare60.Landing
         }
 
         // Reading a terminal can pause mission simulation; camera interaction still uses unscaled time.
-        private bool CanOperate => ViewCamera != null &&
+        private bool CanOperate => !PresentationBlocked && ViewCamera != null &&
             (!RequireApplicationFocus || Application.isFocused) && (PauseMenu == null || !PauseMenu.IsOpen);
 
         private void Update()
         {
-            if (!CanOperate) return;
+            if (!CanOperate || IsForcedFocus) return;
             if (State != CockpitViewState.Free)
             {
                 // 右键（老操作）或 ESC 都退回自由视角；ESC 在这里被吃掉，不会开到菜单。
@@ -119,7 +126,7 @@ namespace LudumDare60.Landing
 
         public void FocusScreen(CockpitScreenTarget screen)
         {
-            if (!isActiveAndEnabled || !CanOperate || screen == null || screen.ViewPoint == null || State != CockpitViewState.Free) return;
+            if (IsForcedFocus || !isActiveAndEnabled || !CanOperate || !IsValidScreen(screen) || State != CockpitViewState.Free) return;
             freePosition = ViewCamera.transform.localPosition;
             freeRotation = ViewCamera.transform.localRotation;
             freeFov = ViewCamera.fieldOfView; hasFreePose = true;
@@ -130,9 +137,79 @@ namespace LudumDare60.Landing
 
         public void ReturnToFree()
         {
-            if (State == CockpitViewState.Free || State == CockpitViewState.Returning || !hasFreePose) return;
+            if (PresentationBlocked || IsForcedFocus || State == CockpitViewState.Free || State == CockpitViewState.Returning || !hasFreePose) return;
             if (FreeLook != null) FreeLook.WaitForRightRelease();
             BeginTransition(CockpitViewState.Returning);
+        }
+
+        /// <summary>Temporarily docks the camera without losing its previous screen or free-view return pose.</summary>
+        public bool BeginForcedFocus(CockpitScreenTarget target)
+        {
+            if (IsForcedFocus || !isActiveAndEnabled || !CanOperate || !IsValidScreen(target)) return false;
+            forcedReturnScreen = State == CockpitViewState.Screen || State == CockpitViewState.EnteringScreen
+                ? CurrentScreen : null;
+            if (State == CockpitViewState.Free || !hasFreePose)
+            {
+                freePosition = ViewCamera.transform.localPosition;
+                freeRotation = ViewCamera.transform.localRotation;
+                freeFov = ViewCamera.fieldOfView;
+                hasFreePose = true;
+            }
+            forcedScreen = target;
+            restoringForcedFocus = false;
+            IsForcedFocus = true;
+            CurrentScreen = target;
+            if (FreeLook != null) FreeLook.InputBlocked = true;
+            BeginTransition(CockpitViewState.EnteringScreen);
+            return true;
+        }
+
+        /// <summary>Restores the previous view, or releases immediately to free view for another cinematic.</summary>
+        public void EndForcedFocus(bool restore = true)
+        {
+            if (!IsForcedFocus) return;
+            if (!restore || ViewCamera == null || !hasFreePose)
+            {
+                ResetToFree();
+                return;
+            }
+            if (restoringForcedFocus) return;
+            restoringForcedFocus = true;
+            if (FreeLook != null) FreeLook.WaitForRightRelease();
+            if (IsValidScreen(forcedReturnScreen))
+            {
+                CurrentScreen = forcedReturnScreen;
+                BeginTransition(CockpitViewState.EnteringScreen);
+            }
+            else
+            {
+                CurrentScreen = null;
+                BeginTransition(CockpitViewState.Returning);
+            }
+        }
+
+        private static bool IsValidScreen(CockpitScreenTarget screen) =>
+            screen != null && screen.isActiveAndEnabled && screen.ViewPoint != null;
+
+        private void ClearForcedFocus()
+        {
+            IsForcedFocus = false;
+            restoringForcedFocus = false;
+            forcedScreen = forcedReturnScreen = null;
+        }
+
+        private void ResetToFree()
+        {
+            if (hasFreePose && ViewCamera != null && State != CockpitViewState.Free)
+            {
+                ViewCamera.transform.SetLocalPositionAndRotation(freePosition, freeRotation);
+                ViewCamera.fieldOfView = freeFov;
+            }
+            if (FreeLook != null) { FreeLook.InputBlocked = false; FreeLook.WaitForRightRelease(); }
+            ClearForcedFocus();
+            hasFreePose = false;
+            CurrentScreen = null;
+            State = CockpitViewState.Free;
         }
 
         private void BeginTransition(CockpitViewState state)
@@ -145,9 +222,22 @@ namespace LudumDare60.Landing
 
         private void LateUpdate()
         {
+            if (ViewCamera == null)
+            {
+                if (State != CockpitViewState.Free || IsForcedFocus) ResetToFree();
+                return;
+            }
             if (!CanOperate || State == CockpitViewState.Free) return;
-            if (State != CockpitViewState.Returning && (CurrentScreen == null || !CurrentScreen.isActiveAndEnabled || CurrentScreen.ViewPoint == null))
-                ReturnToFree();
+            if (State != CockpitViewState.Returning && !IsValidScreen(CurrentScreen))
+            {
+                if (IsForcedFocus)
+                {
+                    if (!restoringForcedFocus) EndForcedFocus();
+                    else { CurrentScreen = null; BeginTransition(CockpitViewState.Returning); }
+                }
+                else ReturnToFree();
+                if (State == CockpitViewState.Free) return;
+            }
             var cameraTransform = ViewCamera.transform;
             Vector3 targetPosition;
             Quaternion targetRotation;
@@ -174,6 +264,7 @@ namespace LudumDare60.Landing
                 if (FreeLook != null) FreeLook.InputBlocked = false;
             }
             else State = CockpitViewState.Screen;
+            if (restoringForcedFocus) ClearForcedFocus();
         }
 
         private void OnDisable()
@@ -181,13 +272,8 @@ namespace LudumDare60.Landing
             point?.Dispose(); click?.Dispose(); back?.Dispose(); point = click = back = null;
             escBack?.Dispose(); escBack = null;
             if (PauseMenu != null && PauseMenu.OpenBlocker == blockMenuWhileFocused) PauseMenu.OpenBlocker = null;
-            blockMenuWhileFocused = null;            if (hasFreePose && ViewCamera != null && State != CockpitViewState.Free)
-            {
-                ViewCamera.transform.SetLocalPositionAndRotation(freePosition, freeRotation);
-                ViewCamera.fieldOfView = freeFov;
-            }
-            if (FreeLook != null) { FreeLook.InputBlocked = false; FreeLook.WaitForRightRelease(); }
-            hasFreePose = false; CurrentScreen = null; State = CockpitViewState.Free;
+            blockMenuWhileFocused = null;
+            ResetToFree();
         }
     }
 }

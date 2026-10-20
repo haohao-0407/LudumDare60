@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3383f023f4adddc4da9df568edcc177c, type: 3}
+  m_Name: AnotherTomorrow
+  m_EditorClassIdentifier: Assembly-CSharp::LudumDare60.Landing.AnotherTomorrowDefinition
+  BlackoutSeconds: 1.8
+  TextFadeSeconds: 1.2
+  BetweenCardsSeconds: 0.6
+  Cards:
+  - EnglishCue: EPILOGUE   /   I
+    ChineseCue: "\u5C3E\u58F0   /   \u7B2C\u4E00\u5E55"
+    EnglishTitle: The departure that never came
+    ChineseTitle: "\u672A\u80FD\u542F\u7A0B"
+    EnglishBody: 'The appointed hour passes.
+
+      No engine breaks the silence.'
+    ChineseBody: "\u7EA6\u5B9A\u7684\u65F6\u523B\u8FC7\u53BB\u4E86\u3002\n\u6CA1\u6709\u5F15\u64CE\u5212\u7834\u5BC2\u9759\u3002"
+    EnglishFootnote: "13 SEPTEMBER 1981  \xB7  THE RETURN WINDOW CLOSES"
+    ChineseFootnote: "1981 \u5E74 9 \u6708 13 \u65E5   \xB7   \u8FD4\u822A\u7A97\u53E3\u5173\u95ED"
+    HoldSeconds: 7
+  - EnglishCue: EPILOGUE   /   II
+    ChineseCue: "\u5C3E\u58F0   /   \u7B2C\u4E8C\u5E55"
+    EnglishTitle: The long wait
+    ChineseTitle: "\u6F2B\u957F\u7684\u7B49\u5019"
+    EnglishBody: 'The next return plan lies in November, 1983.
+
+      The food will not last that long.
+
+      No rescue has been promised.'
+    ChineseBody: "\u4E0B\u4E00\u6B21\u8FD4\u822A\u8BA1\u5212\uFF0C\u5728\u4E00\u4E5D\u516B\u4E09\u5E74\u5341\u4E00\u6708\u3002\n\u53E3\u7CAE\u6491\u4E0D\u5230\u90A3\u65F6\u3002\n\u4E5F\u6CA1\u6709\u4EBA\u80FD\u4FDD\u8BC1\u6551\u63F4\u5230\u6765\u3002"
+    EnglishFootnote: MORE THAN TWO YEARS FROM HOME
+    ChineseFootnote: "\u8DDD\u79BB\u5F52\u9014   \xB7   \u8FD8\u6709\u4E24\u5E74\u591A"
+    HoldSeconds: 9
+  - EnglishCue: EPILOGUE   /   III
+    ChineseCue: "\u5C3E\u58F0   /   \u7B2C\u4E09\u5E55"
+    EnglishTitle: The first seed
+    ChineseTitle: "\u64AD\u79CD\u4E4B\u65E5"
+    EnglishBody: 'Outside, the colony is still empty.
+
+      Tomorrow: check the greenhouse water.
+
+      If it runs, prepare the first seed.'
+    ChineseBody: "\u8231\u5916\uFF0C\u6B96\u6C11\u5730\u4F9D\u7136\u7A7A\u65E0\u4E00\u4EBA\u3002\n\u660E\u5929\uFF0C\u5148\u53BB\u68C0\u67E5\u6E29\u5BA4\u7684\u4F9B\u6C34\u3002\n\u5982\u679C\u8FD8\u80FD\u7528\uFF0C\u5C31\u51C6\u5907\u64AD\u4E0B\u7B2C\u4E00\u9897\u79CD\u5B50\u3002"
+    EnglishFootnote: "14 SEPTEMBER 1981  \xB7  SOW"
+    ChineseFootnote: "1981 \u5E74 9 \u6708 14 \u65E5   \xB7   \u64AD\u79CD"
+    HoldSeconds: 9
+  - EnglishCue: THE FINAL CURTAIN
+    ChineseCue: "\u7EC8   \u5E55"
+    EnglishTitle: Another Tomorrow
+    ChineseTitle: "\u53E6\u4E00\u4E2A\u660E\u5929"
+    EnglishBody: 'The ship stays.
+
+      The work of living begins.'
+    ChineseBody: "\u98DE\u8239\u7559\u5728\u539F\u5730\u3002\n\u6D3B\u4E0B\u53BB\uFF0C\u6210\u4E86\u65B0\u7684\u4EFB\u52A1\u3002"
+    EnglishFootnote: "PIONEER\u201360   /   THE WINDOW CLOSED"
+    ChineseFootnote: "\u5148\u9A71\u8005\u516D\u5341\u53F7   /   \u9519\u8FC7\u5F52\u9014"
+    HoldSeconds: 7

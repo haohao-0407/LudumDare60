@@ -191,6 +191,12 @@ namespace LudumDare60.UI
             openChanged.Invoke(false);
         }
 
+        /// <summary>A departing pause owner transfers the scale that this open menu should restore.</summary>
+        public void SetPauseResumeTimeScale(float value)
+        {
+            if (IsOpen) previousTimeScale = Mathf.Max(0f, value);
+        }
+
         public void ShowMain()
         {
             SetPageInteraction(true);

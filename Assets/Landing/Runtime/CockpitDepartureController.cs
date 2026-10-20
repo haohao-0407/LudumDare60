@@ -11,6 +11,7 @@ namespace LudumDare60.Landing
     {
         public CockpitOpeningController Opening;
         public LaunchSequenceController Launch;
+        public CockpitMissionController Mission;
         public AudioClip ReadyClip;
         public AudioClip[] CheckClips = new AudioClip[4];
         [Min(.5f)] public float CheckDuration = 2.5f;
@@ -104,6 +105,7 @@ namespace LudumDare60.Landing
         {
             if (!Opening || !Opening.Terminal || !repairScreen || !Launch) return;
             PauseAudio();
+            if (Mission && Mission.WindowClosed) return;
             if (recoverInterruptedFlow)
             {
                 recoverInterruptedFlow = false;
@@ -165,17 +167,21 @@ namespace LudumDare60.Landing
         void HandleCommand(string command)
         {
             if (!Opening || !Launch || !repairScreen) return;
+            if (Mission && Mission.WindowClosed) return;
             for (int i = 0; i < CheckCommands.Length; i++)
             {
                 if (command != CheckCommands[i]) continue;
                 BeginCheck(i);
                 return;
             }
-            if (command == "pioneer60.launch_requested") RequestLaunch();
+            if (command == "pioneer60.launch_requested" && !Mission) RequestLaunch();
         }
 
         void BeginCheck(int device)
         {
+            // A previously accepted check may finish typing while the daily calendar is in view.
+            // The timed diagnostic continues with the mission clock during that short presentation.
+            if (Mission && (Mission.Clock.State != ReturnWindow.MissionState.Running || Mission.Clock.IsPaused)) return;
             if (IsChecking || Launch.IsLaunching || Launch.HasReachedOrbit) return;
             int preceding = (1 << device) - 1;
             if (!GroundReady || (checkedMask & preceding) != preceding)
@@ -193,10 +199,16 @@ namespace LudumDare60.Landing
             PlayCheckSound(CheckClips != null && device < CheckClips.Length ? CheckClips[device] : null);
         }
 
-        void RequestLaunch()
+        public bool RequestLaunch()
         {
-            if (Launch.IsLaunching || Launch.HasReachedOrbit) return;
-            if (!GroundReady || !PreflightComplete || IsChecking) { BlockDeparture(); return; }
+            if (Launch.IsLaunching || Launch.HasReachedOrbit) return false;
+            double acceptedAt = Time.realtimeSinceStartupAsDouble;
+            if (Mission && !Mission.CanAuthorizeLaunch(acceptedAt))
+            {
+                if (!Mission.WindowClosed) BlockDeparture();
+                return false;
+            }
+            if (!GroundReady || !PreflightComplete || IsChecking) { BlockDeparture(); return false; }
             CapturePage(Opening.AssemblyStandby);
             CapturePage(Opening.SalvageStandby);
             CapturePage(Opening.RepairInfoStandby);
@@ -212,12 +224,19 @@ namespace LudumDare60.Landing
                 ResetChecks();
                 RestoreControlsAndPages();
                 Opening.Terminal.GoToNode("launch_failed");
-                return;
+                return false;
+            }
+            if (Mission && !Mission.ConfirmLaunch(acceptedAt))
+            {
+                Launch.CancelLaunch();
+                return false;
             }
             lastPhase = Launch.Phase;
             SetFlag("pioneer60.launch_started", true);
             SetFlag("pioneer60.departure_ready", false);
             ShowFlightPage();
+            if (Mission) Opening.Terminal.GoToNode("launch_countdown");
+            return true;
         }
 
         void HandleIgnition() => Opening.Terminal.GoToNode("launch_ignition");
@@ -232,11 +251,24 @@ namespace LudumDare60.Landing
 
         void HandleCancelled()
         {
+            if (Mission) Mission.CancelDeparture();
             ResetChecks();
             RestoreControlsAndPages();
             SetFlag("pioneer60.launch_started", false);
             SetFlag("pioneer60.departure_ready", GroundReady);
-            if (isActiveAndEnabled) Opening.Terminal.GoToNode(GroundReady ? "launch_failed" : "departure_blocked");
+            if (isActiveAndEnabled && (!Mission || !Mission.WindowClosed))
+                Opening.Terminal.GoToNode(GroundReady ? "launch_failed" : "departure_blocked");
+        }
+
+        public void CloseReturnWindow()
+        {
+            ResetChecks();
+            RestoreControlsAndPages();
+            announced = true;
+            invalidated = recoverInterruptedFlow = false;
+            SetFlag("pioneer60.departure_ready", false);
+            SetPage(Opening.RepairInfoStandby, "RETURN WINDOW", "CLOSED", "DEPARTURE AUTHORIZATION EXPIRED",
+                "RETURN TO TERMINAL\nSURFACE SURVIVAL PLAN AVAILABLE", "PIONEER-60 / ANOTHER TOMORROW");
         }
 
         void BlockDeparture()
