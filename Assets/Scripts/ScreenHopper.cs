@@ -116,6 +116,29 @@ namespace LudumDare60.Pet
         [Tooltip("说话抖动频率（Hz 左右，越大越急）。")]
         [SerializeField] private float talkJitterSpeed = 19f;
 
+        [Header("出场 / 退场动画（程序化，不占素材）")]
+        [Tooltip("出现动画时长（秒）")]
+        [SerializeField, Min(0.05f)] private float appearDuration = 0.34f;
+        [Tooltip("消失动画时长（秒）")]
+        [SerializeField, Min(0.05f)] private float disappearDuration = 0.26f;
+        [Tooltip("出现时纵向从多扁拉起来。0.06 差不多是一条亮线")]
+        [Range(0.01f, 1f)] [SerializeField] private float appearFlatten = 0.06f;
+        [Tooltip("出现瞬间横向过冲倍数，1 = 不过冲")]
+        [Range(1f, 2.5f)] [SerializeField] private float appearOvershoot = 1.4f;
+        [Tooltip("消失时纵向压到多扁")]
+        [Range(0.01f, 1f)] [SerializeField] private float disappearFlatten = 0.03f;
+        [Tooltip("消失时横向拉宽倍数，像显像管断电")]
+        [Range(1f, 3f)] [SerializeField] private float disappearStretch = 1.6f;
+
+        [Tooltip("开机/关机时那条白线的高度（米）。0.002 约两个像素粗")]
+        [SerializeField, Min(0.0005f)] private float crtLineThickness = 0.0025f;
+        [Tooltip("扫描线颜色。偏暖白更像显像管")]
+        [SerializeField] private Color crtLineColor = new Color(1f, 1f, 1f, .95f);
+        [Tooltip("开机时第一段（只有扫描线）占总时长的比例")]
+        [Range(.1f, .7f)] [SerializeField] private float crtLinePhase = .35f;
+        [Tooltip("关机时第一段（画面压成线）占总时长的比例")]
+        [Range(.1f, .9f)] [SerializeField] private float crtCollapsePhase = .6f;
+
         [Header("调试")]
         [SerializeField] private bool logStateChanges = false;
 
@@ -166,6 +189,11 @@ namespace LudumDare60.Pet
         private bool _talking;
         private bool _summoned;
         private bool _visible;
+        private float _spawnTime = -1f;      // >=0 表示出场/退场动画在跑
+        private bool _spawnAppearing;
+        private bool _hidePending;
+        private Vector3 _spawnBaseScale = Vector3.one;
+        private SpriteRenderer _crtLine;
         private TerminalDialogueSession _watchedSession;
 
         // ------------------------------------------------------------------ 生命周期
@@ -329,23 +357,53 @@ namespace LudumDare60.Pet
             if (_visible == visible) return;
             _visible = visible;
 
-            if (_sr != null) _sr.enabled = visible;
-            if (_anim != null) _anim.enabled = visible;
-
             if (visible)
             {
+                if (_sr != null) _sr.enabled = true;
+                if (_anim != null) _anim.enabled = true;
                 WarpToScreen(_appearIndex);
                 _lastPosition = transform.position;
+                _hidePending = false;
+                _spawnAppearing = true;
+                _spawnBaseScale = _baseScale;
+                _spawnTime = 0f;
                 if (logStateChanges) Debug.Log("[ScreenHopper] 出场", this);
             }
             else
             {
                 _talking = false;
                 _state = State.Perch;
-                ResetVisual();
-                transform.localScale = _baseScale;
                 if (logStateChanges) Debug.Log("[ScreenHopper] 退场", this);
+                // 亮着就播一段收缩断电动画再真正关掉；本来就看不见就直接关
+                if (_sr != null && _sr.enabled && gameObject.activeInHierarchy)
+                {
+                    _hidePending = true;
+                    _spawnAppearing = false;
+                    _spawnBaseScale = transform.localScale;
+                    _spawnTime = 0f;
+                }
+                else
+                {
+                    FinishHide();
+                }
             }
+        }
+
+        /// <summary>真正关掉：关渲染器与动画器，位置/缩放复位，下次出场从干净状态开始。</summary>
+        private void FinishHide()
+        {
+            _hidePending = false;
+            _spawnTime = -1f;
+            if (_sr != null)
+            {
+                var c = _sr.color;
+                c.a = 1f;
+                _sr.color = c;
+                _sr.enabled = false;
+            }
+            if (_anim != null) _anim.enabled = false;
+            if (_crtLine != null) _crtLine.enabled = false;   // 别把扫描线留在屏上
+            transform.localScale = _baseScale;
         }
 
         // ------------------------------------------------------------------ 屏幕采样
@@ -494,6 +552,115 @@ namespace LudumDare60.Pet
             _state = State.Perch;
             _idle = true;
             _bob = 0f;
+        }
+
+        /// <summary>
+        /// 老式显像管电视的开机 / 关机。
+        /// 开机：先出一条白色扫描线，从中间向两边展开 → 画面纵向拉开 → 扫描线淡出。
+        /// 关机：画面纵向压成一条线 → 线条横向收成一个点并淡出。
+        /// 全部程序化：白线是运行时用 1x1 白纹理生成的精灵，不占素材。
+        /// 放在 LateUpdate：其它逻辑已写好这一帧的缩放和 alpha，这里覆盖最终值。
+        /// </summary>
+        private void LateUpdate()
+        {
+            if (_spawnTime < 0f || _sr == null) return;
+            _spawnTime += Time.unscaledDeltaTime;
+
+            var duration = _spawnAppearing ? Mathf.Max(.05f, appearDuration) : Mathf.Max(.05f, disappearDuration);
+            var k = Mathf.Clamp01(_spawnTime / duration);
+
+            float petAlpha = 1f, sx = 1f, sy = 1f, lineAlpha = 0f, lineWidth = 1f;
+
+            if (_spawnAppearing)
+            {
+                if (k < crtLinePhase)
+                {
+                    // 第一拍：只有扫描线，从中心拉开到满宽
+                    var a = k / crtLinePhase;
+                    petAlpha = 0f;
+                    lineAlpha = 1f;
+                    lineWidth = Mathf.Lerp(.03f, 1f, 1f - (1f - a) * (1f - a));
+                }
+                else
+                {
+                    // 第二拍：画面从那条线纵向撑开，扫描线同时淡掉
+                    var b = (k - crtLinePhase) / Mathf.Max(.0001f, 1f - crtLinePhase);
+                    petAlpha = Mathf.Clamp01(b * 1.8f);
+                    sy = Mathf.Lerp(.02f, 1f, 1f - (1f - b) * (1f - b));
+                    sx = Mathf.Lerp(1.22f, 1f, b);
+                    lineAlpha = 1f - b;
+                    lineWidth = 1f;
+                }
+                if (k >= 1f) { _spawnTime = -1f; lineAlpha = 0f; }
+            }
+            else
+            {
+                if (k < crtCollapsePhase)
+                {
+                    // 第一拍：画面纵向压成一条亮线
+                    var a = k / crtCollapsePhase;
+                    petAlpha = 1f;
+                    sy = Mathf.Lerp(1f, .02f, a * a);
+                    sx = 1f;
+                    lineAlpha = a;
+                    lineWidth = 1f;
+                }
+                else
+                {
+                    // 第二拍：亮线横向收成一个点然后消失
+                    var b = (k - crtCollapsePhase) / Mathf.Max(.0001f, 1f - crtCollapsePhase);
+                    petAlpha = 0f;
+                    lineAlpha = 1f - b;
+                    lineWidth = Mathf.Lerp(1f, .02f, b * b);
+                }
+                if (k >= 1f) { FinishHide(); return; }
+            }
+
+            transform.localScale = Vector3.Scale(_spawnBaseScale, new Vector3(sx, sy, 1f));
+            var c = _sr.color;
+            c.a = petAlpha;
+            _sr.color = c;
+            ApplyCrtLine(lineAlpha, lineWidth);
+        }
+
+        /// <summary>白扫描线：运行时用 1x1 白纹理拼一个精灵，挂到跟宠物同一块屏上。</summary>
+        private void ApplyCrtLine(float alpha, float width01)
+        {
+            if (alpha <= 0.001f)
+            {
+                if (_crtLine != null && _crtLine.enabled) _crtLine.enabled = false;
+                return;
+            }
+
+            if (_crtLine == null) _crtLine = CreateCrtLine();
+            if (_crtLine == null) return;
+
+            _crtLine.enabled = true;
+            var lt = _crtLine.transform;
+            if (lt.parent != transform.parent) lt.SetParent(transform.parent, false);
+            lt.localPosition = transform.localPosition;
+            lt.localRotation = Quaternion.identity;
+            // 屏面缩放为 1，局部单位就是米；宽度跟着宠物，高度是一条细线
+            lt.localScale = new Vector3(PetWorldWidth() * Mathf.Clamp01(width01), crtLineThickness, 1f);
+
+            var color = crtLineColor;
+            color.a *= alpha;
+            _crtLine.color = color;
+            _crtLine.sortingOrder = _sr.sortingOrder + 1;
+        }
+
+        private SpriteRenderer CreateCrtLine()
+        {
+            var tex = Texture2D.whiteTexture;
+            var sprite = Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), new Vector2(.5f, .5f), tex.width);
+            sprite.name = "CRT Line";
+            var go = new GameObject("CRT Line");
+            go.transform.SetParent(transform.parent, false);
+            var renderer = go.AddComponent<SpriteRenderer>();
+            renderer.sprite = sprite;
+            renderer.color = new Color(1f, 1f, 1f, 0f);
+            renderer.enabled = false;
+            return renderer;
         }
 
         // ------------------------------------------------------------------ 屏上巡游
