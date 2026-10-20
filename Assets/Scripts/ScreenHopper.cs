@@ -694,6 +694,8 @@ namespace LudumDare60.Pet
             renderer.sprite = sprite;
             renderer.color = new Color(1f, 1f, 1f, 0f);
             renderer.enabled = false;
+            // 跟桌宠用同一套"永远在最前"的材质，避免白线被屏幕内容挡掉
+            if (_sr != null && _sr.sharedMaterial != null) renderer.sharedMaterial = _sr.sharedMaterial;
             return renderer;
         }
 
