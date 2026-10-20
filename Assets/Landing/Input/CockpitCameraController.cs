@@ -105,7 +105,9 @@ namespace LudumDare60.Landing
             foreach (var hit in uiHits)
             {
                 if (!(hit.module is GraphicRaycaster graphic)) continue;
-                var canvas = graphic.GetComponent<Canvas>().rootCanvas;
+                var graphicCanvas = graphic.GetComponent<Canvas>();
+                if (graphicCanvas == null) continue;   // 画布已被销毁时别再往下走
+                var canvas = graphicCanvas.rootCanvas;
                 if (canvas.renderMode == RenderMode.WorldSpace) continue;
                 // A texture-capture canvas uses texture pixel coordinates, not the game window's
                 // pointer space. Its background/cards can otherwise falsely cover the left screens.
