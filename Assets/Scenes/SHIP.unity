@@ -995,6 +995,10 @@ MonoBehaviour:
   SparkBurstDuration: {x: 0.18, y: 0.36}
   RepeatInterval: {x: 2.5, y: 7.5}
   ElectricalPulseInterval: {x: 0.035, y: 0.09}
+  ElectricalFatigueDelay: 30
+  ElectricalFatigueFade: 10
+  ElectricalFatigueGain: 0.35
+  ElectricalFatigueIntervalScale: 1.8
   AmbienceDelay: 0.6
   AlarmDelay: 0.55
   AlarmDuration: 6
@@ -9264,13 +9268,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8724464042354866312, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
+      propertyPath: surfaceOffset
+      value: 0.0005
+      objectReference: {fileID: 0}
     - target: {fileID: 9000833845243712983, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
       propertyPath: m_Name
       value: Wanderer (Screen Pet)
       objectReference: {fileID: 0}
     - target: {fileID: 9000833845243712983, guid: 6fe53020cbf5eaf41aed4229464f388a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

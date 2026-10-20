@@ -123,6 +123,7 @@ namespace LudumDare60.Pet
         {
             public Transform transform;
             public Vector3 localCenter;
+            public float localDepth;
             public Vector3 center;
             public Vector3 right;
             public Vector3 up;
@@ -416,6 +417,7 @@ namespace LudumDare60.Pet
             {
                 var bounds = mf.sharedMesh.bounds;
                 plane.localCenter = bounds.center;
+                plane.localDepth = bounds.center.z + Mathf.Abs(bounds.extents.z);
                 plane.center = t.TransformPoint(bounds.center);
                 var lossy = t.lossyScale;
                 plane.halfWidth = Mathf.Abs(bounds.extents.x * lossy.x);
@@ -485,7 +487,8 @@ namespace LudumDare60.Pet
         private void SnapToCurrentScreen()
         {
             var plane = _screens[_index];
-            transform.SetPositionAndRotation(WorldOn(plane, _u, _v, 0f), RotationOn(plane));
+            AttachTo(plane);
+            transform.localPosition = new Vector3(_u, _v, plane.localDepth + surfaceOffset);
             transform.localScale = _baseScale;
             ResetVisual();
             _state = State.Perch;
@@ -559,11 +562,20 @@ namespace LudumDare60.Pet
         private void ApplyOnSurface()
         {
             var plane = _screens[_index];
-            transform.SetPositionAndRotation(
-                WorldOn(plane, _u, _v, _bob),
-                RotationOn(plane));
+            AttachTo(plane);
+            // 只写屏幕的局部坐标：贴在屏面上，不跟世界坐标 / 相机视角产生位移或视差
+            // 呼吸/说话抖动走屏面内的上下方向，不再往镜头方向推（那样会又变成视差）
+            transform.localPosition = new Vector3(_u, _v + _bob, plane.localDepth + surfaceOffset);
             transform.localScale = _baseScale;
             ResetVisual();
+        }
+
+        /// <summary>把精灵挂到屏幕物体下。挂上之后位置只相对屏面算，船怎么晃、屏怎么摆都不影响。</summary>
+        private void AttachTo(ScreenPlane plane)
+        {
+            if (plane.transform == null) return;
+            if (transform.parent != plane.transform) transform.SetParent(plane.transform, false);
+            transform.localRotation = Quaternion.identity;   // 屏面朝 +Z，精灵默认也朝 +Z
         }
 
         private void ResetVisual()
@@ -710,7 +722,9 @@ namespace LudumDare60.Pet
                 _targetUV = new Vector2(_u, _v);
 
                 var plane = _screens[_index];
-                transform.SetPositionAndRotation(WorldOn(plane, _u, _v, 0f), RotationOn(plane));
+                AttachTo(plane);
+                transform.localPosition = new Vector3(_u, _v, plane.localDepth + surfaceOffset);
+                transform.localScale = _baseScale;
                 _crossSwapped = true;
             }
 
