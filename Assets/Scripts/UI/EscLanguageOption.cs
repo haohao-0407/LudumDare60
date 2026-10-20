@@ -28,6 +28,9 @@ namespace LudumDare60.UI
 
         [SerializeField] private UnityEvent<string> languageChanged = new UnityEvent<string>();
 
+        /// <summary>给外部挂"切换时播个音"之类的反馈用。</summary>
+        public UnityEvent<string> LanguageChanged => languageChanged;
+
         public TMP_Text ValueLabel { get { return valueLabel; } }
         public TMP_Text RowLabel { get { return rowLabel; } }
 

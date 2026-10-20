@@ -42,6 +42,10 @@ namespace LudumDare60.UI
         [Range(0f, 1f)] [SerializeField] private float openConfirmVolume = 0.55f;
         [Tooltip("尾音延后多少秒。0 = 完全叠在一起；0.02~0.05 会先听到'哒'再起音")]
         [SerializeField, Min(0f)] private float openConfirmDelay = 0.03f;
+        [Tooltip("菜单里每个按钮点击时的音量。与开菜单用同一个剪辑，只是更轻")]
+        [Range(0f, 1f)] [SerializeField] private float clickVolume = 0.45f;
+        [Tooltip("点击音音高随机范围（1 = 原调）")]
+        [SerializeField] private Vector2 clickPitch = new Vector2(0.96f, 1.06f);
         private AudioSource uiAudio;
         private AudioSource uiAccentAudio;
         private float previousTimeScale;
@@ -83,6 +87,7 @@ namespace LudumDare60.UI
             widgets.CancelQuit.onClick.AddListener(CancelQuit);
             widgets.ConfirmQuit.onClick.AddListener(ConfirmQuit);
             widgets.Fullscreen.onValueChanged.AddListener(SetFullscreen);
+            HookClickSounds();
             widgets.Overlay.SetActive(false);
         }
 
@@ -115,10 +120,30 @@ namespace LudumDare60.UI
 
         public void Toggle() { if (IsOpen) Close(); else Open(); }
 
+        /// <summary>给菜单里所有可点的控件挂上点击音。新加的按钮只要挂在 Overlay 下就自动生效。</summary>
+        private void HookClickSounds()
+        {
+            if (widgets.Overlay == null) return;
+            foreach (var button in widgets.Overlay.GetComponentsInChildren<UnityEngine.UI.Button>(true))
+                button.onClick.AddListener(PlayClickCue);
+            foreach (var toggle in widgets.Overlay.GetComponentsInChildren<UnityEngine.UI.Toggle>(true))
+                toggle.onValueChanged.AddListener(_ => PlayClickCue());
+            if (widgets.Language != null)
+                widgets.Language.LanguageChanged.AddListener(_ => PlayClickCue());
+        }
+
+        /// <summary>单次点击音：短促、随音高微变，避免听腻。</summary>
+        private void PlayClickCue()
+        {
+            if (uiAudio == null || openClickClip == null) return;
+            uiAudio.pitch = UnityEngine.Random.Range(clickPitch.x, clickPitch.y);
+            uiAudio.PlayOneShot(openClickClip, clickVolume);
+        }
+
         /// <summary>开菜单的那一下：点击感 + 成功感叠在一起。</summary>
         private void PlayOpenCue()
         {
-            if (uiAudio != null && openClickClip != null) uiAudio.PlayOneShot(openClickClip, openClickVolume);
+            if (uiAudio != null && openClickClip != null) { uiAudio.pitch = 1f; uiAudio.PlayOneShot(openClickClip, openClickVolume); }
             if (openConfirmClip == null || uiAccentAudio == null) return;
             if (openConfirmDelay <= 0.0001f) uiAccentAudio.PlayOneShot(openConfirmClip, openConfirmVolume);
             else
