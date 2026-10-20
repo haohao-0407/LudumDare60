@@ -39,6 +39,16 @@ namespace LudumDare60.Landing
         public Vector2 SparkBurstDuration = new Vector2(.18f, .36f);
         public Vector2 RepeatInterval = new Vector2(2.5f, 7.5f);
         public Vector2 ElectricalPulseInterval = new Vector2(.035f, .09f);
+
+        [Header("电流声疲劳（听久了太刺耳，随时间变轻变疏）")]
+        [Tooltip("受损开始后多久内保持原始电流声（秒）")]
+        [Min(0f)] public float ElectricalFatigueDelay = 30f;
+        [Tooltip("衰减过程时长（秒）")]
+        [Min(0.01f)] public float ElectricalFatigueFade = 10f;
+        [Tooltip("稳定后单次脉冲的音量倍率。0.35 ≈ 比原来轻 -9dB")]
+        [Range(.05f, 1f)] public float ElectricalFatigueGain = .35f;
+        [Tooltip("稳定后脉冲与爆闪之间的间隔倍率。1.8 = 稀疏一半多")]
+        [Range(1f, 4f)] public float ElectricalFatigueIntervalScale = 1.8f;
         [Min(0f)] public float AmbienceDelay = .6f;
         [Min(0f)] public float AlarmDelay = .55f;
         [Min(0f)] public float AlarmDuration = 6f;
@@ -296,9 +306,12 @@ namespace LudumDare60.Landing
 
         void Pulse(SiteState state)
         {
+            // 疲劳：受损后越久，电流声越轻、越稀疏，避免长时间滋滋扎耳朵
+            float fatigue = ElectricalFatigue01;
+
             // Schedule from now rather than catching up missed frames: a frame hitch must not stack
             // many electrical one-shots. The flash and electrical crackle share this pulse clock.
-            float interval = Sample(ElectricalPulseInterval, .02f);
+            float interval = Sample(ElectricalPulseInterval, .02f) * Mathf.Lerp(1f, FatigueIntervalScale, fatigue);
             state.NextPulse = elapsed + interval;
             state.FlashEnds = elapsed + Mathf.Min(interval * .65f, .045f);
             if (state.Site.Flash)
@@ -312,6 +325,7 @@ namespace LudumDare60.Landing
             AudioClip clip = PickElectricalClip(source.clip);
             if (!clip) return;
             source.pitch = OriginalPitch(source) * UnityEngine.Random.Range(.92f, 1.08f);
+            source.volume = OriginalVolume(source) * Mathf.Lerp(1f, FatigueGain, fatigue);
             source.PlayOneShot(clip);
         }
 
@@ -320,8 +334,24 @@ namespace LudumDare60.Landing
             state.Bursting = false;
             if (state.Site.Sparks) state.Site.Sparks.Stop();
             RestoreFlash(state);
-            state.NextBurst = elapsed + Sample(RepeatInterval, .1f);
+            // 疲劳后两次爆发之间也拉长，整体从"持续滋滋"退成"偶尔跳一下"
+            state.NextBurst = elapsed + Sample(RepeatInterval, .1f) * Mathf.Lerp(1f, FatigueIntervalScale, ElectricalFatigue01);
         }
+
+        /// <summary>0 = 原始电流声，1 = 完全进入疲劳状态。smoothstep 过渡，中途不会有突变。</summary>
+        float ElectricalFatigue01
+        {
+            get
+            {
+                if (ElectricalFatigueFade <= 0f) return elapsed >= ElectricalFatigueDelay ? 1f : 0f;
+                float t = Mathf.Clamp01((elapsed - ElectricalFatigueDelay) / ElectricalFatigueFade);
+                return t * t * (3f - 2f * t);
+            }
+        }
+
+        // 兜底：Inspector 里被误填成 0 时，间隔倍率 0 会让每帧都触发脉冲
+        float FatigueGain => Mathf.Clamp(ElectricalFatigueGain, .05f, 1f);
+        float FatigueIntervalScale => Mathf.Max(1f, ElectricalFatigueIntervalScale);
 
         void UpdateAlarm()
         {
@@ -498,6 +528,7 @@ namespace LudumDare60.Landing
             if (!source) return;
             source.Stop();
             source.pitch = OriginalPitch(source);
+            source.volume = OriginalVolume(source);   // 疲劳时改过音量，停下来要还原
             pausedAudio.Remove(source);
         }
 
