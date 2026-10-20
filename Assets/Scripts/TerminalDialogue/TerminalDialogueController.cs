@@ -44,6 +44,11 @@ namespace LudumDare60.TerminalDialogue
         /// <summary>Accepted input at click time; normal authored events still wait for player typing.</summary>
         public event Action<string, string> ChoiceAccepted;
 
+        private void Awake()
+        {
+            EnsureSfxSource();
+        }
+
         private void OnEnable()
         {
             Pioneer60.Localization.Loc.LanguageChanged += HandleLanguageChanged;
@@ -80,18 +85,27 @@ namespace LudumDare60.TerminalDialogue
 
         public void Configure(TerminalDialogueDefinition definition) => conversation = definition;
 
+        /// <summary>
+        /// 音源在 Awake 建好。以前是首次播放时懒创建，如果那一刻正好在关闭终端
+        /// （父物体正在停用）就会报 "Can't set the parent ... while activating or deactivating"
+        /// 并且对象随场景关闭泄漏。
+        /// </summary>
+        private void EnsureSfxSource()
+        {
+            if (sfxSource != null) return;
+            var go = new GameObject("Terminal SFX");
+            go.transform.SetParent(transform, false);
+            sfxSource = go.AddComponent<AudioSource>();
+            sfxSource.playOnAwake = false;
+            sfxSource.loop = false;
+            sfxSource.spatialBlend = 0f;
+        }
+
         private void PlaySfx(AudioClip clip)
         {
             if (clip == null) return;
-            if (sfxSource == null)
-            {
-                var go = new GameObject("Terminal SFX");
-                go.transform.SetParent(transform, false);
-                sfxSource = go.AddComponent<AudioSource>();
-                sfxSource.playOnAwake = false;
-                sfxSource.loop = false;
-                sfxSource.spatialBlend = 0f;
-            }
+            EnsureSfxSource();
+            if (sfxSource == null) return;
             sfxSource.PlayOneShot(clip, sfxVolume);
         }
 

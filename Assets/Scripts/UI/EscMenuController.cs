@@ -292,6 +292,10 @@ namespace LudumDare60.UI
             {
                 if (text == null || text.font == font) continue;
                 text.font = font;
+                // 换字体必须一并把材质指回新字体自己的默认材质：
+                // 否则 TMP 还拿着上一个字体的 fallback 材质，图集索引对不上会抛
+                // TMP_MaterialManager.GetFallbackMaterial 越界。
+                text.fontSharedMaterial = font.material;
                 text.SetAllDirty();
             }
         }
