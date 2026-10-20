@@ -107,9 +107,9 @@ namespace LudumDare60.Audio
                     // 曲终 → 进入重播等待
                     if (!music.isPlaying) { stage = Stage.WaitingReplay; timer = 0f; break; }
                     // 淡入
-                    music.volume = fadeInSeconds <= 0f
+                    WriteVolume(fadeInSeconds <= 0f
                         ? targetVolume
-                        : Mathf.MoveTowards(music.volume, targetVolume, targetVolume * dt / fadeInSeconds);
+                        : Mathf.MoveTowards(internalVolume, targetVolume, targetVolume * dt / fadeInSeconds));
                     break;
 
                 case Stage.WaitingReplay:
@@ -121,25 +121,37 @@ namespace LudumDare60.Audio
                 case Stage.FadingOut:
                     timer += dt;
                     float t = fadeOutSeconds <= 0f ? 1f : Mathf.Clamp01(timer / fadeOutSeconds);
-                    music.volume = Mathf.Lerp(fadeOutStartVolume, 0f, t);
+                    WriteVolume(Mathf.Lerp(fadeOutStartVolume, 0f, t));
                     if (t >= 1f)
                     {
                         music.Stop();
-                        music.volume = 0f;
+                        WriteVolume(0f);
                         stage = Stage.Finished;
                     }
                     break;
             }
+
+            // 滑条可能随时被拖动：每帧按当前倍率重算一次，不用等下一个阶段切换
+            if (music != null && music.clip != null) music.volume = internalVolume * MusicBus.Volume;
         }
 
         private float fadeOutStartVolume;
+
+        /// <summary>导演自己的音量（0~1，不含 BGM 滑条）。实际写入声源时再乘 MusicBus.Volume。</summary>
+        private float internalVolume;
+
+        private void WriteVolume(float value)
+        {
+            internalVolume = Mathf.Clamp01(value);
+            if (music != null) music.volume = internalVolume * MusicBus.Volume;
+        }
 
         private void BeginPlay()
         {
             if (music.clip == null) { stage = Stage.Finished; return; }
             timer = 0f;
             stage = Stage.Playing;
-            music.volume = fadeInSeconds <= 0f ? targetVolume : 0f;
+            WriteVolume(fadeInSeconds <= 0f ? targetVolume : 0f);
             music.Play();
         }
 
@@ -148,11 +160,11 @@ namespace LudumDare60.Audio
             // 已经停着就直接收工，不用淡出
             if (!music.isPlaying)
             {
-                music.volume = 0f;
+                WriteVolume(0f);
                 stage = Stage.Finished;
                 return;
             }
-            fadeOutStartVolume = music.volume;
+            fadeOutStartVolume = internalVolume;
             timer = 0f;
             stage = Stage.FadingOut;
         }

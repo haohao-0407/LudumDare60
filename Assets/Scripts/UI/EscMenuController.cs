@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LudumDare60.Audio;
 using Pioneer60.Localization;
 using TMPro;
 using UnityEngine;
@@ -14,9 +15,9 @@ namespace LudumDare60.UI
     public sealed class EscMenuWidgets
     {
         public GameObject Overlay, MainPage, SettingsPage, QuitConfirmation;
-        public TMP_Text Title, VolumeValue;
+        public TMP_Text Title, VolumeValue, MusicValue;
         public UnityEngine.UI.Button Resume, Settings, Quit, Back, CancelQuit, ConfirmQuit;
-        public UnityEngine.UI.Slider Volume;
+        public UnityEngine.UI.Slider Volume, MusicVolume;
         public EscLanguageOption Language;
         public UnityEngine.UI.Toggle Fullscreen;
     }
@@ -61,6 +62,7 @@ namespace LudumDare60.UI
             widgets.Quit.onClick.AddListener(RequestQuit);
             widgets.Back.onClick.AddListener(ShowMain);
             if (widgets.Volume != null) widgets.Volume.onValueChanged.AddListener(SetVolume);
+            if (widgets.MusicVolume != null) widgets.MusicVolume.onValueChanged.AddListener(SetMusicVolume);
             widgets.CancelQuit.onClick.AddListener(CancelQuit);
             widgets.ConfirmQuit.onClick.AddListener(ConfirmQuit);
             widgets.Fullscreen.onValueChanged.AddListener(SetFullscreen);
@@ -140,6 +142,7 @@ namespace LudumDare60.UI
             widgets.MainPage.SetActive(false); widgets.SettingsPage.SetActive(true); widgets.QuitConfirmation.SetActive(false);
             widgets.Title.text = Loc.Get("esc.title.settings");
             if (widgets.Volume != null) { widgets.Volume.SetValueWithoutNotify(AudioListener.volume); UpdateVolumeLabel(); }
+            if (widgets.MusicVolume != null) { widgets.MusicVolume.SetValueWithoutNotify(MusicBus.Volume); UpdateMusicLabel(); }
             Select(widgets.Back.gameObject);
         }
 
@@ -151,6 +154,7 @@ namespace LudumDare60.UI
             widgets.SettingsPage.GetComponent<CanvasGroup>().interactable = enabled;
             if (widgets.Language != null) widgets.Language.interactable = enabled;
             if (widgets.Volume != null) widgets.Volume.interactable = enabled;
+            if (widgets.MusicVolume != null) widgets.MusicVolume.interactable = enabled;
         }
         public void ConfirmQuit()
         {
@@ -165,6 +169,11 @@ namespace LudumDare60.UI
         private void SetVolume(float value) { AudioListener.volume = Mathf.Clamp01(value); UpdateVolumeLabel(); }
         private void UpdateVolumeLabel()
         { if (widgets.VolumeValue != null && widgets.Volume != null) widgets.VolumeValue.text = Mathf.RoundToInt(widgets.Volume.value * 100) + "%"; }
+
+        /// <summary>BGM 滑条：只改音乐层音量，不影响音效。</summary>
+        private void SetMusicVolume(float value) { MusicBus.Volume = value; UpdateMusicLabel(); }
+        private void UpdateMusicLabel()
+        { if (widgets.MusicValue != null && widgets.MusicVolume != null) widgets.MusicValue.text = Mathf.RoundToInt(widgets.MusicVolume.value * 100) + "%"; }
         private void SetFullscreen(bool value) => Screen.fullScreen = value;
         private static void Select(GameObject target)
         { if (EventSystem.current != null) { EventSystem.current.SetSelectedGameObject(null); EventSystem.current.SetSelectedGameObject(target); } }
