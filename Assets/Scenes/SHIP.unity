@@ -7479,7 +7479,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7486821540052027358, guid: 1461d089439d88c40a0a0e00e5c1493a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -151
+      value: -187
       objectReference: {fileID: 0}
     - target: {fileID: 7486821540052027358, guid: 1461d089439d88c40a0a0e00e5c1493a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11382,7 +11382,7 @@ MonoBehaviour:
   ExteriorHazeRadius: 25
   SpaceAmbientScale: 0.18
   SpaceSunIntensityMultiplier: 0.35
-  AtmosphericEntryClip: {fileID: 8300000, guid: 1acebf4d6d74f164cbd4158b71d23761, type: 3}
+  AtmosphericEntryClip: {fileID: 8300000, guid: 85677c79c30f664458e78d3d86d50b33, type: 3}
   AtmosphericEntryVolume: 0.55
   TouchdownSpeed: 4
   HardLandingShakeDuration: 3
@@ -12874,7 +12874,7 @@ MonoBehaviour:
   RepairScreen: {fileID: 1066902081}
   CountdownClip: {fileID: 8300000, guid: 1d4d2d48c2d9af54b95954fede2989b5, type: 3}
   IgnitionClip: {fileID: 8300000, guid: dd2c14751f6ea584ca91626fb0f803ab, type: 3}
-  EngineLoopClip: {fileID: 8300000, guid: 1acebf4d6d74f164cbd4158b71d23761, type: 3}
+  EngineLoopClip: {fileID: 8300000, guid: 85677c79c30f664458e78d3d86d50b33, type: 3}
   Duration: 40
   CountdownDuration: 3
   IgnitionDuration: 2
