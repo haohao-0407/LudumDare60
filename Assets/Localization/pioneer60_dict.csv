@@ -703,3 +703,10 @@ demo.pt.coords,demo,,Display the target coordinates.,显示目标坐标。,原�
 demo.pt.leave,demo,,Keep monitoring. End transmission.,继续监测。结束传输。,原文
 demo.pt.mark,demo,,Save the coordinates and return to the comms menu.,保存坐标，返回通讯菜单。,原文
 ui.tab_select,ui,,TAB SELECT,TAB 选择,原文
+ending.thanks,ending,,Thanks for playing,感谢游玩,原文
+ending.credits,ending,,Credits,制作人员,原文
+ending.special_thanks,ending,,"SPECIAL THANKS
+
+To everyone who played.","特别鸣谢
+
+献给每一位玩过的人。",原文

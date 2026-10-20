@@ -9103,6 +9103,54 @@
           "text": "TAB 选择"
         }
       ]
+    },
+    {
+      "key": "ending.thanks",
+      "category": "ending",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Thanks for playing"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "感谢游玩"
+        }
+      ]
+    },
+    {
+      "key": "ending.credits",
+      "category": "ending",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Credits"
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "制作人员"
+        }
+      ]
+    },
+    {
+      "key": "ending.special_thanks",
+      "category": "ending",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "SPECIAL THANKS\n\nTo everyone who played."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "特别鸣谢\n\n献给每一位玩过的人。"
+        }
+      ]
     }
   ],
   "commands": [
