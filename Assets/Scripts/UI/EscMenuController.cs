@@ -43,6 +43,12 @@ namespace LudumDare60.UI
         public bool IsOpen { get; private set; }
         internal InputAction ToggleInput => inputActions != null ? inputActions.FindAction(toggleActionPath, false) : null;
 
+        /// <summary>
+        /// 打开前的否决权。返回 true 表示"这一下 ESC 不该开菜单"，交给别人处理。
+        /// 座舱相机在聚焦某块屏幕时挂这个钩子，让 ESC 先当"返回上一级"用。
+        /// </summary>
+        public Func<bool> OpenBlocker;
+
         public void Configure(InputActionAsset actions, EscMenuWidgets menuWidgets)
         { inputActions = actions; widgets = menuWidgets; }
 
@@ -92,6 +98,8 @@ namespace LudumDare60.UI
         public void Open()
         {
             if (IsOpen || !enabled || widgets.Overlay == null) return;
+            // 聚焦屏幕时 ESC 属于"返回上一级"，不该弹菜单。
+            if (OpenBlocker != null && OpenBlocker()) return;
             // Activating a never-enabled root first runs Awake and binds its widgets.
             gameObject.SetActive(true);
             if (!isActiveAndEnabled) return;

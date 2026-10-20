@@ -30,6 +30,8 @@ namespace LudumDare60.Landing
         public bool IsFreeView => State == CockpitViewState.Free;
 
         private InputAction point, click, back;
+        private InputAction escBack;
+        private System.Func<bool> blockMenuWhileFocused;
         private Vector3 freePosition, startPosition;
         private Quaternion freeRotation, startRotation;
         private float freeFov, startFov, elapsed;
@@ -42,6 +44,15 @@ namespace LudumDare60.Landing
         {
             if (!Application.isPlaying) return;
             point = Clone("UI/Point"); click = Clone("UI/Click"); back = Clone("UI/RightClick");
+            // 聚焦屏幕时 ESC 也当"返回上一级"：自己接一份 ESC 动作，
+            // 同时给菜单挂否决权，避免返回的同时把菜单也弹出来。
+            escBack = Clone("ESCMenu/Toggle");
+            if (PauseMenu != null)
+            {
+                // 只要不在自由视角（进入中/已聚焦/退回中），ESC 都算"返回上一级"，不弹菜单。
+                blockMenuWhileFocused = () => State != CockpitViewState.Free;
+                PauseMenu.OpenBlocker = blockMenuWhileFocused;
+            }
         }
 
         private InputAction Clone(string path)
@@ -60,7 +71,9 @@ namespace LudumDare60.Landing
             if (!CanOperate) return;
             if (State != CockpitViewState.Free)
             {
-                if (back != null && back.WasPressedThisFrame()) ReturnToFree();
+                // 右键（老操作）或 ESC 都退回自由视角；ESC 在这里被吃掉，不会开到菜单。
+                if ((back != null && back.WasPressedThisFrame()) ||
+                    (escBack != null && escBack.WasPressedThisFrame())) ReturnToFree();
                 return;
             }
             if (click == null || !click.WasPressedThisFrame() || point == null || (back != null && back.IsPressed())) return;
@@ -166,7 +179,9 @@ namespace LudumDare60.Landing
         private void OnDisable()
         {
             point?.Dispose(); click?.Dispose(); back?.Dispose(); point = click = back = null;
-            if (hasFreePose && ViewCamera != null && State != CockpitViewState.Free)
+            escBack?.Dispose(); escBack = null;
+            if (PauseMenu != null && PauseMenu.OpenBlocker == blockMenuWhileFocused) PauseMenu.OpenBlocker = null;
+            blockMenuWhileFocused = null;            if (hasFreePose && ViewCamera != null && State != CockpitViewState.Free)
             {
                 ViewCamera.transform.SetLocalPositionAndRotation(freePosition, freeRotation);
                 ViewCamera.fieldOfView = freeFov;
