@@ -711,3 +711,17 @@ To everyone who played.","特别鸣谢
 
 献给每一位玩过的人。",原文
 esc.music,esc,,BGM,BGM,原文
+asm.status.select,assembly,,Select a device and allocate materials to begin.,选择一台设备并配给材料以开始。,原文
+asm.status.allocate,assembly,,Allocate materials to begin assembly.,配给材料以开始组装。,原文
+asm.status.repair_complete,assembly,,Repair complete.,修复完成。,原文
+asm.status.in_progress,assembly,,Assembly in progress. Materials already allocated.,组装进行中，材料已配给。,原文
+asm.status.resumed,assembly,,Assembly resumed. Materials already allocated.,继续组装，材料已配给。,原文
+asm.status.materials_allocated,assembly,,Materials allocated. Select a part to begin assembly.,材料已配给，选择一个零件开始组装。,原文
+asm.status.rearranged,assembly,,Parts rearranged. Materials remain allocated to this assembly.,零件已重排，材料仍保留在本次组装中。,原文
+asm.status.repairs_unavailable,assembly,,Repairs are currently unavailable.,当前无法维修。,原文
+asm.status.damaged_unavailable,assembly,,Ship systems damaged. Repairs are currently unavailable.,舰船系统受损，当前无法维修。,原文
+asm.status.operational,assembly,,All ship systems are operational.,全舰系统运转正常。,原文
+asm.status.crash_damage,assembly,,Crash damage detected. Allocate materials to begin repairs.,检测到坠毁损伤，配给材料以开始维修。,原文
+asm.status.device_unavailable,assembly,,This device is currently unavailable for repair.,该设备当前不可维修。,原文
+asm.status.complete_sync,assembly,,Assembly complete; waiting for repair screen synchronization.,组装完成，等待维修屏同步。,原文
+asm.status.availability_changed,assembly,,Repair availability changed before assembly could begin.,开始组装前维修状态发生变化。,原文

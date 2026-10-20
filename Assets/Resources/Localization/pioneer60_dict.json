@@ -9167,6 +9167,230 @@
           "text": "BGM"
         }
       ]
+    },
+    {
+      "key": "asm.status.select",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Select a device and allocate materials to begin."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "选择一台设备并配给材料以开始。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.allocate",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Allocate materials to begin assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "配给材料以开始组装。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.repair_complete",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Repair complete."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "修复完成。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.in_progress",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assembly in progress. Materials already allocated."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装进行中，材料已配给。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.resumed",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assembly resumed. Materials already allocated."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "继续组装，材料已配给。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.materials_allocated",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Materials allocated. Select a part to begin assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "材料已配给，选择一个零件开始组装。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.rearranged",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Parts rearranged. Materials remain allocated to this assembly."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "零件已重排，材料仍保留在本次组装中。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.repairs_unavailable",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Repairs are currently unavailable."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "当前无法维修。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.damaged_unavailable",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Ship systems damaged. Repairs are currently unavailable."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "舰船系统受损，当前无法维修。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.operational",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "All ship systems are operational."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "全舰系统运转正常。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.crash_damage",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Crash damage detected. Allocate materials to begin repairs."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "检测到坠毁损伤，配给材料以开始维修。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.device_unavailable",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "This device is currently unavailable for repair."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "该设备当前不可维修。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.complete_sync",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Assembly complete; waiting for repair screen synchronization."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "组装完成，等待维修屏同步。"
+        }
+      ]
+    },
+    {
+      "key": "asm.status.availability_changed",
+      "category": "assembly",
+      "speaker": "",
+      "note": "原文",
+      "texts": [
+        {
+          "lang": "en",
+          "text": "Repair availability changed before assembly could begin."
+        },
+        {
+          "lang": "zh-Hans",
+          "text": "开始组装前维修状态发生变化。"
+        }
+      ]
     }
   ],
   "commands": [

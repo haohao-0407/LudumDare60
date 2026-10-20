@@ -120,7 +120,7 @@ namespace LudumDare60.ShipAssembly
             if (!started && !canStart && !string.IsNullOrEmpty(reason)) message = reason;
             if (!available) message = "REPAIR STATION UNAVAILABLE";
             else if (completed) message = "REPAIR COMPLETE - SYSTEM RESTORED";
-            SetText(Status, message);
+            SetText(Status, Loc.Say(message));   // 状态文案来自控制器，统一过词典
             var puzzle = Controller != null ? Controller.ActivePuzzle : null;
             int moduleCount = puzzle != null && puzzle.Modules != null ? puzzle.Modules.Length : 0;
             string selectionKeys = moduleCount > 0 ? "1-" + Mathf.Min(moduleCount, 5) + " / TAB SELECT" : "TAB SELECT";
