@@ -36,6 +36,9 @@ namespace LudumDare60.TerminalDialogue
         public string CurrentNodeId { get; private set; }
         public bool IsStoryReading => IsOpen && graph.FindNode(CurrentNodeId)?.PauseGameplayWhileReading == true;
         public string AIName => graph.AIName;
+
+        /// <summary>台词里的 {callsign} 占位符填成呼号。舰名保持不变，所以中英文用同一个值。</summary>
+        public string Callsign = "Pioneer-60";
         public IReadOnlyList<TerminalMessage> Messages => messageView;
         public IReadOnlyList<TerminalChoice> Choices => choiceView;
         public int VisibleCodeUnits { get; private set; }
@@ -161,6 +164,18 @@ namespace LudumDare60.TerminalDialogue
             if (translate == null) return;
             if (localized != null) graph = localized;
 
+            // 词典里的中英文都带 {callsign} 占位符，翻译完必须再填一次值，
+            // 否则切语言后会把已经填好的呼号重新变成占位符。
+            if (!string.IsNullOrEmpty(Callsign))
+            {
+                var raw = translate;
+                translate = s =>
+                {
+                    var value = raw(s);
+                    return value != null ? value.Replace("{callsign}", Callsign) : null;
+                };
+            }
+
             for (int i = 0; i < messages.Count; i++) messages[i].Relocalize(translate);
 
             if (activeLine != null)
@@ -175,6 +190,24 @@ namespace LudumDare60.TerminalDialogue
                 VisibleCodeUnits = fullyTyped
                     ? activeLine.Text.Length
                     : System.Math.Min(VisibleCodeUnits, activeLine.Text.Length);
+            }
+
+            // 队列里还没播的台词引用的仍是切换前那份图的 TerminalLine，不换语言就会继续吐旧语言。
+            foreach (var task in tasks)
+            {
+                if (task == null || task.Kind != TaskKind.Line || task.Line == null) continue;
+                var queuedText = translate(task.Line.Text);
+                if (!string.IsNullOrEmpty(queuedText)) task.Line.Text = queuedText;
+                var queuedName = translate(task.Line.DisplayName);
+                if (!string.IsNullOrEmpty(queuedName)) task.Line.DisplayName = queuedName;
+            }
+
+            // 待播的系统通知是已经翻译过的字符串，靠词典的双向查表换回另一种语言。
+            if (notifications.Count > 0)
+            {
+                var pending = notifications.ToArray();
+                notifications.Clear();
+                foreach (var note in pending) notifications.Enqueue(translate(note) ?? note);
             }
 
             RefreshChoices();
@@ -259,6 +292,21 @@ namespace LudumDare60.TerminalDialogue
 
         private void BeginLine(TerminalLine line)
         {
+            // {callsign} 占位符在这里替换：词典里中英文都用同一个占位符，之前没有代码负责填值。
+            // 复制一份再改，避免默认语言下 graph 直接引用了资产里的原对象。
+            if (Callsign != null && line.Text != null && line.Text.IndexOf("{callsign}", System.StringComparison.Ordinal) >= 0)
+            {
+                line = new TerminalLine
+                {
+                    Speaker = line.Speaker,
+                    Text = line.Text.Replace("{callsign}", Callsign),
+                    DisplayName = line.DisplayName,
+                    UseCustomColor = line.UseCustomColor,
+                    CustomColor = line.CustomColor,
+                    WaitForContinue = line.WaitForContinue,
+                    DelayAfter = line.DelayAfter
+                };
+            }
             activeLine = line;
             messages.Add(new TerminalMessage(line.Speaker, line.Text,
                 line.UseCustomColor ? line.CustomColor : graph.DefaultTextColor, line.DisplayName));
