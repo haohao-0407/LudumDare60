@@ -32,6 +32,18 @@ namespace LudumDare60.UI
         [SerializeField, Tooltip("打开菜单时暂停使用 Time.timeScale 的游戏逻辑，关闭时恢复之前的值。")]
         private bool pauseGame = true;
         [SerializeField] private UnityEvent<bool> openChanged = new UnityEvent<bool>();
+
+        [Header("打开菜单音效（两段叠加：点击感 + 成功感）")]
+        [Tooltip("短促的点击/确认部分，例如 COM_timeout")]
+        [SerializeField] private AudioClip openClickClip;
+        [Tooltip("带成功感的尾音，例如 UI_salvage_success")]
+        [SerializeField] private AudioClip openConfirmClip;
+        [Range(0f, 1f)] [SerializeField] private float openClickVolume = 0.7f;
+        [Range(0f, 1f)] [SerializeField] private float openConfirmVolume = 0.55f;
+        [Tooltip("尾音延后多少秒。0 = 完全叠在一起；0.02~0.05 会先听到'哒'再起音")]
+        [SerializeField, Min(0f)] private float openConfirmDelay = 0.03f;
+        private AudioSource uiAudio;
+        private AudioSource uiAccentAudio;
         private float previousTimeScale;
         private bool previousCursorVisible;
         private CursorLockMode previousCursorLock;
@@ -57,6 +69,11 @@ namespace LudumDare60.UI
         {
             if (widgets.Overlay == null) { Debug.LogError("ESC Menu: missing overlay reference.", this); enabled = false; return; }
             EnsureEventSystem();
+            // 两个 2D 声源：一个放点击，一个放尾音，互不打断；菜单暂停用 timeScale，不影响它们
+            uiAudio = gameObject.AddComponent<AudioSource>();
+            uiAudio.playOnAwake = false; uiAudio.loop = false; uiAudio.spatialBlend = 0f;
+            uiAccentAudio = gameObject.AddComponent<AudioSource>();
+            uiAccentAudio.playOnAwake = false; uiAccentAudio.loop = false; uiAccentAudio.spatialBlend = 0f;
             widgets.Resume.onClick.AddListener(Close);
             widgets.Settings.onClick.AddListener(ShowSettings);
             widgets.Quit.onClick.AddListener(RequestQuit);
@@ -97,6 +114,20 @@ namespace LudumDare60.UI
         }
 
         public void Toggle() { if (IsOpen) Close(); else Open(); }
+
+        /// <summary>开菜单的那一下：点击感 + 成功感叠在一起。</summary>
+        private void PlayOpenCue()
+        {
+            if (uiAudio != null && openClickClip != null) uiAudio.PlayOneShot(openClickClip, openClickVolume);
+            if (openConfirmClip == null || uiAccentAudio == null) return;
+            if (openConfirmDelay <= 0.0001f) uiAccentAudio.PlayOneShot(openConfirmClip, openConfirmVolume);
+            else
+            {
+                uiAccentAudio.clip = openConfirmClip;
+                uiAccentAudio.volume = openConfirmVolume;
+                uiAccentAudio.PlayDelayed(openConfirmDelay);
+            }
+        }
         public void Open()
         {
             if (IsOpen || !enabled || widgets.Overlay == null) return;
@@ -111,6 +142,7 @@ namespace LudumDare60.UI
             IsOpen = true;
             if (pauseGame) Time.timeScale = 0;
             Cursor.lockState = CursorLockMode.None; Cursor.visible = true;
+            PlayOpenCue();
             widgets.Overlay.SetActive(true);
             widgets.Fullscreen.SetIsOnWithoutNotify(Screen.fullScreen);
             ShowMain(); openChanged.Invoke(true);

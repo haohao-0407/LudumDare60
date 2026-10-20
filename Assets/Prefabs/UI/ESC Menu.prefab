@@ -706,6 +706,11 @@ MonoBehaviour:
   openChanged:
     m_PersistentCalls:
       m_Calls: []
+  openClickClip: {fileID: 8300000, guid: c16385de29ccbb84c9d11e3b89e0693a, type: 3}
+  openConfirmClip: {fileID: 8300000, guid: b78cea2615adecb4ba09e731c1debb0b, type: 3}
+  openClickVolume: 0.7
+  openConfirmVolume: 0.55
+  openConfirmDelay: 0.03
 --- !u!1 &797067201702530187
 GameObject:
   m_ObjectHideFlags: 0
