@@ -224,7 +224,23 @@ namespace LudumDare60.Landing
             if (ready < 0 || Assembly == null) yield break;
 
             var bench = AssemblyScreen != null ? AssemblyScreen : FindScreenByName(cam, "RADAR");
-            if (cam != null && bench != null) cam.FocusScreen(bench);
+
+            // FocusScreen 只在自由视角下生效：先明确退出当前那块屏，等镜头真的回到自由视角，
+            // 再拉近组装屏。否则这一步会被静默忽略，看起来像"卡在打捞屏等玩家自己点"。
+            if (cam != null)
+            {
+                if (cam.State != CockpitViewState.Free)
+                {
+                    cam.ReturnToFree();
+                    float back = 0f;
+                    while (cam.State != CockpitViewState.Free && back < 3f)
+                    {
+                        back += Time.unscaledDeltaTime;
+                        yield return null;
+                    }
+                }
+                if (bench != null) cam.FocusScreen(bench);
+            }
             if (AssemblyFocusHold > 0f) yield return new WaitForSecondsRealtime(AssemblyFocusHold);
 
             var recipes = Assembly.Recipes;

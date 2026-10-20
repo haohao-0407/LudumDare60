@@ -13,6 +13,8 @@ namespace LudumDare60.Landing
         [Min(0)] public float MouseSensitivity = 0.12f;
         public Vector2 YawLimits = new Vector2(-150, 150);
         public Vector2 PitchLimits = new Vector2(-65, 65);
+        [Tooltip("WASD 转视角的速度（度/秒）。0 = 关闭。只在没放大某块屏时才生效")]
+        public float KeyboardLookSpeed = 70f;
         private InputAction look, hold;
         private Quaternion restRotation;
         private float yaw, pitch;
@@ -54,6 +56,23 @@ namespace LudumDare60.Landing
         {
             if (look == null || !Application.isFocused ||
                 InputBlocked || (PauseMenu != null && PauseMenu.IsOpen)) return;
+
+            // WASD 环视：不需要按住右键，但只在自由视角（InputBlocked 为 false）时才会走到这里
+            if (KeyboardLookSpeed > 0f)
+            {
+                var keyboard = UnityEngine.InputSystem.Keyboard.current;
+                if (keyboard != null)
+                {
+                    float yawInput = (keyboard.dKey.isPressed ? 1f : 0f) - (keyboard.aKey.isPressed ? 1f : 0f);
+                    float pitchInput = (keyboard.wKey.isPressed ? 1f : 0f) - (keyboard.sKey.isPressed ? 1f : 0f);
+                    if (Mathf.Abs(yawInput) > 0.001f || Mathf.Abs(pitchInput) > 0.001f)
+                    {
+                        float step = KeyboardLookSpeed * Time.unscaledDeltaTime;
+                        ApplyLook(yaw + yawInput * step, pitch + pitchInput * step);
+                        PlayerLooked = true;
+                    }
+                }
+            }
             if (hold.ReadValue<float>() < 0.5f) { waitForRightRelease = false; return; }
             if (waitForRightRelease) return;
             var delta = look.ReadValue<Vector2>();
